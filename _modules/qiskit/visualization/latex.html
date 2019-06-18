@@ -58,6 +58,12 @@
       </span>
     
 
+<div class="languages" >
+    <select id="language" name="languages">
+        <option value="en">English</option>
+        <option value="ja">Japanese</option>
+    </select>
+</div>
 <div id="searchbox" role="search">
     <div class="searchformwrapper">
     <form class="search-form" action="../../../search.html" method="get">
@@ -97,6 +103,12 @@
       </span>
     
 
+<div class="languages" >
+    <select id="language" name="languages">
+        <option value="en">English</option>
+        <option value="ja">Japanese</option>
+    </select>
+</div>
 <div id="searchbox" role="search">
     <div class="searchformwrapper">
     <form class="search-form" action="../../../search.html" method="get">
@@ -352,6 +364,18 @@
 <span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="n">max_column_widths</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="c1"># Determine row spacing before image depth</span>
+        <span class="k">for</span> <span class="n">layer</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">ops</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">op</span> <span class="ow">in</span> <span class="n">layer</span><span class="p">:</span>
+                <span class="c1"># useful information for determining row spacing</span>
+                <span class="n">boxed_gates</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;u0&#39;</span><span class="p">,</span> <span class="s1">&#39;u1&#39;</span><span class="p">,</span> <span class="s1">&#39;u2&#39;</span><span class="p">,</span> <span class="s1">&#39;u3&#39;</span><span class="p">,</span> <span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="s1">&#39;z&#39;</span><span class="p">,</span> <span class="s1">&#39;h&#39;</span><span class="p">,</span> <span class="s1">&#39;s&#39;</span><span class="p">,</span>
+                               <span class="s1">&#39;sdg&#39;</span><span class="p">,</span> <span class="s1">&#39;t&#39;</span><span class="p">,</span> <span class="s1">&#39;tdg&#39;</span><span class="p">,</span> <span class="s1">&#39;rx&#39;</span><span class="p">,</span> <span class="s1">&#39;ry&#39;</span><span class="p">,</span> <span class="s1">&#39;rz&#39;</span><span class="p">,</span> <span class="s1">&#39;ch&#39;</span><span class="p">,</span> <span class="s1">&#39;cy&#39;</span><span class="p">,</span>
+                               <span class="s1">&#39;crz&#39;</span><span class="p">,</span> <span class="s1">&#39;cu3&#39;</span><span class="p">,</span> <span class="s1">&#39;id&#39;</span><span class="p">]</span>
+                <span class="n">target_gates</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;cx&#39;</span><span class="p">,</span> <span class="s1">&#39;ccx&#39;</span><span class="p">]</span>
+                <span class="k">if</span> <span class="n">op</span><span class="o">.</span><span class="n">name</span> <span class="ow">in</span> <span class="n">boxed_gates</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">has_box</span> <span class="o">=</span> <span class="kc">True</span>
+                <span class="k">if</span> <span class="n">op</span><span class="o">.</span><span class="n">name</span> <span class="ow">in</span> <span class="n">target_gates</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">has_target</span> <span class="o">=</span> <span class="kc">True</span>
 
         <span class="k">for</span> <span class="n">layer</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">ops</span><span class="p">:</span>
 
@@ -959,5 +983,17 @@
           };
        </script>
         <script async src="https://cloud.ibm.com/analytics/build/bluemix-analytics.min.js"></script>
+         <script>
+            var el = document.getElementById('language');
+            el.addEventListener('change', function(evt){
+                var language = evt.target.options[el.selectedIndex].value;
+                if (language === 'ja') {
+                    window.location.href = '/locale/ja';
+                }
+                if (language === 'en') {
+                    window.location.href = '/';
+                }
+            });
+        </script>
   </body>
 </html>

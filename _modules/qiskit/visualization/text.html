@@ -58,6 +58,12 @@
       </span>
     
 
+<div class="languages" >
+    <select id="language" name="languages">
+        <option value="en">English</option>
+        <option value="ja">Japanese</option>
+    </select>
+</div>
 <div id="searchbox" role="search">
     <div class="searchformwrapper">
     <form class="search-form" action="../../../search.html" method="get">
@@ -97,6 +103,12 @@
       </span>
     
 
+<div class="languages" >
+    <select id="language" name="languages">
+        <option value="en">English</option>
+        <option value="ja">Japanese</option>
+    </select>
+</div>
 <div id="searchbox" role="search">
     <div class="searchformwrapper">
     <form class="search-form" action="../../../search.html" method="get">
@@ -1144,5 +1156,17 @@
           };
        </script>
         <script async src="https://cloud.ibm.com/analytics/build/bluemix-analytics.min.js"></script>
+         <script>
+            var el = document.getElementById('language');
+            el.addEventListener('change', function(evt){
+                var language = evt.target.options[el.selectedIndex].value;
+                if (language === 'ja') {
+                    window.location.href = '/locale/ja';
+                }
+                if (language === 'en') {
+                    window.location.href = '/';
+                }
+            });
+        </script>
   </body>
 </html>
