@@ -1719,7 +1719,7 @@ to set a property in the property set of the pass manager, a
 
       var changeSelect = function(select) {
         const tokens = window.location.pathname.split('/');
-        const optionToSelect = tokens[tokens.length - 2] || 'en';
+        const optionToSelect = tokens[3] || 'en';
         for (var i = 0; i < select.options.length; i++) {
           var o = select.options[i];
           if (optionToSelect == o.value) {
