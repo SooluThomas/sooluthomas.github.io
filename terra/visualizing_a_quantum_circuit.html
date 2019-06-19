@@ -8,9 +8,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono|IBM+Plex+Sans|IBM+Plex+Sans+Condensed|IBM+Plex+Serif" rel="stylesheet">
-
+    <script>
+          /* Define digital data object based on _appInfo object */
+          window.digitalData = {
+            page: {
+              pageInfo: {
+                productTitle: 'IBM Q Experience',
+                analytics: {
+                  category: 'Qiskit.org',
+                },
+              },
+            },
+          };
+          window._analytics = {
+            segment_key: 'zbHWEXPUfXm0K6C7HbegwB5ewDEC8o1H',
+            coremetrics: false,
+            optimizely: false,
+            googleAddServices: false,
+            fullStory: false,
+            autoPageEventSpa: true,
+            autoFormEvents: false,
+            autoPageView: true,
+            preventPageEvent: true,
+          };
+       </script>
+        <script src="https://cloud.ibm.com/analytics/build/bluemix-analytics.min.js"></script>
     
-    <title>Visualizing a Quantum Circuit &#8212; Qiskit 0.10.1 documentation</title>
+    <title>Visualizing a Quantum Circuit &#8212; Qiskit 0.10.4 documentation</title>
 
     <link rel="stylesheet" href="../_static/material-icons.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -41,10 +65,10 @@
         <a href="/ignis">Ignis</a>
       </nav>
       <nav class="second">
-        <a class="external" href="https://nbviewer.jupyter.org/github/Qiskit/qiskit-tutorials/blob/master/qiskit/start_here.ipynb">Tutorials</a>
+        <a class="external" id="tutorialsLink" href="https://nbviewer.jupyter.org/github/Qiskit/qiskit-tutorials/blob/master/qiskit/start_here.ipynb" target="_blank">Tutorials</a>
         <a class="external" href="/documentation" selected>Documentation</a>
         <a class="external" href="/vscode">Tools</a>
-        <a class="external" href="/fun">Fun</a>
+        <a class="external" href="/community">Community</a>
       </nav>
     </div>
   </header>
@@ -594,7 +618,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../development_strategy.html#modules">Modules</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../development_strategy.html#basic-aer-provider">Basic Aer Provider</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../development_strategy.html#aer-provider">Aer Provider</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../development_strategy.html#ingnis">Ingnis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../development_strategy.html#ignis">Ignis</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../development_strategy.html#versioning">Versioning</a><ul>
@@ -694,6 +718,7 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes.html#version-history">Version History</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../autodoc/qiskit.html">API References</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../autodoc/qiskit.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../autodoc/qiskit.aqua.html">qiskit.aqua package</a><ul>
@@ -806,12 +831,24 @@
 <li class="toctree-l2"><a class="reference internal" href="../contributing_to_qiskit.html#where-things-are">Where Things Are</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../contributing_to_qiskit.html#getting-started">Getting Started</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../contributing_to_qiskit.html#writing-and-building-documentation">Writing and Building Documentation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../contributing_to_qiskit.html#install-from-source">Install from Source</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../contributing_to_qiskit.html#install-terra-from-source">Install Terra from Source</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../contributing_to_qiskit.html#install-a-compiler-for-macos">Install a compiler for MacOS</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../contributing_to_qiskit.html#install-a-compiler-for-windows">Install a compiler for Windows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing_to_qiskit.html#installing-from-source">Installing from Source</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../contributing_to_qiskit.html#installing-terra-from-source">Installing Terra from Source</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../contributing_to_qiskit.html#installing-a-compiler-for-macos">Installing a Compiler for macOS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../contributing_to_qiskit.html#installing-a-compiler-for-windows">Installing a Compiler for Windows</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../contributing_to_qiskit.html#installing-qiskit-terra">Installing Qiskit Terra</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="../contributing_to_qiskit.html#installing-aer-from-source">Installing Aer from Source</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../contributing_to_qiskit.html#linux">Linux</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../contributing_to_qiskit.html#macos">macOS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../contributing_to_qiskit.html#windows">Windows</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../contributing_to_qiskit.html#custom-options-during-wheel-builds">Custom options during wheel builds</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../contributing_to_qiskit.html#installing-ibmq-provider-from-source">Installing IBMQ Provider from Source</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../contributing_to_qiskit.html#installing-ignis-from-source">Installing Ignis from Source</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../contributing_to_qiskit.html#installing-aqua-from-source">Installing Aqua from Source</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../contributing_to_qiskit.html#install-chemistry-from-source">Install Chemistry from Source</a></li>
 </ul>
 </li>
 </ul>
@@ -1386,7 +1423,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../development_strategy.html#modules">Modules</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../development_strategy.html#basic-aer-provider">Basic Aer Provider</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../development_strategy.html#aer-provider">Aer Provider</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../development_strategy.html#ingnis">Ingnis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../development_strategy.html#ignis">Ignis</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../development_strategy.html#versioning">Versioning</a><ul>
@@ -1486,6 +1523,7 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes.html#version-history">Version History</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../autodoc/qiskit.html">API References</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../autodoc/qiskit.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../autodoc/qiskit.aqua.html">qiskit.aqua package</a><ul>
@@ -1598,12 +1636,24 @@
 <li class="toctree-l2"><a class="reference internal" href="../contributing_to_qiskit.html#where-things-are">Where Things Are</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../contributing_to_qiskit.html#getting-started">Getting Started</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../contributing_to_qiskit.html#writing-and-building-documentation">Writing and Building Documentation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../contributing_to_qiskit.html#install-from-source">Install from Source</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../contributing_to_qiskit.html#install-terra-from-source">Install Terra from Source</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../contributing_to_qiskit.html#install-a-compiler-for-macos">Install a compiler for MacOS</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../contributing_to_qiskit.html#install-a-compiler-for-windows">Install a compiler for Windows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing_to_qiskit.html#installing-from-source">Installing from Source</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../contributing_to_qiskit.html#installing-terra-from-source">Installing Terra from Source</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../contributing_to_qiskit.html#installing-a-compiler-for-macos">Installing a Compiler for macOS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../contributing_to_qiskit.html#installing-a-compiler-for-windows">Installing a Compiler for Windows</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../contributing_to_qiskit.html#installing-qiskit-terra">Installing Qiskit Terra</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="../contributing_to_qiskit.html#installing-aer-from-source">Installing Aer from Source</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../contributing_to_qiskit.html#linux">Linux</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../contributing_to_qiskit.html#macos">macOS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../contributing_to_qiskit.html#windows">Windows</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../contributing_to_qiskit.html#custom-options-during-wheel-builds">Custom options during wheel builds</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../contributing_to_qiskit.html#installing-ibmq-provider-from-source">Installing IBMQ Provider from Source</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../contributing_to_qiskit.html#installing-ignis-from-source">Installing Ignis from Source</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../contributing_to_qiskit.html#installing-aqua-from-source">Installing Aqua from Source</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../contributing_to_qiskit.html#install-chemistry-from-source">Install Chemistry from Source</a></li>
 </ul>
 </li>
 </ul>
@@ -1721,7 +1771,7 @@ draw() method.</p>
 <h2>Controlling output from circuit.draw()<a class="headerlink" href="#controlling-output-from-circuit-draw" title="Permalink to this headline">¶</a></h2>
 <p>By default the draw method returns the rendered image as an object and
 does not output anything. The exact class returned depends on the output
-specified: <code class="docutils literal notranslate"><span class="pre">'text'</span></code>(the default returns a <code class="docutils literal notranslate"><span class="pre">TextDrawer</span></code> object,
+specified: <code class="docutils literal notranslate"><span class="pre">'text'</span></code>. The default returns a <code class="docutils literal notranslate"><span class="pre">TextDrawer</span></code> object,
 <code class="docutils literal notranslate"><span class="pre">'mpl'</span></code> returns a <code class="docutils literal notranslate"><span class="pre">matplotlib.Figure</span></code> object, and <code class="docutils literal notranslate"><span class="pre">latex</span></code> returns
 a <code class="docutils literal notranslate"><span class="pre">PIL.Image</span></code> object. Having the return types enables modifying or
 directly interacting with the rendered output from the drawers. Jupyter
@@ -1975,45 +2025,45 @@ still return the string) instead of returning just a string.</p>
 <span class="nb">print</span><span class="p">(</span><span class="n">circuit</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">output</span><span class="o">=</span><span class="s1">&#39;latex_source&#39;</span><span class="p">))</span>
 </pre></div>
 </div>
-<pre class="literal-block">
-% documentclass[preview]{standalone}
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>% \documentclass[preview]{standalone}
 % If the image is too large to fit on this documentclass use
-documentclass[draft]{beamer}
+\documentclass[draft]{beamer}
 % img_width = 16, img_depth = 17
-usepackage[size=custom,height=24,width=28,scale=0.7]{beamerposter}
+\usepackage[size=custom,height=24,width=28,scale=0.7]{beamerposter}
 % instead and customize the height and width (in cm) to fit.
 % Large images may run out of memory quickly.
 % To fix this use the LuaLaTeX compiler, which dynamically
 % allocates memory.
-usepackage[braket, qm]{qcircuit}
-usepackage{amsmath}
-pdfmapfile{+sansmathaccent.map}
-% usepackage[landscape]{geometry}
+\usepackage[braket, qm]{qcircuit}
+\usepackage{amsmath}
+\pdfmapfile{+sansmathaccent.map}
+% \usepackage[landscape]{geometry}
 % Comment out the above line if using the beamer documentclass.
-begin{document}
-begin{equation*}
-    Qcircuit &#64;C=0.5em &#64;R=0.0em &#64;!R {
-            lstick{qa_{0}: ket{0}} &amp; qw &amp; qw barrier{7} &amp; qw &amp; qw &amp; qw &amp; qw &amp; qw &amp; qw &amp; qw &amp; qw &amp; gate{H} &amp; qw barrier[-1.15em]{2} &amp; qw &amp; qw &amp; meter &amp; qw &amp; qw\
-            lstick{qa_{1}: ket{0}} &amp; gate{X} &amp; qw &amp; qw &amp; qw &amp; qw &amp; qw &amp; qw &amp; qw &amp; qw &amp; qw &amp; gate{H} &amp; qw &amp; qw &amp; meter &amp; qw &amp; qw &amp; qw\
-            lstick{qa_{2}: ket{0}} &amp; qw &amp; qw &amp; qw &amp; qw &amp; qw &amp; qw &amp; qw &amp; qw &amp; qw &amp; qw &amp; gate{H} &amp; qw &amp; meter &amp; qw &amp; qw &amp; qw &amp; qw\
-            lstick{qb_{0}: ket{0}} &amp; qw &amp; qw &amp; gate{H} &amp; ctrl{1} &amp; qw &amp; qswap qwx[4] &amp; qw barrier[-1.15em]{4} &amp; qw &amp; qw &amp; qw &amp; meter &amp; qw &amp; qw &amp; qw &amp; qw &amp; qw &amp; qw\
-            lstick{qb_{1}: ket{0}} &amp; gate{X} &amp; qw &amp; gate{H} &amp; qswap &amp; qw &amp; qw &amp; qw &amp; qw &amp; qw &amp; meter &amp; qw &amp; qw &amp; qw &amp; qw &amp; qw &amp; qw &amp; qw\
-            lstick{qb_{2}: ket{0}} &amp; gate{X} &amp; qw &amp; gate{H} &amp; qswap qwx[-1] &amp; ctrl{1} &amp; qw &amp; qw &amp; qw &amp; meter &amp; qw &amp; qw &amp; qw &amp; qw &amp; qw &amp; qw &amp; qw &amp; qw\
-            lstick{qb_{3}: ket{0}} &amp; qw &amp; qw &amp; gate{H} &amp; qw &amp; qswap &amp; ctrl{1} &amp; qw &amp; meter &amp; qw &amp; qw &amp; qw &amp; qw &amp; qw &amp; qw &amp; qw &amp; qw &amp; qw\
-            lstick{qb_{4}: ket{0}} &amp; gate{X} &amp; qw &amp; gate{H} &amp; qw &amp; qswap qwx[-1] &amp; qswap &amp; meter &amp; qw &amp; qw &amp; qw &amp; qw &amp; qw &amp; qw &amp; qw &amp; qw &amp; qw &amp; qw\
-            lstick{c1_{0}: 0} &amp; cw &amp; cw &amp; cw &amp; cw &amp; cw &amp; cw &amp; cw &amp; cw &amp; cw &amp; cw &amp; cw &amp; cw &amp; cw &amp; cw &amp; cw cwx[-8] &amp; cw &amp; cw\
-            lstick{c1_{1}: 0} &amp; cw &amp; cw &amp; cw &amp; cw &amp; cw &amp; cw &amp; cw &amp; cw &amp; cw &amp; cw &amp; cw &amp; cw &amp; cw &amp; cw cwx[-8] &amp; cw &amp; cw &amp; cw\
-            lstick{c1_{2}: 0} &amp; cw &amp; cw &amp; cw &amp; cw &amp; cw &amp; cw &amp; cw &amp; cw &amp; cw &amp; cw &amp; cw &amp; cw &amp; cw cwx[-8] &amp; cw &amp; cw &amp; cw &amp; cw\
-            lstick{c2_{0}: 0} &amp; cw &amp; cw &amp; cw &amp; cw &amp; cw &amp; cw &amp; cw &amp; cw &amp; cw &amp; cw &amp; cw cwx[-8] &amp; cw &amp; cw &amp; cw &amp; cw &amp; cw &amp; cw\
-            lstick{c2_{1}: 0} &amp; cw &amp; cw &amp; cw &amp; cw &amp; cw &amp; cw &amp; cw &amp; cw &amp; cw &amp; cw cwx[-8] &amp; cw &amp; cw &amp; cw &amp; cw &amp; cw &amp; cw &amp; cw\
-            lstick{c2_{2}: 0} &amp; cw &amp; cw &amp; cw &amp; cw &amp; cw &amp; cw &amp; cw &amp; cw &amp; cw cwx[-8] &amp; cw &amp; cw &amp; cw &amp; cw &amp; cw &amp; cw &amp; cw &amp; cw\
-            lstick{c2_{3}: 0} &amp; cw &amp; cw &amp; cw &amp; cw &amp; cw &amp; cw &amp; cw &amp; cw cwx[-8] &amp; cw &amp; cw &amp; cw &amp; cw &amp; cw &amp; cw &amp; cw &amp; cw &amp; cw\
-            lstick{c2_{4}: 0} &amp; cw &amp; cw &amp; cw &amp; cw &amp; cw &amp; cw &amp; cw cwx[-8] &amp; cw &amp; cw &amp; cw &amp; cw &amp; cw &amp; cw &amp; cw &amp; cw &amp; cw &amp; cw\
+\begin{document}
+\begin{equation*}
+    \Qcircuit @C=0.5em @R=0.0em @!R {
+            \lstick{qa_{0}: \ket{0}} &amp; \qw &amp; \qw \barrier{7} &amp; \qw &amp; \qw &amp; \qw &amp; \qw &amp; \qw &amp; \qw &amp; \qw &amp; \qw &amp; \gate{H} &amp; \qw \barrier[-1.15em]{2} &amp; \qw &amp; \qw &amp; \meter &amp; \qw &amp; \qw\\
+            \lstick{qa_{1}: \ket{0}} &amp; \gate{X} &amp; \qw &amp; \qw &amp; \qw &amp; \qw &amp; \qw &amp; \qw &amp; \qw &amp; \qw &amp; \qw &amp; \gate{H} &amp; \qw &amp; \qw &amp; \meter &amp; \qw &amp; \qw &amp; \qw\\
+            \lstick{qa_{2}: \ket{0}} &amp; \qw &amp; \qw &amp; \qw &amp; \qw &amp; \qw &amp; \qw &amp; \qw &amp; \qw &amp; \qw &amp; \qw &amp; \gate{H} &amp; \qw &amp; \meter &amp; \qw &amp; \qw &amp; \qw &amp; \qw\\
+            \lstick{qb_{0}: \ket{0}} &amp; \qw &amp; \qw &amp; \gate{H} &amp; \ctrl{1} &amp; \qw &amp; \qswap \qwx[4] &amp; \qw \barrier[-1.15em]{4} &amp; \qw &amp; \qw &amp; \qw &amp; \meter &amp; \qw &amp; \qw &amp; \qw &amp; \qw &amp; \qw &amp; \qw\\
+            \lstick{qb_{1}: \ket{0}} &amp; \gate{X} &amp; \qw &amp; \gate{H} &amp; \qswap &amp; \qw &amp; \qw &amp; \qw &amp; \qw &amp; \qw &amp; \meter &amp; \qw &amp; \qw &amp; \qw &amp; \qw &amp; \qw &amp; \qw &amp; \qw\\
+            \lstick{qb_{2}: \ket{0}} &amp; \gate{X} &amp; \qw &amp; \gate{H} &amp; \qswap \qwx[-1] &amp; \ctrl{1} &amp; \qw &amp; \qw &amp; \qw &amp; \meter &amp; \qw &amp; \qw &amp; \qw &amp; \qw &amp; \qw &amp; \qw &amp; \qw &amp; \qw\\
+            \lstick{qb_{3}: \ket{0}} &amp; \qw &amp; \qw &amp; \gate{H} &amp; \qw &amp; \qswap &amp; \ctrl{1} &amp; \qw &amp; \meter &amp; \qw &amp; \qw &amp; \qw &amp; \qw &amp; \qw &amp; \qw &amp; \qw &amp; \qw &amp; \qw\\
+            \lstick{qb_{4}: \ket{0}} &amp; \gate{X} &amp; \qw &amp; \gate{H} &amp; \qw &amp; \qswap \qwx[-1] &amp; \qswap &amp; \meter &amp; \qw &amp; \qw &amp; \qw &amp; \qw &amp; \qw &amp; \qw &amp; \qw &amp; \qw &amp; \qw &amp; \qw\\
+            \lstick{c1_{0}: 0} &amp; \cw &amp; \cw &amp; \cw &amp; \cw &amp; \cw &amp; \cw &amp; \cw &amp; \cw &amp; \cw &amp; \cw &amp; \cw &amp; \cw &amp; \cw &amp; \cw &amp; \cw \cwx[-8] &amp; \cw &amp; \cw\\
+            \lstick{c1_{1}: 0} &amp; \cw &amp; \cw &amp; \cw &amp; \cw &amp; \cw &amp; \cw &amp; \cw &amp; \cw &amp; \cw &amp; \cw &amp; \cw &amp; \cw &amp; \cw &amp; \cw \cwx[-8] &amp; \cw &amp; \cw &amp; \cw\\
+            \lstick{c1_{2}: 0} &amp; \cw &amp; \cw &amp; \cw &amp; \cw &amp; \cw &amp; \cw &amp; \cw &amp; \cw &amp; \cw &amp; \cw &amp; \cw &amp; \cw &amp; \cw \cwx[-8] &amp; \cw &amp; \cw &amp; \cw &amp; \cw\\
+            \lstick{c2_{0}: 0} &amp; \cw &amp; \cw &amp; \cw &amp; \cw &amp; \cw &amp; \cw &amp; \cw &amp; \cw &amp; \cw &amp; \cw &amp; \cw \cwx[-8] &amp; \cw &amp; \cw &amp; \cw &amp; \cw &amp; \cw &amp; \cw\\
+            \lstick{c2_{1}: 0} &amp; \cw &amp; \cw &amp; \cw &amp; \cw &amp; \cw &amp; \cw &amp; \cw &amp; \cw &amp; \cw &amp; \cw \cwx[-8] &amp; \cw &amp; \cw &amp; \cw &amp; \cw &amp; \cw &amp; \cw &amp; \cw\\
+            \lstick{c2_{2}: 0} &amp; \cw &amp; \cw &amp; \cw &amp; \cw &amp; \cw &amp; \cw &amp; \cw &amp; \cw &amp; \cw \cwx[-8] &amp; \cw &amp; \cw &amp; \cw &amp; \cw &amp; \cw &amp; \cw &amp; \cw &amp; \cw\\
+            \lstick{c2_{3}: 0} &amp; \cw &amp; \cw &amp; \cw &amp; \cw &amp; \cw &amp; \cw &amp; \cw &amp; \cw \cwx[-8] &amp; \cw &amp; \cw &amp; \cw &amp; \cw &amp; \cw &amp; \cw &amp; \cw &amp; \cw &amp; \cw\\
+            \lstick{c2_{4}: 0} &amp; \cw &amp; \cw &amp; \cw &amp; \cw &amp; \cw &amp; \cw &amp; \cw \cwx[-8] &amp; \cw &amp; \cw &amp; \cw &amp; \cw &amp; \cw &amp; \cw &amp; \cw &amp; \cw &amp; \cw &amp; \cw\\
     }
-end{equation*}
+\end{equation*}
 
-end{document}
-</pre>
+\end{document}
+</pre></div>
+</div>
 <div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Save the latex source to a file</span>
 <span class="n">circuit</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">output</span><span class="o">=</span><span class="s1">&#39;latex_source&#39;</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="s1">&#39;/tmp/circuit.tex&#39;</span><span class="p">);</span>
 </pre></div>
@@ -2061,56 +2111,62 @@ starting in releases &gt; 0.7 the default changes to use the text output.</p>
         
         </main>
     </div>
-      <script>
-          /* Define digital data object based on _appInfo object */
-          window.digitalData = {
-            page: {
-              pageInfo: {
-                productTitle: 'IBM Q Experience',
-                analytics: {
-                  category: 'Qiskit.org',
-                },
-              },
-            },
-          };
-          window._analytics = {
-            segment_key: 'zbHWEXPUfXm0K6C7HbegwB5ewDEC8o1H',
-            coremetrics: false,
-            optimizely: false,
-            googleAddServices: false,
-            fullStory: false,
-            autoPageEventSpa: true,
-            autoFormEvents: false,
-            autoPageView: true
-          };
-       </script>
-        <script async src="https://cloud.ibm.com/analytics/build/bluemix-analytics.min.js"></script>
-         <script>
-           var el = document.getElementById('language');
-           var optionsToSelect = ['en', 'ja']
-           var changeLoc = function(evt) {
-             var language = evt.target.options[el.selectedIndex].value;
-             if (language === 'ja') {
-                 window.location.href = '/testTranslation/locale/ja';
+    <script>
+        function trackClickEvent (data) {
+            if (window.bluemixAnalytics && window.digitalData) {
+                var segmentEvent = {
+                    productTitle: window.digitalData.page.pageInfo.productTitle,
+                    category: window.digitalData.page.pageInfo.analytics.category,
+                    url: window.location.href,
+                    action: data.action,
+                    objectType: data.objectType,
+                    successFlag: true
+                };
 
-             }
-             if (language === 'en') {
-                 window.location.href = '/testTranslation';
-             }
-           };
-           el.addEventListener('change', changeLoc);
+                if(data.milestoneName) {
+                    segmentEvent = Object.assign(segmentEvent, { milestoneName: data.milestoneName });
+                }
+                window.bluemixAnalytics.trackEvent('Custom Event', segmentEvent);
+            }
+        };
 
-           var changeSelect = function(select) {
-             const tokens = window.location.pathname.split('/');
-             const optionToSelect = tokens[tokens.length - 2] || 'en';
-             for (var i = 0; i < select.options.length; i++) {
-               var o = select.options[i];
-               if (optionToSelect == o.value) {
-                 o.selected = true;
-               }
-             }
-           };
-           changeSelect(el);
-        </script>
+        function clickExternalLink() {
+            trackClickEvent({
+                action: "Tutorials Link in Navbar",
+                objectType: "Link",
+                milestoneName: "Looked at tutorials"
+            });
+        };
+
+        var link = document.getElementById('tutorialsLink');
+        link.addEventListener('click', clickExternalLink);
+    </script>
+    <script>
+      var el = document.getElementById('language');
+      var optionsToSelect = ['en', 'ja']
+      var changeLoc = function(evt) {
+        var language = evt.target.options[el.selectedIndex].value;
+        if (language === 'ja') {
+          window.location.href = '/testTranslation/locale/ja';
+
+        }
+        if (language === 'en') {
+          window.location.href = '/testTranslation';
+        }
+      };
+      el.addEventListener('change', changeLoc);
+
+      var changeSelect = function(select) {
+        const tokens = window.location.pathname.split('/');
+        const optionToSelect = tokens[tokens.length - 2] || 'en';
+        for (var i = 0; i < select.options.length; i++) {
+          var o = select.options[i];
+          if (optionToSelect == o.value) {
+            o.selected = true;
+          }
+        }
+      };
+      changeSelect(el);
+    </script>
   </body>
 </html>
