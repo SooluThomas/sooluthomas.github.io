@@ -8,9 +8,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono|IBM+Plex+Sans|IBM+Plex+Sans+Condensed|IBM+Plex+Serif" rel="stylesheet">
-
+    <script>
+          /* Define digital data object based on _appInfo object */
+          window.digitalData = {
+            page: {
+              pageInfo: {
+                productTitle: 'IBM Q Experience',
+                analytics: {
+                  category: 'Qiskit.org',
+                },
+              },
+            },
+          };
+          window._analytics = {
+            segment_key: 'zbHWEXPUfXm0K6C7HbegwB5ewDEC8o1H',
+            coremetrics: false,
+            optimizely: false,
+            googleAddServices: false,
+            fullStory: false,
+            autoPageEventSpa: true,
+            autoFormEvents: false,
+            autoPageView: true,
+            preventPageEvent: true,
+          };
+       </script>
+        <script src="https://cloud.ibm.com/analytics/build/bluemix-analytics.min.js"></script>
     
-    <title>Contributing to Qiskit &#8212; Qiskit 0.10.1 ドキュメント</title>
+    <title>Contributing to Qiskit &#8212; Qiskit 0.10.4 ドキュメント</title>
 
     <link rel="stylesheet" href="_static/material-icons.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -42,10 +66,10 @@
         <a href="/ignis">Ignis</a>
       </nav>
       <nav class="second">
-        <a class="external" href="https://nbviewer.jupyter.org/github/Qiskit/qiskit-tutorials/blob/master/qiskit/start_here.ipynb">Tutorials</a>
+        <a class="external" id="tutorialsLink" href="https://nbviewer.jupyter.org/github/Qiskit/qiskit-tutorials/blob/master/qiskit/start_here.ipynb" target="_blank">Tutorials</a>
         <a class="external" href="/documentation" selected>Documentation</a>
         <a class="external" href="/vscode">Tools</a>
-        <a class="external" href="/fun">Fun</a>
+        <a class="external" href="/community">Community</a>
       </nav>
     </div>
   </header>
@@ -595,7 +619,7 @@
 <li class="toctree-l3"><a class="reference internal" href="development_strategy.html#modules">Modules</a></li>
 <li class="toctree-l3"><a class="reference internal" href="development_strategy.html#basic-aer-provider">Basic Aer Provider</a></li>
 <li class="toctree-l3"><a class="reference internal" href="development_strategy.html#aer-provider">Aer Provider</a></li>
-<li class="toctree-l3"><a class="reference internal" href="development_strategy.html#ingnis">Ingnis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="development_strategy.html#ignis">Ignis</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="development_strategy.html#versioning">Versioning</a><ul>
@@ -695,16 +719,29 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html#version-history">Version History</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Contributing to Qiskit</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#where-things-are">Where Things Are</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#getting-started">Getting Started</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#writing-and-building-documentation">Writing and Building Documentation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#install-from-source">Install from Source</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#install-terra-from-source">Install Terra from Source</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#install-a-compiler-for-macos">Install a compiler for MacOS</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#install-a-compiler-for-windows">Install a compiler for Windows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#installing-from-source">Installing from Source</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#installing-terra-from-source">Installing Terra from Source</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#installing-a-compiler-for-macos">Installing a Compiler for macOS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#installing-a-compiler-for-windows">Installing a Compiler for Windows</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#installing-qiskit-terra">Installing Qiskit Terra</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="#installing-aer-from-source">Installing Aer from Source</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#linux">Linux</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#macos">macOS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#windows">Windows</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#custom-options-during-wheel-builds">Custom options during wheel builds</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#installing-ibmq-provider-from-source">Installing IBMQ Provider from Source</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#installing-ignis-from-source">Installing Ignis from Source</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#installing-aqua-from-source">Installing Aqua from Source</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#install-chemistry-from-source">Install Chemistry from Source</a></li>
 </ul>
 </li>
 </ul>
@@ -1279,7 +1316,7 @@
 <li class="toctree-l3"><a class="reference internal" href="development_strategy.html#modules">Modules</a></li>
 <li class="toctree-l3"><a class="reference internal" href="development_strategy.html#basic-aer-provider">Basic Aer Provider</a></li>
 <li class="toctree-l3"><a class="reference internal" href="development_strategy.html#aer-provider">Aer Provider</a></li>
-<li class="toctree-l3"><a class="reference internal" href="development_strategy.html#ingnis">Ingnis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="development_strategy.html#ignis">Ignis</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="development_strategy.html#versioning">Versioning</a><ul>
@@ -1379,16 +1416,29 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html#version-history">Version History</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Contributing to Qiskit</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#where-things-are">Where Things Are</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#getting-started">Getting Started</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#writing-and-building-documentation">Writing and Building Documentation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#install-from-source">Install from Source</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#install-terra-from-source">Install Terra from Source</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#install-a-compiler-for-macos">Install a compiler for MacOS</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#install-a-compiler-for-windows">Install a compiler for Windows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#installing-from-source">Installing from Source</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#installing-terra-from-source">Installing Terra from Source</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#installing-a-compiler-for-macos">Installing a Compiler for macOS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#installing-a-compiler-for-windows">Installing a Compiler for Windows</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#installing-qiskit-terra">Installing Qiskit Terra</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="#installing-aer-from-source">Installing Aer from Source</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#linux">Linux</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#macos">macOS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#windows">Windows</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#custom-options-during-wheel-builds">Custom options during wheel builds</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#installing-ibmq-provider-from-source">Installing IBMQ Provider from Source</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#installing-ignis-from-source">Installing Ignis from Source</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#installing-aqua-from-source">Installing Aqua from Source</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#install-chemistry-from-source">Install Chemistry from Source</a></li>
 </ul>
 </li>
 </ul>
@@ -1487,8 +1537,8 @@ window:</p>
 <p>This will build a styled, HTML version of your local documentation repository
 in the subdirectory <cite>/docs/_build/html/</cite>.</p>
 </div>
-<div class="section" id="install-from-source">
-<span id="install-install-from-source-label"></span><h2>Install from Source<a class="headerlink" href="#install-from-source" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="installing-from-source">
+<span id="install-install-from-source-label"></span><h2>Installing from Source<a class="headerlink" href="#installing-from-source" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p>Installing the elements from source allows you to access the most recently
 updated version of Qiskit instead of using the version in the Python Package
 Index (PyPI) repository. This will give you the ability to inspect and extend
@@ -1515,6 +1565,7 @@ simulator)</li>
 <li>qiskit-aer</li>
 <li>qiskit-ignis</li>
 <li>qiskit-aqua</li>
+<li>qiskit-chemistry</li>
 </ol>
 <p>To work with several components and elements simultaneously, use the following
 steps for each element.</p>
@@ -1539,13 +1590,13 @@ repository. The following example shows the installation for Ignis.</li>
 <div class="code sh highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">e</span> <span class="n">qiskit</span><span class="o">-</span><span class="n">ignis</span>
 </pre></div>
 </div>
-<div class="section" id="install-terra-from-source">
-<h3>Install Terra from Source<a class="headerlink" href="#install-terra-from-source" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="section" id="installing-terra-from-source">
+<h3>Installing Terra from Source<a class="headerlink" href="#installing-terra-from-source" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <p>Installing from source requires that you have a c++ compiler on your system that supports
 c++-11.  On most Linux platforms, the necessary GCC compiler is already installed.</p>
-<div class="section" id="install-a-compiler-for-macos">
-<h4>Install a compiler for MacOS<a class="headerlink" href="#install-a-compiler-for-macos" title="このヘッドラインへのパーマリンク">¶</a></h4>
-<p>If you use Apple OSX, you can install the Clang compiler by installing XCode.
+<div class="section" id="installing-a-compiler-for-macos">
+<h4>Installing a Compiler for macOS<a class="headerlink" href="#installing-a-compiler-for-macos" title="このヘッドラインへのパーマリンク">¶</a></h4>
+<p>If you use macOS, you can install the Clang compiler by installing XCode.
 Check if you have XCode and clang installed by opening a terminal window and entering the
 following.</p>
 <div class="code sh highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">clang</span> <span class="o">--</span><span class="n">version</span>
@@ -1556,14 +1607,15 @@ following.</p>
 </pre></div>
 </div>
 </div>
-<div class="section" id="install-a-compiler-for-windows">
-<h4>Install a compiler for Windows<a class="headerlink" href="#install-a-compiler-for-windows" title="このヘッドラインへのパーマリンク">¶</a></h4>
+<div class="section" id="installing-a-compiler-for-windows">
+<h4>Installing a Compiler for Windows<a class="headerlink" href="#installing-a-compiler-for-windows" title="このヘッドラインへのパーマリンク">¶</a></h4>
 <p>On Windows, it is easiest to install the Visual C++ compiler from the
 <a class="reference external" href="https://visualstudio.microsoft.com/downloads/#build-tools-for-visual-studio-2017">Build Tools for Visual Studio 2017</a>.
 You can instead install Visual Studio version 2015 or 2017, making sure to select the
 options for installing the C++ compiler.</p>
-<div class="section" id="install-qiskit-terra">
-<h5>Install Qiskit Terra<a class="headerlink" href="#install-qiskit-terra" title="このヘッドラインへのパーマリンク">¶</a></h5>
+</div>
+<div class="section" id="installing-qiskit-terra">
+<h4>Installing Qiskit Terra<a class="headerlink" href="#installing-qiskit-terra" title="このヘッドラインへのパーマリンク">¶</a></h4>
 <ol class="arabic simple">
 <li>Clone the Terra repository.</li>
 </ol>
@@ -1589,30 +1641,405 @@ options for installing the C++ compiler.</p>
 </pre></div>
 </div>
 <ol class="arabic simple" start="4">
-<li>Install the Qiskit modules.</li>
+<li>Install <code class="docutils literal notranslate"><span class="pre">qiskit-terra</span></code>.</li>
 </ol>
-<ul class="simple">
-<li>If you want to only install <code class="docutils literal notranslate"><span class="pre">qiskit-terra</span></code> onto your system.</li>
-</ul>
 <div class="code sh highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">.</span>
 </pre></div>
 </div>
 <ul class="simple">
-<li>To get the examples working, install and run them with the following commands.</li>
+<li>If you want to install it in editable mode, meaning that code changes to the
+project don't require a reinstall to be applied you can do this with:</li>
 </ul>
 <div class="code sh highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">e</span> <span class="o">.</span>
-<span class="n">python</span> <span class="n">examples</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="n">using_qiskit_terra_level_0</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>You can then run the code examples working after installing terra. You can
+run the example with the following command.</li>
+</ul>
+<div class="code sh highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">examples</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="n">using_qiskit_terra_level_0</span><span class="o">.</span><span class="n">py</span>
 </pre></div>
 </div>
 <p>After you've installed Terra, you can install Aer as an add-on to run additional simulators.</p>
-<ul class="simple">
-<li><a class="reference external" href="https://github.com/Qiskit/qiskit-aer/blob/master/.github/CONTRIBUTING.md">Qiskit Aer</a></li>
-<li><a class="reference external" href="https://github.com/Qiskit/qiskit-ignis/blob/master/.github/CONTRIBUTING.md">Qiskit Ignis</a></li>
-<li><a class="reference external" href="https://github.com/Qiskit/qiskit-aqua/blob/master/.github/CONTRIBUTING.rst">Qiskit Aqua</a></li>
-<li><a class="reference external" href="https://github.com/Qiskit/qiskit-chemistry/blob/master/.github/CONTRIBUTING.rst">Qiskit Chemistry</a></li>
-<li><a class="reference external" href="https://github.com/Qiskit/qiskit-ibmq-provider/blob/master/.github/CONTRIBUTING.rst">Qiskit IBMQ Provider</a></li>
-</ul>
 </div>
+</div>
+<div class="section" id="installing-aer-from-source">
+<h3>Installing Aer from Source<a class="headerlink" href="#installing-aer-from-source" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<ol class="arabic simple">
+<li>Clone the Aer repository.</li>
+</ol>
+<div class="code sh highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">Qiskit</span><span class="o">/</span><span class="n">qiskit</span><span class="o">-</span><span class="n">aer</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li>Install build requirements.</li>
+</ol>
+<div class="code sh highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">cmake</span> <span class="n">scikit</span><span class="o">-</span><span class="n">build</span> <span class="n">cython</span>
+</pre></div>
+</div>
+<p>After this the steps to install Aer depend on which operating system you are
+using. Since Aer is a compiled C++ program with a python interface there are
+non-python dependencies for building the Aer binary which can't be installed
+universally depending on operating system.</p>
+<div class="section" id="linux">
+<h4>Linux<a class="headerlink" href="#linux" title="このヘッドラインへのパーマリンク">¶</a></h4>
+<ol class="arabic" start="3">
+<li><p class="first">Install compiler requirements.</p>
+<p>Building Aer requires a C++ compiler and development headers</p>
+<p>If you're using Ubuntu&gt;=16.04 or an equivalent Debian Linux distribution
+you can install this with:</p>
+</li>
+</ol>
+<div class="code sh highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">build</span><span class="o">-</span><span class="n">essential</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li>Install OpenBLAS development headers.</li>
+</ol>
+<p>If you're using Ubuntu&gt;=16.04 or an equivalent Debian Linux distribution,
+you can install this with:</p>
+<div class="code sh highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">libopenblas</span><span class="o">-</span><span class="n">dev</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="5">
+<li>Build and install qiskit-aer directly</li>
+</ol>
+<p>If you have pip &lt;19.0.0 installed and your environment doesn't require a
+custom build options you can just run:</p>
+<div class="code sh highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">qiskit</span><span class="o">-</span><span class="n">aer</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="o">.</span>
+</pre></div>
+</div>
+<p>This will both build the binaries and install Aer.</p>
+<p>Alternatively if you have a newer pip installed, or have some custom requirement
+you can build a python wheel manually.</p>
+<div class="code sh highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">qiskit</span><span class="o">-</span><span class="n">aer</span>
+<span class="n">python</span> <span class="o">./</span><span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">bdist_wheel</span>
+</pre></div>
+</div>
+<p>If you need to set a custom option during the wheel build you can refer to
+<a class="reference internal" href="#aer-wheel-build-options"><span class="std std-ref">Custom options during wheel builds</span></a>.</p>
+<p>After you build the python wheel it will be stored in the <code class="docutils literal notranslate"><span class="pre">dist/</span></code> dir in the
+Aer repository. The exact version will depend</p>
+<div class="code sh highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">dist</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">qiskit_aer</span><span class="o">-*.</span><span class="n">whl</span>
+</pre></div>
+</div>
+<p>The exact filename of the output wheel file depends on the current version of
+Aer under development.</p>
+</div>
+<div class="section" id="macos">
+<h4>macOS<a class="headerlink" href="#macos" title="このヘッドラインへのパーマリンク">¶</a></h4>
+<ol class="arabic simple" start="3">
+<li>Install dependencies.</li>
+</ol>
+<p>To use the <a class="reference external" href="https://clang.llvm.org/">Clang</a> compiler on macOS, you need to install an extra library for
+supporting <a class="reference external" href="https://www.openmp.org/">OpenMP</a>.  You can use <a class="reference external" href="https://brew.sh/">brew</a> to install this and other
+dependencies.</p>
+<div class="code sh highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">brew</span> <span class="n">install</span> <span class="n">libomp</span>
+</pre></div>
+</div>
+<p>You then also have to install a BLAS implementation, <a class="reference external" href="https://www.openblas.net/">OpenBLAS</a> is the
+default choice.</p>
+<div class="code sh highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">brew</span> <span class="n">install</span> <span class="n">openblas</span>
+</pre></div>
+</div>
+<p>You also need to have <code class="docutils literal notranslate"><span class="pre">Xcode</span> <span class="pre">Command</span> <span class="pre">Line</span> <span class="pre">Tools</span></code> installed.</p>
+<div class="code sh highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">xcode</span><span class="o">-</span><span class="n">select</span> <span class="o">--</span><span class="n">install</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li>Build and install qiskit</li>
+</ol>
+<p>If you have pip &lt;19.0.0 installed and your environment doesn't require a
+custom build options you can just run:</p>
+<div class="code sh highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">qiskit</span><span class="o">-</span><span class="n">aer</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="o">.</span>
+</pre></div>
+</div>
+<p>This will both build the binaries and install aer.</p>
+<p>Alternatively if you have a newer pip installed, or need to set custom options
+for your environment you can build a python wheel manually.</p>
+<div class="code sh highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">qiskit</span><span class="o">-</span><span class="n">aer</span>
+<span class="n">python</span> <span class="o">./</span><span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">bdist_wheel</span>
+</pre></div>
+</div>
+<p>If you need to set a custom option during the wheel build you can refer to
+<a class="reference internal" href="#aer-wheel-build-options"><span class="std std-ref">Custom options during wheel builds</span></a>.</p>
+<p>After you build the python wheel it will be stored in the <code class="docutils literal notranslate"><span class="pre">dist/</span></code> dir in the
+Aer repository. The exact version will depend</p>
+<div class="code sh highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">dist</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">qiskit_aer</span><span class="o">-*.</span><span class="n">whl</span>
+</pre></div>
+</div>
+<p>The exact filename of the output wheel file depends on the current version of
+Aer under development.</p>
+</div>
+<div class="section" id="windows">
+<h4>Windows<a class="headerlink" href="#windows" title="このヘッドラインへのパーマリンク">¶</a></h4>
+<p>On Windows you need to use <a class="reference external" href="https://www.anaconda.com/distribution/#windows">Anaconda3</a> or <a class="reference external" href="https://docs.conda.io/en/latest/miniconda.html">Miniconda3</a> to install all the
+dependencies.</p>
+<ol class="arabic simple" start="3">
+<li>Install compiler requirements</li>
+</ol>
+<div class="code sh highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="o">--</span><span class="n">update</span><span class="o">-</span><span class="n">deps</span> <span class="n">vs2017_win</span><span class="o">-</span><span class="mi">64</span> <span class="n">vs2017_win</span><span class="o">-</span><span class="mi">32</span> <span class="n">msvc_runtime</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li>Install binary and build dependencies</li>
+</ol>
+<div class="code sh highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="o">--</span><span class="n">update</span><span class="o">-</span><span class="n">deps</span> <span class="o">-</span><span class="n">c</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="o">-</span><span class="n">y</span> <span class="n">openblas</span> <span class="n">cmake</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="5">
+<li>Install the package</li>
+</ol>
+<p>If you have pip &lt;19.0.0 installed you can just run</p>
+<div class="code sh highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">qiskit</span><span class="o">-</span><span class="n">aer</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="o">.</span>
+</pre></div>
+</div>
+<p>if you're using pip &gt;=19.0.0 then you can manually build a wheel file and install
+that instead.</p>
+<div class="code sh highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">qiskit</span><span class="o">-</span><span class="n">aer</span>
+<span class="n">python</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">bdist_wheel</span>
+</pre></div>
+</div>
+<p>If you need to set a custom option during the wheel build you can refer to
+<a class="reference internal" href="#aer-wheel-build-options"><span class="std std-ref">Custom options during wheel builds</span></a>.</p>
+<p>After you build the python wheel it will be stored in the <code class="docutils literal notranslate"><span class="pre">dist/</span></code> dir in the
+Aer repository. The exact version will depend</p>
+<div class="code sh highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">dist</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">qiskit_aer</span><span class="o">-*.</span><span class="n">whl</span>
+</pre></div>
+</div>
+<p>The exact filename of the output wheel file depends on the current version of
+Aer under development.</p>
+</div>
+<div class="section" id="custom-options-during-wheel-builds">
+<span id="aer-wheel-build-options"></span><h4>Custom options during wheel builds<a class="headerlink" href="#custom-options-during-wheel-builds" title="このヘッドラインへのパーマリンク">¶</a></h4>
+<p>The Aer build system uses <a class="reference external" href="https://scikit-build.readthedocs.io/en/latest/index.html">scikit-build</a> to run the compilation when building
+it with the python interface. It acts as an interface for <a class="reference external" href="https://setuptools.readthedocs.io/en/latest/">setuptools</a> to
+call <a class="reference external" href="https://cmake.org/">CMake</a> and compile the binaries for your local system.</p>
+<p>Due to the complexity of compiling the binaries you may need to pass options
+to a certain part of the build process. The way to pass variables is:</p>
+<div class="code sh highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">bdist_wheel</span> <span class="p">[</span><span class="n">skbuild_opts</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span> <span class="p">[</span><span class="n">cmake_opts</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span> <span class="n">build_tool_opts</span><span class="p">]]</span>
+</pre></div>
+</div>
+<p>where the elements within square brackets <cite>[]</cite> are optional, and
+<code class="docutils literal notranslate"><span class="pre">skbuild_opts</span></code>, <code class="docutils literal notranslate"><span class="pre">cmake_opts</span></code>, <code class="docutils literal notranslate"><span class="pre">build_tool_opts</span></code> are to be replaced by
+flags of your choice. A list of <em>CMake</em> options is available here:
+<a class="reference external" href="https://cmake.org/cmake/help/v3.6/manual/cmake.1.html#options">https://cmake.org/cmake/help/v3.6/manual/cmake.1.html#options</a> . For
+example, you could run something like:</p>
+<div class="code sh highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">bdist_wheel</span> <span class="o">--</span> <span class="o">--</span> <span class="o">-</span><span class="n">j8</span>
+</pre></div>
+</div>
+<p>This is passing the flag <cite>-j8</cite> to the underlying build system (which in this
+case is <a class="reference external" href="https://www.gnu.org/software/automake/">Automake</a>) telling it that you want to build in parallel using 8
+processes.</p>
+<p>For example, a common use case for these flags on linux is to specify a
+specific version of the C++ compiler to use (normally if the default is too
+old).</p>
+<div class="code sh highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">bdist_wheel</span> <span class="o">--</span> <span class="o">-</span><span class="n">DCMAKE_CXX_COMPILER</span><span class="o">=</span><span class="n">g</span><span class="o">++-</span><span class="mi">7</span>
+</pre></div>
+</div>
+<p>which will tell CMake to use the g++-7 command instead of the default g++ when
+compiling Aer</p>
+<p>Another common use case for this, depending on your environment, is that you may
+need to specify your platform name and turn off static linking.</p>
+<div class="code sh highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">bdist_wheel</span> <span class="o">--</span><span class="n">plat</span><span class="o">-</span><span class="n">name</span> <span class="n">macosx</span><span class="o">-</span><span class="mf">10.9</span><span class="o">-</span><span class="n">x86_64</span> \
+<span class="o">--</span> <span class="o">-</span><span class="n">DSTATIC_LINKING</span><span class="o">=</span><span class="kc">False</span> <span class="o">--</span> <span class="o">-</span><span class="n">j8</span>
+</pre></div>
+</div>
+<p>Here <code class="docutils literal notranslate"><span class="pre">--plat-name</span></code> is a flag to setuptools, to specify the platform name to
+use in the package metadata, <code class="docutils literal notranslate"><span class="pre">-DSTATIC_LINKING</span></code> is a flag to CMake being used
+to disable static linking, and <code class="docutils literal notranslate"><span class="pre">-j8</span></code> is a flag to Automake being used to use
+8 processes for compilation.</p>
+<p>A list of common options depending on platform are:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="9%" />
+<col width="14%" />
+<col width="25%" />
+<col width="52%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Platform</th>
+<th class="head">Tool</th>
+<th class="head">Option</th>
+<th class="head">Use Case</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>All</td>
+<td>Automake</td>
+<td>-j</td>
+<td>Followed by a number this set the number of
+process to use for compilation</td>
+</tr>
+<tr class="row-odd"><td>Linux</td>
+<td>CMake</td>
+<td>-DCMAKE_CXX_COMPILER</td>
+<td>Used to specify a specific C++ compiler,
+this is often needed if you default g++ is
+too.</td>
+</tr>
+<tr class="row-even"><td>OSX</td>
+<td>setuptools</td>
+<td>--plat-name</td>
+<td>Used to specify the platform name in the
+output Python package.</td>
+</tr>
+<tr class="row-odd"><td>OSX</td>
+<td>CMake</td>
+<td>-DSTATIC_LINKING</td>
+<td>Used to specify whether static linking
+should be used or not</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="first admonition-title">注釈</p>
+<p class="last">Some of these options are not platform specific, if a platform is listed
+this is just outlining it's commonly used in that environment. Refer to the
+tool documentation for more information.</p>
+</div>
+</div>
+</div>
+<div class="section" id="installing-ibmq-provider-from-source">
+<h3>Installing IBMQ Provider from Source<a class="headerlink" href="#installing-ibmq-provider-from-source" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<ol class="arabic simple">
+<li>Clone the qiskit-ibmq-provider repository.</li>
+</ol>
+<div class="code sh highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">Qiskit</span><span class="o">/</span><span class="n">qiskit</span><span class="o">-</span><span class="n">ibmq</span><span class="o">-</span><span class="n">provider</span><span class="o">.</span><span class="n">git</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li>Cloning the repository creates a local directory called <code class="docutils literal notranslate"><span class="pre">qiskit-ibmq-provider</span></code>.</li>
+</ol>
+<div class="code sh highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">qiskit</span><span class="o">-</span><span class="n">ibmq</span><span class="o">-</span><span class="n">provider</span>
+</pre></div>
+</div>
+<p>3. If you want to run tests or linting checks, install the developer requirements.
+This is not required to install or use the qiskit-ibmq-provider package when
+installing from source.</p>
+<div class="code sh highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">r</span> <span class="n">requirements</span><span class="o">-</span><span class="n">dev</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li>Install qiskit-ibmq-provider</li>
+</ol>
+<div class="code sh highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">.</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>If you want to install it in editable mode, meaning that code changes to the
+project don't require a reinstall to be applied you can do this with:</li>
+</ul>
+<div class="code sh highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">e</span> <span class="o">.</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="installing-ignis-from-source">
+<h3>Installing Ignis from Source<a class="headerlink" href="#installing-ignis-from-source" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<ol class="arabic simple">
+<li>Clone the ignis repository.</li>
+</ol>
+<div class="code sh highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">Qiskit</span><span class="o">/</span><span class="n">qiskit</span><span class="o">-</span><span class="n">ignis</span><span class="o">.</span><span class="n">git</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li>Cloning the repository creates a local directory called <code class="docutils literal notranslate"><span class="pre">qiskit-ignis</span></code>.</li>
+</ol>
+<div class="code sh highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">qiskit</span><span class="o">-</span><span class="n">ignis</span>
+</pre></div>
+</div>
+<p>3. If you want to run tests or linting checks, install the developer requirements.
+This is not required to install or use the qiskit-ignis package when installing
+from source.</p>
+<div class="code sh highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">r</span> <span class="n">requirements</span><span class="o">-</span><span class="n">dev</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li>Install ignis</li>
+</ol>
+<div class="code sh highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">.</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>If you want to install it in editable mode, meaning that code changes to the
+project don't require a reinstall to be applied you can do this with:</li>
+</ul>
+<div class="code sh highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">e</span> <span class="o">.</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="installing-aqua-from-source">
+<h3>Installing Aqua from Source<a class="headerlink" href="#installing-aqua-from-source" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<ol class="arabic simple">
+<li>Clone the Aqua repository.</li>
+</ol>
+<div class="code sh highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">Qiskit</span><span class="o">/</span><span class="n">qiskit</span><span class="o">-</span><span class="n">aqua</span><span class="o">.</span><span class="n">git</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li>Cloning the repository creates a local directory called <code class="docutils literal notranslate"><span class="pre">qiskit-aqua</span></code>.</li>
+</ol>
+<div class="code sh highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">qiskit</span><span class="o">-</span><span class="n">aqua</span>
+</pre></div>
+</div>
+<p>3. If you want to run tests or linting checks, install the developer requirements.
+This is not required to install or use the qiskit-aqua package when installing
+from source.</p>
+<p>... code:: sh</p>
+<blockquote>
+<div>pip install -r requirements-dev.txt</div></blockquote>
+<ol class="arabic simple" start="4">
+<li>Install aqua</li>
+</ol>
+<div class="code sh highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">.</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>If you want to install it in editable mode, meaning that code changes to the
+project don't require a reinstall to be applied you can do this with:</li>
+</ul>
+<div class="code sh highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">e</span> <span class="o">.</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="install-chemistry-from-source">
+<h3>Install Chemistry from Source<a class="headerlink" href="#install-chemistry-from-source" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<ol class="arabic simple">
+<li>Clone the qiskit-chemistry repository.</li>
+</ol>
+<div class="code sh highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">Qiskit</span><span class="o">/</span><span class="n">qiskit</span><span class="o">-</span><span class="n">chemistry</span><span class="o">.</span><span class="n">git</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li>Cloning the repository creates a local directory called <code class="docutils literal notranslate"><span class="pre">qiskit-chemistry</span></code>.</li>
+</ol>
+<div class="code sh highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">qiskit</span><span class="o">-</span><span class="n">chemistry</span>
+</pre></div>
+</div>
+<p>3. If you want to run tests or linting checks, install the developer requirements.
+This is not required to install or use the qiskit-chemistry package when
+installing from source.</p>
+<div class="code sh highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">r</span> <span class="n">requirements</span><span class="o">-</span><span class="n">dev</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li>Install qiskit-chemistry</li>
+</ol>
+<div class="code sh highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">.</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>If you want to install it in editable mode, meaning that code changes to the
+project don't require a reinstall to be applied you can do this with:</li>
+</ul>
+<div class="code sh highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">e</span> <span class="o">.</span>
+</pre></div>
 </div>
 </div>
 </div>
@@ -1638,56 +2065,62 @@ options for installing the C++ compiler.</p>
         
         </main>
     </div>
-      <script>
-          /* Define digital data object based on _appInfo object */
-          window.digitalData = {
-            page: {
-              pageInfo: {
-                productTitle: 'IBM Q Experience',
-                analytics: {
-                  category: 'Qiskit.org',
-                },
-              },
-            },
-          };
-          window._analytics = {
-            segment_key: 'zbHWEXPUfXm0K6C7HbegwB5ewDEC8o1H',
-            coremetrics: false,
-            optimizely: false,
-            googleAddServices: false,
-            fullStory: false,
-            autoPageEventSpa: true,
-            autoFormEvents: false,
-            autoPageView: true
-          };
-       </script>
-        <script async src="https://cloud.ibm.com/analytics/build/bluemix-analytics.min.js"></script>
-        <script>
-	   var el = document.getElementById('language');
-           var optionsToSelect = ['en', 'ja']
-           var changeLoc = function(evt) {
-             var language = evt.target.options[el.selectedIndex].value;
-             if (language === 'ja') {
-                 window.location.href = '/testTranslation/locale/ja';
+    <script>
+        function trackClickEvent (data) {
+            if (window.bluemixAnalytics && window.digitalData) {
+                var segmentEvent = {
+                    productTitle: window.digitalData.page.pageInfo.productTitle,
+                    category: window.digitalData.page.pageInfo.analytics.category,
+                    url: window.location.href,
+                    action: data.action,
+                    objectType: data.objectType,
+                    successFlag: true
+                };
 
-             }
-             if (language === 'en') {
-                 window.location.href = '/testTranslation';
-             }
-           };
-           el.addEventListener('change', changeLoc);
+                if(data.milestoneName) {
+                    segmentEvent = Object.assign(segmentEvent, { milestoneName: data.milestoneName });
+                }
+                window.bluemixAnalytics.trackEvent('Custom Event', segmentEvent);
+            }
+        };
 
-           var changeSelect = function(select) {
-             const tokens = window.location.pathname.split('/');
-             const optionToSelect = tokens[tokens.length - 2] || 'en';
-             for (var i = 0; i < select.options.length; i++) {
-               var o = select.options[i];
-               if (optionToSelect == o.value) {
-                 o.selected = true;
-               }
-             }
-           };
-           changeSelect(el);
-	        </script>
+        function clickExternalLink() {
+            trackClickEvent({
+                action: "Tutorials Link in Navbar",
+                objectType: "Link",
+                milestoneName: "Looked at tutorials"
+            });
+        };
+
+        var link = document.getElementById('tutorialsLink');
+        link.addEventListener('click', clickExternalLink);
+    </script>
+    <script>
+      var el = document.getElementById('language');
+      var optionsToSelect = ['en', 'ja']
+      var changeLoc = function(evt) {
+        var language = evt.target.options[el.selectedIndex].value;
+        if (language === 'ja') {
+          window.location.href = '/testTranslation/locale/ja';
+
+        }
+        if (language === 'en') {
+          window.location.href = '/testTranslation';
+        }
+      };
+      el.addEventListener('change', changeLoc);
+
+      var changeSelect = function(select) {
+        const tokens = window.location.pathname.split('/');
+        const optionToSelect = tokens[tokens.length - 2] || 'en';
+        for (var i = 0; i < select.options.length; i++) {
+          var o = select.options[i];
+          if (optionToSelect == o.value) {
+            o.selected = true;
+          }
+        }
+      };
+      changeSelect(el);
+    </script>
   </body>
 </html>
