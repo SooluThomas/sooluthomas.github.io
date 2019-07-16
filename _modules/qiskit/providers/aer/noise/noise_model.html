@@ -34,7 +34,7 @@
        </script>
         <script src="https://cloud.ibm.com/analytics/build/bluemix-analytics.min.js"></script>
     
-    <title>qiskit.providers.aer.noise.noise_model &#8212; Qiskit 0.10.5 documentation</title>
+    <title>qiskit.providers.aer.noise.noise_model &#8212; Qiskit 0.11.0 documentation</title>
 
     <link rel="stylesheet" href="../../../../../_static/material-icons.css" type="text/css" />
     <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css" />
@@ -195,6 +195,7 @@
 <span class="kn">from</span> <span class="nn">.noiseerror</span> <span class="k">import</span> <span class="n">NoiseError</span>
 <span class="kn">from</span> <span class="nn">.errors.quantum_error</span> <span class="k">import</span> <span class="n">QuantumError</span>
 <span class="kn">from</span> <span class="nn">.errors.readout_error</span> <span class="k">import</span> <span class="n">ReadoutError</span>
+<span class="kn">from</span> <span class="nn">..utils.helpers</span> <span class="k">import</span> <span class="n">deprecation</span>
 
 <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
 
@@ -345,10 +346,10 @@
         <span class="c1"># the same basis_gates</span>
         <span class="c1"># the same noise_qubits</span>
         <span class="c1"># the same noise_instructions</span>
-        <span class="k">if</span> <span class="p">(</span><span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">NoiseModel</span><span class="p">)</span>
-                <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">basis_gates</span> <span class="o">!=</span> <span class="n">other</span><span class="o">.</span><span class="n">basis_gates</span>
-                <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">noise_qubits</span> <span class="o">!=</span> <span class="n">other</span><span class="o">.</span><span class="n">noise_qubits</span>
-                <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">noise_instructions</span> <span class="o">!=</span> <span class="n">other</span><span class="o">.</span><span class="n">noise_instructions</span><span class="p">):</span>
+        <span class="k">if</span> <span class="p">(</span><span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">NoiseModel</span><span class="p">)</span> <span class="ow">or</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">basis_gates</span> <span class="o">!=</span> <span class="n">other</span><span class="o">.</span><span class="n">basis_gates</span> <span class="ow">or</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">noise_qubits</span> <span class="o">!=</span> <span class="n">other</span><span class="o">.</span><span class="n">noise_qubits</span> <span class="ow">or</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">noise_instructions</span> <span class="o">!=</span> <span class="n">other</span><span class="o">.</span><span class="n">noise_instructions</span><span class="p">):</span>
             <span class="k">return</span> <span class="kc">False</span>
         <span class="c1"># Check default readout errors is equal</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_readout_errors_equal</span><span class="p">(</span><span class="n">other</span><span class="p">):</span>
@@ -595,7 +596,7 @@
             <span class="n">qs_str</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_qubits2str</span><span class="p">(</span><span class="n">qubits</span><span class="p">)</span>
             <span class="n">nqs_str</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_qubits2str</span><span class="p">(</span><span class="n">noise_qubits</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">qs_str</span> <span class="ow">in</span> <span class="n">gate_qubit_dict</span><span class="p">:</span>
-                <span class="n">noise_qubit_dict</span> <span class="o">=</span> <span class="n">gate_qubit_dict</span><span class="p">[</span><span class="n">nqs_str</span><span class="p">]</span>
+                <span class="n">noise_qubit_dict</span> <span class="o">=</span> <span class="n">gate_qubit_dict</span><span class="p">[</span><span class="n">qs_str</span><span class="p">]</span>
                 <span class="k">if</span> <span class="n">nqs_str</span> <span class="ow">in</span> <span class="n">noise_qubit_dict</span><span class="p">:</span>
                     <span class="n">new_error</span> <span class="o">=</span> <span class="n">noise_qubit_dict</span><span class="p">[</span><span class="n">nqs_str</span><span class="p">]</span><span class="o">.</span><span class="n">compose</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
                     <span class="n">noise_qubit_dict</span><span class="p">[</span><span class="n">nqs_str</span><span class="p">]</span> <span class="o">=</span> <span class="n">new_error</span>
@@ -723,6 +724,22 @@
 
 <div class="viewcode-block" id="NoiseModel.as_dict"><a class="viewcode-back" href="../../../../../autodoc/qiskit.providers.aer.noise.noise_model.html#qiskit.providers.aer.noise.noise_model.NoiseModel.as_dict">[docs]</a>    <span class="k">def</span> <span class="nf">as_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">serializable</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        DEPRECATED: Use to_dict()</span>
+<span class="sd">        Returns a dictionary for noise model.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            serializable (bool): if `True`, return a dict containing only types</span>
+<span class="sd">                that can be serializable by the stdlib `json` module.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            dict: a dictionary for a noise model.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">deprecation</span><span class="p">(</span><span class="s2">&quot;NoiseModel::as_dict() method is deprecated and will be removed after 0.3.&quot;</span>
+                    <span class="s2">&quot;Use &#39;.to_dict()&#39; instead&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">to_dict</span><span class="p">(</span><span class="n">serializable</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="NoiseModel.to_dict"><a class="viewcode-back" href="../../../../../autodoc/qiskit.providers.aer.noise.noise_model.html#qiskit.providers.aer.noise.noise_model.NoiseModel.to_dict">[docs]</a>    <span class="k">def</span> <span class="nf">to_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">serializable</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Return dictionary for noise model.</span>
 
 <span class="sd">        Args:</span>
@@ -736,14 +753,14 @@
 
         <span class="c1"># Add default quantum errors</span>
         <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">error</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_default_quantum_errors</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-            <span class="n">error_dict</span> <span class="o">=</span> <span class="n">error</span><span class="o">.</span><span class="n">as_dict</span><span class="p">()</span>
+            <span class="n">error_dict</span> <span class="o">=</span> <span class="n">error</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span>
             <span class="n">error_dict</span><span class="p">[</span><span class="s2">&quot;operations&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">name</span><span class="p">]</span>
             <span class="n">error_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">error_dict</span><span class="p">)</span>
 
         <span class="c1"># Add specific qubit errors</span>
         <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">qubit_dict</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_local_quantum_errors</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
             <span class="k">for</span> <span class="n">qubits_str</span><span class="p">,</span> <span class="n">error</span> <span class="ow">in</span> <span class="n">qubit_dict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-                <span class="n">error_dict</span> <span class="o">=</span> <span class="n">error</span><span class="o">.</span><span class="n">as_dict</span><span class="p">()</span>
+                <span class="n">error_dict</span> <span class="o">=</span> <span class="n">error</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span>
                 <span class="n">error_dict</span><span class="p">[</span><span class="s2">&quot;operations&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">name</span><span class="p">]</span>
                 <span class="n">error_dict</span><span class="p">[</span><span class="s2">&quot;gate_qubits&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_str2qubits</span><span class="p">(</span><span class="n">qubits_str</span><span class="p">)]</span>
                 <span class="n">error_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">error_dict</span><span class="p">)</span>
@@ -752,7 +769,7 @@
         <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">qubit_dict</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_nonlocal_quantum_errors</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
             <span class="k">for</span> <span class="n">qubits_str</span><span class="p">,</span> <span class="n">noise_qubit_dict</span> <span class="ow">in</span> <span class="n">qubit_dict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
                 <span class="k">for</span> <span class="n">noise_qubits_str</span><span class="p">,</span> <span class="n">error</span> <span class="ow">in</span> <span class="n">noise_qubit_dict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-                    <span class="n">error_dict</span> <span class="o">=</span> <span class="n">error</span><span class="o">.</span><span class="n">as_dict</span><span class="p">()</span>
+                    <span class="n">error_dict</span> <span class="o">=</span> <span class="n">error</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span>
                     <span class="n">error_dict</span><span class="p">[</span><span class="s2">&quot;operations&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">name</span><span class="p">]</span>
                     <span class="n">error_dict</span><span class="p">[</span><span class="s2">&quot;gate_qubits&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_str2qubits</span><span class="p">(</span><span class="n">qubits_str</span><span class="p">)]</span>
                     <span class="n">error_dict</span><span class="p">[</span><span class="s2">&quot;noise_qubits&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span>
@@ -762,12 +779,12 @@
 
         <span class="c1"># Add default readout error</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_default_readout_error</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">error_dict</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_default_readout_error</span><span class="o">.</span><span class="n">as_dict</span><span class="p">()</span>
+            <span class="n">error_dict</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_default_readout_error</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span>
             <span class="n">error_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">error_dict</span><span class="p">)</span>
 
         <span class="c1"># Add local readout error</span>
         <span class="k">for</span> <span class="n">qubits_str</span><span class="p">,</span> <span class="n">error</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_local_readout_errors</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-            <span class="n">error_dict</span> <span class="o">=</span> <span class="n">error</span><span class="o">.</span><span class="n">as_dict</span><span class="p">()</span>
+            <span class="n">error_dict</span> <span class="o">=</span> <span class="n">error</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span>
             <span class="n">error_dict</span><span class="p">[</span><span class="s2">&quot;gate_qubits&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_str2qubits</span><span class="p">(</span><span class="n">qubits_str</span><span class="p">)]</span>
             <span class="n">error_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">error_dict</span><span class="p">)</span>
 

@@ -34,7 +34,7 @@
        </script>
         <script src="https://cloud.ibm.com/analytics/build/bluemix-analytics.min.js"></script>
     
-    <title>qiskit.providers.aer.noise.utils.noise_remapper &#8212; Qiskit 0.10.5 documentation</title>
+    <title>qiskit.providers.aer.noise.utils.noise_remapper &#8212; Qiskit 0.11.0 documentation</title>
 
     <link rel="stylesheet" href="../../../../../../_static/material-icons.css" type="text/css" />
     <link rel="stylesheet" href="../../../../../../_static/pygments.css" type="text/css" />
@@ -256,7 +256,7 @@
         <span class="k">raise</span> <span class="n">NoiseError</span><span class="p">(</span><span class="s1">&#39;Duplicate qubits in remapping: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">inv_map</span><span class="p">))</span>
 
     <span class="c1"># Convert noise model to dict</span>
-    <span class="n">nm_dict</span> <span class="o">=</span> <span class="n">noise_model</span><span class="o">.</span><span class="n">as_dict</span><span class="p">()</span>
+    <span class="n">nm_dict</span> <span class="o">=</span> <span class="n">noise_model</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span>
 
     <span class="c1"># Indexes of errors to keep</span>
     <span class="n">new_errors</span> <span class="o">=</span> <span class="p">[]</span>
