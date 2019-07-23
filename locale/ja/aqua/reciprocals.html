@@ -21,7 +21,7 @@
             },
           };
           window._analytics = {
-            segment_key: 'zbHWEXPUfXm0K6C7HbegwB5ewDEC8o1H',
+            segment_key: 'ffdYLviQze3kzomaINXNk6NwpY9LlXcw',
             coremetrics: false,
             optimizely: false,
             googleAddServices: false,
@@ -34,7 +34,7 @@
        </script>
         <script src="https://cloud.ibm.com/analytics/build/bluemix-analytics.min.js"></script>
     
-    <title>Reciprocals &#8212; Qiskit 0.10.4 ドキュメント</title>
+    <title>Reciprocals &#8212; Qiskit 0.11.0 ドキュメント</title>
 
     <link rel="stylesheet" href="../_static/material-icons.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -52,7 +52,7 @@
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="検索" href="../search.html" />
-    <link rel="next" title="Qiskit Chemistry" href="chemistry/qiskit_chemistry.html" />
+    <link rel="next" title="Neural Networks" href="neural_networks.html" />
     <link rel="prev" title="Eigenvalues" href="eigs.html" /> 
   </head>
 <body>
@@ -69,7 +69,6 @@
         <a class="external" id="tutorialsLink" href="https://nbviewer.jupyter.org/github/Qiskit/qiskit-tutorials/blob/master/qiskit/start_here.ipynb" target="_blank">Tutorials</a>
         <a class="external" href="/documentation" selected>Documentation</a>
         <a class="external" href="/vscode">Tools</a>
-        <a class="external" href="/community">Community</a>
       </nav>
     </div>
   </header>
@@ -508,6 +507,17 @@
 <li class="toctree-l4"><a class="reference internal" href="#long-division">Long Division</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="neural_networks.html">Neural Networks</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="neural_networks.html#classical-discriminator">Classical Discriminator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="neural_networks.html#numpy-discriminator">Numpy Discriminator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="neural_networks.html#quantum-generator">Quantum Generator</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="circuit_collection.html">Circuit Collection</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="circuit_collection.html#gates">Gates</a></li>
+<li class="toctree-l4"><a class="reference internal" href="circuit_collection.html#circuits">Circuits</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="chemistry/qiskit_chemistry.html">Qiskit Chemistry</a><ul>
@@ -595,6 +605,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../advanced_use_of_ibm_q_devices.html">Advanced Use of IBM Q Devices</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../advanced_use_of_ibm_q_devices.html#the-account">The Account</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../advanced_use_of_ibm_q_devices.html#the-provider">The Provider</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../advanced_use_of_ibm_q_devices.html#filtering-the-backends">Filtering the backends</a></li>
 </ul>
@@ -636,44 +647,60 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../release_notes.html">Release Notes</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../release_notes.html#qiskit-0-10">Qiskit 0.10</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../release_notes.html#qiskit-0-11">Qiskit 0.11</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../release_notes.html#terra-0-8">Terra 0.8</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#aer-0-2">Aer 0.2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#aer-0-2">Aer 0.2</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#new-features">New features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#improvements">Improvements</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="../release_notes.html#ignis-0-1">Ignis 0.1</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../release_notes.html#aqua-0-5">Aqua 0.5</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#ibm-q-provider-0-3">IBM Q Provider 0.3</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#updating-to-the-new-ibm-q-experience-v2">Updating to the new IBM Q Experience v2</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#updating-your-programs">Updating your programs</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../release_notes.html#qiskit-0-10">Qiskit 0.10</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id1">Terra 0.8</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id2">Aer 0.2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id3">Ignis 0.1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id4">Aqua 0.5</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../release_notes.html#ibm-q-provider-0-2">IBM Q Provider 0.2</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#new-features">New Features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id5">New Features</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../release_notes.html#bug-fixes">Bug Fixes</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../release_notes.html#qiskit-0-9">Qiskit 0.9</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id1">Terra 0.8</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id6">Terra 0.8</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../release_notes.html#highlights">Highlights</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id2">New Features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id7">New Features</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../release_notes.html#compatibility-considerations">Compatibility Considerations</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id3">Aer 0.2</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id4">New Features</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id5">Bug Fixes</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id6">Compatibility Considerations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id8">Aer 0.2</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id9">New Features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id10">Bug Fixes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id11">Compatibility Considerations</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id7">Ignis 0.1</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id8">New Features</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id9">Compatibility Considerations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id12">Ignis 0.1</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id13">New Features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id14">Compatibility Considerations</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id10">Aqua 0.5</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id11">New Features</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id12">Bug Fixes</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id13">Compatibility Considerations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id15">Aqua 0.5</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id16">New Features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id17">Bug Fixes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id18">Compatibility Considerations</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../release_notes.html#ibm-q-provider-0-1">IBM Q Provider 0.1</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id14">New Features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id19">New Features</a></li>
 </ul>
 </li>
 </ul>
@@ -681,38 +708,38 @@
 <li class="toctree-l2"><a class="reference internal" href="../release_notes.html#qiskit-0-8">Qiskit 0.8</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../release_notes.html#terra-0-7">Terra 0.7</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../release_notes.html#aer-0-1">Aer 0.1</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id15">Ignis 0.1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id20">Ignis 0.1</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../release_notes.html#qiskit-0-7">Qiskit 0.7</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id16">Terra 0.7</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id17">New Features</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id18">Compatibility Considerations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id21">Terra 0.7</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id22">New Features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id23">Compatibility Considerations</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id19">Aer 0.1</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id20">New Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id24">Aer 0.1</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id25">New Features</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../release_notes.html#aqua-0-4">Aqua 0.4</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id21">New Features</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id22">Compatibility Considerations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id26">New Features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id27">Compatibility Considerations</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../release_notes.html#qiskit-0-6">Qiskit 0.6</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../release_notes.html#terra-0-6">Terra 0.6</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id23">Highlights</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id24">Compatibility Considerations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id28">Highlights</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id29">Compatibility Considerations</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../release_notes.html#qiskit-0-5">Qiskit 0.5</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../release_notes.html#terra-0-5">Terra 0.5</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id25">Highlights</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id26">Compatibility Considerations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id30">Highlights</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id31">Compatibility Considerations</a></li>
 </ul>
 </li>
 </ul>
@@ -1201,6 +1228,17 @@
 <li class="toctree-l4"><a class="reference internal" href="#long-division">Long Division</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="neural_networks.html">Neural Networks</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="neural_networks.html#classical-discriminator">Classical Discriminator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="neural_networks.html#numpy-discriminator">Numpy Discriminator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="neural_networks.html#quantum-generator">Quantum Generator</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="circuit_collection.html">Circuit Collection</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="circuit_collection.html#gates">Gates</a></li>
+<li class="toctree-l4"><a class="reference internal" href="circuit_collection.html#circuits">Circuits</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="chemistry/qiskit_chemistry.html">Qiskit Chemistry</a><ul>
@@ -1288,6 +1326,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../advanced_use_of_ibm_q_devices.html">Advanced Use of IBM Q Devices</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../advanced_use_of_ibm_q_devices.html#the-account">The Account</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../advanced_use_of_ibm_q_devices.html#the-provider">The Provider</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../advanced_use_of_ibm_q_devices.html#filtering-the-backends">Filtering the backends</a></li>
 </ul>
@@ -1329,44 +1368,60 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../release_notes.html">Release Notes</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../release_notes.html#qiskit-0-10">Qiskit 0.10</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../release_notes.html#qiskit-0-11">Qiskit 0.11</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../release_notes.html#terra-0-8">Terra 0.8</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#aer-0-2">Aer 0.2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#aer-0-2">Aer 0.2</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#new-features">New features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#improvements">Improvements</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="../release_notes.html#ignis-0-1">Ignis 0.1</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../release_notes.html#aqua-0-5">Aqua 0.5</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#ibm-q-provider-0-3">IBM Q Provider 0.3</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#updating-to-the-new-ibm-q-experience-v2">Updating to the new IBM Q Experience v2</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#updating-your-programs">Updating your programs</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../release_notes.html#qiskit-0-10">Qiskit 0.10</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id1">Terra 0.8</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id2">Aer 0.2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id3">Ignis 0.1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id4">Aqua 0.5</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../release_notes.html#ibm-q-provider-0-2">IBM Q Provider 0.2</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#new-features">New Features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id5">New Features</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../release_notes.html#bug-fixes">Bug Fixes</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../release_notes.html#qiskit-0-9">Qiskit 0.9</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id1">Terra 0.8</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id6">Terra 0.8</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../release_notes.html#highlights">Highlights</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id2">New Features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id7">New Features</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../release_notes.html#compatibility-considerations">Compatibility Considerations</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id3">Aer 0.2</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id4">New Features</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id5">Bug Fixes</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id6">Compatibility Considerations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id8">Aer 0.2</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id9">New Features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id10">Bug Fixes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id11">Compatibility Considerations</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id7">Ignis 0.1</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id8">New Features</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id9">Compatibility Considerations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id12">Ignis 0.1</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id13">New Features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id14">Compatibility Considerations</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id10">Aqua 0.5</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id11">New Features</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id12">Bug Fixes</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id13">Compatibility Considerations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id15">Aqua 0.5</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id16">New Features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id17">Bug Fixes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id18">Compatibility Considerations</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../release_notes.html#ibm-q-provider-0-1">IBM Q Provider 0.1</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id14">New Features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id19">New Features</a></li>
 </ul>
 </li>
 </ul>
@@ -1374,38 +1429,38 @@
 <li class="toctree-l2"><a class="reference internal" href="../release_notes.html#qiskit-0-8">Qiskit 0.8</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../release_notes.html#terra-0-7">Terra 0.7</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../release_notes.html#aer-0-1">Aer 0.1</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id15">Ignis 0.1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id20">Ignis 0.1</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../release_notes.html#qiskit-0-7">Qiskit 0.7</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id16">Terra 0.7</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id17">New Features</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id18">Compatibility Considerations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id21">Terra 0.7</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id22">New Features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id23">Compatibility Considerations</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id19">Aer 0.1</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id20">New Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id24">Aer 0.1</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id25">New Features</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../release_notes.html#aqua-0-4">Aqua 0.4</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id21">New Features</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id22">Compatibility Considerations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id26">New Features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id27">Compatibility Considerations</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../release_notes.html#qiskit-0-6">Qiskit 0.6</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../release_notes.html#terra-0-6">Terra 0.6</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id23">Highlights</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id24">Compatibility Considerations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id28">Highlights</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id29">Compatibility Considerations</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../release_notes.html#qiskit-0-5">Qiskit 0.5</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../release_notes.html#terra-0-5">Terra 0.5</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id25">Highlights</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id26">Compatibility Considerations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id30">Highlights</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id31">Compatibility Considerations</a></li>
 </ul>
 </li>
 </ul>
@@ -1473,17 +1528,16 @@ are to be used in a larger algorithm such as <a class="reference internal" href=
 </ul>
 <div class="topic">
 <p class="topic-title first">Extending the Reciprocals Library</p>
-<p>Consistent with its unique  design, Aqua has a modular and
-extensible architecture. Algorithms and their supporting objects, such as optimizers for quantum variational algorithms,
+<p>Consistent with its unique design, Aqua has a modular and extensible architecture.
+Algorithms and their supporting objects, such as optimizers for quantum variational algorithms,
 are pluggable modules in Aqua.
-New eigenvalue solver are typically installed in the <code class="docutils literal notranslate"><span class="pre">qiskit_aqua/components/reciprocals</span></code> folder and derive from
-the <code class="docutils literal notranslate"><span class="pre">Reciprocal</span></code> class.  Aqua also allows for
-<a class="reference internal" href="extending.html#aqua-dynamically-discovered-components"><span class="std std-ref">Dynamically Discovered Components</span></a>: new methods to calculate the reciprocal can register themselves
-as Aqua extensions and be dynamically discovered at run time independent of their
-location in the file system.
-This is done in order to encourage researchers and
-developers interested in
-<a class="reference internal" href="extending.html#aqua-extending"><span class="std std-ref">Contributing to Aqua</span></a> to extend the Aqua framework with their novel research contributions.</p>
+New eigenvalue solver are typically installed in the <code class="docutils literal notranslate"><span class="pre">qiskit/aqua/components/reciprocals</span></code>
+folder and derive from the <code class="docutils literal notranslate"><span class="pre">Reciprocal</span></code> class.  Aqua also allows for
+<a class="reference internal" href="extending.html#aqua-dynamically-discovered-components"><span class="std std-ref">Dynamically Discovered Components</span></a>: new methods to calculate the reciprocal
+can register themselves as Aqua extensions and be dynamically discovered at run time
+independent of their location in the file system. This is done in order to encourage
+researchers and developers interested in <a class="reference internal" href="extending.html#aqua-extending"><span class="std std-ref">Contributing to Aqua</span></a> to extend the Aqua framework
+with their novel research contributions.</p>
 </div>
 <div class="section" id="partial-table-look-up">
 <span id="lookup"></span><h2>Partial Table Look Up<a class="headerlink" href="#partial-table-look-up" title="このヘッドラインへのパーマリンク">¶</a></h2>
@@ -1521,14 +1575,12 @@ achieve a higher resolution in the output. The default is <code class="docutils 
 <div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">scale</span> <span class="p">:</span> <span class="nb">float</span>
 </pre></div>
 </div>
+<p>This parameter is used to scale the reciprocals such that for a scale C, the rotation is
+performed by an angle <span class="math notranslate nohighlight">\(\arcsin{\frac{C}{\lambda}}\)</span>. If neither the <code class="docutils literal notranslate"><span class="pre">scale</span></code> nor the
+<code class="docutils literal notranslate"><span class="pre">evo_time</span></code> and <code class="docutils literal notranslate"><span class="pre">min_lambda</span></code> parameters are specified, the smallest resolvable Eigenvalue
+is used.</p>
 </li>
-</ul>
-<blockquote>
-<div>This parameter is used to scale the reciprocals such that for a scale C, the rotation is performed
-by an angle <span class="math notranslate nohighlight">\(\arcsin{\frac{C}{\lambda}}\)</span>. If neither the <code class="docutils literal notranslate"><span class="pre">scale</span></code> nor the <code class="docutils literal notranslate"><span class="pre">evo_time</span></code> and
-<code class="docutils literal notranslate"><span class="pre">min_lambda</span></code> parameters are specified, the smallest resolvable Eigenvalue is used.</div></blockquote>
-<ul>
-<li><p class="first">The mimimum value present:</p>
+<li><p class="first">The minimum value present:</p>
 <div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">lambda_min</span> <span class="p">:</span> <span class="nb">float</span>
 </pre></div>
 </div>
@@ -1539,7 +1591,7 @@ the parameters <code class="docutils literal notranslate"><span class="pre">lamb
 <div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">evo_time</span> <span class="p">:</span> <span class="nb">float</span>
 </pre></div>
 </div>
-<p>This parameter scales the Eigenvalues in the <span class="xref std std-ref">qpe_components</span> onto the range (0,1]
+<p>This parameter scales the Eigenvalues in the qpe component onto the range (0,1]
 ( (-0.5,0.5] for negativ EV ). If the Partial Table Look Up is used together with the QPE, the
 scale parameter can be estimated if the minimum EV and the evolution time are passed as
 parameters. The default is <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
@@ -1547,13 +1599,14 @@ parameters. The default is <code class="docutils literal notranslate"><span clas
 </ul>
 <div class="topic">
 <p class="topic-title first">Declarative Name</p>
-<p>When referring to Look Up declaratively inside Aqua, its code <code class="docutils literal notranslate"><span class="pre">name</span></code>, by which Aqua dynamically discovers and loads it, is <code class="docutils literal notranslate"><span class="pre">Lookup</span></code>.</p>
+<p>When referring to Look Up declaratively inside Aqua, its code <code class="docutils literal notranslate"><span class="pre">name</span></code>,
+by which Aqua dynamically discovers and loads it, is <code class="docutils literal notranslate"><span class="pre">Lookup</span></code>.</p>
 </div>
 </div>
 <div class="section" id="long-division">
 <span id="longdivision"></span><h2>Long Division<a class="headerlink" href="#long-division" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p>This method calculates inverse of eigenvalues using binary long division and performs the
-corresponnding rotation. Long division is implemented as a sequance of subtraction (utilizing
+corresponding rotation. Long division is implemented as a sequence of subtraction (utilizing
 ripple carry adder module) and bit shifting. The method allows for adjusting of the reciprocal
 precision by changing number of iterations. The method was optimized for register conventions
 used in HHL algorithm (i.e. eigenvalues rescaled to values between 0 and 1).</p>
@@ -1598,8 +1651,8 @@ using the parameters <code class="docutils literal notranslate"><span class="pre
 <div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">evo_time</span> <span class="p">:</span> <span class="nb">float</span>
 </pre></div>
 </div>
-<p>This parameter scales the Eigenvalues in the <span class="xref std std-ref">qpe_components</span> onto the range (0,1]
-( (-0.5,0.5] for negativ EV ). If the Partial Table Look Up is used together with the QPE, the
+<p>This parameter scales the Eigenvalues in the qpe component onto the range (0,1]
+( (-0.5,0.5] for negative EV ). If the Partial Table Look Up is used together with the QPE, the
 scale parameter can be estimated if the minimum EV and the evolution time are passed as
 parameters. The default is <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
 </li>
@@ -1613,7 +1666,8 @@ parameters. The default is <code class="docutils literal notranslate"><span clas
 reciprocals, however, are effectively estimated with higher than this minimum specified precision.</p>
 <div class="topic">
 <p class="topic-title first">Declarative Name</p>
-<p>When referring to Long Division declaratively inside Aqua, its code <code class="docutils literal notranslate"><span class="pre">name</span></code>, by which Aqua dynamically discovers and loads it, is <code class="docutils literal notranslate"><span class="pre">LongDivision</span></code>.</p>
+<p>When referring to Long Division declaratively inside Aqua, its code <code class="docutils literal notranslate"><span class="pre">name</span></code>,
+by which Aqua dynamically discovers and loads it, is <code class="docutils literal notranslate"><span class="pre">LongDivision</span></code>.</p>
 </div>
 </div>
 </div>
@@ -1629,10 +1683,10 @@ reciprocals, however, are effectively estimated with higher than this minimum sp
             <div>Eigenvalues</div>
          </div>
      </a>
-     <a id="button-next" href="chemistry/qiskit_chemistry.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
+     <a id="button-next" href="neural_networks.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
         <div class="pagenation-text">
             <span class="pagenation-direction">Next</span>
-            <div>Qiskit Chemistry</div>
+            <div>Neural Networks</div>
         </div>
      </a>
         

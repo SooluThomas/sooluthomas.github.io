@@ -21,7 +21,7 @@
             },
           };
           window._analytics = {
-            segment_key: 'zbHWEXPUfXm0K6C7HbegwB5ewDEC8o1H',
+            segment_key: 'ffdYLviQze3kzomaINXNk6NwpY9LlXcw',
             coremetrics: false,
             optimizely: false,
             googleAddServices: false,
@@ -34,7 +34,7 @@
        </script>
         <script src="https://cloud.ibm.com/analytics/build/bluemix-analytics.min.js"></script>
     
-    <title>Optimizers &#8212; Qiskit 0.10.4 ドキュメント</title>
+    <title>Optimizers &#8212; Qiskit 0.11.0 ドキュメント</title>
 
     <link rel="stylesheet" href="../_static/material-icons.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -69,7 +69,6 @@
         <a class="external" id="tutorialsLink" href="https://nbviewer.jupyter.org/github/Qiskit/qiskit-tutorials/blob/master/qiskit/start_here.ipynb" target="_blank">Tutorials</a>
         <a class="external" href="/documentation" selected>Documentation</a>
         <a class="external" href="/vscode">Tools</a>
-        <a class="external" href="/community">Community</a>
       </nav>
     </div>
   </header>
@@ -508,6 +507,17 @@
 <li class="toctree-l4"><a class="reference internal" href="reciprocals.html#long-division">Long Division</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="neural_networks.html">Neural Networks</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="neural_networks.html#classical-discriminator">Classical Discriminator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="neural_networks.html#numpy-discriminator">Numpy Discriminator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="neural_networks.html#quantum-generator">Quantum Generator</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="circuit_collection.html">Circuit Collection</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="circuit_collection.html#gates">Gates</a></li>
+<li class="toctree-l4"><a class="reference internal" href="circuit_collection.html#circuits">Circuits</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="chemistry/qiskit_chemistry.html">Qiskit Chemistry</a><ul>
@@ -595,6 +605,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../advanced_use_of_ibm_q_devices.html">Advanced Use of IBM Q Devices</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../advanced_use_of_ibm_q_devices.html#the-account">The Account</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../advanced_use_of_ibm_q_devices.html#the-provider">The Provider</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../advanced_use_of_ibm_q_devices.html#filtering-the-backends">Filtering the backends</a></li>
 </ul>
@@ -636,44 +647,60 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../release_notes.html">Release Notes</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../release_notes.html#qiskit-0-10">Qiskit 0.10</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../release_notes.html#qiskit-0-11">Qiskit 0.11</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../release_notes.html#terra-0-8">Terra 0.8</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#aer-0-2">Aer 0.2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#aer-0-2">Aer 0.2</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#new-features">New features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#improvements">Improvements</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="../release_notes.html#ignis-0-1">Ignis 0.1</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../release_notes.html#aqua-0-5">Aqua 0.5</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#ibm-q-provider-0-3">IBM Q Provider 0.3</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#updating-to-the-new-ibm-q-experience-v2">Updating to the new IBM Q Experience v2</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#updating-your-programs">Updating your programs</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../release_notes.html#qiskit-0-10">Qiskit 0.10</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id1">Terra 0.8</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id2">Aer 0.2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id3">Ignis 0.1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id4">Aqua 0.5</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../release_notes.html#ibm-q-provider-0-2">IBM Q Provider 0.2</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#new-features">New Features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id5">New Features</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../release_notes.html#bug-fixes">Bug Fixes</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../release_notes.html#qiskit-0-9">Qiskit 0.9</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id1">Terra 0.8</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id6">Terra 0.8</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../release_notes.html#highlights">Highlights</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id2">New Features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id7">New Features</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../release_notes.html#compatibility-considerations">Compatibility Considerations</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id3">Aer 0.2</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id4">New Features</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id5">Bug Fixes</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id6">Compatibility Considerations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id8">Aer 0.2</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id9">New Features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id10">Bug Fixes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id11">Compatibility Considerations</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id7">Ignis 0.1</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id8">New Features</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id9">Compatibility Considerations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id12">Ignis 0.1</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id13">New Features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id14">Compatibility Considerations</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id10">Aqua 0.5</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id11">New Features</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id12">Bug Fixes</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id13">Compatibility Considerations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id15">Aqua 0.5</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id16">New Features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id17">Bug Fixes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id18">Compatibility Considerations</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../release_notes.html#ibm-q-provider-0-1">IBM Q Provider 0.1</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id14">New Features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id19">New Features</a></li>
 </ul>
 </li>
 </ul>
@@ -681,38 +708,38 @@
 <li class="toctree-l2"><a class="reference internal" href="../release_notes.html#qiskit-0-8">Qiskit 0.8</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../release_notes.html#terra-0-7">Terra 0.7</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../release_notes.html#aer-0-1">Aer 0.1</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id15">Ignis 0.1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id20">Ignis 0.1</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../release_notes.html#qiskit-0-7">Qiskit 0.7</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id16">Terra 0.7</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id17">New Features</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id18">Compatibility Considerations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id21">Terra 0.7</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id22">New Features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id23">Compatibility Considerations</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id19">Aer 0.1</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id20">New Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id24">Aer 0.1</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id25">New Features</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../release_notes.html#aqua-0-4">Aqua 0.4</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id21">New Features</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id22">Compatibility Considerations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id26">New Features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id27">Compatibility Considerations</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../release_notes.html#qiskit-0-6">Qiskit 0.6</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../release_notes.html#terra-0-6">Terra 0.6</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id23">Highlights</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id24">Compatibility Considerations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id28">Highlights</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id29">Compatibility Considerations</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../release_notes.html#qiskit-0-5">Qiskit 0.5</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../release_notes.html#terra-0-5">Terra 0.5</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id25">Highlights</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id26">Compatibility Considerations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id30">Highlights</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id31">Compatibility Considerations</a></li>
 </ul>
 </li>
 </ul>
@@ -1201,6 +1228,17 @@
 <li class="toctree-l4"><a class="reference internal" href="reciprocals.html#long-division">Long Division</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="neural_networks.html">Neural Networks</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="neural_networks.html#classical-discriminator">Classical Discriminator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="neural_networks.html#numpy-discriminator">Numpy Discriminator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="neural_networks.html#quantum-generator">Quantum Generator</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="circuit_collection.html">Circuit Collection</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="circuit_collection.html#gates">Gates</a></li>
+<li class="toctree-l4"><a class="reference internal" href="circuit_collection.html#circuits">Circuits</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="chemistry/qiskit_chemistry.html">Qiskit Chemistry</a><ul>
@@ -1288,6 +1326,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../advanced_use_of_ibm_q_devices.html">Advanced Use of IBM Q Devices</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../advanced_use_of_ibm_q_devices.html#the-account">The Account</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../advanced_use_of_ibm_q_devices.html#the-provider">The Provider</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../advanced_use_of_ibm_q_devices.html#filtering-the-backends">Filtering the backends</a></li>
 </ul>
@@ -1329,44 +1368,60 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../release_notes.html">Release Notes</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../release_notes.html#qiskit-0-10">Qiskit 0.10</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../release_notes.html#qiskit-0-11">Qiskit 0.11</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../release_notes.html#terra-0-8">Terra 0.8</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#aer-0-2">Aer 0.2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#aer-0-2">Aer 0.2</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#new-features">New features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#improvements">Improvements</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="../release_notes.html#ignis-0-1">Ignis 0.1</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../release_notes.html#aqua-0-5">Aqua 0.5</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#ibm-q-provider-0-3">IBM Q Provider 0.3</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#updating-to-the-new-ibm-q-experience-v2">Updating to the new IBM Q Experience v2</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#updating-your-programs">Updating your programs</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../release_notes.html#qiskit-0-10">Qiskit 0.10</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id1">Terra 0.8</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id2">Aer 0.2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id3">Ignis 0.1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id4">Aqua 0.5</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../release_notes.html#ibm-q-provider-0-2">IBM Q Provider 0.2</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#new-features">New Features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id5">New Features</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../release_notes.html#bug-fixes">Bug Fixes</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../release_notes.html#qiskit-0-9">Qiskit 0.9</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id1">Terra 0.8</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id6">Terra 0.8</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../release_notes.html#highlights">Highlights</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id2">New Features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id7">New Features</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../release_notes.html#compatibility-considerations">Compatibility Considerations</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id3">Aer 0.2</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id4">New Features</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id5">Bug Fixes</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id6">Compatibility Considerations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id8">Aer 0.2</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id9">New Features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id10">Bug Fixes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id11">Compatibility Considerations</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id7">Ignis 0.1</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id8">New Features</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id9">Compatibility Considerations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id12">Ignis 0.1</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id13">New Features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id14">Compatibility Considerations</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id10">Aqua 0.5</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id11">New Features</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id12">Bug Fixes</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id13">Compatibility Considerations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id15">Aqua 0.5</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id16">New Features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id17">Bug Fixes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id18">Compatibility Considerations</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../release_notes.html#ibm-q-provider-0-1">IBM Q Provider 0.1</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id14">New Features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id19">New Features</a></li>
 </ul>
 </li>
 </ul>
@@ -1374,38 +1429,38 @@
 <li class="toctree-l2"><a class="reference internal" href="../release_notes.html#qiskit-0-8">Qiskit 0.8</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../release_notes.html#terra-0-7">Terra 0.7</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../release_notes.html#aer-0-1">Aer 0.1</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id15">Ignis 0.1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id20">Ignis 0.1</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../release_notes.html#qiskit-0-7">Qiskit 0.7</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id16">Terra 0.7</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id17">New Features</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id18">Compatibility Considerations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id21">Terra 0.7</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id22">New Features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id23">Compatibility Considerations</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id19">Aer 0.1</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id20">New Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id24">Aer 0.1</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id25">New Features</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../release_notes.html#aqua-0-4">Aqua 0.4</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id21">New Features</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id22">Compatibility Considerations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id26">New Features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id27">Compatibility Considerations</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../release_notes.html#qiskit-0-6">Qiskit 0.6</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../release_notes.html#terra-0-6">Terra 0.6</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id23">Highlights</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id24">Compatibility Considerations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id28">Highlights</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id29">Compatibility Considerations</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../release_notes.html#qiskit-0-5">Qiskit 0.5</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../release_notes.html#terra-0-5">Terra 0.5</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id25">Highlights</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id26">Compatibility Considerations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id30">Highlights</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id31">Compatibility Considerations</a></li>
 </ul>
 </li>
 </ul>
@@ -1468,18 +1523,19 @@
 use by quantum variational algorithms, such as <a class="reference internal" href="algorithms.html#vqe"><span class="std std-ref">Variational Quantum Eigensolver (VQE)</span></a>.
 Logically, these optimizers can be divided into two categories:</p>
 <ul class="simple">
-<li><span class="xref std std-ref">Local Optimizers</span>: Given an optimization problem, a <em>local optimizer</em> is a function that
+<li><a class="reference internal" href="#local-optimizers"><span class="std std-ref">Local Optimizers</span></a>: Given an optimization problem, a <em>local optimizer</em> is a function that
 attempts to find an optimal value within the neighboring set of a candidate solution.</li>
-<li><span class="xref std std-ref">Global Optimizers</span>: Given an optimization problem, a <em>global optimizer</em> is a function that
+<li><a class="reference internal" href="#global-optimizers"><span class="std std-ref">Global Optimizers</span></a>: Given an optimization problem, a <em>global optimizer</em> is a function that
 attempts to find an optimal value among all possible solutions.</li>
 </ul>
 <div class="topic">
 <p class="topic-title first">Extending the Optimizer Library</p>
 <p>Consistent with its unique  design, Aqua has a modular and
-extensible architecture. Algorithms and their supporting objects, such as optimizers for quantum variational algorithms,
-are pluggable modules in Aqua.
-New optimizers for quantum variational algorithms are typically installed in the <code class="docutils literal notranslate"><span class="pre">qiskit_aqua/utils/optimizers</span></code> folder and derive from
-the <code class="docutils literal notranslate"><span class="pre">Optimizer</span></code> class.  Aqua also allows for
+extensible architecture. Algorithms and their supporting objects, such as optimizers for
+quantum variational algorithms,  are pluggable modules in Aqua.
+New optimizers for quantum variational algorithms are typically installed in the
+<code class="docutils literal notranslate"><span class="pre">qiskit/aqua/components/optimizers</span></code> folder and derive from the <code class="docutils literal notranslate"><span class="pre">Optimizer</span></code> class.
+Aqua also allows for
 <a class="reference internal" href="extending.html#aqua-dynamically-discovered-components"><span class="std std-ref">Dynamically Discovered Components</span></a>: new optimizers can register themselves
 as Aqua extensions and be dynamically discovered at run time independent of their
 location in the file system.
@@ -1489,8 +1545,8 @@ developers interested in
 </div>
 <div class="admonition seealso">
 <p class="first admonition-title">参考</p>
-<p class="last"><cite>Section :ref:`aqua-extending</cite> provides more
-details on how to extend Aqua with new components.</p>
+<p class="last">Section <a class="reference internal" href="extending.html#aqua-extending"><span class="std std-ref">Contributing to Aqua</span></a> provides more details
+on how to extend Aqua with new components.</p>
 </div>
 <div class="section" id="local-optimizers">
 <span id="id2"></span><h2>Local Optimizers<a class="headerlink" href="#local-optimizers" title="このヘッドラインへのパーマリンク">¶</a></h2>
@@ -1498,27 +1554,25 @@ details on how to extend Aqua with new components.</p>
 These optimizers are meant to be used in conjunction with quantum variational
 algorithms:</p>
 <ul class="simple">
-<li><span class="xref std std-ref">ADAM</span></li>
-<li><span class="xref std std-ref">Analytic Quantum Gradient Descent (AQGD)</span></li>
-<li><span class="xref std std-ref">Conjugate Gradient (CG) Method</span></li>
-<li><span class="xref std std-ref">Constrained Optimization BY Linear Approximation (COBYLA)</span></li>
-<li><span class="xref std std-ref">Limited-memory Broyden-Fletcher-Goldfarb-Shanno Bound (L-BFGS-B)</span></li>
+<li><a class="reference internal" href="#adam-amsgrad"><span class="std std-ref">ADAM</span></a></li>
+<li><a class="reference internal" href="#aqgd"><span class="std std-ref">Analytic Quantum Gradient Descent (AQGD)</span></a></li>
+<li><a class="reference internal" href="#cg"><span class="std std-ref">Conjugate Gradient (CG) Method</span></a></li>
+<li><a class="reference internal" href="#cobyla"><span class="std std-ref">Constrained Optimization BY Linear Approximation (COBYLA)</span></a></li>
+<li><a class="reference internal" href="#l-bfgs-b"><span class="std std-ref">Limited-memory Broyden-Fletcher-Goldfarb-Shanno Bound (L-BFGS-B)</span></a></li>
 <li><a class="reference internal" href="#nelder-mead"><span class="std std-ref">Nelder-Mead</span></a></li>
-<li><span class="xref std std-ref">Parallel Broyden-Fletcher-Goldfarb-Shann (P-BFGS)</span></li>
+<li><a class="reference internal" href="#p-bfgs"><span class="std std-ref">Parallel Broyden-Fletcher-Goldfarb-Shann (P-BFGS)</span></a></li>
 <li><a class="reference internal" href="#powell"><span class="std std-ref">Powell</span></a></li>
-<li><span class="xref std std-ref">Sequential Least SQuares Programming (SLSQP)</span></li>
-<li><span class="xref std std-ref">Simultaneous Perturbation Stochastic Approximation (SPSA)</span></li>
-<li><span class="xref std std-ref">Truncated Newton (TNC)</span></li>
+<li><a class="reference internal" href="#slsqp"><span class="std std-ref">Sequential Least SQuares Programming (SLSQP)</span></a></li>
+<li><a class="reference internal" href="#spsa"><span class="std std-ref">Simultaneous Perturbation Stochastic Approximation (SPSA)</span></a></li>
+<li><a class="reference internal" href="#tnc"><span class="std std-ref">Truncated Newton (TNC)</span></a></li>
 </ul>
-<p>Except for <span class="xref std std-ref">ADAM</span>, <span class="xref std std-ref">Analytic Quantum Gradient Descent (AQGD)</span> and
-<span class="xref std std-ref">Parallel Broyden-Fletcher-Goldfarb-Shann (P-BFGS)</span>, all these
+<p>Except for <a class="reference internal" href="#adam-amsgrad"><span class="std std-ref">ADAM</span></a>, <a class="reference internal" href="#aqgd"><span class="std std-ref">Analytic Quantum Gradient Descent (AQGD)</span></a> and <a class="reference internal" href="#p-bfgs"><span class="std std-ref">Parallel Broyden-Fletcher-Goldfarb-Shann (P-BFGS)</span></a>, all these
 optimizers are directly based on the <code class="docutils literal notranslate"><span class="pre">scipy.optimize.minimize</span></code> optimization function in the
 <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.minimize.html">SciPy</a>
 Python library. They all have a common pattern for parameters. Specifically, the <code class="docutils literal notranslate"><span class="pre">tol</span></code>
 parameter, whose value must be a <code class="docutils literal notranslate"><span class="pre">float</span></code> indicating <em>tolerance for termination</em>,
 is from the <code class="docutils literal notranslate"><span class="pre">scipy.optimize.minimize</span></code>  method itself, while the remaining parameters are
-from the <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.show_options.html">options
-dictionary</a>,
+from the <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.show_options.html">options dictionary</a>,
 which may be referred to for further information.</p>
 <div class="topic">
 <p class="topic-title first">Transparent Parallelization of Gradient-based Local Opitmizers</p>
@@ -1575,32 +1629,28 @@ On the Convergence of Adam and Beyond. International Conference on Learning Repr
 </div>
 <p>This parameters takes a positive <code class="docutils literal notranslate"><span class="pre">int</span></code> value.  The default is <code class="docutils literal notranslate"><span class="pre">20</span></code>.</p>
 </li>
-<li><p class="first">The tolerance for termination.
-.. code:: python</p>
-<blockquote>
-<div><p>tol : float</p>
-</div></blockquote>
+<li><p class="first">The tolerance for termination.</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tol</span> <span class="p">:</span> <span class="nb">float</span>
+</pre></div>
+</div>
 <p>The default value is <code class="docutils literal notranslate"><span class="pre">1e-06</span></code>.</p>
 </li>
-<li><p class="first">The learning rate:
-.. code:: python</p>
-<blockquote>
-<div><p>lr : float</p>
-</div></blockquote>
+<li><p class="first">The learning rate:</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">lr</span> <span class="p">:</span> <span class="nb">float</span>
+</pre></div>
+</div>
 <p>The default value is <code class="docutils literal notranslate"><span class="pre">1e-03</span></code>.</p>
 </li>
-<li><p class="first">First hyper-parameter used for the evaluation of the first moment estimate.
-.. code:: python</p>
-<blockquote>
-<div><p>beta_1 : float</p>
-</div></blockquote>
+<li><p class="first">First hyper-parameter used for the evaluation of the first moment estimate.</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">beta_1</span> <span class="p">:</span> <span class="nb">float</span>
+</pre></div>
+</div>
 <p>The default value is <code class="docutils literal notranslate"><span class="pre">0.9</span></code>.</p>
 </li>
-<li><p class="first">Second hyper-parameter used for the evaluation of the second moment estimate.
-.. code:: python</p>
-<blockquote>
-<div><p>beta_2 : float</p>
-</div></blockquote>
+<li><p class="first">Second hyper-parameter used for the evaluation of the second moment estimate.</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">beta_2</span> <span class="p">:</span> <span class="nb">float</span>
+</pre></div>
+</div>
 <p>The default value is <code class="docutils literal notranslate"><span class="pre">0.99</span></code>.</p>
 </li>
 <li><p class="first">Noise factor used for reasons of numerical stability.</p>
@@ -1626,7 +1676,7 @@ the parameters will not be stored.</p>
 <div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">snapshot_dir</span><span class="p">:</span> <span class="nb">str</span> <span class="ow">or</span> <span class="kc">None</span>
 </pre></div>
 </div>
-<p>The default value is <cite>''</cite>.</p>
+<p>The default value is <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
 </li>
 </ul>
 <div class="topic">
@@ -1653,18 +1703,16 @@ Evaluating analytic gradients on quantum hardware. Phys. Rev. A 99, 032331.</p>
 </div>
 <p>This parameters takes a positive <code class="docutils literal notranslate"><span class="pre">int</span></code> value.  The default is <code class="docutils literal notranslate"><span class="pre">1000</span></code>.</p>
 </li>
-<li><p class="first">The learning rate:
-.. code:: python</p>
-<blockquote>
-<div><p>eta : float</p>
-</div></blockquote>
+<li><p class="first">The learning rate:</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">eta</span> <span class="p">:</span> <span class="nb">float</span>
+</pre></div>
+</div>
 <p>The default value is <code class="docutils literal notranslate"><span class="pre">3.0</span></code>.</p>
 </li>
-<li><p class="first">The tolerance for termination.
-.. code:: python</p>
-<blockquote>
-<div><p>tol : float</p>
-</div></blockquote>
+<li><p class="first">The tolerance for termination.</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tol</span> <span class="p">:</span> <span class="nb">float</span>
+</pre></div>
+</div>
 <p>The default value is <code class="docutils literal notranslate"><span class="pre">1e-06</span></code>.</p>
 </li>
 <li><p class="first">A Boolean value indicating whether or not to display convergence messages.</p>
@@ -1683,8 +1731,8 @@ Evaluating analytic gradients on quantum hardware. Phys. Rev. A 99, 032331.</p>
 </ul>
 <div class="topic">
 <p class="topic-title first">Declarative Name</p>
-<p>When referring to AQGD declaratively inside Aqua, its code <code class="docutils literal notranslate"><span class="pre">name</span></code>, by which Aqua dynamically discovers and
-loads it, is <code class="docutils literal notranslate"><span class="pre">AQGD</span></code>.</p>
+<p>When referring to AQGD declaratively inside Aqua, its code <code class="docutils literal notranslate"><span class="pre">name</span></code>,
+by which Aqua dynamically discovers and loads it, is <code class="docutils literal notranslate"><span class="pre">AQGD</span></code>.</p>
 </div>
 <hr class="docutils" />
 </div>
@@ -1717,7 +1765,7 @@ termination.</p>
 <p>The default value is <code class="docutils literal notranslate"><span class="pre">1e-05</span></code>.</p>
 </li>
 <li><p class="first">The tolerance for termination:</p>
-<div class="code highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tol</span> <span class="p">:</span> <span class="nb">float</span>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tol</span> <span class="p">:</span> <span class="nb">float</span>
 </pre></div>
 </div>
 <p>This parameter is optional.  If specified, the value of this parameter must be a <code class="docutils literal notranslate"><span class="pre">float</span></code> value,
@@ -1732,8 +1780,8 @@ otherwise, it is set to <code class="docutils literal notranslate"><span class="
 </ul>
 <div class="topic">
 <p class="topic-title first">Declarative Name</p>
-<p>When referring to CG declaratively inside Aqua, its code <code class="docutils literal notranslate"><span class="pre">name</span></code>, by which Aqua dynamically discovers and loads it,
-is <code class="docutils literal notranslate"><span class="pre">CG</span></code>.</p>
+<p>When referring to CG declaratively inside Aqua, its code <code class="docutils literal notranslate"><span class="pre">name</span></code>,
+by which Aqua dynamically discovers and loads it, is <code class="docutils literal notranslate"><span class="pre">CG</span></code>.</p>
 </div>
 </div>
 <div class="section" id="constrained-optimization-by-linear-approximation-cobyla">
@@ -1761,17 +1809,17 @@ COBYLA supports the following parameters:</p>
 <p>The default value is <code class="docutils literal notranslate"><span class="pre">1.0</span></code>.</p>
 </li>
 <li><p class="first">The tolerance for termination:</p>
-<div class="code highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tol</span> <span class="p">:</span> <span class="nb">float</span>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tol</span> <span class="p">:</span> <span class="nb">float</span>
 </pre></div>
 </div>
-<p>This parameter is optional.  If specified, the value of this parameter must be of type <code class="docutils literal notranslate"><span class="pre">float</span></code>, otherwise, it is set to <code class="docutils literal notranslate"><span class="pre">None</span></code>.
-The default is <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+<p>This parameter is optional.  If specified, the value of this parameter must be of type <code class="docutils literal notranslate"><span class="pre">float</span></code>,
+otherwise, it is set to <code class="docutils literal notranslate"><span class="pre">None</span></code>. The default is <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
 </li>
 </ul>
 <div class="topic">
 <p class="topic-title first">Declarative Name</p>
-<p>When referring to COBYLA declaratively inside Aqua, its code <code class="docutils literal notranslate"><span class="pre">name</span></code>, by which Aqua dynamically discovers and loads it,
-is <code class="docutils literal notranslate"><span class="pre">COBYLA</span></code>.</p>
+<p>When referring to COBYLA declaratively inside Aqua, its code <code class="docutils literal notranslate"><span class="pre">name</span></code>,
+by which Aqua dynamically discovers and loads it, is <code class="docutils literal notranslate"><span class="pre">COBYLA</span></code>.</p>
 </div>
 </div>
 <div class="section" id="limited-memory-broyden-fletcher-goldfarb-shanno-bound-l-bfgs-b">
@@ -1796,12 +1844,18 @@ L-BFGS-B extends L-BFGS to handle simple, per-variable bound constraints.</p>
 <p>A positive <code class="docutils literal notranslate"><span class="pre">int</span></code> value is expected.  The default is <code class="docutils literal notranslate"><span class="pre">1000</span></code>.</p>
 </li>
 <li><p class="first">The maximum number of iterations:</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">maxiter</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">|</span> <span class="mi">2</span> <span class="o">|</span> <span class="o">...</span>
+</pre></div>
+</div>
+<p>A positive <code class="docutils literal notranslate"><span class="pre">int</span></code> value is expected.  The default is <code class="docutils literal notranslate"><span class="pre">15000</span></code>.</p>
+</li>
+<li><p class="first">Accuracy factor:</p>
 <div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">factr</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">|</span> <span class="mi">2</span> <span class="o">|</span> <span class="o">...</span>
 </pre></div>
 </div>
 <p>A positive <code class="docutils literal notranslate"><span class="pre">int</span></code> value is expected.  The default is <code class="docutils literal notranslate"><span class="pre">10</span></code>.</p>
 </li>
-<li><p class="first">An <code class="docutils literal notranslate"><span class="pre">int</span></code> value controlling the frequency of the printed output showing the  optimizer's
+<li><p class="first">An <code class="docutils literal notranslate"><span class="pre">int</span></code> value controlling the frequency of the printed output showing the optimizer's
 operations:</p>
 <div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">iprint</span> <span class="p">:</span> <span class="nb">int</span>
 </pre></div>
@@ -1822,8 +1876,8 @@ operations:</p>
 </div>
 <div class="topic">
 <p class="topic-title first">Declarative Name</p>
-<p>When referring to L-BFGS-B declaratively inside Aqua, its code <code class="docutils literal notranslate"><span class="pre">name</span></code>, by which Aqua dynamically discovers and loads it,
-is <code class="docutils literal notranslate"><span class="pre">L_BFGS_B</span></code>.</p>
+<p>When referring to L-BFGS-B declaratively inside Aqua, its code <code class="docutils literal notranslate"><span class="pre">name</span></code>,
+by which Aqua dynamically discovers and loads it, is <code class="docutils literal notranslate"><span class="pre">L_BFGS_B</span></code>.</p>
 </div>
 </div>
 <div class="section" id="nelder-mead">
@@ -1866,11 +1920,11 @@ be considered acceptable for convergence.</p>
 <p>The default value is <code class="docutils literal notranslate"><span class="pre">0.0001</span></code>.</p>
 </li>
 <li><p class="first">The tolerance for termination:</p>
-<div class="code highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tol</span> <span class="p">:</span> <span class="nb">float</span>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tol</span> <span class="p">:</span> <span class="nb">float</span>
 </pre></div>
 </div>
-<p>This parameter is optional.  If specified, the value of this parameter must be of type <code class="docutils literal notranslate"><span class="pre">float</span></code>, otherwise, it is  <code class="docutils literal notranslate"><span class="pre">None</span></code>.
-The default is <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+<p>This parameter is optional.  If specified, the value of this parameter must be of type <code class="docutils literal notranslate"><span class="pre">float</span></code>,
+otherwise, it is  <code class="docutils literal notranslate"><span class="pre">None</span></code>. The default is <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
 <div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">adaptive</span> <span class="p">:</span> <span class="nb">bool</span>
 </pre></div>
 </div>
@@ -1881,8 +1935,8 @@ The default is <code class="docutils literal notranslate"><span class="pre">None
 </ul>
 <div class="topic">
 <p class="topic-title first">Declarative Name</p>
-<p>When referring to Nelder-Mead declaratively inside Aqua, its code <code class="docutils literal notranslate"><span class="pre">name</span></code>, by which Aqua dynamically discovers and loads it,
-is <code class="docutils literal notranslate"><span class="pre">NELDER_MEAD</span></code>.</p>
+<p>When referring to Nelder-Mead declaratively inside Aqua, its code <code class="docutils literal notranslate"><span class="pre">name</span></code>,
+by which Aqua dynamically discovers and loads it, is <code class="docutils literal notranslate"><span class="pre">NELDER_MEAD</span></code>.</p>
 </div>
 </div>
 <div class="section" id="parallel-broyden-fletcher-goldfarb-shann-p-bfgs">
@@ -1957,17 +2011,17 @@ considered acceptable for convergence.</p>
 <p>The default value is <code class="docutils literal notranslate"><span class="pre">0.0001</span></code>.</p>
 </li>
 <li><p class="first">The tolerance for termination:</p>
-<div class="code highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tol</span> <span class="p">:</span> <span class="nb">float</span>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tol</span> <span class="p">:</span> <span class="nb">float</span>
 </pre></div>
 </div>
-<p>This parameter is optional.  If specified, the value of this parameter must be of type <code class="docutils literal notranslate"><span class="pre">float</span></code>, otherwise, it is  <code class="docutils literal notranslate"><span class="pre">None</span></code>.
-The default is <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+<p>This parameter is optional.  If specified, the value of this parameter must be of type <code class="docutils literal notranslate"><span class="pre">float</span></code>,
+otherwise, it is  <code class="docutils literal notranslate"><span class="pre">None</span></code>. The default is <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
 </li>
 </ul>
 <div class="topic">
 <p class="topic-title first">Declarative Name</p>
-<p>When referring to Powell declaratively inside Aqua, its code <code class="docutils literal notranslate"><span class="pre">name</span></code>, by which Aqua dynamically discovers and loads it,
-is <code class="docutils literal notranslate"><span class="pre">POWELL</span></code>.</p>
+<p>When referring to Powell declaratively inside Aqua, its code <code class="docutils literal notranslate"><span class="pre">name</span></code>,
+by which Aqua dynamically discovers and loads it, is <code class="docutils literal notranslate"><span class="pre">POWELL</span></code>.</p>
 </div>
 </div>
 <div class="section" id="sequential-least-squares-programming-slsqp">
@@ -2001,11 +2055,11 @@ stopping criterion.</p>
 <p>A <code class="docutils literal notranslate"><span class="pre">float</span></code> value is expected.  The default value is <code class="docutils literal notranslate"><span class="pre">1e-06</span></code>.</p>
 </li>
 <li><p class="first">The tolerance for termination:</p>
-<div class="code highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tol</span> <span class="p">:</span> <span class="nb">float</span>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tol</span> <span class="p">:</span> <span class="nb">float</span>
 </pre></div>
 </div>
-<p>This parameter is optional.  If specified, the value of this parameter must be a <code class="docutils literal notranslate"><span class="pre">float</span></code>, otherwise, it is  <code class="docutils literal notranslate"><span class="pre">None</span></code>.
-The default is <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+<p>This parameter is optional.  If specified, the value of this parameter must be a <code class="docutils literal notranslate"><span class="pre">float</span></code>,
+otherwise, it is  <code class="docutils literal notranslate"><span class="pre">None</span></code>. The default is <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
 </li>
 <li><p class="first">Step size used for numerical approximation of the Jacobian.</p>
 <div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">eps</span> <span class="p">:</span> <span class="nb">float</span>
@@ -2016,8 +2070,8 @@ The default is <code class="docutils literal notranslate"><span class="pre">None
 </ul>
 <div class="topic">
 <p class="topic-title first">Declarative Name</p>
-<p>When referring to SLSQP declaratively inside Aqua, its code <code class="docutils literal notranslate"><span class="pre">name</span></code>, by which Aqua dynamically discovers and loads it,
-is <code class="docutils literal notranslate"><span class="pre">SLSQP</span></code>.</p>
+<p>When referring to SLSQP declaratively inside Aqua, its code <code class="docutils literal notranslate"><span class="pre">name</span></code>,
+by which Aqua dynamically discovers and loads it, is <code class="docutils literal notranslate"><span class="pre">SLSQP</span></code>.</p>
 </div>
 </div>
 <div class="section" id="simultaneous-perturbation-stochastic-approximation-spsa">
@@ -2037,8 +2091,8 @@ measurements of the objective function, regardless of the dimension of the optim
 <p class="first admonition-title">注釈</p>
 <p class="last">SPSA can be used in the presence of noise, and it is therefore indicated in situations
 involving measurement uncertainty on a quantum computation when finding a minimum. If you are
-executing a variational algorithm using a Quantum ASseMbly Language (QASM) simulator or a real device,
-SPSA would be the most recommended choice among the optimizers provided here.</p>
+executing a variational algorithm using a Quantum ASseMbly Language (QASM) simulator or a real
+device, SPSA would be the most recommended choice among the optimizers provided here.</p>
 </div>
 <p>The optimization process includes a calibration phase, which requires additional
 functional evaluations.  Overall, the following parameters are supported:</p>
@@ -2055,7 +2109,8 @@ There are two function evaluations per trial:</p>
 </pre></div>
 </div>
 <p>A positive <code class="docutils literal notranslate"><span class="pre">int</span></code> value is expected.
-SPSA will store optimization outcomes every <code class="docutils literal notranslate"><span class="pre">save_steps</span></code> trial steps.  The default value is <code class="docutils literal notranslate"><span class="pre">1</span></code>.</p>
+SPSA will store optimization outcomes every <code class="docutils literal notranslate"><span class="pre">save_steps</span></code> trial steps.
+The default value is <code class="docutils literal notranslate"><span class="pre">1</span></code>.</p>
 </li>
 <li><p class="first">The number of last updates of the variables to average on for the
 final objective function:</p>
@@ -2107,8 +2162,8 @@ is <code class="docutils literal notranslate"><span class="pre">True</span></cod
 </ul>
 <div class="topic">
 <p class="topic-title first">Declarative Name</p>
-<p>When referring to SPSA declaratively inside Aqua, its code <code class="docutils literal notranslate"><span class="pre">name</span></code>, by which Aqua dynamically discovers and loads it,
-is <code class="docutils literal notranslate"><span class="pre">SPSA</span></code>.</p>
+<p>When referring to SPSA declaratively inside Aqua, its code <code class="docutils literal notranslate"><span class="pre">name</span></code>,
+by which Aqua dynamically discovers and loads it, is <code class="docutils literal notranslate"><span class="pre">SPSA</span></code>.</p>
 </div>
 </div>
 <div class="section" id="truncated-newton-tnc">
@@ -2116,63 +2171,56 @@ is <code class="docutils literal notranslate"><span class="pre">SPSA</span></cod
 <p>TNC uses a truncated Newton algorithm to minimize a function with
 variables subject to bounds. This algorithm uses gradient information;
 it is also called Newton Conjugate-Gradient. It differs from the
-<span class="xref std std-ref">Conjugate Gradient (CG) Method</span> method as it wraps a C implementation and
+<a class="reference internal" href="#cg"><span class="std std-ref">Conjugate Gradient (CG) Method</span></a> method as it wraps a C implementation and
 allows each variable to be given upper and lower bounds.</p>
 <p>The following parameters are supported:</p>
 <ul>
-<li><p class="first">The maximum number of iterations:
-.. code:: python</p>
-<blockquote>
-<div><p>maxiter = 1 | 2 | ...</p>
-</div></blockquote>
+<li><p class="first">The maximum number of iterations:</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">maxiter</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">|</span> <span class="mi">2</span> <span class="o">|</span> <span class="o">...</span>
+</pre></div>
+</div>
 <p>A positive <code class="docutils literal notranslate"><span class="pre">int</span></code> value is expected.  The default is <code class="docutils literal notranslate"><span class="pre">100</span></code>.</p>
 </li>
-<li><p class="first">A Boolean value indicating whether or not to print convergence messages:
-.. code:: python</p>
-<blockquote>
-<div><p>disp : bool</p>
-</div></blockquote>
+<li><p class="first">A Boolean value indicating whether or not to print convergence messages:</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">disp</span> <span class="p">:</span> <span class="nb">bool</span>
+</pre></div>
+</div>
 <p>The default value is <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
 </li>
-<li><p class="first">Relative precision for finite difference calculations:
-.. code:: python</p>
-<blockquote>
-<div><p>accuracy : float</p>
-</div></blockquote>
+<li><p class="first">Relative precision for finite difference calculations:</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">accuracy</span> <span class="p">:</span> <span class="nb">float</span>
+</pre></div>
+</div>
 <p>The default value is <code class="docutils literal notranslate"><span class="pre">0.0</span></code>.</p>
 </li>
 <li><p class="first">A tolerance value indicating the precision goal for the value of the objective function
-<code class="docutils literal notranslate"><span class="pre">f</span></code> in the stopping criterion.
-.. code:: python</p>
-<blockquote>
-<div><p>ftol : float</p>
-</div></blockquote>
+<code class="docutils literal notranslate"><span class="pre">f</span></code> in the stopping criterion.</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ftol</span> <span class="p">:</span> <span class="nb">float</span>
+</pre></div>
+</div>
 <p>The default value is <code class="docutils literal notranslate"><span class="pre">-1</span></code>.</p>
 </li>
 <li><p class="first">A tolerance value indicating precision goal for the value of <code class="docutils literal notranslate"><span class="pre">x</span></code> in the stopping criterion,
-after applying <code class="docutils literal notranslate"><span class="pre">x</span></code> scaling factors.
-.. code:: python</p>
-<blockquote>
-<div><p>xtol : float</p>
-</div></blockquote>
+after applying <code class="docutils literal notranslate"><span class="pre">x</span></code> scaling factors.</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">xtol</span> <span class="p">:</span> <span class="nb">float</span>
+</pre></div>
+</div>
 <p>The default value is <code class="docutils literal notranslate"><span class="pre">-1</span></code>.</p>
 </li>
 <li><p class="first">A tolerance value indicating precision goal for the value of the projected gradient <code class="docutils literal notranslate"><span class="pre">g</span></code> in
 the stopping criterion,
-after applying <code class="docutils literal notranslate"><span class="pre">x</span></code> scaling factors.
-.. code:: python</p>
-<blockquote>
-<div><p>gtol : float</p>
-</div></blockquote>
-<p>The default value is <code class="docutils literal notranslate"><span class="pre">-1</span></code>.</p>
-</li>
-<li><p class="first">The tolerance for termination:
-.. code:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tol</span> <span class="p">:</span> <span class="nb">float</span>
+after applying <code class="docutils literal notranslate"><span class="pre">x</span></code> scaling factors.</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gtol</span> <span class="p">:</span> <span class="nb">float</span>
 </pre></div>
 </div>
-<p>This parameter is optional.  If specified, the value of this parameter must be a <code class="docutils literal notranslate"><span class="pre">float</span></code>, otherwise, it is  <code class="docutils literal notranslate"><span class="pre">None</span></code>.
-The default is <code class="docutils literal notranslate"><span class="pre">None</span></code></p>
+<p>The default value is <code class="docutils literal notranslate"><span class="pre">-1</span></code>.</p>
+</li>
+<li><p class="first">The tolerance for termination:</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tol</span> <span class="p">:</span> <span class="nb">float</span>
+</pre></div>
+</div>
+<p>This parameter is optional. If specified, the value of this parameter must be a <code class="docutils literal notranslate"><span class="pre">float</span></code>,
+otherwise, it is  <code class="docutils literal notranslate"><span class="pre">None</span></code>. The default is <code class="docutils literal notranslate"><span class="pre">None</span></code></p>
 </li>
 <li><p class="first">Step size used for numerical approximation of the Jacobian.
 .. code:: python</p>
@@ -2184,15 +2232,15 @@ The default is <code class="docutils literal notranslate"><span class="pre">None
 </ul>
 <div class="topic">
 <p class="topic-title first">Declarative Name</p>
-<p>When referring to TNC declaratively inside Aqua, its code <code class="docutils literal notranslate"><span class="pre">name</span></code>, by which Aqua dynamically discovers and loads it,
-is <code class="docutils literal notranslate"><span class="pre">TNC</span></code>.</p>
+<p>When referring to TNC declaratively inside Aqua, its code <code class="docutils literal notranslate"><span class="pre">name</span></code>,
+by which Aqua dynamically discovers and loads it, is <code class="docutils literal notranslate"><span class="pre">TNC</span></code>.</p>
 </div>
 </div>
 </div>
 <div class="section" id="global-optimizers">
 <span id="id5"></span><h2>Global Optimizers<a class="headerlink" href="#global-optimizers" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<p>Aqua supports a number of classical global optimizers,
-all based on the open-source <a class="reference external" href="https://nlopt.readthedocs.io">NonLinear optimization (NLopt) library</a>.
+<p>Aqua supports a number of classical global optimizers, all based on the open-source
+<a class="reference external" href="https://nlopt.readthedocs.io">NonLinear optimization (NLopt) library</a>.
 Each of these optimizers uses the corresponding named optimizer from NLopt.
 This package has native code implementations and must be
 installed locally for these global optimizers to be accessible by Aqua.
@@ -2202,8 +2250,8 @@ in the <code class="docutils literal notranslate"><span class="pre">nlopt</span>
 <p class="topic-title first">Installation of NLopt</p>
 <p>The <a class="reference external" href="https://nlopt.readthedocs.io/en/latest/#download-and-installation">NLopt download and installation instructions</a>
 describe how to install NLopt.</p>
-<p>If you running Aqua on Windows, then you might want to refer to the specific <a class="reference external" href="https://nlopt.readthedocs.io/en/latest/NLopt_on_Windows/">instructions for
-NLopt on Windows</a>.</p>
+<p>If you running Aqua on Windows, then you might want to refer to the specific
+<a class="reference external" href="https://nlopt.readthedocs.io/en/latest/NLopt_on_Windows/">instructions for NLopt on Windows</a>.</p>
 <p>If you are running Aqua on a Unix-like system, first ensure that your environment is set
 to the Python executable for which the qiskit_aqua package is installed and running.
 Now, having downloaded and unpacked the NLopt archive file
@@ -2213,16 +2261,18 @@ Now, having downloaded and unpacked the NLopt archive file
 <span class="n">sudo</span> <span class="n">make</span> <span class="n">install</span>
 </pre></div>
 </div>
-<p>The above makes and installs the shared libraries and Python interface in <cite>/usr/local</cite>. To have these be used
-by Aqua, the following commands can be entered to augment the dynamic library load path and python path respectively,
-assuming that you choose to leave these entities where they were built and installed as per above commands and that you
+<p>The above makes and installs the shared libraries and Python interface in <cite>/usr/local</cite>.
+To have these be used by Aqua, the following commands can be entered to augment the dynamic
+library load path and python path respectively, assuming that you choose to leave these
+entities where they were built and installed as per above commands and that you
 are running Python 3.6:</p>
 <div class="code sh highlight-default notranslate"><div class="highlight"><pre><span></span>export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/usr/local/lib64
 export PYTHONPATH=/usr/local/lib/python3.6/site-packages:${PYTHONPATH}
 </pre></div>
 </div>
-<p>The two <code class="docutils literal notranslate"><span class="pre">export</span></code> commands above can be pasted into the <code class="docutils literal notranslate"><span class="pre">.bash_profile</span></code> file in the user's home directory for
-automatic execution.  Now you can run Aqua and these optimizers should be available for you to use.</p>
+<p>The two <code class="docutils literal notranslate"><span class="pre">export</span></code> commands above can be pasted into the <code class="docutils literal notranslate"><span class="pre">.bash_profile</span></code> file in the user's
+home directory for automatic execution.  Now you can run Aqua and these optimizers should be
+available for you to use.</p>
 </div>
 <div class="topic">
 <p class="topic-title first">The <code class="docutils literal notranslate"><span class="pre">max_evals</span></code> Parameter</p>
@@ -2238,15 +2288,15 @@ object function evaluation.  The default value is <code class="docutils literal 
 </div>
 <p>Currently, Aqua supplies the following global optimizers from NLOpt:</p>
 <ul class="simple">
-<li><span class="xref std std-ref">Controller Random Search (CRS) with Local Mutation</span></li>
-<li><span class="xref std std-ref">DIviding RECTangles algorithm - Locally based (DIRECT-L)</span></li>
-<li><span class="xref std std-ref">DIviding RECTangles algorithm - Locally based - RANDomized (DIRECT-L-RAND)</span></li>
-<li><span class="xref std std-ref">Evolutionary Strategy algorithm with CaucHy distribution (ESCH)</span></li>
-<li><span class="xref std std-ref">Improved Stochastic Ranking Evolution Strategy (ISRES)</span></li>
+<li><a class="reference internal" href="#crs"><span class="std std-ref">Controller Random Search (CRS) with Local Mutation</span></a></li>
+<li><a class="reference internal" href="#direct-l"><span class="std std-ref">DIviding RECTangles algorithm - Locally based (DIRECT-L)</span></a></li>
+<li><span class="xref std std-ref">direct-l-rand)</span></li>
+<li><a class="reference internal" href="#esch"><span class="std std-ref">Evolutionary Strategy algorithm with CaucHy distribution (ESCH)</span></a></li>
+<li><a class="reference internal" href="#isres"><span class="std std-ref">Improved Stochastic Ranking Evolution Strategy (ISRES)</span></a></li>
 </ul>
 <div class="section" id="controller-random-search-crs-with-local-mutation">
 <span id="crs"></span><h3>Controller Random Search (CRS) with Local Mutation<a class="headerlink" href="#controller-random-search-crs-with-local-mutation" title="このヘッドラインへのパーマリンク">¶</a></h3>
-<p><a class="reference external" href="http://nlopt.readthedocs.io/en/latest/NLopt_Algorithms/#controlled-random-search-crs-with-local-mutation">CRS with local mutation</a>
+<p><a class="reference external" href="http://nlopt.readthedocs.io/en/latest/NLopt_Algorithms /#controlled-random-search-crs-with-local-mutation">CRS with local mutation</a>
 is part of the family of the CRS optimizers.
 The CRS optimizers start with a random population of points, and randomly evolve these points by
 heuristic rules. In the case of CRS with local mutation, the evolution is a randomized version of
@@ -2261,8 +2311,8 @@ by which Aqua dynamically discovers and loads it, is <code class="docutils liter
 <span id="direct-l"></span><h3>DIviding RECTangles algorithm - Locally based (DIRECT-L)<a class="headerlink" href="#dividing-rectangles-algorithm-locally-based-direct-l" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <p>DIviding RECTangles (DIRECT) is a deterministic-search algorithms based on systematic division of
 the search domain into increasingly smaller hyperrectangles.
-The <a class="reference external" href="http://nlopt.readthedocs.io/en/latest/NLopt_Algorithms/#direct-and-direct-l">DIRECT-L</a> version
-is a variant of DIRECT that makes the algorithm more biased towards local search,
+The <a class="reference external" href="http://nlopt.readthedocs.io/en/latest/NLopt_Algorithms/#direct-and-direct-l">DIRECT-L</a>
+version is a variant of DIRECT that makes the algorithm more biased towards local search,
 so that it is more efficient for functions with few local minima.</p>
 <div class="topic">
 <p class="topic-title first">Declarative Name</p>
@@ -2272,8 +2322,8 @@ by which Aqua dynamically discovers and loads it, is <code class="docutils liter
 </div>
 <div class="section" id="dividing-rectangles-algorithm-locally-based-randomized-direct-l-rand">
 <span id="direct-l-rand"></span><h3>DIviding RECTangles algorithm - Locally based - RANDomized (DIRECT-L-RAND)<a class="headerlink" href="#dividing-rectangles-algorithm-locally-based-randomized-direct-l-rand" title="このヘッドラインへのパーマリンク">¶</a></h3>
-<p><a class="reference external" href="http://nlopt.readthedocs.io/en/latest/NLopt_Algorithms/#direct-and-direct-l">DIRECT-L-RAND</a> is a variant of
-<span class="xref std std-ref">DIviding RECTangles algorithm - Locally based (DIRECT-L)</span>
+<p><a class="reference external" href="http://nlopt.readthedocs.io/en/latest/NLopt_Algorithms/#direct-and-direct-l">DIRECT-L-RAND</a>
+is a variant of <a class="reference internal" href="#direct-l"><span class="std std-ref">DIviding RECTangles algorithm - Locally based (DIRECT-L)</span></a>
 that uses some randomization to help decide which dimension to halve next in the case of near-ties.</p>
 <div class="topic">
 <p class="topic-title first">Declarative Name</p>
@@ -2294,7 +2344,7 @@ by which Aqua dynamically discovers and loads it, is <code class="docutils liter
 </div>
 <div class="section" id="improved-stochastic-ranking-evolution-strategy-isres">
 <span id="isres"></span><h3>Improved Stochastic Ranking Evolution Strategy (ISRES)<a class="headerlink" href="#improved-stochastic-ranking-evolution-strategy-isres" title="このヘッドラインへのパーマリンク">¶</a></h3>
-<p><a class="reference external" href="http://nlopt.readthedocs.io/en/latest/NLopt_Algorithms/#isres-improved-stochastic-ranking-evolution-strategy">ISRES</a>
+<p><a class="reference external" href="http://nlopt.readthedocs.io/en/latest/NLopt_Algorithms /#isres-improved-stochastic-ranking-evolution-strategy">ISRES</a>
 is an algorithm for nonlinearly-constrained global optimization.
 It has heuristics to escape local optima, even though convergence to a global optima is not
 guaranteed. The evolution strategy is based on a combination of a mutation rule and differential
