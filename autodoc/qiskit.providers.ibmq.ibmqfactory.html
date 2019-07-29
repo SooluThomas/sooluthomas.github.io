@@ -2014,6 +2014,8 @@ use, or no IBM Q Experience v2 accounts can be found.</td>
 <dt id="qiskit.providers.ibmq.ibmqfactory.IBMQFactory.load_accounts">
 <code class="descname">load_accounts</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/providers/ibmq/ibmqfactory.html#IBMQFactory.load_accounts"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.providers.ibmq.ibmqfactory.IBMQFactory.load_accounts" title="Permalink to this definition">¶</a></dt>
 <dd><p>Load IBM Q Experience v1 accounts found in the system into current session.</p>
+<p>Will also load v2 accounts for backward compatibility, but can lead to
+issues if mixing v1 and v2 credentials in other method calls.</p>
 <dl class="docutils">
 <dt>Note: this method is being deprecated, and only available when using</dt>
 <dd>v1 accounts.</dd>
@@ -2030,12 +2032,7 @@ returns as soon as credentials are found:</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><ul class="first last simple">
-<li><code class="xref py py-exc docutils literal notranslate"><span class="pre">IBMQAccountError</span></code> – if the method is used with an IBM Q Experience v2
-account, or if no credentials are found.</li>
-<li><code class="xref py py-exc docutils literal notranslate"><span class="pre">IBMQApiUrlError</span></code> – if any of the credentials stored belong to a v2 account.</li>
-</ul>
-</td>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><code class="xref py py-exc docutils literal notranslate"><span class="pre">IBMQAccountError</span></code> – If mixing v1 and v2 account credentials</td>
 </tr>
 </tbody>
 </table>
