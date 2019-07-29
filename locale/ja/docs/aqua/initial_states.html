@@ -1518,28 +1518,28 @@
   <div class="section" id="initial-states">
 <span id="id1"></span><h1>Initial States<a class="headerlink" href="#initial-states" title="このヘッドラインへのパーマリンク">¶</a></h1>
 <p>An <em>initial state</em> in Aqua is an object that defines a starting state for one of the
-<a class="reference internal" href="../../locale/docs/aqua/variational_forms.html#variational-forms"><span class="std std-ref">Variational Forms</span></a> and a trial state to be evolved by the <a class="reference internal" href="../../locale/docs/aqua/algorithms.html#qpe"><span class="std std-ref">Quantum Phase Estimation (QPE)</span></a> algorithm.
+<a class="reference internal" href="variational_forms.html#variational-forms"><span class="std std-ref">Variational Forms</span></a> and a trial state to be evolved by the <a class="reference internal" href="algorithms.html#qpe"><span class="std std-ref">Quantum Phase Estimation (QPE)</span></a> algorithm.
 An initial state allows the user to define a state, either declaratively or programmatically, and
 then provides a circuit that can take the starting point of all zero qubits to the defined state.</p>
 <div class="topic">
 <p class="topic-title first">Extending the Initial States Library</p>
 <p>Consistent with its unique  design, Aqua has a modular and
 extensible architecture. Algorithms and their supporting objects, such as initial states for
-variational forms and <a class="reference internal" href="../../locale/docs/aqua/algorithms.html#qpe"><span class="std std-ref">Quantum Phase Estimation (QPE)</span></a>, are pluggable modules in Aqua.
+variational forms and <a class="reference internal" href="algorithms.html#qpe"><span class="std std-ref">Quantum Phase Estimation (QPE)</span></a>, are pluggable modules in Aqua.
 New initial states are typically installed in the <code class="docutils literal notranslate"><span class="pre">qiskit/aqua/components/initial_states</span></code>
 folder and derive from the <code class="docutils literal notranslate"><span class="pre">InitialState</span></code> class.  Aqua also allows for
-<a class="reference internal" href="../../locale/docs/aqua/extending.html#aqua-dynamically-discovered-components"><span class="std std-ref">Dynamically Discovered Components</span></a>: new components can register themselves
+<a class="reference internal" href="extending.html#aqua-dynamically-discovered-components"><span class="std std-ref">Dynamically Discovered Components</span></a>: new components can register themselves
 as Aqua extensions and be dynamically discovered at run time independent of their
 location in the file system.
 This is done in order to encourage researchers and
 developers interested in
-<a class="reference internal" href="../../locale/docs/aqua/extending.html#aqua-extending"><span class="std std-ref">Contributing to Aqua</span></a> to extend the Aqua framework with their novel research contributions.</p>
+<a class="reference internal" href="extending.html#aqua-extending"><span class="std std-ref">Contributing to Aqua</span></a> to extend the Aqua framework with their novel research contributions.</p>
 </div>
 <p>Aqua supplies the following three initial states:</p>
 <ol class="arabic simple">
-<li><a class="reference internal" href="../../locale/docs/aqua/initial_states.html#zero"><span class="std std-ref">Zero</span></a></li>
-<li><a class="reference internal" href="../../locale/docs/aqua/initial_states.html#hartree-fock"><span class="std std-ref">Hartree-Fock</span></a></li>
-<li><a class="reference internal" href="../../locale/docs/aqua/initial_states.html#custom-initial-states"><span class="std std-ref">Custom</span></a></li>
+<li><a class="reference internal" href="#zero"><span class="std std-ref">Zero</span></a></li>
+<li><a class="reference internal" href="#hartree-fock"><span class="std std-ref">Hartree-Fock</span></a></li>
+<li><a class="reference internal" href="#custom-initial-states"><span class="std std-ref">Custom</span></a></li>
 </ol>
 <div class="section" id="zero">
 <span id="id2"></span><h2>Zero<a class="headerlink" href="#zero" title="このヘッドラインへのパーマリンク">¶</a></h2>
@@ -1565,13 +1565,13 @@ derive a set of <span class="math notranslate nohighlight">\(N\)</span>-coupled 
 equations yields the Hartree–Fock wave function and energy of the system. For both atoms and
 molecules, the Hartree–Fock solution is the central starting point for most methods that describe
 the many-electron system more accurately. In Aqua, for example, the Hartree-Fock solution is often
-the ideal starting state for the <a class="reference internal" href="../../locale/docs/aqua/variational_forms.html#variational-forms"><span class="std std-ref">Variational Forms</span></a>
-and a trial state to be evolved by the <a class="reference internal" href="../../locale/docs/aqua/algorithms.html#qpe"><span class="std std-ref">Quantum Phase Estimation (QPE)</span></a> algorithm.
+the ideal starting state for the <a class="reference internal" href="variational_forms.html#variational-forms"><span class="std std-ref">Variational Forms</span></a>
+and a trial state to be evolved by the <a class="reference internal" href="algorithms.html#qpe"><span class="std std-ref">Quantum Phase Estimation (QPE)</span></a> algorithm.
 For example, when the transformation type of a chemistry operator is set to be particle hole,
 then the configuration of the initial qubit state offsetting the computation of the final result
 should be set to be the Hartree-Fock energy of the molecule in the
-<a class="reference internal" href="../../locale/docs/aqua/chemistry/qiskit_chemistry_execution.html#qiskit-chemistry-input-file"><span class="std std-ref">Input File</span></a>. Hartree-Fock is also the preferred initial state when using the
-<a class="reference internal" href="../../locale/docs/aqua/variational_forms.html#uccsd"><span class="std std-ref">Unitary Coupled Cluster Singles and Doubles (UCCSD)</span></a> and <a class="reference internal" href="../../locale/docs/aqua/variational_forms.html#swaprz"><span class="std std-ref">SwapRz</span></a> variational forms.</p>
+<a class="reference internal" href="chemistry/qiskit_chemistry_execution.html#qiskit-chemistry-input-file"><span class="std std-ref">Input File</span></a>. Hartree-Fock is also the preferred initial state when using the
+<a class="reference internal" href="variational_forms.html#uccsd"><span class="std std-ref">Unitary Coupled Cluster Singles and Doubles (UCCSD)</span></a> and <a class="reference internal" href="variational_forms.html#swaprz"><span class="std std-ref">SwapRz</span></a> variational forms.</p>
 <p>The following parameters allow
 the Hartree-Fock initial state to be configured:</p>
 <ul>
@@ -1589,7 +1589,7 @@ the Hartree-Fock initial state to be configured:</p>
 for closed shell backward compatibility, a single <code class="docutils literal notranslate"><span class="pre">int</span></code> value which will be divided by
 two internally to form number of alpha and beta electrons.</p>
 </li>
-<li><p class="first">The desired <a class="reference internal" href="../../locale/docs/aqua/chemistry/qiskit_chemistry_translators.html#translators"><span class="std std-ref">Translators</span></a> from fermions to qubits:</p>
+<li><p class="first">The desired <a class="reference internal" href="chemistry/qiskit_chemistry_translators.html#translators"><span class="std std-ref">Translators</span></a> from fermions to qubits:</p>
 <div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">qubit_mapping</span> <span class="o">=</span> <span class="n">jordan_wigner</span> <span class="o">|</span> <span class="n">parity</span> <span class="o">|</span> <span class="n">bravyi_kitaev</span>
 </pre></div>
 </div>
@@ -1597,13 +1597,13 @@ two internally to form number of alpha and beta electrons.</p>
 above are supported, but new qubit mappings can easily be plugged in.
 Specifically:</p>
 <ol class="arabic simple">
-<li><code class="docutils literal notranslate"><span class="pre">jordan_wigner</span></code> corresponds to the <a class="reference internal" href="../../locale/docs/aqua/chemistry/qiskit_chemistry_translators.html#jordan-wigner"><span class="std std-ref">Jordan-Wigner</span></a> transformation.</li>
+<li><code class="docutils literal notranslate"><span class="pre">jordan_wigner</span></code> corresponds to the <a class="reference internal" href="chemistry/qiskit_chemistry_translators.html#jordan-wigner"><span class="std std-ref">Jordan-Wigner</span></a> transformation.</li>
 <li><code class="docutils literal notranslate"><span class="pre">parity</span></code>, the default value for the <code class="docutils literal notranslate"><span class="pre">qubit_mapping</span></code> parameter, corresponds to the
-<a class="reference internal" href="../../locale/docs/aqua/chemistry/qiskit_chemistry_translators.html#parity"><span class="std std-ref">Parity</span></a> mapping transformation. When this mapping is selected,
+<a class="reference internal" href="chemistry/qiskit_chemistry_translators.html#parity"><span class="std std-ref">Parity</span></a> mapping transformation. When this mapping is selected,
 it is possible to reduce by 2 the number of qubits required by the computation
 without loss of precision by setting the <code class="docutils literal notranslate"><span class="pre">two_qubit_reduction</span></code> parameter to <code class="docutils literal notranslate"><span class="pre">True</span></code>,
 as explained next.</li>
-<li><code class="docutils literal notranslate"><span class="pre">bravyi_kitaev</span></code> corresponds to the <a class="reference internal" href="../../locale/docs/aqua/chemistry/qiskit_chemistry_translators.html#bravyi-kitaev"><span class="std std-ref">Bravyi-Kitaev</span></a> transformation,
+<li><code class="docutils literal notranslate"><span class="pre">bravyi_kitaev</span></code> corresponds to the <a class="reference internal" href="chemistry/qiskit_chemistry_translators.html#bravyi-kitaev"><span class="std std-ref">Bravyi-Kitaev</span></a> transformation,
 also known as <em>binary-tree-based qubit mapping</em>.</li>
 </ol>
 </li>
@@ -1626,13 +1626,13 @@ the parity mapping, the value assigned to <code class="docutils literal notransl
 <div class="admonition note">
 <p class="first admonition-title">注釈</p>
 <p>When the <code class="docutils literal notranslate"><span class="pre">auto_substitutions</span></code> flag in the <code class="docutils literal notranslate"><span class="pre">problem</span></code> section of the
-<a class="reference internal" href="../../locale/docs/aqua/chemistry/qiskit_chemistry_execution.html#qiskit-chemistry-input-file"><span class="std std-ref">Input File</span></a>
+<a class="reference internal" href="chemistry/qiskit_chemistry_execution.html#qiskit-chemistry-input-file"><span class="std std-ref">Input File</span></a>
 is set to <code class="docutils literal notranslate"><span class="pre">True</span></code>, which is the default, the values of parameters
 <code class="docutils literal notranslate"><span class="pre">num_particles</span></code> and <code class="docutils literal notranslate"><span class="pre">num_orbitals</span></code> are automatically computed by Qiskit Chemistry
 when <code class="docutils literal notranslate"><span class="pre">Hartree-Fock</span></code> is selected as the value of the <code class="docutils literal notranslate"><span class="pre">name</span></code> parameter in the
 <code class="docutils literal notranslate"><span class="pre">InitialState</span></code> section. As such, their configuration is disabled; the user will not be
 required, or even allowed, to assign values to these two parameters. This is also reflected in
-the <a class="reference internal" href="../../locale/docs/aqua/chemistry/qiskit_chemistry_execution.html#qiskit-chemistry-gui"><span class="std std-ref">GUI</span></a>, where these parameters will be grayed out and uneditable as
+the <a class="reference internal" href="chemistry/qiskit_chemistry_execution.html#qiskit-chemistry-gui"><span class="std std-ref">GUI</span></a>, where these parameters will be grayed out and uneditable as
 long as <code class="docutils literal notranslate"><span class="pre">auto_substitutions</span></code> is set to <code class="docutils literal notranslate"><span class="pre">True</span></code> in the <code class="docutils literal notranslate"><span class="pre">problem</span></code> section. Furthermore,
 Qiskit Chemistry automatically sets parameters <code class="docutils literal notranslate"><span class="pre">qubit_mapping</span></code> and <code class="docutils literal notranslate"><span class="pre">two_qubit_reduction</span></code> in
 section <code class="docutils literal notranslate"><span class="pre">initial_state</span></code> when <code class="docutils literal notranslate"><span class="pre">HartreeFock</span></code> is selected as the value of the <code class="docutils literal notranslate"><span class="pre">name</span></code>
@@ -1664,9 +1664,9 @@ by which Aqua dynamically discovers and loads it, is <code class="docutils liter
 </div>
 <div class="section" id="custom">
 <span id="custom-initial-states"></span><h2>Custom<a class="headerlink" href="#custom" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<p>Should the <a class="reference internal" href="../../locale/docs/aqua/initial_states.html#zero"><span class="std std-ref">Zero</span></a> and <a class="reference internal" href="../../locale/docs/aqua/initial_states.html#hartree-fock"><span class="std std-ref">Hartree-Fock</span></a> pre-defined initial states not meet the user's
+<p>Should the <a class="reference internal" href="#zero"><span class="std std-ref">Zero</span></a> and <a class="reference internal" href="#hartree-fock"><span class="std std-ref">Hartree-Fock</span></a> pre-defined initial states not meet the user's
 needs for a particular quantum experiment, this option allows the user of Aqua to fully customize
-the initial state (e.g. for <a class="reference internal" href="../../locale/docs/aqua/variational_forms.html#variational-forms"><span class="std std-ref">Variational Forms</span></a> and the <a class="reference internal" href="../../locale/docs/aqua/algorithms.html#qpe"><span class="std std-ref">Quantum Phase Estimation (QPE)</span></a> algorithm) by directly
+the initial state (e.g. for <a class="reference internal" href="variational_forms.html#variational-forms"><span class="std std-ref">Variational Forms</span></a> and the <a class="reference internal" href="algorithms.html#qpe"><span class="std std-ref">Quantum Phase Estimation (QPE)</span></a> algorithm) by directly
 configuring a <em>custom probability distribution</em> for the state vector or even providing the
 desired <em>custom quantum circuit</em>. No matter what custom probability distribution the user chooses,
 the state vector will be normalized by Aqua, so the total probability represented is <span class="math notranslate nohighlight">\(1.0\)</span>.
@@ -1681,7 +1681,7 @@ parameters:</p>
 values are supported:</p>
 <ol class="arabic simple">
 <li><code class="docutils literal notranslate"><span class="pre">&quot;zero&quot;</span></code> --- This setting configures the state vector with the <em>zero probability
-distribution</em>, and is effectively equivalent to the <a class="reference internal" href="../../locale/docs/aqua/initial_states.html#zero"><span class="std std-ref">Zero</span></a> initial state.</li>
+distribution</em>, and is effectively equivalent to the <a class="reference internal" href="#zero"><span class="std std-ref">Zero</span></a> initial state.</li>
 <li><code class="docutils literal notranslate"><span class="pre">&quot;uniform&quot;</span></code> --- This setting configures the state vector with the <em>uniform probability
 distribution</em>.  All the qubits
 are set in superposition, each of them being initialized to the Hadamard gate, which means
@@ -1710,7 +1710,7 @@ the custom quantum circuit for the initial state.</p>
 allows for programmatically setting <code class="docutils literal notranslate"><span class="pre">num_qubits</span></code>, the number of qubits in the
 <code class="docutils literal notranslate"><span class="pre">InitialState</span></code> object. However, when configured declaratively, Aqua and its domain specific
 applications
-(<a class="reference internal" href="../../locale/docs/aqua/chemistry/qiskit_chemistry.html#aqua-chemistry"><span class="std std-ref">Qiskit Chemistry</span></a>, <a class="reference internal" href="../../locale/docs/aqua/ai/qiskit_ai.html#aqua-ai"><span class="std std-ref">Qiskit Artificial Intelligence</span></a>, and <a class="reference internal" href="../../locale/docs/aqua/optimization/qiskit_optimization.html#aqua-optimization"><span class="std std-ref">Qiskit Optimization</span></a>) do not expose a
+(<a class="reference internal" href="chemistry/qiskit_chemistry.html#aqua-chemistry"><span class="std std-ref">Qiskit Chemistry</span></a>, <a class="reference internal" href="ai/qiskit_ai.html#aqua-ai"><span class="std std-ref">Qiskit Artificial Intelligence</span></a>, and <a class="reference internal" href="optimization/qiskit_optimization.html#aqua-optimization"><span class="std std-ref">Qiskit Optimization</span></a>) do not expose a
 configuration parameter in an <code class="docutils literal notranslate"><span class="pre">InitialState</span></code> object to set the number of qubits to use in an
 experiment.  This is because, when it is used as a tool to execute experiments,
 Aqua is working at a higher, more abstract level.  In such cases, the number of qubits

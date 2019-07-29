@@ -1518,12 +1518,12 @@
   <div class="section" id="eigenvalues">
 <span id="eigs"></span><h1>Eigenvalues<a class="headerlink" href="#eigenvalues" title="このヘッドラインへのパーマリンク">¶</a></h1>
 <p>Aqua bundles methods to find Eigenvalues of a given matrix, such as
-<a class="reference internal" href="../../locale/docs/aqua/eigs.html#eigsqpe-component"><span class="std std-ref">EigsQPE</span></a> in the Eigs library. Rather than being used as a
+<a class="reference internal" href="#eigsqpe-component"><span class="std std-ref">EigsQPE</span></a> in the Eigs library. Rather than being used as a
 standalone algorithm, the members of the library are to be used in a larger
-algorithm such as <a class="reference internal" href="../../locale/docs/aqua/algorithms.html#hhl"><span class="std std-ref">HHL algorithm for solving linear systems (HHL)</span></a>. The following methods are available</p>
+algorithm such as <a class="reference internal" href="algorithms.html#hhl"><span class="std std-ref">HHL algorithm for solving linear systems (HHL)</span></a>. The following methods are available</p>
 <blockquote>
 <div><ul class="simple">
-<li><a class="reference internal" href="../../locale/docs/aqua/eigs.html#eigsqpe-component"><span class="std std-ref">EigsQPE</span></a>: Given a matrix and a linear combination of its
+<li><a class="reference internal" href="#eigsqpe-component"><span class="std std-ref">EigsQPE</span></a>: Given a matrix and a linear combination of its
 eigenstates, <em>QPE</em> prepares the Eigenvalues on a specified output register.</li>
 </ul>
 </div></blockquote>
@@ -1535,26 +1535,26 @@ for quantum variational algorithms, are pluggable modules in Aqua. New
 eigenvalue solvers are typically installed in the
 <code class="docutils literal notranslate"><span class="pre">qiskit/aqua/components/eigs</span></code> folder and derive from the
 <code class="docutils literal notranslate"><span class="pre">Eigenvalues</span></code> class.  Aqua also allows for
-<a class="reference internal" href="../../locale/docs/aqua/extending.html#aqua-dynamically-discovered-components"><span class="std std-ref">Dynamically Discovered Components</span></a>: new Eigenvalue estimator can
+<a class="reference internal" href="extending.html#aqua-dynamically-discovered-components"><span class="std std-ref">Dynamically Discovered Components</span></a>: new Eigenvalue estimator can
 register themselves as Aqua extensions and be dynamically discovered at
 run time independent of their location in the file system. This is done
 in order to encourage researchers and developers interested in
-<a class="reference internal" href="../../locale/docs/aqua/extending.html#aqua-extending"><span class="std std-ref">Contributing to Aqua</span></a> to extend the Aqua framework with their novel research
+<a class="reference internal" href="extending.html#aqua-extending"><span class="std std-ref">Contributing to Aqua</span></a> to extend the Aqua framework with their novel research
 contributions.</p>
 </div>
 <div class="admonition seealso">
 <p class="first admonition-title">参考</p>
-<p class="last">Section <a class="reference internal" href="../../locale/docs/aqua/extending.html#aqua-extending"><span class="std std-ref">Contributing to Aqua</span></a> provides more
+<p class="last">Section <a class="reference internal" href="extending.html#aqua-extending"><span class="std std-ref">Contributing to Aqua</span></a> provides more
 details on how to extend Aqua with new components.</p>
 </div>
 <div class="section" id="eigsqpe">
 <span id="eigsqpe-component"></span><h2>EigsQPE<a class="headerlink" href="#eigsqpe" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p>This Eigenvalue solver component is directly based on the QPE quantum
-algorithm in Aqua <a class="reference internal" href="../../locale/docs/aqua/algorithms.html#qpe"><span class="std std-ref">Quantum Phase Estimation (QPE)</span></a>. Some changes have been made to support negative
-eigenvalues and use it in a larger quantum algorithm (e.g. <a class="reference internal" href="../../locale/docs/aqua/algorithms.html#hhl"><span class="std std-ref">HHL algorithm for solving linear systems (HHL)</span></a>).</p>
+algorithm in Aqua <a class="reference internal" href="algorithms.html#qpe"><span class="std std-ref">Quantum Phase Estimation (QPE)</span></a>. Some changes have been made to support negative
+eigenvalues and use it in a larger quantum algorithm (e.g. <a class="reference internal" href="algorithms.html#hhl"><span class="std std-ref">HHL algorithm for solving linear systems (HHL)</span></a>).</p>
 <div class="admonition seealso">
 <p class="first admonition-title">参考</p>
-<p class="last">Section <a class="reference internal" href="../../locale/docs/aqua/algorithms.html#qpe"><span class="std std-ref">Quantum Phase Estimation (QPE)</span></a> provides more
+<p class="last">Section <a class="reference internal" href="algorithms.html#qpe"><span class="std std-ref">Quantum Phase Estimation (QPE)</span></a> provides more
 details on the QPE algorithm.</p>
 </div>
 <p>In addition to requiring an IQFT and an initial state as part of its

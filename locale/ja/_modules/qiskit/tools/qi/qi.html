@@ -211,7 +211,7 @@
 
 
 <span class="c1"># Define methods for making QFT circuits</span>
-<div class="viewcode-block" id="qft"><a class="viewcode-back" href="../../../../locale/docs/autodoc/qiskit.tools.qi.qi.html#qiskit.tools.qi.qi.qft">[ドキュメント]</a><span class="k">def</span> <span class="nf">qft</span><span class="p">(</span><span class="n">circ</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+<div class="viewcode-block" id="qft"><a class="viewcode-back" href="../../../../docs/autodoc/qiskit.tools.qi.qi.html#qiskit.tools.qi.qi.qft">[ドキュメント]</a><span class="k">def</span> <span class="nf">qft</span><span class="p">(</span><span class="n">circ</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;n-qubit QFT on q in circ.&quot;&quot;&quot;</span>
     <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
         <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">j</span><span class="p">):</span>
@@ -224,7 +224,7 @@
 <span class="c1">###############################################################</span>
 
 
-<div class="viewcode-block" id="partial_trace"><a class="viewcode-back" href="../../../../locale/docs/autodoc/qiskit.tools.qi.qi.html#qiskit.tools.qi.qi.partial_trace">[ドキュメント]</a><span class="k">def</span> <span class="nf">partial_trace</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">trace_systems</span><span class="p">,</span> <span class="n">dimensions</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<div class="viewcode-block" id="partial_trace"><a class="viewcode-back" href="../../../../docs/autodoc/qiskit.tools.qi.qi.html#qiskit.tools.qi.qi.partial_trace">[ドキュメント]</a><span class="k">def</span> <span class="nf">partial_trace</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">trace_systems</span><span class="p">,</span> <span class="n">dimensions</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Partial trace over subsystems of multi-partite matrix.</span>
 
@@ -350,7 +350,7 @@
     <span class="k">return</span> <span class="n">mat</span>
 
 
-<div class="viewcode-block" id="vectorize"><a class="viewcode-back" href="../../../../locale/docs/autodoc/qiskit.tools.qi.qi.html#qiskit.tools.qi.qi.vectorize">[ドキュメント]</a><span class="k">def</span> <span class="nf">vectorize</span><span class="p">(</span><span class="n">density_matrix</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;col&#39;</span><span class="p">):</span>
+<div class="viewcode-block" id="vectorize"><a class="viewcode-back" href="../../../../docs/autodoc/qiskit.tools.qi.qi.html#qiskit.tools.qi.qi.vectorize">[ドキュメント]</a><span class="k">def</span> <span class="nf">vectorize</span><span class="p">(</span><span class="n">density_matrix</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;col&#39;</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Flatten an operator to a vector in a specified basis.</span>
 
 <span class="sd">    Args:</span>
@@ -386,7 +386,7 @@
     <span class="k">return</span> <span class="kc">None</span></div>
 
 
-<div class="viewcode-block" id="devectorize"><a class="viewcode-back" href="../../../../locale/docs/autodoc/qiskit.tools.qi.qi.html#qiskit.tools.qi.qi.devectorize">[ドキュメント]</a><span class="k">def</span> <span class="nf">devectorize</span><span class="p">(</span><span class="n">vectorized_mat</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;col&#39;</span><span class="p">):</span>
+<div class="viewcode-block" id="devectorize"><a class="viewcode-back" href="../../../../docs/autodoc/qiskit.tools.qi.qi.html#qiskit.tools.qi.qi.devectorize">[ドキュメント]</a><span class="k">def</span> <span class="nf">devectorize</span><span class="p">(</span><span class="n">vectorized_mat</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;col&#39;</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Devectorize a vectorized square matrix.</span>
 
 <span class="sd">    Args:</span>
@@ -425,7 +425,7 @@
     <span class="k">return</span> <span class="kc">None</span></div>
 
 
-<div class="viewcode-block" id="choi_to_rauli"><a class="viewcode-back" href="../../../../locale/docs/autodoc/qiskit.tools.qi.qi.html#qiskit.tools.qi.qi.choi_to_rauli">[ドキュメント]</a><span class="k">def</span> <span class="nf">choi_to_rauli</span><span class="p">(</span><span class="n">choi</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+<div class="viewcode-block" id="choi_to_rauli"><a class="viewcode-back" href="../../../../docs/autodoc/qiskit.tools.qi.qi.html#qiskit.tools.qi.qi.choi_to_rauli">[ドキュメント]</a><span class="k">def</span> <span class="nf">choi_to_rauli</span><span class="p">(</span><span class="n">choi</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Convert a Choi-matrix to a Pauli-basis superoperator.</span>
 
@@ -466,7 +466,7 @@
     <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">rauli</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">4</span> <span class="o">**</span> <span class="n">num_qubits</span><span class="p">,</span> <span class="mi">4</span> <span class="o">**</span> <span class="n">num_qubits</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="chop"><a class="viewcode-back" href="../../../../locale/docs/autodoc/qiskit.tools.qi.qi.html#qiskit.tools.qi.qi.chop">[ドキュメント]</a><span class="k">def</span> <span class="nf">chop</span><span class="p">(</span><span class="n">array</span><span class="p">,</span> <span class="n">epsilon</span><span class="o">=</span><span class="mf">1e-10</span><span class="p">):</span>
+<div class="viewcode-block" id="chop"><a class="viewcode-back" href="../../../../docs/autodoc/qiskit.tools.qi.qi.html#qiskit.tools.qi.qi.chop">[ドキュメント]</a><span class="k">def</span> <span class="nf">chop</span><span class="p">(</span><span class="n">array</span><span class="p">,</span> <span class="n">epsilon</span><span class="o">=</span><span class="mf">1e-10</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Truncate small values of a complex array.</span>
 
@@ -487,7 +487,7 @@
     <span class="k">return</span> <span class="n">ret</span></div>
 
 
-<div class="viewcode-block" id="outer"><a class="viewcode-back" href="../../../../locale/docs/autodoc/qiskit.tools.qi.qi.html#qiskit.tools.qi.qi.outer">[ドキュメント]</a><span class="k">def</span> <span class="nf">outer</span><span class="p">(</span><span class="n">vector1</span><span class="p">,</span> <span class="n">vector2</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="outer"><a class="viewcode-back" href="../../../../docs/autodoc/qiskit.tools.qi.qi.html#qiskit.tools.qi.qi.outer">[ドキュメント]</a><span class="k">def</span> <span class="nf">outer</span><span class="p">(</span><span class="n">vector1</span><span class="p">,</span> <span class="n">vector2</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Construct the outer product of two vectors.</span>
 
@@ -513,7 +513,7 @@
 <span class="c1"># Random Matrices.</span>
 <span class="c1">###############################################################</span>
 
-<div class="viewcode-block" id="random_unitary_matrix"><a class="viewcode-back" href="../../../../locale/docs/autodoc/qiskit.tools.qi.qi.html#qiskit.tools.qi.qi.random_unitary_matrix">[ドキュメント]</a><span class="k">def</span> <span class="nf">random_unitary_matrix</span><span class="p">(</span><span class="n">dim</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="random_unitary_matrix"><a class="viewcode-back" href="../../../../docs/autodoc/qiskit.tools.qi.qi.html#qiskit.tools.qi.qi.random_unitary_matrix">[ドキュメント]</a><span class="k">def</span> <span class="nf">random_unitary_matrix</span><span class="p">(</span><span class="n">dim</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Deprecated in 0.8+</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s1">&#39;The random_unitary_matrix() function in qiskit.tools.qi has been &#39;</span>
@@ -523,7 +523,7 @@
     <span class="k">return</span> <span class="n">random</span><span class="o">.</span><span class="n">random_unitary</span><span class="p">(</span><span class="n">dim</span><span class="p">,</span> <span class="n">seed</span><span class="p">)</span><span class="o">.</span><span class="n">data</span></div>
 
 
-<div class="viewcode-block" id="random_density_matrix"><a class="viewcode-back" href="../../../../locale/docs/autodoc/qiskit.tools.qi.qi.html#qiskit.tools.qi.qi.random_density_matrix">[ドキュメント]</a><span class="k">def</span> <span class="nf">random_density_matrix</span><span class="p">(</span><span class="n">length</span><span class="p">,</span> <span class="n">rank</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;Hilbert-Schmidt&#39;</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="random_density_matrix"><a class="viewcode-back" href="../../../../docs/autodoc/qiskit.tools.qi.qi.html#qiskit.tools.qi.qi.random_density_matrix">[ドキュメント]</a><span class="k">def</span> <span class="nf">random_density_matrix</span><span class="p">(</span><span class="n">length</span><span class="p">,</span> <span class="n">rank</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;Hilbert-Schmidt&#39;</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Deprecated in 0.8+</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s1">&#39;The random_density_matrix() function in qiskit.tools.qi has been &#39;</span>
@@ -538,7 +538,7 @@
 <span class="c1">###############################################################</span>
 
 
-<div class="viewcode-block" id="purity"><a class="viewcode-back" href="../../../../locale/docs/autodoc/qiskit.tools.qi.qi.html#qiskit.tools.qi.qi.purity">[ドキュメント]</a><span class="k">def</span> <span class="nf">purity</span><span class="p">(</span><span class="n">state</span><span class="p">):</span>
+<div class="viewcode-block" id="purity"><a class="viewcode-back" href="../../../../docs/autodoc/qiskit.tools.qi.qi.html#qiskit.tools.qi.qi.purity">[ドキュメント]</a><span class="k">def</span> <span class="nf">purity</span><span class="p">(</span><span class="n">state</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Calculate the purity of a quantum state.</span>
 
 <span class="sd">    Args:</span>
@@ -553,7 +553,7 @@
     <span class="k">return</span> <span class="n">new_purity</span><span class="p">(</span><span class="n">state</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="concurrence"><a class="viewcode-back" href="../../../../locale/docs/autodoc/qiskit.tools.qi.qi.html#qiskit.tools.qi.qi.concurrence">[ドキュメント]</a><span class="k">def</span> <span class="nf">concurrence</span><span class="p">(</span><span class="n">state</span><span class="p">):</span>
+<div class="viewcode-block" id="concurrence"><a class="viewcode-back" href="../../../../docs/autodoc/qiskit.tools.qi.qi.html#qiskit.tools.qi.qi.concurrence">[ドキュメント]</a><span class="k">def</span> <span class="nf">concurrence</span><span class="p">(</span><span class="n">state</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Calculate the concurrence.</span>
 
 <span class="sd">    Args:</span>
@@ -577,7 +577,7 @@
     <span class="k">return</span> <span class="nb">max</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">w</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">w</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span></div>
 
 
-<div class="viewcode-block" id="shannon_entropy"><a class="viewcode-back" href="../../../../locale/docs/autodoc/qiskit.tools.qi.qi.html#qiskit.tools.qi.qi.shannon_entropy">[ドキュメント]</a><span class="k">def</span> <span class="nf">shannon_entropy</span><span class="p">(</span><span class="n">pvec</span><span class="p">,</span> <span class="n">base</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
+<div class="viewcode-block" id="shannon_entropy"><a class="viewcode-back" href="../../../../docs/autodoc/qiskit.tools.qi.qi.html#qiskit.tools.qi.qi.shannon_entropy">[ドキュメント]</a><span class="k">def</span> <span class="nf">shannon_entropy</span><span class="p">(</span><span class="n">pvec</span><span class="p">,</span> <span class="n">base</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Compute the Shannon entropy of a probability vector.</span>
 
@@ -609,7 +609,7 @@
     <span class="k">return</span> <span class="n">h</span></div>
 
 
-<div class="viewcode-block" id="entropy"><a class="viewcode-back" href="../../../../locale/docs/autodoc/qiskit.tools.qi.qi.html#qiskit.tools.qi.qi.entropy">[ドキュメント]</a><span class="k">def</span> <span class="nf">entropy</span><span class="p">(</span><span class="n">state</span><span class="p">):</span>
+<div class="viewcode-block" id="entropy"><a class="viewcode-back" href="../../../../docs/autodoc/qiskit.tools.qi.qi.html#qiskit.tools.qi.qi.entropy">[ドキュメント]</a><span class="k">def</span> <span class="nf">entropy</span><span class="p">(</span><span class="n">state</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Compute the von-Neumann entropy of a quantum state.</span>
 
@@ -627,7 +627,7 @@
     <span class="k">return</span> <span class="n">shannon_entropy</span><span class="p">(</span><span class="n">evals</span><span class="p">,</span> <span class="n">base</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">e</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="mutual_information"><a class="viewcode-back" href="../../../../locale/docs/autodoc/qiskit.tools.qi.qi.html#qiskit.tools.qi.qi.mutual_information">[ドキュメント]</a><span class="k">def</span> <span class="nf">mutual_information</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">d0</span><span class="p">,</span> <span class="n">d1</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="mutual_information"><a class="viewcode-back" href="../../../../docs/autodoc/qiskit.tools.qi.qi.html#qiskit.tools.qi.qi.mutual_information">[ドキュメント]</a><span class="k">def</span> <span class="nf">mutual_information</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">d0</span><span class="p">,</span> <span class="n">d1</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Compute the mutual information of a bipartite state.</span>
 
@@ -647,7 +647,7 @@
     <span class="k">return</span> <span class="n">mi</span></div>
 
 
-<div class="viewcode-block" id="entanglement_of_formation"><a class="viewcode-back" href="../../../../locale/docs/autodoc/qiskit.tools.qi.qi.html#qiskit.tools.qi.qi.entanglement_of_formation">[ドキュメント]</a><span class="k">def</span> <span class="nf">entanglement_of_formation</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">d0</span><span class="p">,</span> <span class="n">d1</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="entanglement_of_formation"><a class="viewcode-back" href="../../../../docs/autodoc/qiskit.tools.qi.qi.html#qiskit.tools.qi.qi.entanglement_of_formation">[ドキュメント]</a><span class="k">def</span> <span class="nf">entanglement_of_formation</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">d0</span><span class="p">,</span> <span class="n">d1</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Compute the entanglement of formation of quantum state.</span>
 
@@ -703,7 +703,7 @@
 <span class="c1">###############################################################</span>
 
 
-<div class="viewcode-block" id="is_pos_def"><a class="viewcode-back" href="../../../../locale/docs/autodoc/qiskit.tools.qi.qi.html#qiskit.tools.qi.qi.is_pos_def">[ドキュメント]</a><span class="k">def</span> <span class="nf">is_pos_def</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<div class="viewcode-block" id="is_pos_def"><a class="viewcode-back" href="../../../../docs/autodoc/qiskit.tools.qi.qi.html#qiskit.tools.qi.qi.is_pos_def">[ドキュメント]</a><span class="k">def</span> <span class="nf">is_pos_def</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Return is_pos_def.&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">eigvals</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span></div>
 </pre></div>

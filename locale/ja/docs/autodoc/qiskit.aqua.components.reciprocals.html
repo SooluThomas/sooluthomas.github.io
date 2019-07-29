@@ -1520,7 +1520,7 @@
 <dl class="class">
 <dt id="qiskit.aqua.components.reciprocals.LookupRotation">
 <em class="property">class </em><code class="descname">LookupRotation</code><span class="sig-paren">(</span><em>pat_length=None</em>, <em>subpat_length=None</em>, <em>scale=0</em>, <em>negative_evals=False</em>, <em>evo_time=None</em>, <em>lambda_min=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/qiskit/aqua/components/reciprocals/lookup_rotation.html#LookupRotation"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.aqua.components.reciprocals.LookupRotation" title="この定義へのパーマリンク">¶</a></dt>
-<dd><p>ベースクラス: <a class="reference internal" href="../../locale/docs/autodoc/qiskit.aqua.components.reciprocals.reciprocal.html#qiskit.aqua.components.reciprocals.reciprocal.Reciprocal" title="qiskit.aqua.components.reciprocals.reciprocal.Reciprocal"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.aqua.components.reciprocals.reciprocal.Reciprocal</span></code></a></p>
+<dd><p>ベースクラス: <a class="reference internal" href="qiskit.aqua.components.reciprocals.reciprocal.html#qiskit.aqua.components.reciprocals.reciprocal.Reciprocal" title="qiskit.aqua.components.reciprocals.reciprocal.Reciprocal"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.aqua.components.reciprocals.reciprocal.Reciprocal</span></code></a></p>
 <p>The Lookup Rotation for Reciprocals.</p>
 <p>A calculation of reciprocals of eigenvalues is performed and controlled
 rotation of ancillary qubit via a lookup method. It uses a partial table
@@ -1541,7 +1541,7 @@ Please refer to the HHL documentation for an explanation of this method.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">パラメータ:</th><td class="field-body"><ul class="first simple">
 <li><strong>mode</strong> (<em>str</em>) -- consctruction mode, 'matrix' not supported</li>
-<li><strong>inreg</strong> (<a class="reference internal" href="../../locale/docs/autodoc/qiskit.circuit.quantumregister.html#qiskit.circuit.quantumregister.QuantumRegister" title="qiskit.circuit.quantumregister.QuantumRegister"><em>QuantumRegister</em></a>) -- input register, typically output register of Eigenvalues</li>
+<li><strong>inreg</strong> (<a class="reference internal" href="qiskit.circuit.quantumregister.html#qiskit.circuit.quantumregister.QuantumRegister" title="qiskit.circuit.quantumregister.QuantumRegister"><em>QuantumRegister</em></a>) -- input register, typically output register of Eigenvalues</li>
 </ul>
 </td>
 </tr>
@@ -1578,7 +1578,7 @@ Please refer to the HHL documentation for an explanation of this method.</p>
 <dl class="class">
 <dt id="qiskit.aqua.components.reciprocals.LongDivision">
 <em class="property">class </em><code class="descname">LongDivision</code><span class="sig-paren">(</span><em>scale=0</em>, <em>precision=None</em>, <em>negative_evals=False</em>, <em>evo_time=None</em>, <em>lambda_min=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/qiskit/aqua/components/reciprocals/long_division.html#LongDivision"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.aqua.components.reciprocals.LongDivision" title="この定義へのパーマリンク">¶</a></dt>
-<dd><p>ベースクラス: <a class="reference internal" href="../../locale/docs/autodoc/qiskit.aqua.components.reciprocals.reciprocal.html#qiskit.aqua.components.reciprocals.reciprocal.Reciprocal" title="qiskit.aqua.components.reciprocals.reciprocal.Reciprocal"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.aqua.components.reciprocals.reciprocal.Reciprocal</span></code></a></p>
+<dd><p>ベースクラス: <a class="reference internal" href="qiskit.aqua.components.reciprocals.reciprocal.html#qiskit.aqua.components.reciprocals.reciprocal.Reciprocal" title="qiskit.aqua.components.reciprocals.reciprocal.Reciprocal"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.aqua.components.reciprocals.reciprocal.Reciprocal</span></code></a></p>
 <p>The Long Division Rotation for Reciprocals.</p>
 <p>It finds the reciprocal with long division method and rotates the ancillary
 qubit by C/lambda. This is a first order approximation of arcsin(C/lambda).</p>
@@ -1597,7 +1597,7 @@ qubit by C/lambda. This is a first order approximation of arcsin(C/lambda).</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">パラメータ:</th><td class="field-body"><ul class="first simple">
 <li><strong>mode</strong> (<em>str</em>) -- consctruction mode, 'matrix' not supported</li>
-<li><strong>inreg</strong> (<a class="reference internal" href="../../locale/docs/autodoc/qiskit.circuit.quantumregister.html#qiskit.circuit.quantumregister.QuantumRegister" title="qiskit.circuit.quantumregister.QuantumRegister"><em>QuantumRegister</em></a>) -- input register, typically output register of Eigenvalues</li>
+<li><strong>inreg</strong> (<a class="reference internal" href="qiskit.circuit.quantumregister.html#qiskit.circuit.quantumregister.QuantumRegister" title="qiskit.circuit.quantumregister.QuantumRegister"><em>QuantumRegister</em></a>) -- input register, typically output register of Eigenvalues</li>
 </ul>
 </td>
 </tr>
@@ -1634,7 +1634,7 @@ qubit by C/lambda. This is a first order approximation of arcsin(C/lambda).</p>
 <dl class="class">
 <dt id="qiskit.aqua.components.reciprocals.Reciprocal">
 <em class="property">class </em><code class="descname">Reciprocal</code><a class="reference internal" href="../../_modules/qiskit/aqua/components/reciprocals/reciprocal.html#Reciprocal"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.aqua.components.reciprocals.Reciprocal" title="この定義へのパーマリンク">¶</a></dt>
-<dd><p>ベースクラス: <a class="reference internal" href="../../locale/docs/autodoc/qiskit.aqua.pluggable.html#qiskit.aqua.pluggable.Pluggable" title="qiskit.aqua.pluggable.Pluggable"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.aqua.pluggable.Pluggable</span></code></a></p>
+<dd><p>ベースクラス: <a class="reference internal" href="qiskit.aqua.pluggable.html#qiskit.aqua.pluggable.Pluggable" title="qiskit.aqua.pluggable.Pluggable"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.aqua.pluggable.Pluggable</span></code></a></p>
 <p>Base class for reciprocal calculation.</p>
 <p>This method should initialize the module and its configuration, and
 use an exception if a component of the module is available.</p>
@@ -1656,8 +1656,8 @@ use an exception if a component of the module is available.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">パラメータ:</th><td class="field-body"><ul class="first simple">
 <li><strong>mode</strong> (<em>str</em>) -- 'matrix' or 'circuit'</li>
-<li><strong>register</strong> (<a class="reference internal" href="../../locale/docs/autodoc/qiskit.circuit.quantumregister.html#qiskit.circuit.quantumregister.QuantumRegister" title="qiskit.circuit.quantumregister.QuantumRegister"><em>QuantumRegister</em></a>) -- register for circuit construction.</li>
-<li><strong>circuit</strong> (<a class="reference internal" href="../../locale/docs/autodoc/qiskit.circuit.quantumcircuit.html#qiskit.circuit.quantumcircuit.QuantumCircuit" title="qiskit.circuit.quantumcircuit.QuantumCircuit"><em>QuantumCircuit</em></a>) -- circuit for construction.</li>
+<li><strong>register</strong> (<a class="reference internal" href="qiskit.circuit.quantumregister.html#qiskit.circuit.quantumregister.QuantumRegister" title="qiskit.circuit.quantumregister.QuantumRegister"><em>QuantumRegister</em></a>) -- register for circuit construction.</li>
+<li><strong>circuit</strong> (<a class="reference internal" href="qiskit.circuit.quantumcircuit.html#qiskit.circuit.quantumcircuit.QuantumCircuit" title="qiskit.circuit.quantumcircuit.QuantumCircuit"><em>QuantumCircuit</em></a>) -- circuit for construction.</li>
 </ul>
 </td>
 </tr>

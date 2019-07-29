@@ -196,7 +196,7 @@
 <span class="kn">from</span> <span class="nn">.exceptions</span> <span class="k">import</span> <span class="n">VisualizationError</span>
 
 
-<div class="viewcode-block" id="DrawElement"><a class="viewcode-back" href="../../../locale/docs/autodoc/qiskit.visualization.text.html#qiskit.visualization.text.DrawElement">[ドキュメント]</a><span class="k">class</span> <span class="nc">DrawElement</span><span class="p">():</span>
+<div class="viewcode-block" id="DrawElement"><a class="viewcode-back" href="../../../docs/autodoc/qiskit.visualization.text.html#qiskit.visualization.text.DrawElement">[ドキュメント]</a><span class="k">class</span> <span class="nc">DrawElement</span><span class="p">():</span>
     <span class="sd">&quot;&quot;&quot; An element is an instruction or an operation that need to be drawn.&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
@@ -263,7 +263,7 @@
     <span class="k">def</span> <span class="nf">width</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_width</span> <span class="o">=</span> <span class="n">value</span>
 
-<div class="viewcode-block" id="DrawElement.connect"><a class="viewcode-back" href="../../../locale/docs/autodoc/qiskit.visualization.text.html#qiskit.visualization.text.DrawElement.connect">[ドキュメント]</a>    <span class="k">def</span> <span class="nf">connect</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">wire_char</span><span class="p">,</span> <span class="n">where</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="DrawElement.connect"><a class="viewcode-back" href="../../../docs/autodoc/qiskit.visualization.text.html#qiskit.visualization.text.DrawElement.connect">[ドキュメント]</a>    <span class="k">def</span> <span class="nf">connect</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">wire_char</span><span class="p">,</span> <span class="n">where</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Connects boxes and elements using wire_char and setting proper connectors.</span>
 <span class="sd">        Args:</span>
@@ -282,7 +282,7 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">top_format</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">top_format</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="p">(</span><span class="n">label</span> <span class="k">if</span> <span class="n">label</span> <span class="k">else</span> <span class="s2">&quot;&quot;</span><span class="p">)</span></div></div>
 
 
-<div class="viewcode-block" id="BoxOnClWire"><a class="viewcode-back" href="../../../locale/docs/autodoc/qiskit.visualization.text.html#qiskit.visualization.text.BoxOnClWire">[ドキュメント]</a><span class="k">class</span> <span class="nc">BoxOnClWire</span><span class="p">(</span><span class="n">DrawElement</span><span class="p">):</span>
+<div class="viewcode-block" id="BoxOnClWire"><a class="viewcode-back" href="../../../docs/autodoc/qiskit.visualization.text.html#qiskit.visualization.text.BoxOnClWire">[ドキュメント]</a><span class="k">class</span> <span class="nc">BoxOnClWire</span><span class="p">(</span><span class="n">DrawElement</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Draws a box on the classical wire</span>
 <span class="sd">        top: ┌───┐   ┌───┐</span>
 <span class="sd">        mid: ╡ A ╞ ══╡ A ╞══</span>
@@ -301,7 +301,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">mid_content</span> <span class="o">=</span> <span class="n">label</span></div>
 
 
-<div class="viewcode-block" id="BoxOnQuWire"><a class="viewcode-back" href="../../../locale/docs/autodoc/qiskit.visualization.text.html#qiskit.visualization.text.BoxOnQuWire">[ドキュメント]</a><span class="k">class</span> <span class="nc">BoxOnQuWire</span><span class="p">(</span><span class="n">DrawElement</span><span class="p">):</span>
+<div class="viewcode-block" id="BoxOnQuWire"><a class="viewcode-back" href="../../../docs/autodoc/qiskit.visualization.text.html#qiskit.visualization.text.BoxOnQuWire">[ドキュメント]</a><span class="k">class</span> <span class="nc">BoxOnQuWire</span><span class="p">(</span><span class="n">DrawElement</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Draws a box on the quantum wire</span>
 <span class="sd">        top: ┌───┐   ┌───┐</span>
 <span class="sd">        mid: ┤ A ├ ──┤ A ├──</span>
@@ -321,7 +321,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">bot_connector</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;│&quot;</span><span class="p">:</span> <span class="s1">&#39;┬&#39;</span><span class="p">}</span></div>
 
 
-<div class="viewcode-block" id="MeasureTo"><a class="viewcode-back" href="../../../locale/docs/autodoc/qiskit.visualization.text.html#qiskit.visualization.text.MeasureTo">[ドキュメント]</a><span class="k">class</span> <span class="nc">MeasureTo</span><span class="p">(</span><span class="n">DrawElement</span><span class="p">):</span>
+<div class="viewcode-block" id="MeasureTo"><a class="viewcode-back" href="../../../docs/autodoc/qiskit.visualization.text.html#qiskit.visualization.text.MeasureTo">[ドキュメント]</a><span class="k">class</span> <span class="nc">MeasureTo</span><span class="p">(</span><span class="n">DrawElement</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; The element on the classic wire to which the measure is performed</span>
 <span class="sd">    top:  ║     ║</span>
 <span class="sd">    mid: ═╩═ ═══╩═══</span>
@@ -336,7 +336,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">mid_bck</span> <span class="o">=</span> <span class="s2">&quot;═&quot;</span></div>
 
 
-<div class="viewcode-block" id="MeasureFrom"><a class="viewcode-back" href="../../../locale/docs/autodoc/qiskit.visualization.text.html#qiskit.visualization.text.MeasureFrom">[ドキュメント]</a><span class="k">class</span> <span class="nc">MeasureFrom</span><span class="p">(</span><span class="n">BoxOnQuWire</span><span class="p">):</span>
+<div class="viewcode-block" id="MeasureFrom"><a class="viewcode-back" href="../../../docs/autodoc/qiskit.visualization.text.html#qiskit.visualization.text.MeasureFrom">[ドキュメント]</a><span class="k">class</span> <span class="nc">MeasureFrom</span><span class="p">(</span><span class="n">BoxOnQuWire</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; The element on the quantum wire in which the measure is performed</span>
 <span class="sd">        top: ┌─┐    ┌─┐</span>
 <span class="sd">        mid: ┤M├ ───┤M├───</span>
@@ -354,10 +354,10 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_mid_padding</span> <span class="o">=</span> <span class="s1">&#39;─&#39;</span></div>
 
 
-<div class="viewcode-block" id="MultiBox"><a class="viewcode-back" href="../../../locale/docs/autodoc/qiskit.visualization.text.html#qiskit.visualization.text.MultiBox">[ドキュメント]</a><span class="k">class</span> <span class="nc">MultiBox</span><span class="p">(</span><span class="n">DrawElement</span><span class="p">):</span>
+<div class="viewcode-block" id="MultiBox"><a class="viewcode-back" href="../../../docs/autodoc/qiskit.visualization.text.html#qiskit.visualization.text.MultiBox">[ドキュメント]</a><span class="k">class</span> <span class="nc">MultiBox</span><span class="p">(</span><span class="n">DrawElement</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Elements that is draw on over multiple wires.&quot;&quot;&quot;</span>
 
-<div class="viewcode-block" id="MultiBox.center_label"><a class="viewcode-back" href="../../../locale/docs/autodoc/qiskit.visualization.text.html#qiskit.visualization.text.MultiBox.center_label">[ドキュメント]</a>    <span class="k">def</span> <span class="nf">center_label</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_length</span><span class="p">,</span> <span class="n">order</span><span class="p">):</span>
+<div class="viewcode-block" id="MultiBox.center_label"><a class="viewcode-back" href="../../../docs/autodoc/qiskit.visualization.text.html#qiskit.visualization.text.MultiBox.center_label">[ドキュメント]</a>    <span class="k">def</span> <span class="nf">center_label</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_length</span><span class="p">,</span> <span class="n">order</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        In multi-bit elements, the label is centered vertically.</span>
 <span class="sd">        Args:</span>
@@ -383,7 +383,7 @@
         <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">label</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="BoxOnQuWireTop"><a class="viewcode-back" href="../../../locale/docs/autodoc/qiskit.visualization.text.html#qiskit.visualization.text.BoxOnQuWireTop">[ドキュメント]</a><span class="k">class</span> <span class="nc">BoxOnQuWireTop</span><span class="p">(</span><span class="n">MultiBox</span><span class="p">,</span> <span class="n">BoxOnQuWire</span><span class="p">):</span>
+<div class="viewcode-block" id="BoxOnQuWireTop"><a class="viewcode-back" href="../../../docs/autodoc/qiskit.visualization.text.html#qiskit.visualization.text.BoxOnQuWireTop">[ドキュメント]</a><span class="k">class</span> <span class="nc">BoxOnQuWireTop</span><span class="p">(</span><span class="n">MultiBox</span><span class="p">,</span> <span class="n">BoxOnQuWire</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Draws the top part of a box that affects more than one quantum wire&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">top_connect</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">wire_label</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">):</span>
@@ -398,7 +398,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">top_connect</span> <span class="o">=</span> <span class="n">top_connect</span> <span class="k">if</span> <span class="n">top_connect</span> <span class="k">else</span> <span class="s1">&#39;─&#39;</span></div>
 
 
-<div class="viewcode-block" id="BoxOnQuWireMid"><a class="viewcode-back" href="../../../locale/docs/autodoc/qiskit.visualization.text.html#qiskit.visualization.text.BoxOnQuWireMid">[ドキュメント]</a><span class="k">class</span> <span class="nc">BoxOnQuWireMid</span><span class="p">(</span><span class="n">MultiBox</span><span class="p">,</span> <span class="n">BoxOnQuWire</span><span class="p">):</span>
+<div class="viewcode-block" id="BoxOnQuWireMid"><a class="viewcode-back" href="../../../docs/autodoc/qiskit.visualization.text.html#qiskit.visualization.text.BoxOnQuWireMid">[ドキュメント]</a><span class="k">class</span> <span class="nc">BoxOnQuWireMid</span><span class="p">(</span><span class="n">MultiBox</span><span class="p">,</span> <span class="n">BoxOnQuWire</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Draws the middle part of a box that affects more than one quantum wire&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">input_length</span><span class="p">,</span> <span class="n">order</span><span class="p">,</span> <span class="n">wire_label</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">):</span>
@@ -413,7 +413,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">center_label</span><span class="p">(</span><span class="n">input_length</span><span class="p">,</span> <span class="n">order</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="BoxOnQuWireBot"><a class="viewcode-back" href="../../../locale/docs/autodoc/qiskit.visualization.text.html#qiskit.visualization.text.BoxOnQuWireBot">[ドキュメント]</a><span class="k">class</span> <span class="nc">BoxOnQuWireBot</span><span class="p">(</span><span class="n">MultiBox</span><span class="p">,</span> <span class="n">BoxOnQuWire</span><span class="p">):</span>
+<div class="viewcode-block" id="BoxOnQuWireBot"><a class="viewcode-back" href="../../../docs/autodoc/qiskit.visualization.text.html#qiskit.visualization.text.BoxOnQuWireBot">[ドキュメント]</a><span class="k">class</span> <span class="nc">BoxOnQuWireBot</span><span class="p">(</span><span class="n">MultiBox</span><span class="p">,</span> <span class="n">BoxOnQuWire</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Draws the bottom part of a box that affects more than one quantum wire&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">input_length</span><span class="p">,</span> <span class="n">bot_connect</span><span class="o">=</span><span class="s1">&#39;─&#39;</span><span class="p">,</span> <span class="n">wire_label</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">):</span>
@@ -431,7 +431,7 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">top_connect</span> <span class="o">=</span> <span class="n">label</span></div>
 
 
-<div class="viewcode-block" id="BoxOnClWireTop"><a class="viewcode-back" href="../../../locale/docs/autodoc/qiskit.visualization.text.html#qiskit.visualization.text.BoxOnClWireTop">[ドキュメント]</a><span class="k">class</span> <span class="nc">BoxOnClWireTop</span><span class="p">(</span><span class="n">MultiBox</span><span class="p">,</span> <span class="n">BoxOnClWire</span><span class="p">):</span>
+<div class="viewcode-block" id="BoxOnClWireTop"><a class="viewcode-back" href="../../../docs/autodoc/qiskit.visualization.text.html#qiskit.visualization.text.BoxOnClWireTop">[ドキュメント]</a><span class="k">class</span> <span class="nc">BoxOnClWireTop</span><span class="p">(</span><span class="n">MultiBox</span><span class="p">,</span> <span class="n">BoxOnClWire</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Draws the top part of a conditional box that affects more than one classical wire&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">top_connect</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">wire_label</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">):</span>
@@ -443,7 +443,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">bot_connect</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">bot_pad</span> <span class="o">=</span> <span class="s2">&quot; &quot;</span></div>
 
 
-<div class="viewcode-block" id="BoxOnClWireMid"><a class="viewcode-back" href="../../../locale/docs/autodoc/qiskit.visualization.text.html#qiskit.visualization.text.BoxOnClWireMid">[ドキュメント]</a><span class="k">class</span> <span class="nc">BoxOnClWireMid</span><span class="p">(</span><span class="n">MultiBox</span><span class="p">,</span> <span class="n">BoxOnClWire</span><span class="p">):</span>
+<div class="viewcode-block" id="BoxOnClWireMid"><a class="viewcode-back" href="../../../docs/autodoc/qiskit.visualization.text.html#qiskit.visualization.text.BoxOnClWireMid">[ドキュメント]</a><span class="k">class</span> <span class="nc">BoxOnClWireMid</span><span class="p">(</span><span class="n">MultiBox</span><span class="p">,</span> <span class="n">BoxOnClWire</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Draws the middle part of a conditional box that affects more than one classical wire&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">input_length</span><span class="p">,</span> <span class="n">order</span><span class="p">,</span> <span class="n">wire_label</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">):</span>
@@ -456,7 +456,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">center_label</span><span class="p">(</span><span class="n">input_length</span><span class="p">,</span> <span class="n">order</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="BoxOnClWireBot"><a class="viewcode-back" href="../../../locale/docs/autodoc/qiskit.visualization.text.html#qiskit.visualization.text.BoxOnClWireBot">[ドキュメント]</a><span class="k">class</span> <span class="nc">BoxOnClWireBot</span><span class="p">(</span><span class="n">MultiBox</span><span class="p">,</span> <span class="n">BoxOnClWire</span><span class="p">):</span>
+<div class="viewcode-block" id="BoxOnClWireBot"><a class="viewcode-back" href="../../../docs/autodoc/qiskit.visualization.text.html#qiskit.visualization.text.BoxOnClWireBot">[ドキュメント]</a><span class="k">class</span> <span class="nc">BoxOnClWireBot</span><span class="p">(</span><span class="n">MultiBox</span><span class="p">,</span> <span class="n">BoxOnClWire</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Draws the bottom part of a conditional box that affects more than one classical wire&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">input_length</span><span class="p">,</span> <span class="n">bot_connect</span><span class="o">=</span><span class="s1">&#39;─&#39;</span><span class="p">,</span> <span class="n">wire_label</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">):</span>
@@ -471,7 +471,7 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">top_connect</span> <span class="o">=</span> <span class="n">label</span></div>
 
 
-<div class="viewcode-block" id="DirectOnQuWire"><a class="viewcode-back" href="../../../locale/docs/autodoc/qiskit.visualization.text.html#qiskit.visualization.text.DirectOnQuWire">[ドキュメント]</a><span class="k">class</span> <span class="nc">DirectOnQuWire</span><span class="p">(</span><span class="n">DrawElement</span><span class="p">):</span>
+<div class="viewcode-block" id="DirectOnQuWire"><a class="viewcode-back" href="../../../docs/autodoc/qiskit.visualization.text.html#qiskit.visualization.text.DirectOnQuWire">[ドキュメント]</a><span class="k">class</span> <span class="nc">DirectOnQuWire</span><span class="p">(</span><span class="n">DrawElement</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Element to the wire (without the box).</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -486,7 +486,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">bot_connector</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;│&quot;</span><span class="p">:</span> <span class="s1">&#39;│&#39;</span><span class="p">}</span></div>
 
 
-<div class="viewcode-block" id="Barrier"><a class="viewcode-back" href="../../../locale/docs/autodoc/qiskit.visualization.text.html#qiskit.visualization.text.Barrier">[ドキュメント]</a><span class="k">class</span> <span class="nc">Barrier</span><span class="p">(</span><span class="n">DirectOnQuWire</span><span class="p">):</span>
+<div class="viewcode-block" id="Barrier"><a class="viewcode-back" href="../../../docs/autodoc/qiskit.visualization.text.html#qiskit.visualization.text.Barrier">[ドキュメント]</a><span class="k">class</span> <span class="nc">Barrier</span><span class="p">(</span><span class="n">DirectOnQuWire</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Draws a barrier.</span>
 <span class="sd">        top:  ░     ░</span>
 <span class="sd">        mid: ─░─ ───░───</span>
@@ -501,7 +501,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">bot_connector</span> <span class="o">=</span> <span class="p">{}</span></div>
 
 
-<div class="viewcode-block" id="Ex"><a class="viewcode-back" href="../../../locale/docs/autodoc/qiskit.visualization.text.html#qiskit.visualization.text.Ex">[ドキュメント]</a><span class="k">class</span> <span class="nc">Ex</span><span class="p">(</span><span class="n">DirectOnQuWire</span><span class="p">):</span>
+<div class="viewcode-block" id="Ex"><a class="viewcode-back" href="../../../docs/autodoc/qiskit.visualization.text.html#qiskit.visualization.text.Ex">[ドキュメント]</a><span class="k">class</span> <span class="nc">Ex</span><span class="p">(</span><span class="n">DirectOnQuWire</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Draws an X (usually with a connector). E.g. the top part of a swap gate</span>
 <span class="sd">    top:</span>
 <span class="sd">    mid: ─X─ ───X───</span>
@@ -514,14 +514,14 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">top_connect</span> <span class="o">=</span> <span class="n">top_connect</span></div>
 
 
-<div class="viewcode-block" id="Reset"><a class="viewcode-back" href="../../../locale/docs/autodoc/qiskit.visualization.text.html#qiskit.visualization.text.Reset">[ドキュメント]</a><span class="k">class</span> <span class="nc">Reset</span><span class="p">(</span><span class="n">DirectOnQuWire</span><span class="p">):</span>
+<div class="viewcode-block" id="Reset"><a class="viewcode-back" href="../../../docs/autodoc/qiskit.visualization.text.html#qiskit.visualization.text.Reset">[ドキュメント]</a><span class="k">class</span> <span class="nc">Reset</span><span class="p">(</span><span class="n">DirectOnQuWire</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Draws a reset gate&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="s2">&quot;|0&gt;&quot;</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="Bullet"><a class="viewcode-back" href="../../../locale/docs/autodoc/qiskit.visualization.text.html#qiskit.visualization.text.Bullet">[ドキュメント]</a><span class="k">class</span> <span class="nc">Bullet</span><span class="p">(</span><span class="n">DirectOnQuWire</span><span class="p">):</span>
+<div class="viewcode-block" id="Bullet"><a class="viewcode-back" href="../../../docs/autodoc/qiskit.visualization.text.html#qiskit.visualization.text.Bullet">[ドキュメント]</a><span class="k">class</span> <span class="nc">Bullet</span><span class="p">(</span><span class="n">DirectOnQuWire</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Draws a bullet (usually with a connector). E.g. the top part of a CX gate.</span>
 <span class="sd">    top:</span>
 <span class="sd">    mid: ─■─  ───■───</span>
@@ -535,14 +535,14 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">mid_bck</span> <span class="o">=</span> <span class="s1">&#39;─&#39;</span></div>
 
 
-<div class="viewcode-block" id="EmptyWire"><a class="viewcode-back" href="../../../locale/docs/autodoc/qiskit.visualization.text.html#qiskit.visualization.text.EmptyWire">[ドキュメント]</a><span class="k">class</span> <span class="nc">EmptyWire</span><span class="p">(</span><span class="n">DrawElement</span><span class="p">):</span>
+<div class="viewcode-block" id="EmptyWire"><a class="viewcode-back" href="../../../docs/autodoc/qiskit.visualization.text.html#qiskit.visualization.text.EmptyWire">[ドキュメント]</a><span class="k">class</span> <span class="nc">EmptyWire</span><span class="p">(</span><span class="n">DrawElement</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; This element is just the wire, with no instructions nor operations.&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">wire</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">wire</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_mid_padding</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mid_bck</span> <span class="o">=</span> <span class="n">wire</span>
 
-<div class="viewcode-block" id="EmptyWire.fillup_layer"><a class="viewcode-back" href="../../../locale/docs/autodoc/qiskit.visualization.text.html#qiskit.visualization.text.EmptyWire.fillup_layer">[ドキュメント]</a>    <span class="nd">@staticmethod</span>
+<div class="viewcode-block" id="EmptyWire.fillup_layer"><a class="viewcode-back" href="../../../docs/autodoc/qiskit.visualization.text.html#qiskit.visualization.text.EmptyWire.fillup_layer">[ドキュメント]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">fillup_layer</span><span class="p">(</span><span class="n">layer</span><span class="p">,</span> <span class="n">first_clbit</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Given a layer, replace the Nones in it with EmptyWire elements.</span>
@@ -558,7 +558,7 @@
         <span class="k">return</span> <span class="n">layer</span></div></div>
 
 
-<div class="viewcode-block" id="BreakWire"><a class="viewcode-back" href="../../../locale/docs/autodoc/qiskit.visualization.text.html#qiskit.visualization.text.BreakWire">[ドキュメント]</a><span class="k">class</span> <span class="nc">BreakWire</span><span class="p">(</span><span class="n">DrawElement</span><span class="p">):</span>
+<div class="viewcode-block" id="BreakWire"><a class="viewcode-back" href="../../../docs/autodoc/qiskit.visualization.text.html#qiskit.visualization.text.BreakWire">[ドキュメント]</a><span class="k">class</span> <span class="nc">BreakWire</span><span class="p">(</span><span class="n">DrawElement</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; This element is used to break the drawing in several pages.&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arrow_char</span><span class="p">):</span>
@@ -568,7 +568,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">mid_content</span> <span class="o">=</span> <span class="n">arrow_char</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">bot_connect</span> <span class="o">=</span> <span class="n">arrow_char</span>
 
-<div class="viewcode-block" id="BreakWire.fillup_layer"><a class="viewcode-back" href="../../../locale/docs/autodoc/qiskit.visualization.text.html#qiskit.visualization.text.BreakWire.fillup_layer">[ドキュメント]</a>    <span class="nd">@staticmethod</span>
+<div class="viewcode-block" id="BreakWire.fillup_layer"><a class="viewcode-back" href="../../../docs/autodoc/qiskit.visualization.text.html#qiskit.visualization.text.BreakWire.fillup_layer">[ドキュメント]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">fillup_layer</span><span class="p">(</span><span class="n">layer_length</span><span class="p">,</span> <span class="n">arrow_char</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Creates a layer with BreakWire elements.</span>
@@ -585,13 +585,13 @@
         <span class="k">return</span> <span class="n">breakwire_layer</span></div></div>
 
 
-<div class="viewcode-block" id="InputWire"><a class="viewcode-back" href="../../../locale/docs/autodoc/qiskit.visualization.text.html#qiskit.visualization.text.InputWire">[ドキュメント]</a><span class="k">class</span> <span class="nc">InputWire</span><span class="p">(</span><span class="n">DrawElement</span><span class="p">):</span>
+<div class="viewcode-block" id="InputWire"><a class="viewcode-back" href="../../../docs/autodoc/qiskit.visualization.text.html#qiskit.visualization.text.InputWire">[ドキュメント]</a><span class="k">class</span> <span class="nc">InputWire</span><span class="p">(</span><span class="n">DrawElement</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; This element is the label and the initial value of a wire.&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">label</span><span class="p">)</span>
 
-<div class="viewcode-block" id="InputWire.fillup_layer"><a class="viewcode-back" href="../../../locale/docs/autodoc/qiskit.visualization.text.html#qiskit.visualization.text.InputWire.fillup_layer">[ドキュメント]</a>    <span class="nd">@staticmethod</span>
+<div class="viewcode-block" id="InputWire.fillup_layer"><a class="viewcode-back" href="../../../docs/autodoc/qiskit.visualization.text.html#qiskit.visualization.text.InputWire.fillup_layer">[ドキュメント]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">fillup_layer</span><span class="p">(</span><span class="n">names</span><span class="p">):</span>  <span class="c1"># pylint: disable=arguments-differ</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Creates a layer with InputWire elements.</span>
@@ -608,7 +608,7 @@
         <span class="k">return</span> <span class="n">inputs_wires</span></div></div>
 
 
-<div class="viewcode-block" id="TextDrawing"><a class="viewcode-back" href="../../../locale/docs/autodoc/qiskit.visualization.text.html#qiskit.visualization.text.TextDrawing">[ドキュメント]</a><span class="k">class</span> <span class="nc">TextDrawing</span><span class="p">():</span>
+<div class="viewcode-block" id="TextDrawing"><a class="viewcode-back" href="../../../docs/autodoc/qiskit.visualization.text.html#qiskit.visualization.text.TextDrawing">[ドキュメント]</a><span class="k">class</span> <span class="nc">TextDrawing</span><span class="p">():</span>
     <span class="sd">&quot;&quot;&quot; The text drawing&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">qregs</span><span class="p">,</span> <span class="n">cregs</span><span class="p">,</span> <span class="n">instructions</span><span class="p">,</span> <span class="n">plotbarriers</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
@@ -641,7 +641,7 @@
             <span class="n">clbits</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">_</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">clbit</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">clbit</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
         <span class="k">return</span> <span class="n">clbits</span>
 
-<div class="viewcode-block" id="TextDrawing.single_string"><a class="viewcode-back" href="../../../locale/docs/autodoc/qiskit.visualization.text.html#qiskit.visualization.text.TextDrawing.single_string">[ドキュメント]</a>    <span class="k">def</span> <span class="nf">single_string</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="TextDrawing.single_string"><a class="viewcode-back" href="../../../docs/autodoc/qiskit.visualization.text.html#qiskit.visualization.text.TextDrawing.single_string">[ドキュメント]</a>    <span class="k">def</span> <span class="nf">single_string</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Creates a long string with the ascii art</span>
 <span class="sd">        Returns:</span>
@@ -649,7 +649,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lines</span><span class="p">())</span></div>
 
-<div class="viewcode-block" id="TextDrawing.dump"><a class="viewcode-back" href="../../../locale/docs/autodoc/qiskit.visualization.text.html#qiskit.visualization.text.TextDrawing.dump">[ドキュメント]</a>    <span class="k">def</span> <span class="nf">dump</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf8&quot;</span><span class="p">):</span>
+<div class="viewcode-block" id="TextDrawing.dump"><a class="viewcode-back" href="../../../docs/autodoc/qiskit.visualization.text.html#qiskit.visualization.text.TextDrawing.dump">[ドキュメント]</a>    <span class="k">def</span> <span class="nf">dump</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf8&quot;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Dumps the ascii art in the file.</span>
 <span class="sd">        Args:</span>
@@ -659,7 +659,7 @@
         <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="n">encoding</span><span class="p">)</span> <span class="k">as</span> <span class="n">text_file</span><span class="p">:</span>
             <span class="n">text_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">single_string</span><span class="p">())</span></div>
 
-<div class="viewcode-block" id="TextDrawing.lines"><a class="viewcode-back" href="../../../locale/docs/autodoc/qiskit.visualization.text.html#qiskit.visualization.text.TextDrawing.lines">[ドキュメント]</a>    <span class="k">def</span> <span class="nf">lines</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">line_length</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="TextDrawing.lines"><a class="viewcode-back" href="../../../docs/autodoc/qiskit.visualization.text.html#qiskit.visualization.text.TextDrawing.lines">[ドキュメント]</a>    <span class="k">def</span> <span class="nf">lines</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">line_length</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Generates a list with lines. These lines form the text drawing.</span>
 <span class="sd">        Args:</span>
@@ -724,7 +724,7 @@
 
         <span class="k">return</span> <span class="n">lines</span></div>
 
-<div class="viewcode-block" id="TextDrawing.wire_names"><a class="viewcode-back" href="../../../locale/docs/autodoc/qiskit.visualization.text.html#qiskit.visualization.text.TextDrawing.wire_names">[ドキュメント]</a>    <span class="k">def</span> <span class="nf">wire_names</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">with_initial_value</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<div class="viewcode-block" id="TextDrawing.wire_names"><a class="viewcode-back" href="../../../docs/autodoc/qiskit.visualization.text.html#qiskit.visualization.text.TextDrawing.wire_names">[ドキュメント]</a>    <span class="k">def</span> <span class="nf">wire_names</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">with_initial_value</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Returns a list of names for each wire.</span>
 <span class="sd">        Args:</span>
@@ -746,7 +746,7 @@
 
         <span class="k">return</span> <span class="n">qubit_labels</span> <span class="o">+</span> <span class="n">clbit_labels</span></div>
 
-<div class="viewcode-block" id="TextDrawing.draw_wires"><a class="viewcode-back" href="../../../locale/docs/autodoc/qiskit.visualization.text.html#qiskit.visualization.text.TextDrawing.draw_wires">[ドキュメント]</a>    <span class="nd">@staticmethod</span>
+<div class="viewcode-block" id="TextDrawing.draw_wires"><a class="viewcode-back" href="../../../docs/autodoc/qiskit.visualization.text.html#qiskit.visualization.text.TextDrawing.draw_wires">[ドキュメント]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">draw_wires</span><span class="p">(</span><span class="n">wires</span><span class="p">,</span> <span class="n">vertically_compressed</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Given a list of wires, creates a list of lines with the text drawing.</span>
@@ -787,12 +787,12 @@
 
         <span class="k">return</span> <span class="n">lines</span></div>
 
-<div class="viewcode-block" id="TextDrawing.label_for_conditional"><a class="viewcode-back" href="../../../locale/docs/autodoc/qiskit.visualization.text.html#qiskit.visualization.text.TextDrawing.label_for_conditional">[ドキュメント]</a>    <span class="nd">@staticmethod</span>
+<div class="viewcode-block" id="TextDrawing.label_for_conditional"><a class="viewcode-back" href="../../../docs/autodoc/qiskit.visualization.text.html#qiskit.visualization.text.TextDrawing.label_for_conditional">[ドキュメント]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">label_for_conditional</span><span class="p">(</span><span class="n">instruction</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; Creates the label for a conditional instruction.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="s1">&#39;=&#39;</span><span class="p">,</span> <span class="n">instruction</span><span class="o">.</span><span class="n">condition</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span></div>
 
-<div class="viewcode-block" id="TextDrawing.params_for_label"><a class="viewcode-back" href="../../../locale/docs/autodoc/qiskit.visualization.text.html#qiskit.visualization.text.TextDrawing.params_for_label">[ドキュメント]</a>    <span class="nd">@staticmethod</span>
+<div class="viewcode-block" id="TextDrawing.params_for_label"><a class="viewcode-back" href="../../../docs/autodoc/qiskit.visualization.text.html#qiskit.visualization.text.TextDrawing.params_for_label">[ドキュメント]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">params_for_label</span><span class="p">(</span><span class="n">instruction</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Get the params and format them to add them to a label. None if there</span>
 <span class="sd">         are no params of if the params are numpy.ndarrays.&quot;&quot;&quot;</span>
@@ -810,7 +810,7 @@
                 <span class="n">ret</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">param</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">ret</span></div>
 
-<div class="viewcode-block" id="TextDrawing.label_for_box"><a class="viewcode-back" href="../../../locale/docs/autodoc/qiskit.visualization.text.html#qiskit.visualization.text.TextDrawing.label_for_box">[ドキュメント]</a>    <span class="nd">@staticmethod</span>
+<div class="viewcode-block" id="TextDrawing.label_for_box"><a class="viewcode-back" href="../../../docs/autodoc/qiskit.visualization.text.html#qiskit.visualization.text.TextDrawing.label_for_box">[ドキュメント]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">label_for_box</span><span class="p">(</span><span class="n">instruction</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; Creates the label for a box.&quot;&quot;&quot;</span>
         <span class="n">label</span> <span class="o">=</span> <span class="n">instruction</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()</span>
@@ -819,7 +819,7 @@
             <span class="n">label</span> <span class="o">+=</span> <span class="s2">&quot;(</span><span class="si">%s</span><span class="s2">)&quot;</span> <span class="o">%</span> <span class="s1">&#39;,&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">label</span></div>
 
-<div class="viewcode-block" id="TextDrawing.merge_lines"><a class="viewcode-back" href="../../../locale/docs/autodoc/qiskit.visualization.text.html#qiskit.visualization.text.TextDrawing.merge_lines">[ドキュメント]</a>    <span class="nd">@staticmethod</span>
+<div class="viewcode-block" id="TextDrawing.merge_lines"><a class="viewcode-back" href="../../../docs/autodoc/qiskit.visualization.text.html#qiskit.visualization.text.TextDrawing.merge_lines">[ドキュメント]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">merge_lines</span><span class="p">(</span><span class="n">top</span><span class="p">,</span> <span class="n">bot</span><span class="p">,</span> <span class="n">icod</span><span class="o">=</span><span class="s2">&quot;top&quot;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Merges two lines (top and bot) in the way that the overlapping make senses.</span>
@@ -872,7 +872,7 @@
                 <span class="n">ret</span> <span class="o">+=</span> <span class="n">botc</span>
         <span class="k">return</span> <span class="n">ret</span></div>
 
-<div class="viewcode-block" id="TextDrawing.normalize_width"><a class="viewcode-back" href="../../../locale/docs/autodoc/qiskit.visualization.text.html#qiskit.visualization.text.TextDrawing.normalize_width">[ドキュメント]</a>    <span class="nd">@staticmethod</span>
+<div class="viewcode-block" id="TextDrawing.normalize_width"><a class="viewcode-back" href="../../../docs/autodoc/qiskit.visualization.text.html#qiskit.visualization.text.TextDrawing.normalize_width">[ドキュメント]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">normalize_width</span><span class="p">(</span><span class="n">layer</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        When the elements of the layer have different widths, sets the width to the max elements.</span>
@@ -1003,7 +1003,7 @@
 
         <span class="k">return</span> <span class="n">layer</span><span class="p">,</span> <span class="n">current_cons</span><span class="p">,</span> <span class="n">connection_label</span>
 
-<div class="viewcode-block" id="TextDrawing.build_layers"><a class="viewcode-back" href="../../../locale/docs/autodoc/qiskit.visualization.text.html#qiskit.visualization.text.TextDrawing.build_layers">[ドキュメント]</a>    <span class="k">def</span> <span class="nf">build_layers</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="TextDrawing.build_layers"><a class="viewcode-back" href="../../../docs/autodoc/qiskit.visualization.text.html#qiskit.visualization.text.TextDrawing.build_layers">[ドキュメント]</a>    <span class="k">def</span> <span class="nf">build_layers</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Constructs layers.</span>
 <span class="sd">        Returns:</span>
@@ -1031,7 +1031,7 @@
         <span class="k">return</span> <span class="n">layers</span></div></div>
 
 
-<div class="viewcode-block" id="Layer"><a class="viewcode-back" href="../../../locale/docs/autodoc/qiskit.visualization.text.html#qiskit.visualization.text.Layer">[ドキュメント]</a><span class="k">class</span> <span class="nc">Layer</span><span class="p">:</span>
+<div class="viewcode-block" id="Layer"><a class="viewcode-back" href="../../../docs/autodoc/qiskit.visualization.text.html#qiskit.visualization.text.Layer">[ドキュメント]</a><span class="k">class</span> <span class="nc">Layer</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; A layer is the &quot;column&quot; of the circuit. &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">qregs</span><span class="p">,</span> <span class="n">cregs</span><span class="p">):</span>
@@ -1050,7 +1050,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">qubit_layer</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">clbit_layer</span>
 
-<div class="viewcode-block" id="Layer.set_qubit"><a class="viewcode-back" href="../../../locale/docs/autodoc/qiskit.visualization.text.html#qiskit.visualization.text.Layer.set_qubit">[ドキュメント]</a>    <span class="k">def</span> <span class="nf">set_qubit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">qubit</span><span class="p">,</span> <span class="n">element</span><span class="p">):</span>
+<div class="viewcode-block" id="Layer.set_qubit"><a class="viewcode-back" href="../../../docs/autodoc/qiskit.visualization.text.html#qiskit.visualization.text.Layer.set_qubit">[ドキュメント]</a>    <span class="k">def</span> <span class="nf">set_qubit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">qubit</span><span class="p">,</span> <span class="n">element</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Sets the qubit to the element</span>
 <span class="sd">        Args:</span>
@@ -1059,7 +1059,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">qubit_layer</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">qregs</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">qubit</span><span class="p">)]</span> <span class="o">=</span> <span class="n">element</span></div>
 
-<div class="viewcode-block" id="Layer.set_clbit"><a class="viewcode-back" href="../../../locale/docs/autodoc/qiskit.visualization.text.html#qiskit.visualization.text.Layer.set_clbit">[ドキュメント]</a>    <span class="k">def</span> <span class="nf">set_clbit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">clbit</span><span class="p">,</span> <span class="n">element</span><span class="p">):</span>
+<div class="viewcode-block" id="Layer.set_clbit"><a class="viewcode-back" href="../../../docs/autodoc/qiskit.visualization.text.html#qiskit.visualization.text.Layer.set_clbit">[ドキュメント]</a>    <span class="k">def</span> <span class="nf">set_clbit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">clbit</span><span class="p">,</span> <span class="n">element</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Sets the clbit to the element</span>
 <span class="sd">        Args:</span>
@@ -1108,7 +1108,7 @@
                 <span class="n">set_bit</span><span class="p">(</span><span class="n">named_bit</span><span class="p">,</span> <span class="n">BoxOnWireMid</span><span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="n">box_height</span><span class="p">,</span> <span class="n">order</span><span class="p">,</span> <span class="n">wire_label</span><span class="o">=</span><span class="n">wire_label</span><span class="p">))</span>
             <span class="n">set_bit</span><span class="p">(</span><span class="n">bits</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">BoxOnWireBot</span><span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="n">box_height</span><span class="p">,</span> <span class="n">wire_label</span><span class="o">=</span><span class="n">qargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)))</span>
 
-<div class="viewcode-block" id="Layer.set_cl_multibox"><a class="viewcode-back" href="../../../locale/docs/autodoc/qiskit.visualization.text.html#qiskit.visualization.text.Layer.set_cl_multibox">[ドキュメント]</a>    <span class="k">def</span> <span class="nf">set_cl_multibox</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">creg</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">top_connect</span><span class="o">=</span><span class="s1">&#39;┴&#39;</span><span class="p">):</span>
+<div class="viewcode-block" id="Layer.set_cl_multibox"><a class="viewcode-back" href="../../../docs/autodoc/qiskit.visualization.text.html#qiskit.visualization.text.Layer.set_cl_multibox">[ドキュメント]</a>    <span class="k">def</span> <span class="nf">set_cl_multibox</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">creg</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">top_connect</span><span class="o">=</span><span class="s1">&#39;┴&#39;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Sets the multi clbit box.</span>
 <span class="sd">        Args:</span>
@@ -1119,7 +1119,7 @@
         <span class="n">clbit</span> <span class="o">=</span> <span class="p">[</span><span class="n">bit</span> <span class="k">for</span> <span class="n">bit</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">cregs</span> <span class="k">if</span> <span class="n">bit</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">creg</span><span class="p">]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_set_multibox</span><span class="p">(</span><span class="s2">&quot;cl&quot;</span><span class="p">,</span> <span class="n">clbit</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">top_connect</span><span class="o">=</span><span class="n">top_connect</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="Layer.set_qu_multibox"><a class="viewcode-back" href="../../../locale/docs/autodoc/qiskit.visualization.text.html#qiskit.visualization.text.Layer.set_qu_multibox">[ドキュメント]</a>    <span class="k">def</span> <span class="nf">set_qu_multibox</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bits</span><span class="p">,</span> <span class="n">label</span><span class="p">):</span>
+<div class="viewcode-block" id="Layer.set_qu_multibox"><a class="viewcode-back" href="../../../docs/autodoc/qiskit.visualization.text.html#qiskit.visualization.text.Layer.set_qu_multibox">[ドキュメント]</a>    <span class="k">def</span> <span class="nf">set_qu_multibox</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bits</span><span class="p">,</span> <span class="n">label</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Sets the multi qubit box.</span>
 <span class="sd">        Args:</span>
@@ -1128,7 +1128,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_set_multibox</span><span class="p">(</span><span class="s2">&quot;qu&quot;</span><span class="p">,</span> <span class="n">bits</span><span class="p">,</span> <span class="n">label</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="Layer.connect_with"><a class="viewcode-back" href="../../../locale/docs/autodoc/qiskit.visualization.text.html#qiskit.visualization.text.Layer.connect_with">[ドキュメント]</a>    <span class="k">def</span> <span class="nf">connect_with</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">wire_char</span><span class="p">):</span>
+<div class="viewcode-block" id="Layer.connect_with"><a class="viewcode-back" href="../../../docs/autodoc/qiskit.visualization.text.html#qiskit.visualization.text.Layer.connect_with">[ドキュメント]</a>    <span class="k">def</span> <span class="nf">connect_with</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">wire_char</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Connects the elements in the layer using wire_char.</span>
 <span class="sd">        Args:</span>

@@ -1526,7 +1526,7 @@ A separate transformation pass must add those virtual qubits to the circuit.</p>
 <dl class="class">
 <dt id="qiskit.transpiler.passes.mapping.full_ancilla_allocation.FullAncillaAllocation">
 <em class="property">class </em><code class="descname">FullAncillaAllocation</code><span class="sig-paren">(</span><em>coupling_map</em>, <em>layout=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/qiskit/transpiler/passes/mapping/full_ancilla_allocation.html#FullAncillaAllocation"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.transpiler.passes.mapping.full_ancilla_allocation.FullAncillaAllocation" title="この定義へのパーマリンク">¶</a></dt>
-<dd><p>ベースクラス: <a class="reference internal" href="../../locale/docs/autodoc/qiskit.transpiler.basepasses.html#qiskit.transpiler.basepasses.AnalysisPass" title="qiskit.transpiler.basepasses.AnalysisPass"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.transpiler.basepasses.AnalysisPass</span></code></a></p>
+<dd><p>ベースクラス: <a class="reference internal" href="qiskit.transpiler.basepasses.html#qiskit.transpiler.basepasses.AnalysisPass" title="qiskit.transpiler.basepasses.AnalysisPass"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.transpiler.basepasses.AnalysisPass</span></code></a></p>
 <p>Allocates all idle nodes from the coupling map as ancilla on the layout.</p>
 <dl class="method">
 <dt id="qiskit.transpiler.passes.mapping.full_ancilla_allocation.FullAncillaAllocation.run">
@@ -1540,11 +1540,11 @@ This pass will allocate new virtual qubits such that no collision occurs
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">パラメータ:</th><td class="field-body"><strong>dag</strong> (<a class="reference internal" href="../../locale/docs/autodoc/qiskit.dagcircuit.dagcircuit.html#qiskit.dagcircuit.dagcircuit.DAGCircuit" title="qiskit.dagcircuit.dagcircuit.DAGCircuit"><em>DAGCircuit</em></a>) -- circuit to analyze</td>
+<tr class="field-odd field"><th class="field-name">パラメータ:</th><td class="field-body"><strong>dag</strong> (<a class="reference internal" href="qiskit.dagcircuit.dagcircuit.html#qiskit.dagcircuit.dagcircuit.DAGCircuit" title="qiskit.dagcircuit.dagcircuit.DAGCircuit"><em>DAGCircuit</em></a>) -- circuit to analyze</td>
 </tr>
 <tr class="field-even field"><th class="field-name">戻り値:</th><td class="field-body">returns the same dag circuit, unmodified</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">戻り値の型:</th><td class="field-body"><a class="reference internal" href="../../locale/docs/autodoc/qiskit.dagcircuit.dagcircuit.html#qiskit.dagcircuit.dagcircuit.DAGCircuit" title="qiskit.dagcircuit.dagcircuit.DAGCircuit">DAGCircuit</a></td>
+<tr class="field-odd field"><th class="field-name">戻り値の型:</th><td class="field-body"><a class="reference internal" href="qiskit.dagcircuit.dagcircuit.html#qiskit.dagcircuit.dagcircuit.DAGCircuit" title="qiskit.dagcircuit.dagcircuit.DAGCircuit">DAGCircuit</a></td>
 </tr>
 <tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><code class="xref py py-exc docutils literal notranslate"><span class="pre">TranspilerError</span></code> -- If there is not layout in the property set or not set at init time.</td>
 </tr>

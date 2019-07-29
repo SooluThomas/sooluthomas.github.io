@@ -191,7 +191,7 @@
 <span class="kn">from</span> <span class="nn">.node</span> <span class="k">import</span> <span class="n">Node</span>
 
 
-<div class="viewcode-block" id="Creg"><a class="viewcode-back" href="../../../../locale/docs/autodoc/qiskit.qasm.node.creg.html#qiskit.qasm.node.creg.Creg">[ドキュメント]</a><span class="k">class</span> <span class="nc">Creg</span><span class="p">(</span><span class="n">Node</span><span class="p">):</span>
+<div class="viewcode-block" id="Creg"><a class="viewcode-back" href="../../../../docs/autodoc/qiskit.qasm.node.creg.html#qiskit.qasm.node.creg.Creg">[ドキュメント]</a><span class="k">class</span> <span class="nc">Creg</span><span class="p">(</span><span class="n">Node</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Node for an OPENQASM creg statement.</span>
 
 <span class="sd">    children[0] is an indexedid node.</span>
@@ -211,13 +211,13 @@
         <span class="c1"># Size of the register</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="o">.</span><span class="n">index</span>
 
-<div class="viewcode-block" id="Creg.to_string"><a class="viewcode-back" href="../../../../locale/docs/autodoc/qiskit.qasm.node.creg.html#qiskit.qasm.node.creg.Creg.to_string">[ドキュメント]</a>    <span class="k">def</span> <span class="nf">to_string</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">indent</span><span class="p">):</span>
+<div class="viewcode-block" id="Creg.to_string"><a class="viewcode-back" href="../../../../docs/autodoc/qiskit.qasm.node.creg.html#qiskit.qasm.node.creg.Creg.to_string">[ドキュメント]</a>    <span class="k">def</span> <span class="nf">to_string</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">indent</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Print the node data, with indent.&quot;&quot;&quot;</span>
         <span class="n">ind</span> <span class="o">=</span> <span class="n">indent</span> <span class="o">*</span> <span class="s1">&#39; &#39;</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">ind</span><span class="p">,</span> <span class="s1">&#39;creg&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">children</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">to_string</span><span class="p">(</span><span class="n">indent</span> <span class="o">+</span> <span class="mi">3</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="Creg.qasm"><a class="viewcode-back" href="../../../../locale/docs/autodoc/qiskit.qasm.node.creg.html#qiskit.qasm.node.creg.Creg.qasm">[ドキュメント]</a>    <span class="k">def</span> <span class="nf">qasm</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">prec</span><span class="o">=</span><span class="mi">15</span><span class="p">):</span>
+<div class="viewcode-block" id="Creg.qasm"><a class="viewcode-back" href="../../../../docs/autodoc/qiskit.qasm.node.creg.html#qiskit.qasm.node.creg.Creg.qasm">[ドキュメント]</a>    <span class="k">def</span> <span class="nf">qasm</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">prec</span><span class="o">=</span><span class="mi">15</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return the corresponding OPENQASM string.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="s2">&quot;creg &quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="o">.</span><span class="n">qasm</span><span class="p">(</span><span class="n">prec</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;;&quot;</span></div></div>
 </pre></div>

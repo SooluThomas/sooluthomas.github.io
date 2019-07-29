@@ -1520,7 +1520,7 @@
 <dl class="class">
 <dt id="qiskit.aqua.algorithms.QuantumAlgorithm">
 <em class="property">class </em><code class="descname">QuantumAlgorithm</code><a class="reference internal" href="../../_modules/qiskit/aqua/algorithms/quantum_algorithm.html#QuantumAlgorithm"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.aqua.algorithms.QuantumAlgorithm" title="この定義へのパーマリンク">¶</a></dt>
-<dd><p>ベースクラス: <a class="reference internal" href="../../locale/docs/autodoc/qiskit.aqua.pluggable.html#qiskit.aqua.pluggable.Pluggable" title="qiskit.aqua.pluggable.Pluggable"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.aqua.pluggable.Pluggable</span></code></a></p>
+<dd><p>ベースクラス: <a class="reference internal" href="qiskit.aqua.pluggable.html#qiskit.aqua.pluggable.Pluggable" title="qiskit.aqua.pluggable.Pluggable"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.aqua.pluggable.Pluggable</span></code></a></p>
 <p>Base class for Algorithms.</p>
 <p>This method should initialize the module and its configuration, and
 use an exception if a component of the module is available.</p>
@@ -1543,7 +1543,7 @@ use an exception if a component of the module is available.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">パラメータ:</th><td class="field-body"><strong>quantum_instance</strong> (<a class="reference internal" href="../../locale/docs/autodoc/qiskit.aqua.html#qiskit.aqua.QuantumInstance" title="qiskit.aqua.QuantumInstance"><em>QuantumInstance</em></a><em> or </em><a class="reference internal" href="../../locale/docs/autodoc/qiskit.providers.basebackend.html#qiskit.providers.basebackend.BaseBackend" title="qiskit.providers.basebackend.BaseBackend"><em>BaseBackend</em></a>) -- the experiemental setting.</td>
+<tr class="field-odd field"><th class="field-name">パラメータ:</th><td class="field-body"><strong>quantum_instance</strong> (<a class="reference internal" href="qiskit.aqua.html#qiskit.aqua.QuantumInstance" title="qiskit.aqua.QuantumInstance"><em>QuantumInstance</em></a><em> or </em><a class="reference internal" href="qiskit.providers.basebackend.html#qiskit.providers.basebackend.BaseBackend" title="qiskit.providers.basebackend.BaseBackend"><em>BaseBackend</em></a>) -- the experiemental setting.</td>
 </tr>
 <tr class="field-even field"><th class="field-name">戻り値:</th><td class="field-body">results of an algorithm.</td>
 </tr>
@@ -1558,7 +1558,7 @@ use an exception if a component of the module is available.</p>
 <dl class="class">
 <dt id="qiskit.aqua.algorithms.VQE">
 <em class="property">class </em><code class="descname">VQE</code><span class="sig-paren">(</span><em>operator</em>, <em>var_form</em>, <em>optimizer</em>, <em>operator_mode='matrix'</em>, <em>initial_point=None</em>, <em>max_evals_grouped=1</em>, <em>aux_operators=None</em>, <em>callback=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/qiskit/aqua/algorithms/adaptive/vqe/vqe.html#VQE"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.aqua.algorithms.VQE" title="この定義へのパーマリンク">¶</a></dt>
-<dd><p>ベースクラス: <a class="reference internal" href="../../locale/docs/autodoc/qiskit.aqua.algorithms.adaptive.vq_algorithm.html#qiskit.aqua.algorithms.adaptive.vq_algorithm.VQAlgorithm" title="qiskit.aqua.algorithms.adaptive.vq_algorithm.VQAlgorithm"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.aqua.algorithms.adaptive.vq_algorithm.VQAlgorithm</span></code></a></p>
+<dd><p>ベースクラス: <a class="reference internal" href="qiskit.aqua.algorithms.adaptive.vq_algorithm.html#qiskit.aqua.algorithms.adaptive.vq_algorithm.VQAlgorithm" title="qiskit.aqua.algorithms.adaptive.vq_algorithm.VQAlgorithm"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.aqua.algorithms.adaptive.vq_algorithm.VQAlgorithm</span></code></a></p>
 <p>The Variational Quantum Eigensolver algorithm.</p>
 <p>See <a class="reference external" href="https://arxiv.org/abs/1304.3061">https://arxiv.org/abs/1304.3061</a></p>
 <dl class="attribute">
@@ -1585,7 +1585,7 @@ single circuit is generated.</li>
 <tr class="field-even field"><th class="field-name">戻り値:</th><td class="field-body"><p class="first">the generated circuits with Hamiltonian.</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">戻り値の型:</th><td class="field-body"><p class="first last">[<a class="reference internal" href="../../locale/docs/autodoc/qiskit.circuit.quantumcircuit.html#qiskit.circuit.quantumcircuit.QuantumCircuit" title="qiskit.circuit.quantumcircuit.QuantumCircuit">QuantumCircuit</a>]</p>
+<tr class="field-odd field"><th class="field-name">戻り値の型:</th><td class="field-body"><p class="first last">[<a class="reference internal" href="qiskit.circuit.quantumcircuit.html#qiskit.circuit.quantumcircuit.QuantumCircuit" title="qiskit.circuit.quantumcircuit.QuantumCircuit">QuantumCircuit</a>]</p>
 </td>
 </tr>
 </tbody>
@@ -1617,14 +1617,14 @@ single circuit is generated.</li>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">パラメータ:</th><td class="field-body"><ul class="first simple">
 <li><strong>params</strong> (<em>dict</em>) -- parameters dictionary</li>
-<li><strong>algo_input</strong> (<a class="reference internal" href="../../locale/docs/autodoc/qiskit.aqua.input.html#qiskit.aqua.input.EnergyInput" title="qiskit.aqua.input.EnergyInput"><em>EnergyInput</em></a>) -- EnergyInput instance</li>
+<li><strong>algo_input</strong> (<a class="reference internal" href="qiskit.aqua.input.html#qiskit.aqua.input.EnergyInput" title="qiskit.aqua.input.EnergyInput"><em>EnergyInput</em></a>) -- EnergyInput instance</li>
 </ul>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">戻り値:</th><td class="field-body"><p class="first">vqe object</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">戻り値の型:</th><td class="field-body"><p class="first last"><a class="reference internal" href="../../locale/docs/autodoc/qiskit.aqua.algorithms.html#qiskit.aqua.algorithms.VQE" title="qiskit.aqua.algorithms.VQE">VQE</a></p>
+<tr class="field-odd field"><th class="field-name">戻り値の型:</th><td class="field-body"><p class="first last"><a class="reference internal" href="#qiskit.aqua.algorithms.VQE" title="qiskit.aqua.algorithms.VQE">VQE</a></p>
 </td>
 </tr>
 </tbody>
@@ -1663,7 +1663,7 @@ single circuit is generated.</li>
 <dl class="class">
 <dt id="qiskit.aqua.algorithms.QAOA">
 <em class="property">class </em><code class="descname">QAOA</code><span class="sig-paren">(</span><em>operator</em>, <em>optimizer</em>, <em>p=1</em>, <em>initial_state=None</em>, <em>mixer=None</em>, <em>operator_mode='matrix'</em>, <em>initial_point=None</em>, <em>max_evals_grouped=1</em>, <em>aux_operators=None</em>, <em>callback=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/qiskit/aqua/algorithms/adaptive/qaoa/qaoa.html#QAOA"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.aqua.algorithms.QAOA" title="この定義へのパーマリンク">¶</a></dt>
-<dd><p>ベースクラス: <a class="reference internal" href="../../locale/docs/autodoc/qiskit.aqua.algorithms.adaptive.vqe.vqe.html#qiskit.aqua.algorithms.adaptive.vqe.vqe.VQE" title="qiskit.aqua.algorithms.adaptive.vqe.vqe.VQE"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.aqua.algorithms.adaptive.vqe.vqe.VQE</span></code></a></p>
+<dd><p>ベースクラス: <a class="reference internal" href="qiskit.aqua.algorithms.adaptive.vqe.vqe.html#qiskit.aqua.algorithms.adaptive.vqe.vqe.VQE" title="qiskit.aqua.algorithms.adaptive.vqe.vqe.VQE"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.aqua.algorithms.adaptive.vqe.vqe.VQE</span></code></a></p>
 <p>The Quantum Approximate Optimization Algorithm.</p>
 <p>See <a class="reference external" href="https://arxiv.org/abs/1411.4028">https://arxiv.org/abs/1411.4028</a></p>
 <dl class="attribute">
@@ -1681,7 +1681,7 @@ single circuit is generated.</li>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">パラメータ:</th><td class="field-body"><ul class="first last simple">
 <li><strong>params</strong> (<em>dict</em>) -- parameters dictionary</li>
-<li><strong>algo_input</strong> (<a class="reference internal" href="../../locale/docs/autodoc/qiskit.aqua.input.html#qiskit.aqua.input.EnergyInput" title="qiskit.aqua.input.EnergyInput"><em>EnergyInput</em></a>) -- EnergyInput instance</li>
+<li><strong>algo_input</strong> (<a class="reference internal" href="qiskit.aqua.input.html#qiskit.aqua.input.EnergyInput" title="qiskit.aqua.input.EnergyInput"><em>EnergyInput</em></a>) -- EnergyInput instance</li>
 </ul>
 </td>
 </tr>
@@ -1694,7 +1694,7 @@ single circuit is generated.</li>
 <dl class="class">
 <dt id="qiskit.aqua.algorithms.VQC">
 <em class="property">class </em><code class="descname">VQC</code><span class="sig-paren">(</span><em>optimizer=None</em>, <em>feature_map=None</em>, <em>var_form=None</em>, <em>training_dataset=None</em>, <em>test_dataset=None</em>, <em>datapoints=None</em>, <em>max_evals_grouped=1</em>, <em>minibatch_size=-1</em>, <em>callback=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/qiskit/aqua/algorithms/adaptive/vqc/vqc.html#VQC"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.aqua.algorithms.VQC" title="この定義へのパーマリンク">¶</a></dt>
-<dd><p>ベースクラス: <a class="reference internal" href="../../locale/docs/autodoc/qiskit.aqua.algorithms.adaptive.vq_algorithm.html#qiskit.aqua.algorithms.adaptive.vq_algorithm.VQAlgorithm" title="qiskit.aqua.algorithms.adaptive.vq_algorithm.VQAlgorithm"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.aqua.algorithms.adaptive.vq_algorithm.VQAlgorithm</span></code></a></p>
+<dd><p>ベースクラス: <a class="reference internal" href="qiskit.aqua.algorithms.adaptive.vq_algorithm.html#qiskit.aqua.algorithms.adaptive.vq_algorithm.VQAlgorithm" title="qiskit.aqua.algorithms.adaptive.vq_algorithm.VQAlgorithm"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.aqua.algorithms.adaptive.vq_algorithm.VQAlgorithm</span></code></a></p>
 <dl class="attribute">
 <dt id="qiskit.aqua.algorithms.VQC.CONFIGURATION">
 <code class="descname">CONFIGURATION</code><em class="property"> = {'depends': [{'pluggable_type': 'optimizer', 'default': {'name': 'SPSA'}}, {'pluggable_type': 'feature_map', 'default': {'name': 'SecondOrderExpansion', 'depth': 2}}, {'pluggable_type': 'variational_form', 'default': {'name': 'RYRZ', 'depth': 3}}], 'description': 'Variational Quantum Classifier', 'input_schema': {'$schema': 'http://json-schema.org/schema#', 'additionalProperties': False, 'id': 'vqc_schema', 'properties': {'max_evals_grouped': {'default': 1, 'type': 'integer'}, 'minibatch_size': {'default': -1, 'type': 'integer'}, 'override_SPSA_params': {'default': True, 'type': 'boolean'}}, 'type': 'object'}, 'name': 'VQC', 'problems': ['classification']}</em><a class="headerlink" href="#qiskit.aqua.algorithms.VQC.CONFIGURATION" title="この定義へのパーマリンク">¶</a></dt>
@@ -1728,7 +1728,7 @@ single circuit is generated.</li>
 <tr class="field-even field"><th class="field-name">戻り値:</th><td class="field-body"><p class="first">the circuit</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">戻り値の型:</th><td class="field-body"><p class="first last"><a class="reference internal" href="../../locale/docs/autodoc/qiskit.circuit.quantumcircuit.html#qiskit.circuit.quantumcircuit.QuantumCircuit" title="qiskit.circuit.quantumcircuit.QuantumCircuit">QuantumCircuit</a></p>
+<tr class="field-odd field"><th class="field-name">戻り値の型:</th><td class="field-body"><p class="first last"><a class="reference internal" href="qiskit.circuit.quantumcircuit.html#qiskit.circuit.quantumcircuit.QuantumCircuit" title="qiskit.circuit.quantumcircuit.QuantumCircuit">QuantumCircuit</a></p>
 </td>
 </tr>
 </tbody>
@@ -1790,7 +1790,7 @@ single circuit is generated.</li>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">パラメータ:</th><td class="field-body"><ul class="first simple">
 <li><strong>data</strong> (<em>numpy.ndarray</em>) -- NxD array, N is number of data, D is data dimension</li>
-<li><strong>quantum_instance</strong> (<a class="reference internal" href="../../locale/docs/autodoc/qiskit.aqua.html#qiskit.aqua.QuantumInstance" title="qiskit.aqua.QuantumInstance"><em>QuantumInstance</em></a>) -- quantum backend with all setting</li>
+<li><strong>quantum_instance</strong> (<a class="reference internal" href="qiskit.aqua.html#qiskit.aqua.QuantumInstance" title="qiskit.aqua.QuantumInstance"><em>QuantumInstance</em></a>) -- quantum backend with all setting</li>
 <li><strong>minibatch_size</strong> (<em>int</em>) -- the size of each minibatched accuracy evalutation</li>
 <li><strong>params</strong> (<em>list</em>) -- list of parameters to populate in the variational form</li>
 </ul>
@@ -1828,7 +1828,7 @@ list: for each data point, generates the predicted label (that with the highest 
 <tr class="field-odd field"><th class="field-name">パラメータ:</th><td class="field-body"><ul class="first simple">
 <li><strong>data</strong> (<em>numpy.ndarray</em>) -- NxD array, N is number of data and D is data dimension</li>
 <li><strong>labels</strong> (<em>numpy.ndarray</em>) -- Nx1 array, N is number of data</li>
-<li><strong>quantum_instance</strong> (<a class="reference internal" href="../../locale/docs/autodoc/qiskit.aqua.html#qiskit.aqua.QuantumInstance" title="qiskit.aqua.QuantumInstance"><em>QuantumInstance</em></a>) -- quantum backend with all setting</li>
+<li><strong>quantum_instance</strong> (<a class="reference internal" href="qiskit.aqua.html#qiskit.aqua.QuantumInstance" title="qiskit.aqua.QuantumInstance"><em>QuantumInstance</em></a>) -- quantum backend with all setting</li>
 <li><strong>minibatch_size</strong> (<em>int</em>) -- the size of each minibatched accuracy evalutation</li>
 <li><strong>params</strong> (<em>list</em>) -- list of parameters to populate in the variational form</li>
 </ul>
@@ -1860,7 +1860,7 @@ list: for each data point, generates the predicted label (that with the highest 
 <tr class="field-odd field"><th class="field-name">パラメータ:</th><td class="field-body"><ul class="first last simple">
 <li><strong>data</strong> (<em>numpy.ndarray</em>) -- NxD array, N is number of data and D is dimension</li>
 <li><strong>labels</strong> (<em>numpy.ndarray</em>) -- Nx1 array, N is number of data</li>
-<li><strong>quantum_instance</strong> (<a class="reference internal" href="../../locale/docs/autodoc/qiskit.aqua.html#qiskit.aqua.QuantumInstance" title="qiskit.aqua.QuantumInstance"><em>QuantumInstance</em></a>) -- quantum backend with all setting</li>
+<li><strong>quantum_instance</strong> (<a class="reference internal" href="qiskit.aqua.html#qiskit.aqua.QuantumInstance" title="qiskit.aqua.QuantumInstance"><em>QuantumInstance</em></a>) -- quantum backend with all setting</li>
 <li><strong>minibatch_size</strong> (<em>int</em>) -- the size of each minibatched accuracy evalutation</li>
 </ul>
 </td>
@@ -1879,7 +1879,7 @@ list: for each data point, generates the predicted label (that with the highest 
 <dl class="class">
 <dt id="qiskit.aqua.algorithms.QGAN">
 <em class="property">class </em><code class="descname">QGAN</code><span class="sig-paren">(</span><em>data</em>, <em>bounds=None</em>, <em>num_qubits=None</em>, <em>batch_size=500</em>, <em>num_epochs=3000</em>, <em>seed=7</em>, <em>discriminator=None</em>, <em>generator=None</em>, <em>tol_rel_ent=None</em>, <em>snapshot_dir=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/qiskit/aqua/algorithms/adaptive/qgan/qgan.html#QGAN"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.aqua.algorithms.QGAN" title="この定義へのパーマリンク">¶</a></dt>
-<dd><p>ベースクラス: <a class="reference internal" href="../../locale/docs/autodoc/qiskit.aqua.algorithms.quantum_algorithm.html#qiskit.aqua.algorithms.quantum_algorithm.QuantumAlgorithm" title="qiskit.aqua.algorithms.quantum_algorithm.QuantumAlgorithm"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.aqua.algorithms.quantum_algorithm.QuantumAlgorithm</span></code></a></p>
+<dd><p>ベースクラス: <a class="reference internal" href="qiskit.aqua.algorithms.quantum_algorithm.html#qiskit.aqua.algorithms.quantum_algorithm.QuantumAlgorithm" title="qiskit.aqua.algorithms.quantum_algorithm.QuantumAlgorithm"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.aqua.algorithms.quantum_algorithm.QuantumAlgorithm</span></code></a></p>
 <p>Quantum Generative Adversarial Network.</p>
 <dl class="attribute">
 <dt id="qiskit.aqua.algorithms.QGAN.CONFIGURATION">
@@ -1923,7 +1923,7 @@ list: for each data point, generates the predicted label (that with the highest 
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">戻り値:</th><td class="field-body">qgan object</td>
 </tr>
-<tr class="field-even field"><th class="field-name">戻り値の型:</th><td class="field-body"><a class="reference internal" href="../../locale/docs/autodoc/qiskit.aqua.algorithms.html#qiskit.aqua.algorithms.QGAN" title="qiskit.aqua.algorithms.QGAN">QGAN</a></td>
+<tr class="field-even field"><th class="field-name">戻り値の型:</th><td class="field-body"><a class="reference internal" href="#qiskit.aqua.algorithms.QGAN" title="qiskit.aqua.algorithms.QGAN">QGAN</a></td>
 </tr>
 </tbody>
 </table>
@@ -1984,7 +1984,7 @@ list: for each data point, generates the predicted label (that with the highest 
 <dl class="class">
 <dt id="qiskit.aqua.algorithms.ExactEigensolver">
 <em class="property">class </em><code class="descname">ExactEigensolver</code><span class="sig-paren">(</span><em>operator</em>, <em>k=1</em>, <em>aux_operators=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/qiskit/aqua/algorithms/classical/exact_eigen_solver/exact_eigen_solver.html#ExactEigensolver"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.aqua.algorithms.ExactEigensolver" title="この定義へのパーマリンク">¶</a></dt>
-<dd><p>ベースクラス: <a class="reference internal" href="../../locale/docs/autodoc/qiskit.aqua.algorithms.quantum_algorithm.html#qiskit.aqua.algorithms.quantum_algorithm.QuantumAlgorithm" title="qiskit.aqua.algorithms.quantum_algorithm.QuantumAlgorithm"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.aqua.algorithms.quantum_algorithm.QuantumAlgorithm</span></code></a></p>
+<dd><p>ベースクラス: <a class="reference internal" href="qiskit.aqua.algorithms.quantum_algorithm.html#qiskit.aqua.algorithms.quantum_algorithm.QuantumAlgorithm" title="qiskit.aqua.algorithms.quantum_algorithm.QuantumAlgorithm"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.aqua.algorithms.quantum_algorithm.QuantumAlgorithm</span></code></a></p>
 <p>The Exact Eigensolver algorithm.</p>
 <dl class="attribute">
 <dt id="qiskit.aqua.algorithms.ExactEigensolver.CONFIGURATION">
@@ -2004,7 +2004,7 @@ list: for each data point, generates the predicted label (that with the highest 
 <dl class="class">
 <dt id="qiskit.aqua.algorithms.ExactLSsolver">
 <em class="property">class </em><code class="descname">ExactLSsolver</code><span class="sig-paren">(</span><em>matrix=None</em>, <em>vector=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/qiskit/aqua/algorithms/classical/exact_ls_solver/exact_ls_solver.html#ExactLSsolver"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.aqua.algorithms.ExactLSsolver" title="この定義へのパーマリンク">¶</a></dt>
-<dd><p>ベースクラス: <a class="reference internal" href="../../locale/docs/autodoc/qiskit.aqua.algorithms.quantum_algorithm.html#qiskit.aqua.algorithms.quantum_algorithm.QuantumAlgorithm" title="qiskit.aqua.algorithms.quantum_algorithm.QuantumAlgorithm"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.aqua.algorithms.quantum_algorithm.QuantumAlgorithm</span></code></a></p>
+<dd><p>ベースクラス: <a class="reference internal" href="qiskit.aqua.algorithms.quantum_algorithm.html#qiskit.aqua.algorithms.quantum_algorithm.QuantumAlgorithm" title="qiskit.aqua.algorithms.quantum_algorithm.QuantumAlgorithm"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.aqua.algorithms.quantum_algorithm.QuantumAlgorithm</span></code></a></p>
 <p>The Exact LinearSystem algorithm.</p>
 <dl class="attribute">
 <dt id="qiskit.aqua.algorithms.ExactLSsolver.CONFIGURATION">
@@ -2024,7 +2024,7 @@ list: for each data point, generates the predicted label (that with the highest 
 <dl class="class">
 <dt id="qiskit.aqua.algorithms.SVM_Classical">
 <em class="property">class </em><code class="descname">SVM_Classical</code><span class="sig-paren">(</span><em>training_dataset</em>, <em>test_dataset=None</em>, <em>datapoints=None</em>, <em>gamma=None</em>, <em>multiclass_extension=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/qiskit/aqua/algorithms/classical/svm/svm_classical.html#SVM_Classical"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.aqua.algorithms.SVM_Classical" title="この定義へのパーマリンク">¶</a></dt>
-<dd><p>ベースクラス: <a class="reference internal" href="../../locale/docs/autodoc/qiskit.aqua.algorithms.quantum_algorithm.html#qiskit.aqua.algorithms.quantum_algorithm.QuantumAlgorithm" title="qiskit.aqua.algorithms.quantum_algorithm.QuantumAlgorithm"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.aqua.algorithms.quantum_algorithm.QuantumAlgorithm</span></code></a></p>
+<dd><p>ベースクラス: <a class="reference internal" href="qiskit.aqua.algorithms.quantum_algorithm.html#qiskit.aqua.algorithms.quantum_algorithm.QuantumAlgorithm" title="qiskit.aqua.algorithms.quantum_algorithm.QuantumAlgorithm"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.aqua.algorithms.quantum_algorithm.QuantumAlgorithm</span></code></a></p>
 <p>The classical svm interface.
 Internally, it will run the binary classification or multiclass classification
 based on how many classes the data have.</p>
@@ -2143,7 +2143,7 @@ based on how many classes the data have.</p>
 <dl class="class">
 <dt id="qiskit.aqua.algorithms.EOH">
 <em class="property">class </em><code class="descname">EOH</code><span class="sig-paren">(</span><em>operator</em>, <em>initial_state</em>, <em>evo_operator</em>, <em>operator_mode='paulis'</em>, <em>evo_time=1</em>, <em>num_time_slices=1</em>, <em>expansion_mode='trotter'</em>, <em>expansion_order=1</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/qiskit/aqua/algorithms/many_sample/eoh/eoh.html#EOH"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.aqua.algorithms.EOH" title="この定義へのパーマリンク">¶</a></dt>
-<dd><p>ベースクラス: <a class="reference internal" href="../../locale/docs/autodoc/qiskit.aqua.algorithms.quantum_algorithm.html#qiskit.aqua.algorithms.quantum_algorithm.QuantumAlgorithm" title="qiskit.aqua.algorithms.quantum_algorithm.QuantumAlgorithm"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.aqua.algorithms.quantum_algorithm.QuantumAlgorithm</span></code></a></p>
+<dd><p>ベースクラス: <a class="reference internal" href="qiskit.aqua.algorithms.quantum_algorithm.html#qiskit.aqua.algorithms.quantum_algorithm.QuantumAlgorithm" title="qiskit.aqua.algorithms.quantum_algorithm.QuantumAlgorithm"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.aqua.algorithms.quantum_algorithm.QuantumAlgorithm</span></code></a></p>
 <p>The Quantum EOH (Evolution of Hamiltonian) algorithm.</p>
 <dl class="attribute">
 <dt id="qiskit.aqua.algorithms.EOH.CONFIGURATION">
@@ -2185,7 +2185,7 @@ based on how many classes the data have.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">戻り値:</th><td class="field-body">the circuit.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">戻り値の型:</th><td class="field-body"><a class="reference internal" href="../../locale/docs/autodoc/qiskit.circuit.quantumcircuit.html#qiskit.circuit.quantumcircuit.QuantumCircuit" title="qiskit.circuit.quantumcircuit.QuantumCircuit">QuantumCircuit</a></td>
+<tr class="field-even field"><th class="field-name">戻り値の型:</th><td class="field-body"><a class="reference internal" href="qiskit.circuit.quantumcircuit.html#qiskit.circuit.quantumcircuit.QuantumCircuit" title="qiskit.circuit.quantumcircuit.QuantumCircuit">QuantumCircuit</a></td>
 </tr>
 </tbody>
 </table>
@@ -2204,7 +2204,7 @@ based on how many classes the data have.</p>
 <dl class="class">
 <dt id="qiskit.aqua.algorithms.QSVM">
 <em class="property">class </em><code class="descname">QSVM</code><span class="sig-paren">(</span><em>feature_map</em>, <em>training_dataset</em>, <em>test_dataset=None</em>, <em>datapoints=None</em>, <em>multiclass_extension=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/qiskit/aqua/algorithms/many_sample/qsvm/qsvm.html#QSVM"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.aqua.algorithms.QSVM" title="この定義へのパーマリンク">¶</a></dt>
-<dd><p>ベースクラス: <a class="reference internal" href="../../locale/docs/autodoc/qiskit.aqua.algorithms.quantum_algorithm.html#qiskit.aqua.algorithms.quantum_algorithm.QuantumAlgorithm" title="qiskit.aqua.algorithms.quantum_algorithm.QuantumAlgorithm"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.aqua.algorithms.quantum_algorithm.QuantumAlgorithm</span></code></a></p>
+<dd><p>ベースクラス: <a class="reference internal" href="qiskit.aqua.algorithms.quantum_algorithm.html#qiskit.aqua.algorithms.quantum_algorithm.QuantumAlgorithm" title="qiskit.aqua.algorithms.quantum_algorithm.QuantumAlgorithm"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.aqua.algorithms.quantum_algorithm.QuantumAlgorithm</span></code></a></p>
 <p>Quantum SVM method.</p>
 <p>Internally, it will run the binary classification or multiclass classification
 based on how many classes the data have.</p>
@@ -2251,7 +2251,7 @@ based on how many classes the data have.</p>
 D is the feature dimension</li>
 <li><strong>x2_vec</strong> (<em>numpy.ndarray</em>) -- data points, 2-D array, N2xD, where N2 is the number of data,
 D is the feature dimension</li>
-<li><strong>quantum_instance</strong> (<a class="reference internal" href="../../locale/docs/autodoc/qiskit.aqua.html#qiskit.aqua.QuantumInstance" title="qiskit.aqua.QuantumInstance"><em>QuantumInstance</em></a>) -- quantum backend with all setting</li>
+<li><strong>quantum_instance</strong> (<a class="reference internal" href="qiskit.aqua.html#qiskit.aqua.QuantumInstance" title="qiskit.aqua.QuantumInstance"><em>QuantumInstance</em></a>) -- quantum backend with all setting</li>
 </ul>
 </td>
 </tr>
@@ -2296,7 +2296,7 @@ D is the feature dimension</li>
 <tr class="field-odd field"><th class="field-name">パラメータ:</th><td class="field-body"><ul class="first simple">
 <li><strong>data</strong> (<em>numpy.ndarray</em>) -- NxD array, where N is the number of data,
 D is the feature dimension.</li>
-<li><strong>quantum_instance</strong> (<a class="reference internal" href="../../locale/docs/autodoc/qiskit.aqua.html#qiskit.aqua.QuantumInstance" title="qiskit.aqua.QuantumInstance"><em>QuantumInstance</em></a>) -- quantum backend with all setting</li>
+<li><strong>quantum_instance</strong> (<a class="reference internal" href="qiskit.aqua.html#qiskit.aqua.QuantumInstance" title="qiskit.aqua.QuantumInstance"><em>QuantumInstance</em></a>) -- quantum backend with all setting</li>
 </ul>
 </td>
 </tr>
@@ -2341,7 +2341,7 @@ D is the feature dimension.</li>
 <li><strong>data</strong> (<em>numpy.ndarray</em>) -- NxD array, where N is the number of data,
 D is the feature dimension.</li>
 <li><strong>labels</strong> (<em>numpy.ndarray</em>) -- Nx1 array, where N is the number of data</li>
-<li><strong>quantum_instance</strong> (<a class="reference internal" href="../../locale/docs/autodoc/qiskit.aqua.html#qiskit.aqua.QuantumInstance" title="qiskit.aqua.QuantumInstance"><em>QuantumInstance</em></a>) -- quantum backend with all setting</li>
+<li><strong>quantum_instance</strong> (<a class="reference internal" href="qiskit.aqua.html#qiskit.aqua.QuantumInstance" title="qiskit.aqua.QuantumInstance"><em>QuantumInstance</em></a>) -- quantum backend with all setting</li>
 </ul>
 </td>
 </tr>
@@ -2367,7 +2367,7 @@ D is the feature dimension.</li>
 <li><strong>data</strong> (<em>numpy.ndarray</em>) -- NxD array, where N is the number of data,
 D is the feature dimension.</li>
 <li><strong>labels</strong> (<em>numpy.ndarray</em>) -- Nx1 array, where N is the number of data</li>
-<li><strong>quantum_instance</strong> (<a class="reference internal" href="../../locale/docs/autodoc/qiskit.aqua.html#qiskit.aqua.QuantumInstance" title="qiskit.aqua.QuantumInstance"><em>QuantumInstance</em></a>) -- quantum backend with all setting</li>
+<li><strong>quantum_instance</strong> (<a class="reference internal" href="qiskit.aqua.html#qiskit.aqua.QuantumInstance" title="qiskit.aqua.QuantumInstance"><em>QuantumInstance</em></a>) -- quantum backend with all setting</li>
 </ul>
 </td>
 </tr>
@@ -2380,7 +2380,7 @@ D is the feature dimension.</li>
 <dl class="class">
 <dt id="qiskit.aqua.algorithms.Grover">
 <em class="property">class </em><code class="descname">Grover</code><span class="sig-paren">(</span><em>oracle</em>, <em>init_state=None</em>, <em>incremental=False</em>, <em>num_iterations=1</em>, <em>mct_mode='basic'</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/qiskit/aqua/algorithms/single_sample/grover/grover.html#Grover"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.aqua.algorithms.Grover" title="この定義へのパーマリンク">¶</a></dt>
-<dd><p>ベースクラス: <a class="reference internal" href="../../locale/docs/autodoc/qiskit.aqua.algorithms.quantum_algorithm.html#qiskit.aqua.algorithms.quantum_algorithm.QuantumAlgorithm" title="qiskit.aqua.algorithms.quantum_algorithm.QuantumAlgorithm"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.aqua.algorithms.quantum_algorithm.QuantumAlgorithm</span></code></a></p>
+<dd><p>ベースクラス: <a class="reference internal" href="qiskit.aqua.algorithms.quantum_algorithm.html#qiskit.aqua.algorithms.quantum_algorithm.QuantumAlgorithm" title="qiskit.aqua.algorithms.quantum_algorithm.QuantumAlgorithm"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.aqua.algorithms.quantum_algorithm.QuantumAlgorithm</span></code></a></p>
 <p>The Grover's Search algorithm.</p>
 <p>If the <cite>num_iterations</cite> param is specified, the amplitude amplification iteration will be built as specified.</p>
 <p>If the <cite>incremental</cite> mode is specified, which indicates that the optimal <cite>num_iterations</cite> isn't known in advance,
@@ -2440,7 +2440,7 @@ The implementation follows Section 4 of Boyer et al. &lt;<a class="reference ext
 <dl class="class">
 <dt id="qiskit.aqua.algorithms.IQPE">
 <em class="property">class </em><code class="descname">IQPE</code><span class="sig-paren">(</span><em>operator</em>, <em>state_in</em>, <em>num_time_slices=1</em>, <em>num_iterations=1</em>, <em>expansion_mode='suzuki'</em>, <em>expansion_order=2</em>, <em>shallow_circuit_concat=False</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/qiskit/aqua/algorithms/single_sample/iterative_qpe/iqpe.html#IQPE"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.aqua.algorithms.IQPE" title="この定義へのパーマリンク">¶</a></dt>
-<dd><p>ベースクラス: <a class="reference internal" href="../../locale/docs/autodoc/qiskit.aqua.algorithms.quantum_algorithm.html#qiskit.aqua.algorithms.quantum_algorithm.QuantumAlgorithm" title="qiskit.aqua.algorithms.quantum_algorithm.QuantumAlgorithm"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.aqua.algorithms.quantum_algorithm.QuantumAlgorithm</span></code></a></p>
+<dd><p>ベースクラス: <a class="reference internal" href="qiskit.aqua.algorithms.quantum_algorithm.html#qiskit.aqua.algorithms.quantum_algorithm.QuantumAlgorithm" title="qiskit.aqua.algorithms.quantum_algorithm.QuantumAlgorithm"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.aqua.algorithms.quantum_algorithm.QuantumAlgorithm</span></code></a></p>
 <p>The Iterative Quantum Phase Estimation algorithm.</p>
 <p>See <a class="reference external" href="https://arxiv.org/abs/quant-ph/0610214">https://arxiv.org/abs/quant-ph/0610214</a></p>
 <dl class="attribute">
@@ -2487,7 +2487,7 @@ The implementation follows Section 4 of Boyer et al. &lt;<a class="reference ext
 <tr class="field-even field"><th class="field-name">戻り値:</th><td class="field-body"><p class="first">the quantum circuit per iteration</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">戻り値の型:</th><td class="field-body"><p class="first last"><a class="reference internal" href="../../locale/docs/autodoc/qiskit.circuit.quantumcircuit.html#qiskit.circuit.quantumcircuit.QuantumCircuit" title="qiskit.circuit.quantumcircuit.QuantumCircuit">QuantumCircuit</a></p>
+<tr class="field-odd field"><th class="field-name">戻り値の型:</th><td class="field-body"><p class="first last"><a class="reference internal" href="qiskit.circuit.quantumcircuit.html#qiskit.circuit.quantumcircuit.QuantumCircuit" title="qiskit.circuit.quantumcircuit.QuantumCircuit">QuantumCircuit</a></p>
 </td>
 </tr>
 </tbody>
@@ -2517,7 +2517,7 @@ The implementation follows Section 4 of Boyer et al. &lt;<a class="reference ext
 <dl class="class">
 <dt id="qiskit.aqua.algorithms.QPE">
 <em class="property">class </em><code class="descname">QPE</code><span class="sig-paren">(</span><em>operator</em>, <em>state_in</em>, <em>iqft</em>, <em>num_time_slices=1</em>, <em>num_ancillae=1</em>, <em>expansion_mode='trotter'</em>, <em>expansion_order=1</em>, <em>shallow_circuit_concat=False</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/qiskit/aqua/algorithms/single_sample/qpe/qpe.html#QPE"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.aqua.algorithms.QPE" title="この定義へのパーマリンク">¶</a></dt>
-<dd><p>ベースクラス: <a class="reference internal" href="../../locale/docs/autodoc/qiskit.aqua.algorithms.quantum_algorithm.html#qiskit.aqua.algorithms.quantum_algorithm.QuantumAlgorithm" title="qiskit.aqua.algorithms.quantum_algorithm.QuantumAlgorithm"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.aqua.algorithms.quantum_algorithm.QuantumAlgorithm</span></code></a></p>
+<dd><p>ベースクラス: <a class="reference internal" href="qiskit.aqua.algorithms.quantum_algorithm.html#qiskit.aqua.algorithms.quantum_algorithm.QuantumAlgorithm" title="qiskit.aqua.algorithms.quantum_algorithm.QuantumAlgorithm"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.aqua.algorithms.quantum_algorithm.QuantumAlgorithm</span></code></a></p>
 <p>The Quantum Phase Estimation algorithm.</p>
 <dl class="attribute">
 <dt id="qiskit.aqua.algorithms.QPE.CONFIGURATION">
@@ -2556,7 +2556,7 @@ The implementation follows Section 4 of Boyer et al. &lt;<a class="reference ext
 </tr>
 <tr class="field-even field"><th class="field-name">戻り値:</th><td class="field-body">quantum circuit.</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">戻り値の型:</th><td class="field-body"><a class="reference internal" href="../../locale/docs/autodoc/qiskit.circuit.quantumcircuit.html#qiskit.circuit.quantumcircuit.QuantumCircuit" title="qiskit.circuit.quantumcircuit.QuantumCircuit">QuantumCircuit</a></td>
+<tr class="field-odd field"><th class="field-name">戻り値の型:</th><td class="field-body"><a class="reference internal" href="qiskit.circuit.quantumcircuit.html#qiskit.circuit.quantumcircuit.QuantumCircuit" title="qiskit.circuit.quantumcircuit.QuantumCircuit">QuantumCircuit</a></td>
 </tr>
 </tbody>
 </table>
@@ -2585,7 +2585,7 @@ The implementation follows Section 4 of Boyer et al. &lt;<a class="reference ext
 <dl class="class">
 <dt id="qiskit.aqua.algorithms.AmplitudeEstimation">
 <em class="property">class </em><code class="descname">AmplitudeEstimation</code><span class="sig-paren">(</span><em>num_eval_qubits</em>, <em>a_factory</em>, <em>i_objective=None</em>, <em>q_factory=None</em>, <em>iqft=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/qiskit/aqua/algorithms/single_sample/amplitude_estimation/ae.html#AmplitudeEstimation"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.aqua.algorithms.AmplitudeEstimation" title="この定義へのパーマリンク">¶</a></dt>
-<dd><p>ベースクラス: <a class="reference internal" href="../../locale/docs/autodoc/qiskit.aqua.algorithms.quantum_algorithm.html#qiskit.aqua.algorithms.quantum_algorithm.QuantumAlgorithm" title="qiskit.aqua.algorithms.quantum_algorithm.QuantumAlgorithm"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.aqua.algorithms.quantum_algorithm.QuantumAlgorithm</span></code></a></p>
+<dd><p>ベースクラス: <a class="reference internal" href="qiskit.aqua.algorithms.quantum_algorithm.html#qiskit.aqua.algorithms.quantum_algorithm.QuantumAlgorithm" title="qiskit.aqua.algorithms.quantum_algorithm.QuantumAlgorithm"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.aqua.algorithms.quantum_algorithm.QuantumAlgorithm</span></code></a></p>
 <p>The Amplitude Estimation algorithm.</p>
 <dl class="attribute">
 <dt id="qiskit.aqua.algorithms.AmplitudeEstimation.CONFIGURATION">
@@ -2621,7 +2621,7 @@ The implementation follows Section 4 of Boyer et al. &lt;<a class="reference ext
 <dl class="class">
 <dt id="qiskit.aqua.algorithms.Simon">
 <em class="property">class </em><code class="descname">Simon</code><span class="sig-paren">(</span><em>oracle</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/qiskit/aqua/algorithms/single_sample/simon/simon.html#Simon"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.aqua.algorithms.Simon" title="この定義へのパーマリンク">¶</a></dt>
-<dd><p>ベースクラス: <a class="reference internal" href="../../locale/docs/autodoc/qiskit.aqua.algorithms.quantum_algorithm.html#qiskit.aqua.algorithms.quantum_algorithm.QuantumAlgorithm" title="qiskit.aqua.algorithms.quantum_algorithm.QuantumAlgorithm"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.aqua.algorithms.quantum_algorithm.QuantumAlgorithm</span></code></a></p>
+<dd><p>ベースクラス: <a class="reference internal" href="qiskit.aqua.algorithms.quantum_algorithm.html#qiskit.aqua.algorithms.quantum_algorithm.QuantumAlgorithm" title="qiskit.aqua.algorithms.quantum_algorithm.QuantumAlgorithm"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.aqua.algorithms.quantum_algorithm.QuantumAlgorithm</span></code></a></p>
 <p>The Simon algorithm.</p>
 <dl class="attribute">
 <dt id="qiskit.aqua.algorithms.Simon.CONFIGURATION">
@@ -2654,7 +2654,7 @@ The implementation follows Section 4 of Boyer et al. &lt;<a class="reference ext
 <dl class="class">
 <dt id="qiskit.aqua.algorithms.DeutschJozsa">
 <em class="property">class </em><code class="descname">DeutschJozsa</code><span class="sig-paren">(</span><em>oracle</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/qiskit/aqua/algorithms/single_sample/deutsch_jozsa/dj.html#DeutschJozsa"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.aqua.algorithms.DeutschJozsa" title="この定義へのパーマリンク">¶</a></dt>
-<dd><p>ベースクラス: <a class="reference internal" href="../../locale/docs/autodoc/qiskit.aqua.algorithms.quantum_algorithm.html#qiskit.aqua.algorithms.quantum_algorithm.QuantumAlgorithm" title="qiskit.aqua.algorithms.quantum_algorithm.QuantumAlgorithm"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.aqua.algorithms.quantum_algorithm.QuantumAlgorithm</span></code></a></p>
+<dd><p>ベースクラス: <a class="reference internal" href="qiskit.aqua.algorithms.quantum_algorithm.html#qiskit.aqua.algorithms.quantum_algorithm.QuantumAlgorithm" title="qiskit.aqua.algorithms.quantum_algorithm.QuantumAlgorithm"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.aqua.algorithms.quantum_algorithm.QuantumAlgorithm</span></code></a></p>
 <p>The Deutsch-Jozsa algorithm.</p>
 <dl class="attribute">
 <dt id="qiskit.aqua.algorithms.DeutschJozsa.CONFIGURATION">
@@ -2687,7 +2687,7 @@ The implementation follows Section 4 of Boyer et al. &lt;<a class="reference ext
 <dl class="class">
 <dt id="qiskit.aqua.algorithms.BernsteinVazirani">
 <em class="property">class </em><code class="descname">BernsteinVazirani</code><span class="sig-paren">(</span><em>oracle</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/qiskit/aqua/algorithms/single_sample/bernstein_vazirani/bv.html#BernsteinVazirani"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.aqua.algorithms.BernsteinVazirani" title="この定義へのパーマリンク">¶</a></dt>
-<dd><p>ベースクラス: <a class="reference internal" href="../../locale/docs/autodoc/qiskit.aqua.algorithms.quantum_algorithm.html#qiskit.aqua.algorithms.quantum_algorithm.QuantumAlgorithm" title="qiskit.aqua.algorithms.quantum_algorithm.QuantumAlgorithm"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.aqua.algorithms.quantum_algorithm.QuantumAlgorithm</span></code></a></p>
+<dd><p>ベースクラス: <a class="reference internal" href="qiskit.aqua.algorithms.quantum_algorithm.html#qiskit.aqua.algorithms.quantum_algorithm.QuantumAlgorithm" title="qiskit.aqua.algorithms.quantum_algorithm.QuantumAlgorithm"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.aqua.algorithms.quantum_algorithm.QuantumAlgorithm</span></code></a></p>
 <p>The Bernstein-Vazirani algorithm.</p>
 <dl class="attribute">
 <dt id="qiskit.aqua.algorithms.BernsteinVazirani.CONFIGURATION">
@@ -2720,7 +2720,7 @@ The implementation follows Section 4 of Boyer et al. &lt;<a class="reference ext
 <dl class="class">
 <dt id="qiskit.aqua.algorithms.HHL">
 <em class="property">class </em><code class="descname">HHL</code><span class="sig-paren">(</span><em>matrix=None</em>, <em>vector=None</em>, <em>truncate_powerdim=False</em>, <em>truncate_hermitian=False</em>, <em>eigs=None</em>, <em>init_state=None</em>, <em>reciprocal=None</em>, <em>num_q=0</em>, <em>num_a=0</em>, <em>orig_size=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/qiskit/aqua/algorithms/single_sample/hhl/hhl.html#HHL"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.aqua.algorithms.HHL" title="この定義へのパーマリンク">¶</a></dt>
-<dd><p>ベースクラス: <a class="reference internal" href="../../locale/docs/autodoc/qiskit.aqua.algorithms.quantum_algorithm.html#qiskit.aqua.algorithms.quantum_algorithm.QuantumAlgorithm" title="qiskit.aqua.algorithms.quantum_algorithm.QuantumAlgorithm"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.aqua.algorithms.quantum_algorithm.QuantumAlgorithm</span></code></a></p>
+<dd><p>ベースクラス: <a class="reference internal" href="qiskit.aqua.algorithms.quantum_algorithm.html#qiskit.aqua.algorithms.quantum_algorithm.QuantumAlgorithm" title="qiskit.aqua.algorithms.quantum_algorithm.QuantumAlgorithm"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.aqua.algorithms.quantum_algorithm.QuantumAlgorithm</span></code></a></p>
 <p>The HHL algorithm.</p>
 <p>The quantum circuit for this algorithm is returned by <cite>generate_circuit</cite>.
 Running the algorithm will execute the circuit and return the result
@@ -2824,7 +2824,7 @@ vector (np.array): the expanded vector</p>
 <dl class="class">
 <dt id="qiskit.aqua.algorithms.Shor">
 <em class="property">class </em><code class="descname">Shor</code><span class="sig-paren">(</span><em>N=15</em>, <em>a=2</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/qiskit/aqua/algorithms/single_sample/shor/shor.html#Shor"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.aqua.algorithms.Shor" title="この定義へのパーマリンク">¶</a></dt>
-<dd><p>ベースクラス: <a class="reference internal" href="../../locale/docs/autodoc/qiskit.aqua.algorithms.quantum_algorithm.html#qiskit.aqua.algorithms.quantum_algorithm.QuantumAlgorithm" title="qiskit.aqua.algorithms.quantum_algorithm.QuantumAlgorithm"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.aqua.algorithms.quantum_algorithm.QuantumAlgorithm</span></code></a></p>
+<dd><p>ベースクラス: <a class="reference internal" href="qiskit.aqua.algorithms.quantum_algorithm.html#qiskit.aqua.algorithms.quantum_algorithm.QuantumAlgorithm" title="qiskit.aqua.algorithms.quantum_algorithm.QuantumAlgorithm"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.aqua.algorithms.quantum_algorithm.QuantumAlgorithm</span></code></a></p>
 <p>The Shor's Factoring algorithm.</p>
 <p>Adapted from <a class="reference external" href="https://github.com/ttlion/ShorAlgQiskit">https://github.com/ttlion/ShorAlgQiskit</a></p>
 <dl class="attribute">
@@ -2854,7 +2854,7 @@ vector (np.array): the expanded vector</p>
 </tr>
 <tr class="field-even field"><th class="field-name">戻り値:</th><td class="field-body">quantum circuit.</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">戻り値の型:</th><td class="field-body"><a class="reference internal" href="../../locale/docs/autodoc/qiskit.circuit.quantumcircuit.html#qiskit.circuit.quantumcircuit.QuantumCircuit" title="qiskit.circuit.quantumcircuit.QuantumCircuit">QuantumCircuit</a></td>
+<tr class="field-odd field"><th class="field-name">戻り値の型:</th><td class="field-body"><a class="reference internal" href="qiskit.circuit.quantumcircuit.html#qiskit.circuit.quantumcircuit.QuantumCircuit" title="qiskit.circuit.quantumcircuit.QuantumCircuit">QuantumCircuit</a></td>
 </tr>
 </tbody>
 </table>

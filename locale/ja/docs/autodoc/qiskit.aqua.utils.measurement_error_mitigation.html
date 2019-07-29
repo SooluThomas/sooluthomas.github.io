@@ -1527,10 +1527,10 @@
 <tr class="field-odd field"><th class="field-name">パラメータ:</th><td class="field-body"><ul class="first simple">
 <li><strong>qubits</strong> (<em>list</em><em>[</em><em>int</em><em>]</em>) -- the measured qubit index (in the order to classical bit 0...n-1)</li>
 <li><strong>fitter_cls</strong> (<em>callable</em>) -- CompleteMeasFitter or TensoredMeasFitter</li>
-<li><strong>backend</strong> (<a class="reference internal" href="../../locale/docs/autodoc/qiskit.providers.basebackend.html#qiskit.providers.basebackend.BaseBackend" title="qiskit.providers.basebackend.BaseBackend"><em>BaseBackend</em></a>) -- backend instance</li>
+<li><strong>backend</strong> (<a class="reference internal" href="qiskit.providers.basebackend.html#qiskit.providers.basebackend.BaseBackend" title="qiskit.providers.basebackend.BaseBackend"><em>BaseBackend</em></a>) -- backend instance</li>
 <li><strong>backend_config</strong> (<em>dict</em><em>, </em><em>optional</em>) -- configuration for backend</li>
 <li><strong>compile_config</strong> (<em>dict</em><em>, </em><em>optional</em>) -- configuration for compilation</li>
-<li><strong>run_config</strong> (<a class="reference internal" href="../../locale/docs/autodoc/qiskit.assembler.run_config.html#qiskit.assembler.run_config.RunConfig" title="qiskit.assembler.run_config.RunConfig"><em>RunConfig</em></a><em>, </em><em>optional</em>) -- configuration for running a circuit</li>
+<li><strong>run_config</strong> (<a class="reference internal" href="qiskit.assembler.run_config.html#qiskit.assembler.run_config.RunConfig" title="qiskit.assembler.run_config.RunConfig"><em>RunConfig</em></a><em>, </em><em>optional</em>) -- configuration for running a circuit</li>
 <li><strong>qjob_config</strong> (<em>dict</em><em>, </em><em>optional</em>) -- configuration for quantum job object</li>
 <li><strong>backend_options</strong> (<em>dict</em><em>, </em><em>optional</em>) -- configuration for simulator</li>
 <li><strong>noise_config</strong> (<em>dict</em><em>, </em><em>optional</em>) -- configuration for noise model</li>
@@ -1540,7 +1540,7 @@
 <tr class="field-even field"><th class="field-name">戻り値:</th><td class="field-body"><p class="first">the measurement fitter</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">戻り値の型:</th><td class="field-body"><p class="first"><a class="reference internal" href="../../locale/docs/autodoc/qiskit.ignis.mitigation.measurement.fitters.html#qiskit.ignis.mitigation.measurement.fitters.CompleteMeasFitter" title="qiskit.ignis.mitigation.measurement.fitters.CompleteMeasFitter">CompleteMeasFitter</a> or <a class="reference internal" href="../../locale/docs/autodoc/qiskit.ignis.mitigation.measurement.fitters.html#qiskit.ignis.mitigation.measurement.fitters.TensoredMeasFitter" title="qiskit.ignis.mitigation.measurement.fitters.TensoredMeasFitter">TensoredMeasFitter</a></p>
+<tr class="field-odd field"><th class="field-name">戻り値の型:</th><td class="field-body"><p class="first"><a class="reference internal" href="qiskit.ignis.mitigation.measurement.fitters.html#qiskit.ignis.mitigation.measurement.fitters.CompleteMeasFitter" title="qiskit.ignis.mitigation.measurement.fitters.CompleteMeasFitter">CompleteMeasFitter</a> or <a class="reference internal" href="qiskit.ignis.mitigation.measurement.fitters.html#qiskit.ignis.mitigation.measurement.fitters.TensoredMeasFitter" title="qiskit.ignis.mitigation.measurement.fitters.TensoredMeasFitter">TensoredMeasFitter</a></p>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><code class="xref py py-exc docutils literal notranslate"><span class="pre">AquaError</span></code> -- when the fitter_cls is not recognizable.</p>
@@ -1558,7 +1558,7 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">パラメータ:</th><td class="field-body"><strong>transpiled_circuits</strong> (<em>[</em><a class="reference internal" href="../../locale/docs/autodoc/qiskit.circuit.quantumcircuit.html#qiskit.circuit.quantumcircuit.QuantumCircuit" title="qiskit.circuit.quantumcircuit.QuantumCircuit"><em>QuantumCircuit</em></a><em>]</em>) -- a list of transpiled circuits</td>
+<tr class="field-odd field"><th class="field-name">パラメータ:</th><td class="field-body"><strong>transpiled_circuits</strong> (<em>[</em><a class="reference internal" href="qiskit.circuit.quantumcircuit.html#qiskit.circuit.quantumcircuit.QuantumCircuit" title="qiskit.circuit.quantumcircuit.QuantumCircuit"><em>QuantumCircuit</em></a><em>]</em>) -- a list of transpiled circuits</td>
 </tr>
 <tr class="field-even field"><th class="field-name">戻り値:</th><td class="field-body">the qubit mapping to-be-used for measure error mitigation</td>
 </tr>
@@ -1594,8 +1594,8 @@
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">パラメータ:</th><td class="field-body"><ul class="first simple">
-<li><strong>results</strong> (<a class="reference internal" href="../../locale/docs/autodoc/qiskit.result.result.html#qiskit.result.result.Result" title="qiskit.result.result.Result"><em>Result</em></a>) -- the unmitigated Result object</li>
-<li><strong>meas_fitter</strong> (<a class="reference internal" href="../../locale/docs/autodoc/qiskit.ignis.mitigation.measurement.fitters.html#qiskit.ignis.mitigation.measurement.fitters.CompleteMeasFitter" title="qiskit.ignis.mitigation.measurement.fitters.CompleteMeasFitter"><em>CompleteMeasFitter</em></a><em> or </em><a class="reference internal" href="../../locale/docs/autodoc/qiskit.ignis.mitigation.measurement.fitters.html#qiskit.ignis.mitigation.measurement.fitters.TensoredMeasFitter" title="qiskit.ignis.mitigation.measurement.fitters.TensoredMeasFitter"><em>TensoredMeasFitter</em></a>) -- the measurement fitter</li>
+<li><strong>results</strong> (<a class="reference internal" href="qiskit.result.result.html#qiskit.result.result.Result" title="qiskit.result.result.Result"><em>Result</em></a>) -- the unmitigated Result object</li>
+<li><strong>meas_fitter</strong> (<a class="reference internal" href="qiskit.ignis.mitigation.measurement.fitters.html#qiskit.ignis.mitigation.measurement.fitters.CompleteMeasFitter" title="qiskit.ignis.mitigation.measurement.fitters.CompleteMeasFitter"><em>CompleteMeasFitter</em></a><em> or </em><a class="reference internal" href="qiskit.ignis.mitigation.measurement.fitters.html#qiskit.ignis.mitigation.measurement.fitters.TensoredMeasFitter" title="qiskit.ignis.mitigation.measurement.fitters.TensoredMeasFitter"><em>TensoredMeasFitter</em></a>) -- the measurement fitter</li>
 <li><strong>method</strong> (<em>str</em>) -- fitting method. If None, then least_squares is used.
 'pseudo_inverse': direct inversion of the A matrix
 'least_squares': constrained to have physical probabilities</li>
@@ -1605,7 +1605,7 @@
 <tr class="field-even field"><th class="field-name">戻り値:</th><td class="field-body"><p class="first">the mitigated Result</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">戻り値の型:</th><td class="field-body"><p class="first last"><a class="reference internal" href="../../locale/docs/autodoc/qiskit.result.result.html#qiskit.result.result.Result" title="qiskit.result.result.Result">Result</a></p>
+<tr class="field-odd field"><th class="field-name">戻り値の型:</th><td class="field-body"><p class="first last"><a class="reference internal" href="qiskit.result.result.html#qiskit.result.result.Result" title="qiskit.result.result.Result">Result</a></p>
 </td>
 </tr>
 </tbody>

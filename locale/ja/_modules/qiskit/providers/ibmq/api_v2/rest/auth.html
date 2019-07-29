@@ -189,7 +189,7 @@
 <span class="kn">from</span> <span class="nn">.base</span> <span class="k">import</span> <span class="n">RestAdapterBase</span>
 
 
-<div class="viewcode-block" id="Auth"><a class="viewcode-back" href="../../../../../../locale/docs/autodoc/qiskit.providers.ibmq.api_v2.rest.auth.html#qiskit.providers.ibmq.api_v2.rest.auth.Auth">[ドキュメント]</a><span class="k">class</span> <span class="nc">Auth</span><span class="p">(</span><span class="n">RestAdapterBase</span><span class="p">):</span>
+<div class="viewcode-block" id="Auth"><a class="viewcode-back" href="../../../../../../docs/autodoc/qiskit.providers.ibmq.api_v2.rest.auth.html#qiskit.providers.ibmq.api_v2.rest.auth.Auth">[ドキュメント]</a><span class="k">class</span> <span class="nc">Auth</span><span class="p">(</span><span class="n">RestAdapterBase</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Rest adapter for authentication endpoints.&quot;&quot;&quot;</span>
 
     <span class="n">URL_MAP</span> <span class="o">=</span> <span class="p">{</span>
@@ -197,7 +197,7 @@
         <span class="s1">&#39;user_info&#39;</span><span class="p">:</span> <span class="s1">&#39;/users/me&#39;</span><span class="p">,</span>
     <span class="p">}</span>
 
-<div class="viewcode-block" id="Auth.login"><a class="viewcode-back" href="../../../../../../locale/docs/autodoc/qiskit.providers.ibmq.api_v2.rest.auth.html#qiskit.providers.ibmq.api_v2.rest.auth.Auth.login">[ドキュメント]</a>    <span class="k">def</span> <span class="nf">login</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">api_token</span><span class="p">):</span>
+<div class="viewcode-block" id="Auth.login"><a class="viewcode-back" href="../../../../../../docs/autodoc/qiskit.providers.ibmq.api_v2.rest.auth.html#qiskit.providers.ibmq.api_v2.rest.auth.Auth.login">[ドキュメント]</a>    <span class="k">def</span> <span class="nf">login</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">api_token</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Login with token.</span>
 
 <span class="sd">        Args:</span>
@@ -209,7 +209,7 @@
         <span class="n">url</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_url</span><span class="p">(</span><span class="s1">&#39;login&#39;</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;apiToken&#39;</span><span class="p">:</span> <span class="n">api_token</span><span class="p">})</span><span class="o">.</span><span class="n">json</span><span class="p">()</span></div>
 
-<div class="viewcode-block" id="Auth.user_info"><a class="viewcode-back" href="../../../../../../locale/docs/autodoc/qiskit.providers.ibmq.api_v2.rest.auth.html#qiskit.providers.ibmq.api_v2.rest.auth.Auth.user_info">[ドキュメント]</a>    <span class="k">def</span> <span class="nf">user_info</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="Auth.user_info"><a class="viewcode-back" href="../../../../../../docs/autodoc/qiskit.providers.ibmq.api_v2.rest.auth.html#qiskit.providers.ibmq.api_v2.rest.auth.Auth.user_info">[ドキュメント]</a>    <span class="k">def</span> <span class="nf">user_info</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return user information.&quot;&quot;&quot;</span>
         <span class="n">url</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_url</span><span class="p">(</span><span class="s1">&#39;user_info&#39;</span><span class="p">)</span>
         <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>

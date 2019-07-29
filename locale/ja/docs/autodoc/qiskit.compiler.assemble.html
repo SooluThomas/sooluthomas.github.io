@@ -1530,15 +1530,15 @@ header and configurations.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">パラメータ:</th><td class="field-body"><ul class="first simple">
-<li><strong>experiments</strong> (<a class="reference internal" href="../../locale/docs/autodoc/qiskit.circuit.quantumcircuit.html#qiskit.circuit.quantumcircuit.QuantumCircuit" title="qiskit.circuit.quantumcircuit.QuantumCircuit"><em>QuantumCircuit</em></a><em> or </em><em>list</em><em>[</em><a class="reference internal" href="../../locale/docs/autodoc/qiskit.circuit.quantumcircuit.html#qiskit.circuit.quantumcircuit.QuantumCircuit" title="qiskit.circuit.quantumcircuit.QuantumCircuit"><em>QuantumCircuit</em></a><em>] or </em><a class="reference internal" href="../../locale/docs/autodoc/qiskit.pulse.schedule.html#qiskit.pulse.schedule.Schedule" title="qiskit.pulse.schedule.Schedule"><em>Schedule</em></a><em> or </em><em>list</em><em>[</em><a class="reference internal" href="../../locale/docs/autodoc/qiskit.pulse.schedule.html#qiskit.pulse.schedule.Schedule" title="qiskit.pulse.schedule.Schedule"><em>Schedule</em></a><em>]</em>) -- Circuit(s) or pulse schedule(s) to execute</li>
-<li><strong>backend</strong> (<a class="reference internal" href="../../locale/docs/autodoc/qiskit.providers.basebackend.html#qiskit.providers.basebackend.BaseBackend" title="qiskit.providers.basebackend.BaseBackend"><em>BaseBackend</em></a>) -- If set, some runtime options are automatically grabbed from
+<li><strong>experiments</strong> (<a class="reference internal" href="qiskit.circuit.quantumcircuit.html#qiskit.circuit.quantumcircuit.QuantumCircuit" title="qiskit.circuit.quantumcircuit.QuantumCircuit"><em>QuantumCircuit</em></a><em> or </em><em>list</em><em>[</em><a class="reference internal" href="qiskit.circuit.quantumcircuit.html#qiskit.circuit.quantumcircuit.QuantumCircuit" title="qiskit.circuit.quantumcircuit.QuantumCircuit"><em>QuantumCircuit</em></a><em>] or </em><a class="reference internal" href="qiskit.pulse.schedule.html#qiskit.pulse.schedule.Schedule" title="qiskit.pulse.schedule.Schedule"><em>Schedule</em></a><em> or </em><em>list</em><em>[</em><a class="reference internal" href="qiskit.pulse.schedule.html#qiskit.pulse.schedule.Schedule" title="qiskit.pulse.schedule.Schedule"><em>Schedule</em></a><em>]</em>) -- Circuit(s) or pulse schedule(s) to execute</li>
+<li><strong>backend</strong> (<a class="reference internal" href="qiskit.providers.basebackend.html#qiskit.providers.basebackend.BaseBackend" title="qiskit.providers.basebackend.BaseBackend"><em>BaseBackend</em></a>) -- If set, some runtime options are automatically grabbed from
 backend.configuration() and backend.defaults().
 If any other option is explicitly set (e.g. rep_rate), it
 will override the backend's.
 If any other options is set in the run_config, it will
 also override the backend's.</li>
 <li><strong>qobj_id</strong> (<em>str</em>) -- String identifier to annotate the Qobj</li>
-<li><strong>qobj_header</strong> (<a class="reference internal" href="../../locale/docs/autodoc/qiskit.qobj.models.base.html#qiskit.qobj.models.base.QobjHeader" title="qiskit.qobj.models.base.QobjHeader"><em>QobjHeader</em></a><em> or </em><em>dict</em>) -- User input that will be inserted in Qobj header, and will also be
+<li><strong>qobj_header</strong> (<a class="reference internal" href="qiskit.qobj.models.base.html#qiskit.qobj.models.base.QobjHeader" title="qiskit.qobj.models.base.QobjHeader"><em>QobjHeader</em></a><em> or </em><em>dict</em>) -- User input that will be inserted in Qobj header, and will also be
 copied to the corresponding Result header. Headers do not affect the run.</li>
 <li><strong>shots</strong> (<em>int</em>) -- Number of repetitions of each circuit, for sampling. Default: 2014</li>
 <li><strong>memory</strong> (<em>bool</em>) -- If True, per-shot measurement bitstrings are returned as well
@@ -1587,7 +1587,7 @@ Refer to the backend documentation for details on these arguments</li>
 </p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">戻り値の型:</th><td class="field-body"><p class="first"><a class="reference internal" href="../../locale/docs/autodoc/qiskit.qobj.qobj.html#qiskit.qobj.qobj.Qobj" title="qiskit.qobj.qobj.Qobj">Qobj</a></p>
+<tr class="field-odd field"><th class="field-name">戻り値の型:</th><td class="field-body"><p class="first"><a class="reference internal" href="qiskit.qobj.qobj.html#qiskit.qobj.qobj.Qobj" title="qiskit.qobj.qobj.Qobj">Qobj</a></p>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><code class="xref py py-exc docutils literal notranslate"><span class="pre">QiskitError</span></code> -- if the input cannot be interpreted as either circuits or schedules</p>

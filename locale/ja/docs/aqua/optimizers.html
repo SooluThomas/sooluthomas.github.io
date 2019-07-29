@@ -1518,12 +1518,12 @@
   <div class="section" id="optimizers">
 <span id="id1"></span><h1>Optimizers<a class="headerlink" href="#optimizers" title="このヘッドラインへのパーマリンク">¶</a></h1>
 <p>Aqua  contains a variety of classical optimizers for
-use by quantum variational algorithms, such as <a class="reference internal" href="../../locale/docs/aqua/algorithms.html#vqe"><span class="std std-ref">Variational Quantum Eigensolver (VQE)</span></a>.
+use by quantum variational algorithms, such as <a class="reference internal" href="algorithms.html#vqe"><span class="std std-ref">Variational Quantum Eigensolver (VQE)</span></a>.
 Logically, these optimizers can be divided into two categories:</p>
 <ul class="simple">
-<li><a class="reference internal" href="../../locale/docs/aqua/optimizers.html#local-optimizers"><span class="std std-ref">Local Optimizers</span></a>: Given an optimization problem, a <em>local optimizer</em> is a function that
+<li><a class="reference internal" href="#local-optimizers"><span class="std std-ref">Local Optimizers</span></a>: Given an optimization problem, a <em>local optimizer</em> is a function that
 attempts to find an optimal value within the neighboring set of a candidate solution.</li>
-<li><a class="reference internal" href="../../locale/docs/aqua/optimizers.html#global-optimizers"><span class="std std-ref">Global Optimizers</span></a>: Given an optimization problem, a <em>global optimizer</em> is a function that
+<li><a class="reference internal" href="#global-optimizers"><span class="std std-ref">Global Optimizers</span></a>: Given an optimization problem, a <em>global optimizer</em> is a function that
 attempts to find an optimal value among all possible solutions.</li>
 </ul>
 <div class="topic">
@@ -1534,16 +1534,16 @@ quantum variational algorithms,  are pluggable modules in Aqua.
 New optimizers for quantum variational algorithms are typically installed in the
 <code class="docutils literal notranslate"><span class="pre">qiskit/aqua/components/optimizers</span></code> folder and derive from the <code class="docutils literal notranslate"><span class="pre">Optimizer</span></code> class.
 Aqua also allows for
-<a class="reference internal" href="../../locale/docs/aqua/extending.html#aqua-dynamically-discovered-components"><span class="std std-ref">Dynamically Discovered Components</span></a>: new optimizers can register themselves
+<a class="reference internal" href="extending.html#aqua-dynamically-discovered-components"><span class="std std-ref">Dynamically Discovered Components</span></a>: new optimizers can register themselves
 as Aqua extensions and be dynamically discovered at run time independent of their
 location in the file system.
 This is done in order to encourage researchers and
 developers interested in
-<a class="reference internal" href="../../locale/docs/aqua/extending.html#aqua-extending"><span class="std std-ref">Contributing to Aqua</span></a> to extend the Aqua framework with their novel research contributions.</p>
+<a class="reference internal" href="extending.html#aqua-extending"><span class="std std-ref">Contributing to Aqua</span></a> to extend the Aqua framework with their novel research contributions.</p>
 </div>
 <div class="admonition seealso">
 <p class="first admonition-title">参考</p>
-<p class="last">Section <a class="reference internal" href="../../locale/docs/aqua/extending.html#aqua-extending"><span class="std std-ref">Contributing to Aqua</span></a> provides more details
+<p class="last">Section <a class="reference internal" href="extending.html#aqua-extending"><span class="std std-ref">Contributing to Aqua</span></a> provides more details
 on how to extend Aqua with new components.</p>
 </div>
 <div class="section" id="local-optimizers">
@@ -1552,19 +1552,19 @@ on how to extend Aqua with new components.</p>
 These optimizers are meant to be used in conjunction with quantum variational
 algorithms:</p>
 <ul class="simple">
-<li><a class="reference internal" href="../../locale/docs/aqua/optimizers.html#adam-amsgrad"><span class="std std-ref">ADAM</span></a></li>
-<li><a class="reference internal" href="../../locale/docs/aqua/optimizers.html#aqgd"><span class="std std-ref">Analytic Quantum Gradient Descent (AQGD)</span></a></li>
-<li><a class="reference internal" href="../../locale/docs/aqua/optimizers.html#cg"><span class="std std-ref">Conjugate Gradient (CG) Method</span></a></li>
-<li><a class="reference internal" href="../../locale/docs/aqua/optimizers.html#cobyla"><span class="std std-ref">Constrained Optimization BY Linear Approximation (COBYLA)</span></a></li>
-<li><a class="reference internal" href="../../locale/docs/aqua/optimizers.html#l-bfgs-b"><span class="std std-ref">Limited-memory Broyden-Fletcher-Goldfarb-Shanno Bound (L-BFGS-B)</span></a></li>
-<li><a class="reference internal" href="../../locale/docs/aqua/optimizers.html#nelder-mead"><span class="std std-ref">Nelder-Mead</span></a></li>
-<li><a class="reference internal" href="../../locale/docs/aqua/optimizers.html#p-bfgs"><span class="std std-ref">Parallel Broyden-Fletcher-Goldfarb-Shann (P-BFGS)</span></a></li>
-<li><a class="reference internal" href="../../locale/docs/aqua/optimizers.html#powell"><span class="std std-ref">Powell</span></a></li>
-<li><a class="reference internal" href="../../locale/docs/aqua/optimizers.html#slsqp"><span class="std std-ref">Sequential Least SQuares Programming (SLSQP)</span></a></li>
-<li><a class="reference internal" href="../../locale/docs/aqua/optimizers.html#spsa"><span class="std std-ref">Simultaneous Perturbation Stochastic Approximation (SPSA)</span></a></li>
-<li><a class="reference internal" href="../../locale/docs/aqua/optimizers.html#tnc"><span class="std std-ref">Truncated Newton (TNC)</span></a></li>
+<li><a class="reference internal" href="#adam-amsgrad"><span class="std std-ref">ADAM</span></a></li>
+<li><a class="reference internal" href="#aqgd"><span class="std std-ref">Analytic Quantum Gradient Descent (AQGD)</span></a></li>
+<li><a class="reference internal" href="#cg"><span class="std std-ref">Conjugate Gradient (CG) Method</span></a></li>
+<li><a class="reference internal" href="#cobyla"><span class="std std-ref">Constrained Optimization BY Linear Approximation (COBYLA)</span></a></li>
+<li><a class="reference internal" href="#l-bfgs-b"><span class="std std-ref">Limited-memory Broyden-Fletcher-Goldfarb-Shanno Bound (L-BFGS-B)</span></a></li>
+<li><a class="reference internal" href="#nelder-mead"><span class="std std-ref">Nelder-Mead</span></a></li>
+<li><a class="reference internal" href="#p-bfgs"><span class="std std-ref">Parallel Broyden-Fletcher-Goldfarb-Shann (P-BFGS)</span></a></li>
+<li><a class="reference internal" href="#powell"><span class="std std-ref">Powell</span></a></li>
+<li><a class="reference internal" href="#slsqp"><span class="std std-ref">Sequential Least SQuares Programming (SLSQP)</span></a></li>
+<li><a class="reference internal" href="#spsa"><span class="std std-ref">Simultaneous Perturbation Stochastic Approximation (SPSA)</span></a></li>
+<li><a class="reference internal" href="#tnc"><span class="std std-ref">Truncated Newton (TNC)</span></a></li>
 </ul>
-<p>Except for <a class="reference internal" href="../../locale/docs/aqua/optimizers.html#adam-amsgrad"><span class="std std-ref">ADAM</span></a>, <a class="reference internal" href="../../locale/docs/aqua/optimizers.html#aqgd"><span class="std std-ref">Analytic Quantum Gradient Descent (AQGD)</span></a> and <a class="reference internal" href="../../locale/docs/aqua/optimizers.html#p-bfgs"><span class="std std-ref">Parallel Broyden-Fletcher-Goldfarb-Shann (P-BFGS)</span></a>, all these
+<p>Except for <a class="reference internal" href="#adam-amsgrad"><span class="std std-ref">ADAM</span></a>, <a class="reference internal" href="#aqgd"><span class="std std-ref">Analytic Quantum Gradient Descent (AQGD)</span></a> and <a class="reference internal" href="#p-bfgs"><span class="std std-ref">Parallel Broyden-Fletcher-Goldfarb-Shann (P-BFGS)</span></a>, all these
 optimizers are directly based on the <code class="docutils literal notranslate"><span class="pre">scipy.optimize.minimize</span></code> optimization function in the
 <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.minimize.html">SciPy</a>
 Python library. They all have a common pattern for parameters. Specifically, the <code class="docutils literal notranslate"><span class="pre">tol</span></code>
@@ -2169,7 +2169,7 @@ by which Aqua dynamically discovers and loads it, is <code class="docutils liter
 <p>TNC uses a truncated Newton algorithm to minimize a function with
 variables subject to bounds. This algorithm uses gradient information;
 it is also called Newton Conjugate-Gradient. It differs from the
-<a class="reference internal" href="../../locale/docs/aqua/optimizers.html#cg"><span class="std std-ref">Conjugate Gradient (CG) Method</span></a> method as it wraps a C implementation and
+<a class="reference internal" href="#cg"><span class="std std-ref">Conjugate Gradient (CG) Method</span></a> method as it wraps a C implementation and
 allows each variable to be given upper and lower bounds.</p>
 <p>The following parameters are supported:</p>
 <ul>
@@ -2286,11 +2286,11 @@ object function evaluation.  The default value is <code class="docutils literal 
 </div>
 <p>Currently, Aqua supplies the following global optimizers from NLOpt:</p>
 <ul class="simple">
-<li><a class="reference internal" href="../../locale/docs/aqua/optimizers.html#crs"><span class="std std-ref">Controller Random Search (CRS) with Local Mutation</span></a></li>
-<li><a class="reference internal" href="../../locale/docs/aqua/optimizers.html#direct-l"><span class="std std-ref">DIviding RECTangles algorithm - Locally based (DIRECT-L)</span></a></li>
+<li><a class="reference internal" href="#crs"><span class="std std-ref">Controller Random Search (CRS) with Local Mutation</span></a></li>
+<li><a class="reference internal" href="#direct-l"><span class="std std-ref">DIviding RECTangles algorithm - Locally based (DIRECT-L)</span></a></li>
 <li><span class="xref std std-ref">direct-l-rand)</span></li>
-<li><a class="reference internal" href="../../locale/docs/aqua/optimizers.html#esch"><span class="std std-ref">Evolutionary Strategy algorithm with CaucHy distribution (ESCH)</span></a></li>
-<li><a class="reference internal" href="../../locale/docs/aqua/optimizers.html#isres"><span class="std std-ref">Improved Stochastic Ranking Evolution Strategy (ISRES)</span></a></li>
+<li><a class="reference internal" href="#esch"><span class="std std-ref">Evolutionary Strategy algorithm with CaucHy distribution (ESCH)</span></a></li>
+<li><a class="reference internal" href="#isres"><span class="std std-ref">Improved Stochastic Ranking Evolution Strategy (ISRES)</span></a></li>
 </ul>
 <div class="section" id="controller-random-search-crs-with-local-mutation">
 <span id="crs"></span><h3>Controller Random Search (CRS) with Local Mutation<a class="headerlink" href="#controller-random-search-crs-with-local-mutation" title="このヘッドラインへのパーマリンク">¶</a></h3>
@@ -2298,7 +2298,7 @@ object function evaluation.  The default value is <code class="docutils literal 
 is part of the family of the CRS optimizers.
 The CRS optimizers start with a random population of points, and randomly evolve these points by
 heuristic rules. In the case of CRS with local mutation, the evolution is a randomized version of
-the <a class="reference internal" href="../../locale/docs/aqua/optimizers.html#nelder-mead"><span class="std std-ref">Nelder-Mead</span></a> local optimizer.</p>
+the <a class="reference internal" href="#nelder-mead"><span class="std std-ref">Nelder-Mead</span></a> local optimizer.</p>
 <div class="topic">
 <p class="topic-title first">Declarative Name</p>
 <p>When referring to CRS with local mutation declaratively inside Aqua, its code <code class="docutils literal notranslate"><span class="pre">name</span></code>,
@@ -2321,7 +2321,7 @@ by which Aqua dynamically discovers and loads it, is <code class="docutils liter
 <div class="section" id="dividing-rectangles-algorithm-locally-based-randomized-direct-l-rand">
 <span id="direct-l-rand"></span><h3>DIviding RECTangles algorithm - Locally based - RANDomized (DIRECT-L-RAND)<a class="headerlink" href="#dividing-rectangles-algorithm-locally-based-randomized-direct-l-rand" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <p><a class="reference external" href="http://nlopt.readthedocs.io/en/latest/NLopt_Algorithms/#direct-and-direct-l">DIRECT-L-RAND</a>
-is a variant of <a class="reference internal" href="../../locale/docs/aqua/optimizers.html#direct-l"><span class="std std-ref">DIviding RECTangles algorithm - Locally based (DIRECT-L)</span></a>
+is a variant of <a class="reference internal" href="#direct-l"><span class="std std-ref">DIviding RECTangles algorithm - Locally based (DIRECT-L)</span></a>
 that uses some randomization to help decide which dimension to halve next in the case of near-ties.</p>
 <div class="topic">
 <p class="topic-title first">Declarative Name</p>

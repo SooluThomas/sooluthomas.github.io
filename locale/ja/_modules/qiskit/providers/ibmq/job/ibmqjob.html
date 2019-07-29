@@ -211,7 +211,7 @@
 <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
 
 
-<div class="viewcode-block" id="IBMQJob"><a class="viewcode-back" href="../../../../../locale/docs/autodoc/qiskit.providers.ibmq.job.ibmqjob.html#qiskit.providers.ibmq.job.ibmqjob.IBMQJob">[ドキュメント]</a><span class="k">class</span> <span class="nc">IBMQJob</span><span class="p">(</span><span class="n">BaseJob</span><span class="p">):</span>
+<div class="viewcode-block" id="IBMQJob"><a class="viewcode-back" href="../../../../../docs/autodoc/qiskit.providers.ibmq.job.ibmqjob.html#qiskit.providers.ibmq.job.ibmqjob.IBMQJob">[ドキュメント]</a><span class="k">class</span> <span class="nc">IBMQJob</span><span class="p">(</span><span class="n">BaseJob</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Representation of a job that will be execute on a IBMQ backend.</span>
 
 <span class="sd">    Represent the jobs that will be executed on IBM-Q simulators and real</span>
@@ -357,7 +357,7 @@
                 <span class="bp">self</span><span class="o">.</span><span class="n">_status</span> <span class="o">=</span> <span class="n">JobStatus</span><span class="o">.</span><span class="n">INITIALIZING</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">status</span><span class="p">()</span>
 
-<div class="viewcode-block" id="IBMQJob.qobj"><a class="viewcode-back" href="../../../../../locale/docs/autodoc/qiskit.providers.ibmq.job.ibmqjob.html#qiskit.providers.ibmq.job.ibmqjob.IBMQJob.qobj">[ドキュメント]</a>    <span class="k">def</span> <span class="nf">qobj</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="IBMQJob.qobj"><a class="viewcode-back" href="../../../../../docs/autodoc/qiskit.providers.ibmq.job.ibmqjob.html#qiskit.providers.ibmq.job.ibmqjob.IBMQJob.qobj">[ドキュメント]</a>    <span class="k">def</span> <span class="nf">qobj</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return the Qobj submitted for this job.</span>
 
 <span class="sd">        Note that this method might involve querying the API for results if the</span>
@@ -372,7 +372,7 @@
 
         <span class="k">return</span> <span class="n">Qobj</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_qobj_payload</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="IBMQJob.properties"><a class="viewcode-back" href="../../../../../locale/docs/autodoc/qiskit.providers.ibmq.job.ibmqjob.html#qiskit.providers.ibmq.job.ibmqjob.IBMQJob.properties">[ドキュメント]</a>    <span class="k">def</span> <span class="nf">properties</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="IBMQJob.properties"><a class="viewcode-back" href="../../../../../docs/autodoc/qiskit.providers.ibmq.job.ibmqjob.html#qiskit.providers.ibmq.job.ibmqjob.IBMQJob.properties">[ドキュメント]</a>    <span class="k">def</span> <span class="nf">properties</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return the backend properties for this job.</span>
 
 <span class="sd">        The properties might not be available if the job hasn&#39;t completed,</span>
@@ -393,7 +393,7 @@
         <span class="k">return</span> <span class="n">BackendProperties</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">properties</span><span class="p">)</span></div>
 
     <span class="c1"># pylint: disable=arguments-differ</span>
-<div class="viewcode-block" id="IBMQJob.result"><a class="viewcode-back" href="../../../../../locale/docs/autodoc/qiskit.providers.ibmq.job.ibmqjob.html#qiskit.providers.ibmq.job.ibmqjob.IBMQJob.result">[ドキュメント]</a>    <span class="k">def</span> <span class="nf">result</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">wait</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
+<div class="viewcode-block" id="IBMQJob.result"><a class="viewcode-back" href="../../../../../docs/autodoc/qiskit.providers.ibmq.job.ibmqjob.html#qiskit.providers.ibmq.job.ibmqjob.IBMQJob.result">[ドキュメント]</a>    <span class="k">def</span> <span class="nf">result</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">wait</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return the result of the job.</span>
 
 <span class="sd">        Note:</span>
@@ -437,7 +437,7 @@
 
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_result</span></div>
 
-<div class="viewcode-block" id="IBMQJob.cancel"><a class="viewcode-back" href="../../../../../locale/docs/autodoc/qiskit.providers.ibmq.job.ibmqjob.html#qiskit.providers.ibmq.job.ibmqjob.IBMQJob.cancel">[ドキュメント]</a>    <span class="k">def</span> <span class="nf">cancel</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="IBMQJob.cancel"><a class="viewcode-back" href="../../../../../docs/autodoc/qiskit.providers.ibmq.job.ibmqjob.html#qiskit.providers.ibmq.job.ibmqjob.IBMQJob.cancel">[ドキュメント]</a>    <span class="k">def</span> <span class="nf">cancel</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Attempt to cancel a job.</span>
 
 <span class="sd">        Note:</span>
@@ -462,7 +462,7 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">_cancelled</span> <span class="o">=</span> <span class="kc">False</span>
             <span class="k">raise</span> <span class="n">JobError</span><span class="p">(</span><span class="s1">&#39;Error cancelling job: </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">error</span><span class="o">.</span><span class="n">usr_msg</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="IBMQJob.status"><a class="viewcode-back" href="../../../../../locale/docs/autodoc/qiskit.providers.ibmq.job.ibmqjob.html#qiskit.providers.ibmq.job.ibmqjob.IBMQJob.status">[ドキュメント]</a>    <span class="k">def</span> <span class="nf">status</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="IBMQJob.status"><a class="viewcode-back" href="../../../../../docs/autodoc/qiskit.providers.ibmq.job.ibmqjob.html#qiskit.providers.ibmq.job.ibmqjob.IBMQJob.status">[ドキュメント]</a>    <span class="k">def</span> <span class="nf">status</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Query the API to update the status.</span>
 
 <span class="sd">        Returns:</span>
@@ -529,7 +529,7 @@
                             <span class="n">ApiJobStatus</span><span class="o">.</span><span class="n">ERROR_RUNNING_JOB</span><span class="p">):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_status</span> <span class="o">=</span> <span class="n">JobStatus</span><span class="o">.</span><span class="n">ERROR</span>
 
-<div class="viewcode-block" id="IBMQJob.error_message"><a class="viewcode-back" href="../../../../../locale/docs/autodoc/qiskit.providers.ibmq.job.ibmqjob.html#qiskit.providers.ibmq.job.ibmqjob.IBMQJob.error_message">[ドキュメント]</a>    <span class="k">def</span> <span class="nf">error_message</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="IBMQJob.error_message"><a class="viewcode-back" href="../../../../../docs/autodoc/qiskit.providers.ibmq.job.ibmqjob.html#qiskit.providers.ibmq.job.ibmqjob.IBMQJob.error_message">[ドキュメント]</a>    <span class="k">def</span> <span class="nf">error_message</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Provide details about the reason of failure.</span>
 
 <span class="sd">        Note:</span>
@@ -564,7 +564,7 @@
 
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_api_error_msg</span></div>
 
-<div class="viewcode-block" id="IBMQJob.queue_position"><a class="viewcode-back" href="../../../../../locale/docs/autodoc/qiskit.providers.ibmq.job.ibmqjob.html#qiskit.providers.ibmq.job.ibmqjob.IBMQJob.queue_position">[ドキュメント]</a>    <span class="k">def</span> <span class="nf">queue_position</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="IBMQJob.queue_position"><a class="viewcode-back" href="../../../../../docs/autodoc/qiskit.providers.ibmq.job.ibmqjob.html#qiskit.providers.ibmq.job.ibmqjob.IBMQJob.queue_position">[ドキュメント]</a>    <span class="k">def</span> <span class="nf">queue_position</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return the position in the server queue.</span>
 
 <span class="sd">        Returns:</span>
@@ -572,11 +572,11 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_queue_position</span></div>
 
-<div class="viewcode-block" id="IBMQJob.creation_date"><a class="viewcode-back" href="../../../../../locale/docs/autodoc/qiskit.providers.ibmq.job.ibmqjob.html#qiskit.providers.ibmq.job.ibmqjob.IBMQJob.creation_date">[ドキュメント]</a>    <span class="k">def</span> <span class="nf">creation_date</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="IBMQJob.creation_date"><a class="viewcode-back" href="../../../../../docs/autodoc/qiskit.providers.ibmq.job.ibmqjob.html#qiskit.providers.ibmq.job.ibmqjob.IBMQJob.creation_date">[ドキュメント]</a>    <span class="k">def</span> <span class="nf">creation_date</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return creation date.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_creation_date</span></div>
 
-<div class="viewcode-block" id="IBMQJob.job_id"><a class="viewcode-back" href="../../../../../locale/docs/autodoc/qiskit.providers.ibmq.job.ibmqjob.html#qiskit.providers.ibmq.job.ibmqjob.IBMQJob.job_id">[ドキュメント]</a>    <span class="k">def</span> <span class="nf">job_id</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">60</span><span class="p">):</span>
+<div class="viewcode-block" id="IBMQJob.job_id"><a class="viewcode-back" href="../../../../../docs/autodoc/qiskit.providers.ibmq.job.ibmqjob.html#qiskit.providers.ibmq.job.ibmqjob.IBMQJob.job_id">[ドキュメント]</a>    <span class="k">def</span> <span class="nf">job_id</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">60</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return the job ID assigned by the API.</span>
 
 <span class="sd">        If the job ID is not set because the job is still initializing, this</span>
@@ -591,7 +591,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_wait_for_submission</span><span class="p">(</span><span class="n">timeout</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_job_id</span></div>
 
-<div class="viewcode-block" id="IBMQJob.submit"><a class="viewcode-back" href="../../../../../locale/docs/autodoc/qiskit.providers.ibmq.job.ibmqjob.html#qiskit.providers.ibmq.job.ibmqjob.IBMQJob.submit">[ドキュメント]</a>    <span class="k">def</span> <span class="nf">submit</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="IBMQJob.submit"><a class="viewcode-back" href="../../../../../docs/autodoc/qiskit.providers.ibmq.job.ibmqjob.html#qiskit.providers.ibmq.job.ibmqjob.IBMQJob.submit">[ドキュメント]</a>    <span class="k">def</span> <span class="nf">submit</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Submit job to IBM-Q.</span>
 
 <span class="sd">        Events:</span>

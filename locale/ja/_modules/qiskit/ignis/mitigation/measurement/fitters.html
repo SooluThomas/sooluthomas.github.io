@@ -205,7 +205,7 @@
     <span class="n">HAS_MATPLOTLIB</span> <span class="o">=</span> <span class="kc">False</span>
 
 
-<div class="viewcode-block" id="CompleteMeasFitter"><a class="viewcode-back" href="../../../../../locale/docs/autodoc/qiskit.ignis.mitigation.measurement.fitters.html#qiskit.ignis.mitigation.measurement.fitters.CompleteMeasFitter">[ドキュメント]</a><span class="k">class</span> <span class="nc">CompleteMeasFitter</span><span class="p">():</span>
+<div class="viewcode-block" id="CompleteMeasFitter"><a class="viewcode-back" href="../../../../../docs/autodoc/qiskit.ignis.mitigation.measurement.fitters.html#qiskit.ignis.mitigation.measurement.fitters.CompleteMeasFitter">[ドキュメント]</a><span class="k">class</span> <span class="nc">CompleteMeasFitter</span><span class="p">():</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Measurement correction fitter for a full calibration</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -271,7 +271,7 @@
         <span class="sd">&quot;&quot;&quot;return a measurement filter using the cal matrix&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">MeasurementFilter</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cal_matrix</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_state_labels</span><span class="p">)</span>
 
-<div class="viewcode-block" id="CompleteMeasFitter.subset_fitter"><a class="viewcode-back" href="../../../../../locale/docs/autodoc/qiskit.ignis.mitigation.measurement.fitters.html#qiskit.ignis.mitigation.measurement.fitters.CompleteMeasFitter.subset_fitter">[ドキュメント]</a>    <span class="k">def</span> <span class="nf">subset_fitter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">qubit_sublist</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="CompleteMeasFitter.subset_fitter"><a class="viewcode-back" href="../../../../../docs/autodoc/qiskit.ignis.mitigation.measurement.fitters.html#qiskit.ignis.mitigation.measurement.fitters.CompleteMeasFitter.subset_fitter">[ドキュメント]</a>    <span class="k">def</span> <span class="nf">subset_fitter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">qubit_sublist</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Return a fitter object that is a subset of the qubits in the original</span>
 <span class="sd">        list.</span>
@@ -340,7 +340,7 @@
 
         <span class="k">return</span> <span class="n">new_fitter</span></div>
 
-<div class="viewcode-block" id="CompleteMeasFitter.readout_fidelity"><a class="viewcode-back" href="../../../../../locale/docs/autodoc/qiskit.ignis.mitigation.measurement.fitters.html#qiskit.ignis.mitigation.measurement.fitters.CompleteMeasFitter.readout_fidelity">[ドキュメント]</a>    <span class="k">def</span> <span class="nf">readout_fidelity</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label_list</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="CompleteMeasFitter.readout_fidelity"><a class="viewcode-back" href="../../../../../docs/autodoc/qiskit.ignis.mitigation.measurement.fitters.html#qiskit.ignis.mitigation.measurement.fitters.CompleteMeasFitter.readout_fidelity">[ドキュメント]</a>    <span class="k">def</span> <span class="nf">readout_fidelity</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label_list</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Based on the results output the readout fidelity which is the</span>
 <span class="sd">        normalized trace of the calibration matrix</span>
@@ -412,7 +412,7 @@
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_cal_matrix</span> <span class="o">=</span> <span class="n">cal_matrix</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>
 
-<div class="viewcode-block" id="CompleteMeasFitter.plot_calibration"><a class="viewcode-back" href="../../../../../locale/docs/autodoc/qiskit.ignis.mitigation.measurement.fitters.html#qiskit.ignis.mitigation.measurement.fitters.CompleteMeasFitter.plot_calibration">[ドキュメント]</a>    <span class="k">def</span> <span class="nf">plot_calibration</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">show_plot</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<div class="viewcode-block" id="CompleteMeasFitter.plot_calibration"><a class="viewcode-back" href="../../../../../docs/autodoc/qiskit.ignis.mitigation.measurement.fitters.html#qiskit.ignis.mitigation.measurement.fitters.CompleteMeasFitter.plot_calibration">[ドキュメント]</a>    <span class="k">def</span> <span class="nf">plot_calibration</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">show_plot</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Plot the calibration matrix (2D color grid plot)</span>
 
@@ -446,7 +446,7 @@
             <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span></div></div>
 
 
-<div class="viewcode-block" id="TensoredMeasFitter"><a class="viewcode-back" href="../../../../../locale/docs/autodoc/qiskit.ignis.mitigation.measurement.fitters.html#qiskit.ignis.mitigation.measurement.fitters.TensoredMeasFitter">[ドキュメント]</a><span class="k">class</span> <span class="nc">TensoredMeasFitter</span><span class="p">():</span>
+<div class="viewcode-block" id="TensoredMeasFitter"><a class="viewcode-back" href="../../../../../docs/autodoc/qiskit.ignis.mitigation.measurement.fitters.html#qiskit.ignis.mitigation.measurement.fitters.TensoredMeasFitter">[ドキュメント]</a><span class="k">class</span> <span class="nc">TensoredMeasFitter</span><span class="p">():</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Measurement correction fitter for a tensored calibration</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -521,7 +521,7 @@
         <span class="sd">&quot;&quot;&quot;Return _qubit_list_sizes&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_qubit_list_sizes</span><span class="p">)</span>
 
-<div class="viewcode-block" id="TensoredMeasFitter.readout_fidelity"><a class="viewcode-back" href="../../../../../locale/docs/autodoc/qiskit.ignis.mitigation.measurement.fitters.html#qiskit.ignis.mitigation.measurement.fitters.TensoredMeasFitter.readout_fidelity">[ドキュメント]</a>    <span class="k">def</span> <span class="nf">readout_fidelity</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cal_index</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">label_list</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="TensoredMeasFitter.readout_fidelity"><a class="viewcode-back" href="../../../../../docs/autodoc/qiskit.ignis.mitigation.measurement.fitters.html#qiskit.ignis.mitigation.measurement.fitters.TensoredMeasFitter.readout_fidelity">[ドキュメント]</a>    <span class="k">def</span> <span class="nf">readout_fidelity</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cal_index</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">label_list</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Based on the results output the readout fidelity, which is the average</span>
 <span class="sd">        of the diagonal entries in the calibration matrices</span>
@@ -603,7 +603,7 @@
                 <span class="n">out</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cal_matrices</span><span class="p">[</span><span class="n">mat_index</span><span class="p">]),</span>
                 <span class="n">where</span><span class="o">=</span><span class="n">sums_of_columns</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span>
 
-<div class="viewcode-block" id="TensoredMeasFitter.plot_calibration"><a class="viewcode-back" href="../../../../../locale/docs/autodoc/qiskit.ignis.mitigation.measurement.fitters.html#qiskit.ignis.mitigation.measurement.fitters.TensoredMeasFitter.plot_calibration">[ドキュメント]</a>    <span class="k">def</span> <span class="nf">plot_calibration</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cal_index</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">show_plot</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<div class="viewcode-block" id="TensoredMeasFitter.plot_calibration"><a class="viewcode-back" href="../../../../../docs/autodoc/qiskit.ignis.mitigation.measurement.fitters.html#qiskit.ignis.mitigation.measurement.fitters.TensoredMeasFitter.plot_calibration">[ドキュメント]</a>    <span class="k">def</span> <span class="nf">plot_calibration</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cal_index</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">show_plot</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Plot one of the calibration matrices (2D color grid plot)</span>
 

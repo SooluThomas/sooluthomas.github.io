@@ -1530,8 +1530,8 @@ running quickly we have provided this wrapper module.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">パラメータ:</th><td class="field-body"><ul class="first simple">
-<li><strong>experiments</strong> (<a class="reference internal" href="../../locale/docs/autodoc/qiskit.circuit.quantumcircuit.html#qiskit.circuit.quantumcircuit.QuantumCircuit" title="qiskit.circuit.quantumcircuit.QuantumCircuit"><em>QuantumCircuit</em></a><em> or </em><em>list</em><em>[</em><a class="reference internal" href="../../locale/docs/autodoc/qiskit.circuit.quantumcircuit.html#qiskit.circuit.quantumcircuit.QuantumCircuit" title="qiskit.circuit.quantumcircuit.QuantumCircuit"><em>QuantumCircuit</em></a><em>] or </em><a class="reference internal" href="../../locale/docs/autodoc/qiskit.pulse.schedule.html#qiskit.pulse.schedule.Schedule" title="qiskit.pulse.schedule.Schedule"><em>Schedule</em></a><em> or </em><em>list</em><em>[</em><a class="reference internal" href="../../locale/docs/autodoc/qiskit.pulse.schedule.html#qiskit.pulse.schedule.Schedule" title="qiskit.pulse.schedule.Schedule"><em>Schedule</em></a><em>]</em>) -- Circuit(s) or pulse schedule(s) to execute</li>
-<li><strong>backend</strong> (<a class="reference internal" href="../../locale/docs/autodoc/qiskit.providers.basebackend.html#qiskit.providers.basebackend.BaseBackend" title="qiskit.providers.basebackend.BaseBackend"><em>BaseBackend</em></a>) -- Backend to execute circuits on.
+<li><strong>experiments</strong> (<a class="reference internal" href="qiskit.circuit.quantumcircuit.html#qiskit.circuit.quantumcircuit.QuantumCircuit" title="qiskit.circuit.quantumcircuit.QuantumCircuit"><em>QuantumCircuit</em></a><em> or </em><em>list</em><em>[</em><a class="reference internal" href="qiskit.circuit.quantumcircuit.html#qiskit.circuit.quantumcircuit.QuantumCircuit" title="qiskit.circuit.quantumcircuit.QuantumCircuit"><em>QuantumCircuit</em></a><em>] or </em><a class="reference internal" href="qiskit.pulse.schedule.html#qiskit.pulse.schedule.Schedule" title="qiskit.pulse.schedule.Schedule"><em>Schedule</em></a><em> or </em><em>list</em><em>[</em><a class="reference internal" href="qiskit.pulse.schedule.html#qiskit.pulse.schedule.Schedule" title="qiskit.pulse.schedule.Schedule"><em>Schedule</em></a><em>]</em>) -- Circuit(s) or pulse schedule(s) to execute</li>
+<li><strong>backend</strong> (<a class="reference internal" href="qiskit.providers.basebackend.html#qiskit.providers.basebackend.BaseBackend" title="qiskit.providers.basebackend.BaseBackend"><em>BaseBackend</em></a>) -- Backend to execute circuits on.
 Transpiler options are automatically grabbed from
 backend.configuration() and backend.properties().
 If any other option is explicitly set (e.g. coupling_map), it
@@ -1542,7 +1542,7 @@ e.g:</p>
 <div>['u1', 'u2', 'u3', 'cx']</div></blockquote>
 <p>If None, do not unroll.</p>
 </li>
-<li><strong>coupling_map</strong> (<a class="reference internal" href="../../locale/docs/autodoc/qiskit.transpiler.coupling.html#qiskit.transpiler.coupling.CouplingMap" title="qiskit.transpiler.coupling.CouplingMap"><em>CouplingMap</em></a><em> or </em><em>list</em>) -- <p>Coupling map (perhaps custom) to target in mapping.
+<li><strong>coupling_map</strong> (<a class="reference internal" href="qiskit.transpiler.coupling.html#qiskit.transpiler.coupling.CouplingMap" title="qiskit.transpiler.coupling.CouplingMap"><em>CouplingMap</em></a><em> or </em><em>list</em>) -- <p>Coupling map (perhaps custom) to target in mapping.
 Multiple formats are supported:
 a. CouplingMap instance</p>
 <ol class="loweralpha" start="2">
@@ -1557,11 +1557,11 @@ e.g:<blockquote class="last">
 </li>
 </ol>
 </li>
-<li><strong>backend_properties</strong> (<a class="reference internal" href="../../locale/docs/autodoc/qiskit.providers.models.backendproperties.html#qiskit.providers.models.backendproperties.BackendProperties" title="qiskit.providers.models.backendproperties.BackendProperties"><em>BackendProperties</em></a>) -- Properties returned by a backend, including information on gate
+<li><strong>backend_properties</strong> (<a class="reference internal" href="qiskit.providers.models.backendproperties.html#qiskit.providers.models.backendproperties.BackendProperties" title="qiskit.providers.models.backendproperties.BackendProperties"><em>BackendProperties</em></a>) -- Properties returned by a backend, including information on gate
 errors, readout errors, qubit coherence times, etc. For a backend
 that provides this information, it can be obtained with:
 <code class="docutils literal notranslate"><span class="pre">backend.properties()</span></code></li>
-<li><strong>initial_layout</strong> (<a class="reference internal" href="../../locale/docs/autodoc/qiskit.transpiler.layout.html#qiskit.transpiler.layout.Layout" title="qiskit.transpiler.layout.Layout"><em>Layout</em></a><em> or </em><em>dict</em><em> or </em><em>list</em>) -- <p>Initial position of virtual qubits on physical qubits.
+<li><strong>initial_layout</strong> (<a class="reference internal" href="qiskit.transpiler.layout.html#qiskit.transpiler.layout.Layout" title="qiskit.transpiler.layout.Layout"><em>Layout</em></a><em> or </em><em>dict</em><em> or </em><em>list</em>) -- <p>Initial position of virtual qubits on physical qubits.
 If this layout makes the circuit compatible with the coupling_map
 constraints, it will be used.
 The final layout is not guaranteed to be the same, as the transpiler
@@ -1612,11 +1612,11 @@ at the expense of longer transpilation time.</p>
 1: light optimization
 2: heavy optimization</div></blockquote>
 </li>
-<li><strong>pass_manager</strong> (<a class="reference internal" href="../../locale/docs/autodoc/qiskit.transpiler.passmanager.html#qiskit.transpiler.passmanager.PassManager" title="qiskit.transpiler.passmanager.PassManager"><em>PassManager</em></a>) -- The pass manager to use during transpilation. If this arg is present,
+<li><strong>pass_manager</strong> (<a class="reference internal" href="qiskit.transpiler.passmanager.html#qiskit.transpiler.passmanager.PassManager" title="qiskit.transpiler.passmanager.PassManager"><em>PassManager</em></a>) -- The pass manager to use during transpilation. If this arg is present,
 auto-selection of pass manager based on the transpile options will be
 turned off and this pass manager will be used directly.</li>
 <li><strong>qobj_id</strong> (<em>str</em>) -- String identifier to annotate the Qobj</li>
-<li><strong>qobj_header</strong> (<a class="reference internal" href="../../locale/docs/autodoc/qiskit.qobj.models.base.html#qiskit.qobj.models.base.QobjHeader" title="qiskit.qobj.models.base.QobjHeader"><em>QobjHeader</em></a><em> or </em><em>dict</em>) -- User input that will be inserted in Qobj header, and will also be
+<li><strong>qobj_header</strong> (<a class="reference internal" href="qiskit.qobj.models.base.html#qiskit.qobj.models.base.QobjHeader" title="qiskit.qobj.models.base.QobjHeader"><em>QobjHeader</em></a><em> or </em><em>dict</em>) -- User input that will be inserted in Qobj header, and will also be
 copied to the corresponding Result header. Headers do not affect the run.</li>
 <li><strong>shots</strong> (<em>int</em>) -- Number of repetitions of each circuit, for sampling. Default: 2014</li>
 <li><strong>memory</strong> (<em>bool</em>) -- If True, per-shot measurement bitstrings are returned as well
@@ -1650,7 +1650,7 @@ experiments will be run (one for each experiment/bind pair).</li>
 <li><strong>seed</strong> (<em>int</em>) -- DEPRECATED in 0.8: use <code class="docutils literal notranslate"><span class="pre">seed_simulator</span></code> kwarg instead</li>
 <li><strong>seed_mapper</strong> (<em>int</em>) -- DEPRECATED in 0.8: use <code class="docutils literal notranslate"><span class="pre">seed_transpiler</span></code> kwarg instead</li>
 <li><strong>config</strong> (<em>dict</em>) -- DEPRECATED in 0.8: use run_config instead</li>
-<li><strong>circuits</strong> (<a class="reference internal" href="../../locale/docs/autodoc/qiskit.circuit.quantumcircuit.html#qiskit.circuit.quantumcircuit.QuantumCircuit" title="qiskit.circuit.quantumcircuit.QuantumCircuit"><em>QuantumCircuit</em></a><em> or </em><em>list</em><em>[</em><a class="reference internal" href="../../locale/docs/autodoc/qiskit.circuit.quantumcircuit.html#qiskit.circuit.quantumcircuit.QuantumCircuit" title="qiskit.circuit.quantumcircuit.QuantumCircuit"><em>QuantumCircuit</em></a><em>]</em>) -- DEPRECATED in 0.8: use <code class="docutils literal notranslate"><span class="pre">experiments</span></code> kwarg instead.</li>
+<li><strong>circuits</strong> (<a class="reference internal" href="qiskit.circuit.quantumcircuit.html#qiskit.circuit.quantumcircuit.QuantumCircuit" title="qiskit.circuit.quantumcircuit.QuantumCircuit"><em>QuantumCircuit</em></a><em> or </em><em>list</em><em>[</em><a class="reference internal" href="qiskit.circuit.quantumcircuit.html#qiskit.circuit.quantumcircuit.QuantumCircuit" title="qiskit.circuit.quantumcircuit.QuantumCircuit"><em>QuantumCircuit</em></a><em>]</em>) -- DEPRECATED in 0.8: use <code class="docutils literal notranslate"><span class="pre">experiments</span></code> kwarg instead.</li>
 <li><strong>run_config</strong> (<em>dict</em>) -- Extra arguments used to configure the run (e.g. for Aer configurable backends)
 Refer to the backend documentation for details on these arguments
 Note: for now, these keyword arguments will both be copied to the
@@ -1661,7 +1661,7 @@ Qobj config, and passed to backend.run()</li>
 <tr class="field-even field"><th class="field-name">戻り値:</th><td class="field-body"><p class="first">returns job instance derived from BaseJob</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">戻り値の型:</th><td class="field-body"><p class="first"><a class="reference internal" href="../../locale/docs/autodoc/qiskit.providers.basejob.html#qiskit.providers.basejob.BaseJob" title="qiskit.providers.basejob.BaseJob">BaseJob</a></p>
+<tr class="field-odd field"><th class="field-name">戻り値の型:</th><td class="field-body"><p class="first"><a class="reference internal" href="qiskit.providers.basejob.html#qiskit.providers.basejob.BaseJob" title="qiskit.providers.basejob.BaseJob">BaseJob</a></p>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><code class="xref py py-exc docutils literal notranslate"><span class="pre">QiskitError</span></code> -- if the execution cannot be interpreted as either circuits or schedules</p>

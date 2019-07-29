@@ -189,7 +189,7 @@
 <span class="kn">from</span> <span class="nn">.node</span> <span class="k">import</span> <span class="n">Node</span>
 
 
-<div class="viewcode-block" id="Barrier"><a class="viewcode-back" href="../../../../locale/docs/autodoc/qiskit.qasm.node.barrier.html#qiskit.qasm.node.barrier.Barrier">[ドキュメント]</a><span class="k">class</span> <span class="nc">Barrier</span><span class="p">(</span><span class="n">Node</span><span class="p">):</span>
+<div class="viewcode-block" id="Barrier"><a class="viewcode-back" href="../../../../docs/autodoc/qiskit.qasm.node.barrier.html#qiskit.qasm.node.barrier.Barrier">[ドキュメント]</a><span class="k">class</span> <span class="nc">Barrier</span><span class="p">(</span><span class="n">Node</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Node for an OPENQASM barrier statement.</span>
 
 <span class="sd">    children[0] is a primarylist node.</span>
@@ -199,7 +199,7 @@
         <span class="sd">&quot;&quot;&quot;Create the barrier node.&quot;&quot;&quot;</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="s1">&#39;barrier&#39;</span><span class="p">,</span> <span class="n">children</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
 
-<div class="viewcode-block" id="Barrier.qasm"><a class="viewcode-back" href="../../../../locale/docs/autodoc/qiskit.qasm.node.barrier.html#qiskit.qasm.node.barrier.Barrier.qasm">[ドキュメント]</a>    <span class="k">def</span> <span class="nf">qasm</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">prec</span><span class="o">=</span><span class="mi">15</span><span class="p">):</span>
+<div class="viewcode-block" id="Barrier.qasm"><a class="viewcode-back" href="../../../../docs/autodoc/qiskit.qasm.node.barrier.html#qiskit.qasm.node.barrier.Barrier.qasm">[ドキュメント]</a>    <span class="k">def</span> <span class="nf">qasm</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">prec</span><span class="o">=</span><span class="mi">15</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return the corresponding OPENQASM string.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="s2">&quot;barrier &quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">children</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">qasm</span><span class="p">(</span><span class="n">prec</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;;&quot;</span></div></div>
 </pre></div>

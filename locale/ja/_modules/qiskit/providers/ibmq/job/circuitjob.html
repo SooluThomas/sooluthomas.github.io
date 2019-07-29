@@ -192,7 +192,7 @@
 <span class="kn">from</span> <span class="nn">.ibmqjob</span> <span class="k">import</span> <span class="n">IBMQJob</span>
 
 
-<div class="viewcode-block" id="CircuitJob"><a class="viewcode-back" href="../../../../../locale/docs/autodoc/qiskit.providers.ibmq.job.circuitjob.html#qiskit.providers.ibmq.job.circuitjob.CircuitJob">[ドキュメント]</a><span class="k">class</span> <span class="nc">CircuitJob</span><span class="p">(</span><span class="n">IBMQJob</span><span class="p">):</span>
+<div class="viewcode-block" id="CircuitJob"><a class="viewcode-back" href="../../../../../docs/autodoc/qiskit.providers.ibmq.job.circuitjob.html#qiskit.providers.ibmq.job.circuitjob.CircuitJob">[ドキュメント]</a><span class="k">class</span> <span class="nc">CircuitJob</span><span class="p">(</span><span class="n">IBMQJob</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Job specific for use with Circuits.</span>
 
 <span class="sd">    Note: this class is experimental, and currently only supports the</span>
@@ -207,7 +207,7 @@
 <span class="sd">    for adjusting to the Circuits particularities.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-<div class="viewcode-block" id="CircuitJob.status"><a class="viewcode-back" href="../../../../../locale/docs/autodoc/qiskit.providers.ibmq.job.circuitjob.html#qiskit.providers.ibmq.job.circuitjob.CircuitJob.status">[ドキュメント]</a>    <span class="k">def</span> <span class="nf">status</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="CircuitJob.status"><a class="viewcode-back" href="../../../../../docs/autodoc/qiskit.providers.ibmq.job.circuitjob.html#qiskit.providers.ibmq.job.circuitjob.CircuitJob.status">[ドキュメント]</a>    <span class="k">def</span> <span class="nf">status</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="c1"># Implies self._job_id is None</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_future_captured_exception</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">raise</span> <span class="n">JobError</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_future_captured_exception</span><span class="p">))</span>

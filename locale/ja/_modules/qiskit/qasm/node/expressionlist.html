@@ -189,7 +189,7 @@
 <span class="kn">from</span> <span class="nn">.node</span> <span class="k">import</span> <span class="n">Node</span>
 
 
-<div class="viewcode-block" id="ExpressionList"><a class="viewcode-back" href="../../../../locale/docs/autodoc/qiskit.qasm.node.expressionlist.html#qiskit.qasm.node.expressionlist.ExpressionList">[ドキュメント]</a><span class="k">class</span> <span class="nc">ExpressionList</span><span class="p">(</span><span class="n">Node</span><span class="p">):</span>
+<div class="viewcode-block" id="ExpressionList"><a class="viewcode-back" href="../../../../docs/autodoc/qiskit.qasm.node.expressionlist.html#qiskit.qasm.node.expressionlist.ExpressionList">[ドキュメント]</a><span class="k">class</span> <span class="nc">ExpressionList</span><span class="p">(</span><span class="n">Node</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Node for an OPENQASM expression list.</span>
 
 <span class="sd">    children are expression nodes.</span>
@@ -199,11 +199,11 @@
         <span class="sd">&quot;&quot;&quot;Create the expression list node.&quot;&quot;&quot;</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="s1">&#39;expression_list&#39;</span><span class="p">,</span> <span class="n">children</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
 
-<div class="viewcode-block" id="ExpressionList.size"><a class="viewcode-back" href="../../../../locale/docs/autodoc/qiskit.qasm.node.expressionlist.html#qiskit.qasm.node.expressionlist.ExpressionList.size">[ドキュメント]</a>    <span class="k">def</span> <span class="nf">size</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="ExpressionList.size"><a class="viewcode-back" href="../../../../docs/autodoc/qiskit.qasm.node.expressionlist.html#qiskit.qasm.node.expressionlist.ExpressionList.size">[ドキュメント]</a>    <span class="k">def</span> <span class="nf">size</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return the number of expressions.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">children</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="ExpressionList.qasm"><a class="viewcode-back" href="../../../../locale/docs/autodoc/qiskit.qasm.node.expressionlist.html#qiskit.qasm.node.expressionlist.ExpressionList.qasm">[ドキュメント]</a>    <span class="k">def</span> <span class="nf">qasm</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">prec</span><span class="o">=</span><span class="mi">15</span><span class="p">):</span>
+<div class="viewcode-block" id="ExpressionList.qasm"><a class="viewcode-back" href="../../../../docs/autodoc/qiskit.qasm.node.expressionlist.html#qiskit.qasm.node.expressionlist.ExpressionList.qasm">[ドキュメント]</a>    <span class="k">def</span> <span class="nf">qasm</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">prec</span><span class="o">=</span><span class="mi">15</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return the corresponding OPENQASM string.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="s2">&quot;,&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">children</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">qasm</span><span class="p">(</span><span class="n">prec</span><span class="p">)</span>
                          <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">size</span><span class="p">())])</span></div></div>

@@ -202,7 +202,7 @@
 <span class="c1"># ----------------------------------------------------------------------------------------</span>
 <span class="c1"># Functions that convert to/from a Clifford object</span>
 <span class="c1"># ----------------------------------------------------------------------------------------</span>
-<div class="viewcode-block" id="compose_gates"><a class="viewcode-back" href="../../../../../locale/docs/autodoc/qiskit.ignis.verification.randomized_benchmarking.clifford_utils.html#qiskit.ignis.verification.randomized_benchmarking.clifford_utils.compose_gates">[ドキュメント]</a><span class="k">def</span> <span class="nf">compose_gates</span><span class="p">(</span><span class="n">cliff</span><span class="p">,</span> <span class="n">gatelist</span><span class="p">):</span>
+<div class="viewcode-block" id="compose_gates"><a class="viewcode-back" href="../../../../../docs/autodoc/qiskit.ignis.verification.randomized_benchmarking.clifford_utils.html#qiskit.ignis.verification.randomized_benchmarking.clifford_utils.compose_gates">[ドキュメント]</a><span class="k">def</span> <span class="nf">compose_gates</span><span class="p">(</span><span class="n">cliff</span><span class="p">,</span> <span class="n">gatelist</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Add gates to a Clifford object from a list of gates.</span>
 
@@ -240,7 +240,7 @@
     <span class="k">return</span> <span class="n">cliff</span></div>
 
 
-<div class="viewcode-block" id="clifford_from_gates"><a class="viewcode-back" href="../../../../../locale/docs/autodoc/qiskit.ignis.verification.randomized_benchmarking.clifford_utils.html#qiskit.ignis.verification.randomized_benchmarking.clifford_utils.clifford_from_gates">[ドキュメント]</a><span class="k">def</span> <span class="nf">clifford_from_gates</span><span class="p">(</span><span class="n">num_qubits</span><span class="p">,</span> <span class="n">gatelist</span><span class="p">):</span>
+<div class="viewcode-block" id="clifford_from_gates"><a class="viewcode-back" href="../../../../../docs/autodoc/qiskit.ignis.verification.randomized_benchmarking.clifford_utils.html#qiskit.ignis.verification.randomized_benchmarking.clifford_utils.clifford_from_gates">[ドキュメント]</a><span class="k">def</span> <span class="nf">clifford_from_gates</span><span class="p">(</span><span class="n">num_qubits</span><span class="p">,</span> <span class="n">gatelist</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Generates a Clifford object from a list of gates.</span>
 
@@ -260,7 +260,7 @@
 <span class="c1"># Add gates to Cliffords</span>
 <span class="c1"># --------------------------------------------------------</span>
 
-<div class="viewcode-block" id="pauli_gates"><a class="viewcode-back" href="../../../../../locale/docs/autodoc/qiskit.ignis.verification.randomized_benchmarking.clifford_utils.html#qiskit.ignis.verification.randomized_benchmarking.clifford_utils.pauli_gates">[ドキュメント]</a><span class="k">def</span> <span class="nf">pauli_gates</span><span class="p">(</span><span class="n">gatelist</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">pauli</span><span class="p">):</span>
+<div class="viewcode-block" id="pauli_gates"><a class="viewcode-back" href="../../../../../docs/autodoc/qiskit.ignis.verification.randomized_benchmarking.clifford_utils.html#qiskit.ignis.verification.randomized_benchmarking.clifford_utils.pauli_gates">[ドキュメント]</a><span class="k">def</span> <span class="nf">pauli_gates</span><span class="p">(</span><span class="n">gatelist</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">pauli</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;adds a pauli gate on qubit q&quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">pauli</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
         <span class="n">gatelist</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;x &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">q</span><span class="p">))</span>
@@ -270,13 +270,13 @@
         <span class="n">gatelist</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;z &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">q</span><span class="p">))</span></div>
 
 
-<div class="viewcode-block" id="h_gates"><a class="viewcode-back" href="../../../../../locale/docs/autodoc/qiskit.ignis.verification.randomized_benchmarking.clifford_utils.html#qiskit.ignis.verification.randomized_benchmarking.clifford_utils.h_gates">[ドキュメント]</a><span class="k">def</span> <span class="nf">h_gates</span><span class="p">(</span><span class="n">gatelist</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">h</span><span class="p">):</span>
+<div class="viewcode-block" id="h_gates"><a class="viewcode-back" href="../../../../../docs/autodoc/qiskit.ignis.verification.randomized_benchmarking.clifford_utils.html#qiskit.ignis.verification.randomized_benchmarking.clifford_utils.h_gates">[ドキュメント]</a><span class="k">def</span> <span class="nf">h_gates</span><span class="p">(</span><span class="n">gatelist</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">h</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;adds a hadamard gate or not on qubit q&quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">h</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
         <span class="n">gatelist</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;h &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">q</span><span class="p">))</span></div>
 
 
-<div class="viewcode-block" id="v_gates"><a class="viewcode-back" href="../../../../../locale/docs/autodoc/qiskit.ignis.verification.randomized_benchmarking.clifford_utils.html#qiskit.ignis.verification.randomized_benchmarking.clifford_utils.v_gates">[ドキュメント]</a><span class="k">def</span> <span class="nf">v_gates</span><span class="p">(</span><span class="n">gatelist</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
+<div class="viewcode-block" id="v_gates"><a class="viewcode-back" href="../../../../../docs/autodoc/qiskit.ignis.verification.randomized_benchmarking.clifford_utils.html#qiskit.ignis.verification.randomized_benchmarking.clifford_utils.v_gates">[ドキュメント]</a><span class="k">def</span> <span class="nf">v_gates</span><span class="p">(</span><span class="n">gatelist</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;adds an axis-swap-gates on qubit q&quot;&quot;&quot;</span>
     <span class="c1">#  rotation is V=HSHS = [[0,1],[1,1]] tableau</span>
     <span class="c1">#  takes Z-&gt;X-&gt;Y-&gt;Z</span>
@@ -287,7 +287,7 @@
         <span class="n">gatelist</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;w &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">q</span><span class="p">))</span></div>
 
 
-<div class="viewcode-block" id="cx_gates"><a class="viewcode-back" href="../../../../../locale/docs/autodoc/qiskit.ignis.verification.randomized_benchmarking.clifford_utils.html#qiskit.ignis.verification.randomized_benchmarking.clifford_utils.cx_gates">[ドキュメント]</a><span class="k">def</span> <span class="nf">cx_gates</span><span class="p">(</span><span class="n">gatelist</span><span class="p">,</span> <span class="n">ctrl</span><span class="p">,</span> <span class="n">tgt</span><span class="p">):</span>
+<div class="viewcode-block" id="cx_gates"><a class="viewcode-back" href="../../../../../docs/autodoc/qiskit.ignis.verification.randomized_benchmarking.clifford_utils.html#qiskit.ignis.verification.randomized_benchmarking.clifford_utils.cx_gates">[ドキュメント]</a><span class="k">def</span> <span class="nf">cx_gates</span><span class="p">(</span><span class="n">gatelist</span><span class="p">,</span> <span class="n">ctrl</span><span class="p">,</span> <span class="n">tgt</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;adds a controlled=x gates&quot;&quot;&quot;</span>
     <span class="n">gatelist</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;cx &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">ctrl</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">tgt</span><span class="p">))</span></div>
 
@@ -296,7 +296,7 @@
 <span class="c1"># Create a 1 or 2 Qubit Clifford based on a unique index</span>
 <span class="c1"># --------------------------------------------------------</span>
 
-<div class="viewcode-block" id="clifford1_gates"><a class="viewcode-back" href="../../../../../locale/docs/autodoc/qiskit.ignis.verification.randomized_benchmarking.clifford_utils.html#qiskit.ignis.verification.randomized_benchmarking.clifford_utils.clifford1_gates">[ドキュメント]</a><span class="k">def</span> <span class="nf">clifford1_gates</span><span class="p">(</span><span class="n">idx</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+<div class="viewcode-block" id="clifford1_gates"><a class="viewcode-back" href="../../../../../docs/autodoc/qiskit.ignis.verification.randomized_benchmarking.clifford_utils.html#qiskit.ignis.verification.randomized_benchmarking.clifford_utils.clifford1_gates">[ドキュメント]</a><span class="k">def</span> <span class="nf">clifford1_gates</span><span class="p">(</span><span class="n">idx</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Make a single qubit Clifford gate.</span>
 
@@ -323,7 +323,7 @@
     <span class="k">return</span> <span class="n">gatelist</span></div>
 
 
-<div class="viewcode-block" id="clifford2_gates"><a class="viewcode-back" href="../../../../../locale/docs/autodoc/qiskit.ignis.verification.randomized_benchmarking.clifford_utils.html#qiskit.ignis.verification.randomized_benchmarking.clifford_utils.clifford2_gates">[ドキュメント]</a><span class="k">def</span> <span class="nf">clifford2_gates</span><span class="p">(</span><span class="n">idx</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+<div class="viewcode-block" id="clifford2_gates"><a class="viewcode-back" href="../../../../../docs/autodoc/qiskit.ignis.verification.randomized_benchmarking.clifford_utils.html#qiskit.ignis.verification.randomized_benchmarking.clifford_utils.clifford2_gates">[ドキュメント]</a><span class="k">def</span> <span class="nf">clifford2_gates</span><span class="p">(</span><span class="n">idx</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Make a 2-qubit Clifford gate.</span>
 
@@ -412,7 +412,7 @@
 <span class="c1"># --------------------------------------------------------</span>
 <span class="c1"># Create a 1 or 2 Qubit Clifford tables</span>
 <span class="c1"># --------------------------------------------------------</span>
-<div class="viewcode-block" id="clifford2_gates_table"><a class="viewcode-back" href="../../../../../locale/docs/autodoc/qiskit.ignis.verification.randomized_benchmarking.clifford_utils.html#qiskit.ignis.verification.randomized_benchmarking.clifford_utils.clifford2_gates_table">[ドキュメント]</a><span class="k">def</span> <span class="nf">clifford2_gates_table</span><span class="p">():</span>
+<div class="viewcode-block" id="clifford2_gates_table"><a class="viewcode-back" href="../../../../../docs/autodoc/qiskit.ignis.verification.randomized_benchmarking.clifford_utils.html#qiskit.ignis.verification.randomized_benchmarking.clifford_utils.clifford2_gates_table">[ドキュメント]</a><span class="k">def</span> <span class="nf">clifford2_gates_table</span><span class="p">():</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Generate a table of all 2-qubit Clifford gates.</span>
 
@@ -430,7 +430,7 @@
     <span class="k">return</span> <span class="n">cliffords2</span></div>
 
 
-<div class="viewcode-block" id="clifford1_gates_table"><a class="viewcode-back" href="../../../../../locale/docs/autodoc/qiskit.ignis.verification.randomized_benchmarking.clifford_utils.html#qiskit.ignis.verification.randomized_benchmarking.clifford_utils.clifford1_gates_table">[ドキュメント]</a><span class="k">def</span> <span class="nf">clifford1_gates_table</span><span class="p">():</span>
+<div class="viewcode-block" id="clifford1_gates_table"><a class="viewcode-back" href="../../../../../docs/autodoc/qiskit.ignis.verification.randomized_benchmarking.clifford_utils.html#qiskit.ignis.verification.randomized_benchmarking.clifford_utils.clifford1_gates_table">[ドキュメント]</a><span class="k">def</span> <span class="nf">clifford1_gates_table</span><span class="p">():</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Generate a table of all 1-qubit Clifford gates.</span>
 
@@ -448,7 +448,7 @@
     <span class="k">return</span> <span class="n">cliffords1</span></div>
 
 
-<div class="viewcode-block" id="pickle_clifford_table"><a class="viewcode-back" href="../../../../../locale/docs/autodoc/qiskit.ignis.verification.randomized_benchmarking.clifford_utils.html#qiskit.ignis.verification.randomized_benchmarking.clifford_utils.pickle_clifford_table">[ドキュメント]</a><span class="k">def</span> <span class="nf">pickle_clifford_table</span><span class="p">(</span><span class="n">picklefile</span><span class="o">=</span><span class="s1">&#39;cliffords2.pickle&#39;</span><span class="p">,</span> <span class="n">num_qubits</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
+<div class="viewcode-block" id="pickle_clifford_table"><a class="viewcode-back" href="../../../../../docs/autodoc/qiskit.ignis.verification.randomized_benchmarking.clifford_utils.html#qiskit.ignis.verification.randomized_benchmarking.clifford_utils.pickle_clifford_table">[ドキュメント]</a><span class="k">def</span> <span class="nf">pickle_clifford_table</span><span class="p">(</span><span class="n">picklefile</span><span class="o">=</span><span class="s1">&#39;cliffords2.pickle&#39;</span><span class="p">,</span> <span class="n">num_qubits</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">     Create pickled versions of the 1 and 2 qubit Clifford tables.</span>
 
@@ -472,7 +472,7 @@
         <span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">cliffords</span><span class="p">,</span> <span class="n">pf</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="load_clifford_table"><a class="viewcode-back" href="../../../../../locale/docs/autodoc/qiskit.ignis.verification.randomized_benchmarking.clifford_utils.html#qiskit.ignis.verification.randomized_benchmarking.clifford_utils.load_clifford_table">[ドキュメント]</a><span class="k">def</span> <span class="nf">load_clifford_table</span><span class="p">(</span><span class="n">picklefile</span><span class="o">=</span><span class="s1">&#39;cliffords2.pickle&#39;</span><span class="p">):</span>
+<div class="viewcode-block" id="load_clifford_table"><a class="viewcode-back" href="../../../../../docs/autodoc/qiskit.ignis.verification.randomized_benchmarking.clifford_utils.html#qiskit.ignis.verification.randomized_benchmarking.clifford_utils.load_clifford_table">[ドキュメント]</a><span class="k">def</span> <span class="nf">load_clifford_table</span><span class="p">(</span><span class="n">picklefile</span><span class="o">=</span><span class="s1">&#39;cliffords2.pickle&#39;</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">      Load pickled files of the tables of 1 and 2 qubit Clifford tables.</span>
 
@@ -489,7 +489,7 @@
 <span class="c1"># --------------------------------------------------------</span>
 <span class="c1"># Main function that generates a random clifford gate</span>
 <span class="c1"># --------------------------------------------------------</span>
-<div class="viewcode-block" id="random_clifford_gates"><a class="viewcode-back" href="../../../../../locale/docs/autodoc/qiskit.ignis.verification.randomized_benchmarking.clifford_utils.html#qiskit.ignis.verification.randomized_benchmarking.clifford_utils.random_clifford_gates">[ドキュメント]</a><span class="k">def</span> <span class="nf">random_clifford_gates</span><span class="p">(</span><span class="n">num_qubits</span><span class="p">):</span>
+<div class="viewcode-block" id="random_clifford_gates"><a class="viewcode-back" href="../../../../../docs/autodoc/qiskit.ignis.verification.randomized_benchmarking.clifford_utils.html#qiskit.ignis.verification.randomized_benchmarking.clifford_utils.random_clifford_gates">[ドキュメント]</a><span class="k">def</span> <span class="nf">random_clifford_gates</span><span class="p">(</span><span class="n">num_qubits</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Pick a random Clifford gate.</span>
 
@@ -510,7 +510,7 @@
 <span class="c1"># --------------------------------------------------------</span>
 <span class="c1"># Main function that calculates an inverse of a clifford gate</span>
 <span class="c1"># --------------------------------------------------------</span>
-<div class="viewcode-block" id="find_inverse_clifford_gates"><a class="viewcode-back" href="../../../../../locale/docs/autodoc/qiskit.ignis.verification.randomized_benchmarking.clifford_utils.html#qiskit.ignis.verification.randomized_benchmarking.clifford_utils.find_inverse_clifford_gates">[ドキュメント]</a><span class="k">def</span> <span class="nf">find_inverse_clifford_gates</span><span class="p">(</span><span class="n">num_qubits</span><span class="p">,</span> <span class="n">gatelist</span><span class="p">):</span>
+<div class="viewcode-block" id="find_inverse_clifford_gates"><a class="viewcode-back" href="../../../../../docs/autodoc/qiskit.ignis.verification.randomized_benchmarking.clifford_utils.html#qiskit.ignis.verification.randomized_benchmarking.clifford_utils.find_inverse_clifford_gates">[ドキュメント]</a><span class="k">def</span> <span class="nf">find_inverse_clifford_gates</span><span class="p">(</span><span class="n">num_qubits</span><span class="p">,</span> <span class="n">gatelist</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Find the inverse of a Clifford gate.</span>
 
@@ -539,7 +539,7 @@
 <span class="c1"># --------------------------------------------------------</span>
 <span class="c1"># Returns the Clifford circuit in the form of a QuantumCircuit object</span>
 <span class="c1"># --------------------------------------------------------</span>
-<div class="viewcode-block" id="get_quantum_circuit"><a class="viewcode-back" href="../../../../../locale/docs/autodoc/qiskit.ignis.verification.randomized_benchmarking.clifford_utils.html#qiskit.ignis.verification.randomized_benchmarking.clifford_utils.get_quantum_circuit">[ドキュメント]</a><span class="k">def</span> <span class="nf">get_quantum_circuit</span><span class="p">(</span><span class="n">gatelist</span><span class="p">,</span> <span class="n">num_qubits</span><span class="p">):</span>
+<div class="viewcode-block" id="get_quantum_circuit"><a class="viewcode-back" href="../../../../../docs/autodoc/qiskit.ignis.verification.randomized_benchmarking.clifford_utils.html#qiskit.ignis.verification.randomized_benchmarking.clifford_utils.get_quantum_circuit">[ドキュメント]</a><span class="k">def</span> <span class="nf">get_quantum_circuit</span><span class="p">(</span><span class="n">gatelist</span><span class="p">,</span> <span class="n">num_qubits</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Returns the Clifford circuit in the form of a QuantumCircuit object.</span>
 

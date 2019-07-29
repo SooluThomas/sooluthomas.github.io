@@ -1519,20 +1519,20 @@
 <span id="id1"></span><h1>Drivers<a class="headerlink" href="#drivers" title="このヘッドラインへのパーマリンク">¶</a></h1>
 <p>Qiskit Chemistry requires a computational chemistry program or library, known as <em>driver</em>, to be
 installed on the system for the electronic-structure computation.
-When launched via the Qiskit Chemistry <a class="reference internal" href="../../../locale/docs/aqua/chemistry/qiskit_chemistry_execution.html#qiskit-chemistry-command-line"><span class="std std-ref">Command Line</span></a>,
-<a class="reference internal" href="../../../locale/docs/aqua/chemistry/qiskit_chemistry_execution.html#qiskit-chemistry-gui"><span class="std std-ref">GUI</span></a>, or <a class="reference internal" href="../../../locale/docs/aqua/chemistry/qiskit_chemistry_execution.html#qiskit-chemistry-programmable-interface"><span class="std std-ref">Programmable Interface</span></a>,
+When launched via the Qiskit Chemistry <a class="reference internal" href="qiskit_chemistry_execution.html#qiskit-chemistry-command-line"><span class="std std-ref">Command Line</span></a>,
+<a class="reference internal" href="qiskit_chemistry_execution.html#qiskit-chemistry-gui"><span class="std std-ref">GUI</span></a>, or <a class="reference internal" href="qiskit_chemistry_execution.html#qiskit-chemistry-programmable-interface"><span class="std std-ref">Programmable Interface</span></a>,
 Qiskit Chemistry expects a driver to be specified, and a
 molecular configuration to be passed in the format compatible with that driver.
 Qiskit Chemistry uses the driver not only as a frontend input language, to allow the user to
 configure a chemistry problem in a language that an experienced chemist is already familiar with,
 but also to compute some intermediate data, which will be later on used to form the input to one
-of the <a class="reference internal" href="../../../locale/docs/aqua/algorithms.html#algorithms"><span class="std std-ref">Algorithms</span></a>.  Such intermediate date
+of the <a class="reference internal" href="../algorithms.html#algorithms"><span class="std std-ref">Algorithms</span></a>.  Such intermediate date
 includes the following:</p>
 <ol class="arabic simple">
 <li>One- and two-body integrals in Molecular Orbital (MO) basis</li>
 <li>Dipole integrals</li>
 <li>Molecular orbital coefficients</li>
-<li><a class="reference internal" href="../../../locale/docs/aqua/initial_states.html#hartree-fock"><span class="std std-ref">Hartree-Fock</span></a> energy</li>
+<li><a class="reference internal" href="../initial_states.html#hartree-fock"><span class="std std-ref">Hartree-Fock</span></a> energy</li>
 <li>Nuclear repulsion energy</li>
 </ol>
 <p>Once extracted, the structure of this intermediate data is independent of the
@@ -1551,10 +1551,10 @@ Application Programming Interface (API) to support interfacing new drivers.</p>
 <p>Currently, Qiskit Chemistry comes with interfaces prebuilt
 for the following four computational chemistry software drivers:</p>
 <ol class="arabic simple">
-<li><a class="reference internal" href="../../../locale/docs/aqua/chemistry/qiskit_chemistry_drivers.html#gaussian-16"><span class="std std-ref">Gaussian™ 16</span></a>, a commercial chemistry program</li>
-<li><a class="reference internal" href="../../../locale/docs/aqua/chemistry/qiskit_chemistry_drivers.html#psi4"><span class="std std-ref">PSI4</span></a>, an open-source chemistry program built on Python</li>
-<li><a class="reference internal" href="../../../locale/docs/aqua/chemistry/qiskit_chemistry_drivers.html#pyscf"><span class="std std-ref">PySCF</span></a>, an open-source Python chemistry program</li>
-<li><a class="reference internal" href="../../../locale/docs/aqua/chemistry/qiskit_chemistry_drivers.html#pyquante"><span class="std std-ref">PyQuante</span></a>, a pure Python cross-platform open-source chemistry program</li>
+<li><a class="reference internal" href="#gaussian-16"><span class="std std-ref">Gaussian™ 16</span></a>, a commercial chemistry program</li>
+<li><a class="reference internal" href="#psi4"><span class="std std-ref">PSI4</span></a>, an open-source chemistry program built on Python</li>
+<li><a class="reference internal" href="#pyscf"><span class="std std-ref">PySCF</span></a>, an open-source Python chemistry program</li>
+<li><a class="reference internal" href="#pyquante"><span class="std std-ref">PyQuante</span></a>, a pure Python cross-platform open-source chemistry program</li>
 </ol>
 <div class="topic">
 <p class="topic-title first">The HDF5 Driver</p>
@@ -1709,7 +1709,7 @@ and appropriate exports, such as <code class="docutils literal notranslate"><spa
 <h3>Input File Example<a class="headerlink" href="#input-file-example" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <p>To use Gaussian™ 16 to configure a molecule on which to do a chemistry experiment with
 Qiskit Chemistry, set the <code class="docutils literal notranslate"><span class="pre">name</span></code> field in the <code class="docutils literal notranslate"><span class="pre">driver</span></code> section of the
-<a class="reference internal" href="../../../locale/docs/aqua/chemistry/qiskit_chemistry_execution.html#qiskit-chemistry-input-file"><span class="std std-ref">Input File</span></a> to <code class="docutils literal notranslate"><span class="pre">GAUSSIAN</span></code> and then create a <code class="docutils literal notranslate"><span class="pre">gaussian</span></code> section in the
+<a class="reference internal" href="qiskit_chemistry_execution.html#qiskit-chemistry-input-file"><span class="std std-ref">Input File</span></a> to <code class="docutils literal notranslate"><span class="pre">GAUSSIAN</span></code> and then create a <code class="docutils literal notranslate"><span class="pre">gaussian</span></code> section in the
 input file as per the example below, which shows the configuration of a molecule of
 hydrogen, <span class="math notranslate nohighlight">\(H_2\)</span>.  Here, the molecule, basis set and other options are specified according
 to the Gaussian™ 16 control file, so the syntax specified by Gaussian™ 16 should be followed:</p>
@@ -1726,7 +1726,7 @@ to the Gaussian™ 16 control file, so the syntax specified by Gaussian™ 16 sh
 </div>
 <p>Experienced chemists who already have existing Gaussian™ 16 control files can simply paste the
 contents of those files into the <code class="docutils literal notranslate"><span class="pre">gaussian</span></code> section of the input file.  This configuration can
-also be easily achieved using the Qiskit Chemistry <a class="reference internal" href="../../../locale/docs/aqua/chemistry/qiskit_chemistry_execution.html#qiskit-chemistry-gui"><span class="std std-ref">GUI</span></a>.</p>
+also be easily achieved using the Qiskit Chemistry <a class="reference internal" href="qiskit_chemistry_execution.html#qiskit-chemistry-gui"><span class="std std-ref">GUI</span></a>.</p>
 </div>
 </div>
 <div class="section" id="psi4">
@@ -1747,7 +1747,7 @@ the <code class="docutils literal notranslate"><span class="pre">.bash_profile</
 In order for Qiskit Chemistry to discover PSI4 at run time, it is then necessary to execute the
 <code class="docutils literal notranslate"><span class="pre">enable_psi4</span></code> command before launching Qiskit Chemistry.</p>
 <p>To use PSI4 to configure a molecule on which to do a chemistry experiment with Qiskit Chemistry,
-set the <code class="docutils literal notranslate"><span class="pre">name</span></code> field in the <code class="docutils literal notranslate"><span class="pre">driver</span></code> section of the <a class="reference internal" href="../../../locale/docs/aqua/chemistry/qiskit_chemistry_execution.html#qiskit-chemistry-input-file"><span class="std std-ref">Input File</span></a> to
+set the <code class="docutils literal notranslate"><span class="pre">name</span></code> field in the <code class="docutils literal notranslate"><span class="pre">driver</span></code> section of the <a class="reference internal" href="qiskit_chemistry_execution.html#qiskit-chemistry-input-file"><span class="std std-ref">Input File</span></a> to
 <code class="docutils literal notranslate"><span class="pre">PSI4</span></code> and then create a <code class="docutils literal notranslate"><span class="pre">psi4</span></code> section in the input file as per the example below, which shows
 the configuration of a molecule of hydrogen, <span class="math notranslate nohighlight">\(H_2\)</span>.  Here, the molecule, basis set and other
 options are specified according to the PSI4 control file, so the syntax specified by PSI4 should be
@@ -1769,7 +1769,7 @@ followed:</p>
 </div>
 <p>Experienced chemists who already have existing PSI4 control files can simply paste the contents of
 those files into the <code class="docutils literal notranslate"><span class="pre">psi4</span></code> section of the input file.  This configuration can also be easily
-achieved using the Qiskit Chemistry <a class="reference internal" href="../../../locale/docs/aqua/chemistry/qiskit_chemistry_execution.html#qiskit-chemistry-gui"><span class="std std-ref">GUI</span></a>.</p>
+achieved using the Qiskit Chemistry <a class="reference internal" href="qiskit_chemistry_execution.html#qiskit-chemistry-gui"><span class="std std-ref">GUI</span></a>.</p>
 </div>
 <div class="section" id="pyscf">
 <span id="id4"></span><h2>PySCF<a class="headerlink" href="#pyscf" title="このヘッドラインへのパーマリンク">¶</a></h2>
@@ -1782,7 +1782,7 @@ the preferred installation method for PySCF is via the pip package management sy
 while in the Python virtual environment where Qiskit Chemistry is also installed will automatically
 make PySCF dynamically discoverable by Qiskit Chemistry at run time.</p>
 <p>To use PySCF to configure a molecule on which to do a chemistry experiment with Qiskit Chemistry,
-set the <code class="docutils literal notranslate"><span class="pre">name</span></code> field in the <code class="docutils literal notranslate"><span class="pre">driver</span></code> section of the <a class="reference internal" href="../../../locale/docs/aqua/chemistry/qiskit_chemistry_execution.html#qiskit-chemistry-input-file"><span class="std std-ref">Input File</span></a> to
+set the <code class="docutils literal notranslate"><span class="pre">name</span></code> field in the <code class="docutils literal notranslate"><span class="pre">driver</span></code> section of the <a class="reference internal" href="qiskit_chemistry_execution.html#qiskit-chemistry-input-file"><span class="std std-ref">Input File</span></a> to
 <code class="docutils literal notranslate"><span class="pre">PYSCF</span></code> and then create a <code class="docutils literal notranslate"><span class="pre">pyscf</span></code> section in the input file as per the example below, which
 shows the configuration of a molecule of hydrogen, <span class="math notranslate nohighlight">\(H_2\)</span>.  Here, the molecule, basis set and
 other options are specified as key/value pairs, according to the syntax expected by PySCF. In PySCF,
@@ -1819,7 +1819,7 @@ to be configured, values are <code class="docutils literal notranslate"><span cl
 easy cross-reference of the functionality to within PySCF and to be more recognizable to
 experienced chemists who already program to the PySCF library.</p>
 <p>This configuration can also be easily created and edited using the
-Qiskit Chemistry <a class="reference internal" href="../../../locale/docs/aqua/chemistry/qiskit_chemistry_execution.html#qiskit-chemistry-gui"><span class="std std-ref">GUI</span></a>.</p>
+Qiskit Chemistry <a class="reference internal" href="qiskit_chemistry_execution.html#qiskit-chemistry-gui"><span class="std std-ref">GUI</span></a>.</p>
 </div>
 <div class="section" id="pyquante">
 <span id="id5"></span><h2>PyQuante<a class="headerlink" href="#pyquante" title="このヘッドラインへのパーマリンク">¶</a></h2>
@@ -1842,7 +1842,7 @@ is currently the only driver interfaced by Qiskit Chemistry that does not allow 
 computation of a molecule's dipole moment.</p>
 </div>
 <p>To use PyQuante to configure a molecule on which to do a chemistry experiment with Qiskit Chemistry,
-set the <code class="docutils literal notranslate"><span class="pre">name</span></code> field in the <code class="docutils literal notranslate"><span class="pre">driver</span></code> section of the <a class="reference internal" href="../../../locale/docs/aqua/chemistry/qiskit_chemistry_execution.html#qiskit-chemistry-input-file"><span class="std std-ref">Input File</span></a> to
+set the <code class="docutils literal notranslate"><span class="pre">name</span></code> field in the <code class="docutils literal notranslate"><span class="pre">driver</span></code> section of the <a class="reference internal" href="qiskit_chemistry_execution.html#qiskit-chemistry-input-file"><span class="std std-ref">Input File</span></a> to
 <code class="docutils literal notranslate"><span class="pre">PYQUANTE</span></code> and then create a <code class="docutils literal notranslate"><span class="pre">pyquante</span></code> section in the input file as per the example below,
 which shows the configuration of a molecule of
 hydrogen, <span class="math notranslate nohighlight">\(H_2\)</span>.  Here, the molecule, basis set and other options are specified according
@@ -1876,7 +1876,7 @@ the maximum number of iterations as part of the <code class="docutils literal no
 <p>Above parameter names, in matching to internal PyQuante2 variables, was done explicitly to allow
 easy cross-reference of the functionality to within PyQuante2.</p>
 <p>This configuration can also be easily created and edited using the
-Qiskit Chemistry <a class="reference internal" href="../../../locale/docs/aqua/chemistry/qiskit_chemistry_execution.html#qiskit-chemistry-gui"><span class="std std-ref">GUI</span></a>.</p>
+Qiskit Chemistry <a class="reference internal" href="qiskit_chemistry_execution.html#qiskit-chemistry-gui"><span class="std std-ref">GUI</span></a>.</p>
 </div>
 <div class="section" id="hdf5">
 <span id="id6"></span><h2>HDF5<a class="headerlink" href="#hdf5" title="このヘッドラインへのパーマリンク">¶</a></h2>
@@ -1884,7 +1884,7 @@ Qiskit Chemistry <a class="reference internal" href="../../../locale/docs/aqua/c
 software drivers that it interfaces.  Qiskit Chemistry executes a driver classically,
 only to the extent necessary to compute some intermediate data which, combined with the molecular
 configuration, can later be used to form the input to one of the
-Aqua <a class="reference internal" href="../../../locale/docs/aqua/algorithms.html#quantum-algorithms"><span class="std std-ref">Quantum Algorithms</span></a>.</p>
+Aqua <a class="reference internal" href="../algorithms.html#quantum-algorithms"><span class="std std-ref">Quantum Algorithms</span></a>.</p>
 <p>As mentioned above, the intermediate data extracted from the classical computational software
 includes the following:</p>
 <ol class="arabic simple">
@@ -1912,14 +1912,14 @@ of usage.</p>
 <div class="section" id="generation-of-an-hdf5-input-file">
 <h3>Generation of an HDF5 Input File<a class="headerlink" href="#generation-of-an-hdf5-input-file" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <p>The most intuitive way to generate an HDF5 input file is by using the Qiskit Chemistry
-<a class="reference internal" href="../../../locale/docs/aqua/chemistry/qiskit_chemistry_execution.html#qiskit-chemistry-gui"><span class="std std-ref">GUI</span></a>.
-Through the GUI, you can load an existing <a class="reference internal" href="../../../locale/docs/aqua/chemistry/qiskit_chemistry_execution.html#qiskit-chemistry-input-file"><span class="std std-ref">Input File</span></a> from the <code class="docutils literal notranslate"><span class="pre">chemistry</span></code>
+<a class="reference internal" href="qiskit_chemistry_execution.html#qiskit-chemistry-gui"><span class="std std-ref">GUI</span></a>.
+Through the GUI, you can load an existing <a class="reference internal" href="qiskit_chemistry_execution.html#qiskit-chemistry-input-file"><span class="std std-ref">Input File</span></a> from the <code class="docutils literal notranslate"><span class="pre">chemistry</span></code>
 folder of the <a class="reference external" href="https://github.com/Qiskit/qiskit-tutorials">Qiskit Tutorials GitHub repository</a>
 (which must have been installed on your file system via a <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">clone</span></code> command)
 by selecting <strong>Open...</strong> from the <strong>File</strong> menu.  Alternatively, you can create and then potentially
-customize a brand new <a class="reference internal" href="../../../locale/docs/aqua/chemistry/qiskit_chemistry_execution.html#qiskit-chemistry-input-file"><span class="std std-ref">Input File</span></a> by choosing <strong>New</strong> from the <strong>File</strong> menu.
+customize a brand new <a class="reference internal" href="qiskit_chemistry_execution.html#qiskit-chemistry-input-file"><span class="std std-ref">Input File</span></a> by choosing <strong>New</strong> from the <strong>File</strong> menu.
 Once you have configured the chemistry experiment in one of the existing classical drivers
-(<a class="reference internal" href="../../../locale/docs/aqua/chemistry/qiskit_chemistry_drivers.html#gaussian-16"><span class="std std-ref">Gaussian™ 16</span></a>, <a class="reference internal" href="../../../locale/docs/aqua/chemistry/qiskit_chemistry_drivers.html#psi4"><span class="std std-ref">PSI4</span></a>, <a class="reference internal" href="../../../locale/docs/aqua/chemistry/qiskit_chemistry_drivers.html#pyscf"><span class="std std-ref">PySCF</span></a> or <a class="reference internal" href="../../../locale/docs/aqua/chemistry/qiskit_chemistry_drivers.html#pyquante"><span class="std std-ref">PyQuante</span></a>),
+(<a class="reference internal" href="#gaussian-16"><span class="std std-ref">Gaussian™ 16</span></a>, <a class="reference internal" href="#psi4"><span class="std std-ref">PSI4</span></a>, <a class="reference internal" href="#pyscf"><span class="std std-ref">PySCF</span></a> or <a class="reference internal" href="#pyquante"><span class="std std-ref">PyQuante</span></a>),
 you can specify the name of the file where you want the HDF5 file to be serialized.  This can be
 done by assigning a value to the <code class="docutils literal notranslate"><span class="pre">hdf5_output</span></code> field of the <code class="docutils literal notranslate"><span class="pre">driver</span></code> section.
 Upon completing its execution, Qiskit Chemistry displays the following message:</p>
@@ -1930,15 +1930,15 @@ Upon completing its execution, Qiskit Chemistry displays the following message:<
 and directory path you chose, respectively.</p>
 <p>Using the GUI is the most intuitive option to generate the HDF5 file corresponding to a given
 experiment. The same result can be obtained by assigning a value to the <code class="docutils literal notranslate"><span class="pre">hdf5_output</span></code> field of
-the <code class="docutils literal notranslate"><span class="pre">driver</span></code> section of an <a class="reference internal" href="../../../locale/docs/aqua/chemistry/qiskit_chemistry_execution.html#qiskit-chemistry-input-file"><span class="std std-ref">Input File</span></a> and then invoking the Qiskit
-Chemistry <a class="reference internal" href="../../../locale/docs/aqua/chemistry/qiskit_chemistry_execution.html#qiskit-chemistry-command-line"><span class="std std-ref">Command Line</span></a> tool with the name of that file as the input
+the <code class="docutils literal notranslate"><span class="pre">driver</span></code> section of an <a class="reference internal" href="qiskit_chemistry_execution.html#qiskit-chemistry-input-file"><span class="std std-ref">Input File</span></a> and then invoking the Qiskit
+Chemistry <a class="reference internal" href="qiskit_chemistry_execution.html#qiskit-chemistry-command-line"><span class="std std-ref">Command Line</span></a> tool with the name of that file as the input
 parameter.</p>
 </div>
 <div class="section" id="using-an-hdf5-file-as-the-input-to-an-experiment">
 <h3>Using an HDF5 File as the Input to an Experiment<a class="headerlink" href="#using-an-hdf5-file-as-the-input-to-an-experiment" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <p>If you later want the HDF5 file to be deserialized and its contents used as the input for a
 chemistry experiment, you can select <code class="docutils literal notranslate"><span class="pre">HDF5</span></code> as the driver in an
-<a class="reference internal" href="../../../locale/docs/aqua/chemistry/qiskit_chemistry_execution.html#qiskit-chemistry-input-file"><span class="std std-ref">Input File</span></a>.  Doing so will require the <code class="docutils literal notranslate"><span class="pre">hdf5</span></code> section in the input
+<a class="reference internal" href="qiskit_chemistry_execution.html#qiskit-chemistry-input-file"><span class="std std-ref">Input File</span></a>.  Doing so will require the <code class="docutils literal notranslate"><span class="pre">hdf5</span></code> section in the input
 file to be configured by assigning a valid fully qualified file name to the <code class="docutils literal notranslate"><span class="pre">hdf5_input</span></code>
 field, as shown:</p>
 <div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&amp;</span><span class="n">hdf5</span>

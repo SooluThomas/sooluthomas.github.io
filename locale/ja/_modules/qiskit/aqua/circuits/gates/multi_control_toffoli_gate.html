@@ -401,7 +401,7 @@
         <span class="n">qc</span><span class="o">.</span><span class="n">h</span><span class="p">(</span><span class="n">tgt</span><span class="p">)</span>
 
 
-<div class="viewcode-block" id="mct"><a class="viewcode-back" href="../../../../../locale/docs/autodoc/qiskit.aqua.circuits.gates.multi_control_toffoli_gate.html#qiskit.aqua.circuits.gates.mct">[ドキュメント]</a><span class="k">def</span> <span class="nf">mct</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">q_controls</span><span class="p">,</span> <span class="n">q_target</span><span class="p">,</span> <span class="n">q_ancilla</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;basic&#39;</span><span class="p">):</span>
+<div class="viewcode-block" id="mct"><a class="viewcode-back" href="../../../../../docs/autodoc/qiskit.aqua.circuits.gates.multi_control_toffoli_gate.html#qiskit.aqua.circuits.gates.mct">[ドキュメント]</a><span class="k">def</span> <span class="nf">mct</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">q_controls</span><span class="p">,</span> <span class="n">q_target</span><span class="p">,</span> <span class="n">q_ancilla</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;basic&#39;</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Apply Multiple-Control Toffoli operation</span>
 <span class="sd">    Args:</span>
@@ -457,7 +457,7 @@
             <span class="k">raise</span> <span class="n">AquaError</span><span class="p">(</span><span class="s1">&#39;Unrecognized mode for building MCT circuit: </span><span class="si">{}</span><span class="s1">.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">mode</span><span class="p">))</span></div>
 
 
-<div class="viewcode-block" id="cnx"><a class="viewcode-back" href="../../../../../locale/docs/autodoc/qiskit.aqua.circuits.gates.multi_control_toffoli_gate.html#qiskit.aqua.circuits.gates.cnx">[ドキュメント]</a><span class="k">def</span> <span class="nf">cnx</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<div class="viewcode-block" id="cnx"><a class="viewcode-back" href="../../../../../docs/autodoc/qiskit.aqua.circuits.gates.multi_control_toffoli_gate.html#qiskit.aqua.circuits.gates.cnx">[ドキュメント]</a><span class="k">def</span> <span class="nf">cnx</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;The gate name &#39;cnx&#39; will be deprecated. Please use &#39;mct&#39; (Multiple-Control Toffoli) instead.&quot;</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">mct</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
 

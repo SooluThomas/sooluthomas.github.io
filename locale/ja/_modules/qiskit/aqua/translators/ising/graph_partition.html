@@ -200,7 +200,7 @@
 <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
 
 
-<div class="viewcode-block" id="random_graph"><a class="viewcode-back" href="../../../../../locale/docs/autodoc/qiskit.aqua.translators.ising.graph_partition.html#qiskit.aqua.translators.ising.graph_partition.random_graph">[ドキュメント]</a><span class="k">def</span> <span class="nf">random_graph</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">weight_range</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">edge_prob</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">savefile</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="random_graph"><a class="viewcode-back" href="../../../../../docs/autodoc/qiskit.aqua.translators.ising.graph_partition.html#qiskit.aqua.translators.ising.graph_partition.random_graph">[ドキュメント]</a><span class="k">def</span> <span class="nf">random_graph</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">weight_range</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">edge_prob</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">savefile</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Generate random Erdos-Renyi graph.</span>
 
 <span class="sd">    Args:</span>
@@ -238,7 +238,7 @@
     <span class="k">return</span> <span class="n">w</span></div>
 
 
-<div class="viewcode-block" id="get_graph_partition_qubitops"><a class="viewcode-back" href="../../../../../locale/docs/autodoc/qiskit.aqua.translators.ising.graph_partition.html#qiskit.aqua.translators.ising.graph_partition.get_graph_partition_qubitops">[ドキュメント]</a><span class="k">def</span> <span class="nf">get_graph_partition_qubitops</span><span class="p">(</span><span class="n">weight_matrix</span><span class="p">):</span>
+<div class="viewcode-block" id="get_graph_partition_qubitops"><a class="viewcode-back" href="../../../../../docs/autodoc/qiskit.aqua.translators.ising.graph_partition.html#qiskit.aqua.translators.ising.graph_partition.get_graph_partition_qubitops">[ドキュメント]</a><span class="k">def</span> <span class="nf">get_graph_partition_qubitops</span><span class="p">(</span><span class="n">weight_matrix</span><span class="p">):</span>
     <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Generate Hamiltonian for the graph partitioning</span>
 
 <span class="sd">    Args:</span>
@@ -284,7 +284,7 @@
     <span class="k">return</span> <span class="n">Operator</span><span class="p">(</span><span class="n">paulis</span><span class="o">=</span><span class="n">pauli_list</span><span class="p">),</span> <span class="n">shift</span></div>
 
 
-<div class="viewcode-block" id="parse_gset_format"><a class="viewcode-back" href="../../../../../locale/docs/autodoc/qiskit.aqua.translators.ising.graph_partition.html#qiskit.aqua.translators.ising.graph_partition.parse_gset_format">[ドキュメント]</a><span class="k">def</span> <span class="nf">parse_gset_format</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+<div class="viewcode-block" id="parse_gset_format"><a class="viewcode-back" href="../../../../../docs/autodoc/qiskit.aqua.translators.ising.graph_partition.html#qiskit.aqua.translators.ising.graph_partition.parse_gset_format">[ドキュメント]</a><span class="k">def</span> <span class="nf">parse_gset_format</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Read graph in Gset format from file.</span>
 
 <span class="sd">    Args:</span>
@@ -315,7 +315,7 @@
     <span class="k">return</span> <span class="n">w</span></div>
 
 
-<div class="viewcode-block" id="objective_value"><a class="viewcode-back" href="../../../../../locale/docs/autodoc/qiskit.aqua.translators.ising.graph_partition.html#qiskit.aqua.translators.ising.graph_partition.objective_value">[ドキュメント]</a><span class="k">def</span> <span class="nf">objective_value</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">w</span><span class="p">):</span>
+<div class="viewcode-block" id="objective_value"><a class="viewcode-back" href="../../../../../docs/autodoc/qiskit.aqua.translators.ising.graph_partition.html#qiskit.aqua.translators.ising.graph_partition.objective_value">[ドキュメント]</a><span class="k">def</span> <span class="nf">objective_value</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">w</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Compute the value of a cut.</span>
 
 <span class="sd">    Args:</span>
@@ -330,7 +330,7 @@
     <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">w_01</span> <span class="o">*</span> <span class="n">X</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="get_graph_solution"><a class="viewcode-back" href="../../../../../locale/docs/autodoc/qiskit.aqua.translators.ising.graph_partition.html#qiskit.aqua.translators.ising.graph_partition.get_graph_solution">[ドキュメント]</a><span class="k">def</span> <span class="nf">get_graph_solution</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<div class="viewcode-block" id="get_graph_solution"><a class="viewcode-back" href="../../../../../docs/autodoc/qiskit.aqua.translators.ising.graph_partition.html#qiskit.aqua.translators.ising.graph_partition.get_graph_solution">[ドキュメント]</a><span class="k">def</span> <span class="nf">get_graph_solution</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Get graph solution from binary string.</span>
 
 <span class="sd">    Args:</span>
@@ -342,7 +342,7 @@
     <span class="k">return</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">x</span></div>
 
 
-<div class="viewcode-block" id="sample_most_likely"><a class="viewcode-back" href="../../../../../locale/docs/autodoc/qiskit.aqua.translators.ising.graph_partition.html#qiskit.aqua.translators.ising.graph_partition.sample_most_likely">[ドキュメント]</a><span class="k">def</span> <span class="nf">sample_most_likely</span><span class="p">(</span><span class="n">state_vector</span><span class="p">):</span>
+<div class="viewcode-block" id="sample_most_likely"><a class="viewcode-back" href="../../../../../docs/autodoc/qiskit.aqua.translators.ising.graph_partition.html#qiskit.aqua.translators.ising.graph_partition.sample_most_likely">[ドキュメント]</a><span class="k">def</span> <span class="nf">sample_most_likely</span><span class="p">(</span><span class="n">state_vector</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Compute the most likely binary string from state vector.</span>
 <span class="sd">    Args:</span>
 <span class="sd">        state_vector (numpy.ndarray or dict): state vector or counts.</span>
@@ -364,7 +364,7 @@
         <span class="k">return</span> <span class="n">x</span></div>
 
 
-<div class="viewcode-block" id="get_gset_result"><a class="viewcode-back" href="../../../../../locale/docs/autodoc/qiskit.aqua.translators.ising.graph_partition.html#qiskit.aqua.translators.ising.graph_partition.get_gset_result">[ドキュメント]</a><span class="k">def</span> <span class="nf">get_gset_result</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<div class="viewcode-block" id="get_gset_result"><a class="viewcode-back" href="../../../../../docs/autodoc/qiskit.aqua.translators.ising.graph_partition.html#qiskit.aqua.translators.ising.graph_partition.get_gset_result">[ドキュメント]</a><span class="k">def</span> <span class="nf">get_gset_result</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Get graph solution in Gset format from binary string.</span>
 
 <span class="sd">    Args:</span>

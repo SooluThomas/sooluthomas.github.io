@@ -1581,7 +1581,7 @@ using the <code class="docutils literal notranslate"><span class="pre">add_regis
 <span class="n">circ</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">output</span><span class="o">=</span><span class="s1">&#39;mpl&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<img alt="Quantum circuit with 4 qubits, X gates on qubits 1 and 2." src="../_images/quantum_circuits_13_02.png" />
+<img alt="Quantum circuit with 4 qubits, X gates on qubits 1 and 2." src="../_images/quantum_circuits_13_01.png" />
 <p>is the same as</p>
 <div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">circ2</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">()</span>
 <span class="n">circ2</span><span class="o">.</span><span class="n">add_register</span><span class="p">(</span><span class="n">q0</span><span class="p">)</span>
@@ -1591,7 +1591,7 @@ using the <code class="docutils literal notranslate"><span class="pre">add_regis
 <span class="n">circ2</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">output</span><span class="o">=</span><span class="s1">&#39;mpl&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<img alt="Quantum circuit with 4 qubits, X gates on qubits 1 and 2." src="../_images/quantum_circuits_13_02.png" />
+<img alt="Quantum circuit with 4 qubits, X gates on qubits 1 and 2." src="../_images/quantum_circuits_13_01.png" />
 <div class="admonition note">
 <p class="first admonition-title">注釈</p>
 <p class="last">The order of registers in the list is the order they are initiated
@@ -1605,7 +1605,7 @@ or added <strong>not</strong> the tensor product for quantum registers.</p>
 <span class="n">circ3</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">output</span><span class="o">=</span><span class="s1">&#39;mpl&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<img alt="Quantum circuit with 6 qubits, two sets of labels, and X gates on qubits q0_1 and q1_0." src="../_images/quantum_circuits_15_02.png" />
+<img alt="Quantum circuit with 6 qubits, two sets of labels, and X gates on qubits q0_1 and q1_0." src="../_images/quantum_circuits_15_01.png" />
 <div class="admonition note">
 <p class="first admonition-title">注釈</p>
 <p class="last">The circuit drawer has the last register added at the bottom and
@@ -1643,7 +1643,7 @@ by a bit.</p>
 <span class="n">bell</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">output</span><span class="o">=</span><span class="s1">&#39;mpl&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<img alt="Quantum circuit with 2 qubits, 2 bits, an H gate on qubit 0, CNOT targeting qubit 1 controlled by qubit 0 and measurements on both qubits." src="../_images/quantum_circuits_32.png" />
+<img alt="Quantum circuit with 2 qubits, 2 bits, an H gate on qubit 0, CNOT targeting qubit 1 controlled by qubit 0 and measurements on both qubits." src="../_images/quantum_circuits_31.png" />
 <p>The indexing method above works for <code class="docutils literal notranslate"><span class="pre">QuantumCircuit</span></code> objects constructed with
 or without predefined <code class="docutils literal notranslate"><span class="pre">QuantumRegister</span></code> objects.</p>
 <p>For circuits with multiple registers, index ordering will correspond to the
@@ -1662,7 +1662,7 @@ circuit's <code class="docutils literal notranslate"><span class="pre">qubits</s
 <span class="n">circuit</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">output</span><span class="o">=</span><span class="s1">&#39;mpl&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<img alt="Quantum circuit with 2 qubits, 2 bits, a Hadamard gate on each qubit, a measurement from q1_0 to both bits." src="../_images/quantum_circuits_42.png" />
+<img alt="Quantum circuit with 2 qubits, 2 bits, a Hadamard gate on each qubit, a measurement from q1_0 to both bits." src="../_images/quantum_circuits_41.png" />
 </div>
 <div class="section" id="concatenating-circuits">
 <h2>Concatenating Circuits<a class="headerlink" href="#concatenating-circuits" title="このヘッドラインへのパーマリンク">¶</a></h2>
@@ -1679,7 +1679,7 @@ measurement.</p>
 <span class="n">qc</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">output</span><span class="o">=</span><span class="s1">&#39;mpl&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<img alt="Quantum circuit with 4 qubits and 4 bits, two sets of labels, X gates on qubits q0_1 and q1_0, measurements off all qubits recorded to all bits in a one to one fashion." src="../_images/quantum_circuits_18_02.png" />
+<img alt="Quantum circuit with 4 qubits and 4 bits, two sets of labels, X gates on qubits q0_1 and q1_0, measurements off all qubits recorded to all bits in a one to one fashion." src="../_images/quantum_circuits_18_01.png" />
 <div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">meas2</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">()</span>
 <span class="n">meas2</span><span class="o">.</span><span class="n">add_register</span><span class="p">(</span><span class="n">q0</span><span class="p">)</span>
 <span class="n">meas2</span><span class="o">.</span><span class="n">add_register</span><span class="p">(</span><span class="n">q1</span><span class="p">)</span>
@@ -1693,30 +1693,30 @@ measurement.</p>
 <span class="n">qc2</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">output</span><span class="o">=</span><span class="s1">&#39;mpl&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<img alt="Quantum circuit with 4 qubits and 4 bits, two sets of labels, X gates on qubits q0_1 and q1_0, measurements off all qubits recorded to all bits in a one to one fashion." src="../_images/quantum_circuits_19_02.png" />
+<img alt="Quantum circuit with 4 qubits and 4 bits, two sets of labels, X gates on qubits q0_1 and q1_0, measurements off all qubits recorded to all bits in a one to one fashion." src="../_images/quantum_circuits_19_01.png" />
 <div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">circ4</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="n">q1</span><span class="p">)</span>
 <span class="n">circ4</span><span class="o">.</span><span class="n">x</span><span class="p">(</span><span class="n">q1</span><span class="p">)</span>
 <span class="n">circ4</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">output</span><span class="o">=</span><span class="s1">&#39;mpl&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<img alt="Quantum circuit with 2 qubits, each with an X gate." src="../_images/quantum_circuits_20_02.png" />
+<img alt="Quantum circuit with 2 qubits, each with an X gate." src="../_images/quantum_circuits_20_01.png" />
 <div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">circ5</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="n">q3</span><span class="p">)</span>
 <span class="n">circ5</span><span class="o">.</span><span class="n">h</span><span class="p">(</span><span class="n">q3</span><span class="p">)</span>
 <span class="n">circ5</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">output</span><span class="o">=</span><span class="s1">&#39;mpl&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<img alt="Quantum circuit with 2 qubits, each with an H gate." src="../_images/quantum_circuits_21_02.png" />
+<img alt="Quantum circuit with 2 qubits, each with an H gate." src="../_images/quantum_circuits_21_01.png" />
 <p>The new register is added to the circuit:</p>
 <div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">circ4</span><span class="o">+</span><span class="n">circ5</span><span class="p">)</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">output</span><span class="o">=</span><span class="s1">&#39;mpl&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<img alt="Quantum circuit with 4 qubits, an X gate on each of the first two, an H gate of each of the last two." src="../_images/quantum_circuits_23_02.png" />
+<img alt="Quantum circuit with 4 qubits, an X gate on each of the first two, an H gate of each of the last two." src="../_images/quantum_circuits_23_01.png" />
 <p>We have also overloaded <code class="docutils literal notranslate"><span class="pre">+=</span></code> to the <code class="docutils literal notranslate"><span class="pre">QuantumCircuit</span></code> object:</p>
 <div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">circ4</span> <span class="o">+=</span> <span class="n">circ5</span>
 <span class="n">circ4</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">output</span><span class="o">=</span><span class="s1">&#39;mpl&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<img alt="Quantum circuit with 4 qubits, an X gate on each of the first two, an H gate of each of the last two." src="../_images/quantum_circuits_25_02.png" />
+<img alt="Quantum circuit with 4 qubits, an X gate on each of the first two, an H gate of each of the last two." src="../_images/quantum_circuits_25_01.png" />
 <div class="section" id="examining-circuit-results">
 <h3>Examining Circuit Results<a class="headerlink" href="#examining-circuit-results" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <p>In the circuit output, the most significant bit (MSB) is to the left and
@@ -1725,7 +1725,7 @@ regular computer science little endian ordering). In this example:</p>
 <div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">circ</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">output</span><span class="o">=</span><span class="s1">&#39;mpl&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<img alt="Quantum circuit with 4 qubits, an X gate on the second and third qubits." src="../_images/quantum_circuits_27_02.png" />
+<img alt="Quantum circuit with 4 qubits, an X gate on the second and third qubits." src="../_images/quantum_circuits_27_01.png" />
 <p>qqubit register <span class="math notranslate nohighlight">\(Q_0\)</span> is prepared in the state <span class="math notranslate nohighlight">\(|10\rangle\)</span>
 and <span class="math notranslate nohighlight">\(Q_1\)</span> is in the state <span class="math notranslate nohighlight">\(|01\rangle\)</span> giving a total state
 <span class="math notranslate nohighlight">\(|0110\rangle\)</span> (<span class="math notranslate nohighlight">\(Q1\otimes Q0\)</span>).</p>
@@ -1773,7 +1773,7 @@ have to use the example with measurements <code class="docutils literal notransl
 <div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">qc</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">output</span><span class="o">=</span><span class="s1">&#39;mpl&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<img alt="Quantum circuit with 4 qubits and 4 bits, an X gate on the second and third qubits, measurements on all qubits recorded on all bits in a one to one fashion." src="../_images/quantum_circuits_35_02.png" />
+<img alt="Quantum circuit with 4 qubits and 4 bits, an X gate on the second and third qubits, measurements on all qubits recorded on all bits in a one to one fashion." src="../_images/quantum_circuits_35_01.png" />
 <p>This will map the quantum state to the classical world and since the
 state has no superpositions it will be deterministic and equal to
 <code class="docutils literal notranslate"><span class="pre">'01</span> <span class="pre">10'</span></code>. Here a space is used to separate the registers.</p>
@@ -1836,7 +1836,7 @@ things.</p>
 <span class="n">circuit</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">output</span><span class="o">=</span><span class="s1">&#39;mpl&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<img alt="Quantum circuit with 6 qubits, 8 single qubit gates, a controlled not gate, and a Toffoli gate." src="../_images/quantum_circuits_44_02.png" />
+<img alt="Quantum circuit with 6 qubits, 8 single qubit gates, a controlled not gate, and a Toffoli gate." src="../_images/quantum_circuits_44_01.png" />
 <div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># total number of operations in the circuit. no unrolling is done.</span>
 <span class="n">circuit</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
 </pre></div>

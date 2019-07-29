@@ -194,19 +194,19 @@
 <span class="kn">from</span> <span class="nn">qiskit.circuit.decorators</span> <span class="k">import</span> <span class="n">_convert_to_bits</span>
 
 
-<div class="viewcode-block" id="Barrier"><a class="viewcode-back" href="../../../../locale/docs/autodoc/qiskit.extensions.standard.barrier.html#qiskit.circuit.compositegate.Barrier">[ドキュメント]</a><span class="k">class</span> <span class="nc">Barrier</span><span class="p">(</span><span class="n">Instruction</span><span class="p">):</span>
+<div class="viewcode-block" id="Barrier"><a class="viewcode-back" href="../../../../docs/autodoc/qiskit.extensions.standard.barrier.html#qiskit.circuit.compositegate.Barrier">[ドキュメント]</a><span class="k">class</span> <span class="nc">Barrier</span><span class="p">(</span><span class="n">Instruction</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Barrier instruction.&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num_qubits</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Create new barrier instruction.&quot;&quot;&quot;</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="s2">&quot;barrier&quot;</span><span class="p">,</span> <span class="n">num_qubits</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="p">[])</span>
 
-<div class="viewcode-block" id="Barrier.inverse"><a class="viewcode-back" href="../../../../locale/docs/autodoc/qiskit.extensions.standard.barrier.html#qiskit.circuit.compositegate.Barrier.inverse">[ドキュメント]</a>    <span class="k">def</span> <span class="nf">inverse</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="Barrier.inverse"><a class="viewcode-back" href="../../../../docs/autodoc/qiskit.extensions.standard.barrier.html#qiskit.circuit.compositegate.Barrier.inverse">[ドキュメント]</a>    <span class="k">def</span> <span class="nf">inverse</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Special case. Return self.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">Barrier</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">num_qubits</span><span class="p">)</span></div></div>
 
 
-<div class="viewcode-block" id="barrier"><a class="viewcode-back" href="../../../../locale/docs/autodoc/qiskit.extensions.standard.barrier.html#qiskit.circuit.compositegate.barrier">[ドキュメント]</a><span class="k">def</span> <span class="nf">barrier</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">qargs</span><span class="p">):</span>
+<div class="viewcode-block" id="barrier"><a class="viewcode-back" href="../../../../docs/autodoc/qiskit.extensions.standard.barrier.html#qiskit.circuit.compositegate.barrier">[ドキュメント]</a><span class="k">def</span> <span class="nf">barrier</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">qargs</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Apply barrier to circuit.</span>
 <span class="sd">    If qargs is None, applies to all the qbits.</span>
 <span class="sd">    Args is a list of QuantumRegister or single qubits.</span>

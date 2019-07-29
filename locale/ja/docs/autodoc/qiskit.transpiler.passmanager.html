@@ -1521,14 +1521,14 @@
 <dl class="class">
 <dt id="qiskit.transpiler.passmanager.ConditionalController">
 <em class="property">class </em><code class="descname">ConditionalController</code><span class="sig-paren">(</span><em>passes</em>, <em>options</em>, <em>condition=None</em>, <em>**partial_controller</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/qiskit/transpiler/passmanager.html#ConditionalController"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.transpiler.passmanager.ConditionalController" title="この定義へのパーマリンク">¶</a></dt>
-<dd><p>ベースクラス: <a class="reference internal" href="../../locale/docs/autodoc/qiskit.transpiler.passmanager.html#qiskit.transpiler.passmanager.FlowController" title="qiskit.transpiler.passmanager.FlowController"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.transpiler.passmanager.FlowController</span></code></a></p>
+<dd><p>ベースクラス: <a class="reference internal" href="#qiskit.transpiler.passmanager.FlowController" title="qiskit.transpiler.passmanager.FlowController"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.transpiler.passmanager.FlowController</span></code></a></p>
 <p>Implements a set of passes under a certain condition.</p>
 </dd></dl>
 
 <dl class="class">
 <dt id="qiskit.transpiler.passmanager.DoWhileController">
 <em class="property">class </em><code class="descname">DoWhileController</code><span class="sig-paren">(</span><em>passes</em>, <em>options</em>, <em>do_while=None</em>, <em>**partial_controller</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/qiskit/transpiler/passmanager.html#DoWhileController"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.transpiler.passmanager.DoWhileController" title="この定義へのパーマリンク">¶</a></dt>
-<dd><p>ベースクラス: <a class="reference internal" href="../../locale/docs/autodoc/qiskit.transpiler.passmanager.html#qiskit.transpiler.passmanager.FlowController" title="qiskit.transpiler.passmanager.FlowController"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.transpiler.passmanager.FlowController</span></code></a></p>
+<dd><p>ベースクラス: <a class="reference internal" href="#qiskit.transpiler.passmanager.FlowController" title="qiskit.transpiler.passmanager.FlowController"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.transpiler.passmanager.FlowController</span></code></a></p>
 <p>Implements a set of passes in a do-while loop.</p>
 </dd></dl>
 
@@ -1557,7 +1557,7 @@ returns the next pass to run.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">パラメータ:</th><td class="field-body"><ul class="first simple">
-<li><strong>passes</strong> (<em>list</em><em>[</em><a class="reference internal" href="../../locale/docs/autodoc/qiskit.transpiler.basepasses.html#qiskit.transpiler.basepasses.BasePass" title="qiskit.transpiler.basepasses.BasePass"><em>BasePass</em></a><em>]</em>) -- passes to add to the flow controller.</li>
+<li><strong>passes</strong> (<em>list</em><em>[</em><a class="reference internal" href="qiskit.transpiler.basepasses.html#qiskit.transpiler.basepasses.BasePass" title="qiskit.transpiler.basepasses.BasePass"><em>BasePass</em></a><em>]</em>) -- passes to add to the flow controller.</li>
 <li><strong>options</strong> (<em>dict</em>) -- PassManager options.</li>
 <li><strong>**partial_controller</strong> (<em>dict</em>) -- Partially evaluated controller arguments in the form
 <cite>{name:partial}</cite></li>
@@ -1570,7 +1570,7 @@ returns the next pass to run.</p>
 <tr class="field-odd field"><th class="field-name">戻り値:</th><td class="field-body"><p class="first">A FlowController instance.</p>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">戻り値の型:</th><td class="field-body"><p class="first last"><a class="reference internal" href="../../locale/docs/autodoc/qiskit.transpiler.passmanager.html#qiskit.transpiler.passmanager.FlowController" title="qiskit.transpiler.passmanager.FlowController">FlowController</a></p>
+<tr class="field-even field"><th class="field-name">戻り値の型:</th><td class="field-body"><p class="first last"><a class="reference internal" href="#qiskit.transpiler.passmanager.FlowController" title="qiskit.transpiler.passmanager.FlowController">FlowController</a></p>
 </td>
 </tr>
 </tbody>
@@ -1610,7 +1610,7 @@ returns the next pass to run.</p>
 <dl class="class">
 <dt id="qiskit.transpiler.passmanager.FlowControllerLinear">
 <em class="property">class </em><code class="descname">FlowControllerLinear</code><span class="sig-paren">(</span><em>passes</em>, <em>options</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/qiskit/transpiler/passmanager.html#FlowControllerLinear"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.transpiler.passmanager.FlowControllerLinear" title="この定義へのパーマリンク">¶</a></dt>
-<dd><p>ベースクラス: <a class="reference internal" href="../../locale/docs/autodoc/qiskit.transpiler.passmanager.html#qiskit.transpiler.passmanager.FlowController" title="qiskit.transpiler.passmanager.FlowController"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.transpiler.passmanager.FlowController</span></code></a></p>
+<dd><p>ベースクラス: <a class="reference internal" href="#qiskit.transpiler.passmanager.FlowController" title="qiskit.transpiler.passmanager.FlowController"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.transpiler.passmanager.FlowController</span></code></a></p>
 <p>The basic controller runs the passes one after the other.</p>
 </dd></dl>
 
@@ -1627,7 +1627,7 @@ returns the next pass to run.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">パラメータ:</th><td class="field-body"><ul class="first simple">
-<li><strong>passes</strong> (<em>list</em><em>[</em><a class="reference internal" href="../../locale/docs/autodoc/qiskit.transpiler.basepasses.html#qiskit.transpiler.basepasses.BasePass" title="qiskit.transpiler.basepasses.BasePass"><em>BasePass</em></a><em>] or </em><a class="reference internal" href="../../locale/docs/autodoc/qiskit.transpiler.basepasses.html#qiskit.transpiler.basepasses.BasePass" title="qiskit.transpiler.basepasses.BasePass"><em>BasePass</em></a>) -- pass(es) to be added to schedule</li>
+<li><strong>passes</strong> (<em>list</em><em>[</em><a class="reference internal" href="qiskit.transpiler.basepasses.html#qiskit.transpiler.basepasses.BasePass" title="qiskit.transpiler.basepasses.BasePass"><em>BasePass</em></a><em>] or </em><a class="reference internal" href="qiskit.transpiler.basepasses.html#qiskit.transpiler.basepasses.BasePass" title="qiskit.transpiler.basepasses.BasePass"><em>BasePass</em></a>) -- pass(es) to be added to schedule</li>
 <li><strong>ignore_preserves</strong> (<em>bool</em>) -- ignore the preserves claim of passes. Default: False</li>
 <li><strong>ignore_requires</strong> (<em>bool</em>) -- ignore the requires need of passes. Default: False</li>
 <li><strong>max_iteration</strong> (<em>int</em>) -- max number of iterations of passes. Default: 1000</li>
@@ -1672,11 +1672,11 @@ Default: <cite>lambda x: True # i.e. passes run</cite></li>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">パラメータ:</th><td class="field-body"><strong>circuit</strong> (<a class="reference internal" href="../../locale/docs/autodoc/qiskit.circuit.quantumcircuit.html#qiskit.circuit.quantumcircuit.QuantumCircuit" title="qiskit.circuit.quantumcircuit.QuantumCircuit"><em>QuantumCircuit</em></a>) -- circuit to transform via all the registered passes</td>
+<tr class="field-odd field"><th class="field-name">パラメータ:</th><td class="field-body"><strong>circuit</strong> (<a class="reference internal" href="qiskit.circuit.quantumcircuit.html#qiskit.circuit.quantumcircuit.QuantumCircuit" title="qiskit.circuit.quantumcircuit.QuantumCircuit"><em>QuantumCircuit</em></a>) -- circuit to transform via all the registered passes</td>
 </tr>
 <tr class="field-even field"><th class="field-name">戻り値:</th><td class="field-body">Transformed circuit.</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">戻り値の型:</th><td class="field-body"><a class="reference internal" href="../../locale/docs/autodoc/qiskit.circuit.quantumcircuit.html#qiskit.circuit.quantumcircuit.QuantumCircuit" title="qiskit.circuit.quantumcircuit.QuantumCircuit">QuantumCircuit</a></td>
+<tr class="field-odd field"><th class="field-name">戻り値の型:</th><td class="field-body"><a class="reference internal" href="qiskit.circuit.quantumcircuit.html#qiskit.circuit.quantumcircuit.QuantumCircuit" title="qiskit.circuit.quantumcircuit.QuantumCircuit">QuantumCircuit</a></td>
 </tr>
 </tbody>
 </table>

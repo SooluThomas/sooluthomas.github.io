@@ -1522,7 +1522,7 @@
 <dl class="class">
 <dt id="qiskit.transpiler.passes.mapping.legacy_swap.LegacySwap">
 <em class="property">class </em><code class="descname">LegacySwap</code><span class="sig-paren">(</span><em>coupling_map</em>, <em>initial_layout=None</em>, <em>trials=20</em>, <em>seed=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/qiskit/transpiler/passes/mapping/legacy_swap.html#LegacySwap"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.transpiler.passes.mapping.legacy_swap.LegacySwap" title="この定義へのパーマリンク">¶</a></dt>
-<dd><p>ベースクラス: <a class="reference internal" href="../../locale/docs/autodoc/qiskit.transpiler.basepasses.html#qiskit.transpiler.basepasses.TransformationPass" title="qiskit.transpiler.basepasses.TransformationPass"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.transpiler.basepasses.TransformationPass</span></code></a></p>
+<dd><p>ベースクラス: <a class="reference internal" href="qiskit.transpiler.basepasses.html#qiskit.transpiler.basepasses.TransformationPass" title="qiskit.transpiler.basepasses.TransformationPass"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.transpiler.basepasses.TransformationPass</span></code></a></p>
 <p>Maps a DAGCircuit onto a <cite>coupling_map</cite> adding swap gates.</p>
 <dl class="method">
 <dt id="qiskit.transpiler.passes.mapping.legacy_swap.LegacySwap.layer_permutation">
@@ -1555,7 +1555,7 @@ has no multi-qubit gates.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">パラメータ:</th><td class="field-body"><strong>dag</strong> (<a class="reference internal" href="../../locale/docs/autodoc/qiskit.dagcircuit.dagcircuit.html#qiskit.dagcircuit.dagcircuit.DAGCircuit" title="qiskit.dagcircuit.dagcircuit.DAGCircuit"><em>DAGCircuit</em></a>) -- input DAG circuit</td>
+<tr class="field-odd field"><th class="field-name">パラメータ:</th><td class="field-body"><strong>dag</strong> (<a class="reference internal" href="qiskit.dagcircuit.dagcircuit.html#qiskit.dagcircuit.dagcircuit.DAGCircuit" title="qiskit.dagcircuit.dagcircuit.DAGCircuit"><em>DAGCircuit</em></a>) -- input DAG circuit</td>
 </tr>
 <tr class="field-even field"><th class="field-name">戻り値:</th><td class="field-body">object containing a circuit equivalent to
 circuit_graph that respects couplings in coupling_map, and
@@ -1564,7 +1564,7 @@ of coupling_map. The layout may differ from the initial_layout
 if the first layer of gates cannot be executed on the
 initial_layout.</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">戻り値の型:</th><td class="field-body"><a class="reference internal" href="../../locale/docs/autodoc/qiskit.dagcircuit.dagcircuit.html#qiskit.dagcircuit.dagcircuit.DAGCircuit" title="qiskit.dagcircuit.dagcircuit.DAGCircuit">DAGCircuit</a></td>
+<tr class="field-odd field"><th class="field-name">戻り値の型:</th><td class="field-body"><a class="reference internal" href="qiskit.dagcircuit.dagcircuit.html#qiskit.dagcircuit.dagcircuit.DAGCircuit" title="qiskit.dagcircuit.dagcircuit.DAGCircuit">DAGCircuit</a></td>
 </tr>
 <tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><code class="xref py py-exc docutils literal notranslate"><span class="pre">TranspilerError</span></code> -- if there was any error during the mapping or with the
 parameters.</td>

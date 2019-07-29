@@ -1518,7 +1518,7 @@
   <div class="section" id="a-collection-of-circuits-and-gates-for-building-higher-level-circuits-components-and-algorithm">
 <span id="circuit-collection"></span><h1>A Collection of Circuits and Gates for Building Higher Level Circuits, Components and Algorithm<a class="headerlink" href="#a-collection-of-circuits-and-gates-for-building-higher-level-circuits-components-and-algorithm" title="このヘッドラインへのパーマリンク">¶</a></h1>
 <p>Aqua provides easy access to a collection of commonly used
-<a class="reference internal" href="../../locale/docs/aqua/circuit_collection.html#collection-circuits"><span class="std std-ref">Circuits</span></a> and <a class="reference internal" href="../../locale/docs/aqua/circuit_collection.html#collection-gates"><span class="std std-ref">Gates</span></a>
+<a class="reference internal" href="#collection-circuits"><span class="std std-ref">Circuits</span></a> and <a class="reference internal" href="#collection-gates"><span class="std std-ref">Gates</span></a>
 to be used as the building blocks for various components, algorithms and applications.
 The gates can be enabled by corresponding imports from <code class="docutils literal notranslate"><span class="pre">qiskit.aqua.circuits.gates</span></code>
 and then directly invoked from <code class="docutils literal notranslate"><span class="pre">QuantumCircuit</span></code> objects.
@@ -1527,14 +1527,14 @@ The circuits can be accessed by importing corresponding classes from <code class
 <span id="collection-gates"></span><h2>Gates<a class="headerlink" href="#gates" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p>The following gates are part of the collection:</p>
 <ul class="simple">
-<li><a class="reference internal" href="../../locale/docs/aqua/circuit_collection.html#mct"><span class="std std-ref">Multiple-Control Toffoli (MCT) Gate</span></a></li>
-<li><a class="reference internal" href="../../locale/docs/aqua/circuit_collection.html#rpt"><span class="std std-ref">Relative-Phase Toffoli Gates</span></a></li>
-<li><a class="reference internal" href="../../locale/docs/aqua/circuit_collection.html#mcmt"><span class="std std-ref">Multiple-Control Multiple-Target (MCMT) Gate</span></a></li>
-<li><a class="reference internal" href="../../locale/docs/aqua/circuit_collection.html#ch-gate"><span class="std std-ref">Controlled-Hadamard Gate</span></a></li>
-<li><a class="reference internal" href="../../locale/docs/aqua/circuit_collection.html#cry-gate"><span class="std std-ref">Controlled-RY Gate</span></a></li>
-<li><a class="reference internal" href="../../locale/docs/aqua/circuit_collection.html#mcr-gates"><span class="std std-ref">Multiple-Control Rotation (MCRX, MCRY, MCRZ) Gates</span></a></li>
-<li><a class="reference internal" href="../../locale/docs/aqua/circuit_collection.html#mcu1-gate"><span class="std std-ref">Multiple-Control U1 (MCU1) Gate</span></a></li>
-<li><a class="reference internal" href="../../locale/docs/aqua/circuit_collection.html#logical-gates"><span class="std std-ref">Boolean Logical Gates</span></a></li>
+<li><a class="reference internal" href="#mct"><span class="std std-ref">Multiple-Control Toffoli (MCT) Gate</span></a></li>
+<li><a class="reference internal" href="#rpt"><span class="std std-ref">Relative-Phase Toffoli Gates</span></a></li>
+<li><a class="reference internal" href="#mcmt"><span class="std std-ref">Multiple-Control Multiple-Target (MCMT) Gate</span></a></li>
+<li><a class="reference internal" href="#ch-gate"><span class="std std-ref">Controlled-Hadamard Gate</span></a></li>
+<li><a class="reference internal" href="#cry-gate"><span class="std std-ref">Controlled-RY Gate</span></a></li>
+<li><a class="reference internal" href="#mcr-gates"><span class="std std-ref">Multiple-Control Rotation (MCRX, MCRY, MCRZ) Gates</span></a></li>
+<li><a class="reference internal" href="#mcu1-gate"><span class="std std-ref">Multiple-Control U1 (MCU1) Gate</span></a></li>
+<li><a class="reference internal" href="#logical-gates"><span class="std std-ref">Boolean Logical Gates</span></a></li>
 </ul>
 <div class="section" id="multiple-control-toffoli-mct-gate">
 <span id="mct"></span><h3>Multiple-Control Toffoli (MCT) Gate<a class="headerlink" href="#multiple-control-toffoli-mct-gate" title="このヘッドラインへのパーマリンク">¶</a></h3>
@@ -1566,7 +1566,7 @@ qubits are needed even for higher number of controls. This uses a
 technique of spliting multiple-control Toffoli operations, which is
 efficient up to 8 controls but gets inefficient in the number of required
 basic gates for values above. This technique relies on <code class="docutils literal notranslate"><span class="pre">mcu1</span></code>, see
-<a class="reference internal" href="../../locale/docs/aqua/circuit_collection.html#mcu1-gate"><span class="std std-ref">mcu1 gate</span></a> for more information.</p>
+<a class="reference internal" href="#mcu1-gate"><span class="std std-ref">mcu1 gate</span></a> for more information.</p>
 <p>Aqua's MCT gate can be invoked from a <code class="docutils literal notranslate"><span class="pre">QuantumCircuit</span></code> object
 using the <code class="docutils literal notranslate"><span class="pre">mct</span></code> API, which expects a list <code class="docutils literal notranslate"><span class="pre">q_controls</span></code> of control qubits,
 a target qubit <code class="docutils literal notranslate"><span class="pre">q_target</span></code>, and a list <code class="docutils literal notranslate"><span class="pre">q_ancilla</span></code> of ancillary qubits.
@@ -1641,7 +1641,7 @@ rotations around X-, Y-, and Z-axis on a single target qubit with an
 arbitrary number of control qubits. The MCR operations take one rotation
 angle as input parameter. The <code class="docutils literal notranslate"><span class="pre">mcry</span></code> gate supports two modes of
 operation: <em>basic</em> and <em>noancilla</em>. Mode <em>basic</em> takes an
-additional ancillary register to perform the rotation. See <a class="reference internal" href="../../locale/docs/aqua/circuit_collection.html#mct"><span class="std std-ref">mct
+additional ancillary register to perform the rotation. See <a class="reference internal" href="#mct"><span class="std std-ref">mct
 gate</span></a> for more information. In mode <em>noancilla</em> no ancillary
 qubits are needed. This is the standard mode for <code class="docutils literal notranslate"><span class="pre">mcrx</span></code> and <code class="docutils literal notranslate"><span class="pre">mcrz</span></code>
 gates. It is efficiently implemented by using a grey code sequence for up
@@ -1670,7 +1670,7 @@ qubit <code class="docutils literal notranslate"><span class="pre">target_qubit<
 <p>Aqua also provides the logical <em>AND</em> and <em>OR</em> gates to mirror the corresponding classic
 logical operations.
 <em>OR</em> gates are converted to <em>AND</em> gates using De Morgan's Law.
-<em>AND</em> gates are implemented using <a class="reference internal" href="../../locale/docs/aqua/circuit_collection.html#mct"><span class="std std-ref">mct gate</span></a>.</p>
+<em>AND</em> gates are implemented using <a class="reference internal" href="#mct"><span class="std std-ref">mct gate</span></a>.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">AND</span></code> and <code class="docutils literal notranslate"><span class="pre">OR</span></code> gates can be invoked from a <code class="docutils literal notranslate"><span class="pre">QuantumCircuit</span></code> object.
 They both expect a <code class="docutils literal notranslate"><span class="pre">qr_variables</span></code> register holding the variable qubits,
 a <code class="docutils literal notranslate"><span class="pre">qb_target</span></code> qubit for holding the result,
@@ -1684,9 +1684,9 @@ and an optional <code class="docutils literal notranslate"><span class="pre">mct
 <span id="collection-circuits"></span><h2>Circuits<a class="headerlink" href="#circuits" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p>The following circuits are part of the collection:</p>
 <ul class="simple">
-<li><a class="reference internal" href="../../locale/docs/aqua/circuit_collection.html#logical-circuits"><span class="std std-ref">Boolean Logical Circuits</span></a></li>
-<li><a class="reference internal" href="../../locale/docs/aqua/circuit_collection.html#fourier-transform-circuits"><span class="std std-ref">Quantum Fourier Transform Circuits</span></a></li>
-<li><a class="reference internal" href="../../locale/docs/aqua/circuit_collection.html#statevector-circuit"><span class="std std-ref">Arbitrary State Vector Circuit</span></a></li>
+<li><a class="reference internal" href="#logical-circuits"><span class="std std-ref">Boolean Logical Circuits</span></a></li>
+<li><a class="reference internal" href="#fourier-transform-circuits"><span class="std std-ref">Quantum Fourier Transform Circuits</span></a></li>
+<li><a class="reference internal" href="#statevector-circuit"><span class="std std-ref">Arbitrary State Vector Circuit</span></a></li>
 </ul>
 <div class="section" id="boolean-logical-circuits">
 <span id="logical-circuits"></span><h3>Boolean Logical Circuits<a class="headerlink" href="#boolean-logical-circuits" title="このヘッドラインへのパーマリンク">¶</a></h3>
@@ -1695,7 +1695,7 @@ from simple Boolean logical expressions.
 Currently three types of expressions are supported:
 Conjunctive Normal Forms (<code class="docutils literal notranslate"><span class="pre">CNF</span></code>), Disjunctive Normal Forms (<code class="docutils literal notranslate"><span class="pre">DNF</span></code>), and
 Exclusive Sum of Products (<code class="docutils literal notranslate"><span class="pre">ESOP</span></code>).
-They are also used internally by Aqua for constructing various <a class="reference internal" href="../../locale/docs/aqua/oracles.html#oracles"><span class="std std-ref">Oracles</span></a>.
+They are also used internally by Aqua for constructing various <a class="reference internal" href="oracles.html#oracles"><span class="std std-ref">Oracles</span></a>.
 For initialization of each of the three types of objects,
 the corresponding logical expression
 can be specified as a tuple corresponding to the Abstract Syntax Tree (AST)
@@ -1734,7 +1734,7 @@ to build the approximation circuits with the desired approximation degree.</p>
 <p>Besides being directly exposed as circuits,
 <code class="docutils literal notranslate"><span class="pre">qft</span></code> and <code class="docutils literal notranslate"><span class="pre">iqft</span></code> are also accessible as Aqua's pluggable <code class="docutils literal notranslate"><span class="pre">components</span></code>.
 More detailed discussion on quantum Fourier transform can be found at
-<a class="reference internal" href="../../locale/docs/aqua/iqfts.html#iqfts"><span class="std std-ref">Quantum Fourier Transforms</span></a>.</p>
+<a class="reference internal" href="iqfts.html#iqfts"><span class="std std-ref">Quantum Fourier Transforms</span></a>.</p>
 </div>
 <div class="section" id="arbitrary-state-vector-circuit">
 <span id="statevector-circuit"></span><h3>Arbitrary State Vector Circuit<a class="headerlink" href="#arbitrary-state-vector-circuit" title="このヘッドラインへのパーマリンク">¶</a></h3>
@@ -1747,7 +1747,7 @@ can then build the corresponding circuit
 using the basis <code class="docutils literal notranslate"><span class="pre">u1</span></code>, <code class="docutils literal notranslate"><span class="pre">u2</span></code>, <code class="docutils literal notranslate"><span class="pre">u3</span></code>, <code class="docutils literal notranslate"><span class="pre">cx</span></code>, and <code class="docutils literal notranslate"><span class="pre">id</span></code> gates.
 This functionality is also exposed via
 the <code class="docutils literal notranslate"><span class="pre">CUSTOM</span></code> mode of Aqua's <code class="docutils literal notranslate"><span class="pre">InitialState</span></code> pluggable component,
-which is detailed at <a class="reference internal" href="../../locale/docs/aqua/initial_states.html#custom-initial-states"><span class="std std-ref">Custom</span></a>.</p>
+which is detailed at <a class="reference internal" href="initial_states.html#custom-initial-states"><span class="std std-ref">Custom</span></a>.</p>
 </div>
 </div>
 </div>

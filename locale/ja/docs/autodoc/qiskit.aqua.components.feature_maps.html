@@ -1520,7 +1520,7 @@
 <dl class="class">
 <dt id="qiskit.aqua.components.feature_maps.FeatureMap">
 <em class="property">class </em><code class="descname">FeatureMap</code><a class="reference internal" href="../../_modules/qiskit/aqua/components/feature_maps/feature_map.html#FeatureMap"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.aqua.components.feature_maps.FeatureMap" title="この定義へのパーマリンク">¶</a></dt>
-<dd><p>ベースクラス: <a class="reference internal" href="../../locale/docs/autodoc/qiskit.aqua.pluggable.html#qiskit.aqua.pluggable.Pluggable" title="qiskit.aqua.pluggable.Pluggable"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.aqua.pluggable.Pluggable</span></code></a></p>
+<dd><p>ベースクラス: <a class="reference internal" href="qiskit.aqua.pluggable.html#qiskit.aqua.pluggable.Pluggable" title="qiskit.aqua.pluggable.Pluggable"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.aqua.pluggable.Pluggable</span></code></a></p>
 <p>Base class for FeatureMap.</p>
 <p>This method should initialize the module and its configuration, and
 use an exception if a component of the module is
@@ -1552,7 +1552,7 @@ generate new registers with name q.</li>
 <tr class="field-even field"><th class="field-name">戻り値:</th><td class="field-body"><p class="first">a quantum circuit.</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">戻り値の型:</th><td class="field-body"><p class="first last"><a class="reference internal" href="../../locale/docs/autodoc/qiskit.circuit.quantumcircuit.html#qiskit.circuit.quantumcircuit.QuantumCircuit" title="qiskit.circuit.quantumcircuit.QuantumCircuit">QuantumCircuit</a></p>
+<tr class="field-odd field"><th class="field-name">戻り値の型:</th><td class="field-body"><p class="first last"><a class="reference internal" href="qiskit.circuit.quantumcircuit.html#qiskit.circuit.quantumcircuit.QuantumCircuit" title="qiskit.circuit.quantumcircuit.QuantumCircuit">QuantumCircuit</a></p>
 </td>
 </tr>
 </tbody>
@@ -1607,7 +1607,7 @@ generate new registers with name q.</li>
 <dl class="class">
 <dt id="qiskit.aqua.components.feature_maps.PauliExpansion">
 <em class="property">class </em><code class="descname">PauliExpansion</code><span class="sig-paren">(</span><em>feature_dimension, depth=2, entangler_map=None, entanglement='full', paulis=['Z', 'ZZ'], data_map_func=&lt;function self_product&gt;</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/qiskit/aqua/components/feature_maps/pauli_expansion.html#PauliExpansion"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.aqua.components.feature_maps.PauliExpansion" title="この定義へのパーマリンク">¶</a></dt>
-<dd><p>ベースクラス: <a class="reference internal" href="../../locale/docs/autodoc/qiskit.aqua.components.feature_maps.feature_map.html#qiskit.aqua.components.feature_maps.feature_map.FeatureMap" title="qiskit.aqua.components.feature_maps.feature_map.FeatureMap"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.aqua.components.feature_maps.feature_map.FeatureMap</span></code></a></p>
+<dd><p>ベースクラス: <a class="reference internal" href="qiskit.aqua.components.feature_maps.feature_map.html#qiskit.aqua.components.feature_maps.feature_map.FeatureMap" title="qiskit.aqua.components.feature_maps.feature_map.FeatureMap"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.aqua.components.feature_maps.feature_map.FeatureMap</span></code></a></p>
 <p>Mapping data with the second order expansion followed by entangling gates.
 Refer to <a class="reference external" href="https://arxiv.org/pdf/1804.11326.pdf">https://arxiv.org/pdf/1804.11326.pdf</a> for details.</p>
 <dl class="attribute">
@@ -1634,7 +1634,7 @@ generate new registers with name q.</li>
 <tr class="field-even field"><th class="field-name">戻り値:</th><td class="field-body"><p class="first">a quantum circuit transform data x.</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">戻り値の型:</th><td class="field-body"><p class="first last"><a class="reference internal" href="../../locale/docs/autodoc/qiskit.circuit.quantumcircuit.html#qiskit.circuit.quantumcircuit.QuantumCircuit" title="qiskit.circuit.quantumcircuit.QuantumCircuit">QuantumCircuit</a></p>
+<tr class="field-odd field"><th class="field-name">戻り値の型:</th><td class="field-body"><p class="first last"><a class="reference internal" href="qiskit.circuit.quantumcircuit.html#qiskit.circuit.quantumcircuit.QuantumCircuit" title="qiskit.circuit.quantumcircuit.QuantumCircuit">QuantumCircuit</a></p>
 </td>
 </tr>
 </tbody>
@@ -1646,7 +1646,7 @@ generate new registers with name q.</li>
 <dl class="class">
 <dt id="qiskit.aqua.components.feature_maps.PauliZExpansion">
 <em class="property">class </em><code class="descname">PauliZExpansion</code><span class="sig-paren">(</span><em>feature_dimension</em>, <em>depth=2</em>, <em>entangler_map=None</em>, <em>entanglement='full'</em>, <em>z_order=2</em>, <em>data_map_func=&lt;function self_product&gt;</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/qiskit/aqua/components/feature_maps/pauli_z_expansion.html#PauliZExpansion"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.aqua.components.feature_maps.PauliZExpansion" title="この定義へのパーマリンク">¶</a></dt>
-<dd><p>ベースクラス: <a class="reference internal" href="../../locale/docs/autodoc/qiskit.aqua.components.feature_maps.pauli_expansion.html#qiskit.aqua.components.feature_maps.pauli_expansion.PauliExpansion" title="qiskit.aqua.components.feature_maps.pauli_expansion.PauliExpansion"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.aqua.components.feature_maps.pauli_expansion.PauliExpansion</span></code></a></p>
+<dd><p>ベースクラス: <a class="reference internal" href="qiskit.aqua.components.feature_maps.pauli_expansion.html#qiskit.aqua.components.feature_maps.pauli_expansion.PauliExpansion" title="qiskit.aqua.components.feature_maps.pauli_expansion.PauliExpansion"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.aqua.components.feature_maps.pauli_expansion.PauliExpansion</span></code></a></p>
 <p>Mapping data with the second order expansion followed by entangling gates.</p>
 <p>Refer to <a class="reference external" href="https://arxiv.org/pdf/1804.11326.pdf">https://arxiv.org/pdf/1804.11326.pdf</a> for details.</p>
 <dl class="attribute">
@@ -1659,7 +1659,7 @@ generate new registers with name q.</li>
 <dl class="class">
 <dt id="qiskit.aqua.components.feature_maps.FirstOrderExpansion">
 <em class="property">class </em><code class="descname">FirstOrderExpansion</code><span class="sig-paren">(</span><em>feature_dimension</em>, <em>depth=2</em>, <em>data_map_func=&lt;function self_product&gt;</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/qiskit/aqua/components/feature_maps/first_order_expansion.html#FirstOrderExpansion"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.aqua.components.feature_maps.FirstOrderExpansion" title="この定義へのパーマリンク">¶</a></dt>
-<dd><p>ベースクラス: <a class="reference internal" href="../../locale/docs/autodoc/qiskit.aqua.components.feature_maps.pauli_z_expansion.html#qiskit.aqua.components.feature_maps.pauli_z_expansion.PauliZExpansion" title="qiskit.aqua.components.feature_maps.pauli_z_expansion.PauliZExpansion"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.aqua.components.feature_maps.pauli_z_expansion.PauliZExpansion</span></code></a></p>
+<dd><p>ベースクラス: <a class="reference internal" href="qiskit.aqua.components.feature_maps.pauli_z_expansion.html#qiskit.aqua.components.feature_maps.pauli_z_expansion.PauliZExpansion" title="qiskit.aqua.components.feature_maps.pauli_z_expansion.PauliZExpansion"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.aqua.components.feature_maps.pauli_z_expansion.PauliZExpansion</span></code></a></p>
 <p>Mapping data with the first order expansion without entangling gates.</p>
 <p>Refer to <a class="reference external" href="https://arxiv.org/pdf/1804.11326.pdf">https://arxiv.org/pdf/1804.11326.pdf</a> for details.</p>
 <dl class="attribute">
@@ -1672,7 +1672,7 @@ generate new registers with name q.</li>
 <dl class="class">
 <dt id="qiskit.aqua.components.feature_maps.SecondOrderExpansion">
 <em class="property">class </em><code class="descname">SecondOrderExpansion</code><span class="sig-paren">(</span><em>feature_dimension</em>, <em>depth=2</em>, <em>entangler_map=None</em>, <em>entanglement='full'</em>, <em>data_map_func=&lt;function self_product&gt;</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/qiskit/aqua/components/feature_maps/second_order_expansion.html#SecondOrderExpansion"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.aqua.components.feature_maps.SecondOrderExpansion" title="この定義へのパーマリンク">¶</a></dt>
-<dd><p>ベースクラス: <a class="reference internal" href="../../locale/docs/autodoc/qiskit.aqua.components.feature_maps.pauli_z_expansion.html#qiskit.aqua.components.feature_maps.pauli_z_expansion.PauliZExpansion" title="qiskit.aqua.components.feature_maps.pauli_z_expansion.PauliZExpansion"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.aqua.components.feature_maps.pauli_z_expansion.PauliZExpansion</span></code></a></p>
+<dd><p>ベースクラス: <a class="reference internal" href="qiskit.aqua.components.feature_maps.pauli_z_expansion.html#qiskit.aqua.components.feature_maps.pauli_z_expansion.PauliZExpansion" title="qiskit.aqua.components.feature_maps.pauli_z_expansion.PauliZExpansion"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.aqua.components.feature_maps.pauli_z_expansion.PauliZExpansion</span></code></a></p>
 <p>Mapping data with the second order expansion followed by entangling gates.</p>
 <p>Refer to <a class="reference external" href="https://arxiv.org/pdf/1804.11326.pdf">https://arxiv.org/pdf/1804.11326.pdf</a> for details.</p>
 <dl class="attribute">
