@@ -1522,7 +1522,7 @@
 <p>In quantum computing, a Quantum Fourier Transform (QFT) is a linear transformation
 on quantum bits, and is the quantum analogue of the discrete Fourier transform.
 QFT is a part of many quantum algorithms, such as Shor's algorithm for factoring
-and computing the discrete logarithm, and the <a class="reference internal" href="algorithms.html#qpe"><span class="std std-ref">Quantum Phase Estimation (QPE)</span></a> algorithm for
+and computing the discrete logarithm, and the <a class="reference internal" href="../locale/docs/aqua/algorithms.html#qpe"><span class="std std-ref">Quantum Phase Estimation (QPE)</span></a> algorithm for
 estimating the eigenvalues of a unitary operator.
 A QFT can be performed efficiently on a quantum computer, with a particular
 decomposition into a product of simpler unitary matrices.
@@ -1543,7 +1543,7 @@ It follows that <span class="math notranslate nohighlight">\(F^{-1} = F^\dagger\
 Since there is an efficient quantum circuit implementing the QFT, the circuit can be
 run in reverse to perform the Inverse Quantum Fourier Transform (IQFT).
 Thus, both transforms can be efficiently performed on a quantum computer.</p>
-<p>As mentioned above, the <a class="reference internal" href="algorithms.html#qpe"><span class="std std-ref">Quantum Phase Estimation (QPE)</span></a> algorithm uses the QFT for estimating the eigenvalues
+<p>As mentioned above, the <a class="reference internal" href="../locale/docs/aqua/algorithms.html#qpe"><span class="std std-ref">Quantum Phase Estimation (QPE)</span></a> algorithm uses the QFT for estimating the eigenvalues
 of a unitary operator.  More precisely, QPE uses the Inverse Quantum Fourier Transform
 (IQFT).  IQFTs in Aqua are pluggable objects.  Among the IQFTs provided by Aqua, the user
 can choose which IQFT to use when instantiating QPE or any other algorithm that requires
@@ -1556,10 +1556,10 @@ Aqua can plug their own IQFT implementation.</p>
 extensible architecture. Algorithms and their supporting objects, such as IQFTs,
 are pluggable modules in Aqua. This is done in order to encourage researchers and
 developers interested in
-<a class="reference internal" href="extending.html#aqua-extending"><span class="std std-ref">Contributing to Aqua</span></a> to extend the Aqua framework with their novel research contributions.
+<a class="reference internal" href="../locale/docs/aqua/extending.html#aqua-extending"><span class="std std-ref">Contributing to Aqua</span></a> to extend the Aqua framework with their novel research contributions.
 New IQFTs are typically installed in the <code class="docutils literal notranslate"><span class="pre">qiskit/aqua/components/iqfts</span></code>
 folder and derive from the <code class="docutils literal notranslate"><span class="pre">IQFT</span></code> class.  Aqua also allows for
-<a class="reference internal" href="extending.html#aqua-dynamically-discovered-components"><span class="std std-ref">Dynamically Discovered Components</span></a>: new IQFTs can register themselves
+<a class="reference internal" href="../locale/docs/aqua/extending.html#aqua-dynamically-discovered-components"><span class="std std-ref">Dynamically Discovered Components</span></a>: new IQFTs can register themselves
 as Aqua extensions and be dynamically discovered at run time independent of their
 location in the file system.</p>
 </div>
@@ -1568,9 +1568,9 @@ location in the file system.</p>
 <li><a class="reference external" href="#standard-iqft">Standard IQFT</a></li>
 <li><a class="reference external" href="#approximate-iqft">Approximate IQFT</a></li>
 </ol>
-<p>The <code class="docutils literal notranslate"><span class="pre">iqft</span></code> section in the <a class="reference internal" href="execution.html#aqua-input-file"><span class="std std-ref">Input File</span></a> becomes relevant
+<p>The <code class="docutils literal notranslate"><span class="pre">iqft</span></code> section in the <a class="reference internal" href="../locale/docs/aqua/execution.html#aqua-input-file"><span class="std std-ref">Input File</span></a> becomes relevant
 only for algorithms that require an IQFT.  This is reflected also in the
-<a class="reference internal" href="execution.html#aqua-gui"><span class="std std-ref">GUI</span></a>, which enables the <code class="docutils literal notranslate"><span class="pre">iqft</span></code> section for the IQFT configuration
+<a class="reference internal" href="../locale/docs/aqua/execution.html#aqua-gui"><span class="std std-ref">GUI</span></a>, which enables the <code class="docutils literal notranslate"><span class="pre">iqft</span></code> section for the IQFT configuration
 only when an algorithm requiring an IQFT is selected.  When the <code class="docutils literal notranslate"><span class="pre">iqft</span></code> section is
 indeed enabled, then the user can choose which IQFT to apply by assigning a <code class="docutils literal notranslate"><span class="pre">str</span></code> value
 to the <code class="docutils literal notranslate"><span class="pre">name</span></code> field of the <code class="docutils literal notranslate"><span class="pre">iqft</span></code> section.</p>

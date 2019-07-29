@@ -1540,7 +1540,7 @@ attaches it to the circuit at the specified <code class="docutils literal notran
 <span class="n">circ</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">output</span><span class="o">=</span><span class="s1">&#39;mpl&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<img alt="Quantum circuit with two custom two-qubit gates." src="../_images/custom_gates_0.png" />
+<img alt="Quantum circuit with two custom two-qubit gates." src="../_images/custom_gates_02.png" />
 </div>
 <div class="section" id="composite-gates">
 <h2>Composite Gates<a class="headerlink" href="#composite-gates" title="このヘッドラインへのパーマリンク">¶</a></h2>
@@ -1570,7 +1570,7 @@ circ.append(sub_inst, [q[1], q[2]])
 circ.draw(output=&#39;mpl&#39;)
 </pre></div>
 </div>
-<img alt="Quantum circuit with one custom two-qubit gate." src="../_images/custom_gates_1.png" />
+<img alt="Quantum circuit with one custom two-qubit gate." src="../_images/custom_gates_12.png" />
 <p>Circuits are not immediately decomposed upon conversion <code class="docutils literal notranslate"><span class="pre">to_instruction</span></code> to
 allow circuit design at higher levels of abstraction. When desired, or before
 compilation, sub-circuits will be decomposed via the <cite>decompose</cite> method.</p>
@@ -1578,7 +1578,7 @@ compilation, sub-circuits will be decomposed via the <cite>decompose</cite> meth
 <span class="n">decomposed_circ</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">output</span><span class="o">=</span><span class="s1">&#39;mpl&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<img alt="Decomposed quantum circuit with 7 gates." src="../_images/custom_gates_2.png" />
+<img alt="Decomposed quantum circuit with 7 gates." src="../_images/custom_gates_22.png" />
 </div>
 <div class="section" id="parameterized-gates">
 <h2>Parameterized Gates<a class="headerlink" href="#parameterized-gates" title="このヘッドラインへのパーマリンク">¶</a></h2>
@@ -1614,7 +1614,7 @@ entangled qubits.</p>
 <span class="n">qc</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">output</span><span class="o">=</span><span class="s1">&#39;mpl&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<img alt="Quantum circuit with parameterized z-rotation gates." src="../_images/custom_gates_3.png" />
+<img alt="Quantum circuit with parameterized z-rotation gates." src="../_images/custom_gates_32.png" />
 <p>You can inspect the circuit's <code class="docutils literal notranslate"><span class="pre">parameters</span></code> property.</p>
 <div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">qc</span><span class="o">.</span><span class="n">parameters</span><span class="p">)</span>
 </pre></div>
@@ -1660,7 +1660,7 @@ will be raised</li>
 <span class="c1"># qc.u3(0.1, phi2, 0.3, 0)</span>
 </pre></div>
 </div>
-<img alt="Quantum circuit with 3 custom parameterized gates." src="../_images/custom_gates_6.png" />
+<img alt="Quantum circuit with 3 custom parameterized gates." src="../_images/custom_gates_62.png" />
 <p>To insert a sub-circuit under a different parameterization, the
 <code class="docutils literal notranslate"><span class="pre">to_instruction</span></code> method accepts an optional argument (<code class="docutils literal notranslate"><span class="pre">parameter_map</span></code>)
 which, when present, will generate instructions with the source parameter
@@ -1685,11 +1685,11 @@ replaced by a new parameter.</p>
 <span class="n">larger_qc</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">output</span><span class="o">=</span><span class="s1">&#39;mpl&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<img alt="Quantum circuit with 3 custom parameterized 3-qubit gates, each on their own triple of qubits." src="../_images/custom_gates_7.png" />
+<img alt="Quantum circuit with 3 custom parameterized 3-qubit gates, each on their own triple of qubits." src="../_images/custom_gates_72.png" />
 <div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">larger_qc</span><span class="o">.</span><span class="n">decompose</span><span class="p">()</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">output</span><span class="o">=</span><span class="s1">&#39;mpl&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<img alt="Quantum circuit with the gates in the diagram above, decomposed." src="../_images/custom_gates_8.png" />
+<img alt="Quantum circuit with the gates in the diagram above, decomposed." src="../_images/custom_gates_82.png" />
 </div>
 <div class="section" id="binding-parameters-to-values">
 <h3>Binding Parameters to Values<a class="headerlink" href="#binding-parameters-to-values" title="このヘッドラインへのパーマリンク">¶</a></h3>
@@ -1715,7 +1715,7 @@ a  value.</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>set()
 </pre></div>
 </div>
-<img alt="Quantum circuit with 5 z-rotation gates each rotating by 2 pi." src="../_images/custom_gates_4.png" />
+<img alt="Quantum circuit with 5 z-rotation gates each rotating by 2 pi." src="../_images/custom_gates_42.png" />
 </li>
 <li><p class="first"><code class="docutils literal notranslate"><span class="pre">qiskit.execute</span></code> accepts a <code class="docutils literal notranslate"><span class="pre">parameter_binds</span></code> keyword argument which,
 when specified as a list of dictionaries mapping <code class="docutils literal notranslate"><span class="pre">Parameters</span></code> to values,
@@ -1763,7 +1763,7 @@ in the list.</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<img alt="Two oscillating curves of the observed counts of 0 and 1 states. The two curves are off by a relative phase of pi / 5." src="../_images/custom_gates_5.png" />
+<img alt="Two oscillating curves of the observed counts of 0 and 1 states. The two curves are off by a relative phase of pi / 5." src="../_images/custom_gates_52.png" />
 </div>
 <div class="section" id="reducing-compilation-time">
 <h3>Reducing Compilation Time<a class="headerlink" href="#reducing-compilation-time" title="このヘッドラインへのパーマリンク">¶</a></h3>
