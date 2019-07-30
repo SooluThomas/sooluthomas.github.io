@@ -1527,21 +1527,21 @@ different domains. Aqua uses
 of the quantum circuits modeling the specific problems.</p>
 <p>The following <a class="reference external" href="#quantum-algorithms">quantum algorithms</a> are part of Aqua:</p>
 <ul class="simple">
-<li><a class="reference internal" href="../docs/aqua/algorithms.html#vqe"><span class="std std-ref">Variational Quantum Eigensolver (VQE)</span></a></li>
-<li><a class="reference internal" href="../docs/aqua/algorithms.html#qaoa"><span class="std std-ref">Quantum Approximate Optimization Algorithm (QAOA)</span></a></li>
-<li><a class="reference internal" href="../docs/aqua/algorithms.html#dynamics"><span class="std std-ref">Evolution of Hamiltonian (EOH)</span></a></li>
-<li><a class="reference internal" href="../docs/aqua/algorithms.html#qpe"><span class="std std-ref">Quantum Phase Estimation (QPE)</span></a></li>
-<li><a class="reference internal" href="../docs/aqua/algorithms.html#iqpe"><span class="std std-ref">Iterative Quantum Phase Estimation (IQPE)</span></a></li>
-<li><a class="reference internal" href="../docs/aqua/algorithms.html#ae"><span class="std std-ref">Amplitude Estimation</span></a></li>
-<li><a class="reference internal" href="../docs/aqua/algorithms.html#grover"><span class="std std-ref">Quantum Grover Search</span></a></li>
-<li><a class="reference internal" href="../docs/aqua/algorithms.html#djalgorithm"><span class="std std-ref">Deutsch-Jozsa</span></a></li>
-<li><a class="reference internal" href="../docs/aqua/algorithms.html#bvalgorithm"><span class="std std-ref">Bernstein-Vazirani</span></a></li>
-<li><a class="reference internal" href="../docs/aqua/algorithms.html#simonalgorithm"><span class="std std-ref">Simon</span></a></li>
-<li><a class="reference internal" href="../docs/aqua/algorithms.html#qsvm"><span class="std std-ref">Quantum Support Vector Machine (QSVM)</span></a></li>
-<li><a class="reference internal" href="../docs/aqua/algorithms.html#vqc"><span class="std std-ref">Variational Quantum Classifier (VQC)</span></a></li>
-<li><a class="reference internal" href="../docs/aqua/algorithms.html#hhl"><span class="std std-ref">HHL algorithm for solving linear systems (HHL)</span></a></li>
-<li><a class="reference internal" href="../docs/aqua/algorithms.html#shor"><span class="std std-ref">Shor's Factory Algorithm (Shor)</span></a></li>
-<li><a class="reference internal" href="../docs/aqua/algorithms.html#qgan"><span class="std std-ref">Quantum Generative Adversarial Network(qGAN)</span></a></li>
+<li><a class="reference internal" href="#vqe"><span class="std std-ref">Variational Quantum Eigensolver (VQE)</span></a></li>
+<li><a class="reference internal" href="#qaoa"><span class="std std-ref">Quantum Approximate Optimization Algorithm (QAOA)</span></a></li>
+<li><a class="reference internal" href="#dynamics"><span class="std std-ref">Evolution of Hamiltonian (EOH)</span></a></li>
+<li><a class="reference internal" href="#qpe"><span class="std std-ref">Quantum Phase Estimation (QPE)</span></a></li>
+<li><a class="reference internal" href="#iqpe"><span class="std std-ref">Iterative Quantum Phase Estimation (IQPE)</span></a></li>
+<li><a class="reference internal" href="#ae"><span class="std std-ref">Amplitude Estimation</span></a></li>
+<li><a class="reference internal" href="#grover"><span class="std std-ref">Quantum Grover Search</span></a></li>
+<li><a class="reference internal" href="#djalgorithm"><span class="std std-ref">Deutsch-Jozsa</span></a></li>
+<li><a class="reference internal" href="#bvalgorithm"><span class="std std-ref">Bernstein-Vazirani</span></a></li>
+<li><a class="reference internal" href="#simonalgorithm"><span class="std std-ref">Simon</span></a></li>
+<li><a class="reference internal" href="#qsvm"><span class="std std-ref">Quantum Support Vector Machine (QSVM)</span></a></li>
+<li><a class="reference internal" href="#vqc"><span class="std std-ref">Variational Quantum Classifier (VQC)</span></a></li>
+<li><a class="reference internal" href="#hhl"><span class="std std-ref">HHL algorithm for solving linear systems (HHL)</span></a></li>
+<li><a class="reference internal" href="#shor"><span class="std std-ref">Shor's Factory Algorithm (Shor)</span></a></li>
+<li><a class="reference internal" href="#qgan"><span class="std std-ref">Quantum Generative Adversarial Network(qGAN)</span></a></li>
 </ul>
 <p>Aqua includes  also some <a class="reference external" href="#classical-reference-algorithms">classical algorithms</a>
 for generating reference values. This feature of Aqua may be
@@ -1549,10 +1549,10 @@ useful to quantum algorithm researchers interested in generating, comparing and 
 results in the near term while experimenting with, developing and testing
 quantum algorithms:</p>
 <ul class="simple">
-<li><a class="reference internal" href="../docs/aqua/algorithms.html#exact-eigensolver"><span class="std std-ref">Exact Eigensolver</span></a></li>
-<li><a class="reference internal" href="../docs/aqua/algorithms.html#exact-lssolver"><span class="std std-ref">Exact LSsolver</span></a></li>
-<li><a class="reference internal" href="../docs/aqua/algorithms.html#cplex"><span class="std std-ref">CPLEX Ising</span></a></li>
-<li><a class="reference internal" href="../docs/aqua/algorithms.html#svm-rbf-kernel"><span class="std std-ref">Support Vector Machine Radial Basis Function Kernel (SVM Classical)</span></a></li>
+<li><a class="reference internal" href="#exact-eigensolver"><span class="std std-ref">Exact Eigensolver</span></a></li>
+<li><a class="reference internal" href="#exact-lssolver"><span class="std std-ref">Exact LSsolver</span></a></li>
+<li><a class="reference internal" href="#cplex"><span class="std std-ref">CPLEX Ising</span></a></li>
+<li><a class="reference internal" href="#svm-rbf-kernel"><span class="std std-ref">Support Vector Machine Radial Basis Function Kernel (SVM Classical)</span></a></li>
 </ul>
 <div class="topic">
 <p class="topic-title first">Extending the Algorithm Library</p>
@@ -1567,16 +1567,16 @@ from the <code class="docutils literal notranslate"><span class="pre">QuantumAlg
 Along with any supporting  module, for immediate dynamic discovery, the new algorithm class
 can simply be placed in an appropriate folder in the <code class="docutils literal notranslate"><span class="pre">qiskit/aqua/algorithms</span></code> directory,
 just like the existing algorithms.  Aqua also allows for
-<a class="reference internal" href="../docs/aqua/extending.html#aqua-dynamically-discovered-components"><span class="std std-ref">Dynamically Discovered Components</span></a>: new components can register themselves
+<a class="reference internal" href="extending.html#aqua-dynamically-discovered-components"><span class="std std-ref">Dynamically Discovered Components</span></a>: new components can register themselves
 as Aqua extensions and be dynamically discovered at run time independent of their
 location in the file system.
 This is done in order to encourage researchers and
 developers interested in
-<a class="reference internal" href="../docs/aqua/extending.html#aqua-extending"><span class="std std-ref">Contributing to Aqua</span></a> to extend the Aqua framework with their novel research contributions.</p>
+<a class="reference internal" href="extending.html#aqua-extending"><span class="std std-ref">Contributing to Aqua</span></a> to extend the Aqua framework with their novel research contributions.</p>
 </div>
 <div class="admonition seealso">
 <p class="first admonition-title">参考</p>
-<p class="last">Section <a class="reference internal" href="../docs/aqua/extending.html#aqua-extending"><span class="std std-ref">Contributing to Aqua</span></a> provides more
+<p class="last">Section <a class="reference internal" href="extending.html#aqua-extending"><span class="std std-ref">Contributing to Aqua</span></a> provides more
 details on how to extend Aqua with new components.</p>
 </div>
 <div class="section" id="quantum-algorithms">
@@ -1586,7 +1586,7 @@ details on how to extend Aqua with new components.</p>
 <p class="first admonition-title">注釈</p>
 <p class="last">Aqua requires associating a quantum device or simulator to any experiment that uses a quantum
 algorithm.  This is done by configuring the <code class="docutils literal notranslate"><span class="pre">&quot;backend&quot;</span></code> section of the experiment to be run.
-Consult the documentation on the <a class="reference internal" href="../docs/aqua/execution.html#aqua-input-file"><span class="std std-ref">Input File</span></a> for more details.</p>
+Consult the documentation on the <a class="reference internal" href="execution.html#aqua-input-file"><span class="std std-ref">Input File</span></a> for more details.</p>
 </div>
 <div class="section" id="variational-quantum-eigensolver-vqe">
 <span id="vqe"></span><h3>Variational Quantum Eigensolver (VQE)<a class="headerlink" href="#variational-quantum-eigensolver-vqe" title="このヘッドラインへのパーマリンク">¶</a></h3>
@@ -1594,14 +1594,14 @@ Consult the documentation on the <a class="reference internal" href="../docs/aqu
 the variational approach and interleaves quantum and classical computations in order to find
 the minimum eigenvalue of the Hamiltonian <span class="math notranslate nohighlight">\(H\)</span> of a given system.
 An instance of VQE requires defining two algorithmic subcomponents:
-a trial function from Aqua's <a class="reference internal" href="../docs/aqua/variational_forms.html#variational-forms"><span class="std std-ref">Variational Forms</span></a> library, and a classical optimizer
-from Aqua's <a class="reference internal" href="../docs/aqua/optimizers.html#optimizers"><span class="std std-ref">Optimizers</span></a> library.  An initial state from Aqua's
-<a class="reference internal" href="../docs/aqua/initial_states.html#initial-states"><span class="std std-ref">Initial States</span></a> library may be supplied too in order to
+a trial function from Aqua's <a class="reference internal" href="variational_forms.html#variational-forms"><span class="std std-ref">Variational Forms</span></a> library, and a classical optimizer
+from Aqua's <a class="reference internal" href="optimizers.html#optimizers"><span class="std std-ref">Optimizers</span></a> library.  An initial state from Aqua's
+<a class="reference internal" href="initial_states.html#initial-states"><span class="std std-ref">Initial States</span></a> library may be supplied too in order to
 define the starting state for the trial function.</p>
 <div class="admonition seealso">
 <p class="first admonition-title">参考</p>
-<p class="last">Refer to the documentation of <a class="reference internal" href="../docs/aqua/variational_forms.html#variational-forms"><span class="std std-ref">Variational Forms</span></a>, <a class="reference internal" href="../docs/aqua/optimizers.html#optimizers"><span class="std std-ref">Optimizers</span></a>
-and <a class="reference internal" href="../docs/aqua/initial_states.html#initial-states"><span class="std std-ref">Initial States</span></a> for more details.</p>
+<p class="last">Refer to the documentation of <a class="reference internal" href="variational_forms.html#variational-forms"><span class="std std-ref">Variational Forms</span></a>, <a class="reference internal" href="optimizers.html#optimizers"><span class="std std-ref">Optimizers</span></a>
+and <a class="reference internal" href="initial_states.html#initial-states"><span class="std std-ref">Initial States</span></a> for more details.</p>
 </div>
 <p>Additionally, VQE can be configured with the following parameters:</p>
 <ul>
@@ -1657,10 +1657,10 @@ QAOA uses its own fine-tuned variational form, which comprises <span class="math
 As a result, unlike VQE, QAOA does not need to have a variational form specified as an input
 parameter, and is configured mainly by a single integer parameter, <code class="docutils literal notranslate"><span class="pre">p</span></code>,
 which dictates the depth of the variational form, and thus affects the approximation quality.
-An initial state from Aqua's <a class="reference internal" href="../docs/aqua/initial_states.html#initial-states"><span class="std std-ref">Initial States</span></a> library may be supplied as well.</p>
+An initial state from Aqua's <a class="reference internal" href="initial_states.html#initial-states"><span class="std std-ref">Initial States</span></a> library may be supplied as well.</p>
 <div class="admonition seealso">
 <p class="first admonition-title">参考</p>
-<p class="last">Consult the documentation on <a class="reference internal" href="../docs/aqua/optimizers.html#optimizers"><span class="std std-ref">Optimizers</span></a> and <a class="reference internal" href="../docs/aqua/initial_states.html#initial-states"><span class="std std-ref">Initial States</span></a> for more details.</p>
+<p class="last">Consult the documentation on <a class="reference internal" href="optimizers.html#optimizers"><span class="std std-ref">Optimizers</span></a> and <a class="reference internal" href="initial_states.html#initial-states"><span class="std std-ref">Initial States</span></a> for more details.</p>
 </div>
 <p>In summary, QAOA can be configured with the following parameters:</p>
 <ul>
@@ -1769,17 +1769,17 @@ where the control consists of several qubits initially put in uniform
 superposition, and the target a set of qubits prepared in an eigenstate
 (or, oftentimes, a guess of the eigenstate) of the unitary operator of
 a quantum system. QPE then evolves the target under the control using
-<a class="reference internal" href="../docs/aqua/algorithms.html#dynamics"><span class="std std-ref">Evolution of Hamiltonian (EOH)</span></a> on the unitary operator. The information of the
+<a class="reference internal" href="#dynamics"><span class="std std-ref">Evolution of Hamiltonian (EOH)</span></a> on the unitary operator. The information of the
 corresponding eigenvalue is then <em>kicked-back</em> into the phases of the
 control register, which can then be deconvoluted by an Inverse Quantum
 Fourier Transform (IQFT), and measured for read-out in binary decimal
 format.  QPE also requires a reasonably good estimate of the eigen wave function
 to start the process. For example, when estimating molecular ground energies,
-the <a class="reference internal" href="../docs/aqua/initial_states.html#hartree-fock"><span class="std std-ref">Hartree-Fock</span></a> method could be used to provide such trial eigen wave
+the <a class="reference internal" href="initial_states.html#hartree-fock"><span class="std std-ref">Hartree-Fock</span></a> method could be used to provide such trial eigen wave
 functions.</p>
 <div class="admonition seealso">
 <p class="first admonition-title">参考</p>
-<p class="last">Consult the documentation on <a class="reference internal" href="../docs/aqua/iqfts.html#iqfts"><span class="std std-ref">Quantum Fourier Transforms</span></a> and <a class="reference internal" href="../docs/aqua/initial_states.html#initial-states"><span class="std std-ref">Initial States</span></a>
+<p class="last">Consult the documentation on <a class="reference internal" href="iqfts.html#iqfts"><span class="std std-ref">Quantum Fourier Transforms</span></a> and <a class="reference internal" href="initial_states.html#initial-states"><span class="std std-ref">Initial States</span></a>
 for more details.</p>
 </div>
 <p>In addition to requiring an IQFT and an initial state as part of its
@@ -1850,11 +1850,11 @@ Aqua dynamically discovers and loads it, is <code class="docutils literal notran
 </div>
 <div class="section" id="amplitude-estimation">
 <span id="ae"></span><h3>Amplitude Estimation<a class="headerlink" href="#amplitude-estimation" title="このヘッドラインへのパーマリンク">¶</a></h3>
-<p><em>Amplitude Estimation</em> is a derivative of -  <a class="reference internal" href="../docs/aqua/algorithms.html#qpe"><span class="std std-ref">Quantum Phase Estimation (QPE)</span></a>
+<p><em>Amplitude Estimation</em> is a derivative of -  <a class="reference internal" href="#qpe"><span class="std std-ref">Quantum Phase Estimation (QPE)</span></a>
 applied to a particular operator <span class="math notranslate nohighlight">\(A\)</span>.
 <span class="math notranslate nohighlight">\(A\)</span> is assumed to operate on <span class="math notranslate nohighlight">\(n + 1\)</span> qubits (plus possible ancillary qubits)
 where the <span class="math notranslate nohighlight">\(n\)</span> qubits represent the uncertainty (in the form of a random distribution from the
-<a class="reference internal" href="../docs/aqua/random_distributions.html#random-distributions"><span class="std std-ref">Random Distributions</span></a> library)
+<a class="reference internal" href="random_distributions.html#random-distributions"><span class="std std-ref">Random Distributions</span></a> library)
 and the last qubit, called the <em>objective qubit</em>, is used to represent the normalized objective
 value as its amplitude.
 In other words,
@@ -1863,7 +1863,7 @@ equal to the
 value of interest.</p>
 <div class="admonition seealso">
 <p class="first admonition-title">参考</p>
-<p class="last">Consult the documentation on -  <a class="reference internal" href="../docs/aqua/algorithms.html#qpe"><span class="std std-ref">Quantum Phase Estimation (QPE)</span></a> for more details.
+<p class="last">Consult the documentation on -  <a class="reference internal" href="#qpe"><span class="std std-ref">Quantum Phase Estimation (QPE)</span></a> for more details.
 Also, see <a class="reference external" href="https://arxiv.org/abs/1806.06893">arXiv:1806.06893</a> for more details on
 Amplitude Estimation as well as its applications on finance problems.</p>
 </div>
@@ -1932,15 +1932,15 @@ but to perform a linear number of queries to find the target element.
 Conversely, Grover's Search algorithm allows to solve the unstructured-search
 problem on a quantum computer in <span class="math notranslate nohighlight">\(\mathcal{O}(\sqrt{N})\)</span> queries.</p>
 <p>All that is needed for carrying out a search is an Grover oracle from Aqua's
-<a class="reference internal" href="../docs/aqua/oracles.html#oracles"><span class="std std-ref">Oracles</span></a> library for specifying the search criterion, which basically
+<a class="reference internal" href="oracles.html#oracles"><span class="std std-ref">Oracles</span></a> library for specifying the search criterion, which basically
 indicates a hit or miss for any given record.  More formally, an
 <em>oracle</em> <span class="math notranslate nohighlight">\(O_f\)</span> is an object implementing a boolean function
 <span class="math notranslate nohighlight">\(f\)</span> as specified above.  Given an input <span class="math notranslate nohighlight">\(x \in X\)</span>,
 <span class="math notranslate nohighlight">\(O_f\)</span> implements <span class="math notranslate nohighlight">\(f(x)\)</span>.  The details of how <span class="math notranslate nohighlight">\(O_f\)</span> works are
 unimportant; Grover's search algorithm treats the oracle as a black box.
-Currently, Aqua provides a <a class="reference internal" href="../docs/aqua/oracles.html#logical-expression-oracle"><span class="std std-ref">Logical Expression Oracle</span></a> and a <a class="reference internal" href="../docs/aqua/oracles.html#truth-table-oracle"><span class="std std-ref">Truth Table Oracle</span></a>,
+Currently, Aqua provides a <a class="reference internal" href="oracles.html#logical-expression-oracle"><span class="std std-ref">Logical Expression Oracle</span></a> and a <a class="reference internal" href="oracles.html#truth-table-oracle"><span class="std std-ref">Truth Table Oracle</span></a>,
 both of which can be used in Grover's search tasks.
-In particular, the <a class="reference internal" href="../docs/aqua/oracles.html#logical-expression-oracle"><span class="std std-ref">Logical Expression Oracle</span></a>
+In particular, the <a class="reference internal" href="oracles.html#logical-expression-oracle"><span class="std std-ref">Logical Expression Oracle</span></a>
 can take as input a SAT problem instance in
 <a class="reference external" href="http://www.satcompetition.org/2009/format-benchmarks2009.html">DIMACS CNF
 format</a>
@@ -1948,18 +1948,18 @@ and constructs the corresponding quantum circuit,
 which can then be fed to the Grover algorithm to find a satisfiable assignment.</p>
 <p>Oracles are treated
 as pluggable components in Aqua; researchers interested in
-<a class="reference internal" href="../docs/aqua/extending.html#aqua-extending"><span class="std std-ref">Contributing to Aqua</span></a> can design and implement new oracles and extend
+<a class="reference internal" href="extending.html#aqua-extending"><span class="std std-ref">Contributing to Aqua</span></a> can design and implement new oracles and extend
 Aqua's oracle library.</p>
 <p>Grover's Search by default uses uniform superposition to initialize
 its quantum state. However, an initial state from Aqua's
-<a class="reference internal" href="../docs/aqua/initial_states.html#initial-states"><span class="std std-ref">Initial States</span></a> library may be supplied to
+<a class="reference internal" href="initial_states.html#initial-states"><span class="std std-ref">Initial States</span></a> library may be supplied to
 create any starting quantum state.
 This could be useful, for example,
 if the user already has some prior knowledge regarding
 where the search target(s) might be located.</p>
 <div class="admonition seealso">
 <p class="first admonition-title">参考</p>
-<p class="last">Refer to the documentation <a class="reference internal" href="../docs/aqua/initial_states.html#initial-states"><span class="std std-ref">Initial States</span></a> for more details.</p>
+<p class="last">Refer to the documentation <a class="reference internal" href="initial_states.html#initial-states"><span class="std std-ref">Initial States</span></a> for more details.</p>
 </div>
 <p>Grover can also be configured with the following parameter settings:</p>
 <ul>
@@ -2010,8 +2010,8 @@ function maps all inputs to 0 or 1, and a balanced function maps half of its
 inputs to 0 and the other half to 1.
 Any of the oracles provided by Aqua can be used with the Deutsch-Jozsa algorithm,
 as long as the boolean function implemented by the oracle indeed satisfies the constraint of being
-either constant or balanced. Above said, a <a class="reference internal" href="../docs/aqua/oracles.html#truth-table-oracle"><span class="std std-ref">Truth Table Oracle</span></a> instance might be easier to
-construct to meet the constraint, but a <a class="reference internal" href="../docs/aqua/oracles.html#logical-expression-oracle"><span class="std std-ref">Logical Expression Oracle</span></a> can certainly also be used.</p>
+either constant or balanced. Above said, a <a class="reference internal" href="oracles.html#truth-table-oracle"><span class="std std-ref">Truth Table Oracle</span></a> instance might be easier to
+construct to meet the constraint, but a <a class="reference internal" href="oracles.html#logical-expression-oracle"><span class="std std-ref">Logical Expression Oracle</span></a> can certainly also be used.</p>
 <div class="topic">
 <p class="topic-title first">Declarative Name</p>
 <p>When referring to Deutsch-Jozsa declaratively inside Aqua, its code
@@ -2052,7 +2052,7 @@ if <span class="math notranslate nohighlight">\(y=x \oplus s\)</span> for all <s
 1-to-1 (or, permutation) function. Otherwise, if <span class="math notranslate nohighlight">\(s \neq 0\ldots 0\)</span>,
 then <span class="math notranslate nohighlight">\(f_s\)</span> is a 2-to-1 function.
 Of Aqua's included oracles,
-<a class="reference internal" href="../docs/aqua/oracles.html#truth-table-oracle"><span class="std std-ref">Truth Table Oracle</span></a> should be the easiest to use to create one that can be used with the
+<a class="reference internal" href="oracles.html#truth-table-oracle"><span class="std std-ref">Truth Table Oracle</span></a> should be the easiest to use to create one that can be used with the
 Simon algorith.</p>
 <div class="topic">
 <p class="topic-title first">Declarative Name</p>
@@ -2153,7 +2153,7 @@ Aqua dynamically discovers and loads it, is <code class="docutils literal notran
 <p>The <em>HHL algorithm</em> (after the author's surnames Harrow-Hassidim-Lloyd) is a
 quantum algorithm to solve systems of linear equations
 <span class="math notranslate nohighlight">\(A\overrightarrow{x}=\overrightarrow{b}\)</span>.
-Using the Quantum Phase Estimation algorithm (<a class="reference internal" href="../docs/aqua/algorithms.html#qpe"><span class="std std-ref">Quantum Phase Estimation (QPE)</span></a>), the linear system
+Using the Quantum Phase Estimation algorithm (<a class="reference internal" href="#qpe"><span class="std std-ref">Quantum Phase Estimation (QPE)</span></a>), the linear system
 is transformed into diagonal form in which the matrix <span class="math notranslate nohighlight">\(A\)</span> is easily
 invertible. The inversion is achieved by rotating an ancillary qubit by an angle
 <span class="math notranslate nohighlight">\(\arcsin{ \frac{C}{\lambda_\mathrm{i}}}\)</span> around the y-axis where
@@ -2211,12 +2211,12 @@ is not hermitian.</p>
 </ul>
 <div class="admonition seealso">
 <p class="first admonition-title">参考</p>
-<p class="last">Consult the documentation on <a class="reference internal" href="../docs/aqua/iqfts.html#iqfts"><span class="std std-ref">Quantum Fourier Transforms</span></a>,  <a class="reference internal" href="../docs/aqua/initial_states.html#initial-states"><span class="std std-ref">Initial States</span></a>, <a class="reference internal" href="../docs/aqua/eigs.html#eigs"><span class="std std-ref">Eigenvalues</span></a>,
-<a class="reference internal" href="../docs/aqua/reciprocals.html#reciprocals"><span class="std std-ref">Reciprocals</span></a> for more details.
+<p class="last">Consult the documentation on <a class="reference internal" href="iqfts.html#iqfts"><span class="std std-ref">Quantum Fourier Transforms</span></a>,  <a class="reference internal" href="initial_states.html#initial-states"><span class="std std-ref">Initial States</span></a>, <a class="reference internal" href="eigs.html#eigs"><span class="std std-ref">Eigenvalues</span></a>,
+<a class="reference internal" href="reciprocals.html#reciprocals"><span class="std std-ref">Reciprocals</span></a> for more details.
 <a class="reference external" href="https://arxiv.org/abs/0811.3171">The original paper is accessible on arxiv.</a></p>
 </div>
-<p>HHL requires eigenvalue estimation using QPE (<a class="reference internal" href="../docs/aqua/eigs.html#eigs"><span class="std std-ref">Eigenvalues</span></a>), the eigenvalue
-inversion (<a class="reference internal" href="../docs/aqua/reciprocals.html#reciprocals"><span class="std std-ref">Reciprocals</span></a>), and a matrix and initial state as part of its
+<p>HHL requires eigenvalue estimation using QPE (<a class="reference internal" href="eigs.html#eigs"><span class="std std-ref">Eigenvalues</span></a>), the eigenvalue
+inversion (<a class="reference internal" href="reciprocals.html#reciprocals"><span class="std std-ref">Reciprocals</span></a>), and a matrix and initial state as part of its
 configuration.</p>
 <div class="topic">
 <p class="topic-title first">Declarative Name</p>
@@ -2231,7 +2231,7 @@ Aqua dynamically discovers and loads it, is <code class="docutils literal notran
 <div class="section" id="shor-s-factory-algorithm-shor">
 <span id="shor"></span><h3>Shor's Factory Algorithm (Shor)<a class="headerlink" href="#shor-s-factory-algorithm-shor" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <p>Shor's Factoring algorithm is one of the most well-known quantum algorithms.
-It takes advantage of <a class="reference internal" href="../docs/aqua/iqfts.html#iqfts"><span class="std std-ref">Quantum Fourier Transforms</span></a> circuits
+It takes advantage of <a class="reference internal" href="iqfts.html#iqfts"><span class="std std-ref">Quantum Fourier Transforms</span></a> circuits
 and finds the prime factors for input integer <span class="math notranslate nohighlight">\(N\)</span> in polynomial time.
 The Shor's algorithm included in Aqua is adapted from
 <a class="reference external" href="https://github.com/ttlion/ShorAlgQiskit">this implementation</a>.</p>

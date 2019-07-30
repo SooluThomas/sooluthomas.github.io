@@ -1524,9 +1524,9 @@ They tend to encode a function <span class="math notranslate nohighlight">\(f:\{
 where the goal of the algorithm is to determine some property of <span class="math notranslate nohighlight">\(f\)</span>.</p>
 <p>The following quantum oracles are included in Aqua:</p>
 <ul class="simple">
-<li><a class="reference internal" href="../docs/aqua/oracles.html#logical-expression-oracle"><span class="std std-ref">Logical Expression Oracle</span></a></li>
-<li><a class="reference internal" href="../docs/aqua/oracles.html#truth-table-oracle"><span class="std std-ref">Truth Table Oracle</span></a></li>
-<li><a class="reference internal" href="../docs/aqua/oracles.html#custom-circuit-oracle"><span class="std std-ref">Custom Circuit Oracle</span></a></li>
+<li><a class="reference internal" href="#logical-expression-oracle"><span class="std std-ref">Logical Expression Oracle</span></a></li>
+<li><a class="reference internal" href="#truth-table-oracle"><span class="std std-ref">Truth Table Oracle</span></a></li>
+<li><a class="reference internal" href="#custom-circuit-oracle"><span class="std std-ref">Custom Circuit Oracle</span></a></li>
 </ul>
 <div class="topic">
 <p class="topic-title first">Extending the Oracle Library</p>
@@ -1540,15 +1540,15 @@ can work on single-valued oracles that represent constant or balanced
 functions only.</p>
 <p>New oracles are typically installed in the <code class="docutils literal notranslate"><span class="pre">qiskit/aqua/components/oracles</span></code>
 folder and derive from the <code class="docutils literal notranslate"><span class="pre">Oracle</span></code> class. Aqua also allows for
-<a class="reference internal" href="../docs/aqua/extending.html#aqua-dynamically-discovered-components"><span class="std std-ref">Dynamically Discovered Components</span></a>: new components can register
+<a class="reference internal" href="extending.html#aqua-dynamically-discovered-components"><span class="std std-ref">Dynamically Discovered Components</span></a>: new components can register
 themselves as Aqua extensions and be dynamically discovered at run time
 independent of their location in the file system. This is done in order to
-encourage researchers and developers interested in <a class="reference internal" href="../docs/aqua/extending.html#aqua-extending"><span class="std std-ref">Contributing to Aqua</span></a> to
+encourage researchers and developers interested in <a class="reference internal" href="extending.html#aqua-extending"><span class="std std-ref">Contributing to Aqua</span></a> to
 extend the Aqua framework with their novel research contributions.</p>
 </div>
 <div class="admonition seealso">
 <p class="first admonition-title">参考</p>
-<p class="last"><a class="reference internal" href="../docs/aqua/extending.html#aqua-extending"><span class="std std-ref">Contributing to Aqua</span></a> provides more details on how to extend Aqua with new
+<p class="last"><a class="reference internal" href="extending.html#aqua-extending"><span class="std std-ref">Contributing to Aqua</span></a> provides more details on how to extend Aqua with new
 components.</p>
 </div>
 <div class="section" id="logical-expression-oracle">
@@ -1637,7 +1637,7 @@ Aqua includes multiple different modes for <code class="docutils literal notrans
 <div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mct_mode</span> <span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;basic&#39;</span> <span class="o">|</span> <span class="s1">&#39;basic-dirty-ancilla&#39;</span> <span class="o">|</span> <span class="s1">&#39;advanced&#39;</span> <span class="o">|</span> <span class="s1">&#39;noancilla&#39;</span>
 </pre></div>
 </div>
-<p>More information on <code class="docutils literal notranslate"><span class="pre">mct</span></code> and its various modes can be found at <a class="reference internal" href="../docs/aqua/circuit_collection.html#mct"><span class="std std-ref">Multiple-Control Toffoli (MCT) Gate</span></a>.</p>
+<p>More information on <code class="docutils literal notranslate"><span class="pre">mct</span></code> and its various modes can be found at <a class="reference internal" href="circuit_collection.html#mct"><span class="std std-ref">Multiple-Control Toffoli (MCT) Gate</span></a>.</p>
 <div class="topic">
 <p class="topic-title first">Declarative Name</p>
 <p>When referring to the logical expression oracle declaratively inside Aqua,

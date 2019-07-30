@@ -1533,29 +1533,29 @@ are pluggable modules in Aqua.  New neural networks are typically installed in t
 <code class="docutils literal notranslate"><span class="pre">qiskit/aqua/components/neural_networks</span></code> folder and derive from the <code class="docutils literal notranslate"><span class="pre">DiscriminativeNetwork</span></code>
 class for neural networks that are supposed to perform discriminative tasks and the
 <code class="docutils literal notranslate"><span class="pre">GenerativeNetwork</span></code> class for neural networks that are supposed to perform generative tasks.
-Aqua also allows for <a class="reference internal" href="../docs/aqua/extending.html#aqua-dynamically-discovered-components"><span class="std std-ref">Dynamically Discovered Components</span></a>: new components can
+Aqua also allows for <a class="reference internal" href="extending.html#aqua-dynamically-discovered-components"><span class="std std-ref">Dynamically Discovered Components</span></a>: new components can
 register themselves as Aqua extensions and be dynamically discovered at run time independent
 of their location in the file system.
 This is done in order to encourage researchers and developers interested in
-<a class="reference internal" href="../docs/aqua/extending.html#aqua-extending"><span class="std std-ref">Contributing to Aqua</span></a> to extend the Aqua framework with their novel research contributions.</p>
+<a class="reference internal" href="extending.html#aqua-extending"><span class="std std-ref">Contributing to Aqua</span></a> to extend the Aqua framework with their novel research contributions.</p>
 </div>
 <p>Currently, Aqua supplies the following neural networks:</p>
 <ul class="simple">
-<li><a class="reference internal" href="../docs/aqua/neural_networks.html#classicaldiscriminator"><span class="std std-ref">Classical Discriminator</span></a></li>
-<li><a class="reference internal" href="../docs/aqua/neural_networks.html#numpydiscriminator"><span class="std std-ref">Numpy Discriminator</span></a></li>
-<li><a class="reference internal" href="../docs/aqua/neural_networks.html#quantumgenerator"><span class="std std-ref">Quantum Generator</span></a></li>
+<li><a class="reference internal" href="#classicaldiscriminator"><span class="std std-ref">Classical Discriminator</span></a></li>
+<li><a class="reference internal" href="#numpydiscriminator"><span class="std std-ref">Numpy Discriminator</span></a></li>
+<li><a class="reference internal" href="#quantumgenerator"><span class="std std-ref">Quantum Generator</span></a></li>
 </ul>
 <div class="section" id="classical-discriminator">
 <span id="classicaldiscriminator"></span><h2>Classical Discriminator<a class="headerlink" href="#classical-discriminator" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p>This discriminator is given by a PyTorch neural network. Please note that PyTorch must be installed.
 For installation instructions see <a class="reference external" href="https://pytorch.org/get-started/locally/">https://pytorch.org/get-started/locally/</a>.</p>
-<p>The network is targeted at being used as part of the <a class="reference internal" href="../docs/aqua/algorithms.html#qgan"><span class="std std-ref">Quantum Generative Adversarial Network(qGAN)</span></a> algorithm.
+<p>The network is targeted at being used as part of the <a class="reference internal" href="algorithms.html#qgan"><span class="std std-ref">Quantum Generative Adversarial Network(qGAN)</span></a> algorithm.
 Please refer to <a class="reference external" href="https://arxiv.org/abs/1904.00043">qGAN</a>  for further details on this algorithm.
 The discriminator takes an input vector where the number of represented features
 <span class="math notranslate nohighlight">\(n_features \geq 1\)</span> and outputs a label for the data sample, i.e. true/fake.</p>
 <p>The following allows a specific form to be configured in the
 <code class="docutils literal notranslate"><span class="pre">discriminative_network</span></code> section of the Aqua
-<a class="reference internal" href="../docs/aqua/execution.html#aqua-input-file"><span class="std std-ref">Input File</span></a> when the <code class="docutils literal notranslate"><span class="pre">name</span></code> field
+<a class="reference internal" href="execution.html#aqua-input-file"><span class="std std-ref">Input File</span></a> when the <code class="docutils literal notranslate"><span class="pre">name</span></code> field
 is set to <code class="docutils literal notranslate"><span class="pre">ClassicalDiscriminator</span></code>:</p>
 <ul>
 <li><p class="first">The dimension of the input vector <span class="math notranslate nohighlight">\(n_features\)</span>:</p>
@@ -1581,13 +1581,13 @@ by which Aqua dynamically discovers and loads it, is <code class="docutils liter
 <div class="section" id="numpy-discriminator">
 <span id="numpydiscriminator"></span><h2>Numpy Discriminator<a class="headerlink" href="#numpy-discriminator" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p>This discriminator is given by a NumPy neural network.</p>
-<p>The network is targeted at being used as part of the <a class="reference internal" href="../docs/aqua/algorithms.html#qgan"><span class="std std-ref">Quantum Generative Adversarial Network(qGAN)</span></a> algorithm.
+<p>The network is targeted at being used as part of the <a class="reference internal" href="algorithms.html#qgan"><span class="std std-ref">Quantum Generative Adversarial Network(qGAN)</span></a> algorithm.
 Please refer to <a class="reference external" href="https://arxiv.org/abs/1904.00043">qGAN</a>  for further details on this algorithm.
 The discriminator takes an input vector where the number of represented features
 <span class="math notranslate nohighlight">\(n_features \geq 1\)</span> and outputs a label for the data sample, i.e. true/fake.</p>
 <p>The following allows a specific form to be configured in the
 <code class="docutils literal notranslate"><span class="pre">discriminative_network</span></code> section of the Aqua
-<a class="reference internal" href="../docs/aqua/execution.html#aqua-input-file"><span class="std std-ref">Input File</span></a> when the <code class="docutils literal notranslate"><span class="pre">name</span></code> field
+<a class="reference internal" href="execution.html#aqua-input-file"><span class="std std-ref">Input File</span></a> when the <code class="docutils literal notranslate"><span class="pre">name</span></code> field
 is set to <code class="docutils literal notranslate"><span class="pre">NumpyDiscriminator</span></code>:</p>
 <ul>
 <li><p class="first">The dimension of the input vector <span class="math notranslate nohighlight">\(n_features\)</span>:</p>
@@ -1612,15 +1612,15 @@ its code <code class="docutils literal notranslate"><span class="pre">name</span
 </div>
 <div class="section" id="quantum-generator">
 <span id="quantumgenerator"></span><h2>Quantum Generator<a class="headerlink" href="#quantum-generator" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<p>This generator is given by a variational quantum circuit, see <a class="reference internal" href="../docs/aqua/variational_forms.html#variational-forms"><span class="std std-ref">Variational Forms</span></a>.
-The network is targeted at being used as part of the <a class="reference internal" href="../docs/aqua/algorithms.html#qgan"><span class="std std-ref">Quantum Generative Adversarial Network(qGAN)</span></a> algorithm.
+<p>This generator is given by a variational quantum circuit, see <a class="reference internal" href="variational_forms.html#variational-forms"><span class="std std-ref">Variational Forms</span></a>.
+The network is targeted at being used as part of the <a class="reference internal" href="algorithms.html#qgan"><span class="std std-ref">Quantum Generative Adversarial Network(qGAN)</span></a> algorithm.
 Please refer to <a class="reference external" href="https://arxiv.org/abs/1904.00043">qGAN</a>  for further details on this algorithm.</p>
 <p>The quantum generator generates outputs data samples which are fitted to a data grid.
 This grid is defined by min/max data values and the number of qubits <span class="math notranslate nohighlight">\(n\)</span> which
 in turn define the representation resolution.</p>
 <p>The following allows a specific form to be configured in the
 <code class="docutils literal notranslate"><span class="pre">generative_network</span></code> section of the Aqua
-<a class="reference internal" href="../docs/aqua/execution.html#aqua-input-file"><span class="std std-ref">Input File</span></a> when the <code class="docutils literal notranslate"><span class="pre">name</span></code> field
+<a class="reference internal" href="execution.html#aqua-input-file"><span class="std std-ref">Input File</span></a> when the <code class="docutils literal notranslate"><span class="pre">name</span></code> field
 is set to <code class="docutils literal notranslate"><span class="pre">QuantumGenerator</span></code>:</p>
 <ul>
 <li><p class="first">The min/max data values for data dimension <span class="math notranslate nohighlight">\(k\)</span>:</p>
@@ -1643,7 +1643,7 @@ of <span class="math notranslate nohighlight">\(n\)</span> qubits enables the re
 </div>
 <p>The generator circuit must either be given as UnivariateVariationalDistribution for
 univariate data or as MultivariateVariationalDistribution for multivariate data.
-See <a class="reference internal" href="../docs/aqua/random_distributions.html#random-distributions"><span class="std std-ref">Random Distributions</span></a>.</p>
+See <a class="reference internal" href="random_distributions.html#random-distributions"><span class="std std-ref">Random Distributions</span></a>.</p>
 </li>
 <li><p class="first">Initial parameters used for the generator circuit:</p>
 <div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">init_params</span> <span class="o">=</span> <span class="p">[</span><span class="n">param_0</span><span class="p">,</span> <span class="o">...</span><span class="p">,</span> <span class="n">param_m</span><span class="p">]</span>
