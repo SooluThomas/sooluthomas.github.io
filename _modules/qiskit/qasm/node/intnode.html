@@ -34,7 +34,7 @@
        </script>
         <script src="https://cloud.ibm.com/analytics/build/bluemix-analytics.min.js"></script>
     
-    <title>qiskit.qasm.node.intnode &#8212; Qiskit 0.11.0 documentation</title>
+    <title>qiskit.qasm.node.intnode &#8212; Qiskit 0.11.1 documentation</title>
 
     <link rel="stylesheet" href="../../../../_static/material-icons.css" type="text/css" />
     <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
@@ -190,7 +190,7 @@
 <span class="kn">from</span> <span class="nn">.node</span> <span class="k">import</span> <span class="n">Node</span>
 
 
-<div class="viewcode-block" id="Int"><a class="viewcode-back" href="../../../../autodoc/qiskit.qasm.node.intnode.html#qiskit.qasm.node.intnode.Int">[docs]</a><span class="k">class</span> <span class="nc">Int</span><span class="p">(</span><span class="n">Node</span><span class="p">):</span>
+<div class="viewcode-block" id="Int"><a class="viewcode-back" href="../../../../autodoc/qiskit.qasm.node.html#qiskit.qasm.node.intnode.Int">[docs]</a><span class="k">class</span> <span class="nc">Int</span><span class="p">(</span><span class="n">Node</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Node for an OPENQASM integer.</span>
 
 <span class="sd">    This node has no children. The data is in the value field.</span>
@@ -202,27 +202,27 @@
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="s2">&quot;int&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="nb">id</span>
 
-<div class="viewcode-block" id="Int.to_string"><a class="viewcode-back" href="../../../../autodoc/qiskit.qasm.node.intnode.html#qiskit.qasm.node.intnode.Int.to_string">[docs]</a>    <span class="k">def</span> <span class="nf">to_string</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">indent</span><span class="p">):</span>
+<div class="viewcode-block" id="Int.to_string"><a class="viewcode-back" href="../../../../autodoc/qiskit.qasm.node.html#qiskit.qasm.node.intnode.Int.to_string">[docs]</a>    <span class="k">def</span> <span class="nf">to_string</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">indent</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Print with indent.&quot;&quot;&quot;</span>
         <span class="n">ind</span> <span class="o">=</span> <span class="n">indent</span> <span class="o">*</span> <span class="s1">&#39; &#39;</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">ind</span><span class="p">,</span> <span class="s1">&#39;int&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="Int.qasm"><a class="viewcode-back" href="../../../../autodoc/qiskit.qasm.node.intnode.html#qiskit.qasm.node.intnode.Int.qasm">[docs]</a>    <span class="k">def</span> <span class="nf">qasm</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">prec</span><span class="o">=</span><span class="mi">15</span><span class="p">):</span>
+<div class="viewcode-block" id="Int.qasm"><a class="viewcode-back" href="../../../../autodoc/qiskit.qasm.node.html#qiskit.qasm.node.intnode.Int.qasm">[docs]</a>    <span class="k">def</span> <span class="nf">qasm</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">prec</span><span class="o">=</span><span class="mi">15</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return the corresponding OPENQASM string.&quot;&quot;&quot;</span>
         <span class="c1"># pylint: disable=unused-argument</span>
         <span class="k">return</span> <span class="s2">&quot;</span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span></div>
 
-<div class="viewcode-block" id="Int.latex"><a class="viewcode-back" href="../../../../autodoc/qiskit.qasm.node.intnode.html#qiskit.qasm.node.intnode.Int.latex">[docs]</a>    <span class="k">def</span> <span class="nf">latex</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">prec</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">nested_scope</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="Int.latex"><a class="viewcode-back" href="../../../../autodoc/qiskit.qasm.node.html#qiskit.qasm.node.intnode.Int.latex">[docs]</a>    <span class="k">def</span> <span class="nf">latex</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">prec</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">nested_scope</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return the corresponding math mode latex string.&quot;&quot;&quot;</span>
         <span class="c1"># pylint: disable=unused-argument</span>
         <span class="k">return</span> <span class="s2">&quot;</span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span></div>
 
-<div class="viewcode-block" id="Int.sym"><a class="viewcode-back" href="../../../../autodoc/qiskit.qasm.node.intnode.html#qiskit.qasm.node.intnode.Int.sym">[docs]</a>    <span class="k">def</span> <span class="nf">sym</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nested_scope</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="Int.sym"><a class="viewcode-back" href="../../../../autodoc/qiskit.qasm.node.html#qiskit.qasm.node.intnode.Int.sym">[docs]</a>    <span class="k">def</span> <span class="nf">sym</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nested_scope</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return the correspond symbolic number.&quot;&quot;&quot;</span>
         <span class="c1"># pylint: disable=unused-argument</span>
         <span class="k">return</span> <span class="n">N</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="Int.real"><a class="viewcode-back" href="../../../../autodoc/qiskit.qasm.node.intnode.html#qiskit.qasm.node.intnode.Int.real">[docs]</a>    <span class="k">def</span> <span class="nf">real</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nested_scope</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="Int.real"><a class="viewcode-back" href="../../../../autodoc/qiskit.qasm.node.html#qiskit.qasm.node.intnode.Int.real">[docs]</a>    <span class="k">def</span> <span class="nf">real</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nested_scope</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return the correspond floating point number.&quot;&quot;&quot;</span>
         <span class="c1"># pylint: disable=unused-argument</span>
         <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">)</span></div></div>
@@ -276,23 +276,23 @@
       var el = document.getElementById('language');
       var optionsToSelect = ['en', 'ja']
       function changeLoc(evt) {
-        var language = evt.target.options[el.selectedIndex].value;
-        var pathname = window.location.pathname.slice(prefix.length);
-        if (language === getDefaultLanguage()) {
-          window.location.pathname =
-            `${prefix}${pathname.replace(localeRegExp, '/')}`;
-        } else {
-          window.location.pathname =
-            `${prefix}${pathname.replace(localeRegExp, `/locale/${language}/`)}`;
+	        var language = evt.target.options[el.selectedIndex].value;
+	        var pathname = window.location.pathname.slice(prefix.length);
+	        if (language === getDefaultLanguage()) {
+	          window.location.pathname =
+	            `${prefix}${pathname.replace(localeRegExp, '/')}`;
+	        } else {
+	          window.location.pathname =
+	            `${prefix}${pathname.replace(localeRegExp, `/locale/${language}/`)}`;
         }
       };
       el.addEventListener('change', changeLoc);
 
       function extractLanguageFromUrl(pathname) {
-        const match = pathname.slice(prefix.length).match(localeRegExp);
-        return typeof match[2] === 'undefined' ?
-                getDefaultLanguage() : match[2];
-	    }
+	        const match = pathname.slice(prefix.length).match(localeRegExp);
+	        return typeof match[2] === 'undefined' ?
+	               getDefaultLanguage() : match[2];
+	      }
 
       function changeSelect(select) {
         const optionToSelect = extractLanguageFromUrl(window.location.pathname);

@@ -34,7 +34,7 @@
        </script>
         <script src="https://cloud.ibm.com/analytics/build/bluemix-analytics.min.js"></script>
     
-    <title>qiskit.util &#8212; Qiskit 0.11.0 documentation</title>
+    <title>qiskit.util &#8212; Qiskit 0.11.1 documentation</title>
 
     <link rel="stylesheet" href="../../_static/material-icons.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -238,7 +238,7 @@
 <span class="n">_filter_deprecation_warnings</span><span class="p">()</span>
 
 
-<div class="viewcode-block" id="local_hardware_info"><a class="viewcode-back" href="../../autodoc/qiskit.util.html#qiskit.util.local_hardware_info">[docs]</a><span class="k">def</span> <span class="nf">local_hardware_info</span><span class="p">():</span>
+<div class="viewcode-block" id="local_hardware_info"><a class="viewcode-back" href="../../autodoc/qiskit.html#qiskit.util.local_hardware_info">[docs]</a><span class="k">def</span> <span class="nf">local_hardware_info</span><span class="p">():</span>
     <span class="sd">&quot;&quot;&quot;Basic hardware information about the local machine.</span>
 
 <span class="sd">    Gives actual number of CPU&#39;s in the machine, even when hyperthreading is</span>
@@ -325,23 +325,23 @@
       var el = document.getElementById('language');
       var optionsToSelect = ['en', 'ja']
       function changeLoc(evt) {
-        var language = evt.target.options[el.selectedIndex].value;
-        var pathname = window.location.pathname.slice(prefix.length);
-        if (language === getDefaultLanguage()) {
-          window.location.pathname =
-            `${prefix}${pathname.replace(localeRegExp, '/')}`;
-        } else {
-          window.location.pathname =
-            `${prefix}${pathname.replace(localeRegExp, `/locale/${language}/`)}`;
+	        var language = evt.target.options[el.selectedIndex].value;
+	        var pathname = window.location.pathname.slice(prefix.length);
+	        if (language === getDefaultLanguage()) {
+	          window.location.pathname =
+	            `${prefix}${pathname.replace(localeRegExp, '/')}`;
+	        } else {
+	          window.location.pathname =
+	            `${prefix}${pathname.replace(localeRegExp, `/locale/${language}/`)}`;
         }
       };
       el.addEventListener('change', changeLoc);
 
       function extractLanguageFromUrl(pathname) {
-        const match = pathname.slice(prefix.length).match(localeRegExp);
-        return typeof match[2] === 'undefined' ?
-                getDefaultLanguage() : match[2];
-	    }
+	        const match = pathname.slice(prefix.length).match(localeRegExp);
+	        return typeof match[2] === 'undefined' ?
+	               getDefaultLanguage() : match[2];
+	      }
 
       function changeSelect(select) {
         const optionToSelect = extractLanguageFromUrl(window.location.pathname);

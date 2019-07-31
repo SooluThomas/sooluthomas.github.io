@@ -34,7 +34,7 @@
        </script>
         <script src="https://cloud.ibm.com/analytics/build/bluemix-analytics.min.js"></script>
     
-    <title>qiskit.ignis.verification.randomized_benchmarking.rb_utils &#8212; Qiskit 0.11.0 documentation</title>
+    <title>qiskit.ignis.verification.randomized_benchmarking.rb_utils &#8212; Qiskit 0.11.1 documentation</title>
 
     <link rel="stylesheet" href="../../../../../_static/material-icons.css" type="text/css" />
     <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css" />
@@ -194,7 +194,7 @@
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
 
-<div class="viewcode-block" id="count_gates"><a class="viewcode-back" href="../../../../../autodoc/qiskit.ignis.verification.randomized_benchmarking.rb_utils.html#qiskit.ignis.verification.randomized_benchmarking.rb_utils.count_gates">[docs]</a><span class="k">def</span> <span class="nf">count_gates</span><span class="p">(</span><span class="n">qobj</span><span class="p">,</span> <span class="n">basis</span><span class="p">,</span> <span class="n">qubits</span><span class="p">):</span>
+<div class="viewcode-block" id="count_gates"><a class="viewcode-back" href="../../../../../autodoc/qiskit.ignis.verification.randomized_benchmarking.html#qiskit.ignis.verification.randomized_benchmarking.rb_utils.count_gates">[docs]</a><span class="k">def</span> <span class="nf">count_gates</span><span class="p">(</span><span class="n">qobj</span><span class="p">,</span> <span class="n">basis</span><span class="p">,</span> <span class="n">qubits</span><span class="p">):</span>
 
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Take a compiled qobj and output the number of gates in each circuit</span>
@@ -229,7 +229,7 @@
     <span class="k">return</span> <span class="n">ngates</span></div>
 
 
-<div class="viewcode-block" id="gates_per_clifford"><a class="viewcode-back" href="../../../../../autodoc/qiskit.ignis.verification.randomized_benchmarking.rb_utils.html#qiskit.ignis.verification.randomized_benchmarking.rb_utils.gates_per_clifford">[docs]</a><span class="k">def</span> <span class="nf">gates_per_clifford</span><span class="p">(</span><span class="n">qobj_list</span><span class="p">,</span> <span class="n">clifford_length</span><span class="p">,</span> <span class="n">basis</span><span class="p">,</span> <span class="n">qubits</span><span class="p">):</span>
+<div class="viewcode-block" id="gates_per_clifford"><a class="viewcode-back" href="../../../../../autodoc/qiskit.ignis.verification.randomized_benchmarking.html#qiskit.ignis.verification.randomized_benchmarking.rb_utils.gates_per_clifford">[docs]</a><span class="k">def</span> <span class="nf">gates_per_clifford</span><span class="p">(</span><span class="n">qobj_list</span><span class="p">,</span> <span class="n">clifford_length</span><span class="p">,</span> <span class="n">basis</span><span class="p">,</span> <span class="n">qubits</span><span class="p">):</span>
 
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Take a list of compiled qobjs (for each seed) and use these</span>
@@ -260,7 +260,7 @@
     <span class="k">return</span> <span class="n">ngates</span><span class="o">/</span><span class="n">ncliffs</span></div>
 
 
-<div class="viewcode-block" id="coherence_limit"><a class="viewcode-back" href="../../../../../autodoc/qiskit.ignis.verification.randomized_benchmarking.rb_utils.html#qiskit.ignis.verification.randomized_benchmarking.rb_utils.coherence_limit">[docs]</a><span class="k">def</span> <span class="nf">coherence_limit</span><span class="p">(</span><span class="n">nQ</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">T1_list</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">T2_list</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<div class="viewcode-block" id="coherence_limit"><a class="viewcode-back" href="../../../../../autodoc/qiskit.ignis.verification.randomized_benchmarking.html#qiskit.ignis.verification.randomized_benchmarking.rb_utils.coherence_limit">[docs]</a><span class="k">def</span> <span class="nf">coherence_limit</span><span class="p">(</span><span class="n">nQ</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">T1_list</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">T2_list</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                     <span class="n">gatelen</span><span class="o">=</span><span class="mf">0.1</span><span class="p">):</span>
 
     <span class="sd">&quot;&quot;&quot;</span>
@@ -315,7 +315,7 @@
     <span class="k">return</span> <span class="n">coherence_limit_err</span></div>
 
 
-<div class="viewcode-block" id="twoQ_clifford_error"><a class="viewcode-back" href="../../../../../autodoc/qiskit.ignis.verification.randomized_benchmarking.rb_utils.html#qiskit.ignis.verification.randomized_benchmarking.rb_utils.twoQ_clifford_error">[docs]</a><span class="k">def</span> <span class="nf">twoQ_clifford_error</span><span class="p">(</span><span class="n">ngates</span><span class="p">,</span> <span class="n">gate_qubit</span><span class="p">,</span> <span class="n">gate_err</span><span class="p">):</span>
+<div class="viewcode-block" id="twoQ_clifford_error"><a class="viewcode-back" href="../../../../../autodoc/qiskit.ignis.verification.randomized_benchmarking.html#qiskit.ignis.verification.randomized_benchmarking.rb_utils.twoQ_clifford_error">[docs]</a><span class="k">def</span> <span class="nf">twoQ_clifford_error</span><span class="p">(</span><span class="n">ngates</span><span class="p">,</span> <span class="n">gate_qubit</span><span class="p">,</span> <span class="n">gate_err</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    The two qubit Clifford gate error given measured errors in the primitive</span>
 <span class="sd">    gates used to construct the Clifford (see arxiv:1712.06550). Assumes the</span>
@@ -394,23 +394,23 @@
       var el = document.getElementById('language');
       var optionsToSelect = ['en', 'ja']
       function changeLoc(evt) {
-        var language = evt.target.options[el.selectedIndex].value;
-        var pathname = window.location.pathname.slice(prefix.length);
-        if (language === getDefaultLanguage()) {
-          window.location.pathname =
-            `${prefix}${pathname.replace(localeRegExp, '/')}`;
-        } else {
-          window.location.pathname =
-            `${prefix}${pathname.replace(localeRegExp, `/locale/${language}/`)}`;
+	        var language = evt.target.options[el.selectedIndex].value;
+	        var pathname = window.location.pathname.slice(prefix.length);
+	        if (language === getDefaultLanguage()) {
+	          window.location.pathname =
+	            `${prefix}${pathname.replace(localeRegExp, '/')}`;
+	        } else {
+	          window.location.pathname =
+	            `${prefix}${pathname.replace(localeRegExp, `/locale/${language}/`)}`;
         }
       };
       el.addEventListener('change', changeLoc);
 
       function extractLanguageFromUrl(pathname) {
-        const match = pathname.slice(prefix.length).match(localeRegExp);
-        return typeof match[2] === 'undefined' ?
-                getDefaultLanguage() : match[2];
-	    }
+	        const match = pathname.slice(prefix.length).match(localeRegExp);
+	        return typeof match[2] === 'undefined' ?
+	               getDefaultLanguage() : match[2];
+	      }
 
       function changeSelect(select) {
         const optionToSelect = extractLanguageFromUrl(window.location.pathname);

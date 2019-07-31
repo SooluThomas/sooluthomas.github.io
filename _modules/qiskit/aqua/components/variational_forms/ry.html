@@ -34,7 +34,7 @@
        </script>
         <script src="https://cloud.ibm.com/analytics/build/bluemix-analytics.min.js"></script>
     
-    <title>qiskit.aqua.components.variational_forms.ry &#8212; Qiskit 0.11.0 documentation</title>
+    <title>qiskit.aqua.components.variational_forms.ry &#8212; Qiskit 0.11.1 documentation</title>
 
     <link rel="stylesheet" href="../../../../../_static/material-icons.css" type="text/css" />
     <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css" />
@@ -189,7 +189,7 @@
 <span class="kn">from</span> <span class="nn">qiskit.aqua.components.variational_forms</span> <span class="k">import</span> <span class="n">VariationalForm</span>
 
 
-<div class="viewcode-block" id="RY"><a class="viewcode-back" href="../../../../../autodoc/qiskit.aqua.components.variational_forms.ry.html#qiskit.aqua.components.variational_forms.RY">[docs]</a><span class="k">class</span> <span class="nc">RY</span><span class="p">(</span><span class="n">VariationalForm</span><span class="p">):</span>
+<div class="viewcode-block" id="RY"><a class="viewcode-back" href="../../../../../autodoc/qiskit.aqua.components.variational_forms.html#qiskit.aqua.components.variational_forms.RY">[docs]</a><span class="k">class</span> <span class="nc">RY</span><span class="p">(</span><span class="n">VariationalForm</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Layers of Y rotations followed by entangling gates.&quot;&quot;&quot;</span>
 
     <span class="n">CONFIGURATION</span> <span class="o">=</span> <span class="p">{</span>
@@ -281,7 +281,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_num_parameters</span> <span class="o">+=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_entangled_qubits</span><span class="p">)</span> <span class="o">*</span> <span class="n">depth</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_bounds</span> <span class="o">=</span> <span class="p">[(</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)]</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">_num_parameters</span>
 
-<div class="viewcode-block" id="RY.construct_circuit"><a class="viewcode-back" href="../../../../../autodoc/qiskit.aqua.components.variational_forms.ry.html#qiskit.aqua.components.variational_forms.RY.construct_circuit">[docs]</a>    <span class="k">def</span> <span class="nf">construct_circuit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parameters</span><span class="p">,</span> <span class="n">q</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="RY.construct_circuit"><a class="viewcode-back" href="../../../../../autodoc/qiskit.aqua.components.variational_forms.html#qiskit.aqua.components.variational_forms.RY.construct_circuit">[docs]</a>    <span class="k">def</span> <span class="nf">construct_circuit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parameters</span><span class="p">,</span> <span class="n">q</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Construct the variational form, given its parameters.</span>
 
@@ -377,23 +377,23 @@
       var el = document.getElementById('language');
       var optionsToSelect = ['en', 'ja']
       function changeLoc(evt) {
-        var language = evt.target.options[el.selectedIndex].value;
-        var pathname = window.location.pathname.slice(prefix.length);
-        if (language === getDefaultLanguage()) {
-          window.location.pathname =
-            `${prefix}${pathname.replace(localeRegExp, '/')}`;
-        } else {
-          window.location.pathname =
-            `${prefix}${pathname.replace(localeRegExp, `/locale/${language}/`)}`;
+	        var language = evt.target.options[el.selectedIndex].value;
+	        var pathname = window.location.pathname.slice(prefix.length);
+	        if (language === getDefaultLanguage()) {
+	          window.location.pathname =
+	            `${prefix}${pathname.replace(localeRegExp, '/')}`;
+	        } else {
+	          window.location.pathname =
+	            `${prefix}${pathname.replace(localeRegExp, `/locale/${language}/`)}`;
         }
       };
       el.addEventListener('change', changeLoc);
 
       function extractLanguageFromUrl(pathname) {
-        const match = pathname.slice(prefix.length).match(localeRegExp);
-        return typeof match[2] === 'undefined' ?
-                getDefaultLanguage() : match[2];
-	    }
+	        const match = pathname.slice(prefix.length).match(localeRegExp);
+	        return typeof match[2] === 'undefined' ?
+	               getDefaultLanguage() : match[2];
+	      }
 
       function changeSelect(select) {
         const optionToSelect = extractLanguageFromUrl(window.location.pathname);

@@ -34,7 +34,7 @@
        </script>
         <script src="https://cloud.ibm.com/analytics/build/bluemix-analytics.min.js"></script>
     
-    <title>qiskit.qasm.node.binaryoperator &#8212; Qiskit 0.11.0 documentation</title>
+    <title>qiskit.qasm.node.binaryoperator &#8212; Qiskit 0.11.1 documentation</title>
 
     <link rel="stylesheet" href="../../../../_static/material-icons.css" type="text/css" />
     <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
@@ -200,7 +200,7 @@
 <span class="p">}</span>
 
 
-<div class="viewcode-block" id="BinaryOperator"><a class="viewcode-back" href="../../../../autodoc/qiskit.qasm.node.binaryoperator.html#qiskit.qasm.node.binaryoperator.BinaryOperator">[docs]</a><span class="k">class</span> <span class="nc">BinaryOperator</span><span class="p">(</span><span class="n">Node</span><span class="p">):</span>
+<div class="viewcode-block" id="BinaryOperator"><a class="viewcode-back" href="../../../../autodoc/qiskit.qasm.node.html#qiskit.qasm.node.binaryoperator.BinaryOperator">[docs]</a><span class="k">class</span> <span class="nc">BinaryOperator</span><span class="p">(</span><span class="n">Node</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Node for an OPENQASM binary operator.</span>
 
 <span class="sd">    This node has no children. The data is in the value field.</span>
@@ -210,7 +210,7 @@
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="s1">&#39;operator&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">operation</span>
 
-<div class="viewcode-block" id="BinaryOperator.operation"><a class="viewcode-back" href="../../../../autodoc/qiskit.qasm.node.binaryoperator.html#qiskit.qasm.node.binaryoperator.BinaryOperator.operation">[docs]</a>    <span class="k">def</span> <span class="nf">operation</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="BinaryOperator.operation"><a class="viewcode-back" href="../../../../autodoc/qiskit.qasm.node.html#qiskit.qasm.node.binaryoperator.BinaryOperator.operation">[docs]</a>    <span class="k">def</span> <span class="nf">operation</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Return the operator as a function f(left, right).</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -220,7 +220,7 @@
             <span class="k">raise</span> <span class="n">NodeException</span><span class="p">(</span><span class="s2">&quot;internal error: undefined operator &#39;</span><span class="si">%s</span><span class="s2">&#39;&quot;</span> <span class="o">%</span>
                                 <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="BinaryOperator.qasm"><a class="viewcode-back" href="../../../../autodoc/qiskit.qasm.node.binaryoperator.html#qiskit.qasm.node.binaryoperator.BinaryOperator.qasm">[docs]</a>    <span class="k">def</span> <span class="nf">qasm</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">prec</span><span class="o">=</span><span class="mi">15</span><span class="p">):</span>
+<div class="viewcode-block" id="BinaryOperator.qasm"><a class="viewcode-back" href="../../../../autodoc/qiskit.qasm.node.html#qiskit.qasm.node.binaryoperator.BinaryOperator.qasm">[docs]</a>    <span class="k">def</span> <span class="nf">qasm</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">prec</span><span class="o">=</span><span class="mi">15</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return the QASM representation.&quot;&quot;&quot;</span>
         <span class="c1"># pylint: disable=unused-argument</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span></div></div>
@@ -274,23 +274,23 @@
       var el = document.getElementById('language');
       var optionsToSelect = ['en', 'ja']
       function changeLoc(evt) {
-        var language = evt.target.options[el.selectedIndex].value;
-        var pathname = window.location.pathname.slice(prefix.length);
-        if (language === getDefaultLanguage()) {
-          window.location.pathname =
-            `${prefix}${pathname.replace(localeRegExp, '/')}`;
-        } else {
-          window.location.pathname =
-            `${prefix}${pathname.replace(localeRegExp, `/locale/${language}/`)}`;
+	        var language = evt.target.options[el.selectedIndex].value;
+	        var pathname = window.location.pathname.slice(prefix.length);
+	        if (language === getDefaultLanguage()) {
+	          window.location.pathname =
+	            `${prefix}${pathname.replace(localeRegExp, '/')}`;
+	        } else {
+	          window.location.pathname =
+	            `${prefix}${pathname.replace(localeRegExp, `/locale/${language}/`)}`;
         }
       };
       el.addEventListener('change', changeLoc);
 
       function extractLanguageFromUrl(pathname) {
-        const match = pathname.slice(prefix.length).match(localeRegExp);
-        return typeof match[2] === 'undefined' ?
-                getDefaultLanguage() : match[2];
-	    }
+	        const match = pathname.slice(prefix.length).match(localeRegExp);
+	        return typeof match[2] === 'undefined' ?
+	               getDefaultLanguage() : match[2];
+	      }
 
       function changeSelect(select) {
         const optionToSelect = extractLanguageFromUrl(window.location.pathname);

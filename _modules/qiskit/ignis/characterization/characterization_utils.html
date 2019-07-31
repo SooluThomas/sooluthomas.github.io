@@ -34,7 +34,7 @@
        </script>
         <script src="https://cloud.ibm.com/analytics/build/bluemix-analytics.min.js"></script>
     
-    <title>qiskit.ignis.characterization.characterization_utils &#8212; Qiskit 0.11.0 documentation</title>
+    <title>qiskit.ignis.characterization.characterization_utils &#8212; Qiskit 0.11.1 documentation</title>
 
     <link rel="stylesheet" href="../../../../_static/material-icons.css" type="text/css" />
     <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
@@ -188,7 +188,7 @@
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
 
-<div class="viewcode-block" id="pad_id_gates"><a class="viewcode-back" href="../../../../autodoc/qiskit.ignis.characterization.characterization_utils.html#qiskit.ignis.characterization.characterization_utils.pad_id_gates">[docs]</a><span class="k">def</span> <span class="nf">pad_id_gates</span><span class="p">(</span><span class="n">circuit</span><span class="p">,</span> <span class="n">qr</span><span class="p">,</span> <span class="n">qubit</span><span class="p">,</span> <span class="n">num_of_id_gates</span><span class="p">):</span>
+<div class="viewcode-block" id="pad_id_gates"><a class="viewcode-back" href="../../../../autodoc/qiskit.ignis.characterization.html#qiskit.ignis.characterization.characterization_utils.pad_id_gates">[docs]</a><span class="k">def</span> <span class="nf">pad_id_gates</span><span class="p">(</span><span class="n">circuit</span><span class="p">,</span> <span class="n">qr</span><span class="p">,</span> <span class="n">qubit</span><span class="p">,</span> <span class="n">num_of_id_gates</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    A function for padding a circuit with single-qubit identity gates.</span>
 
@@ -211,7 +211,7 @@
     <span class="k">return</span> <span class="n">circuit</span></div>
 
 
-<div class="viewcode-block" id="time_to_ngates"><a class="viewcode-back" href="../../../../autodoc/qiskit.ignis.characterization.characterization_utils.html#qiskit.ignis.characterization.characterization_utils.time_to_ngates">[docs]</a><span class="k">def</span> <span class="nf">time_to_ngates</span><span class="p">(</span><span class="n">times</span><span class="p">,</span> <span class="n">gate_time</span><span class="p">):</span>
+<div class="viewcode-block" id="time_to_ngates"><a class="viewcode-back" href="../../../../autodoc/qiskit.ignis.characterization.html#qiskit.ignis.characterization.characterization_utils.time_to_ngates">[docs]</a><span class="k">def</span> <span class="nf">time_to_ngates</span><span class="p">(</span><span class="n">times</span><span class="p">,</span> <span class="n">gate_time</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    A function to convert a list of times into an integer list of gates.</span>
 
@@ -275,23 +275,23 @@
       var el = document.getElementById('language');
       var optionsToSelect = ['en', 'ja']
       function changeLoc(evt) {
-        var language = evt.target.options[el.selectedIndex].value;
-        var pathname = window.location.pathname.slice(prefix.length);
-        if (language === getDefaultLanguage()) {
-          window.location.pathname =
-            `${prefix}${pathname.replace(localeRegExp, '/')}`;
-        } else {
-          window.location.pathname =
-            `${prefix}${pathname.replace(localeRegExp, `/locale/${language}/`)}`;
+	        var language = evt.target.options[el.selectedIndex].value;
+	        var pathname = window.location.pathname.slice(prefix.length);
+	        if (language === getDefaultLanguage()) {
+	          window.location.pathname =
+	            `${prefix}${pathname.replace(localeRegExp, '/')}`;
+	        } else {
+	          window.location.pathname =
+	            `${prefix}${pathname.replace(localeRegExp, `/locale/${language}/`)}`;
         }
       };
       el.addEventListener('change', changeLoc);
 
       function extractLanguageFromUrl(pathname) {
-        const match = pathname.slice(prefix.length).match(localeRegExp);
-        return typeof match[2] === 'undefined' ?
-                getDefaultLanguage() : match[2];
-	    }
+	        const match = pathname.slice(prefix.length).match(localeRegExp);
+	        return typeof match[2] === 'undefined' ?
+	               getDefaultLanguage() : match[2];
+	      }
 
       function changeSelect(select) {
         const optionToSelect = extractLanguageFromUrl(window.location.pathname);

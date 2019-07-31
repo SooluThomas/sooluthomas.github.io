@@ -34,7 +34,7 @@
        </script>
         <script src="https://cloud.ibm.com/analytics/build/bluemix-analytics.min.js"></script>
     
-    <title>qiskit.compiler.assemble &#8212; Qiskit 0.11.0 documentation</title>
+    <title>qiskit.compiler.assemble &#8212; Qiskit 0.11.1 documentation</title>
 
     <link rel="stylesheet" href="../../../_static/material-icons.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
@@ -201,7 +201,7 @@
 
 
 <span class="c1"># TODO: parallelize over the experiments (serialize each separately, then add global header/config)</span>
-<div class="viewcode-block" id="assemble"><a class="viewcode-back" href="../../../autodoc/qiskit.compiler.assemble.html#qiskit.compiler.assemble.assemble">[docs]</a><span class="k">def</span> <span class="nf">assemble</span><span class="p">(</span><span class="n">experiments</span><span class="p">,</span>
+<div class="viewcode-block" id="assemble"><a class="viewcode-back" href="../../../autodoc/qiskit.compiler.html#qiskit.compiler.assemble.assemble">[docs]</a><span class="k">def</span> <span class="nf">assemble</span><span class="p">(</span><span class="n">experiments</span><span class="p">,</span>
              <span class="n">backend</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
              <span class="n">qobj_id</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">qobj_header</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>  <span class="c1"># common run options</span>
              <span class="n">shots</span><span class="o">=</span><span class="mi">1024</span><span class="p">,</span> <span class="n">memory</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">max_credits</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">seed_simulator</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
@@ -548,23 +548,23 @@
       var el = document.getElementById('language');
       var optionsToSelect = ['en', 'ja']
       function changeLoc(evt) {
-        var language = evt.target.options[el.selectedIndex].value;
-        var pathname = window.location.pathname.slice(prefix.length);
-        if (language === getDefaultLanguage()) {
-          window.location.pathname =
-            `${prefix}${pathname.replace(localeRegExp, '/')}`;
-        } else {
-          window.location.pathname =
-            `${prefix}${pathname.replace(localeRegExp, `/locale/${language}/`)}`;
+	        var language = evt.target.options[el.selectedIndex].value;
+	        var pathname = window.location.pathname.slice(prefix.length);
+	        if (language === getDefaultLanguage()) {
+	          window.location.pathname =
+	            `${prefix}${pathname.replace(localeRegExp, '/')}`;
+	        } else {
+	          window.location.pathname =
+	            `${prefix}${pathname.replace(localeRegExp, `/locale/${language}/`)}`;
         }
       };
       el.addEventListener('change', changeLoc);
 
       function extractLanguageFromUrl(pathname) {
-        const match = pathname.slice(prefix.length).match(localeRegExp);
-        return typeof match[2] === 'undefined' ?
-                getDefaultLanguage() : match[2];
-	    }
+	        const match = pathname.slice(prefix.length).match(localeRegExp);
+	        return typeof match[2] === 'undefined' ?
+	               getDefaultLanguage() : match[2];
+	      }
 
       function changeSelect(select) {
         const optionToSelect = extractLanguageFromUrl(window.location.pathname);

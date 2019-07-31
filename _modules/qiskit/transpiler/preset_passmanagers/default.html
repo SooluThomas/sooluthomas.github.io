@@ -34,7 +34,7 @@
        </script>
         <script src="https://cloud.ibm.com/analytics/build/bluemix-analytics.min.js"></script>
     
-    <title>qiskit.transpiler.preset_passmanagers.default &#8212; Qiskit 0.11.0 documentation</title>
+    <title>qiskit.transpiler.preset_passmanagers.default &#8212; Qiskit 0.11.1 documentation</title>
 
     <link rel="stylesheet" href="../../../../_static/material-icons.css" type="text/css" />
     <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
@@ -200,7 +200,7 @@
 <span class="kn">from</span> <span class="nn">qiskit.transpiler.passes</span> <span class="k">import</span> <span class="n">EnlargeWithAncilla</span>
 
 
-<div class="viewcode-block" id="default_pass_manager"><a class="viewcode-back" href="../../../../autodoc/qiskit.transpiler.preset_passmanagers.default.html#qiskit.transpiler.preset_passmanagers.default.default_pass_manager">[docs]</a><span class="k">def</span> <span class="nf">default_pass_manager</span><span class="p">(</span><span class="n">transpile_config</span><span class="p">):</span>
+<div class="viewcode-block" id="default_pass_manager"><a class="viewcode-back" href="../../../../autodoc/qiskit.transpiler.preset_passmanagers.html#qiskit.transpiler.preset_passmanagers.default.default_pass_manager">[docs]</a><span class="k">def</span> <span class="nf">default_pass_manager</span><span class="p">(</span><span class="n">transpile_config</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    The default pass manager that maps to the coupling map.</span>
 
@@ -254,7 +254,7 @@
     <span class="k">return</span> <span class="n">pass_manager</span></div>
 
 
-<div class="viewcode-block" id="default_pass_manager_simulator"><a class="viewcode-back" href="../../../../autodoc/qiskit.transpiler.preset_passmanagers.default.html#qiskit.transpiler.preset_passmanagers.default.default_pass_manager_simulator">[docs]</a><span class="k">def</span> <span class="nf">default_pass_manager_simulator</span><span class="p">(</span><span class="n">transpile_config</span><span class="p">):</span>
+<div class="viewcode-block" id="default_pass_manager_simulator"><a class="viewcode-back" href="../../../../autodoc/qiskit.transpiler.preset_passmanagers.html#qiskit.transpiler.preset_passmanagers.default.default_pass_manager_simulator">[docs]</a><span class="k">def</span> <span class="nf">default_pass_manager_simulator</span><span class="p">(</span><span class="n">transpile_config</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    The default pass manager without a coupling map.</span>
 
@@ -322,23 +322,23 @@
       var el = document.getElementById('language');
       var optionsToSelect = ['en', 'ja']
       function changeLoc(evt) {
-        var language = evt.target.options[el.selectedIndex].value;
-        var pathname = window.location.pathname.slice(prefix.length);
-        if (language === getDefaultLanguage()) {
-          window.location.pathname =
-            `${prefix}${pathname.replace(localeRegExp, '/')}`;
-        } else {
-          window.location.pathname =
-            `${prefix}${pathname.replace(localeRegExp, `/locale/${language}/`)}`;
+	        var language = evt.target.options[el.selectedIndex].value;
+	        var pathname = window.location.pathname.slice(prefix.length);
+	        if (language === getDefaultLanguage()) {
+	          window.location.pathname =
+	            `${prefix}${pathname.replace(localeRegExp, '/')}`;
+	        } else {
+	          window.location.pathname =
+	            `${prefix}${pathname.replace(localeRegExp, `/locale/${language}/`)}`;
         }
       };
       el.addEventListener('change', changeLoc);
 
       function extractLanguageFromUrl(pathname) {
-        const match = pathname.slice(prefix.length).match(localeRegExp);
-        return typeof match[2] === 'undefined' ?
-                getDefaultLanguage() : match[2];
-	    }
+	        const match = pathname.slice(prefix.length).match(localeRegExp);
+	        return typeof match[2] === 'undefined' ?
+	               getDefaultLanguage() : match[2];
+	      }
 
       function changeSelect(select) {
         const optionToSelect = extractLanguageFromUrl(window.location.pathname);

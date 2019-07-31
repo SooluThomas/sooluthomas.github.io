@@ -34,7 +34,7 @@
        </script>
         <script src="https://cloud.ibm.com/analytics/build/bluemix-analytics.min.js"></script>
     
-    <title>qiskit.ignis.verification.randomized_benchmarking.Clifford &#8212; Qiskit 0.11.0 documentation</title>
+    <title>qiskit.ignis.verification.randomized_benchmarking.Clifford &#8212; Qiskit 0.11.1 documentation</title>
 
     <link rel="stylesheet" href="../../../../../_static/material-icons.css" type="text/css" />
     <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css" />
@@ -195,7 +195,7 @@
 <span class="kn">from</span> <span class="nn">qiskit.quantum_info</span> <span class="k">import</span> <span class="n">Pauli</span>
 
 
-<div class="viewcode-block" id="Clifford"><a class="viewcode-back" href="../../../../../autodoc/qiskit.ignis.verification.randomized_benchmarking.Clifford.html#qiskit.ignis.verification.randomized_benchmarking.Clifford.Clifford">[docs]</a><span class="k">class</span> <span class="nc">Clifford</span><span class="p">:</span>
+<div class="viewcode-block" id="Clifford"><a class="viewcode-back" href="../../../../../autodoc/qiskit.ignis.verification.randomized_benchmarking.html#qiskit.ignis.verification.randomized_benchmarking.Clifford.Clifford">[docs]</a><span class="k">class</span> <span class="nc">Clifford</span><span class="p">:</span>
 
     <span class="sd">&quot;&quot;&quot;Clifford class&quot;&quot;&quot;</span>
 
@@ -294,25 +294,25 @@
     <span class="c1"># Interface with Pauli object</span>
     <span class="c1"># ---------------------------------------------------------------------</span>
 
-<div class="viewcode-block" id="Clifford.stabilizer"><a class="viewcode-back" href="../../../../../autodoc/qiskit.ignis.verification.randomized_benchmarking.Clifford.html#qiskit.ignis.verification.randomized_benchmarking.Clifford.Clifford.stabilizer">[docs]</a>    <span class="k">def</span> <span class="nf">stabilizer</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">qubit</span><span class="p">):</span>
+<div class="viewcode-block" id="Clifford.stabilizer"><a class="viewcode-back" href="../../../../../autodoc/qiskit.ignis.verification.randomized_benchmarking.html#qiskit.ignis.verification.randomized_benchmarking.Clifford.Clifford.stabilizer">[docs]</a>    <span class="k">def</span> <span class="nf">stabilizer</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">qubit</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return the qubit stabilizer as a Pauli object&quot;&quot;&quot;</span>
         <span class="n">nq</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_num_qubits</span>
         <span class="n">z</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_table</span><span class="p">[</span><span class="n">nq</span> <span class="o">+</span> <span class="n">qubit</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span><span class="n">nq</span><span class="p">]</span>
         <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_table</span><span class="p">[</span><span class="n">nq</span> <span class="o">+</span> <span class="n">qubit</span><span class="p">,</span> <span class="n">nq</span><span class="p">:</span><span class="mi">2</span> <span class="o">*</span> <span class="n">nq</span><span class="p">]</span>
         <span class="k">return</span> <span class="n">Pauli</span><span class="p">(</span><span class="n">z</span><span class="o">=</span><span class="n">z</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="Clifford.update_stabilizer"><a class="viewcode-back" href="../../../../../autodoc/qiskit.ignis.verification.randomized_benchmarking.Clifford.html#qiskit.ignis.verification.randomized_benchmarking.Clifford.Clifford.update_stabilizer">[docs]</a>    <span class="k">def</span> <span class="nf">update_stabilizer</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">qubit</span><span class="p">,</span> <span class="n">pauli</span><span class="p">):</span>
+<div class="viewcode-block" id="Clifford.update_stabilizer"><a class="viewcode-back" href="../../../../../autodoc/qiskit.ignis.verification.randomized_benchmarking.html#qiskit.ignis.verification.randomized_benchmarking.Clifford.Clifford.update_stabilizer">[docs]</a>    <span class="k">def</span> <span class="nf">update_stabilizer</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">qubit</span><span class="p">,</span> <span class="n">pauli</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Update the qubit stabilizer row from a Pauli object&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_num_qubits</span> <span class="o">+</span> <span class="n">qubit</span><span class="p">]</span> <span class="o">=</span> <span class="n">pauli</span></div>
 
-<div class="viewcode-block" id="Clifford.destabilizer"><a class="viewcode-back" href="../../../../../autodoc/qiskit.ignis.verification.randomized_benchmarking.Clifford.html#qiskit.ignis.verification.randomized_benchmarking.Clifford.Clifford.destabilizer">[docs]</a>    <span class="k">def</span> <span class="nf">destabilizer</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">row</span><span class="p">):</span>
+<div class="viewcode-block" id="Clifford.destabilizer"><a class="viewcode-back" href="../../../../../autodoc/qiskit.ignis.verification.randomized_benchmarking.html#qiskit.ignis.verification.randomized_benchmarking.Clifford.Clifford.destabilizer">[docs]</a>    <span class="k">def</span> <span class="nf">destabilizer</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">row</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return the destabilizer as a Pauli object&quot;&quot;&quot;</span>
         <span class="n">nq</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_num_qubits</span>
         <span class="n">z</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_table</span><span class="p">[</span><span class="n">row</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span><span class="n">nq</span><span class="p">]</span>
         <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_table</span><span class="p">[</span><span class="n">row</span><span class="p">,</span> <span class="n">nq</span><span class="p">:</span><span class="mi">2</span> <span class="o">*</span> <span class="n">nq</span><span class="p">]</span>
         <span class="k">return</span> <span class="n">Pauli</span><span class="p">(</span><span class="n">z</span><span class="o">=</span><span class="n">z</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="Clifford.update_destabilizer"><a class="viewcode-back" href="../../../../../autodoc/qiskit.ignis.verification.randomized_benchmarking.Clifford.html#qiskit.ignis.verification.randomized_benchmarking.Clifford.Clifford.update_destabilizer">[docs]</a>    <span class="k">def</span> <span class="nf">update_destabilizer</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">qubit</span><span class="p">,</span> <span class="n">pauli</span><span class="p">):</span>
+<div class="viewcode-block" id="Clifford.update_destabilizer"><a class="viewcode-back" href="../../../../../autodoc/qiskit.ignis.verification.randomized_benchmarking.html#qiskit.ignis.verification.randomized_benchmarking.Clifford.Clifford.update_destabilizer">[docs]</a>    <span class="k">def</span> <span class="nf">update_destabilizer</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">qubit</span><span class="p">,</span> <span class="n">pauli</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Update the qubit destabilizer row from a Pauli object&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="p">[</span><span class="n">qubit</span><span class="p">]</span> <span class="o">=</span> <span class="n">pauli</span></div>
 
@@ -320,7 +320,7 @@
     <span class="c1"># JSON / Dict conversion</span>
     <span class="c1"># ---------------------------------------------------------------------</span>
 
-<div class="viewcode-block" id="Clifford.as_dict"><a class="viewcode-back" href="../../../../../autodoc/qiskit.ignis.verification.randomized_benchmarking.Clifford.html#qiskit.ignis.verification.randomized_benchmarking.Clifford.Clifford.as_dict">[docs]</a>    <span class="k">def</span> <span class="nf">as_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="Clifford.as_dict"><a class="viewcode-back" href="../../../../../autodoc/qiskit.ignis.verification.randomized_benchmarking.html#qiskit.ignis.verification.randomized_benchmarking.Clifford.Clifford.as_dict">[docs]</a>    <span class="k">def</span> <span class="nf">as_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return dictionary (JSON) represenation of Clifford object&quot;&quot;&quot;</span>
         <span class="c1"># Modify later if we want to include i and -i.</span>
         <span class="n">phase_coeffs</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="p">]</span>
@@ -336,7 +336,7 @@
             <span class="n">destabilizers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">phase_coeffs</span><span class="p">[</span><span class="n">phase</span><span class="p">]</span> <span class="o">+</span> <span class="n">label</span><span class="p">)</span>
         <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;stabilizers&quot;</span><span class="p">:</span> <span class="n">stabilizers</span><span class="p">,</span> <span class="s2">&quot;destabilizers&quot;</span><span class="p">:</span> <span class="n">destabilizers</span><span class="p">}</span></div>
 
-<div class="viewcode-block" id="Clifford.from_dict"><a class="viewcode-back" href="../../../../../autodoc/qiskit.ignis.verification.randomized_benchmarking.Clifford.html#qiskit.ignis.verification.randomized_benchmarking.Clifford.Clifford.from_dict">[docs]</a>    <span class="nd">@classmethod</span>
+<div class="viewcode-block" id="Clifford.from_dict"><a class="viewcode-back" href="../../../../../autodoc/qiskit.ignis.verification.randomized_benchmarking.html#qiskit.ignis.verification.randomized_benchmarking.Clifford.Clifford.from_dict">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">from_dict</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">clifford_dict</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Load a Clifford from a dictionary&quot;&quot;&quot;</span>
 
@@ -385,7 +385,7 @@
     <span class="c1"># ---------------------------------------------------------------------</span>
     <span class="c1"># Unique Clifford index</span>
     <span class="c1"># ---------------------------------------------------------------------</span>
-<div class="viewcode-block" id="Clifford.index"><a class="viewcode-back" href="../../../../../autodoc/qiskit.ignis.verification.randomized_benchmarking.Clifford.html#qiskit.ignis.verification.randomized_benchmarking.Clifford.Clifford.index">[docs]</a>    <span class="k">def</span> <span class="nf">index</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="Clifford.index"><a class="viewcode-back" href="../../../../../autodoc/qiskit.ignis.verification.randomized_benchmarking.html#qiskit.ignis.verification.randomized_benchmarking.Clifford.Clifford.index">[docs]</a>    <span class="k">def</span> <span class="nf">index</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Returns a unique index for the Clifford.</span>
 
@@ -409,23 +409,23 @@
 
     <span class="c1"># NOTE: These might change based on changes to QuantumCircuit API.</span>
     <span class="c1"># They should mimic the circuit API as much as possible.</span>
-<div class="viewcode-block" id="Clifford.x"><a class="viewcode-back" href="../../../../../autodoc/qiskit.ignis.verification.randomized_benchmarking.Clifford.html#qiskit.ignis.verification.randomized_benchmarking.Clifford.Clifford.x">[docs]</a>    <span class="k">def</span> <span class="nf">x</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">qubit</span><span class="p">):</span>
+<div class="viewcode-block" id="Clifford.x"><a class="viewcode-back" href="../../../../../autodoc/qiskit.ignis.verification.randomized_benchmarking.html#qiskit.ignis.verification.randomized_benchmarking.Clifford.Clifford.x">[docs]</a>    <span class="k">def</span> <span class="nf">x</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">qubit</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Apply a Pauli &quot;x&quot; gate to a qubit&quot;&quot;&quot;</span>
         <span class="n">iz</span> <span class="o">=</span> <span class="n">qubit</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_phases</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logical_xor</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_phases</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_table</span><span class="p">[:,</span> <span class="n">iz</span><span class="p">])</span></div>
 
-<div class="viewcode-block" id="Clifford.y"><a class="viewcode-back" href="../../../../../autodoc/qiskit.ignis.verification.randomized_benchmarking.Clifford.html#qiskit.ignis.verification.randomized_benchmarking.Clifford.Clifford.y">[docs]</a>    <span class="k">def</span> <span class="nf">y</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">qubit</span><span class="p">):</span>
+<div class="viewcode-block" id="Clifford.y"><a class="viewcode-back" href="../../../../../autodoc/qiskit.ignis.verification.randomized_benchmarking.html#qiskit.ignis.verification.randomized_benchmarking.Clifford.Clifford.y">[docs]</a>    <span class="k">def</span> <span class="nf">y</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">qubit</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Apply an Pauli &quot;y&quot; gate to a qubit&quot;&quot;&quot;</span>
         <span class="n">iz</span><span class="p">,</span> <span class="n">ix</span> <span class="o">=</span> <span class="n">qubit</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_num_qubits</span> <span class="o">+</span> <span class="n">qubit</span>
         <span class="n">zx_xor</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logical_xor</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_table</span><span class="p">[:,</span> <span class="n">iz</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">_table</span><span class="p">[:,</span> <span class="n">ix</span><span class="p">])</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_phases</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logical_xor</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_phases</span><span class="p">,</span> <span class="n">zx_xor</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="Clifford.z"><a class="viewcode-back" href="../../../../../autodoc/qiskit.ignis.verification.randomized_benchmarking.Clifford.html#qiskit.ignis.verification.randomized_benchmarking.Clifford.Clifford.z">[docs]</a>    <span class="k">def</span> <span class="nf">z</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">qubit</span><span class="p">):</span>
+<div class="viewcode-block" id="Clifford.z"><a class="viewcode-back" href="../../../../../autodoc/qiskit.ignis.verification.randomized_benchmarking.html#qiskit.ignis.verification.randomized_benchmarking.Clifford.Clifford.z">[docs]</a>    <span class="k">def</span> <span class="nf">z</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">qubit</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Apply an Pauli &quot;z&quot; gate to qubit&quot;&quot;&quot;</span>
         <span class="n">ix</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_num_qubits</span> <span class="o">+</span> <span class="n">qubit</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_phases</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logical_xor</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_phases</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_table</span><span class="p">[:,</span> <span class="n">ix</span><span class="p">])</span></div>
 
-<div class="viewcode-block" id="Clifford.h"><a class="viewcode-back" href="../../../../../autodoc/qiskit.ignis.verification.randomized_benchmarking.Clifford.html#qiskit.ignis.verification.randomized_benchmarking.Clifford.Clifford.h">[docs]</a>    <span class="k">def</span> <span class="nf">h</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">qubit</span><span class="p">):</span>
+<div class="viewcode-block" id="Clifford.h"><a class="viewcode-back" href="../../../../../autodoc/qiskit.ignis.verification.randomized_benchmarking.html#qiskit.ignis.verification.randomized_benchmarking.Clifford.Clifford.h">[docs]</a>    <span class="k">def</span> <span class="nf">h</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">qubit</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Apply an Hadamard &quot;h&quot; gate to qubit&quot;&quot;&quot;</span>
         <span class="n">iz</span><span class="p">,</span> <span class="n">ix</span> <span class="o">=</span> <span class="n">qubit</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_num_qubits</span> <span class="o">+</span> <span class="n">qubit</span>
         <span class="n">zx_and</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logical_and</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_table</span><span class="p">[:,</span> <span class="n">ix</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">_table</span><span class="p">[:,</span> <span class="n">iz</span><span class="p">])</span>
@@ -436,7 +436,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_table</span><span class="p">[:,</span> <span class="n">ix</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_table</span><span class="p">[:,</span> <span class="n">iz</span><span class="p">]</span>  <span class="c1"># Does this need to be a copy?</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_table</span><span class="p">[:,</span> <span class="n">iz</span><span class="p">]</span> <span class="o">=</span> <span class="n">x_cache</span></div>
 
-<div class="viewcode-block" id="Clifford.s"><a class="viewcode-back" href="../../../../../autodoc/qiskit.ignis.verification.randomized_benchmarking.Clifford.html#qiskit.ignis.verification.randomized_benchmarking.Clifford.Clifford.s">[docs]</a>    <span class="k">def</span> <span class="nf">s</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">qubit</span><span class="p">):</span>
+<div class="viewcode-block" id="Clifford.s"><a class="viewcode-back" href="../../../../../autodoc/qiskit.ignis.verification.randomized_benchmarking.html#qiskit.ignis.verification.randomized_benchmarking.Clifford.Clifford.s">[docs]</a>    <span class="k">def</span> <span class="nf">s</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">qubit</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Apply an phase &quot;s&quot; gate to qubit&quot;&quot;&quot;</span>
         <span class="n">iz</span><span class="p">,</span> <span class="n">ix</span> <span class="o">=</span> <span class="n">qubit</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_num_qubits</span> <span class="o">+</span> <span class="n">qubit</span>
         <span class="n">zx_and</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logical_and</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_table</span><span class="p">[:,</span> <span class="n">ix</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">_table</span><span class="p">[:,</span> <span class="n">iz</span><span class="p">])</span>
@@ -444,25 +444,25 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_table</span><span class="p">[:,</span> <span class="n">iz</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logical_xor</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_table</span><span class="p">[:,</span> <span class="n">ix</span><span class="p">],</span>
                                             <span class="bp">self</span><span class="o">.</span><span class="n">_table</span><span class="p">[:,</span> <span class="n">iz</span><span class="p">])</span></div>
 
-<div class="viewcode-block" id="Clifford.sdg"><a class="viewcode-back" href="../../../../../autodoc/qiskit.ignis.verification.randomized_benchmarking.Clifford.html#qiskit.ignis.verification.randomized_benchmarking.Clifford.Clifford.sdg">[docs]</a>    <span class="k">def</span> <span class="nf">sdg</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">qubit</span><span class="p">):</span>
+<div class="viewcode-block" id="Clifford.sdg"><a class="viewcode-back" href="../../../../../autodoc/qiskit.ignis.verification.randomized_benchmarking.html#qiskit.ignis.verification.randomized_benchmarking.Clifford.Clifford.sdg">[docs]</a>    <span class="k">def</span> <span class="nf">sdg</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">qubit</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Apply an adjoint phase &quot;sdg&quot; gate to qubit&quot;&quot;&quot;</span>
         <span class="c1"># TODO: change direct table update if more efficient</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">z</span><span class="p">(</span><span class="n">qubit</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">s</span><span class="p">(</span><span class="n">qubit</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="Clifford.v"><a class="viewcode-back" href="../../../../../autodoc/qiskit.ignis.verification.randomized_benchmarking.Clifford.html#qiskit.ignis.verification.randomized_benchmarking.Clifford.Clifford.v">[docs]</a>    <span class="k">def</span> <span class="nf">v</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">qubit</span><span class="p">):</span>
+<div class="viewcode-block" id="Clifford.v"><a class="viewcode-back" href="../../../../../autodoc/qiskit.ignis.verification.randomized_benchmarking.html#qiskit.ignis.verification.randomized_benchmarking.Clifford.Clifford.v">[docs]</a>    <span class="k">def</span> <span class="nf">v</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">qubit</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Apply v gate sd.h&quot;&quot;&quot;</span>
         <span class="c1"># TODO: change direct table update if more efficient</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">sdg</span><span class="p">(</span><span class="n">qubit</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">h</span><span class="p">(</span><span class="n">qubit</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="Clifford.w"><a class="viewcode-back" href="../../../../../autodoc/qiskit.ignis.verification.randomized_benchmarking.Clifford.html#qiskit.ignis.verification.randomized_benchmarking.Clifford.Clifford.w">[docs]</a>    <span class="k">def</span> <span class="nf">w</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">qubit</span><span class="p">):</span>
+<div class="viewcode-block" id="Clifford.w"><a class="viewcode-back" href="../../../../../autodoc/qiskit.ignis.verification.randomized_benchmarking.html#qiskit.ignis.verification.randomized_benchmarking.Clifford.Clifford.w">[docs]</a>    <span class="k">def</span> <span class="nf">w</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">qubit</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Apply w gate v.v&quot;&quot;&quot;</span>
         <span class="c1"># TODO: change direct table update if more efficient</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">h</span><span class="p">(</span><span class="n">qubit</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">s</span><span class="p">(</span><span class="n">qubit</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="Clifford.cx"><a class="viewcode-back" href="../../../../../autodoc/qiskit.ignis.verification.randomized_benchmarking.Clifford.html#qiskit.ignis.verification.randomized_benchmarking.Clifford.Clifford.cx">[docs]</a>    <span class="k">def</span> <span class="nf">cx</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">qubit_ctrl</span><span class="p">,</span> <span class="n">qubit_trgt</span><span class="p">):</span>
+<div class="viewcode-block" id="Clifford.cx"><a class="viewcode-back" href="../../../../../autodoc/qiskit.ignis.verification.randomized_benchmarking.html#qiskit.ignis.verification.randomized_benchmarking.Clifford.Clifford.cx">[docs]</a>    <span class="k">def</span> <span class="nf">cx</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">qubit_ctrl</span><span class="p">,</span> <span class="n">qubit_trgt</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Apply a Controlled-NOT &quot;cx&quot; gate&quot;&quot;&quot;</span>
         <span class="c1"># Helper indices for stabilizer columns</span>
         <span class="n">iz_c</span><span class="p">,</span> <span class="n">ix_c</span> <span class="o">=</span> <span class="n">qubit_ctrl</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_qubits</span> <span class="o">+</span> <span class="n">qubit_ctrl</span>
@@ -479,14 +479,14 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_table</span><span class="p">[:,</span> <span class="n">iz_c</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logical_xor</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_table</span><span class="p">[:,</span> <span class="n">iz_t</span><span class="p">],</span>
                                               <span class="bp">self</span><span class="o">.</span><span class="n">_table</span><span class="p">[:,</span> <span class="n">iz_c</span><span class="p">])</span></div>
 
-<div class="viewcode-block" id="Clifford.cz"><a class="viewcode-back" href="../../../../../autodoc/qiskit.ignis.verification.randomized_benchmarking.Clifford.html#qiskit.ignis.verification.randomized_benchmarking.Clifford.Clifford.cz">[docs]</a>    <span class="k">def</span> <span class="nf">cz</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">qubit_ctrl</span><span class="p">,</span> <span class="n">qubit_trgt</span><span class="p">):</span>
+<div class="viewcode-block" id="Clifford.cz"><a class="viewcode-back" href="../../../../../autodoc/qiskit.ignis.verification.randomized_benchmarking.html#qiskit.ignis.verification.randomized_benchmarking.Clifford.Clifford.cz">[docs]</a>    <span class="k">def</span> <span class="nf">cz</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">qubit_ctrl</span><span class="p">,</span> <span class="n">qubit_trgt</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Apply a Controlled-z &quot;cx&quot; gate&quot;&quot;&quot;</span>
         <span class="c1"># TODO: change direct table update if more efficient</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">h</span><span class="p">(</span><span class="n">qubit_trgt</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">cx</span><span class="p">(</span><span class="n">qubit_ctrl</span><span class="p">,</span> <span class="n">qubit_trgt</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">h</span><span class="p">(</span><span class="n">qubit_trgt</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="Clifford.swap"><a class="viewcode-back" href="../../../../../autodoc/qiskit.ignis.verification.randomized_benchmarking.Clifford.html#qiskit.ignis.verification.randomized_benchmarking.Clifford.Clifford.swap">[docs]</a>    <span class="k">def</span> <span class="nf">swap</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">qubit0</span><span class="p">,</span> <span class="n">qubit1</span><span class="p">):</span>
+<div class="viewcode-block" id="Clifford.swap"><a class="viewcode-back" href="../../../../../autodoc/qiskit.ignis.verification.randomized_benchmarking.html#qiskit.ignis.verification.randomized_benchmarking.Clifford.Clifford.swap">[docs]</a>    <span class="k">def</span> <span class="nf">swap</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">qubit0</span><span class="p">,</span> <span class="n">qubit1</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Apply SWAP gate between two qubits&quot;&quot;&quot;</span>
         <span class="c1"># TODO: change direct swap of required rows and cols in table</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">cx</span><span class="p">(</span><span class="n">qubit0</span><span class="p">,</span> <span class="n">qubit1</span><span class="p">)</span>
@@ -542,23 +542,23 @@
       var el = document.getElementById('language');
       var optionsToSelect = ['en', 'ja']
       function changeLoc(evt) {
-        var language = evt.target.options[el.selectedIndex].value;
-        var pathname = window.location.pathname.slice(prefix.length);
-        if (language === getDefaultLanguage()) {
-          window.location.pathname =
-            `${prefix}${pathname.replace(localeRegExp, '/')}`;
-        } else {
-          window.location.pathname =
-            `${prefix}${pathname.replace(localeRegExp, `/locale/${language}/`)}`;
+	        var language = evt.target.options[el.selectedIndex].value;
+	        var pathname = window.location.pathname.slice(prefix.length);
+	        if (language === getDefaultLanguage()) {
+	          window.location.pathname =
+	            `${prefix}${pathname.replace(localeRegExp, '/')}`;
+	        } else {
+	          window.location.pathname =
+	            `${prefix}${pathname.replace(localeRegExp, `/locale/${language}/`)}`;
         }
       };
       el.addEventListener('change', changeLoc);
 
       function extractLanguageFromUrl(pathname) {
-        const match = pathname.slice(prefix.length).match(localeRegExp);
-        return typeof match[2] === 'undefined' ?
-                getDefaultLanguage() : match[2];
-	    }
+	        const match = pathname.slice(prefix.length).match(localeRegExp);
+	        return typeof match[2] === 'undefined' ?
+	               getDefaultLanguage() : match[2];
+	      }
 
       function changeSelect(select) {
         const optionToSelect = extractLanguageFromUrl(window.location.pathname);

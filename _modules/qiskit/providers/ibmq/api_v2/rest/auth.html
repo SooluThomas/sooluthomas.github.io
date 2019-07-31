@@ -34,7 +34,7 @@
        </script>
         <script src="https://cloud.ibm.com/analytics/build/bluemix-analytics.min.js"></script>
     
-    <title>qiskit.providers.ibmq.api_v2.rest.auth &#8212; Qiskit 0.11.0 documentation</title>
+    <title>qiskit.providers.ibmq.api_v2.rest.auth &#8212; Qiskit 0.11.1 documentation</title>
 
     <link rel="stylesheet" href="../../../../../../_static/material-icons.css" type="text/css" />
     <link rel="stylesheet" href="../../../../../../_static/pygments.css" type="text/css" />
@@ -188,7 +188,7 @@
 <span class="kn">from</span> <span class="nn">.base</span> <span class="k">import</span> <span class="n">RestAdapterBase</span>
 
 
-<div class="viewcode-block" id="Auth"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.providers.ibmq.api_v2.rest.auth.html#qiskit.providers.ibmq.api_v2.rest.auth.Auth">[docs]</a><span class="k">class</span> <span class="nc">Auth</span><span class="p">(</span><span class="n">RestAdapterBase</span><span class="p">):</span>
+<div class="viewcode-block" id="Auth"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.providers.ibmq.api_v2.rest.html#qiskit.providers.ibmq.api_v2.rest.auth.Auth">[docs]</a><span class="k">class</span> <span class="nc">Auth</span><span class="p">(</span><span class="n">RestAdapterBase</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Rest adapter for authentication endpoints.&quot;&quot;&quot;</span>
 
     <span class="n">URL_MAP</span> <span class="o">=</span> <span class="p">{</span>
@@ -196,7 +196,7 @@
         <span class="s1">&#39;user_info&#39;</span><span class="p">:</span> <span class="s1">&#39;/users/me&#39;</span><span class="p">,</span>
     <span class="p">}</span>
 
-<div class="viewcode-block" id="Auth.login"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.providers.ibmq.api_v2.rest.auth.html#qiskit.providers.ibmq.api_v2.rest.auth.Auth.login">[docs]</a>    <span class="k">def</span> <span class="nf">login</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">api_token</span><span class="p">):</span>
+<div class="viewcode-block" id="Auth.login"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.providers.ibmq.api_v2.rest.html#qiskit.providers.ibmq.api_v2.rest.auth.Auth.login">[docs]</a>    <span class="k">def</span> <span class="nf">login</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">api_token</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Login with token.</span>
 
 <span class="sd">        Args:</span>
@@ -208,7 +208,7 @@
         <span class="n">url</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_url</span><span class="p">(</span><span class="s1">&#39;login&#39;</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;apiToken&#39;</span><span class="p">:</span> <span class="n">api_token</span><span class="p">})</span><span class="o">.</span><span class="n">json</span><span class="p">()</span></div>
 
-<div class="viewcode-block" id="Auth.user_info"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.providers.ibmq.api_v2.rest.auth.html#qiskit.providers.ibmq.api_v2.rest.auth.Auth.user_info">[docs]</a>    <span class="k">def</span> <span class="nf">user_info</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="Auth.user_info"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.providers.ibmq.api_v2.rest.html#qiskit.providers.ibmq.api_v2.rest.auth.Auth.user_info">[docs]</a>    <span class="k">def</span> <span class="nf">user_info</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return user information.&quot;&quot;&quot;</span>
         <span class="n">url</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_url</span><span class="p">(</span><span class="s1">&#39;user_info&#39;</span><span class="p">)</span>
         <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
@@ -264,23 +264,23 @@
       var el = document.getElementById('language');
       var optionsToSelect = ['en', 'ja']
       function changeLoc(evt) {
-        var language = evt.target.options[el.selectedIndex].value;
-        var pathname = window.location.pathname.slice(prefix.length);
-        if (language === getDefaultLanguage()) {
-          window.location.pathname =
-            `${prefix}${pathname.replace(localeRegExp, '/')}`;
-        } else {
-          window.location.pathname =
-            `${prefix}${pathname.replace(localeRegExp, `/locale/${language}/`)}`;
+	        var language = evt.target.options[el.selectedIndex].value;
+	        var pathname = window.location.pathname.slice(prefix.length);
+	        if (language === getDefaultLanguage()) {
+	          window.location.pathname =
+	            `${prefix}${pathname.replace(localeRegExp, '/')}`;
+	        } else {
+	          window.location.pathname =
+	            `${prefix}${pathname.replace(localeRegExp, `/locale/${language}/`)}`;
         }
       };
       el.addEventListener('change', changeLoc);
 
       function extractLanguageFromUrl(pathname) {
-        const match = pathname.slice(prefix.length).match(localeRegExp);
-        return typeof match[2] === 'undefined' ?
-                getDefaultLanguage() : match[2];
-	    }
+	        const match = pathname.slice(prefix.length).match(localeRegExp);
+	        return typeof match[2] === 'undefined' ?
+	               getDefaultLanguage() : match[2];
+	      }
 
       function changeSelect(select) {
         const optionToSelect = extractLanguageFromUrl(window.location.pathname);

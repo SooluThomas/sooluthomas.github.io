@@ -34,7 +34,7 @@
        </script>
         <script src="https://cloud.ibm.com/analytics/build/bluemix-analytics.min.js"></script>
     
-    <title>qiskit.providers.ibmq.api_v2.rest.version_finder &#8212; Qiskit 0.11.0 documentation</title>
+    <title>qiskit.providers.ibmq.api_v2.rest.version_finder &#8212; Qiskit 0.11.1 documentation</title>
 
     <link rel="stylesheet" href="../../../../../../_static/material-icons.css" type="text/css" />
     <link rel="stylesheet" href="../../../../../../_static/pygments.css" type="text/css" />
@@ -190,14 +190,14 @@
 <span class="kn">from</span> <span class="nn">.base</span> <span class="k">import</span> <span class="n">RestAdapterBase</span>
 
 
-<div class="viewcode-block" id="VersionFinder"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.providers.ibmq.api_v2.rest.version_finder.html#qiskit.providers.ibmq.api_v2.rest.version_finder.VersionFinder">[docs]</a><span class="k">class</span> <span class="nc">VersionFinder</span><span class="p">(</span><span class="n">RestAdapterBase</span><span class="p">):</span>
+<div class="viewcode-block" id="VersionFinder"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.providers.ibmq.api_v2.rest.html#qiskit.providers.ibmq.api_v2.rest.version_finder.VersionFinder">[docs]</a><span class="k">class</span> <span class="nc">VersionFinder</span><span class="p">(</span><span class="n">RestAdapterBase</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Rest adapter for the version finder.&quot;&quot;&quot;</span>
 
     <span class="n">URL_MAP</span> <span class="o">=</span> <span class="p">{</span>
         <span class="s1">&#39;version&#39;</span><span class="p">:</span> <span class="s1">&#39;/version&#39;</span>
     <span class="p">}</span>
 
-<div class="viewcode-block" id="VersionFinder.version"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.providers.ibmq.api_v2.rest.version_finder.html#qiskit.providers.ibmq.api_v2.rest.version_finder.VersionFinder.version">[docs]</a>    <span class="k">def</span> <span class="nf">version</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="VersionFinder.version"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.providers.ibmq.api_v2.rest.html#qiskit.providers.ibmq.api_v2.rest.version_finder.VersionFinder.version">[docs]</a>    <span class="k">def</span> <span class="nf">version</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return the version info.</span>
 
 <span class="sd">        Returns:</span>
@@ -270,23 +270,23 @@
       var el = document.getElementById('language');
       var optionsToSelect = ['en', 'ja']
       function changeLoc(evt) {
-        var language = evt.target.options[el.selectedIndex].value;
-        var pathname = window.location.pathname.slice(prefix.length);
-        if (language === getDefaultLanguage()) {
-          window.location.pathname =
-            `${prefix}${pathname.replace(localeRegExp, '/')}`;
-        } else {
-          window.location.pathname =
-            `${prefix}${pathname.replace(localeRegExp, `/locale/${language}/`)}`;
+	        var language = evt.target.options[el.selectedIndex].value;
+	        var pathname = window.location.pathname.slice(prefix.length);
+	        if (language === getDefaultLanguage()) {
+	          window.location.pathname =
+	            `${prefix}${pathname.replace(localeRegExp, '/')}`;
+	        } else {
+	          window.location.pathname =
+	            `${prefix}${pathname.replace(localeRegExp, `/locale/${language}/`)}`;
         }
       };
       el.addEventListener('change', changeLoc);
 
       function extractLanguageFromUrl(pathname) {
-        const match = pathname.slice(prefix.length).match(localeRegExp);
-        return typeof match[2] === 'undefined' ?
-                getDefaultLanguage() : match[2];
-	    }
+	        const match = pathname.slice(prefix.length).match(localeRegExp);
+	        return typeof match[2] === 'undefined' ?
+	               getDefaultLanguage() : match[2];
+	      }
 
       function changeSelect(select) {
         const optionToSelect = extractLanguageFromUrl(window.location.pathname);

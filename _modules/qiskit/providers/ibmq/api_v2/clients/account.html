@@ -34,7 +34,7 @@
        </script>
         <script src="https://cloud.ibm.com/analytics/build/bluemix-analytics.min.js"></script>
     
-    <title>qiskit.providers.ibmq.api_v2.clients.account &#8212; Qiskit 0.11.0 documentation</title>
+    <title>qiskit.providers.ibmq.api_v2.clients.account &#8212; Qiskit 0.11.1 documentation</title>
 
     <link rel="stylesheet" href="../../../../../../_static/material-icons.css" type="text/css" />
     <link rel="stylesheet" href="../../../../../../_static/pygments.css" type="text/css" />
@@ -194,7 +194,7 @@
 <span class="kn">from</span> <span class="nn">.websocket</span> <span class="k">import</span> <span class="n">WebsocketClient</span>
 
 
-<div class="viewcode-block" id="AccountClient"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.providers.ibmq.api_v2.clients.account.html#qiskit.providers.ibmq.api_v2.clients.account.AccountClient">[docs]</a><span class="k">class</span> <span class="nc">AccountClient</span><span class="p">(</span><span class="n">BaseClient</span><span class="p">):</span>
+<div class="viewcode-block" id="AccountClient"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.providers.ibmq.api_v2.clients.html#qiskit.providers.ibmq.api_v2.clients.account.AccountClient">[docs]</a><span class="k">class</span> <span class="nc">AccountClient</span><span class="p">(</span><span class="n">BaseClient</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Client for accessing an individual IBM Q Experience account.</span>
 
 <span class="sd">    This client provides access to an individual IBM Q hub/group/project.</span>
@@ -215,7 +215,7 @@
 
     <span class="c1"># Backend-related public functions.</span>
 
-<div class="viewcode-block" id="AccountClient.list_backends"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.providers.ibmq.api_v2.clients.account.html#qiskit.providers.ibmq.api_v2.clients.account.AccountClient.list_backends">[docs]</a>    <span class="k">def</span> <span class="nf">list_backends</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="AccountClient.list_backends"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.providers.ibmq.api_v2.clients.html#qiskit.providers.ibmq.api_v2.clients.account.AccountClient.list_backends">[docs]</a>    <span class="k">def</span> <span class="nf">list_backends</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return the list of backends.</span>
 
 <span class="sd">        Returns:</span>
@@ -223,7 +223,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">client_api</span><span class="o">.</span><span class="n">backends</span><span class="p">()</span></div>
 
-<div class="viewcode-block" id="AccountClient.backend_status"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.providers.ibmq.api_v2.clients.account.html#qiskit.providers.ibmq.api_v2.clients.account.AccountClient.backend_status">[docs]</a>    <span class="k">def</span> <span class="nf">backend_status</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">backend_name</span><span class="p">):</span>
+<div class="viewcode-block" id="AccountClient.backend_status"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.providers.ibmq.api_v2.clients.html#qiskit.providers.ibmq.api_v2.clients.account.AccountClient.backend_status">[docs]</a>    <span class="k">def</span> <span class="nf">backend_status</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">backend_name</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return the status of a backend.</span>
 
 <span class="sd">        Args:</span>
@@ -234,7 +234,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">client_api</span><span class="o">.</span><span class="n">backend</span><span class="p">(</span><span class="n">backend_name</span><span class="p">)</span><span class="o">.</span><span class="n">status</span><span class="p">()</span></div>
 
-<div class="viewcode-block" id="AccountClient.backend_properties"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.providers.ibmq.api_v2.clients.account.html#qiskit.providers.ibmq.api_v2.clients.account.AccountClient.backend_properties">[docs]</a>    <span class="k">def</span> <span class="nf">backend_properties</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">backend_name</span><span class="p">):</span>
+<div class="viewcode-block" id="AccountClient.backend_properties"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.providers.ibmq.api_v2.clients.html#qiskit.providers.ibmq.api_v2.clients.account.AccountClient.backend_properties">[docs]</a>    <span class="k">def</span> <span class="nf">backend_properties</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">backend_name</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return the properties of a backend.</span>
 
 <span class="sd">        Args:</span>
@@ -245,7 +245,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">client_api</span><span class="o">.</span><span class="n">backend</span><span class="p">(</span><span class="n">backend_name</span><span class="p">)</span><span class="o">.</span><span class="n">properties</span><span class="p">()</span></div>
 
-<div class="viewcode-block" id="AccountClient.backend_pulse_defaults"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.providers.ibmq.api_v2.clients.account.html#qiskit.providers.ibmq.api_v2.clients.account.AccountClient.backend_pulse_defaults">[docs]</a>    <span class="k">def</span> <span class="nf">backend_pulse_defaults</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">backend_name</span><span class="p">):</span>
+<div class="viewcode-block" id="AccountClient.backend_pulse_defaults"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.providers.ibmq.api_v2.clients.html#qiskit.providers.ibmq.api_v2.clients.account.AccountClient.backend_pulse_defaults">[docs]</a>    <span class="k">def</span> <span class="nf">backend_pulse_defaults</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">backend_name</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return the pulse defaults of a backend.</span>
 
 <span class="sd">        Args:</span>
@@ -258,7 +258,7 @@
 
     <span class="c1"># Jobs-related public functions.</span>
 
-<div class="viewcode-block" id="AccountClient.list_jobs_statuses"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.providers.ibmq.api_v2.clients.account.html#qiskit.providers.ibmq.api_v2.clients.account.AccountClient.list_jobs_statuses">[docs]</a>    <span class="k">def</span> <span class="nf">list_jobs_statuses</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">skip</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">extra_filter</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="AccountClient.list_jobs_statuses"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.providers.ibmq.api_v2.clients.html#qiskit.providers.ibmq.api_v2.clients.account.AccountClient.list_jobs_statuses">[docs]</a>    <span class="k">def</span> <span class="nf">list_jobs_statuses</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">skip</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">extra_filter</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return a list of statuses of jobs, with filtering and pagination.</span>
 
 <span class="sd">        Args:</span>
@@ -272,7 +272,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">client_api</span><span class="o">.</span><span class="n">jobs</span><span class="p">(</span><span class="n">limit</span><span class="o">=</span><span class="n">limit</span><span class="p">,</span> <span class="n">skip</span><span class="o">=</span><span class="n">skip</span><span class="p">,</span>
                                     <span class="n">extra_filter</span><span class="o">=</span><span class="n">extra_filter</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="AccountClient.job_submit"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.providers.ibmq.api_v2.clients.account.html#qiskit.providers.ibmq.api_v2.clients.account.AccountClient.job_submit">[docs]</a>    <span class="k">def</span> <span class="nf">job_submit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">backend_name</span><span class="p">,</span> <span class="n">qobj_dict</span><span class="p">):</span>
+<div class="viewcode-block" id="AccountClient.job_submit"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.providers.ibmq.api_v2.clients.html#qiskit.providers.ibmq.api_v2.clients.account.AccountClient.job_submit">[docs]</a>    <span class="k">def</span> <span class="nf">job_submit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">backend_name</span><span class="p">,</span> <span class="n">qobj_dict</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Submit a Qobj to a device.</span>
 
 <span class="sd">        Args:</span>
@@ -284,7 +284,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">client_api</span><span class="o">.</span><span class="n">submit_job</span><span class="p">(</span><span class="n">backend_name</span><span class="p">,</span> <span class="n">qobj_dict</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="AccountClient.job_submit_object_storage"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.providers.ibmq.api_v2.clients.account.html#qiskit.providers.ibmq.api_v2.clients.account.AccountClient.job_submit_object_storage">[docs]</a>    <span class="k">def</span> <span class="nf">job_submit_object_storage</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">backend_name</span><span class="p">,</span> <span class="n">qobj_dict</span><span class="p">):</span>
+<div class="viewcode-block" id="AccountClient.job_submit_object_storage"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.providers.ibmq.api_v2.clients.html#qiskit.providers.ibmq.api_v2.clients.account.AccountClient.job_submit_object_storage">[docs]</a>    <span class="k">def</span> <span class="nf">job_submit_object_storage</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">backend_name</span><span class="p">,</span> <span class="n">qobj_dict</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Submit a Qobj to a device using object storage.</span>
 
 <span class="sd">        Args:</span>
@@ -310,7 +310,7 @@
 
         <span class="k">return</span> <span class="n">response</span><span class="p">[</span><span class="s1">&#39;job&#39;</span><span class="p">]</span></div>
 
-<div class="viewcode-block" id="AccountClient.job_download_qobj_object_storage"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.providers.ibmq.api_v2.clients.account.html#qiskit.providers.ibmq.api_v2.clients.account.AccountClient.job_download_qobj_object_storage">[docs]</a>    <span class="k">def</span> <span class="nf">job_download_qobj_object_storage</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">job_id</span><span class="p">):</span>
+<div class="viewcode-block" id="AccountClient.job_download_qobj_object_storage"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.providers.ibmq.api_v2.clients.html#qiskit.providers.ibmq.api_v2.clients.account.AccountClient.job_download_qobj_object_storage">[docs]</a>    <span class="k">def</span> <span class="nf">job_download_qobj_object_storage</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">job_id</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Retrieve and return a Qobj using object storage.</span>
 
 <span class="sd">        Args:</span>
@@ -327,7 +327,7 @@
         <span class="c1"># Download the result from object storage.</span>
         <span class="k">return</span> <span class="n">job_api</span><span class="o">.</span><span class="n">get_object_storage</span><span class="p">(</span><span class="n">download_url</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="AccountClient.job_result_object_storage"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.providers.ibmq.api_v2.clients.account.html#qiskit.providers.ibmq.api_v2.clients.account.AccountClient.job_result_object_storage">[docs]</a>    <span class="k">def</span> <span class="nf">job_result_object_storage</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">job_id</span><span class="p">):</span>
+<div class="viewcode-block" id="AccountClient.job_result_object_storage"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.providers.ibmq.api_v2.clients.html#qiskit.providers.ibmq.api_v2.clients.account.AccountClient.job_result_object_storage">[docs]</a>    <span class="k">def</span> <span class="nf">job_result_object_storage</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">job_id</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Retrieve and return a result using object storage.</span>
 
 <span class="sd">        Args:</span>
@@ -344,7 +344,7 @@
         <span class="c1"># Download the result from object storage.</span>
         <span class="k">return</span> <span class="n">job_api</span><span class="o">.</span><span class="n">get_object_storage</span><span class="p">(</span><span class="n">download_url</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="AccountClient.job_get"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.providers.ibmq.api_v2.clients.account.html#qiskit.providers.ibmq.api_v2.clients.account.AccountClient.job_get">[docs]</a>    <span class="k">def</span> <span class="nf">job_get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">job_id</span><span class="p">,</span> <span class="n">excluded_fields</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">included_fields</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="AccountClient.job_get"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.providers.ibmq.api_v2.clients.html#qiskit.providers.ibmq.api_v2.clients.account.AccountClient.job_get">[docs]</a>    <span class="k">def</span> <span class="nf">job_get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">job_id</span><span class="p">,</span> <span class="n">excluded_fields</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">included_fields</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return information about a job.</span>
 
 <span class="sd">        Args:</span>
@@ -360,7 +360,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">client_api</span><span class="o">.</span><span class="n">job</span><span class="p">(</span><span class="n">job_id</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">excluded_fields</span><span class="p">,</span>
                                                <span class="n">included_fields</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="AccountClient.job_status"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.providers.ibmq.api_v2.clients.account.html#qiskit.providers.ibmq.api_v2.clients.account.AccountClient.job_status">[docs]</a>    <span class="k">def</span> <span class="nf">job_status</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">job_id</span><span class="p">):</span>
+<div class="viewcode-block" id="AccountClient.job_status"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.providers.ibmq.api_v2.clients.html#qiskit.providers.ibmq.api_v2.clients.account.AccountClient.job_status">[docs]</a>    <span class="k">def</span> <span class="nf">job_status</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">job_id</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return the status of a job.</span>
 
 <span class="sd">        Args:</span>
@@ -371,7 +371,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">client_api</span><span class="o">.</span><span class="n">job</span><span class="p">(</span><span class="n">job_id</span><span class="p">)</span><span class="o">.</span><span class="n">status</span><span class="p">()</span></div>
 
-<div class="viewcode-block" id="AccountClient.job_final_status_websocket"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.providers.ibmq.api_v2.clients.account.html#qiskit.providers.ibmq.api_v2.clients.account.AccountClient.job_final_status_websocket">[docs]</a>    <span class="k">def</span> <span class="nf">job_final_status_websocket</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">job_id</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="AccountClient.job_final_status_websocket"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.providers.ibmq.api_v2.clients.html#qiskit.providers.ibmq.api_v2.clients.account.AccountClient.job_final_status_websocket">[docs]</a>    <span class="k">def</span> <span class="nf">job_final_status_websocket</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">job_id</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return the final status of a job via websocket.</span>
 
 <span class="sd">        Args:</span>
@@ -399,7 +399,7 @@
         <span class="k">return</span> <span class="n">loop</span><span class="o">.</span><span class="n">run_until_complete</span><span class="p">(</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">client_ws</span><span class="o">.</span><span class="n">get_job_status</span><span class="p">(</span><span class="n">job_id</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">))</span></div>
 
-<div class="viewcode-block" id="AccountClient.job_properties"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.providers.ibmq.api_v2.clients.account.html#qiskit.providers.ibmq.api_v2.clients.account.AccountClient.job_properties">[docs]</a>    <span class="k">def</span> <span class="nf">job_properties</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">job_id</span><span class="p">):</span>
+<div class="viewcode-block" id="AccountClient.job_properties"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.providers.ibmq.api_v2.clients.html#qiskit.providers.ibmq.api_v2.clients.account.AccountClient.job_properties">[docs]</a>    <span class="k">def</span> <span class="nf">job_properties</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">job_id</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return the backend properties of a job.</span>
 
 <span class="sd">        Args:</span>
@@ -410,7 +410,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">client_api</span><span class="o">.</span><span class="n">job</span><span class="p">(</span><span class="n">job_id</span><span class="p">)</span><span class="o">.</span><span class="n">properties</span><span class="p">()</span></div>
 
-<div class="viewcode-block" id="AccountClient.job_cancel"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.providers.ibmq.api_v2.clients.account.html#qiskit.providers.ibmq.api_v2.clients.account.AccountClient.job_cancel">[docs]</a>    <span class="k">def</span> <span class="nf">job_cancel</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">job_id</span><span class="p">):</span>
+<div class="viewcode-block" id="AccountClient.job_cancel"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.providers.ibmq.api_v2.clients.html#qiskit.providers.ibmq.api_v2.clients.account.AccountClient.job_cancel">[docs]</a>    <span class="k">def</span> <span class="nf">job_cancel</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">job_id</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Submit a request for cancelling a job.</span>
 
 <span class="sd">        Args:</span>
@@ -423,7 +423,7 @@
 
     <span class="c1"># Circuits-related public functions.</span>
 
-<div class="viewcode-block" id="AccountClient.circuit_run"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.providers.ibmq.api_v2.clients.account.html#qiskit.providers.ibmq.api_v2.clients.account.AccountClient.circuit_run">[docs]</a>    <span class="k">def</span> <span class="nf">circuit_run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<div class="viewcode-block" id="AccountClient.circuit_run"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.providers.ibmq.api_v2.clients.html#qiskit.providers.ibmq.api_v2.clients.account.AccountClient.circuit_run">[docs]</a>    <span class="k">def</span> <span class="nf">circuit_run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Execute a Circuit.</span>
 
 <span class="sd">        Args:</span>
@@ -435,7 +435,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">client_api</span><span class="o">.</span><span class="n">circuit</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="AccountClient.circuit_job_get"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.providers.ibmq.api_v2.clients.account.html#qiskit.providers.ibmq.api_v2.clients.account.AccountClient.circuit_job_get">[docs]</a>    <span class="k">def</span> <span class="nf">circuit_job_get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">job_id</span><span class="p">):</span>
+<div class="viewcode-block" id="AccountClient.circuit_job_get"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.providers.ibmq.api_v2.clients.html#qiskit.providers.ibmq.api_v2.clients.account.AccountClient.circuit_job_get">[docs]</a>    <span class="k">def</span> <span class="nf">circuit_job_get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">job_id</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return information about a Circuit job.</span>
 
 <span class="sd">        Args:</span>
@@ -446,7 +446,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">client_api</span><span class="o">.</span><span class="n">job</span><span class="p">(</span><span class="n">job_id</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">([],</span> <span class="p">[])</span></div>
 
-<div class="viewcode-block" id="AccountClient.circuit_job_status"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.providers.ibmq.api_v2.clients.account.html#qiskit.providers.ibmq.api_v2.clients.account.AccountClient.circuit_job_status">[docs]</a>    <span class="k">def</span> <span class="nf">circuit_job_status</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">job_id</span><span class="p">):</span>
+<div class="viewcode-block" id="AccountClient.circuit_job_status"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.providers.ibmq.api_v2.clients.html#qiskit.providers.ibmq.api_v2.clients.account.AccountClient.circuit_job_status">[docs]</a>    <span class="k">def</span> <span class="nf">circuit_job_status</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">job_id</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return the status of a Circuits job.</span>
 
 <span class="sd">        Args:</span>
@@ -461,21 +461,21 @@
     <span class="c1"># are meant to facilitate the transition, and should be removed moving</span>
     <span class="c1"># forward.</span>
 
-<div class="viewcode-block" id="AccountClient.get_status_job"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.providers.ibmq.api_v2.clients.account.html#qiskit.providers.ibmq.api_v2.clients.account.AccountClient.get_status_job">[docs]</a>    <span class="k">def</span> <span class="nf">get_status_job</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">id_job</span><span class="p">):</span>
+<div class="viewcode-block" id="AccountClient.get_status_job"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.providers.ibmq.api_v2.clients.html#qiskit.providers.ibmq.api_v2.clients.account.AccountClient.get_status_job">[docs]</a>    <span class="k">def</span> <span class="nf">get_status_job</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">id_job</span><span class="p">):</span>
         <span class="c1"># pylint: disable=missing-docstring</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">job_status</span><span class="p">(</span><span class="n">id_job</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="AccountClient.submit_job"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.providers.ibmq.api_v2.clients.account.html#qiskit.providers.ibmq.api_v2.clients.account.AccountClient.submit_job">[docs]</a>    <span class="k">def</span> <span class="nf">submit_job</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">qobj_dict</span><span class="p">,</span> <span class="n">backend_name</span><span class="p">):</span>
+<div class="viewcode-block" id="AccountClient.submit_job"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.providers.ibmq.api_v2.clients.html#qiskit.providers.ibmq.api_v2.clients.account.AccountClient.submit_job">[docs]</a>    <span class="k">def</span> <span class="nf">submit_job</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">qobj_dict</span><span class="p">,</span> <span class="n">backend_name</span><span class="p">):</span>
         <span class="c1"># pylint: disable=missing-docstring</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">job_submit</span><span class="p">(</span><span class="n">backend_name</span><span class="p">,</span> <span class="n">qobj_dict</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="AccountClient.get_jobs"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.providers.ibmq.api_v2.clients.account.html#qiskit.providers.ibmq.api_v2.clients.account.AccountClient.get_jobs">[docs]</a>    <span class="k">def</span> <span class="nf">get_jobs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">skip</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">backend</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">only_completed</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<div class="viewcode-block" id="AccountClient.get_jobs"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.providers.ibmq.api_v2.clients.html#qiskit.providers.ibmq.api_v2.clients.account.AccountClient.get_jobs">[docs]</a>    <span class="k">def</span> <span class="nf">get_jobs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">skip</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">backend</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">only_completed</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                  <span class="nb">filter</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="c1"># pylint: disable=missing-docstring,redefined-builtin</span>
         <span class="c1"># TODO: this function seems to be unused currently in IBMQConnector.</span>
         <span class="k">raise</span> <span class="ne">NotImplementedError</span></div>
 
-<div class="viewcode-block" id="AccountClient.get_status_jobs"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.providers.ibmq.api_v2.clients.account.html#qiskit.providers.ibmq.api_v2.clients.account.AccountClient.get_status_jobs">[docs]</a>    <span class="k">def</span> <span class="nf">get_status_jobs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">skip</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">backend</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="nb">filter</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="AccountClient.get_status_jobs"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.providers.ibmq.api_v2.clients.html#qiskit.providers.ibmq.api_v2.clients.account.AccountClient.get_status_jobs">[docs]</a>    <span class="k">def</span> <span class="nf">get_status_jobs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">skip</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">backend</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="nb">filter</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="c1"># pylint: disable=missing-docstring,redefined-builtin</span>
         <span class="k">if</span> <span class="n">backend</span><span class="p">:</span>
             <span class="nb">filter</span> <span class="o">=</span> <span class="nb">filter</span> <span class="ow">or</span> <span class="p">{}</span>
@@ -483,19 +483,19 @@
 
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">list_jobs_statuses</span><span class="p">(</span><span class="n">limit</span><span class="p">,</span> <span class="n">skip</span><span class="p">,</span> <span class="nb">filter</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="AccountClient.cancel_job"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.providers.ibmq.api_v2.clients.account.html#qiskit.providers.ibmq.api_v2.clients.account.AccountClient.cancel_job">[docs]</a>    <span class="k">def</span> <span class="nf">cancel_job</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">id_job</span><span class="p">):</span>
+<div class="viewcode-block" id="AccountClient.cancel_job"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.providers.ibmq.api_v2.clients.html#qiskit.providers.ibmq.api_v2.clients.account.AccountClient.cancel_job">[docs]</a>    <span class="k">def</span> <span class="nf">cancel_job</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">id_job</span><span class="p">):</span>
         <span class="c1"># pylint: disable=missing-docstring</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">job_cancel</span><span class="p">(</span><span class="n">id_job</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="AccountClient.backend_defaults"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.providers.ibmq.api_v2.clients.account.html#qiskit.providers.ibmq.api_v2.clients.account.AccountClient.backend_defaults">[docs]</a>    <span class="k">def</span> <span class="nf">backend_defaults</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">backend</span><span class="p">):</span>
+<div class="viewcode-block" id="AccountClient.backend_defaults"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.providers.ibmq.api_v2.clients.html#qiskit.providers.ibmq.api_v2.clients.account.AccountClient.backend_defaults">[docs]</a>    <span class="k">def</span> <span class="nf">backend_defaults</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">backend</span><span class="p">):</span>
         <span class="c1"># pylint: disable=missing-docstring</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">backend_pulse_defaults</span><span class="p">(</span><span class="n">backend</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="AccountClient.available_backends"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.providers.ibmq.api_v2.clients.account.html#qiskit.providers.ibmq.api_v2.clients.account.AccountClient.available_backends">[docs]</a>    <span class="k">def</span> <span class="nf">available_backends</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="AccountClient.available_backends"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.providers.ibmq.api_v2.clients.html#qiskit.providers.ibmq.api_v2.clients.account.AccountClient.available_backends">[docs]</a>    <span class="k">def</span> <span class="nf">available_backends</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="c1"># pylint: disable=missing-docstring</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">list_backends</span><span class="p">()</span></div>
 
-<div class="viewcode-block" id="AccountClient.get_job"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.providers.ibmq.api_v2.clients.account.html#qiskit.providers.ibmq.api_v2.clients.account.AccountClient.get_job">[docs]</a>    <span class="k">def</span> <span class="nf">get_job</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">id_job</span><span class="p">,</span> <span class="n">exclude_fields</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">include_fields</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="AccountClient.get_job"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.providers.ibmq.api_v2.clients.html#qiskit.providers.ibmq.api_v2.clients.account.AccountClient.get_job">[docs]</a>    <span class="k">def</span> <span class="nf">get_job</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">id_job</span><span class="p">,</span> <span class="n">exclude_fields</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">include_fields</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="c1"># pylint: disable=missing-docstring</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">job_get</span><span class="p">(</span><span class="n">id_job</span><span class="p">,</span> <span class="n">exclude_fields</span><span class="p">,</span> <span class="n">include_fields</span><span class="p">)</span></div></div>
 </pre></div>
@@ -548,23 +548,23 @@
       var el = document.getElementById('language');
       var optionsToSelect = ['en', 'ja']
       function changeLoc(evt) {
-        var language = evt.target.options[el.selectedIndex].value;
-        var pathname = window.location.pathname.slice(prefix.length);
-        if (language === getDefaultLanguage()) {
-          window.location.pathname =
-            `${prefix}${pathname.replace(localeRegExp, '/')}`;
-        } else {
-          window.location.pathname =
-            `${prefix}${pathname.replace(localeRegExp, `/locale/${language}/`)}`;
+	        var language = evt.target.options[el.selectedIndex].value;
+	        var pathname = window.location.pathname.slice(prefix.length);
+	        if (language === getDefaultLanguage()) {
+	          window.location.pathname =
+	            `${prefix}${pathname.replace(localeRegExp, '/')}`;
+	        } else {
+	          window.location.pathname =
+	            `${prefix}${pathname.replace(localeRegExp, `/locale/${language}/`)}`;
         }
       };
       el.addEventListener('change', changeLoc);
 
       function extractLanguageFromUrl(pathname) {
-        const match = pathname.slice(prefix.length).match(localeRegExp);
-        return typeof match[2] === 'undefined' ?
-                getDefaultLanguage() : match[2];
-	    }
+	        const match = pathname.slice(prefix.length).match(localeRegExp);
+	        return typeof match[2] === 'undefined' ?
+	               getDefaultLanguage() : match[2];
+	      }
 
       function changeSelect(select) {
         const optionToSelect = extractLanguageFromUrl(window.location.pathname);

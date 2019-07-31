@@ -34,7 +34,7 @@
        </script>
         <script src="https://cloud.ibm.com/analytics/build/bluemix-analytics.min.js"></script>
     
-    <title>qiskit.providers.aer.noise.device.models &#8212; Qiskit 0.11.0 documentation</title>
+    <title>qiskit.providers.aer.noise.device.models &#8212; Qiskit 0.11.1 documentation</title>
 
     <link rel="stylesheet" href="../../../../../../_static/material-icons.css" type="text/css" />
     <link rel="stylesheet" href="../../../../../../_static/pygments.css" type="text/css" />
@@ -199,7 +199,7 @@
 <span class="kn">from</span> <span class="nn">..errors.standard_errors</span> <span class="k">import</span> <span class="n">thermal_relaxation_error</span>
 
 
-<div class="viewcode-block" id="basic_device_noise_model"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.providers.aer.noise.device.models.html#qiskit.providers.aer.noise.device.models.basic_device_noise_model">[docs]</a><span class="k">def</span> <span class="nf">basic_device_noise_model</span><span class="p">(</span><span class="n">properties</span><span class="p">,</span>
+<div class="viewcode-block" id="basic_device_noise_model"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.providers.aer.noise.device.html#qiskit.providers.aer.noise.device.models.basic_device_noise_model">[docs]</a><span class="k">def</span> <span class="nf">basic_device_noise_model</span><span class="p">(</span><span class="n">properties</span><span class="p">,</span>
                              <span class="n">gate_error</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                              <span class="n">readout_error</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                              <span class="n">thermal_relaxation</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
@@ -293,7 +293,7 @@
     <span class="k">return</span> <span class="n">noise_model</span></div>
 
 
-<div class="viewcode-block" id="basic_device_readout_errors"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.providers.aer.noise.device.models.html#qiskit.providers.aer.noise.device.models.basic_device_readout_errors">[docs]</a><span class="k">def</span> <span class="nf">basic_device_readout_errors</span><span class="p">(</span><span class="n">properties</span><span class="p">):</span>
+<div class="viewcode-block" id="basic_device_readout_errors"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.providers.aer.noise.device.html#qiskit.providers.aer.noise.device.models.basic_device_readout_errors">[docs]</a><span class="k">def</span> <span class="nf">basic_device_readout_errors</span><span class="p">(</span><span class="n">properties</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Get readout error objects for each qubit from backend properties</span>
 
 <span class="sd">    Args:</span>
@@ -311,7 +311,7 @@
     <span class="k">return</span> <span class="n">errors</span></div>
 
 
-<div class="viewcode-block" id="basic_device_gate_errors"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.providers.aer.noise.device.models.html#qiskit.providers.aer.noise.device.models.basic_device_gate_errors">[docs]</a><span class="k">def</span> <span class="nf">basic_device_gate_errors</span><span class="p">(</span><span class="n">properties</span><span class="p">,</span>
+<div class="viewcode-block" id="basic_device_gate_errors"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.providers.aer.noise.device.html#qiskit.providers.aer.noise.device.models.basic_device_gate_errors">[docs]</a><span class="k">def</span> <span class="nf">basic_device_gate_errors</span><span class="p">(</span><span class="n">properties</span><span class="p">,</span>
                              <span class="n">gate_error</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                              <span class="n">thermal_relaxation</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                              <span class="n">gate_times</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
@@ -671,23 +671,23 @@
       var el = document.getElementById('language');
       var optionsToSelect = ['en', 'ja']
       function changeLoc(evt) {
-        var language = evt.target.options[el.selectedIndex].value;
-        var pathname = window.location.pathname.slice(prefix.length);
-        if (language === getDefaultLanguage()) {
-          window.location.pathname =
-            `${prefix}${pathname.replace(localeRegExp, '/')}`;
-        } else {
-          window.location.pathname =
-            `${prefix}${pathname.replace(localeRegExp, `/locale/${language}/`)}`;
+	        var language = evt.target.options[el.selectedIndex].value;
+	        var pathname = window.location.pathname.slice(prefix.length);
+	        if (language === getDefaultLanguage()) {
+	          window.location.pathname =
+	            `${prefix}${pathname.replace(localeRegExp, '/')}`;
+	        } else {
+	          window.location.pathname =
+	            `${prefix}${pathname.replace(localeRegExp, `/locale/${language}/`)}`;
         }
       };
       el.addEventListener('change', changeLoc);
 
       function extractLanguageFromUrl(pathname) {
-        const match = pathname.slice(prefix.length).match(localeRegExp);
-        return typeof match[2] === 'undefined' ?
-                getDefaultLanguage() : match[2];
-	    }
+	        const match = pathname.slice(prefix.length).match(localeRegExp);
+	        return typeof match[2] === 'undefined' ?
+	               getDefaultLanguage() : match[2];
+	      }
 
       function changeSelect(select) {
         const optionToSelect = extractLanguageFromUrl(window.location.pathname);

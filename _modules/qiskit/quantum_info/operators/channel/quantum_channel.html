@@ -34,7 +34,7 @@
        </script>
         <script src="https://cloud.ibm.com/analytics/build/bluemix-analytics.min.js"></script>
     
-    <title>qiskit.quantum_info.operators.channel.quantum_channel &#8212; Qiskit 0.11.0 documentation</title>
+    <title>qiskit.quantum_info.operators.channel.quantum_channel &#8212; Qiskit 0.11.1 documentation</title>
 
     <link rel="stylesheet" href="../../../../../_static/material-icons.css" type="text/css" />
     <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css" />
@@ -193,26 +193,26 @@
 <span class="kn">from</span> <span class="nn">qiskit.quantum_info.operators.channel.transformations</span> <span class="k">import</span> <span class="n">_to_operator</span>
 
 
-<div class="viewcode-block" id="QuantumChannel"><a class="viewcode-back" href="../../../../../autodoc/qiskit.quantum_info.operators.channel.quantum_channel.html#qiskit.quantum_info.operators.channel.quantum_channel.QuantumChannel">[docs]</a><span class="k">class</span> <span class="nc">QuantumChannel</span><span class="p">(</span><span class="n">BaseOperator</span><span class="p">):</span>
+<div class="viewcode-block" id="QuantumChannel"><a class="viewcode-back" href="../../../../../autodoc/qiskit.quantum_info.operators.channel.html#qiskit.quantum_info.operators.channel.quantum_channel.QuantumChannel">[docs]</a><span class="k">class</span> <span class="nc">QuantumChannel</span><span class="p">(</span><span class="n">BaseOperator</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Quantum channel representation base class.&quot;&quot;&quot;</span>
 
-<div class="viewcode-block" id="QuantumChannel.is_cptp"><a class="viewcode-back" href="../../../../../autodoc/qiskit.quantum_info.operators.channel.quantum_channel.html#qiskit.quantum_info.operators.channel.quantum_channel.QuantumChannel.is_cptp">[docs]</a>    <span class="k">def</span> <span class="nf">is_cptp</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">atol</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">rtol</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="QuantumChannel.is_cptp"><a class="viewcode-back" href="../../../../../autodoc/qiskit.quantum_info.operators.channel.html#qiskit.quantum_info.operators.channel.quantum_channel.QuantumChannel.is_cptp">[docs]</a>    <span class="k">def</span> <span class="nf">is_cptp</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">atol</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">rtol</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return True if completely-positive trace-preserving (CPTP).&quot;&quot;&quot;</span>
         <span class="n">choi</span> <span class="o">=</span> <span class="n">_to_choi</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rep</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">,</span> <span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">dim</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_is_cp_helper</span><span class="p">(</span><span class="n">choi</span><span class="p">,</span> <span class="n">atol</span><span class="p">,</span> <span class="n">rtol</span><span class="p">)</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_is_tp_helper</span><span class="p">(</span>
             <span class="n">choi</span><span class="p">,</span> <span class="n">atol</span><span class="p">,</span> <span class="n">rtol</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="QuantumChannel.is_tp"><a class="viewcode-back" href="../../../../../autodoc/qiskit.quantum_info.operators.channel.quantum_channel.html#qiskit.quantum_info.operators.channel.quantum_channel.QuantumChannel.is_tp">[docs]</a>    <span class="k">def</span> <span class="nf">is_tp</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">atol</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">rtol</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="QuantumChannel.is_tp"><a class="viewcode-back" href="../../../../../autodoc/qiskit.quantum_info.operators.channel.html#qiskit.quantum_info.operators.channel.quantum_channel.QuantumChannel.is_tp">[docs]</a>    <span class="k">def</span> <span class="nf">is_tp</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">atol</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">rtol</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Test if a channel is completely-positive (CP)&quot;&quot;&quot;</span>
         <span class="n">choi</span> <span class="o">=</span> <span class="n">_to_choi</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rep</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">,</span> <span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">dim</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_is_tp_helper</span><span class="p">(</span><span class="n">choi</span><span class="p">,</span> <span class="n">atol</span><span class="p">,</span> <span class="n">rtol</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="QuantumChannel.is_cp"><a class="viewcode-back" href="../../../../../autodoc/qiskit.quantum_info.operators.channel.quantum_channel.html#qiskit.quantum_info.operators.channel.quantum_channel.QuantumChannel.is_cp">[docs]</a>    <span class="k">def</span> <span class="nf">is_cp</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">atol</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">rtol</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="QuantumChannel.is_cp"><a class="viewcode-back" href="../../../../../autodoc/qiskit.quantum_info.operators.channel.html#qiskit.quantum_info.operators.channel.quantum_channel.QuantumChannel.is_cp">[docs]</a>    <span class="k">def</span> <span class="nf">is_cp</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">atol</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">rtol</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Test if Choi-matrix is completely-positive (CP)&quot;&quot;&quot;</span>
         <span class="n">choi</span> <span class="o">=</span> <span class="n">_to_choi</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rep</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">,</span> <span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">dim</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_is_cp_helper</span><span class="p">(</span><span class="n">choi</span><span class="p">,</span> <span class="n">atol</span><span class="p">,</span> <span class="n">rtol</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="QuantumChannel.is_unitary"><a class="viewcode-back" href="../../../../../autodoc/qiskit.quantum_info.operators.channel.quantum_channel.html#qiskit.quantum_info.operators.channel.quantum_channel.QuantumChannel.is_unitary">[docs]</a>    <span class="k">def</span> <span class="nf">is_unitary</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">atol</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">rtol</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="QuantumChannel.is_unitary"><a class="viewcode-back" href="../../../../../autodoc/qiskit.quantum_info.operators.channel.html#qiskit.quantum_info.operators.channel.quantum_channel.QuantumChannel.is_unitary">[docs]</a>    <span class="k">def</span> <span class="nf">is_unitary</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">atol</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">rtol</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return True if QuantumChannel is a unitary channel.&quot;&quot;&quot;</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">op</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">to_operator</span><span class="p">()</span>
@@ -220,12 +220,12 @@
         <span class="k">except</span> <span class="n">QiskitError</span><span class="p">:</span>
             <span class="k">return</span> <span class="kc">False</span></div>
 
-<div class="viewcode-block" id="QuantumChannel.to_operator"><a class="viewcode-back" href="../../../../../autodoc/qiskit.quantum_info.operators.channel.quantum_channel.html#qiskit.quantum_info.operators.channel.quantum_channel.QuantumChannel.to_operator">[docs]</a>    <span class="k">def</span> <span class="nf">to_operator</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="QuantumChannel.to_operator"><a class="viewcode-back" href="../../../../../autodoc/qiskit.quantum_info.operators.channel.html#qiskit.quantum_info.operators.channel.quantum_channel.QuantumChannel.to_operator">[docs]</a>    <span class="k">def</span> <span class="nf">to_operator</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Try to convert channel to a unitary representation Operator.&quot;&quot;&quot;</span>
         <span class="n">mat</span> <span class="o">=</span> <span class="n">_to_operator</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rep</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">,</span> <span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">dim</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">Operator</span><span class="p">(</span><span class="n">mat</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">input_dims</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">output_dims</span><span class="p">())</span></div>
 
-<div class="viewcode-block" id="QuantumChannel.to_instruction"><a class="viewcode-back" href="../../../../../autodoc/qiskit.quantum_info.operators.channel.quantum_channel.html#qiskit.quantum_info.operators.channel.quantum_channel.QuantumChannel.to_instruction">[docs]</a>    <span class="k">def</span> <span class="nf">to_instruction</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="QuantumChannel.to_instruction"><a class="viewcode-back" href="../../../../../autodoc/qiskit.quantum_info.operators.channel.html#qiskit.quantum_info.operators.channel.quantum_channel.QuantumChannel.to_instruction">[docs]</a>    <span class="k">def</span> <span class="nf">to_instruction</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Convert to a Kraus or UnitaryGate circuit instruction.</span>
 
 <span class="sd">        If the channel is unitary it will be added as a unitary gate,</span>
@@ -371,23 +371,23 @@
       var el = document.getElementById('language');
       var optionsToSelect = ['en', 'ja']
       function changeLoc(evt) {
-        var language = evt.target.options[el.selectedIndex].value;
-        var pathname = window.location.pathname.slice(prefix.length);
-        if (language === getDefaultLanguage()) {
-          window.location.pathname =
-            `${prefix}${pathname.replace(localeRegExp, '/')}`;
-        } else {
-          window.location.pathname =
-            `${prefix}${pathname.replace(localeRegExp, `/locale/${language}/`)}`;
+	        var language = evt.target.options[el.selectedIndex].value;
+	        var pathname = window.location.pathname.slice(prefix.length);
+	        if (language === getDefaultLanguage()) {
+	          window.location.pathname =
+	            `${prefix}${pathname.replace(localeRegExp, '/')}`;
+	        } else {
+	          window.location.pathname =
+	            `${prefix}${pathname.replace(localeRegExp, `/locale/${language}/`)}`;
         }
       };
       el.addEventListener('change', changeLoc);
 
       function extractLanguageFromUrl(pathname) {
-        const match = pathname.slice(prefix.length).match(localeRegExp);
-        return typeof match[2] === 'undefined' ?
-                getDefaultLanguage() : match[2];
-	    }
+	        const match = pathname.slice(prefix.length).match(localeRegExp);
+	        return typeof match[2] === 'undefined' ?
+	               getDefaultLanguage() : match[2];
+	      }
 
       function changeSelect(select) {
         const optionToSelect = extractLanguageFromUrl(window.location.pathname);

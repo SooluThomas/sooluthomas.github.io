@@ -34,7 +34,7 @@
        </script>
         <script src="https://cloud.ibm.com/analytics/build/bluemix-analytics.min.js"></script>
     
-    <title>qiskit.providers.aer.noise.errors package &#8212; Qiskit 0.11.0 documentation</title>
+    <title>qiskit.providers.aer.noise.errors package &#8212; Qiskit 0.11.1 documentation</title>
 
     <link rel="stylesheet" href="../_static/material-icons.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -51,8 +51,8 @@
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="qiskit.providers.aer.noise.errors.errorutils module" href="qiskit.providers.aer.noise.errors.errorutils.html" />
-    <link rel="prev" title="qiskit.providers.aer.noise.device.parameters module" href="qiskit.providers.aer.noise.device.parameters.html" /> 
+    <link rel="next" title="qiskit.providers.aer.noise.utils package" href="qiskit.providers.aer.noise.utils.html" />
+    <link rel="prev" title="qiskit.providers.aer.noise.device package" href="qiskit.providers.aer.noise.device.html" /> 
   </head>
 <body>
   <header>
@@ -111,20 +111,7 @@
   
       
       <nav class="mdl-navigation">
-          <p class="caption"><span class="caption-text">Contents:</span></p>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../overview.html#qiskit-elements">Qiskit Elements</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../overview.html#qiskit-terra">Qiskit Terra</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../overview.html#qiskit-aer">Qiskit Aer</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../overview.html#qiskit-ignis">Qiskit Ignis</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../overview.html#qiskit-aqua">Qiskit Aqua</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../overview.html#qiskit-components">Qiskit Components</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../overview.html#qiskit-chemistry">Qiskit Chemistry</a></li>
-</ul>
-</li>
+          <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../install.html">Installing Qiskit</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../install.html#requirements">Requirements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../install.html#install">Install</a></li>
@@ -147,18 +134,6 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../faq.html">Frequently Asked Questions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../terra/index.html">Qiskit Terra</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../terra/overview.html">Overview</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../terra/overview.html#terra-organization">Terra Organization</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../terra/overview.html#quantum-circuits">Quantum Circuits</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../terra/overview.html#transpiler">Transpiler</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../terra/overview.html#tools">Tools</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../terra/overview.html#backends-and-results">Backends and Results</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../terra/overview.html#quantum-information">Quantum Information</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../terra/overview.html#visualization-tools">Visualization Tools</a></li>
-</ul>
-</li>
-</ul>
-</li>
 <li class="toctree-l2"><a class="reference internal" href="../terra/quantum_circuits.html">Circuits and Registers</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../terra/quantum_circuits.html#creating-registers">Creating Registers</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../terra/quantum_circuits.html#creating-circuits">Creating Circuits</a></li>
@@ -307,7 +282,6 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../aer/index.html">Qiskit Aer</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../aer/overview.html">Overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../aer/simulate_experiments.html">Simulate an experiment</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../aer/simulate_experiments.html#introduction">Introduction</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../aer/simulate_experiments.html#qasmsimulator">QasmSimulator</a><ul>
@@ -354,18 +328,6 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../ignis/index.html">Qiskit Ignis</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../ignis/overview.html">Overview</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../ignis/overview.html#circuits">Circuits</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../ignis/overview.html#fitters">Fitters</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../ignis/overview.html#filters">Filters</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../ignis/overview.html#ignis-organization">Ignis Organization</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../ignis/overview.html#characterization">Characterization</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../ignis/overview.html#verification">Verification</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../ignis/overview.html#mitigation">Mitigation</a></li>
-</ul>
-</li>
 <li class="toctree-l2"><a class="reference internal" href="../ignis/characterization.html">Characterization</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../ignis/characterization.html#circuits">Circuits</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../ignis/characterization.html#coherence">Coherence</a></li>
@@ -415,13 +377,6 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../aqua/index.html">Qiskit Aqua</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../aqua/library.html">Aqua: A Library of Quantum Algorithms</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../aqua/overview.html">Overview</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../aqua/overview.html#modularity-and-extensibility">Modularity and Extensibility</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../aqua/overview.html#novel-features">Novel Features</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../aqua/overview.html#contributors-in-alphabetical-order">Contributors (in Alphabetical Order)</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../aqua/overview.html#license">License</a></li>
-</ul>
-</li>
 <li class="toctree-l3"><a class="reference internal" href="../aqua/installation.html">Installation and Setup</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../aqua/installation.html#dependencies">Dependencies</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../aqua/installation.html#installation">Installation</a></li>
@@ -517,15 +472,10 @@
 <li class="toctree-l4"><a class="reference internal" href="../aqua/circuit_collection.html#circuits">Circuits</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="../aqua/library.html#contributors-in-alphabetical-order">Contributors (in Alphabetical Order)</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../aqua/chemistry/qiskit_chemistry.html">Qiskit Chemistry</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../aqua/chemistry/qiskit_chemistry_overview.html">Overview</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../aqua/chemistry/qiskit_chemistry_overview.html#modularity-and-extensibility">Modularity and Extensibility</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../aqua/chemistry/qiskit_chemistry_overview.html#novel-features">Novel Features</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../aqua/chemistry/qiskit_chemistry_overview.html#license">License</a></li>
-</ul>
-</li>
 <li class="toctree-l3"><a class="reference internal" href="../aqua/chemistry/qiskit_chemistry_installation.html">Installation and Setup</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../aqua/chemistry/qiskit_chemistry_installation.html#dependencies">Dependencies</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../aqua/chemistry/qiskit_chemistry_installation.html#code-installation">Code Installation</a></li>
@@ -561,6 +511,10 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../aqua/chemistry/release_history.html">Release history</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../aqua/chemistry/release_history.html#release-notes">Release Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../aqua/chemistry/qiskit_chemistry.html#features">Features</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../aqua/chemistry/qiskit_chemistry.html#license">License</a></li>
 </ul>
 </li>
 </ul>
@@ -646,16 +600,24 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../release_notes.html">Release Notes</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../release_notes.html#qiskit-0-11">Qiskit 0.11</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../release_notes.html#qiskit-0-11-1">Qiskit 0.11.1</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../release_notes.html#terra-0-8">Terra 0.8</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#aer-0-2">Aer 0.2</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#aer-0-2">Aer 0.2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#ignis-0-1">Ignis 0.1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#aqua-0-5">Aqua 0.5</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#ibm-q-provider-0-3">IBM Q Provider 0.3</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../release_notes.html#qiskit-0-11">Qiskit 0.11</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id1">Terra 0.8</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id2">Aer 0.2</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../release_notes.html#new-features">New features</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../release_notes.html#improvements">Improvements</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#ignis-0-1">Ignis 0.1</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#aqua-0-5">Aqua 0.5</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#ibm-q-provider-0-3">IBM Q Provider 0.3</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id3">Ignis 0.1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id4">Aqua 0.5</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id5">IBM Q Provider 0.3</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../release_notes.html#updating-to-the-new-ibm-q-experience-v2">Updating to the new IBM Q Experience v2</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../release_notes.html#updating-your-programs">Updating your programs</a></li>
 </ul>
@@ -663,43 +625,43 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../release_notes.html#qiskit-0-10">Qiskit 0.10</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id1">Terra 0.8</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id2">Aer 0.2</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id3">Ignis 0.1</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id4">Aqua 0.5</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id6">Terra 0.8</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id7">Aer 0.2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id8">Ignis 0.1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id9">Aqua 0.5</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../release_notes.html#ibm-q-provider-0-2">IBM Q Provider 0.2</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id5">New Features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id10">New Features</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../release_notes.html#bug-fixes">Bug Fixes</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../release_notes.html#qiskit-0-9">Qiskit 0.9</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id6">Terra 0.8</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id11">Terra 0.8</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../release_notes.html#highlights">Highlights</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id7">New Features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id12">New Features</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../release_notes.html#compatibility-considerations">Compatibility Considerations</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id8">Aer 0.2</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id9">New Features</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id10">Bug Fixes</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id11">Compatibility Considerations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id13">Aer 0.2</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id14">New Features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id15">Bug Fixes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id16">Compatibility Considerations</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id12">Ignis 0.1</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id13">New Features</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id14">Compatibility Considerations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id17">Ignis 0.1</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id18">New Features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id19">Compatibility Considerations</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id15">Aqua 0.5</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id16">New Features</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id17">Bug Fixes</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id18">Compatibility Considerations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id20">Aqua 0.5</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id21">New Features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id22">Bug Fixes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id23">Compatibility Considerations</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../release_notes.html#ibm-q-provider-0-1">IBM Q Provider 0.1</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id19">New Features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id24">New Features</a></li>
 </ul>
 </li>
 </ul>
@@ -707,38 +669,38 @@
 <li class="toctree-l2"><a class="reference internal" href="../release_notes.html#qiskit-0-8">Qiskit 0.8</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../release_notes.html#terra-0-7">Terra 0.7</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../release_notes.html#aer-0-1">Aer 0.1</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id20">Ignis 0.1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id25">Ignis 0.1</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../release_notes.html#qiskit-0-7">Qiskit 0.7</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id21">Terra 0.7</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id22">New Features</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id23">Compatibility Considerations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id26">Terra 0.7</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id27">New Features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id28">Compatibility Considerations</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id24">Aer 0.1</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id25">New Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id29">Aer 0.1</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id30">New Features</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../release_notes.html#aqua-0-4">Aqua 0.4</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id26">New Features</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id27">Compatibility Considerations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id31">New Features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id32">Compatibility Considerations</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../release_notes.html#qiskit-0-6">Qiskit 0.6</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../release_notes.html#terra-0-6">Terra 0.6</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id28">Highlights</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id29">Compatibility Considerations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id33">Highlights</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id34">Compatibility Considerations</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../release_notes.html#qiskit-0-5">Qiskit 0.5</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../release_notes.html#terra-0-5">Terra 0.5</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id30">Highlights</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id31">Compatibility Considerations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id35">Highlights</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id36">Compatibility Considerations</a></li>
 </ul>
 </li>
 </ul>
@@ -751,60 +713,136 @@
 <li class="toctree-l3"><a class="reference internal" href="qiskit.aqua.html">qiskit.aqua package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.aqua.html#subpackages">Subpackages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.aqua.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.aqua.html#module-qiskit.aqua._credentials_preferences">qiskit.aqua._credentials_preferences module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.aqua.html#module-qiskit.aqua._discover">qiskit.aqua._discover module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.aqua.html#module-qiskit.aqua._logging">qiskit.aqua._logging module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.aqua.html#module-qiskit.aqua.aqua_error">qiskit.aqua.aqua_error module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.aqua.html#module-qiskit.aqua.operator">qiskit.aqua.operator module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.aqua.html#module-qiskit.aqua.pluggable">qiskit.aqua.pluggable module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.aqua.html#module-qiskit.aqua.preferences">qiskit.aqua.preferences module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.aqua.html#module-qiskit.aqua.qiskit_aqua">qiskit.aqua.qiskit_aqua module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.aqua.html#module-qiskit.aqua.qiskit_aqua_globals">qiskit.aqua.qiskit_aqua_globals module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.aqua.html#module-qiskit.aqua.quantum_instance">qiskit.aqua.quantum_instance module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.aqua.html#module-qiskit.aqua.version">qiskit.aqua.version module</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.assembler.html">qiskit.assembler package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.assembler.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.assembler.html#module-qiskit.assembler.assemble_circuits">qiskit.assembler.assemble_circuits module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.assembler.html#module-qiskit.assembler.assemble_schedules">qiskit.assembler.assemble_schedules module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.assembler.html#module-qiskit.assembler.disassemble">qiskit.assembler.disassemble module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.assembler.html#module-qiskit.assembler.models">qiskit.assembler.models module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.assembler.html#module-qiskit.assembler.run_config">qiskit.assembler.run_config module</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.chemistry.html">qiskit.chemistry package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.chemistry.html#subpackages">Subpackages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.chemistry.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.chemistry.html#module-qiskit.chemistry._logging">qiskit.chemistry._logging module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.chemistry.html#module-qiskit.chemistry.bksf">qiskit.chemistry.bksf module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.chemistry.html#module-qiskit.chemistry.fermionic_operator">qiskit.chemistry.fermionic_operator module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.chemistry.html#module-qiskit.chemistry.mp2info">qiskit.chemistry.mp2info module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.chemistry.html#module-qiskit.chemistry.particle_hole">qiskit.chemistry.particle_hole module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.chemistry.html#module-qiskit.chemistry.qiskit_chemistry">qiskit.chemistry.qiskit_chemistry module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.chemistry.html#module-qiskit.chemistry.qiskit_chemistry_error">qiskit.chemistry.qiskit_chemistry_error module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.chemistry.html#module-qiskit.chemistry.qiskit_chemistry_problem">qiskit.chemistry.qiskit_chemistry_problem module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.chemistry.html#module-qiskit.chemistry.qmolecule">qiskit.chemistry.qmolecule module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.chemistry.html#module-qiskit.chemistry.version">qiskit.chemistry.version module</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.circuit.html">qiskit.circuit package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#module-qiskit.circuit.classicalregister">qiskit.circuit.classicalregister module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#module-qiskit.circuit.compositegate">qiskit.circuit.compositegate module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#module-qiskit.circuit.decorators">qiskit.circuit.decorators module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#module-qiskit.circuit.gate">qiskit.circuit.gate module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#module-qiskit.circuit.instruction">qiskit.circuit.instruction module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#module-qiskit.circuit.instructionset">qiskit.circuit.instructionset module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#module-qiskit.circuit.measure">qiskit.circuit.measure module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#module-qiskit.circuit.parameter">qiskit.circuit.parameter module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#module-qiskit.circuit.parametertable">qiskit.circuit.parametertable module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#module-qiskit.circuit.quantumcircuit">qiskit.circuit.quantumcircuit module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#module-qiskit.circuit.quantumregister">qiskit.circuit.quantumregister module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#module-qiskit.circuit.register">qiskit.circuit.register module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#module-qiskit.circuit.reset">qiskit.circuit.reset module</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.compiler.html">qiskit.compiler package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.compiler.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.compiler.html#module-qiskit.compiler.assemble">qiskit.compiler.assemble module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.compiler.html#module-qiskit.compiler.transpile">qiskit.compiler.transpile module</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.converters.html">qiskit.converters package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.converters.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.converters.html#module-qiskit.converters.ast_to_dag">qiskit.converters.ast_to_dag module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.converters.html#module-qiskit.converters.circuit_to_dag">qiskit.converters.circuit_to_dag module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.converters.html#module-qiskit.converters.circuit_to_instruction">qiskit.converters.circuit_to_instruction module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.converters.html#module-qiskit.converters.circuits_to_qobj">qiskit.converters.circuits_to_qobj module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.converters.html#module-qiskit.converters.dag_to_circuit">qiskit.converters.dag_to_circuit module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.converters.html#module-qiskit.converters.qobj_to_circuits">qiskit.converters.qobj_to_circuits module</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.dagcircuit.html">qiskit.dagcircuit package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.dagcircuit.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.dagcircuit.html#module-qiskit.dagcircuit.dagcircuit">qiskit.dagcircuit.dagcircuit module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.dagcircuit.html#module-qiskit.dagcircuit.dagnode">qiskit.dagcircuit.dagnode module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.dagcircuit.html#module-qiskit.dagcircuit.exceptions">qiskit.dagcircuit.exceptions module</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.extensions.html">qiskit.extensions package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.extensions.html#subpackages">Subpackages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.extensions.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.extensions.html#module-qiskit.extensions.exceptions">qiskit.extensions.exceptions module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.extensions.html#module-qiskit.extensions.initializer">qiskit.extensions.initializer module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.extensions.html#module-qiskit.extensions.unitary">qiskit.extensions.unitary module</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.mapper.html">qiskit.mapper package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.mapper.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.mapper.html#module-qiskit.mapper.compiling">qiskit.mapper.compiling module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.mapper.html#module-qiskit.mapper.coupling">qiskit.mapper.coupling module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.mapper.html#module-qiskit.mapper.exceptions">qiskit.mapper.exceptions module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.mapper.html#module-qiskit.mapper.layout">qiskit.mapper.layout module</a></li>
 </ul>
 </li>
 <li class="toctree-l3 current"><a class="reference internal" href="qiskit.providers.html">qiskit.providers package</a><ul class="current">
 <li class="toctree-l4 current"><a class="reference internal" href="qiskit.providers.html#subpackages">Subpackages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.providers.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.providers.html#module-qiskit.providers.basebackend">qiskit.providers.basebackend module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.providers.html#module-qiskit.providers.basejob">qiskit.providers.basejob module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.providers.html#module-qiskit.providers.baseprovider">qiskit.providers.baseprovider module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.providers.html#module-qiskit.providers.exceptions">qiskit.providers.exceptions module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.providers.html#module-qiskit.providers.jobstatus">qiskit.providers.jobstatus module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.providers.html#module-qiskit.providers.providerutils">qiskit.providers.providerutils module</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.pulse.html">qiskit.pulse package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.pulse.html#subpackages">Subpackages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.pulse.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.pulse.html#module-qiskit.pulse.cmd_def">qiskit.pulse.cmd_def module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.pulse.html#module-qiskit.pulse.configuration">qiskit.pulse.configuration module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.pulse.html#module-qiskit.pulse.exceptions">qiskit.pulse.exceptions module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.pulse.html#module-qiskit.pulse.interfaces">qiskit.pulse.interfaces module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.pulse.html#module-qiskit.pulse.ops">qiskit.pulse.ops module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.pulse.html#module-qiskit.pulse.schedule">qiskit.pulse.schedule module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.pulse.html#module-qiskit.pulse.timeslots">qiskit.pulse.timeslots module</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.qasm.html">qiskit.qasm package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.qasm.html#subpackages">Subpackages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.qasm.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.qasm.html#module-qiskit.qasm.exceptions">qiskit.qasm.exceptions module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.qasm.html#module-qiskit.qasm.qasm">qiskit.qasm.qasm module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.qasm.html#module-qiskit.qasm.qasmlexer">qiskit.qasm.qasmlexer module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.qasm.html#module-qiskit.qasm.qasmparser">qiskit.qasm.qasmparser module</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.qobj.html">qiskit.qobj package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.qobj.html#subpackages">Subpackages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.qobj.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.qobj.html#module-qiskit.qobj.qobj">qiskit.qobj.qobj module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.qobj.html#module-qiskit.qobj.utils">qiskit.qobj.utils module</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.quantum_info.html">qiskit.quantum_info package</a><ul>
@@ -813,45 +851,86 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.result.html">qiskit.result package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.result.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.result.html#module-qiskit.result.exceptions">qiskit.result.exceptions module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.result.html#module-qiskit.result.models">qiskit.result.models module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.result.html#module-qiskit.result.postprocess">qiskit.result.postprocess module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.result.html#module-qiskit.result.result">qiskit.result.result module</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.test.html">qiskit.test package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.test.html#subpackages">Subpackages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.test.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.test.html#module-qiskit.test.base">qiskit.test.base module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.test.html#qiskit-test-decorators-module">qiskit.test.decorators module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.test.html#qiskit-test-http-recorder-module">qiskit.test.http_recorder module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.test.html#qiskit-test-mock-module">qiskit.test.mock module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.test.html#qiskit-test-reference-circuits-module">qiskit.test.reference_circuits module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.test.html#qiskit-test-testing-options-module">qiskit.test.testing_options module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.test.html#module-qiskit.test.utils">qiskit.test.utils module</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.tools.html">qiskit.tools package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.tools.html#subpackages">Subpackages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.tools.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.tools.html#module-qiskit.tools.compiler">qiskit.tools.compiler module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.tools.html#module-qiskit.tools.logging">qiskit.tools.logging module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.tools.html#module-qiskit.tools.parallel">qiskit.tools.parallel module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.tools.html#module-qiskit.tools.visualization">qiskit.tools.visualization module</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.transpiler.html">qiskit.transpiler package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.transpiler.html#subpackages">Subpackages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.transpiler.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.transpiler.html#module-qiskit.transpiler.basepasses">qiskit.transpiler.basepasses module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.transpiler.html#module-qiskit.transpiler.coupling">qiskit.transpiler.coupling module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.transpiler.html#module-qiskit.transpiler.exceptions">qiskit.transpiler.exceptions module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.transpiler.html#module-qiskit.transpiler.fencedobjs">qiskit.transpiler.fencedobjs module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.transpiler.html#module-qiskit.transpiler.layout">qiskit.transpiler.layout module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.transpiler.html#module-qiskit.transpiler.models">qiskit.transpiler.models module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.transpiler.html#module-qiskit.transpiler.passmanager">qiskit.transpiler.passmanager module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.transpiler.html#module-qiskit.transpiler.propertyset">qiskit.transpiler.propertyset module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.transpiler.html#module-qiskit.transpiler.transpile_circuit">qiskit.transpiler.transpile_circuit module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.transpiler.html#module-qiskit.transpiler.transpile_config">qiskit.transpiler.transpile_config module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.transpiler.html#module-qiskit.transpiler.transpiler">qiskit.transpiler.transpiler module</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.validation.html">qiskit.validation package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.validation.html#subpackages">Subpackages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.validation.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.validation.html#module-qiskit.validation.base">qiskit.validation.base module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.validation.html#module-qiskit.validation.exceptions">qiskit.validation.exceptions module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.validation.html#module-qiskit.validation.validate">qiskit.validation.validate module</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.visualization.html">qiskit.visualization package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.visualization.html#subpackages">Subpackages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.visualization.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.visualization.html#qiskit-visualization-bloch-module">qiskit.visualization.bloch module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.visualization.html#module-qiskit.visualization.circuit_visualization">qiskit.visualization.circuit_visualization module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.visualization.html#module-qiskit.visualization.counts_visualization">qiskit.visualization.counts_visualization module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.visualization.html#module-qiskit.visualization.dag_visualization">qiskit.visualization.dag_visualization module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.visualization.html#module-qiskit.visualization.exceptions">qiskit.visualization.exceptions module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.visualization.html#module-qiskit.visualization.gate_map">qiskit.visualization.gate_map module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.visualization.html#module-qiskit.visualization.interpolation">qiskit.visualization.interpolation module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.visualization.html#module-qiskit.visualization.latex">qiskit.visualization.latex module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.visualization.html#module-qiskit.visualization.matplotlib">qiskit.visualization.matplotlib module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.visualization.html#module-qiskit.visualization.pulse_visualization">qiskit.visualization.pulse_visualization module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.visualization.html#module-qiskit.visualization.qcstyle">qiskit.visualization.qcstyle module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.visualization.html#module-qiskit.visualization.state_visualization">qiskit.visualization.state_visualization module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.visualization.html#module-qiskit.visualization.text">qiskit.visualization.text module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.visualization.html#module-qiskit.visualization.utils">qiskit.visualization.utils module</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="qiskit.html#submodules">Submodules</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="qiskit._util.html">qiskit._util module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.exceptions.html">qiskit.exceptions module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.execute.html">qiskit.execute module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.qiskiterror.html">qiskit.qiskiterror module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.user_config.html">qiskit.user_config module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.util.html">qiskit.util module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.version.html">qiskit.version module</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="qiskit.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qiskit.html#module-qiskit._util">qiskit._util module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qiskit.html#module-qiskit.exceptions">qiskit.exceptions module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qiskit.html#module-qiskit.execute">qiskit.execute module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qiskit.html#module-qiskit.qiskiterror">qiskit.qiskiterror module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qiskit.html#module-qiskit.user_config">qiskit.user_config module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qiskit.html#module-qiskit.util">qiskit.util module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qiskit.html#module-qiskit.version">qiskit.version module</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../contributing_to_qiskit.html">Contributing to Qiskit</a><ul>
@@ -940,20 +1019,7 @@
   
       
       <nav class="mdl-navigation">
-          <p class="caption"><span class="caption-text">Contents:</span></p>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../overview.html#qiskit-elements">Qiskit Elements</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../overview.html#qiskit-terra">Qiskit Terra</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../overview.html#qiskit-aer">Qiskit Aer</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../overview.html#qiskit-ignis">Qiskit Ignis</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../overview.html#qiskit-aqua">Qiskit Aqua</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../overview.html#qiskit-components">Qiskit Components</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../overview.html#qiskit-chemistry">Qiskit Chemistry</a></li>
-</ul>
-</li>
+          <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../install.html">Installing Qiskit</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../install.html#requirements">Requirements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../install.html#install">Install</a></li>
@@ -976,18 +1042,6 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../faq.html">Frequently Asked Questions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../terra/index.html">Qiskit Terra</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../terra/overview.html">Overview</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../terra/overview.html#terra-organization">Terra Organization</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../terra/overview.html#quantum-circuits">Quantum Circuits</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../terra/overview.html#transpiler">Transpiler</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../terra/overview.html#tools">Tools</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../terra/overview.html#backends-and-results">Backends and Results</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../terra/overview.html#quantum-information">Quantum Information</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../terra/overview.html#visualization-tools">Visualization Tools</a></li>
-</ul>
-</li>
-</ul>
-</li>
 <li class="toctree-l2"><a class="reference internal" href="../terra/quantum_circuits.html">Circuits and Registers</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../terra/quantum_circuits.html#creating-registers">Creating Registers</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../terra/quantum_circuits.html#creating-circuits">Creating Circuits</a></li>
@@ -1136,7 +1190,6 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../aer/index.html">Qiskit Aer</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../aer/overview.html">Overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../aer/simulate_experiments.html">Simulate an experiment</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../aer/simulate_experiments.html#introduction">Introduction</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../aer/simulate_experiments.html#qasmsimulator">QasmSimulator</a><ul>
@@ -1183,18 +1236,6 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../ignis/index.html">Qiskit Ignis</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../ignis/overview.html">Overview</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../ignis/overview.html#circuits">Circuits</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../ignis/overview.html#fitters">Fitters</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../ignis/overview.html#filters">Filters</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../ignis/overview.html#ignis-organization">Ignis Organization</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../ignis/overview.html#characterization">Characterization</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../ignis/overview.html#verification">Verification</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../ignis/overview.html#mitigation">Mitigation</a></li>
-</ul>
-</li>
 <li class="toctree-l2"><a class="reference internal" href="../ignis/characterization.html">Characterization</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../ignis/characterization.html#circuits">Circuits</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../ignis/characterization.html#coherence">Coherence</a></li>
@@ -1244,13 +1285,6 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../aqua/index.html">Qiskit Aqua</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../aqua/library.html">Aqua: A Library of Quantum Algorithms</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../aqua/overview.html">Overview</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../aqua/overview.html#modularity-and-extensibility">Modularity and Extensibility</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../aqua/overview.html#novel-features">Novel Features</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../aqua/overview.html#contributors-in-alphabetical-order">Contributors (in Alphabetical Order)</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../aqua/overview.html#license">License</a></li>
-</ul>
-</li>
 <li class="toctree-l3"><a class="reference internal" href="../aqua/installation.html">Installation and Setup</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../aqua/installation.html#dependencies">Dependencies</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../aqua/installation.html#installation">Installation</a></li>
@@ -1346,15 +1380,10 @@
 <li class="toctree-l4"><a class="reference internal" href="../aqua/circuit_collection.html#circuits">Circuits</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="../aqua/library.html#contributors-in-alphabetical-order">Contributors (in Alphabetical Order)</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../aqua/chemistry/qiskit_chemistry.html">Qiskit Chemistry</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../aqua/chemistry/qiskit_chemistry_overview.html">Overview</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../aqua/chemistry/qiskit_chemistry_overview.html#modularity-and-extensibility">Modularity and Extensibility</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../aqua/chemistry/qiskit_chemistry_overview.html#novel-features">Novel Features</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../aqua/chemistry/qiskit_chemistry_overview.html#license">License</a></li>
-</ul>
-</li>
 <li class="toctree-l3"><a class="reference internal" href="../aqua/chemistry/qiskit_chemistry_installation.html">Installation and Setup</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../aqua/chemistry/qiskit_chemistry_installation.html#dependencies">Dependencies</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../aqua/chemistry/qiskit_chemistry_installation.html#code-installation">Code Installation</a></li>
@@ -1390,6 +1419,10 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../aqua/chemistry/release_history.html">Release history</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../aqua/chemistry/release_history.html#release-notes">Release Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../aqua/chemistry/qiskit_chemistry.html#features">Features</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../aqua/chemistry/qiskit_chemistry.html#license">License</a></li>
 </ul>
 </li>
 </ul>
@@ -1475,16 +1508,24 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../release_notes.html">Release Notes</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../release_notes.html#qiskit-0-11">Qiskit 0.11</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../release_notes.html#qiskit-0-11-1">Qiskit 0.11.1</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../release_notes.html#terra-0-8">Terra 0.8</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#aer-0-2">Aer 0.2</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#aer-0-2">Aer 0.2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#ignis-0-1">Ignis 0.1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#aqua-0-5">Aqua 0.5</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#ibm-q-provider-0-3">IBM Q Provider 0.3</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../release_notes.html#qiskit-0-11">Qiskit 0.11</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id1">Terra 0.8</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id2">Aer 0.2</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../release_notes.html#new-features">New features</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../release_notes.html#improvements">Improvements</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#ignis-0-1">Ignis 0.1</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#aqua-0-5">Aqua 0.5</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#ibm-q-provider-0-3">IBM Q Provider 0.3</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id3">Ignis 0.1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id4">Aqua 0.5</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id5">IBM Q Provider 0.3</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../release_notes.html#updating-to-the-new-ibm-q-experience-v2">Updating to the new IBM Q Experience v2</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../release_notes.html#updating-your-programs">Updating your programs</a></li>
 </ul>
@@ -1492,43 +1533,43 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../release_notes.html#qiskit-0-10">Qiskit 0.10</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id1">Terra 0.8</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id2">Aer 0.2</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id3">Ignis 0.1</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id4">Aqua 0.5</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id6">Terra 0.8</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id7">Aer 0.2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id8">Ignis 0.1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id9">Aqua 0.5</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../release_notes.html#ibm-q-provider-0-2">IBM Q Provider 0.2</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id5">New Features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id10">New Features</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../release_notes.html#bug-fixes">Bug Fixes</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../release_notes.html#qiskit-0-9">Qiskit 0.9</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id6">Terra 0.8</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id11">Terra 0.8</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../release_notes.html#highlights">Highlights</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id7">New Features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id12">New Features</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../release_notes.html#compatibility-considerations">Compatibility Considerations</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id8">Aer 0.2</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id9">New Features</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id10">Bug Fixes</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id11">Compatibility Considerations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id13">Aer 0.2</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id14">New Features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id15">Bug Fixes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id16">Compatibility Considerations</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id12">Ignis 0.1</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id13">New Features</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id14">Compatibility Considerations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id17">Ignis 0.1</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id18">New Features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id19">Compatibility Considerations</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id15">Aqua 0.5</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id16">New Features</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id17">Bug Fixes</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id18">Compatibility Considerations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id20">Aqua 0.5</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id21">New Features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id22">Bug Fixes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id23">Compatibility Considerations</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../release_notes.html#ibm-q-provider-0-1">IBM Q Provider 0.1</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id19">New Features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id24">New Features</a></li>
 </ul>
 </li>
 </ul>
@@ -1536,38 +1577,38 @@
 <li class="toctree-l2"><a class="reference internal" href="../release_notes.html#qiskit-0-8">Qiskit 0.8</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../release_notes.html#terra-0-7">Terra 0.7</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../release_notes.html#aer-0-1">Aer 0.1</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id20">Ignis 0.1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id25">Ignis 0.1</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../release_notes.html#qiskit-0-7">Qiskit 0.7</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id21">Terra 0.7</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id22">New Features</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id23">Compatibility Considerations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id26">Terra 0.7</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id27">New Features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id28">Compatibility Considerations</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id24">Aer 0.1</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id25">New Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id29">Aer 0.1</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id30">New Features</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../release_notes.html#aqua-0-4">Aqua 0.4</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id26">New Features</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id27">Compatibility Considerations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id31">New Features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id32">Compatibility Considerations</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../release_notes.html#qiskit-0-6">Qiskit 0.6</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../release_notes.html#terra-0-6">Terra 0.6</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id28">Highlights</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id29">Compatibility Considerations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id33">Highlights</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id34">Compatibility Considerations</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../release_notes.html#qiskit-0-5">Qiskit 0.5</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../release_notes.html#terra-0-5">Terra 0.5</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id30">Highlights</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id31">Compatibility Considerations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id35">Highlights</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id36">Compatibility Considerations</a></li>
 </ul>
 </li>
 </ul>
@@ -1580,60 +1621,136 @@
 <li class="toctree-l3"><a class="reference internal" href="qiskit.aqua.html">qiskit.aqua package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.aqua.html#subpackages">Subpackages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.aqua.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.aqua.html#module-qiskit.aqua._credentials_preferences">qiskit.aqua._credentials_preferences module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.aqua.html#module-qiskit.aqua._discover">qiskit.aqua._discover module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.aqua.html#module-qiskit.aqua._logging">qiskit.aqua._logging module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.aqua.html#module-qiskit.aqua.aqua_error">qiskit.aqua.aqua_error module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.aqua.html#module-qiskit.aqua.operator">qiskit.aqua.operator module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.aqua.html#module-qiskit.aqua.pluggable">qiskit.aqua.pluggable module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.aqua.html#module-qiskit.aqua.preferences">qiskit.aqua.preferences module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.aqua.html#module-qiskit.aqua.qiskit_aqua">qiskit.aqua.qiskit_aqua module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.aqua.html#module-qiskit.aqua.qiskit_aqua_globals">qiskit.aqua.qiskit_aqua_globals module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.aqua.html#module-qiskit.aqua.quantum_instance">qiskit.aqua.quantum_instance module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.aqua.html#module-qiskit.aqua.version">qiskit.aqua.version module</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.assembler.html">qiskit.assembler package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.assembler.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.assembler.html#module-qiskit.assembler.assemble_circuits">qiskit.assembler.assemble_circuits module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.assembler.html#module-qiskit.assembler.assemble_schedules">qiskit.assembler.assemble_schedules module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.assembler.html#module-qiskit.assembler.disassemble">qiskit.assembler.disassemble module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.assembler.html#module-qiskit.assembler.models">qiskit.assembler.models module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.assembler.html#module-qiskit.assembler.run_config">qiskit.assembler.run_config module</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.chemistry.html">qiskit.chemistry package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.chemistry.html#subpackages">Subpackages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.chemistry.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.chemistry.html#module-qiskit.chemistry._logging">qiskit.chemistry._logging module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.chemistry.html#module-qiskit.chemistry.bksf">qiskit.chemistry.bksf module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.chemistry.html#module-qiskit.chemistry.fermionic_operator">qiskit.chemistry.fermionic_operator module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.chemistry.html#module-qiskit.chemistry.mp2info">qiskit.chemistry.mp2info module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.chemistry.html#module-qiskit.chemistry.particle_hole">qiskit.chemistry.particle_hole module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.chemistry.html#module-qiskit.chemistry.qiskit_chemistry">qiskit.chemistry.qiskit_chemistry module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.chemistry.html#module-qiskit.chemistry.qiskit_chemistry_error">qiskit.chemistry.qiskit_chemistry_error module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.chemistry.html#module-qiskit.chemistry.qiskit_chemistry_problem">qiskit.chemistry.qiskit_chemistry_problem module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.chemistry.html#module-qiskit.chemistry.qmolecule">qiskit.chemistry.qmolecule module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.chemistry.html#module-qiskit.chemistry.version">qiskit.chemistry.version module</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.circuit.html">qiskit.circuit package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#module-qiskit.circuit.classicalregister">qiskit.circuit.classicalregister module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#module-qiskit.circuit.compositegate">qiskit.circuit.compositegate module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#module-qiskit.circuit.decorators">qiskit.circuit.decorators module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#module-qiskit.circuit.gate">qiskit.circuit.gate module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#module-qiskit.circuit.instruction">qiskit.circuit.instruction module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#module-qiskit.circuit.instructionset">qiskit.circuit.instructionset module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#module-qiskit.circuit.measure">qiskit.circuit.measure module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#module-qiskit.circuit.parameter">qiskit.circuit.parameter module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#module-qiskit.circuit.parametertable">qiskit.circuit.parametertable module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#module-qiskit.circuit.quantumcircuit">qiskit.circuit.quantumcircuit module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#module-qiskit.circuit.quantumregister">qiskit.circuit.quantumregister module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#module-qiskit.circuit.register">qiskit.circuit.register module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#module-qiskit.circuit.reset">qiskit.circuit.reset module</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.compiler.html">qiskit.compiler package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.compiler.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.compiler.html#module-qiskit.compiler.assemble">qiskit.compiler.assemble module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.compiler.html#module-qiskit.compiler.transpile">qiskit.compiler.transpile module</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.converters.html">qiskit.converters package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.converters.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.converters.html#module-qiskit.converters.ast_to_dag">qiskit.converters.ast_to_dag module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.converters.html#module-qiskit.converters.circuit_to_dag">qiskit.converters.circuit_to_dag module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.converters.html#module-qiskit.converters.circuit_to_instruction">qiskit.converters.circuit_to_instruction module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.converters.html#module-qiskit.converters.circuits_to_qobj">qiskit.converters.circuits_to_qobj module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.converters.html#module-qiskit.converters.dag_to_circuit">qiskit.converters.dag_to_circuit module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.converters.html#module-qiskit.converters.qobj_to_circuits">qiskit.converters.qobj_to_circuits module</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.dagcircuit.html">qiskit.dagcircuit package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.dagcircuit.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.dagcircuit.html#module-qiskit.dagcircuit.dagcircuit">qiskit.dagcircuit.dagcircuit module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.dagcircuit.html#module-qiskit.dagcircuit.dagnode">qiskit.dagcircuit.dagnode module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.dagcircuit.html#module-qiskit.dagcircuit.exceptions">qiskit.dagcircuit.exceptions module</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.extensions.html">qiskit.extensions package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.extensions.html#subpackages">Subpackages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.extensions.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.extensions.html#module-qiskit.extensions.exceptions">qiskit.extensions.exceptions module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.extensions.html#module-qiskit.extensions.initializer">qiskit.extensions.initializer module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.extensions.html#module-qiskit.extensions.unitary">qiskit.extensions.unitary module</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.mapper.html">qiskit.mapper package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.mapper.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.mapper.html#module-qiskit.mapper.compiling">qiskit.mapper.compiling module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.mapper.html#module-qiskit.mapper.coupling">qiskit.mapper.coupling module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.mapper.html#module-qiskit.mapper.exceptions">qiskit.mapper.exceptions module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.mapper.html#module-qiskit.mapper.layout">qiskit.mapper.layout module</a></li>
 </ul>
 </li>
 <li class="toctree-l3 current"><a class="reference internal" href="qiskit.providers.html">qiskit.providers package</a><ul class="current">
 <li class="toctree-l4 current"><a class="reference internal" href="qiskit.providers.html#subpackages">Subpackages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.providers.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.providers.html#module-qiskit.providers.basebackend">qiskit.providers.basebackend module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.providers.html#module-qiskit.providers.basejob">qiskit.providers.basejob module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.providers.html#module-qiskit.providers.baseprovider">qiskit.providers.baseprovider module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.providers.html#module-qiskit.providers.exceptions">qiskit.providers.exceptions module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.providers.html#module-qiskit.providers.jobstatus">qiskit.providers.jobstatus module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.providers.html#module-qiskit.providers.providerutils">qiskit.providers.providerutils module</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.pulse.html">qiskit.pulse package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.pulse.html#subpackages">Subpackages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.pulse.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.pulse.html#module-qiskit.pulse.cmd_def">qiskit.pulse.cmd_def module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.pulse.html#module-qiskit.pulse.configuration">qiskit.pulse.configuration module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.pulse.html#module-qiskit.pulse.exceptions">qiskit.pulse.exceptions module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.pulse.html#module-qiskit.pulse.interfaces">qiskit.pulse.interfaces module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.pulse.html#module-qiskit.pulse.ops">qiskit.pulse.ops module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.pulse.html#module-qiskit.pulse.schedule">qiskit.pulse.schedule module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.pulse.html#module-qiskit.pulse.timeslots">qiskit.pulse.timeslots module</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.qasm.html">qiskit.qasm package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.qasm.html#subpackages">Subpackages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.qasm.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.qasm.html#module-qiskit.qasm.exceptions">qiskit.qasm.exceptions module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.qasm.html#module-qiskit.qasm.qasm">qiskit.qasm.qasm module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.qasm.html#module-qiskit.qasm.qasmlexer">qiskit.qasm.qasmlexer module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.qasm.html#module-qiskit.qasm.qasmparser">qiskit.qasm.qasmparser module</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.qobj.html">qiskit.qobj package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.qobj.html#subpackages">Subpackages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.qobj.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.qobj.html#module-qiskit.qobj.qobj">qiskit.qobj.qobj module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.qobj.html#module-qiskit.qobj.utils">qiskit.qobj.utils module</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.quantum_info.html">qiskit.quantum_info package</a><ul>
@@ -1642,45 +1759,86 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.result.html">qiskit.result package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.result.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.result.html#module-qiskit.result.exceptions">qiskit.result.exceptions module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.result.html#module-qiskit.result.models">qiskit.result.models module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.result.html#module-qiskit.result.postprocess">qiskit.result.postprocess module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.result.html#module-qiskit.result.result">qiskit.result.result module</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.test.html">qiskit.test package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.test.html#subpackages">Subpackages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.test.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.test.html#module-qiskit.test.base">qiskit.test.base module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.test.html#qiskit-test-decorators-module">qiskit.test.decorators module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.test.html#qiskit-test-http-recorder-module">qiskit.test.http_recorder module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.test.html#qiskit-test-mock-module">qiskit.test.mock module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.test.html#qiskit-test-reference-circuits-module">qiskit.test.reference_circuits module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.test.html#qiskit-test-testing-options-module">qiskit.test.testing_options module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.test.html#module-qiskit.test.utils">qiskit.test.utils module</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.tools.html">qiskit.tools package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.tools.html#subpackages">Subpackages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.tools.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.tools.html#module-qiskit.tools.compiler">qiskit.tools.compiler module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.tools.html#module-qiskit.tools.logging">qiskit.tools.logging module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.tools.html#module-qiskit.tools.parallel">qiskit.tools.parallel module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.tools.html#module-qiskit.tools.visualization">qiskit.tools.visualization module</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.transpiler.html">qiskit.transpiler package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.transpiler.html#subpackages">Subpackages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.transpiler.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.transpiler.html#module-qiskit.transpiler.basepasses">qiskit.transpiler.basepasses module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.transpiler.html#module-qiskit.transpiler.coupling">qiskit.transpiler.coupling module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.transpiler.html#module-qiskit.transpiler.exceptions">qiskit.transpiler.exceptions module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.transpiler.html#module-qiskit.transpiler.fencedobjs">qiskit.transpiler.fencedobjs module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.transpiler.html#module-qiskit.transpiler.layout">qiskit.transpiler.layout module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.transpiler.html#module-qiskit.transpiler.models">qiskit.transpiler.models module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.transpiler.html#module-qiskit.transpiler.passmanager">qiskit.transpiler.passmanager module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.transpiler.html#module-qiskit.transpiler.propertyset">qiskit.transpiler.propertyset module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.transpiler.html#module-qiskit.transpiler.transpile_circuit">qiskit.transpiler.transpile_circuit module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.transpiler.html#module-qiskit.transpiler.transpile_config">qiskit.transpiler.transpile_config module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.transpiler.html#module-qiskit.transpiler.transpiler">qiskit.transpiler.transpiler module</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.validation.html">qiskit.validation package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.validation.html#subpackages">Subpackages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.validation.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.validation.html#module-qiskit.validation.base">qiskit.validation.base module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.validation.html#module-qiskit.validation.exceptions">qiskit.validation.exceptions module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.validation.html#module-qiskit.validation.validate">qiskit.validation.validate module</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.visualization.html">qiskit.visualization package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.visualization.html#subpackages">Subpackages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.visualization.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.visualization.html#qiskit-visualization-bloch-module">qiskit.visualization.bloch module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.visualization.html#module-qiskit.visualization.circuit_visualization">qiskit.visualization.circuit_visualization module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.visualization.html#module-qiskit.visualization.counts_visualization">qiskit.visualization.counts_visualization module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.visualization.html#module-qiskit.visualization.dag_visualization">qiskit.visualization.dag_visualization module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.visualization.html#module-qiskit.visualization.exceptions">qiskit.visualization.exceptions module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.visualization.html#module-qiskit.visualization.gate_map">qiskit.visualization.gate_map module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.visualization.html#module-qiskit.visualization.interpolation">qiskit.visualization.interpolation module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.visualization.html#module-qiskit.visualization.latex">qiskit.visualization.latex module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.visualization.html#module-qiskit.visualization.matplotlib">qiskit.visualization.matplotlib module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.visualization.html#module-qiskit.visualization.pulse_visualization">qiskit.visualization.pulse_visualization module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.visualization.html#module-qiskit.visualization.qcstyle">qiskit.visualization.qcstyle module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.visualization.html#module-qiskit.visualization.state_visualization">qiskit.visualization.state_visualization module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.visualization.html#module-qiskit.visualization.text">qiskit.visualization.text module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.visualization.html#module-qiskit.visualization.utils">qiskit.visualization.utils module</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="qiskit.html#submodules">Submodules</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="qiskit._util.html">qiskit._util module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.exceptions.html">qiskit.exceptions module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.execute.html">qiskit.execute module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.qiskiterror.html">qiskit.qiskiterror module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.user_config.html">qiskit.user_config module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.util.html">qiskit.util module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.version.html">qiskit.version module</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="qiskit.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qiskit.html#module-qiskit._util">qiskit._util module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qiskit.html#module-qiskit.exceptions">qiskit.exceptions module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qiskit.html#module-qiskit.execute">qiskit.execute module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qiskit.html#module-qiskit.qiskiterror">qiskit.qiskiterror module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qiskit.html#module-qiskit.user_config">qiskit.user_config module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qiskit.html#module-qiskit.util">qiskit.util module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qiskit.html#module-qiskit.version">qiskit.version module</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../contributing_to_qiskit.html">Contributing to Qiskit</a><ul>
@@ -1737,14 +1895,1071 @@
 <p>Standard error module for Qiskit Aer.</p>
 <div class="section" id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="qiskit.providers.aer.noise.errors.errorutils.html">qiskit.providers.aer.noise.errors.errorutils module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="qiskit.providers.aer.noise.errors.quantum_error.html">qiskit.providers.aer.noise.errors.quantum_error module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="qiskit.providers.aer.noise.errors.readout_error.html">qiskit.providers.aer.noise.errors.readout_error module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="qiskit.providers.aer.noise.errors.standard_errors.html">qiskit.providers.aer.noise.errors.standard_errors module</a></li>
-</ul>
 </div>
+<div class="section" id="module-qiskit.providers.aer.noise.errors.errorutils">
+<span id="qiskit-providers-aer-noise-errors-errorutils-module"></span><h2>qiskit.providers.aer.noise.errors.errorutils module<a class="headerlink" href="#module-qiskit.providers.aer.noise.errors.errorutils" title="Permalink to this headline">¶</a></h2>
+<p>Helper functions for noise model creation.</p>
+<dl class="function">
+<dt id="qiskit.providers.aer.noise.errors.errorutils.circuit2superop">
+<code class="descname">circuit2superop</code><span class="sig-paren">(</span><em>circuit</em>, <em>min_qubits=1</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/providers/aer/noise/errors/errorutils.html#circuit2superop"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.providers.aer.noise.errors.errorutils.circuit2superop" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the SuperOp for a standard instruction.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="qiskit.providers.aer.noise.errors.errorutils.is_matrix_diagonal">
+<code class="descname">is_matrix_diagonal</code><span class="sig-paren">(</span><em>mat</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/providers/aer/noise/errors/errorutils.html#is_matrix_diagonal"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.providers.aer.noise.errors.errorutils.is_matrix_diagonal" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test if row-vector representation of diagonal matrix.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="qiskit.providers.aer.noise.errors.errorutils.kraus2instructions">
+<code class="descname">kraus2instructions</code><span class="sig-paren">(</span><em>kraus_ops</em>, <em>standard_gates</em>, <em>atol=1e-08</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/providers/aer/noise/errors/errorutils.html#kraus2instructions"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.providers.aer.noise.errors.errorutils.kraus2instructions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert a list of Kraus matrices into qobj circuits.</p>
+<p>If any Kraus operators are a unitary matrix they will be converted
+into unitary qobj instructions. Identity unitary matrices will also be
+converted into identity qobj instructions.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>kraus_ops</strong> (<em>list</em><em>[</em><em>matrix</em><em>]</em>) – A list of Kraus matrices for a CPTP map.</li>
+<li><strong>standard_gates</strong> (<em>bool</em>) – Check if the matrix instruction is a
+standard instruction (default: True).</li>
+<li><strong>atol</strong> (<em>double</em>) – Threshold for testing if probabilities are zero.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A list of pairs (p, circuit) where <cite>circuit</cite> is a list of qobj
+instructions, and <cite>p</cite> is the probability of that circuit for the
+given error.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">list</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><code class="xref py py-exc docutils literal notranslate"><span class="pre">NoiseError</span></code> – If the input Kraus channel is not CPTP.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="qiskit.providers.aer.noise.errors.errorutils.make_kraus_instruction">
+<code class="descname">make_kraus_instruction</code><span class="sig-paren">(</span><em>mats</em>, <em>qubits</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/providers/aer/noise/errors/errorutils.html#make_kraus_instruction"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.providers.aer.noise.errors.errorutils.make_kraus_instruction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a qobj instruction for a Kraus error.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>mats</strong> (<em>list</em><em>[</em><em>matrix</em><em>]</em>) – A list of square or diagonal Kraus matrices.</li>
+<li><strong>qubits</strong> (<em>list</em><em>[</em><em>int</em><em>]</em>) – The qubits the matrix is applied to.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">The qobj instruction object.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">dict</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><code class="xref py py-exc docutils literal notranslate"><span class="pre">NoiseError</span></code> – if the input is not a CPTP Kraus channel.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="qiskit.providers.aer.noise.errors.errorutils.make_unitary_instruction">
+<code class="descname">make_unitary_instruction</code><span class="sig-paren">(</span><em>mat</em>, <em>qubits</em>, <em>standard_gates=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/providers/aer/noise/errors/errorutils.html#make_unitary_instruction"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.providers.aer.noise.errors.errorutils.make_unitary_instruction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a qobj instruction for a unitary matrix gate.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>mat</strong> (<em>matrix</em>) – A square or diagonal unitary matrix.</li>
+<li><strong>qubits</strong> (<em>list</em><em>[</em><em>int</em><em>]</em>) – The qubits the matrix is applied to.</li>
+<li><strong>standard_gates</strong> (<em>bool</em>) – Check if the matrix instruction is a
+standard instruction.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">The qobj instruction object.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">dict</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><code class="xref py py-exc docutils literal notranslate"><span class="pre">NoiseError</span></code> – if the input is not a unitary matrix.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="qiskit.providers.aer.noise.errors.errorutils.qubits_from_mat">
+<code class="descname">qubits_from_mat</code><span class="sig-paren">(</span><em>mat</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/providers/aer/noise/errors/errorutils.html#qubits_from_mat"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.providers.aer.noise.errors.errorutils.qubits_from_mat" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the number of qubits for a multi-qubit matrix.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="qiskit.providers.aer.noise.errors.errorutils.reset_superop">
+<code class="descname">reset_superop</code><span class="sig-paren">(</span><em>num_qubits</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/providers/aer/noise/errors/errorutils.html#reset_superop"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.providers.aer.noise.errors.errorutils.reset_superop" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a N-qubit reset SuperOp.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="qiskit.providers.aer.noise.errors.errorutils.single_qubit_clifford_gates">
+<code class="descname">single_qubit_clifford_gates</code><span class="sig-paren">(</span><em>j</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/providers/aer/noise/errors/errorutils.html#single_qubit_clifford_gates"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.providers.aer.noise.errors.errorutils.single_qubit_clifford_gates" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a QASM gate names for a single qubit clifford.</p>
+<p>The labels are returned in a basis set consisting of
+(‘id’, ‘s’, ‘sdg’, ‘z’, ‘h’, x’, ‘y’) gates decomposed to
+use the minimum number of X-90 pulses in a (u1, u2, u3)
+decomposition.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>j</strong> (<em>int</em>) – Clifford index 0, …, 23.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The tuple of basis gates.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">tuple(str)</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><code class="xref py py-exc docutils literal notranslate"><span class="pre">NoiseError</span></code> – If index is out of range [0, 23].</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="qiskit.providers.aer.noise.errors.errorutils.single_qubit_clifford_instructions">
+<code class="descname">single_qubit_clifford_instructions</code><span class="sig-paren">(</span><em>index</em>, <em>qubit=0</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/providers/aer/noise/errors/errorutils.html#single_qubit_clifford_instructions"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.providers.aer.noise.errors.errorutils.single_qubit_clifford_instructions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a list of qobj instructions for a single qubit cliffords.</p>
+<p>The instructions are returned in a basis set consisting of
+(‘id’, ‘s’, ‘sdg’, ‘z’, ‘h’, x’, ‘y’) gates decomposed to
+use the minimum number of X-90 pulses in a (u1, u2, u3)
+decomposition.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>index</strong> (<em>int</em>) – Clifford index 0, …, 23.</li>
+<li><strong>qubit</strong> (<em>int</em>) – the qubit to apply the Clifford to.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">The list of instructions.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">list(dict)</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><code class="xref py py-exc docutils literal notranslate"><span class="pre">NoiseError</span></code> – If index is out of range [0, 23] or qubit invalid.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="qiskit.providers.aer.noise.errors.errorutils.single_qubit_clifford_matrix">
+<code class="descname">single_qubit_clifford_matrix</code><span class="sig-paren">(</span><em>j</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/providers/aer/noise/errors/errorutils.html#single_qubit_clifford_matrix"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.providers.aer.noise.errors.errorutils.single_qubit_clifford_matrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return Numpy array for a single qubit clifford.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>j</strong> (<em>int</em>) – Clifford index 0, …, 23.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The matrix for the indexed clifford.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">np.array</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><code class="xref py py-exc docutils literal notranslate"><span class="pre">NoiseError</span></code> – If index is out of range [0, 23].</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="qiskit.providers.aer.noise.errors.errorutils.standard_gate_instruction">
+<code class="descname">standard_gate_instruction</code><span class="sig-paren">(</span><em>instruction</em>, <em>ignore_phase=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/providers/aer/noise/errors/errorutils.html#standard_gate_instruction"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.providers.aer.noise.errors.errorutils.standard_gate_instruction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert a unitary matrix instruction into a standard gate instruction.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>instruction</strong> (<em>dict</em>) – A qobj instruction.</li>
+<li><strong>ignore_phase</strong> (<em>bool</em>) – Ignore global phase on unitary matrix in
+comparison to canonical unitary.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">a list of qobj instructions equivalent to in input instruction.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="qiskit.providers.aer.noise.errors.errorutils.standard_gate_unitary">
+<code class="descname">standard_gate_unitary</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/providers/aer/noise/errors/errorutils.html#standard_gate_unitary"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.providers.aer.noise.errors.errorutils.standard_gate_unitary" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the unitary matrix for a standard gate.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="qiskit.providers.aer.noise.errors.errorutils.standard_gates_instructions">
+<code class="descname">standard_gates_instructions</code><span class="sig-paren">(</span><em>instructions</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/providers/aer/noise/errors/errorutils.html#standard_gates_instructions"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.providers.aer.noise.errors.errorutils.standard_gates_instructions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert a list with unitary matrix instructions into standard gates.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>instructions</strong> (<em>list</em>) – A list of qobj instructions.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">a list of qobj instructions equivalent to in input instruction.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">list</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="qiskit.providers.aer.noise.errors.errorutils.standard_instruction_channel">
+<code class="descname">standard_instruction_channel</code><span class="sig-paren">(</span><em>instr</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/providers/aer/noise/errors/errorutils.html#standard_instruction_channel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.providers.aer.noise.errors.errorutils.standard_instruction_channel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the SuperOp channel for a standard instruction.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="qiskit.providers.aer.noise.errors.errorutils.standard_instruction_operator">
+<code class="descname">standard_instruction_operator</code><span class="sig-paren">(</span><em>instr</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/providers/aer/noise/errors/errorutils.html#standard_instruction_operator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.providers.aer.noise.errors.errorutils.standard_instruction_operator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the Operator for a standard gate instruction.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-qiskit.providers.aer.noise.errors.quantum_error">
+<span id="qiskit-providers-aer-noise-errors-quantum-error-module"></span><h2>qiskit.providers.aer.noise.errors.quantum_error module<a class="headerlink" href="#module-qiskit.providers.aer.noise.errors.quantum_error" title="Permalink to this headline">¶</a></h2>
+<p>Quantum error class for Qiskit Aer noise model</p>
+<dl class="class">
+<dt id="qiskit.providers.aer.noise.errors.quantum_error.QuantumError">
+<em class="property">class </em><code class="descname">QuantumError</code><span class="sig-paren">(</span><em>noise_ops</em>, <em>number_of_qubits=None</em>, <em>standard_gates=True</em>, <em>atol=1e-08</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/providers/aer/noise/errors/quantum_error.html#QuantumError"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.providers.aer.noise.errors.quantum_error.QuantumError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Quantum error class for Qiskit Aer noise model</p>
+<dl class="docutils">
+<dt>WARNING: The init interface for this class is not finalized and may</dt>
+<dd>change in future releases. For maximum backwards compatibility
+use the QuantumError generating functions in the <cite>noise.errors</cite>
+module.</dd>
+</dl>
+<dl class="attribute">
+<dt id="qiskit.providers.aer.noise.errors.quantum_error.QuantumError.ATOL">
+<code class="descname">ATOL</code><em class="property"> = 1e-08</em><a class="headerlink" href="#qiskit.providers.aer.noise.errors.quantum_error.QuantumError.ATOL" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="qiskit.providers.aer.noise.errors.quantum_error.QuantumError.MAX_TOL">
+<code class="descname">MAX_TOL</code><em class="property"> = 0.0001</em><a class="headerlink" href="#qiskit.providers.aer.noise.errors.quantum_error.QuantumError.MAX_TOL" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="qiskit.providers.aer.noise.errors.quantum_error.QuantumError.RTOL">
+<code class="descname">RTOL</code><em class="property"> = 1e-05</em><a class="headerlink" href="#qiskit.providers.aer.noise.errors.quantum_error.QuantumError.RTOL" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="qiskit.providers.aer.noise.errors.quantum_error.QuantumError.as_dict">
+<code class="descname">as_dict</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/providers/aer/noise/errors/quantum_error.html#QuantumError.as_dict"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.providers.aer.noise.errors.quantum_error.QuantumError.as_dict" title="Permalink to this definition">¶</a></dt>
+<dd><p>DEPRECATED: Use to_dict()
+:returns: The current error as a dictionary.
+:rtype: dict</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="qiskit.providers.aer.noise.errors.quantum_error.QuantumError.atol">
+<code class="descname">atol</code><a class="headerlink" href="#qiskit.providers.aer.noise.errors.quantum_error.QuantumError.atol" title="Permalink to this definition">¶</a></dt>
+<dd><p>The absolute tolerence parameter for float comparisons.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="qiskit.providers.aer.noise.errors.quantum_error.QuantumError.circuits">
+<code class="descname">circuits</code><a class="headerlink" href="#qiskit.providers.aer.noise.errors.quantum_error.QuantumError.circuits" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the list of error circuits.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="qiskit.providers.aer.noise.errors.quantum_error.QuantumError.compose">
+<code class="descname">compose</code><span class="sig-paren">(</span><em>other</em>, <em>front=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/providers/aer/noise/errors/quantum_error.html#QuantumError.compose"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.providers.aer.noise.errors.quantum_error.QuantumError.compose" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the composition error channel self∘other.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>other</strong> (<a class="reference internal" href="#qiskit.providers.aer.noise.errors.quantum_error.QuantumError" title="qiskit.providers.aer.noise.errors.quantum_error.QuantumError"><em>QuantumError</em></a>) – a quantum error channel.</li>
+<li><strong>front</strong> (<em>bool</em>) – If False compose in standard order other(self(input))
+otherwise compose in reverse order self(other(input))
+[default: False]</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">The composition error channel.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first"><a class="reference internal" href="#qiskit.providers.aer.noise.errors.quantum_error.QuantumError" title="qiskit.providers.aer.noise.errors.quantum_error.QuantumError">QuantumError</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><ul class="first last simple">
+<li><code class="xref py py-exc docutils literal notranslate"><span class="pre">NoiseError</span></code> – if other cannot be converted into a QuantumError,</li>
+<li>or has incompatible dimensions.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="qiskit.providers.aer.noise.errors.quantum_error.QuantumError.copy">
+<code class="descname">copy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/providers/aer/noise/errors/quantum_error.html#QuantumError.copy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.providers.aer.noise.errors.quantum_error.QuantumError.copy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Make a copy of current QuantumError.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="qiskit.providers.aer.noise.errors.quantum_error.QuantumError.error_term">
+<code class="descname">error_term</code><span class="sig-paren">(</span><em>position</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/providers/aer/noise/errors/quantum_error.html#QuantumError.error_term"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.providers.aer.noise.errors.quantum_error.QuantumError.error_term" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a single term from the error.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>position</strong> (<em>int</em>) – the position of the error term.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A pair <cite>(p, circuit)</cite> for error term at <cite>position</cite> &lt; size
+where <cite>p</cite> is the probability of the error term, and <cite>circuit</cite>
+is the list of qobj instructions for the error term.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">tuple</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><ul class="first last simple">
+<li><code class="xref py py-exc docutils literal notranslate"><span class="pre">NoiseError</span></code> – If the position is greater than the size of</li>
+<li>the quantum error.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="qiskit.providers.aer.noise.errors.quantum_error.QuantumError.expand">
+<code class="descname">expand</code><span class="sig-paren">(</span><em>other</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/providers/aer/noise/errors/quantum_error.html#QuantumError.expand"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.providers.aer.noise.errors.quantum_error.QuantumError.expand" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the tensor product quantum error channel self ⊗ other.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>other</strong> (<a class="reference internal" href="#qiskit.providers.aer.noise.errors.quantum_error.QuantumError" title="qiskit.providers.aer.noise.errors.quantum_error.QuantumError"><em>QuantumError</em></a>) – a quantum error channel.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">the tensor product error channel other ⊗ self.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#qiskit.providers.aer.noise.errors.quantum_error.QuantumError" title="qiskit.providers.aer.noise.errors.quantum_error.QuantumError">QuantumError</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><code class="xref py py-exc docutils literal notranslate"><span class="pre">NoiseError</span></code> – if other cannot be converted to a QuantumError.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="qiskit.providers.aer.noise.errors.quantum_error.QuantumError.ideal">
+<code class="descname">ideal</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/providers/aer/noise/errors/quantum_error.html#QuantumError.ideal"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.providers.aer.noise.errors.quantum_error.QuantumError.ideal" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return True if current error object is an identity</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="qiskit.providers.aer.noise.errors.quantum_error.QuantumError.kron">
+<code class="descname">kron</code><span class="sig-paren">(</span><em>other</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/providers/aer/noise/errors/quantum_error.html#QuantumError.kron"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.providers.aer.noise.errors.quantum_error.QuantumError.kron" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the tensor product quantum error channel self ⊗ other.</p>
+<p>DEPRECIATED: use QuantumError.tensor instead.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>other</strong> (<a class="reference internal" href="#qiskit.providers.aer.noise.errors.quantum_error.QuantumError" title="qiskit.providers.aer.noise.errors.quantum_error.QuantumError"><em>QuantumError</em></a>) – a quantum error or channel.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">the tensor product channel self ⊗ other.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#qiskit.providers.aer.noise.errors.quantum_error.QuantumError" title="qiskit.providers.aer.noise.errors.quantum_error.QuantumError">QuantumError</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="qiskit.providers.aer.noise.errors.quantum_error.QuantumError.number_of_qubits">
+<code class="descname">number_of_qubits</code><a class="headerlink" href="#qiskit.providers.aer.noise.errors.quantum_error.QuantumError.number_of_qubits" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the number of qubits for the error.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="qiskit.providers.aer.noise.errors.quantum_error.QuantumError.power">
+<code class="descname">power</code><span class="sig-paren">(</span><em>n</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/providers/aer/noise/errors/quantum_error.html#QuantumError.power"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.providers.aer.noise.errors.quantum_error.QuantumError.power" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the compose of a error channel with itself n times.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>n</strong> (<em>int</em>) – the number of times to compose with self (n&gt;0).</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">the n-times composition error channel.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#qiskit.providers.aer.noise.errors.quantum_error.QuantumError" title="qiskit.providers.aer.noise.errors.quantum_error.QuantumError">QuantumError</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><code class="xref py py-exc docutils literal notranslate"><span class="pre">NoiseError</span></code> – if the power is not a positive integer.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="qiskit.providers.aer.noise.errors.quantum_error.QuantumError.probabilities">
+<code class="descname">probabilities</code><a class="headerlink" href="#qiskit.providers.aer.noise.errors.quantum_error.QuantumError.probabilities" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the list of error probabilities.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="qiskit.providers.aer.noise.errors.quantum_error.QuantumError.rtol">
+<code class="descname">rtol</code><a class="headerlink" href="#qiskit.providers.aer.noise.errors.quantum_error.QuantumError.rtol" title="Permalink to this definition">¶</a></dt>
+<dd><p>The relative tolerence parameter for float comparisons.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="qiskit.providers.aer.noise.errors.quantum_error.QuantumError.size">
+<code class="descname">size</code><a class="headerlink" href="#qiskit.providers.aer.noise.errors.quantum_error.QuantumError.size" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the number of error circuit.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="qiskit.providers.aer.noise.errors.quantum_error.QuantumError.tensor">
+<code class="descname">tensor</code><span class="sig-paren">(</span><em>other</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/providers/aer/noise/errors/quantum_error.html#QuantumError.tensor"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.providers.aer.noise.errors.quantum_error.QuantumError.tensor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the tensor product quantum error channel self ⊗ other.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>other</strong> (<a class="reference internal" href="#qiskit.providers.aer.noise.errors.quantum_error.QuantumError" title="qiskit.providers.aer.noise.errors.quantum_error.QuantumError"><em>QuantumError</em></a>) – a quantum error channel.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">the tensor product error channel self ⊗ other.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#qiskit.providers.aer.noise.errors.quantum_error.QuantumError" title="qiskit.providers.aer.noise.errors.quantum_error.QuantumError">QuantumError</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><code class="xref py py-exc docutils literal notranslate"><span class="pre">NoiseError</span></code> – if other cannot be converted to a QuantumError.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="qiskit.providers.aer.noise.errors.quantum_error.QuantumError.to_dict">
+<code class="descname">to_dict</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/providers/aer/noise/errors/quantum_error.html#QuantumError.to_dict"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.providers.aer.noise.errors.quantum_error.QuantumError.to_dict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the current error as a dictionary.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="qiskit.providers.aer.noise.errors.quantum_error.QuantumError.to_instruction">
+<code class="descname">to_instruction</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/providers/aer/noise/errors/quantum_error.html#QuantumError.to_instruction"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.providers.aer.noise.errors.quantum_error.QuantumError.to_instruction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convet the QuantumError to a circuit Instruction.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="qiskit.providers.aer.noise.errors.quantum_error.QuantumError.to_quantumchannel">
+<code class="descname">to_quantumchannel</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/providers/aer/noise/errors/quantum_error.html#QuantumError.to_quantumchannel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.providers.aer.noise.errors.quantum_error.QuantumError.to_quantumchannel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convet the QuantumError to a SuperOp quantum channel.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-qiskit.providers.aer.noise.errors.readout_error">
+<span id="qiskit-providers-aer-noise-errors-readout-error-module"></span><h2>qiskit.providers.aer.noise.errors.readout_error module<a class="headerlink" href="#module-qiskit.providers.aer.noise.errors.readout_error" title="Permalink to this headline">¶</a></h2>
+<p>Readout error class for Qiskit Aer noise model.</p>
+<dl class="class">
+<dt id="qiskit.providers.aer.noise.errors.readout_error.ReadoutError">
+<em class="property">class </em><code class="descname">ReadoutError</code><span class="sig-paren">(</span><em>probabilities</em>, <em>atol=1e-08</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/providers/aer/noise/errors/readout_error.html#ReadoutError"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.providers.aer.noise.errors.readout_error.ReadoutError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Readout error class for Qiskit Aer noise model.</p>
+<dl class="attribute">
+<dt id="qiskit.providers.aer.noise.errors.readout_error.ReadoutError.ATOL">
+<code class="descname">ATOL</code><em class="property"> = 1e-08</em><a class="headerlink" href="#qiskit.providers.aer.noise.errors.readout_error.ReadoutError.ATOL" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="qiskit.providers.aer.noise.errors.readout_error.ReadoutError.MAX_TOL">
+<code class="descname">MAX_TOL</code><em class="property"> = 0.0001</em><a class="headerlink" href="#qiskit.providers.aer.noise.errors.readout_error.ReadoutError.MAX_TOL" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="qiskit.providers.aer.noise.errors.readout_error.ReadoutError.RTOL">
+<code class="descname">RTOL</code><em class="property"> = 1e-05</em><a class="headerlink" href="#qiskit.providers.aer.noise.errors.readout_error.ReadoutError.RTOL" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="qiskit.providers.aer.noise.errors.readout_error.ReadoutError.as_dict">
+<code class="descname">as_dict</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/providers/aer/noise/errors/readout_error.html#ReadoutError.as_dict"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.providers.aer.noise.errors.readout_error.ReadoutError.as_dict" title="Permalink to this definition">¶</a></dt>
+<dd><p>DEPRECATED: Use to_dict()
+:returns: The current error as a dictionary.
+:rtype: dict</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="qiskit.providers.aer.noise.errors.readout_error.ReadoutError.atol">
+<code class="descname">atol</code><a class="headerlink" href="#qiskit.providers.aer.noise.errors.readout_error.ReadoutError.atol" title="Permalink to this definition">¶</a></dt>
+<dd><p>The absolute tolerence parameter for float comparisons.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="qiskit.providers.aer.noise.errors.readout_error.ReadoutError.compose">
+<code class="descname">compose</code><span class="sig-paren">(</span><em>other</em>, <em>front=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/providers/aer/noise/errors/readout_error.html#ReadoutError.compose"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.providers.aer.noise.errors.readout_error.ReadoutError.compose" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the composition readout error self∘other.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>other</strong> (<a class="reference internal" href="#qiskit.providers.aer.noise.errors.readout_error.ReadoutError" title="qiskit.providers.aer.noise.errors.readout_error.ReadoutError"><em>ReadoutError</em></a>) – a readout error.</li>
+<li><strong>front</strong> (<em>bool</em>) – If False compose in standard order other(self(input))
+otherwise compose in reverse order self(other(input))
+[default: False]</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">The composition readout error.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first"><a class="reference internal" href="#qiskit.providers.aer.noise.errors.readout_error.ReadoutError" title="qiskit.providers.aer.noise.errors.readout_error.ReadoutError">ReadoutError</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><ul class="first last simple">
+<li><code class="xref py py-exc docutils literal notranslate"><span class="pre">NoiseError</span></code> – if other is not a ReadoutError or has incompatible</li>
+<li><code class="xref py py-exc docutils literal notranslate"><span class="pre">dimensions.</span></code></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="qiskit.providers.aer.noise.errors.readout_error.ReadoutError.copy">
+<code class="descname">copy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/providers/aer/noise/errors/readout_error.html#ReadoutError.copy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.providers.aer.noise.errors.readout_error.ReadoutError.copy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Make a copy of current ReadoutError.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="qiskit.providers.aer.noise.errors.readout_error.ReadoutError.expand">
+<code class="descname">expand</code><span class="sig-paren">(</span><em>other</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/providers/aer/noise/errors/readout_error.html#ReadoutError.expand"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.providers.aer.noise.errors.readout_error.ReadoutError.expand" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the tensor product readout error self ⊗ other.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>other</strong> (<a class="reference internal" href="#qiskit.providers.aer.noise.errors.readout_error.ReadoutError" title="qiskit.providers.aer.noise.errors.readout_error.ReadoutError"><em>ReadoutError</em></a>) – a readout error.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">the tensor product readout error other ⊗ self.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#qiskit.providers.aer.noise.errors.readout_error.ReadoutError" title="qiskit.providers.aer.noise.errors.readout_error.ReadoutError">ReadoutError</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><code class="xref py py-exc docutils literal notranslate"><span class="pre">NoiseError</span></code> – if other is not a ReadoutError.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="qiskit.providers.aer.noise.errors.readout_error.ReadoutError.ideal">
+<code class="descname">ideal</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/providers/aer/noise/errors/readout_error.html#ReadoutError.ideal"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.providers.aer.noise.errors.readout_error.ReadoutError.ideal" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return True if current error object is an identity</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="qiskit.providers.aer.noise.errors.readout_error.ReadoutError.number_of_qubits">
+<code class="descname">number_of_qubits</code><a class="headerlink" href="#qiskit.providers.aer.noise.errors.readout_error.ReadoutError.number_of_qubits" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the number of qubits for the error.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="qiskit.providers.aer.noise.errors.readout_error.ReadoutError.power">
+<code class="descname">power</code><span class="sig-paren">(</span><em>n</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/providers/aer/noise/errors/readout_error.html#ReadoutError.power"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.providers.aer.noise.errors.readout_error.ReadoutError.power" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the compose of the readout error with itself n times.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>n</strong> (<em>int</em>) – the number of times to compose with self (n&gt;0).</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">the n-times composition channel.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#qiskit.providers.aer.noise.errors.readout_error.ReadoutError" title="qiskit.providers.aer.noise.errors.readout_error.ReadoutError">ReadoutError</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><code class="xref py py-exc docutils literal notranslate"><span class="pre">NoiseError</span></code> – if the power is not a positive integer.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="qiskit.providers.aer.noise.errors.readout_error.ReadoutError.probabilities">
+<code class="descname">probabilities</code><a class="headerlink" href="#qiskit.providers.aer.noise.errors.readout_error.ReadoutError.probabilities" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the readout error probabilities matrix.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="qiskit.providers.aer.noise.errors.readout_error.ReadoutError.rtol">
+<code class="descname">rtol</code><a class="headerlink" href="#qiskit.providers.aer.noise.errors.readout_error.ReadoutError.rtol" title="Permalink to this definition">¶</a></dt>
+<dd><p>The relative tolerence parameter for float comparisons.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="qiskit.providers.aer.noise.errors.readout_error.ReadoutError.tensor">
+<code class="descname">tensor</code><span class="sig-paren">(</span><em>other</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/providers/aer/noise/errors/readout_error.html#ReadoutError.tensor"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.providers.aer.noise.errors.readout_error.ReadoutError.tensor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the tensor product readout error self ⊗ other.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>other</strong> (<a class="reference internal" href="#qiskit.providers.aer.noise.errors.readout_error.ReadoutError" title="qiskit.providers.aer.noise.errors.readout_error.ReadoutError"><em>ReadoutError</em></a>) – a readout error.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">the tensor product readout error self ⊗ other.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#qiskit.providers.aer.noise.errors.readout_error.ReadoutError" title="qiskit.providers.aer.noise.errors.readout_error.ReadoutError">ReadoutError</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><code class="xref py py-exc docutils literal notranslate"><span class="pre">NoiseError</span></code> – if other is not a ReadoutError.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="qiskit.providers.aer.noise.errors.readout_error.ReadoutError.to_dict">
+<code class="descname">to_dict</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/providers/aer/noise/errors/readout_error.html#ReadoutError.to_dict"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.providers.aer.noise.errors.readout_error.ReadoutError.to_dict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the current error as a dictionary.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="qiskit.providers.aer.noise.errors.readout_error.ReadoutError.to_instruction">
+<code class="descname">to_instruction</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/providers/aer/noise/errors/readout_error.html#ReadoutError.to_instruction"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.providers.aer.noise.errors.readout_error.ReadoutError.to_instruction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convet the ReadoutError to a circuit Instruction.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-qiskit.providers.aer.noise.errors.standard_errors">
+<span id="qiskit-providers-aer-noise-errors-standard-errors-module"></span><h2>qiskit.providers.aer.noise.errors.standard_errors module<a class="headerlink" href="#module-qiskit.providers.aer.noise.errors.standard_errors" title="Permalink to this headline">¶</a></h2>
+<p>Standard quantum computing error channels for Qiskit Aer.</p>
+<dl class="function">
+<dt id="qiskit.providers.aer.noise.errors.standard_errors.amplitude_damping_error">
+<code class="descname">amplitude_damping_error</code><span class="sig-paren">(</span><em>param_amp</em>, <em>excited_state_population=0</em>, <em>canonical_kraus=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/providers/aer/noise/errors/standard_errors.html#amplitude_damping_error"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.providers.aer.noise.errors.standard_errors.amplitude_damping_error" title="Permalink to this definition">¶</a></dt>
+<dd><p>Single-qubit generalized amplitude damping quantum error channel.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>param_amp</strong> (<em>double</em>) – the amplitude damping parameter.</li>
+<li><strong>excited_state_population</strong> (<em>double</em>) – the population of <a href="#id1"><span class="problematic" id="id2">|</span></a>1&gt; state at
+equilibrium (default: 0).</li>
+<li><strong>canonical_kraus</strong> (<em>bool</em>) – Convert input Kraus matrices into the
+canoical Kraus representation (default: True)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">a quantum error object for a noise model.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="#qiskit.providers.aer.noise.errors.quantum_error.QuantumError" title="qiskit.providers.aer.noise.errors.quantum_error.QuantumError">QuantumError</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Additional information:</dt>
+<dd><p class="first">The single-qubit amplitude damping channel is
+described by the following Kraus matrices:</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>A0 = sqrt(1 - p1) * [[1, 0],</dt>
+<dd>[0, sqrt(1 - a)]]</dd>
+<dt>A1 = sqrt(1 - p1) * [[0, sqrt(a)],</dt>
+<dd>[0, 0]]</dd>
+<dt>B0 = sqrt(p1) * [[sqrt(1 - a), 0],</dt>
+<dd>[0, 1]]</dd>
+<dt>B1 = sqrt(p1) * [[0, 0],</dt>
+<dd>[sqrt(a), 0]]</dd>
+</dl>
+<p>where a = param_amp, p1 = excited_state_population</p>
+</div></blockquote>
+<p>The equilibrium state after infinitely many applications of the
+channel is:</p>
+<blockquote class="last">
+<div><dl class="docutils">
+<dt>rho = [[1 - p1, 0]],</dt>
+<dd>[0, p1]]</dd>
+</dl>
+</div></blockquote>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="qiskit.providers.aer.noise.errors.standard_errors.coherent_unitary_error">
+<code class="descname">coherent_unitary_error</code><span class="sig-paren">(</span><em>unitary</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/providers/aer/noise/errors/standard_errors.html#coherent_unitary_error"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.providers.aer.noise.errors.standard_errors.coherent_unitary_error" title="Permalink to this definition">¶</a></dt>
+<dd><p>Coherent unitary quantum error channel.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>unitary</strong> (<em>matrix like</em>) – unitary error matrix.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The quantum error object.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#qiskit.providers.aer.noise.errors.quantum_error.QuantumError" title="qiskit.providers.aer.noise.errors.quantum_error.QuantumError">QuantumError</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="qiskit.providers.aer.noise.errors.standard_errors.depolarizing_error">
+<code class="descname">depolarizing_error</code><span class="sig-paren">(</span><em>param</em>, <em>num_qubits</em>, <em>standard_gates=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/providers/aer/noise/errors/standard_errors.html#depolarizing_error"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.providers.aer.noise.errors.standard_errors.depolarizing_error" title="Permalink to this definition">¶</a></dt>
+<dd><p>Depolarizing quantum error channel.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>param</strong> (<em>double</em>) – depolarizing error parameter.</li>
+<li><strong>num_qubits</strong> (<em>int</em>) – the number of qubits for the error channel.</li>
+<li><strong>standard_gates</strong> (<em>bool</em>) – if True return the operators as standard qobj
+Pauli gate instructions. If false return as
+unitary matrix qobj instructions.
+(Default: True)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">The quantum error object.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first"><a class="reference internal" href="#qiskit.providers.aer.noise.errors.quantum_error.QuantumError" title="qiskit.providers.aer.noise.errors.quantum_error.QuantumError">QuantumError</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><code class="xref py py-exc docutils literal notranslate"><span class="pre">NoiseError</span></code> – If noise parameters are invalid.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Additional Information:</dt>
+<dd><dl class="first docutils">
+<dt>The depolarizing channel is defined as:</dt>
+<dd>E(ρ) = (1 - λ) ρ + λ * (I / 2 ** n)
+with 0 &lt;= λ &lt;= 4 ** n / (4 ** n - 1)</dd>
+</dl>
+<p>where λ is the depolarizing error param and n is the number of
+qubits.
+If λ = 0 this is the identity channel E(ρ) = ρ
+If λ = 1 this is a completely depolarizing channel E(ρ) = I / 2 ** n
+if λ = 4 ** n / (4 ** n - 1) this is a uniform Pauli error channel</p>
+<blockquote class="last">
+<div>E(ρ) = sum_j P_j ρ P_j / (4 ** n - 1) for all P_j != I.</div></blockquote>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="qiskit.providers.aer.noise.errors.standard_errors.kraus_error">
+<code class="descname">kraus_error</code><span class="sig-paren">(</span><em>noise_ops</em>, <em>standard_gates=True</em>, <em>canonical_kraus=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/providers/aer/noise/errors/standard_errors.html#kraus_error"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.providers.aer.noise.errors.standard_errors.kraus_error" title="Permalink to this definition">¶</a></dt>
+<dd><p>Kraus error channel.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>noise_ops</strong> (<em>list</em><em>[</em><em>matrix</em><em>]</em>) – Kraus matrices.</li>
+<li><strong>standard_gates</strong> (<em>bool</em>) – Check if input matrices are standard gates.</li>
+<li><strong>canonical_kraus</strong> (<em>bool</em>) – Convert input Kraus matrices into the
+canoical Kraus representation (default: False)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">The quantum error object.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first"><a class="reference internal" href="#qiskit.providers.aer.noise.errors.quantum_error.QuantumError" title="qiskit.providers.aer.noise.errors.quantum_error.QuantumError">QuantumError</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><code class="xref py py-exc docutils literal notranslate"><span class="pre">NoiseError</span></code> – if error parameters are invalid.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="qiskit.providers.aer.noise.errors.standard_errors.mixed_unitary_error">
+<code class="descname">mixed_unitary_error</code><span class="sig-paren">(</span><em>noise_ops</em>, <em>standard_gates=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/providers/aer/noise/errors/standard_errors.html#mixed_unitary_error"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.providers.aer.noise.errors.standard_errors.mixed_unitary_error" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mixed unitary quantum error channel.</p>
+<p>The input should be a list of pairs (U[j], p[j]), where <cite>U[j]</cite> is a
+unitary matrix and <cite>p[j]</cite> is a probability. All probabilities must
+sum to 1 for the input ops to be valid.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>noise_ops</strong> (<em>list</em><em>[</em><em>pair</em><em>[</em><em>matrix</em><em>, </em><em>double</em><em>]</em><em>]</em>) – unitary error matricies.</li>
+<li><strong>standard_gates</strong> (<em>bool</em>) – Check if input matrices are standard gates.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">The quantum error object.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first"><a class="reference internal" href="#qiskit.providers.aer.noise.errors.quantum_error.QuantumError" title="qiskit.providers.aer.noise.errors.quantum_error.QuantumError">QuantumError</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><code class="xref py py-exc docutils literal notranslate"><span class="pre">NoiseError</span></code> – if error parameters are invalid.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="qiskit.providers.aer.noise.errors.standard_errors.pauli_error">
+<code class="descname">pauli_error</code><span class="sig-paren">(</span><em>noise_ops</em>, <em>standard_gates=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/providers/aer/noise/errors/standard_errors.html#pauli_error"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.providers.aer.noise.errors.standard_errors.pauli_error" title="Permalink to this definition">¶</a></dt>
+<dd><p>Pauli quantum error channel.</p>
+<p>The input should be a list of pairs (P[j], p[j]), where <cite>P[j]</cite> is a
+<cite>Pauli</cite> object and <cite>p[j]</cite> is a probability. All probabilities must
+sum to 1 for the input ops to be valid.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>noise_ops</strong> (<em>list</em><em>[</em><em>pair</em><em>[</em><a class="reference internal" href="qiskit.quantum_info.operators.html#qiskit.quantum_info.operators.pauli.Pauli" title="qiskit.quantum_info.operators.pauli.Pauli"><em>Pauli</em></a><em>, </em><em>double</em><em>]</em><em>]</em>) – Pauli error terms.</li>
+<li><strong>standard_gates</strong> (<em>bool</em>) – if True return the operators as standard qobj
+Pauli gate instructions. If false return as
+unitary matrix qobj instructions.
+(Default: True)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">The quantum error object.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first"><a class="reference internal" href="#qiskit.providers.aer.noise.errors.quantum_error.QuantumError" title="qiskit.providers.aer.noise.errors.quantum_error.QuantumError">QuantumError</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><code class="xref py py-exc docutils literal notranslate"><span class="pre">NoiseError</span></code> – If depolarizing probability is less than 0 or greater than 1.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="qiskit.providers.aer.noise.errors.standard_errors.phase_amplitude_damping_error">
+<code class="descname">phase_amplitude_damping_error</code><span class="sig-paren">(</span><em>param_amp</em>, <em>param_phase</em>, <em>excited_state_population=0</em>, <em>canonical_kraus=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/providers/aer/noise/errors/standard_errors.html#phase_amplitude_damping_error"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.providers.aer.noise.errors.standard_errors.phase_amplitude_damping_error" title="Permalink to this definition">¶</a></dt>
+<dd><p>Single-qubit combined phase and amplitude damping quantum error channel.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>param_amp</strong> (<em>double</em>) – the amplitude damping error parameter.</li>
+<li><strong>param_phase</strong> (<em>double</em>) – the phase damping error parameter.</li>
+<li><strong>excited_state_population</strong> (<em>double</em>) – the population of <a href="#id3"><span class="problematic" id="id4">|</span></a>1&gt; state at
+equilibrium (default: 0).</li>
+<li><strong>canonical_kraus</strong> (<em>bool</em>) – Convert input Kraus matrices into the
+canoical Kraus representation (default: True)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">a quantum error object for a noise model.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first"><a class="reference internal" href="#qiskit.providers.aer.noise.errors.quantum_error.QuantumError" title="qiskit.providers.aer.noise.errors.quantum_error.QuantumError">QuantumError</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><code class="xref py py-exc docutils literal notranslate"><span class="pre">NoiseError</span></code> – If noise parameters are invalid.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Additional information:</dt>
+<dd><p class="first">The single-qubit combined phase and amplitude damping channel is
+described by the following Kraus matrices:</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>A0 = sqrt(1 - p1) * [[1, 0],</dt>
+<dd>[0, sqrt(1 - a - b)]]</dd>
+<dt>A1 = sqrt(1 - p1) * [[0, sqrt(a)],</dt>
+<dd>[0, 0]]</dd>
+<dt>A2 = sqrt(1 - p1) * [[0, 0],</dt>
+<dd>[0, sqrt(b)]]</dd>
+<dt>B0 = sqrt(p1) * [[sqrt(1 - a - b), 0],</dt>
+<dd>[0, 1]]</dd>
+<dt>B1 = sqrt(p1) * [[0, 0],</dt>
+<dd>[sqrt(a), 0]]</dd>
+<dt>B2 = sqrt(p1) * [[sqrt(b), 0],</dt>
+<dd>[0, 0]]</dd>
+</dl>
+<p>where a = param_amp, b = param_phase, p1 = excited_state_population</p>
+</div></blockquote>
+<p>The equilibrium state after infinitely many applications of the
+channel is:</p>
+<blockquote class="last">
+<div><dl class="docutils">
+<dt>rho = [[1 - p1, 0]],</dt>
+<dd>[0, p1]]</dd>
+</dl>
+</div></blockquote>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="qiskit.providers.aer.noise.errors.standard_errors.phase_damping_error">
+<code class="descname">phase_damping_error</code><span class="sig-paren">(</span><em>param_phase</em>, <em>canonical_kraus=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/providers/aer/noise/errors/standard_errors.html#phase_damping_error"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.providers.aer.noise.errors.standard_errors.phase_damping_error" title="Permalink to this definition">¶</a></dt>
+<dd><p>Single-qubit combined phase and amplitude damping quantum error channel.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>param_phase</strong> (<em>double</em>) – the phase damping parameter.</li>
+<li><strong>canonical_kraus</strong> (<em>bool</em>) – Convert input Kraus matrices into the
+canoical Kraus representation (default: True)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">a quantum error object for a noise model.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="#qiskit.providers.aer.noise.errors.quantum_error.QuantumError" title="qiskit.providers.aer.noise.errors.quantum_error.QuantumError">QuantumError</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Additional information:</dt>
+<dd><p class="first">The single-qubit combined phase and amplitude damping channel is
+described by the following Kraus matrices:</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>A0 = [[1, 0],</dt>
+<dd>[0, sqrt(1 - b)]]</dd>
+<dt>A2 = [[0, 0],</dt>
+<dd>[0, sqrt(b)]]</dd>
+</dl>
+<p>where a = param_amp, b = param_phase, p1 = excited_state_population</p>
+</div></blockquote>
+<p>The equilibrium state after infinitely many applications of the
+channel is:</p>
+<blockquote class="last">
+<div><dl class="docutils">
+<dt>rho = [[rho[0, 0], 0]],</dt>
+<dd>[0, rho[1, 1]]]</dd>
+</dl>
+</div></blockquote>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="qiskit.providers.aer.noise.errors.standard_errors.reset_error">
+<code class="descname">reset_error</code><span class="sig-paren">(</span><em>prob0</em>, <em>prob1=0</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/providers/aer/noise/errors/standard_errors.html#reset_error"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.providers.aer.noise.errors.standard_errors.reset_error" title="Permalink to this definition">¶</a></dt>
+<dd><p>Single qubit reset error channel.</p>
+<p>The probability of no reset is given by 1 - prob0 - prob1</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>prob0</strong> (<em>double</em>) – reset probability to <a href="#id5"><span class="problematic" id="id6">|</span></a>0&gt;</li>
+<li><strong>prob1</strong> (<em>double</em>) – reset probability to <a href="#id7"><span class="problematic" id="id8">|</span></a>1&gt;</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">the quantum error object.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first"><a class="reference internal" href="#qiskit.providers.aer.noise.errors.quantum_error.QuantumError" title="qiskit.providers.aer.noise.errors.quantum_error.QuantumError">QuantumError</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><code class="xref py py-exc docutils literal notranslate"><span class="pre">NoiseError</span></code> – If noise parameters are invalid.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="qiskit.providers.aer.noise.errors.standard_errors.thermal_relaxation_error">
+<code class="descname">thermal_relaxation_error</code><span class="sig-paren">(</span><em>t1</em>, <em>t2</em>, <em>time</em>, <em>excited_state_population=0</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/providers/aer/noise/errors/standard_errors.html#thermal_relaxation_error"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.providers.aer.noise.errors.standard_errors.thermal_relaxation_error" title="Permalink to this definition">¶</a></dt>
+<dd><p>Single-qubit thermal relaxation quantum error channel.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>t1</strong> (<em>double</em>) – the T_1 relaxation time constant.</li>
+<li><strong>t2</strong> (<em>double</em>) – the T_2 relaxation time constant.</li>
+<li><strong>time</strong> (<em>double</em>) – the gate time for relaxation error.</li>
+<li><strong>excited_state_population</strong> (<em>double</em>) – the population of <a href="#id9"><span class="problematic" id="id10">|</span></a>1&gt; state at
+equilibrium (default: 0).</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">a quantum error object for a noise model.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first"><a class="reference internal" href="#qiskit.providers.aer.noise.errors.quantum_error.QuantumError" title="qiskit.providers.aer.noise.errors.quantum_error.QuantumError">QuantumError</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><code class="xref py py-exc docutils literal notranslate"><span class="pre">NoiseError</span></code> – If noise parameters are invalid.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Additional information:</dt>
+<dd>For parameters to be valid T_2 &lt;= 2 * T_1.
+If T_2 &lt;= T_1 the error can be expressed as a mixed reset and unitary
+error channel.
+If T_1 &lt; T_2 &lt;= 2 * T_1 the error must be expressed as a general
+non-unitary Kraus error channel.</dd>
+</dl>
+</dd></dl>
+
 </div>
 </div>
 
@@ -1753,16 +2968,16 @@
 
       <div class="clearer"></div>
     </div><div class="pagenation">
-     <a id="button-prev" href="qiskit.providers.aer.noise.device.parameters.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
+     <a id="button-prev" href="qiskit.providers.aer.noise.device.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
          <div class="pagenation-text">
             <span class="pagenation-direction">Previous</span>
-            <div>qiskit.providers.aer.noise.device.parameters module</div>
+            <div>qiskit.providers.aer.noise.device package</div>
          </div>
      </a>
-     <a id="button-next" href="qiskit.providers.aer.noise.errors.errorutils.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
+     <a id="button-next" href="qiskit.providers.aer.noise.utils.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
         <div class="pagenation-text">
             <span class="pagenation-direction">Next</span>
-            <div>qiskit.providers.aer.noise.errors.errorutils module</div>
+            <div>qiskit.providers.aer.noise.utils package</div>
         </div>
      </a>
         
@@ -1809,23 +3024,23 @@
       var el = document.getElementById('language');
       var optionsToSelect = ['en', 'ja']
       function changeLoc(evt) {
-        var language = evt.target.options[el.selectedIndex].value;
-        var pathname = window.location.pathname.slice(prefix.length);
-        if (language === getDefaultLanguage()) {
-          window.location.pathname =
-            `${prefix}${pathname.replace(localeRegExp, '/')}`;
-        } else {
-          window.location.pathname =
-            `${prefix}${pathname.replace(localeRegExp, `/locale/${language}/`)}`;
+	        var language = evt.target.options[el.selectedIndex].value;
+	        var pathname = window.location.pathname.slice(prefix.length);
+	        if (language === getDefaultLanguage()) {
+	          window.location.pathname =
+	            `${prefix}${pathname.replace(localeRegExp, '/')}`;
+	        } else {
+	          window.location.pathname =
+	            `${prefix}${pathname.replace(localeRegExp, `/locale/${language}/`)}`;
         }
       };
       el.addEventListener('change', changeLoc);
 
       function extractLanguageFromUrl(pathname) {
-        const match = pathname.slice(prefix.length).match(localeRegExp);
-        return typeof match[2] === 'undefined' ?
-                getDefaultLanguage() : match[2];
-	    }
+	        const match = pathname.slice(prefix.length).match(localeRegExp);
+	        return typeof match[2] === 'undefined' ?
+	               getDefaultLanguage() : match[2];
+	      }
 
       function changeSelect(select) {
         const optionToSelect = extractLanguageFromUrl(window.location.pathname);

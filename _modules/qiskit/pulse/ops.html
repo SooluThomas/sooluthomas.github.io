@@ -34,7 +34,7 @@
        </script>
         <script src="https://cloud.ibm.com/analytics/build/bluemix-analytics.min.js"></script>
     
-    <title>qiskit.pulse.ops &#8212; Qiskit 0.11.0 documentation</title>
+    <title>qiskit.pulse.ops &#8212; Qiskit 0.11.1 documentation</title>
 
     <link rel="stylesheet" href="../../../_static/material-icons.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
@@ -197,7 +197,7 @@
 <span class="c1"># pylint: disable=missing-return-doc,missing-type-doc</span>
 
 
-<div class="viewcode-block" id="union"><a class="viewcode-back" href="../../../autodoc/qiskit.pulse.ops.html#qiskit.pulse.ops.union">[docs]</a><span class="k">def</span> <span class="nf">union</span><span class="p">(</span><span class="o">*</span><span class="n">schedules</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">ScheduleComponent</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="n">ScheduleComponent</span><span class="p">]]],</span>
+<div class="viewcode-block" id="union"><a class="viewcode-back" href="../../../autodoc/qiskit.pulse.html#qiskit.pulse.ops.union">[docs]</a><span class="k">def</span> <span class="nf">union</span><span class="p">(</span><span class="o">*</span><span class="n">schedules</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">ScheduleComponent</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="n">ScheduleComponent</span><span class="p">]]],</span>
           <span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Schedule</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;Create a union (and also shift if desired) of all input `Schedule`s.</span>
 
@@ -216,7 +216,7 @@
 <span class="c1"># pylint: enable=missing-type-doc</span>
 
 
-<div class="viewcode-block" id="flatten"><a class="viewcode-back" href="../../../autodoc/qiskit.pulse.ops.html#qiskit.pulse.ops.flatten">[docs]</a><span class="k">def</span> <span class="nf">flatten</span><span class="p">(</span><span class="n">schedule</span><span class="p">:</span> <span class="n">ScheduleComponent</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Schedule</span><span class="p">:</span>
+<div class="viewcode-block" id="flatten"><a class="viewcode-back" href="../../../autodoc/qiskit.pulse.html#qiskit.pulse.ops.flatten">[docs]</a><span class="k">def</span> <span class="nf">flatten</span><span class="p">(</span><span class="n">schedule</span><span class="p">:</span> <span class="n">ScheduleComponent</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Schedule</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;Create a flattened schedule.</span>
 
 <span class="sd">    Args:</span>
@@ -229,7 +229,7 @@
     <span class="k">return</span> <span class="n">Schedule</span><span class="p">(</span><span class="o">*</span><span class="n">schedule</span><span class="o">.</span><span class="n">instructions</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="shift"><a class="viewcode-back" href="../../../autodoc/qiskit.pulse.ops.html#qiskit.pulse.ops.shift">[docs]</a><span class="k">def</span> <span class="nf">shift</span><span class="p">(</span><span class="n">schedule</span><span class="p">:</span> <span class="n">ScheduleComponent</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Schedule</span><span class="p">:</span>
+<div class="viewcode-block" id="shift"><a class="viewcode-back" href="../../../autodoc/qiskit.pulse.html#qiskit.pulse.ops.shift">[docs]</a><span class="k">def</span> <span class="nf">shift</span><span class="p">(</span><span class="n">schedule</span><span class="p">:</span> <span class="n">ScheduleComponent</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Schedule</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;Return schedule shifted by `time`.</span>
 
 <span class="sd">    Args:</span>
@@ -242,7 +242,7 @@
     <span class="k">return</span> <span class="n">union</span><span class="p">((</span><span class="n">time</span><span class="p">,</span> <span class="n">schedule</span><span class="p">),</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="insert"><a class="viewcode-back" href="../../../autodoc/qiskit.pulse.ops.html#qiskit.pulse.ops.insert">[docs]</a><span class="k">def</span> <span class="nf">insert</span><span class="p">(</span><span class="n">parent</span><span class="p">:</span> <span class="n">ScheduleComponent</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">child</span><span class="p">:</span> <span class="n">ScheduleComponent</span><span class="p">,</span> <span class="n">buffer</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+<div class="viewcode-block" id="insert"><a class="viewcode-back" href="../../../autodoc/qiskit.pulse.html#qiskit.pulse.ops.insert">[docs]</a><span class="k">def</span> <span class="nf">insert</span><span class="p">(</span><span class="n">parent</span><span class="p">:</span> <span class="n">ScheduleComponent</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">child</span><span class="p">:</span> <span class="n">ScheduleComponent</span><span class="p">,</span> <span class="n">buffer</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
            <span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Schedule</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;Return a new schedule with the `child` schedule inserted into the `parent` at `start_time`.</span>
 
@@ -258,7 +258,7 @@
     <span class="k">return</span> <span class="n">union</span><span class="p">(</span><span class="n">parent</span><span class="p">,</span> <span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">child</span><span class="p">),</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="append"><a class="viewcode-back" href="../../../autodoc/qiskit.pulse.ops.html#qiskit.pulse.ops.append">[docs]</a><span class="k">def</span> <span class="nf">append</span><span class="p">(</span><span class="n">parent</span><span class="p">:</span> <span class="n">ScheduleComponent</span><span class="p">,</span> <span class="n">child</span><span class="p">:</span> <span class="n">ScheduleComponent</span><span class="p">,</span> <span class="n">buffer</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+<div class="viewcode-block" id="append"><a class="viewcode-back" href="../../../autodoc/qiskit.pulse.html#qiskit.pulse.ops.append">[docs]</a><span class="k">def</span> <span class="nf">append</span><span class="p">(</span><span class="n">parent</span><span class="p">:</span> <span class="n">ScheduleComponent</span><span class="p">,</span> <span class="n">child</span><span class="p">:</span> <span class="n">ScheduleComponent</span><span class="p">,</span> <span class="n">buffer</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
            <span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Schedule</span><span class="p">:</span>
     <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return a new schedule with by appending `child` to `parent` at</span>
 <span class="sd">       the last time of the `parent` schedule&#39;s channels</span>
@@ -329,23 +329,23 @@
       var el = document.getElementById('language');
       var optionsToSelect = ['en', 'ja']
       function changeLoc(evt) {
-        var language = evt.target.options[el.selectedIndex].value;
-        var pathname = window.location.pathname.slice(prefix.length);
-        if (language === getDefaultLanguage()) {
-          window.location.pathname =
-            `${prefix}${pathname.replace(localeRegExp, '/')}`;
-        } else {
-          window.location.pathname =
-            `${prefix}${pathname.replace(localeRegExp, `/locale/${language}/`)}`;
+	        var language = evt.target.options[el.selectedIndex].value;
+	        var pathname = window.location.pathname.slice(prefix.length);
+	        if (language === getDefaultLanguage()) {
+	          window.location.pathname =
+	            `${prefix}${pathname.replace(localeRegExp, '/')}`;
+	        } else {
+	          window.location.pathname =
+	            `${prefix}${pathname.replace(localeRegExp, `/locale/${language}/`)}`;
         }
       };
       el.addEventListener('change', changeLoc);
 
       function extractLanguageFromUrl(pathname) {
-        const match = pathname.slice(prefix.length).match(localeRegExp);
-        return typeof match[2] === 'undefined' ?
-                getDefaultLanguage() : match[2];
-	    }
+	        const match = pathname.slice(prefix.length).match(localeRegExp);
+	        return typeof match[2] === 'undefined' ?
+	               getDefaultLanguage() : match[2];
+	      }
 
       function changeSelect(select) {
         const optionToSelect = extractLanguageFromUrl(window.location.pathname);

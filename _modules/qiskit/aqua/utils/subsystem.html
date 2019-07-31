@@ -34,7 +34,7 @@
        </script>
         <script src="https://cloud.ibm.com/analytics/build/bluemix-analytics.min.js"></script>
     
-    <title>qiskit.aqua.utils.subsystem &#8212; Qiskit 0.11.0 documentation</title>
+    <title>qiskit.aqua.utils.subsystem &#8212; Qiskit 0.11.1 documentation</title>
 
     <link rel="stylesheet" href="../../../../_static/material-icons.css" type="text/css" />
     <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
@@ -190,7 +190,7 @@
 <span class="kn">from</span> <span class="nn">qiskit.tools.qi.qi</span> <span class="k">import</span> <span class="n">partial_trace</span>
 
 
-<div class="viewcode-block" id="get_subsystem_density_matrix"><a class="viewcode-back" href="../../../../autodoc/qiskit.aqua.utils.subsystem.html#qiskit.aqua.utils.get_subsystem_density_matrix">[docs]</a><span class="k">def</span> <span class="nf">get_subsystem_density_matrix</span><span class="p">(</span><span class="n">statevector</span><span class="p">,</span> <span class="n">trace_systems</span><span class="p">):</span>
+<div class="viewcode-block" id="get_subsystem_density_matrix"><a class="viewcode-back" href="../../../../autodoc/qiskit.aqua.utils.html#qiskit.aqua.utils.get_subsystem_density_matrix">[docs]</a><span class="k">def</span> <span class="nf">get_subsystem_density_matrix</span><span class="p">(</span><span class="n">statevector</span><span class="p">,</span> <span class="n">trace_systems</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Compute the reduced density matrix of a quantum subsystem.</span>
 
@@ -206,7 +206,7 @@
     <span class="k">return</span> <span class="n">rho_sub</span></div>
 
 
-<div class="viewcode-block" id="get_subsystem_fidelity"><a class="viewcode-back" href="../../../../autodoc/qiskit.aqua.utils.subsystem.html#qiskit.aqua.utils.get_subsystem_fidelity">[docs]</a><span class="k">def</span> <span class="nf">get_subsystem_fidelity</span><span class="p">(</span><span class="n">statevector</span><span class="p">,</span> <span class="n">trace_systems</span><span class="p">,</span> <span class="n">subsystem_state</span><span class="p">):</span>
+<div class="viewcode-block" id="get_subsystem_fidelity"><a class="viewcode-back" href="../../../../autodoc/qiskit.aqua.utils.html#qiskit.aqua.utils.get_subsystem_fidelity">[docs]</a><span class="k">def</span> <span class="nf">get_subsystem_fidelity</span><span class="p">(</span><span class="n">statevector</span><span class="p">,</span> <span class="n">trace_systems</span><span class="p">,</span> <span class="n">subsystem_state</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Compute the fidelity of the quantum subsystem.</span>
 
@@ -233,7 +233,7 @@
     <span class="k">return</span> <span class="n">fidelity</span></div>
 
 
-<div class="viewcode-block" id="get_subsystems_counts"><a class="viewcode-back" href="../../../../autodoc/qiskit.aqua.utils.subsystem.html#qiskit.aqua.utils.get_subsystems_counts">[docs]</a><span class="k">def</span> <span class="nf">get_subsystems_counts</span><span class="p">(</span><span class="n">complete_system_counts</span><span class="p">):</span>
+<div class="viewcode-block" id="get_subsystems_counts"><a class="viewcode-back" href="../../../../autodoc/qiskit.aqua.utils.html#qiskit.aqua.utils.get_subsystems_counts">[docs]</a><span class="k">def</span> <span class="nf">get_subsystems_counts</span><span class="p">(</span><span class="n">complete_system_counts</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Extract all subsystems&#39; counts from the single complete system count dictionary.</span>
 
@@ -311,23 +311,23 @@
       var el = document.getElementById('language');
       var optionsToSelect = ['en', 'ja']
       function changeLoc(evt) {
-        var language = evt.target.options[el.selectedIndex].value;
-        var pathname = window.location.pathname.slice(prefix.length);
-        if (language === getDefaultLanguage()) {
-          window.location.pathname =
-            `${prefix}${pathname.replace(localeRegExp, '/')}`;
-        } else {
-          window.location.pathname =
-            `${prefix}${pathname.replace(localeRegExp, `/locale/${language}/`)}`;
+	        var language = evt.target.options[el.selectedIndex].value;
+	        var pathname = window.location.pathname.slice(prefix.length);
+	        if (language === getDefaultLanguage()) {
+	          window.location.pathname =
+	            `${prefix}${pathname.replace(localeRegExp, '/')}`;
+	        } else {
+	          window.location.pathname =
+	            `${prefix}${pathname.replace(localeRegExp, `/locale/${language}/`)}`;
         }
       };
       el.addEventListener('change', changeLoc);
 
       function extractLanguageFromUrl(pathname) {
-        const match = pathname.slice(prefix.length).match(localeRegExp);
-        return typeof match[2] === 'undefined' ?
-                getDefaultLanguage() : match[2];
-	    }
+	        const match = pathname.slice(prefix.length).match(localeRegExp);
+	        return typeof match[2] === 'undefined' ?
+	               getDefaultLanguage() : match[2];
+	      }
 
       function changeSelect(select) {
         const optionToSelect = extractLanguageFromUrl(window.location.pathname);

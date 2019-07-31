@@ -34,7 +34,7 @@
        </script>
         <script src="https://cloud.ibm.com/analytics/build/bluemix-analytics.min.js"></script>
     
-    <title>qiskit.ignis.characterization.gates.fitters &#8212; Qiskit 0.11.0 documentation</title>
+    <title>qiskit.ignis.characterization.gates.fitters &#8212; Qiskit 0.11.1 documentation</title>
 
     <link rel="stylesheet" href="../../../../../_static/material-icons.css" type="text/css" />
     <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css" />
@@ -191,7 +191,7 @@
 <span class="kn">from</span> <span class="nn">..</span> <span class="k">import</span> <span class="n">BaseGateFitter</span>
 
 
-<div class="viewcode-block" id="AmpCalFitter"><a class="viewcode-back" href="../../../../../autodoc/qiskit.ignis.characterization.gates.fitters.html#qiskit.ignis.characterization.gates.fitters.AmpCalFitter">[docs]</a><span class="k">class</span> <span class="nc">AmpCalFitter</span><span class="p">(</span><span class="n">BaseGateFitter</span><span class="p">):</span>
+<div class="viewcode-block" id="AmpCalFitter"><a class="viewcode-back" href="../../../../../autodoc/qiskit.ignis.characterization.gates.html#qiskit.ignis.characterization.gates.fitters.AmpCalFitter">[docs]</a><span class="k">class</span> <span class="nc">AmpCalFitter</span><span class="p">(</span><span class="n">BaseGateFitter</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Amplitude error fitter</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -219,7 +219,7 @@
                                          <span class="n">thetaerr</span><span class="p">,</span> <span class="n">thetaerr</span><span class="p">,</span>
                                          <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
 
-<div class="viewcode-block" id="AmpCalFitter.angle_err"><a class="viewcode-back" href="../../../../../autodoc/qiskit.ignis.characterization.gates.fitters.html#qiskit.ignis.characterization.gates.fitters.AmpCalFitter.angle_err">[docs]</a>    <span class="k">def</span> <span class="nf">angle_err</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">qind</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
+<div class="viewcode-block" id="AmpCalFitter.angle_err"><a class="viewcode-back" href="../../../../../autodoc/qiskit.ignis.characterization.gates.html#qiskit.ignis.characterization.gates.fitters.AmpCalFitter.angle_err">[docs]</a>    <span class="k">def</span> <span class="nf">angle_err</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">qind</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
 
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Return the gate angle error</span>
@@ -234,14 +234,14 @@
 
         <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">fitparam</span><span class="p">)</span><span class="o">/</span><span class="mf">2.</span></div>
 
-<div class="viewcode-block" id="AmpCalFitter.plot"><a class="viewcode-back" href="../../../../../autodoc/qiskit.ignis.characterization.gates.fitters.html#qiskit.ignis.characterization.gates.fitters.AmpCalFitter.plot">[docs]</a>    <span class="k">def</span> <span class="nf">plot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">qind</span><span class="p">,</span> <span class="n">series</span><span class="o">=</span><span class="s1">&#39;0&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">show_plot</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<div class="viewcode-block" id="AmpCalFitter.plot"><a class="viewcode-back" href="../../../../../autodoc/qiskit.ignis.characterization.gates.html#qiskit.ignis.characterization.gates.fitters.AmpCalFitter.plot">[docs]</a>    <span class="k">def</span> <span class="nf">plot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">qind</span><span class="p">,</span> <span class="n">series</span><span class="o">=</span><span class="s1">&#39;0&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">show_plot</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
 
         <span class="n">ax</span> <span class="o">=</span> <span class="n">BaseGateFitter</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">qind</span><span class="p">,</span> <span class="n">series</span><span class="p">,</span> <span class="n">ax</span><span class="p">,</span>
                                  <span class="n">show_plot</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">ax</span></div></div>
 
 
-<div class="viewcode-block" id="AngleCalFitter"><a class="viewcode-back" href="../../../../../autodoc/qiskit.ignis.characterization.gates.fitters.html#qiskit.ignis.characterization.gates.fitters.AngleCalFitter">[docs]</a><span class="k">class</span> <span class="nc">AngleCalFitter</span><span class="p">(</span><span class="n">BaseGateFitter</span><span class="p">):</span>
+<div class="viewcode-block" id="AngleCalFitter"><a class="viewcode-back" href="../../../../../autodoc/qiskit.ignis.characterization.gates.html#qiskit.ignis.characterization.gates.fitters.AngleCalFitter">[docs]</a><span class="k">class</span> <span class="nc">AngleCalFitter</span><span class="p">(</span><span class="n">BaseGateFitter</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Amplitude error fitter</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -267,7 +267,7 @@
                                            <span class="n">thetaerr</span><span class="p">,</span> <span class="n">thetaerr</span><span class="p">,</span>
                                            <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
 
-<div class="viewcode-block" id="AngleCalFitter.angle_err"><a class="viewcode-back" href="../../../../../autodoc/qiskit.ignis.characterization.gates.fitters.html#qiskit.ignis.characterization.gates.fitters.AngleCalFitter.angle_err">[docs]</a>    <span class="k">def</span> <span class="nf">angle_err</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">qind</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
+<div class="viewcode-block" id="AngleCalFitter.angle_err"><a class="viewcode-back" href="../../../../../autodoc/qiskit.ignis.characterization.gates.html#qiskit.ignis.characterization.gates.fitters.AngleCalFitter.angle_err">[docs]</a>    <span class="k">def</span> <span class="nf">angle_err</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">qind</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
 
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Return the gate angle error</span>
@@ -282,7 +282,7 @@
 
         <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">fitparam</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span></div>
 
-<div class="viewcode-block" id="AngleCalFitter.plot"><a class="viewcode-back" href="../../../../../autodoc/qiskit.ignis.characterization.gates.fitters.html#qiskit.ignis.characterization.gates.fitters.AngleCalFitter.plot">[docs]</a>    <span class="k">def</span> <span class="nf">plot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">qind</span><span class="p">,</span> <span class="n">series</span><span class="o">=</span><span class="s1">&#39;0&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">show_plot</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<div class="viewcode-block" id="AngleCalFitter.plot"><a class="viewcode-back" href="../../../../../autodoc/qiskit.ignis.characterization.gates.html#qiskit.ignis.characterization.gates.fitters.AngleCalFitter.plot">[docs]</a>    <span class="k">def</span> <span class="nf">plot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">qind</span><span class="p">,</span> <span class="n">series</span><span class="o">=</span><span class="s1">&#39;0&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">show_plot</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
 
         <span class="n">ax</span> <span class="o">=</span> <span class="n">BaseGateFitter</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">qind</span><span class="p">,</span> <span class="n">series</span><span class="p">,</span> <span class="n">ax</span><span class="p">,</span>
                                  <span class="n">show_plot</span><span class="p">)</span>
@@ -290,7 +290,7 @@
         <span class="k">return</span> <span class="n">ax</span></div></div>
 
 
-<div class="viewcode-block" id="AmpCalCXFitter"><a class="viewcode-back" href="../../../../../autodoc/qiskit.ignis.characterization.gates.fitters.html#qiskit.ignis.characterization.gates.fitters.AmpCalCXFitter">[docs]</a><span class="k">class</span> <span class="nc">AmpCalCXFitter</span><span class="p">(</span><span class="n">BaseGateFitter</span><span class="p">):</span>
+<div class="viewcode-block" id="AmpCalCXFitter"><a class="viewcode-back" href="../../../../../autodoc/qiskit.ignis.characterization.gates.html#qiskit.ignis.characterization.gates.fitters.AmpCalCXFitter">[docs]</a><span class="k">class</span> <span class="nc">AmpCalCXFitter</span><span class="p">(</span><span class="n">BaseGateFitter</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Amplitude error fitter</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -318,7 +318,7 @@
                                            <span class="n">thetaerr</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span>
                                            <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
 
-<div class="viewcode-block" id="AmpCalCXFitter.angle_err"><a class="viewcode-back" href="../../../../../autodoc/qiskit.ignis.characterization.gates.fitters.html#qiskit.ignis.characterization.gates.fitters.AmpCalCXFitter.angle_err">[docs]</a>    <span class="k">def</span> <span class="nf">angle_err</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">qind</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
+<div class="viewcode-block" id="AmpCalCXFitter.angle_err"><a class="viewcode-back" href="../../../../../autodoc/qiskit.ignis.characterization.gates.html#qiskit.ignis.characterization.gates.fitters.AmpCalCXFitter.angle_err">[docs]</a>    <span class="k">def</span> <span class="nf">angle_err</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">qind</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
 
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Return the gate angle error</span>
@@ -333,7 +333,7 @@
 
         <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">fitparam</span><span class="p">)</span><span class="o">/</span><span class="mf">2.</span></div>
 
-<div class="viewcode-block" id="AmpCalCXFitter.plot"><a class="viewcode-back" href="../../../../../autodoc/qiskit.ignis.characterization.gates.fitters.html#qiskit.ignis.characterization.gates.fitters.AmpCalCXFitter.plot">[docs]</a>    <span class="k">def</span> <span class="nf">plot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">qind</span><span class="p">,</span> <span class="n">series</span><span class="o">=</span><span class="s1">&#39;0&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">show_plot</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<div class="viewcode-block" id="AmpCalCXFitter.plot"><a class="viewcode-back" href="../../../../../autodoc/qiskit.ignis.characterization.gates.html#qiskit.ignis.characterization.gates.fitters.AmpCalCXFitter.plot">[docs]</a>    <span class="k">def</span> <span class="nf">plot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">qind</span><span class="p">,</span> <span class="n">series</span><span class="o">=</span><span class="s1">&#39;0&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">show_plot</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
 
         <span class="n">ax</span> <span class="o">=</span> <span class="n">BaseGateFitter</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">qind</span><span class="p">,</span> <span class="n">series</span><span class="p">,</span> <span class="n">ax</span><span class="p">,</span>
                                  <span class="n">show_plot</span><span class="p">)</span>
@@ -341,7 +341,7 @@
         <span class="k">return</span> <span class="n">ax</span></div></div>
 
 
-<div class="viewcode-block" id="AngleCalCXFitter"><a class="viewcode-back" href="../../../../../autodoc/qiskit.ignis.characterization.gates.fitters.html#qiskit.ignis.characterization.gates.fitters.AngleCalCXFitter">[docs]</a><span class="k">class</span> <span class="nc">AngleCalCXFitter</span><span class="p">(</span><span class="n">BaseGateFitter</span><span class="p">):</span>
+<div class="viewcode-block" id="AngleCalCXFitter"><a class="viewcode-back" href="../../../../../autodoc/qiskit.ignis.characterization.gates.html#qiskit.ignis.characterization.gates.fitters.AngleCalCXFitter">[docs]</a><span class="k">class</span> <span class="nc">AngleCalCXFitter</span><span class="p">(</span><span class="n">BaseGateFitter</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Amplitude error fitter</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -367,7 +367,7 @@
                                              <span class="n">thetaerr</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span>
                                              <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
 
-<div class="viewcode-block" id="AngleCalCXFitter.angle_err"><a class="viewcode-back" href="../../../../../autodoc/qiskit.ignis.characterization.gates.fitters.html#qiskit.ignis.characterization.gates.fitters.AngleCalCXFitter.angle_err">[docs]</a>    <span class="k">def</span> <span class="nf">angle_err</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">qind</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
+<div class="viewcode-block" id="AngleCalCXFitter.angle_err"><a class="viewcode-back" href="../../../../../autodoc/qiskit.ignis.characterization.gates.html#qiskit.ignis.characterization.gates.fitters.AngleCalCXFitter.angle_err">[docs]</a>    <span class="k">def</span> <span class="nf">angle_err</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">qind</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
 
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Return the gate angle error</span>
@@ -382,7 +382,7 @@
 
         <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">fitparam</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span></div>
 
-<div class="viewcode-block" id="AngleCalCXFitter.plot"><a class="viewcode-back" href="../../../../../autodoc/qiskit.ignis.characterization.gates.fitters.html#qiskit.ignis.characterization.gates.fitters.AngleCalCXFitter.plot">[docs]</a>    <span class="k">def</span> <span class="nf">plot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">qind</span><span class="p">,</span> <span class="n">series</span><span class="o">=</span><span class="s1">&#39;0&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">show_plot</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<div class="viewcode-block" id="AngleCalCXFitter.plot"><a class="viewcode-back" href="../../../../../autodoc/qiskit.ignis.characterization.gates.html#qiskit.ignis.characterization.gates.fitters.AngleCalCXFitter.plot">[docs]</a>    <span class="k">def</span> <span class="nf">plot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">qind</span><span class="p">,</span> <span class="n">series</span><span class="o">=</span><span class="s1">&#39;0&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">show_plot</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
 
         <span class="n">ax</span> <span class="o">=</span> <span class="n">BaseGateFitter</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">qind</span><span class="p">,</span> <span class="n">series</span><span class="p">,</span> <span class="n">ax</span><span class="p">,</span>
                                  <span class="n">show_plot</span><span class="p">)</span>
@@ -438,23 +438,23 @@
       var el = document.getElementById('language');
       var optionsToSelect = ['en', 'ja']
       function changeLoc(evt) {
-        var language = evt.target.options[el.selectedIndex].value;
-        var pathname = window.location.pathname.slice(prefix.length);
-        if (language === getDefaultLanguage()) {
-          window.location.pathname =
-            `${prefix}${pathname.replace(localeRegExp, '/')}`;
-        } else {
-          window.location.pathname =
-            `${prefix}${pathname.replace(localeRegExp, `/locale/${language}/`)}`;
+	        var language = evt.target.options[el.selectedIndex].value;
+	        var pathname = window.location.pathname.slice(prefix.length);
+	        if (language === getDefaultLanguage()) {
+	          window.location.pathname =
+	            `${prefix}${pathname.replace(localeRegExp, '/')}`;
+	        } else {
+	          window.location.pathname =
+	            `${prefix}${pathname.replace(localeRegExp, `/locale/${language}/`)}`;
         }
       };
       el.addEventListener('change', changeLoc);
 
       function extractLanguageFromUrl(pathname) {
-        const match = pathname.slice(prefix.length).match(localeRegExp);
-        return typeof match[2] === 'undefined' ?
-                getDefaultLanguage() : match[2];
-	    }
+	        const match = pathname.slice(prefix.length).match(localeRegExp);
+	        return typeof match[2] === 'undefined' ?
+	               getDefaultLanguage() : match[2];
+	      }
 
       function changeSelect(select) {
         const optionToSelect = extractLanguageFromUrl(window.location.pathname);

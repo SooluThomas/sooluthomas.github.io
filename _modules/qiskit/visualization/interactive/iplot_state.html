@@ -34,7 +34,7 @@
        </script>
         <script src="https://cloud.ibm.com/analytics/build/bluemix-analytics.min.js"></script>
     
-    <title>qiskit.visualization.interactive.iplot_state &#8212; Qiskit 0.11.0 documentation</title>
+    <title>qiskit.visualization.interactive.iplot_state &#8212; Qiskit 0.11.1 documentation</title>
 
     <link rel="stylesheet" href="../../../../_static/material-icons.css" type="text/css" />
     <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
@@ -196,7 +196,7 @@
 <span class="kn">from</span> <span class="nn">.iplot_qsphere</span> <span class="k">import</span> <span class="n">iplot_state_qsphere</span>
 
 
-<div class="viewcode-block" id="iplot_state"><a class="viewcode-back" href="../../../../autodoc/qiskit.visualization.interactive.iplot_state.html#qiskit.visualization.interactive.iplot_state.iplot_state">[docs]</a><span class="k">def</span> <span class="nf">iplot_state</span><span class="p">(</span><span class="n">quantum_state</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;city&#39;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="iplot_state"><a class="viewcode-back" href="../../../../autodoc/qiskit.visualization.interactive.html#qiskit.visualization.interactive.iplot_state.iplot_state">[docs]</a><span class="k">def</span> <span class="nf">iplot_state</span><span class="p">(</span><span class="n">quantum_state</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;city&#39;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Plot the quantum state.</span>
 
 <span class="sd">    Args:</span>
@@ -276,23 +276,23 @@
       var el = document.getElementById('language');
       var optionsToSelect = ['en', 'ja']
       function changeLoc(evt) {
-        var language = evt.target.options[el.selectedIndex].value;
-        var pathname = window.location.pathname.slice(prefix.length);
-        if (language === getDefaultLanguage()) {
-          window.location.pathname =
-            `${prefix}${pathname.replace(localeRegExp, '/')}`;
-        } else {
-          window.location.pathname =
-            `${prefix}${pathname.replace(localeRegExp, `/locale/${language}/`)}`;
+	        var language = evt.target.options[el.selectedIndex].value;
+	        var pathname = window.location.pathname.slice(prefix.length);
+	        if (language === getDefaultLanguage()) {
+	          window.location.pathname =
+	            `${prefix}${pathname.replace(localeRegExp, '/')}`;
+	        } else {
+	          window.location.pathname =
+	            `${prefix}${pathname.replace(localeRegExp, `/locale/${language}/`)}`;
         }
       };
       el.addEventListener('change', changeLoc);
 
       function extractLanguageFromUrl(pathname) {
-        const match = pathname.slice(prefix.length).match(localeRegExp);
-        return typeof match[2] === 'undefined' ?
-                getDefaultLanguage() : match[2];
-	    }
+	        const match = pathname.slice(prefix.length).match(localeRegExp);
+	        return typeof match[2] === 'undefined' ?
+	               getDefaultLanguage() : match[2];
+	      }
 
       function changeSelect(select) {
         const optionToSelect = extractLanguageFromUrl(window.location.pathname);

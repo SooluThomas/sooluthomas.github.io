@@ -34,7 +34,7 @@
        </script>
         <script src="https://cloud.ibm.com/analytics/build/bluemix-analytics.min.js"></script>
     
-    <title>qiskit.visualization.interactive.iplot_histogram &#8212; Qiskit 0.11.0 documentation</title>
+    <title>qiskit.visualization.interactive.iplot_histogram &#8212; Qiskit 0.11.1 documentation</title>
 
     <link rel="stylesheet" href="../../../../_static/material-icons.css" type="text/css" />
     <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
@@ -201,7 +201,7 @@
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Error importing IPython.core.display&quot;</span><span class="p">)</span>
 
 
-<div class="viewcode-block" id="process_data"><a class="viewcode-back" href="../../../../autodoc/qiskit.visualization.interactive.iplot_histogram.html#qiskit.visualization.interactive.iplot_histogram.process_data">[docs]</a><span class="k">def</span> <span class="nf">process_data</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">number_to_keep</span><span class="p">):</span>
+<div class="viewcode-block" id="process_data"><a class="viewcode-back" href="../../../../autodoc/qiskit.visualization.interactive.html#qiskit.visualization.interactive.iplot_histogram.process_data">[docs]</a><span class="k">def</span> <span class="nf">process_data</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">number_to_keep</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Prepare received data for representation.</span>
 
 <span class="sd">        Args:</span>
@@ -228,7 +228,7 @@
     <span class="k">return</span> <span class="n">result</span></div>
 
 
-<div class="viewcode-block" id="iplot_histogram"><a class="viewcode-back" href="../../../../autodoc/qiskit.visualization.interactive.iplot_histogram.html#qiskit.visualization.interactive.iplot_histogram.iplot_histogram">[docs]</a><span class="k">def</span> <span class="nf">iplot_histogram</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">number_to_keep</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<div class="viewcode-block" id="iplot_histogram"><a class="viewcode-back" href="../../../../autodoc/qiskit.visualization.interactive.html#qiskit.visualization.interactive.iplot_histogram.iplot_histogram">[docs]</a><span class="k">def</span> <span class="nf">iplot_histogram</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">number_to_keep</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                     <span class="n">sort</span><span class="o">=</span><span class="s1">&#39;asc&#39;</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Create a histogram representation.</span>
 
@@ -367,23 +367,23 @@
       var el = document.getElementById('language');
       var optionsToSelect = ['en', 'ja']
       function changeLoc(evt) {
-        var language = evt.target.options[el.selectedIndex].value;
-        var pathname = window.location.pathname.slice(prefix.length);
-        if (language === getDefaultLanguage()) {
-          window.location.pathname =
-            `${prefix}${pathname.replace(localeRegExp, '/')}`;
-        } else {
-          window.location.pathname =
-            `${prefix}${pathname.replace(localeRegExp, `/locale/${language}/`)}`;
+	        var language = evt.target.options[el.selectedIndex].value;
+	        var pathname = window.location.pathname.slice(prefix.length);
+	        if (language === getDefaultLanguage()) {
+	          window.location.pathname =
+	            `${prefix}${pathname.replace(localeRegExp, '/')}`;
+	        } else {
+	          window.location.pathname =
+	            `${prefix}${pathname.replace(localeRegExp, `/locale/${language}/`)}`;
         }
       };
       el.addEventListener('change', changeLoc);
 
       function extractLanguageFromUrl(pathname) {
-        const match = pathname.slice(prefix.length).match(localeRegExp);
-        return typeof match[2] === 'undefined' ?
-                getDefaultLanguage() : match[2];
-	    }
+	        const match = pathname.slice(prefix.length).match(localeRegExp);
+	        return typeof match[2] === 'undefined' ?
+	               getDefaultLanguage() : match[2];
+	      }
 
       function changeSelect(select) {
         const optionToSelect = extractLanguageFromUrl(window.location.pathname);

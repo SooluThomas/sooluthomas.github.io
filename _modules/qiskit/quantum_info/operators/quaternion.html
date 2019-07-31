@@ -34,7 +34,7 @@
        </script>
         <script src="https://cloud.ibm.com/analytics/build/bluemix-analytics.min.js"></script>
     
-    <title>qiskit.quantum_info.operators.quaternion &#8212; Qiskit 0.11.0 documentation</title>
+    <title>qiskit.quantum_info.operators.quaternion &#8212; Qiskit 0.11.1 documentation</title>
 
     <link rel="stylesheet" href="../../../../_static/material-icons.css" type="text/css" />
     <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
@@ -191,7 +191,7 @@
 <span class="kn">import</span> <span class="nn">scipy.linalg</span> <span class="k">as</span> <span class="nn">la</span>
 
 
-<div class="viewcode-block" id="Quaternion"><a class="viewcode-back" href="../../../../autodoc/qiskit.quantum_info.operators.quaternion.html#qiskit.quantum_info.operators.quaternion.Quaternion">[docs]</a><span class="k">class</span> <span class="nc">Quaternion</span><span class="p">:</span>
+<div class="viewcode-block" id="Quaternion"><a class="viewcode-back" href="../../../../autodoc/qiskit.quantum_info.operators.html#qiskit.quantum_info.operators.quaternion.Quaternion">[docs]</a><span class="k">class</span> <span class="nc">Quaternion</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;A class representing a Quaternion.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
@@ -219,12 +219,12 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;Multiplication by other not supported.&#39;</span><span class="p">)</span>
 
-<div class="viewcode-block" id="Quaternion.norm"><a class="viewcode-back" href="../../../../autodoc/qiskit.quantum_info.operators.quaternion.html#qiskit.quantum_info.operators.quaternion.Quaternion.norm">[docs]</a>    <span class="k">def</span> <span class="nf">norm</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="Quaternion.norm"><a class="viewcode-back" href="../../../../autodoc/qiskit.quantum_info.operators.html#qiskit.quantum_info.operators.quaternion.Quaternion.norm">[docs]</a>    <span class="k">def</span> <span class="nf">norm</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; Norm of quaternion.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">la</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="Quaternion.normalize"><a class="viewcode-back" href="../../../../autodoc/qiskit.quantum_info.operators.quaternion.html#qiskit.quantum_info.operators.quaternion.Quaternion.normalize">[docs]</a>    <span class="k">def</span> <span class="nf">normalize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<div class="viewcode-block" id="Quaternion.normalize"><a class="viewcode-back" href="../../../../autodoc/qiskit.quantum_info.operators.html#qiskit.quantum_info.operators.quaternion.Quaternion.normalize">[docs]</a>    <span class="k">def</span> <span class="nf">normalize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Normalizes a Quaternion to unit length</span>
 <span class="sd">        so that it represents a valid rotation.</span>
 
@@ -243,7 +243,7 @@
         <span class="n">data_copy</span> <span class="o">/=</span> <span class="n">nrm</span>
         <span class="k">return</span> <span class="n">Quaternion</span><span class="p">(</span><span class="n">data_copy</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="Quaternion.to_matrix"><a class="viewcode-back" href="../../../../autodoc/qiskit.quantum_info.operators.quaternion.html#qiskit.quantum_info.operators.quaternion.Quaternion.to_matrix">[docs]</a>    <span class="k">def</span> <span class="nf">to_matrix</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="Quaternion.to_matrix"><a class="viewcode-back" href="../../../../autodoc/qiskit.quantum_info.operators.html#qiskit.quantum_info.operators.quaternion.Quaternion.to_matrix">[docs]</a>    <span class="k">def</span> <span class="nf">to_matrix</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Converts a unit-length quaternion to a rotation matrix.</span>
 
 <span class="sd">        Returns:</span>
@@ -257,7 +257,7 @@
         <span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">mat</span></div>
 
-<div class="viewcode-block" id="Quaternion.to_zyz"><a class="viewcode-back" href="../../../../autodoc/qiskit.quantum_info.operators.quaternion.html#qiskit.quantum_info.operators.quaternion.Quaternion.to_zyz">[docs]</a>    <span class="k">def</span> <span class="nf">to_zyz</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="Quaternion.to_zyz"><a class="viewcode-back" href="../../../../autodoc/qiskit.quantum_info.operators.html#qiskit.quantum_info.operators.quaternion.Quaternion.to_zyz">[docs]</a>    <span class="k">def</span> <span class="nf">to_zyz</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Converts a unit-length quaternion to a sequence</span>
 <span class="sd">        of ZYZ Euler angles.</span>
 
@@ -279,7 +279,7 @@
         <span class="k">return</span> <span class="n">euler</span></div></div>
 
 
-<div class="viewcode-block" id="quaternion_from_axis_rotation"><a class="viewcode-back" href="../../../../autodoc/qiskit.quantum_info.operators.quaternion.html#qiskit.quantum_info.operators.quaternion.quaternion_from_axis_rotation">[docs]</a><span class="k">def</span> <span class="nf">quaternion_from_axis_rotation</span><span class="p">(</span><span class="n">angle</span><span class="p">,</span> <span class="n">axis</span><span class="p">):</span>
+<div class="viewcode-block" id="quaternion_from_axis_rotation"><a class="viewcode-back" href="../../../../autodoc/qiskit.quantum_info.operators.html#qiskit.quantum_info.operators.quaternion.quaternion_from_axis_rotation">[docs]</a><span class="k">def</span> <span class="nf">quaternion_from_axis_rotation</span><span class="p">(</span><span class="n">angle</span><span class="p">,</span> <span class="n">axis</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Return quaternion for rotation about given axis.</span>
 
 <span class="sd">    Args:</span>
@@ -306,7 +306,7 @@
     <span class="k">return</span> <span class="n">Quaternion</span><span class="p">(</span><span class="n">out</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="quaternion_from_euler"><a class="viewcode-back" href="../../../../autodoc/qiskit.quantum_info.operators.quaternion.html#qiskit.quantum_info.operators.quaternion.quaternion_from_euler">[docs]</a><span class="k">def</span> <span class="nf">quaternion_from_euler</span><span class="p">(</span><span class="n">angles</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="s1">&#39;yzy&#39;</span><span class="p">):</span>
+<div class="viewcode-block" id="quaternion_from_euler"><a class="viewcode-back" href="../../../../autodoc/qiskit.quantum_info.operators.html#qiskit.quantum_info.operators.quaternion.quaternion_from_euler">[docs]</a><span class="k">def</span> <span class="nf">quaternion_from_euler</span><span class="p">(</span><span class="n">angles</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="s1">&#39;yzy&#39;</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Generate a quaternion from a set of Euler angles.</span>
 
 <span class="sd">    Args:</span>
@@ -372,23 +372,23 @@
       var el = document.getElementById('language');
       var optionsToSelect = ['en', 'ja']
       function changeLoc(evt) {
-        var language = evt.target.options[el.selectedIndex].value;
-        var pathname = window.location.pathname.slice(prefix.length);
-        if (language === getDefaultLanguage()) {
-          window.location.pathname =
-            `${prefix}${pathname.replace(localeRegExp, '/')}`;
-        } else {
-          window.location.pathname =
-            `${prefix}${pathname.replace(localeRegExp, `/locale/${language}/`)}`;
+	        var language = evt.target.options[el.selectedIndex].value;
+	        var pathname = window.location.pathname.slice(prefix.length);
+	        if (language === getDefaultLanguage()) {
+	          window.location.pathname =
+	            `${prefix}${pathname.replace(localeRegExp, '/')}`;
+	        } else {
+	          window.location.pathname =
+	            `${prefix}${pathname.replace(localeRegExp, `/locale/${language}/`)}`;
         }
       };
       el.addEventListener('change', changeLoc);
 
       function extractLanguageFromUrl(pathname) {
-        const match = pathname.slice(prefix.length).match(localeRegExp);
-        return typeof match[2] === 'undefined' ?
-                getDefaultLanguage() : match[2];
-	    }
+	        const match = pathname.slice(prefix.length).match(localeRegExp);
+	        return typeof match[2] === 'undefined' ?
+	               getDefaultLanguage() : match[2];
+	      }
 
       function changeSelect(select) {
         const optionToSelect = extractLanguageFromUrl(window.location.pathname);

@@ -34,7 +34,7 @@
        </script>
         <script src="https://cloud.ibm.com/analytics/build/bluemix-analytics.min.js"></script>
     
-    <title>qiskit.qasm.qasm &#8212; Qiskit 0.11.0 documentation</title>
+    <title>qiskit.qasm.qasm &#8212; Qiskit 0.11.1 documentation</title>
 
     <link rel="stylesheet" href="../../../_static/material-icons.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
@@ -190,7 +190,7 @@
 <span class="kn">from</span> <span class="nn">.qasmparser</span> <span class="k">import</span> <span class="n">QasmParser</span>
 
 
-<div class="viewcode-block" id="Qasm"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.qasm.html#qiskit.qasm.qasm.Qasm">[docs]</a><span class="k">class</span> <span class="nc">Qasm</span><span class="p">:</span>
+<div class="viewcode-block" id="Qasm"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.html#qiskit.qasm.qasm.Qasm">[docs]</a><span class="k">class</span> <span class="nc">Qasm</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;OPENQASM circuit object.&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
@@ -203,11 +203,11 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_filename</span> <span class="o">=</span> <span class="n">filename</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_data</span> <span class="o">=</span> <span class="n">data</span>
 
-<div class="viewcode-block" id="Qasm.get_filename"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.qasm.html#qiskit.qasm.qasm.Qasm.get_filename">[docs]</a>    <span class="k">def</span> <span class="nf">get_filename</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="Qasm.get_filename"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.html#qiskit.qasm.qasm.Qasm.get_filename">[docs]</a>    <span class="k">def</span> <span class="nf">get_filename</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return the filename.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_filename</span></div>
 
-<div class="viewcode-block" id="Qasm.get_tokens"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.qasm.html#qiskit.qasm.qasm.Qasm.get_tokens">[docs]</a>    <span class="k">def</span> <span class="nf">get_tokens</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="Qasm.get_tokens"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.html#qiskit.qasm.qasm.Qasm.get_tokens">[docs]</a>    <span class="k">def</span> <span class="nf">get_tokens</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Returns a generator of the tokens.&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_filename</span><span class="p">:</span>
             <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_filename</span><span class="p">)</span> <span class="k">as</span> <span class="n">ifile</span><span class="p">:</span>
@@ -216,7 +216,7 @@
         <span class="k">with</span> <span class="n">QasmParser</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_filename</span><span class="p">)</span> <span class="k">as</span> <span class="n">qasm_p</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">qasm_p</span><span class="o">.</span><span class="n">get_tokens</span><span class="p">()</span></div>
 
-<div class="viewcode-block" id="Qasm.parse"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.qasm.html#qiskit.qasm.qasm.Qasm.parse">[docs]</a>    <span class="k">def</span> <span class="nf">parse</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="Qasm.parse"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.html#qiskit.qasm.qasm.Qasm.parse">[docs]</a>    <span class="k">def</span> <span class="nf">parse</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Parse the data.&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_filename</span><span class="p">:</span>
             <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_filename</span><span class="p">)</span> <span class="k">as</span> <span class="n">ifile</span><span class="p">:</span>
@@ -275,23 +275,23 @@
       var el = document.getElementById('language');
       var optionsToSelect = ['en', 'ja']
       function changeLoc(evt) {
-        var language = evt.target.options[el.selectedIndex].value;
-        var pathname = window.location.pathname.slice(prefix.length);
-        if (language === getDefaultLanguage()) {
-          window.location.pathname =
-            `${prefix}${pathname.replace(localeRegExp, '/')}`;
-        } else {
-          window.location.pathname =
-            `${prefix}${pathname.replace(localeRegExp, `/locale/${language}/`)}`;
+	        var language = evt.target.options[el.selectedIndex].value;
+	        var pathname = window.location.pathname.slice(prefix.length);
+	        if (language === getDefaultLanguage()) {
+	          window.location.pathname =
+	            `${prefix}${pathname.replace(localeRegExp, '/')}`;
+	        } else {
+	          window.location.pathname =
+	            `${prefix}${pathname.replace(localeRegExp, `/locale/${language}/`)}`;
         }
       };
       el.addEventListener('change', changeLoc);
 
       function extractLanguageFromUrl(pathname) {
-        const match = pathname.slice(prefix.length).match(localeRegExp);
-        return typeof match[2] === 'undefined' ?
-                getDefaultLanguage() : match[2];
-	    }
+	        const match = pathname.slice(prefix.length).match(localeRegExp);
+	        return typeof match[2] === 'undefined' ?
+	               getDefaultLanguage() : match[2];
+	      }
 
       function changeSelect(select) {
         const optionToSelect = extractLanguageFromUrl(window.location.pathname);

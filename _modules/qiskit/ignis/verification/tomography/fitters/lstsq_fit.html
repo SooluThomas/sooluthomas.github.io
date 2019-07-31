@@ -34,7 +34,7 @@
        </script>
         <script src="https://cloud.ibm.com/analytics/build/bluemix-analytics.min.js"></script>
     
-    <title>qiskit.ignis.verification.tomography.fitters.lstsq_fit &#8212; Qiskit 0.11.0 documentation</title>
+    <title>qiskit.ignis.verification.tomography.fitters.lstsq_fit &#8212; Qiskit 0.11.1 documentation</title>
 
     <link rel="stylesheet" href="../../../../../../_static/material-icons.css" type="text/css" />
     <link rel="stylesheet" href="../../../../../../_static/pygments.css" type="text/css" />
@@ -193,7 +193,7 @@
 <span class="kn">from</span> <span class="nn">scipy.linalg</span> <span class="k">import</span> <span class="n">lstsq</span>
 
 
-<div class="viewcode-block" id="lstsq_fit"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.ignis.verification.tomography.fitters.lstsq_fit.html#qiskit.ignis.verification.tomography.fitters.lstsq_fit.lstsq_fit">[docs]</a><span class="k">def</span> <span class="nf">lstsq_fit</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">basis_matrix</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">PSD</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">trace</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="lstsq_fit"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.ignis.verification.tomography.fitters.html#qiskit.ignis.verification.tomography.fitters.lstsq_fit.lstsq_fit">[docs]</a><span class="k">def</span> <span class="nf">lstsq_fit</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">basis_matrix</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">PSD</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">trace</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Reconstruct a density matrix using MLE least-squares fitting.</span>
 
@@ -283,7 +283,7 @@
 <span class="c1"># Wizard Method rescaling</span>
 <span class="c1">###########################################################################</span>
 
-<div class="viewcode-block" id="make_positive_semidefinite"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.ignis.verification.tomography.fitters.lstsq_fit.html#qiskit.ignis.verification.tomography.fitters.lstsq_fit.make_positive_semidefinite">[docs]</a><span class="k">def</span> <span class="nf">make_positive_semidefinite</span><span class="p">(</span><span class="n">mat</span><span class="p">,</span> <span class="n">epsilon</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+<div class="viewcode-block" id="make_positive_semidefinite"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.ignis.verification.tomography.fitters.html#qiskit.ignis.verification.tomography.fitters.lstsq_fit.make_positive_semidefinite">[docs]</a><span class="k">def</span> <span class="nf">make_positive_semidefinite</span><span class="p">(</span><span class="n">mat</span><span class="p">,</span> <span class="n">epsilon</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Rescale a Hermitian matrix to nearest postive semidefinite matrix.</span>
 
@@ -377,23 +377,23 @@
       var el = document.getElementById('language');
       var optionsToSelect = ['en', 'ja']
       function changeLoc(evt) {
-        var language = evt.target.options[el.selectedIndex].value;
-        var pathname = window.location.pathname.slice(prefix.length);
-        if (language === getDefaultLanguage()) {
-          window.location.pathname =
-            `${prefix}${pathname.replace(localeRegExp, '/')}`;
-        } else {
-          window.location.pathname =
-            `${prefix}${pathname.replace(localeRegExp, `/locale/${language}/`)}`;
+	        var language = evt.target.options[el.selectedIndex].value;
+	        var pathname = window.location.pathname.slice(prefix.length);
+	        if (language === getDefaultLanguage()) {
+	          window.location.pathname =
+	            `${prefix}${pathname.replace(localeRegExp, '/')}`;
+	        } else {
+	          window.location.pathname =
+	            `${prefix}${pathname.replace(localeRegExp, `/locale/${language}/`)}`;
         }
       };
       el.addEventListener('change', changeLoc);
 
       function extractLanguageFromUrl(pathname) {
-        const match = pathname.slice(prefix.length).match(localeRegExp);
-        return typeof match[2] === 'undefined' ?
-                getDefaultLanguage() : match[2];
-	    }
+	        const match = pathname.slice(prefix.length).match(localeRegExp);
+	        return typeof match[2] === 'undefined' ?
+	               getDefaultLanguage() : match[2];
+	      }
 
       function changeSelect(select) {
         const optionToSelect = extractLanguageFromUrl(window.location.pathname);

@@ -34,7 +34,7 @@
        </script>
         <script src="https://cloud.ibm.com/analytics/build/bluemix-analytics.min.js"></script>
     
-    <title>qiskit.transpiler.passes.consolidate_blocks &#8212; Qiskit 0.11.0 documentation</title>
+    <title>qiskit.transpiler.passes.consolidate_blocks &#8212; Qiskit 0.11.1 documentation</title>
 
     <link rel="stylesheet" href="../../../../_static/material-icons.css" type="text/css" />
     <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
@@ -197,7 +197,7 @@
 <span class="kn">from</span> <span class="nn">qiskit.transpiler.basepasses</span> <span class="k">import</span> <span class="n">TransformationPass</span>
 
 
-<div class="viewcode-block" id="ConsolidateBlocks"><a class="viewcode-back" href="../../../../autodoc/qiskit.transpiler.passes.consolidate_blocks.html#qiskit.transpiler.passes.consolidate_blocks.ConsolidateBlocks">[docs]</a><span class="k">class</span> <span class="nc">ConsolidateBlocks</span><span class="p">(</span><span class="n">TransformationPass</span><span class="p">):</span>
+<div class="viewcode-block" id="ConsolidateBlocks"><a class="viewcode-back" href="../../../../autodoc/qiskit.transpiler.passes.html#qiskit.transpiler.passes.consolidate_blocks.ConsolidateBlocks">[docs]</a><span class="k">class</span> <span class="nc">ConsolidateBlocks</span><span class="p">(</span><span class="n">TransformationPass</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Pass to consolidate sequences of uninterrupted gates acting on</span>
 <span class="sd">    the same qubits into a Unitary node, to be resynthesized later,</span>
@@ -205,7 +205,7 @@
 <span class="sd">    Important note: this pass assumes that the &#39;blocks_list&#39; property that</span>
 <span class="sd">    it reads is given such that blocks are in topological order.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-<div class="viewcode-block" id="ConsolidateBlocks.run"><a class="viewcode-back" href="../../../../autodoc/qiskit.transpiler.passes.consolidate_blocks.html#qiskit.transpiler.passes.consolidate_blocks.ConsolidateBlocks.run">[docs]</a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dag</span><span class="p">):</span>
+<div class="viewcode-block" id="ConsolidateBlocks.run"><a class="viewcode-back" href="../../../../autodoc/qiskit.transpiler.passes.html#qiskit.transpiler.passes.consolidate_blocks.ConsolidateBlocks.run">[docs]</a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dag</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;iterate over each block and replace it with an equivalent Unitary</span>
 <span class="sd">        on the same wires.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -329,23 +329,23 @@
       var el = document.getElementById('language');
       var optionsToSelect = ['en', 'ja']
       function changeLoc(evt) {
-        var language = evt.target.options[el.selectedIndex].value;
-        var pathname = window.location.pathname.slice(prefix.length);
-        if (language === getDefaultLanguage()) {
-          window.location.pathname =
-            `${prefix}${pathname.replace(localeRegExp, '/')}`;
-        } else {
-          window.location.pathname =
-            `${prefix}${pathname.replace(localeRegExp, `/locale/${language}/`)}`;
+	        var language = evt.target.options[el.selectedIndex].value;
+	        var pathname = window.location.pathname.slice(prefix.length);
+	        if (language === getDefaultLanguage()) {
+	          window.location.pathname =
+	            `${prefix}${pathname.replace(localeRegExp, '/')}`;
+	        } else {
+	          window.location.pathname =
+	            `${prefix}${pathname.replace(localeRegExp, `/locale/${language}/`)}`;
         }
       };
       el.addEventListener('change', changeLoc);
 
       function extractLanguageFromUrl(pathname) {
-        const match = pathname.slice(prefix.length).match(localeRegExp);
-        return typeof match[2] === 'undefined' ?
-                getDefaultLanguage() : match[2];
-	    }
+	        const match = pathname.slice(prefix.length).match(localeRegExp);
+	        return typeof match[2] === 'undefined' ?
+	               getDefaultLanguage() : match[2];
+	      }
 
       function changeSelect(select) {
         const optionToSelect = extractLanguageFromUrl(window.location.pathname);

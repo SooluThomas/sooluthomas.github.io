@@ -34,7 +34,7 @@
        </script>
         <script src="https://cloud.ibm.com/analytics/build/bluemix-analytics.min.js"></script>
     
-    <title>qiskit.ignis.mitigation.measurement.circuits &#8212; Qiskit 0.11.0 documentation</title>
+    <title>qiskit.ignis.mitigation.measurement.circuits &#8212; Qiskit 0.11.1 documentation</title>
 
     <link rel="stylesheet" href="../../../../../_static/material-icons.css" type="text/css" />
     <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css" />
@@ -193,7 +193,7 @@
 <span class="kn">from</span> <span class="nn">...verification.tomography</span> <span class="k">import</span> <span class="n">count_keys</span>
 
 
-<div class="viewcode-block" id="complete_meas_cal"><a class="viewcode-back" href="../../../../../autodoc/qiskit.ignis.mitigation.measurement.circuits.html#qiskit.ignis.mitigation.measurement.circuits.complete_meas_cal">[docs]</a><span class="k">def</span> <span class="nf">complete_meas_cal</span><span class="p">(</span><span class="n">qubit_list</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">qr</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cr</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">circlabel</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">):</span>
+<div class="viewcode-block" id="complete_meas_cal"><a class="viewcode-back" href="../../../../../autodoc/qiskit.ignis.mitigation.measurement.html#qiskit.ignis.mitigation.measurement.circuits.complete_meas_cal">[docs]</a><span class="k">def</span> <span class="nf">complete_meas_cal</span><span class="p">(</span><span class="n">qubit_list</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">qr</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cr</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">circlabel</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Return a list of measurement calibration circuits for the full</span>
 <span class="sd">    Hilbert space.</span>
@@ -263,7 +263,7 @@
     <span class="k">return</span> <span class="n">cal_circuits</span><span class="p">,</span> <span class="n">state_labels</span></div>
 
 
-<div class="viewcode-block" id="tensored_meas_cal"><a class="viewcode-back" href="../../../../../autodoc/qiskit.ignis.mitigation.measurement.circuits.html#qiskit.ignis.mitigation.measurement.circuits.tensored_meas_cal">[docs]</a><span class="k">def</span> <span class="nf">tensored_meas_cal</span><span class="p">(</span><span class="n">mit_pattern</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">qr</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cr</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">circlabel</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">):</span>
+<div class="viewcode-block" id="tensored_meas_cal"><a class="viewcode-back" href="../../../../../autodoc/qiskit.ignis.mitigation.measurement.html#qiskit.ignis.mitigation.measurement.circuits.tensored_meas_cal">[docs]</a><span class="k">def</span> <span class="nf">tensored_meas_cal</span><span class="p">(</span><span class="n">mit_pattern</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">qr</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cr</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">circlabel</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Return a list of calibration circuits</span>
 
@@ -413,23 +413,23 @@
       var el = document.getElementById('language');
       var optionsToSelect = ['en', 'ja']
       function changeLoc(evt) {
-        var language = evt.target.options[el.selectedIndex].value;
-        var pathname = window.location.pathname.slice(prefix.length);
-        if (language === getDefaultLanguage()) {
-          window.location.pathname =
-            `${prefix}${pathname.replace(localeRegExp, '/')}`;
-        } else {
-          window.location.pathname =
-            `${prefix}${pathname.replace(localeRegExp, `/locale/${language}/`)}`;
+	        var language = evt.target.options[el.selectedIndex].value;
+	        var pathname = window.location.pathname.slice(prefix.length);
+	        if (language === getDefaultLanguage()) {
+	          window.location.pathname =
+	            `${prefix}${pathname.replace(localeRegExp, '/')}`;
+	        } else {
+	          window.location.pathname =
+	            `${prefix}${pathname.replace(localeRegExp, `/locale/${language}/`)}`;
         }
       };
       el.addEventListener('change', changeLoc);
 
       function extractLanguageFromUrl(pathname) {
-        const match = pathname.slice(prefix.length).match(localeRegExp);
-        return typeof match[2] === 'undefined' ?
-                getDefaultLanguage() : match[2];
-	    }
+	        const match = pathname.slice(prefix.length).match(localeRegExp);
+	        return typeof match[2] === 'undefined' ?
+	               getDefaultLanguage() : match[2];
+	      }
 
       function changeSelect(select) {
         const optionToSelect = extractLanguageFromUrl(window.location.pathname);

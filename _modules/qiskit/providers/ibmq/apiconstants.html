@@ -34,7 +34,7 @@
        </script>
         <script src="https://cloud.ibm.com/analytics/build/bluemix-analytics.min.js"></script>
     
-    <title>qiskit.providers.ibmq.apiconstants &#8212; Qiskit 0.11.0 documentation</title>
+    <title>qiskit.providers.ibmq.apiconstants &#8212; Qiskit 0.11.1 documentation</title>
 
     <link rel="stylesheet" href="../../../../_static/material-icons.css" type="text/css" />
     <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
@@ -188,7 +188,7 @@
 <span class="kn">import</span> <span class="nn">enum</span>
 
 
-<div class="viewcode-block" id="ApiJobStatus"><a class="viewcode-back" href="../../../../autodoc/qiskit.providers.ibmq.apiconstants.html#qiskit.providers.ibmq.apiconstants.ApiJobStatus">[docs]</a><span class="k">class</span> <span class="nc">ApiJobStatus</span><span class="p">(</span><span class="n">enum</span><span class="o">.</span><span class="n">Enum</span><span class="p">):</span>
+<div class="viewcode-block" id="ApiJobStatus"><a class="viewcode-back" href="../../../../autodoc/qiskit.providers.ibmq.html#qiskit.providers.ibmq.apiconstants.ApiJobStatus">[docs]</a><span class="k">class</span> <span class="nc">ApiJobStatus</span><span class="p">(</span><span class="n">enum</span><span class="o">.</span><span class="n">Enum</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Possible values used by the API for a job status.</span>
 
 <span class="sd">    The enum names represent the strings returned by the API verbatim in</span>
@@ -220,7 +220,7 @@
 <span class="p">)</span>
 
 
-<div class="viewcode-block" id="ApiJobKind"><a class="viewcode-back" href="../../../../autodoc/qiskit.providers.ibmq.apiconstants.html#qiskit.providers.ibmq.apiconstants.ApiJobKind">[docs]</a><span class="k">class</span> <span class="nc">ApiJobKind</span><span class="p">(</span><span class="n">enum</span><span class="o">.</span><span class="n">Enum</span><span class="p">):</span>
+<div class="viewcode-block" id="ApiJobKind"><a class="viewcode-back" href="../../../../autodoc/qiskit.providers.ibmq.html#qiskit.providers.ibmq.apiconstants.ApiJobKind">[docs]</a><span class="k">class</span> <span class="nc">ApiJobKind</span><span class="p">(</span><span class="n">enum</span><span class="o">.</span><span class="n">Enum</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Possible values used by the API for a job kind.&quot;&quot;&quot;</span>
     <span class="n">QOBJECT</span> <span class="o">=</span> <span class="s1">&#39;q-object&#39;</span>
     <span class="n">QOBJECT_STORAGE</span> <span class="o">=</span> <span class="s1">&#39;q-object-external-storage&#39;</span>
@@ -275,23 +275,23 @@
       var el = document.getElementById('language');
       var optionsToSelect = ['en', 'ja']
       function changeLoc(evt) {
-        var language = evt.target.options[el.selectedIndex].value;
-        var pathname = window.location.pathname.slice(prefix.length);
-        if (language === getDefaultLanguage()) {
-          window.location.pathname =
-            `${prefix}${pathname.replace(localeRegExp, '/')}`;
-        } else {
-          window.location.pathname =
-            `${prefix}${pathname.replace(localeRegExp, `/locale/${language}/`)}`;
+	        var language = evt.target.options[el.selectedIndex].value;
+	        var pathname = window.location.pathname.slice(prefix.length);
+	        if (language === getDefaultLanguage()) {
+	          window.location.pathname =
+	            `${prefix}${pathname.replace(localeRegExp, '/')}`;
+	        } else {
+	          window.location.pathname =
+	            `${prefix}${pathname.replace(localeRegExp, `/locale/${language}/`)}`;
         }
       };
       el.addEventListener('change', changeLoc);
 
       function extractLanguageFromUrl(pathname) {
-        const match = pathname.slice(prefix.length).match(localeRegExp);
-        return typeof match[2] === 'undefined' ?
-                getDefaultLanguage() : match[2];
-	    }
+	        const match = pathname.slice(prefix.length).match(localeRegExp);
+	        return typeof match[2] === 'undefined' ?
+	               getDefaultLanguage() : match[2];
+	      }
 
       function changeSelect(select) {
         const optionToSelect = extractLanguageFromUrl(window.location.pathname);

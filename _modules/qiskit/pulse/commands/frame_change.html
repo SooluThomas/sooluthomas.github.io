@@ -34,7 +34,7 @@
        </script>
         <script src="https://cloud.ibm.com/analytics/build/bluemix-analytics.min.js"></script>
     
-    <title>qiskit.pulse.commands.frame_change &#8212; Qiskit 0.11.0 documentation</title>
+    <title>qiskit.pulse.commands.frame_change &#8212; Qiskit 0.11.1 documentation</title>
 
     <link rel="stylesheet" href="../../../../_static/material-icons.css" type="text/css" />
     <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
@@ -185,7 +185,7 @@
 <span class="kn">from</span> <span class="nn">.command</span> <span class="k">import</span> <span class="n">Command</span>
 
 
-<div class="viewcode-block" id="FrameChange"><a class="viewcode-back" href="../../../../autodoc/qiskit.pulse.commands.frame_change.html#qiskit.pulse.commands.frame_change.FrameChange">[docs]</a><span class="k">class</span> <span class="nc">FrameChange</span><span class="p">(</span><span class="n">Command</span><span class="p">):</span>
+<div class="viewcode-block" id="FrameChange"><a class="viewcode-back" href="../../../../autodoc/qiskit.pulse.commands.html#qiskit.pulse.commands.frame_change.FrameChange">[docs]</a><span class="k">class</span> <span class="nc">FrameChange</span><span class="p">(</span><span class="n">Command</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Frame change pulse.&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">phase</span><span class="p">):</span>
@@ -222,12 +222,12 @@
         <span class="k">return</span> <span class="s1">&#39;</span><span class="si">%s</span><span class="s1">(</span><span class="si">%s</span><span class="s1">, phase=</span><span class="si">%.3f</span><span class="s1">)&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">phase</span><span class="p">)</span>
 
     <span class="c1"># pylint: disable=arguments-differ</span>
-<div class="viewcode-block" id="FrameChange.to_instruction"><a class="viewcode-back" href="../../../../autodoc/qiskit.pulse.commands.frame_change.html#qiskit.pulse.commands.frame_change.FrameChange.to_instruction">[docs]</a>    <span class="k">def</span> <span class="nf">to_instruction</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">channel</span><span class="p">:</span> <span class="n">PulseChannel</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;FrameChangeInstruction&#39;</span><span class="p">:</span>
+<div class="viewcode-block" id="FrameChange.to_instruction"><a class="viewcode-back" href="../../../../autodoc/qiskit.pulse.commands.html#qiskit.pulse.commands.frame_change.FrameChange.to_instruction">[docs]</a>    <span class="k">def</span> <span class="nf">to_instruction</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">channel</span><span class="p">:</span> <span class="n">PulseChannel</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;FrameChangeInstruction&#39;</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">FrameChangeInstruction</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">channel</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span></div></div>
     <span class="c1"># pylint: enable=arguments-differ</span>
 
 
-<div class="viewcode-block" id="FrameChangeInstruction"><a class="viewcode-back" href="../../../../autodoc/qiskit.pulse.commands.frame_change.html#qiskit.pulse.commands.frame_change.FrameChangeInstruction">[docs]</a><span class="k">class</span> <span class="nc">FrameChangeInstruction</span><span class="p">(</span><span class="n">Instruction</span><span class="p">):</span>
+<div class="viewcode-block" id="FrameChangeInstruction"><a class="viewcode-back" href="../../../../autodoc/qiskit.pulse.commands.html#qiskit.pulse.commands.frame_change.FrameChangeInstruction">[docs]</a><span class="k">class</span> <span class="nc">FrameChangeInstruction</span><span class="p">(</span><span class="n">Instruction</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Instruction to change frame of an `PulseChannel`. &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">command</span><span class="p">:</span> <span class="n">FrameChange</span><span class="p">,</span> <span class="n">channel</span><span class="p">:</span> <span class="n">PulseChannel</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
@@ -283,23 +283,23 @@
       var el = document.getElementById('language');
       var optionsToSelect = ['en', 'ja']
       function changeLoc(evt) {
-        var language = evt.target.options[el.selectedIndex].value;
-        var pathname = window.location.pathname.slice(prefix.length);
-        if (language === getDefaultLanguage()) {
-          window.location.pathname =
-            `${prefix}${pathname.replace(localeRegExp, '/')}`;
-        } else {
-          window.location.pathname =
-            `${prefix}${pathname.replace(localeRegExp, `/locale/${language}/`)}`;
+	        var language = evt.target.options[el.selectedIndex].value;
+	        var pathname = window.location.pathname.slice(prefix.length);
+	        if (language === getDefaultLanguage()) {
+	          window.location.pathname =
+	            `${prefix}${pathname.replace(localeRegExp, '/')}`;
+	        } else {
+	          window.location.pathname =
+	            `${prefix}${pathname.replace(localeRegExp, `/locale/${language}/`)}`;
         }
       };
       el.addEventListener('change', changeLoc);
 
       function extractLanguageFromUrl(pathname) {
-        const match = pathname.slice(prefix.length).match(localeRegExp);
-        return typeof match[2] === 'undefined' ?
-                getDefaultLanguage() : match[2];
-	    }
+	        const match = pathname.slice(prefix.length).match(localeRegExp);
+	        return typeof match[2] === 'undefined' ?
+	               getDefaultLanguage() : match[2];
+	      }
 
       function changeSelect(select) {
         const optionToSelect = extractLanguageFromUrl(window.location.pathname);

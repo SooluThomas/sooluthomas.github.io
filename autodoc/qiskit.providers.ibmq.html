@@ -34,7 +34,7 @@
        </script>
         <script src="https://cloud.ibm.com/analytics/build/bluemix-analytics.min.js"></script>
     
-    <title>qiskit.providers.ibmq package &#8212; Qiskit 0.11.0 documentation</title>
+    <title>qiskit.providers.ibmq package &#8212; Qiskit 0.11.1 documentation</title>
 
     <link rel="stylesheet" href="../_static/material-icons.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -52,7 +52,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="qiskit.providers.ibmq.api package" href="qiskit.providers.ibmq.api.html" />
-    <link rel="prev" title="qiskit.providers.basicaer.unitary_simulator module" href="qiskit.providers.basicaer.unitary_simulator.html" /> 
+    <link rel="prev" title="qiskit.providers.basicaer package" href="qiskit.providers.basicaer.html" /> 
   </head>
 <body>
   <header>
@@ -111,20 +111,7 @@
   
       
       <nav class="mdl-navigation">
-          <p class="caption"><span class="caption-text">Contents:</span></p>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../overview.html#qiskit-elements">Qiskit Elements</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../overview.html#qiskit-terra">Qiskit Terra</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../overview.html#qiskit-aer">Qiskit Aer</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../overview.html#qiskit-ignis">Qiskit Ignis</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../overview.html#qiskit-aqua">Qiskit Aqua</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../overview.html#qiskit-components">Qiskit Components</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../overview.html#qiskit-chemistry">Qiskit Chemistry</a></li>
-</ul>
-</li>
+          <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../install.html">Installing Qiskit</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../install.html#requirements">Requirements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../install.html#install">Install</a></li>
@@ -147,18 +134,6 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../faq.html">Frequently Asked Questions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../terra/index.html">Qiskit Terra</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../terra/overview.html">Overview</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../terra/overview.html#terra-organization">Terra Organization</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../terra/overview.html#quantum-circuits">Quantum Circuits</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../terra/overview.html#transpiler">Transpiler</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../terra/overview.html#tools">Tools</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../terra/overview.html#backends-and-results">Backends and Results</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../terra/overview.html#quantum-information">Quantum Information</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../terra/overview.html#visualization-tools">Visualization Tools</a></li>
-</ul>
-</li>
-</ul>
-</li>
 <li class="toctree-l2"><a class="reference internal" href="../terra/quantum_circuits.html">Circuits and Registers</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../terra/quantum_circuits.html#creating-registers">Creating Registers</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../terra/quantum_circuits.html#creating-circuits">Creating Circuits</a></li>
@@ -307,7 +282,6 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../aer/index.html">Qiskit Aer</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../aer/overview.html">Overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../aer/simulate_experiments.html">Simulate an experiment</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../aer/simulate_experiments.html#introduction">Introduction</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../aer/simulate_experiments.html#qasmsimulator">QasmSimulator</a><ul>
@@ -354,18 +328,6 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../ignis/index.html">Qiskit Ignis</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../ignis/overview.html">Overview</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../ignis/overview.html#circuits">Circuits</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../ignis/overview.html#fitters">Fitters</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../ignis/overview.html#filters">Filters</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../ignis/overview.html#ignis-organization">Ignis Organization</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../ignis/overview.html#characterization">Characterization</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../ignis/overview.html#verification">Verification</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../ignis/overview.html#mitigation">Mitigation</a></li>
-</ul>
-</li>
 <li class="toctree-l2"><a class="reference internal" href="../ignis/characterization.html">Characterization</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../ignis/characterization.html#circuits">Circuits</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../ignis/characterization.html#coherence">Coherence</a></li>
@@ -415,13 +377,6 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../aqua/index.html">Qiskit Aqua</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../aqua/library.html">Aqua: A Library of Quantum Algorithms</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../aqua/overview.html">Overview</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../aqua/overview.html#modularity-and-extensibility">Modularity and Extensibility</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../aqua/overview.html#novel-features">Novel Features</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../aqua/overview.html#contributors-in-alphabetical-order">Contributors (in Alphabetical Order)</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../aqua/overview.html#license">License</a></li>
-</ul>
-</li>
 <li class="toctree-l3"><a class="reference internal" href="../aqua/installation.html">Installation and Setup</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../aqua/installation.html#dependencies">Dependencies</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../aqua/installation.html#installation">Installation</a></li>
@@ -517,15 +472,10 @@
 <li class="toctree-l4"><a class="reference internal" href="../aqua/circuit_collection.html#circuits">Circuits</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="../aqua/library.html#contributors-in-alphabetical-order">Contributors (in Alphabetical Order)</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../aqua/chemistry/qiskit_chemistry.html">Qiskit Chemistry</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../aqua/chemistry/qiskit_chemistry_overview.html">Overview</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../aqua/chemistry/qiskit_chemistry_overview.html#modularity-and-extensibility">Modularity and Extensibility</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../aqua/chemistry/qiskit_chemistry_overview.html#novel-features">Novel Features</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../aqua/chemistry/qiskit_chemistry_overview.html#license">License</a></li>
-</ul>
-</li>
 <li class="toctree-l3"><a class="reference internal" href="../aqua/chemistry/qiskit_chemistry_installation.html">Installation and Setup</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../aqua/chemistry/qiskit_chemistry_installation.html#dependencies">Dependencies</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../aqua/chemistry/qiskit_chemistry_installation.html#code-installation">Code Installation</a></li>
@@ -561,6 +511,10 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../aqua/chemistry/release_history.html">Release history</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../aqua/chemistry/release_history.html#release-notes">Release Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../aqua/chemistry/qiskit_chemistry.html#features">Features</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../aqua/chemistry/qiskit_chemistry.html#license">License</a></li>
 </ul>
 </li>
 </ul>
@@ -646,16 +600,24 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../release_notes.html">Release Notes</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../release_notes.html#qiskit-0-11">Qiskit 0.11</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../release_notes.html#qiskit-0-11-1">Qiskit 0.11.1</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../release_notes.html#terra-0-8">Terra 0.8</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#aer-0-2">Aer 0.2</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#aer-0-2">Aer 0.2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#ignis-0-1">Ignis 0.1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#aqua-0-5">Aqua 0.5</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#ibm-q-provider-0-3">IBM Q Provider 0.3</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../release_notes.html#qiskit-0-11">Qiskit 0.11</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id1">Terra 0.8</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id2">Aer 0.2</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../release_notes.html#new-features">New features</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../release_notes.html#improvements">Improvements</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#ignis-0-1">Ignis 0.1</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#aqua-0-5">Aqua 0.5</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#ibm-q-provider-0-3">IBM Q Provider 0.3</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id3">Ignis 0.1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id4">Aqua 0.5</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id5">IBM Q Provider 0.3</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../release_notes.html#updating-to-the-new-ibm-q-experience-v2">Updating to the new IBM Q Experience v2</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../release_notes.html#updating-your-programs">Updating your programs</a></li>
 </ul>
@@ -663,43 +625,43 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../release_notes.html#qiskit-0-10">Qiskit 0.10</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id1">Terra 0.8</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id2">Aer 0.2</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id3">Ignis 0.1</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id4">Aqua 0.5</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id6">Terra 0.8</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id7">Aer 0.2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id8">Ignis 0.1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id9">Aqua 0.5</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../release_notes.html#ibm-q-provider-0-2">IBM Q Provider 0.2</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id5">New Features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id10">New Features</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../release_notes.html#bug-fixes">Bug Fixes</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../release_notes.html#qiskit-0-9">Qiskit 0.9</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id6">Terra 0.8</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id11">Terra 0.8</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../release_notes.html#highlights">Highlights</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id7">New Features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id12">New Features</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../release_notes.html#compatibility-considerations">Compatibility Considerations</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id8">Aer 0.2</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id9">New Features</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id10">Bug Fixes</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id11">Compatibility Considerations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id13">Aer 0.2</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id14">New Features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id15">Bug Fixes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id16">Compatibility Considerations</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id12">Ignis 0.1</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id13">New Features</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id14">Compatibility Considerations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id17">Ignis 0.1</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id18">New Features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id19">Compatibility Considerations</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id15">Aqua 0.5</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id16">New Features</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id17">Bug Fixes</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id18">Compatibility Considerations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id20">Aqua 0.5</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id21">New Features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id22">Bug Fixes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id23">Compatibility Considerations</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../release_notes.html#ibm-q-provider-0-1">IBM Q Provider 0.1</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id19">New Features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id24">New Features</a></li>
 </ul>
 </li>
 </ul>
@@ -707,38 +669,38 @@
 <li class="toctree-l2"><a class="reference internal" href="../release_notes.html#qiskit-0-8">Qiskit 0.8</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../release_notes.html#terra-0-7">Terra 0.7</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../release_notes.html#aer-0-1">Aer 0.1</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id20">Ignis 0.1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id25">Ignis 0.1</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../release_notes.html#qiskit-0-7">Qiskit 0.7</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id21">Terra 0.7</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id22">New Features</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id23">Compatibility Considerations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id26">Terra 0.7</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id27">New Features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id28">Compatibility Considerations</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id24">Aer 0.1</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id25">New Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id29">Aer 0.1</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id30">New Features</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../release_notes.html#aqua-0-4">Aqua 0.4</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id26">New Features</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id27">Compatibility Considerations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id31">New Features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id32">Compatibility Considerations</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../release_notes.html#qiskit-0-6">Qiskit 0.6</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../release_notes.html#terra-0-6">Terra 0.6</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id28">Highlights</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id29">Compatibility Considerations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id33">Highlights</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id34">Compatibility Considerations</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../release_notes.html#qiskit-0-5">Qiskit 0.5</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../release_notes.html#terra-0-5">Terra 0.5</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id30">Highlights</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id31">Compatibility Considerations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id35">Highlights</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id36">Compatibility Considerations</a></li>
 </ul>
 </li>
 </ul>
@@ -751,60 +713,136 @@
 <li class="toctree-l3"><a class="reference internal" href="qiskit.aqua.html">qiskit.aqua package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.aqua.html#subpackages">Subpackages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.aqua.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.aqua.html#module-qiskit.aqua._credentials_preferences">qiskit.aqua._credentials_preferences module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.aqua.html#module-qiskit.aqua._discover">qiskit.aqua._discover module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.aqua.html#module-qiskit.aqua._logging">qiskit.aqua._logging module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.aqua.html#module-qiskit.aqua.aqua_error">qiskit.aqua.aqua_error module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.aqua.html#module-qiskit.aqua.operator">qiskit.aqua.operator module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.aqua.html#module-qiskit.aqua.pluggable">qiskit.aqua.pluggable module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.aqua.html#module-qiskit.aqua.preferences">qiskit.aqua.preferences module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.aqua.html#module-qiskit.aqua.qiskit_aqua">qiskit.aqua.qiskit_aqua module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.aqua.html#module-qiskit.aqua.qiskit_aqua_globals">qiskit.aqua.qiskit_aqua_globals module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.aqua.html#module-qiskit.aqua.quantum_instance">qiskit.aqua.quantum_instance module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.aqua.html#module-qiskit.aqua.version">qiskit.aqua.version module</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.assembler.html">qiskit.assembler package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.assembler.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.assembler.html#module-qiskit.assembler.assemble_circuits">qiskit.assembler.assemble_circuits module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.assembler.html#module-qiskit.assembler.assemble_schedules">qiskit.assembler.assemble_schedules module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.assembler.html#module-qiskit.assembler.disassemble">qiskit.assembler.disassemble module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.assembler.html#module-qiskit.assembler.models">qiskit.assembler.models module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.assembler.html#module-qiskit.assembler.run_config">qiskit.assembler.run_config module</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.chemistry.html">qiskit.chemistry package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.chemistry.html#subpackages">Subpackages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.chemistry.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.chemistry.html#module-qiskit.chemistry._logging">qiskit.chemistry._logging module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.chemistry.html#module-qiskit.chemistry.bksf">qiskit.chemistry.bksf module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.chemistry.html#module-qiskit.chemistry.fermionic_operator">qiskit.chemistry.fermionic_operator module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.chemistry.html#module-qiskit.chemistry.mp2info">qiskit.chemistry.mp2info module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.chemistry.html#module-qiskit.chemistry.particle_hole">qiskit.chemistry.particle_hole module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.chemistry.html#module-qiskit.chemistry.qiskit_chemistry">qiskit.chemistry.qiskit_chemistry module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.chemistry.html#module-qiskit.chemistry.qiskit_chemistry_error">qiskit.chemistry.qiskit_chemistry_error module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.chemistry.html#module-qiskit.chemistry.qiskit_chemistry_problem">qiskit.chemistry.qiskit_chemistry_problem module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.chemistry.html#module-qiskit.chemistry.qmolecule">qiskit.chemistry.qmolecule module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.chemistry.html#module-qiskit.chemistry.version">qiskit.chemistry.version module</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.circuit.html">qiskit.circuit package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#module-qiskit.circuit.classicalregister">qiskit.circuit.classicalregister module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#module-qiskit.circuit.compositegate">qiskit.circuit.compositegate module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#module-qiskit.circuit.decorators">qiskit.circuit.decorators module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#module-qiskit.circuit.gate">qiskit.circuit.gate module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#module-qiskit.circuit.instruction">qiskit.circuit.instruction module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#module-qiskit.circuit.instructionset">qiskit.circuit.instructionset module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#module-qiskit.circuit.measure">qiskit.circuit.measure module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#module-qiskit.circuit.parameter">qiskit.circuit.parameter module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#module-qiskit.circuit.parametertable">qiskit.circuit.parametertable module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#module-qiskit.circuit.quantumcircuit">qiskit.circuit.quantumcircuit module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#module-qiskit.circuit.quantumregister">qiskit.circuit.quantumregister module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#module-qiskit.circuit.register">qiskit.circuit.register module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#module-qiskit.circuit.reset">qiskit.circuit.reset module</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.compiler.html">qiskit.compiler package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.compiler.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.compiler.html#module-qiskit.compiler.assemble">qiskit.compiler.assemble module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.compiler.html#module-qiskit.compiler.transpile">qiskit.compiler.transpile module</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.converters.html">qiskit.converters package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.converters.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.converters.html#module-qiskit.converters.ast_to_dag">qiskit.converters.ast_to_dag module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.converters.html#module-qiskit.converters.circuit_to_dag">qiskit.converters.circuit_to_dag module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.converters.html#module-qiskit.converters.circuit_to_instruction">qiskit.converters.circuit_to_instruction module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.converters.html#module-qiskit.converters.circuits_to_qobj">qiskit.converters.circuits_to_qobj module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.converters.html#module-qiskit.converters.dag_to_circuit">qiskit.converters.dag_to_circuit module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.converters.html#module-qiskit.converters.qobj_to_circuits">qiskit.converters.qobj_to_circuits module</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.dagcircuit.html">qiskit.dagcircuit package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.dagcircuit.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.dagcircuit.html#module-qiskit.dagcircuit.dagcircuit">qiskit.dagcircuit.dagcircuit module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.dagcircuit.html#module-qiskit.dagcircuit.dagnode">qiskit.dagcircuit.dagnode module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.dagcircuit.html#module-qiskit.dagcircuit.exceptions">qiskit.dagcircuit.exceptions module</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.extensions.html">qiskit.extensions package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.extensions.html#subpackages">Subpackages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.extensions.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.extensions.html#module-qiskit.extensions.exceptions">qiskit.extensions.exceptions module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.extensions.html#module-qiskit.extensions.initializer">qiskit.extensions.initializer module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.extensions.html#module-qiskit.extensions.unitary">qiskit.extensions.unitary module</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.mapper.html">qiskit.mapper package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.mapper.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.mapper.html#module-qiskit.mapper.compiling">qiskit.mapper.compiling module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.mapper.html#module-qiskit.mapper.coupling">qiskit.mapper.coupling module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.mapper.html#module-qiskit.mapper.exceptions">qiskit.mapper.exceptions module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.mapper.html#module-qiskit.mapper.layout">qiskit.mapper.layout module</a></li>
 </ul>
 </li>
 <li class="toctree-l3 current"><a class="reference internal" href="qiskit.providers.html">qiskit.providers package</a><ul class="current">
 <li class="toctree-l4 current"><a class="reference internal" href="qiskit.providers.html#subpackages">Subpackages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.providers.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.providers.html#module-qiskit.providers.basebackend">qiskit.providers.basebackend module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.providers.html#module-qiskit.providers.basejob">qiskit.providers.basejob module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.providers.html#module-qiskit.providers.baseprovider">qiskit.providers.baseprovider module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.providers.html#module-qiskit.providers.exceptions">qiskit.providers.exceptions module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.providers.html#module-qiskit.providers.jobstatus">qiskit.providers.jobstatus module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.providers.html#module-qiskit.providers.providerutils">qiskit.providers.providerutils module</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.pulse.html">qiskit.pulse package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.pulse.html#subpackages">Subpackages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.pulse.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.pulse.html#module-qiskit.pulse.cmd_def">qiskit.pulse.cmd_def module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.pulse.html#module-qiskit.pulse.configuration">qiskit.pulse.configuration module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.pulse.html#module-qiskit.pulse.exceptions">qiskit.pulse.exceptions module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.pulse.html#module-qiskit.pulse.interfaces">qiskit.pulse.interfaces module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.pulse.html#module-qiskit.pulse.ops">qiskit.pulse.ops module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.pulse.html#module-qiskit.pulse.schedule">qiskit.pulse.schedule module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.pulse.html#module-qiskit.pulse.timeslots">qiskit.pulse.timeslots module</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.qasm.html">qiskit.qasm package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.qasm.html#subpackages">Subpackages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.qasm.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.qasm.html#module-qiskit.qasm.exceptions">qiskit.qasm.exceptions module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.qasm.html#module-qiskit.qasm.qasm">qiskit.qasm.qasm module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.qasm.html#module-qiskit.qasm.qasmlexer">qiskit.qasm.qasmlexer module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.qasm.html#module-qiskit.qasm.qasmparser">qiskit.qasm.qasmparser module</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.qobj.html">qiskit.qobj package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.qobj.html#subpackages">Subpackages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.qobj.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.qobj.html#module-qiskit.qobj.qobj">qiskit.qobj.qobj module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.qobj.html#module-qiskit.qobj.utils">qiskit.qobj.utils module</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.quantum_info.html">qiskit.quantum_info package</a><ul>
@@ -813,45 +851,86 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.result.html">qiskit.result package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.result.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.result.html#module-qiskit.result.exceptions">qiskit.result.exceptions module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.result.html#module-qiskit.result.models">qiskit.result.models module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.result.html#module-qiskit.result.postprocess">qiskit.result.postprocess module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.result.html#module-qiskit.result.result">qiskit.result.result module</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.test.html">qiskit.test package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.test.html#subpackages">Subpackages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.test.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.test.html#module-qiskit.test.base">qiskit.test.base module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.test.html#qiskit-test-decorators-module">qiskit.test.decorators module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.test.html#qiskit-test-http-recorder-module">qiskit.test.http_recorder module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.test.html#qiskit-test-mock-module">qiskit.test.mock module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.test.html#qiskit-test-reference-circuits-module">qiskit.test.reference_circuits module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.test.html#qiskit-test-testing-options-module">qiskit.test.testing_options module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.test.html#module-qiskit.test.utils">qiskit.test.utils module</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.tools.html">qiskit.tools package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.tools.html#subpackages">Subpackages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.tools.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.tools.html#module-qiskit.tools.compiler">qiskit.tools.compiler module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.tools.html#module-qiskit.tools.logging">qiskit.tools.logging module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.tools.html#module-qiskit.tools.parallel">qiskit.tools.parallel module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.tools.html#module-qiskit.tools.visualization">qiskit.tools.visualization module</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.transpiler.html">qiskit.transpiler package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.transpiler.html#subpackages">Subpackages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.transpiler.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.transpiler.html#module-qiskit.transpiler.basepasses">qiskit.transpiler.basepasses module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.transpiler.html#module-qiskit.transpiler.coupling">qiskit.transpiler.coupling module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.transpiler.html#module-qiskit.transpiler.exceptions">qiskit.transpiler.exceptions module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.transpiler.html#module-qiskit.transpiler.fencedobjs">qiskit.transpiler.fencedobjs module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.transpiler.html#module-qiskit.transpiler.layout">qiskit.transpiler.layout module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.transpiler.html#module-qiskit.transpiler.models">qiskit.transpiler.models module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.transpiler.html#module-qiskit.transpiler.passmanager">qiskit.transpiler.passmanager module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.transpiler.html#module-qiskit.transpiler.propertyset">qiskit.transpiler.propertyset module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.transpiler.html#module-qiskit.transpiler.transpile_circuit">qiskit.transpiler.transpile_circuit module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.transpiler.html#module-qiskit.transpiler.transpile_config">qiskit.transpiler.transpile_config module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.transpiler.html#module-qiskit.transpiler.transpiler">qiskit.transpiler.transpiler module</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.validation.html">qiskit.validation package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.validation.html#subpackages">Subpackages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.validation.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.validation.html#module-qiskit.validation.base">qiskit.validation.base module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.validation.html#module-qiskit.validation.exceptions">qiskit.validation.exceptions module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.validation.html#module-qiskit.validation.validate">qiskit.validation.validate module</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.visualization.html">qiskit.visualization package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.visualization.html#subpackages">Subpackages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.visualization.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.visualization.html#qiskit-visualization-bloch-module">qiskit.visualization.bloch module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.visualization.html#module-qiskit.visualization.circuit_visualization">qiskit.visualization.circuit_visualization module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.visualization.html#module-qiskit.visualization.counts_visualization">qiskit.visualization.counts_visualization module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.visualization.html#module-qiskit.visualization.dag_visualization">qiskit.visualization.dag_visualization module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.visualization.html#module-qiskit.visualization.exceptions">qiskit.visualization.exceptions module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.visualization.html#module-qiskit.visualization.gate_map">qiskit.visualization.gate_map module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.visualization.html#module-qiskit.visualization.interpolation">qiskit.visualization.interpolation module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.visualization.html#module-qiskit.visualization.latex">qiskit.visualization.latex module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.visualization.html#module-qiskit.visualization.matplotlib">qiskit.visualization.matplotlib module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.visualization.html#module-qiskit.visualization.pulse_visualization">qiskit.visualization.pulse_visualization module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.visualization.html#module-qiskit.visualization.qcstyle">qiskit.visualization.qcstyle module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.visualization.html#module-qiskit.visualization.state_visualization">qiskit.visualization.state_visualization module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.visualization.html#module-qiskit.visualization.text">qiskit.visualization.text module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.visualization.html#module-qiskit.visualization.utils">qiskit.visualization.utils module</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="qiskit.html#submodules">Submodules</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="qiskit._util.html">qiskit._util module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.exceptions.html">qiskit.exceptions module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.execute.html">qiskit.execute module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.qiskiterror.html">qiskit.qiskiterror module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.user_config.html">qiskit.user_config module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.util.html">qiskit.util module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.version.html">qiskit.version module</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="qiskit.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qiskit.html#module-qiskit._util">qiskit._util module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qiskit.html#module-qiskit.exceptions">qiskit.exceptions module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qiskit.html#module-qiskit.execute">qiskit.execute module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qiskit.html#module-qiskit.qiskiterror">qiskit.qiskiterror module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qiskit.html#module-qiskit.user_config">qiskit.user_config module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qiskit.html#module-qiskit.util">qiskit.util module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qiskit.html#module-qiskit.version">qiskit.version module</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../contributing_to_qiskit.html">Contributing to Qiskit</a><ul>
@@ -940,20 +1019,7 @@
   
       
       <nav class="mdl-navigation">
-          <p class="caption"><span class="caption-text">Contents:</span></p>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../overview.html#qiskit-elements">Qiskit Elements</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../overview.html#qiskit-terra">Qiskit Terra</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../overview.html#qiskit-aer">Qiskit Aer</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../overview.html#qiskit-ignis">Qiskit Ignis</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../overview.html#qiskit-aqua">Qiskit Aqua</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../overview.html#qiskit-components">Qiskit Components</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../overview.html#qiskit-chemistry">Qiskit Chemistry</a></li>
-</ul>
-</li>
+          <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../install.html">Installing Qiskit</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../install.html#requirements">Requirements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../install.html#install">Install</a></li>
@@ -976,18 +1042,6 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../faq.html">Frequently Asked Questions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../terra/index.html">Qiskit Terra</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../terra/overview.html">Overview</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../terra/overview.html#terra-organization">Terra Organization</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../terra/overview.html#quantum-circuits">Quantum Circuits</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../terra/overview.html#transpiler">Transpiler</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../terra/overview.html#tools">Tools</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../terra/overview.html#backends-and-results">Backends and Results</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../terra/overview.html#quantum-information">Quantum Information</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../terra/overview.html#visualization-tools">Visualization Tools</a></li>
-</ul>
-</li>
-</ul>
-</li>
 <li class="toctree-l2"><a class="reference internal" href="../terra/quantum_circuits.html">Circuits and Registers</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../terra/quantum_circuits.html#creating-registers">Creating Registers</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../terra/quantum_circuits.html#creating-circuits">Creating Circuits</a></li>
@@ -1136,7 +1190,6 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../aer/index.html">Qiskit Aer</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../aer/overview.html">Overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../aer/simulate_experiments.html">Simulate an experiment</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../aer/simulate_experiments.html#introduction">Introduction</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../aer/simulate_experiments.html#qasmsimulator">QasmSimulator</a><ul>
@@ -1183,18 +1236,6 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../ignis/index.html">Qiskit Ignis</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../ignis/overview.html">Overview</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../ignis/overview.html#circuits">Circuits</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../ignis/overview.html#fitters">Fitters</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../ignis/overview.html#filters">Filters</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../ignis/overview.html#ignis-organization">Ignis Organization</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../ignis/overview.html#characterization">Characterization</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../ignis/overview.html#verification">Verification</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../ignis/overview.html#mitigation">Mitigation</a></li>
-</ul>
-</li>
 <li class="toctree-l2"><a class="reference internal" href="../ignis/characterization.html">Characterization</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../ignis/characterization.html#circuits">Circuits</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../ignis/characterization.html#coherence">Coherence</a></li>
@@ -1244,13 +1285,6 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../aqua/index.html">Qiskit Aqua</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../aqua/library.html">Aqua: A Library of Quantum Algorithms</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../aqua/overview.html">Overview</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../aqua/overview.html#modularity-and-extensibility">Modularity and Extensibility</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../aqua/overview.html#novel-features">Novel Features</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../aqua/overview.html#contributors-in-alphabetical-order">Contributors (in Alphabetical Order)</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../aqua/overview.html#license">License</a></li>
-</ul>
-</li>
 <li class="toctree-l3"><a class="reference internal" href="../aqua/installation.html">Installation and Setup</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../aqua/installation.html#dependencies">Dependencies</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../aqua/installation.html#installation">Installation</a></li>
@@ -1346,15 +1380,10 @@
 <li class="toctree-l4"><a class="reference internal" href="../aqua/circuit_collection.html#circuits">Circuits</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="../aqua/library.html#contributors-in-alphabetical-order">Contributors (in Alphabetical Order)</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../aqua/chemistry/qiskit_chemistry.html">Qiskit Chemistry</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../aqua/chemistry/qiskit_chemistry_overview.html">Overview</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../aqua/chemistry/qiskit_chemistry_overview.html#modularity-and-extensibility">Modularity and Extensibility</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../aqua/chemistry/qiskit_chemistry_overview.html#novel-features">Novel Features</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../aqua/chemistry/qiskit_chemistry_overview.html#license">License</a></li>
-</ul>
-</li>
 <li class="toctree-l3"><a class="reference internal" href="../aqua/chemistry/qiskit_chemistry_installation.html">Installation and Setup</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../aqua/chemistry/qiskit_chemistry_installation.html#dependencies">Dependencies</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../aqua/chemistry/qiskit_chemistry_installation.html#code-installation">Code Installation</a></li>
@@ -1390,6 +1419,10 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../aqua/chemistry/release_history.html">Release history</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../aqua/chemistry/release_history.html#release-notes">Release Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../aqua/chemistry/qiskit_chemistry.html#features">Features</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../aqua/chemistry/qiskit_chemistry.html#license">License</a></li>
 </ul>
 </li>
 </ul>
@@ -1475,16 +1508,24 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../release_notes.html">Release Notes</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../release_notes.html#qiskit-0-11">Qiskit 0.11</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../release_notes.html#qiskit-0-11-1">Qiskit 0.11.1</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../release_notes.html#terra-0-8">Terra 0.8</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#aer-0-2">Aer 0.2</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#aer-0-2">Aer 0.2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#ignis-0-1">Ignis 0.1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#aqua-0-5">Aqua 0.5</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#ibm-q-provider-0-3">IBM Q Provider 0.3</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../release_notes.html#qiskit-0-11">Qiskit 0.11</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id1">Terra 0.8</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id2">Aer 0.2</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../release_notes.html#new-features">New features</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../release_notes.html#improvements">Improvements</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#ignis-0-1">Ignis 0.1</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#aqua-0-5">Aqua 0.5</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#ibm-q-provider-0-3">IBM Q Provider 0.3</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id3">Ignis 0.1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id4">Aqua 0.5</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id5">IBM Q Provider 0.3</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../release_notes.html#updating-to-the-new-ibm-q-experience-v2">Updating to the new IBM Q Experience v2</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../release_notes.html#updating-your-programs">Updating your programs</a></li>
 </ul>
@@ -1492,43 +1533,43 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../release_notes.html#qiskit-0-10">Qiskit 0.10</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id1">Terra 0.8</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id2">Aer 0.2</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id3">Ignis 0.1</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id4">Aqua 0.5</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id6">Terra 0.8</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id7">Aer 0.2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id8">Ignis 0.1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id9">Aqua 0.5</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../release_notes.html#ibm-q-provider-0-2">IBM Q Provider 0.2</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id5">New Features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id10">New Features</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../release_notes.html#bug-fixes">Bug Fixes</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../release_notes.html#qiskit-0-9">Qiskit 0.9</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id6">Terra 0.8</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id11">Terra 0.8</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../release_notes.html#highlights">Highlights</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id7">New Features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id12">New Features</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../release_notes.html#compatibility-considerations">Compatibility Considerations</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id8">Aer 0.2</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id9">New Features</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id10">Bug Fixes</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id11">Compatibility Considerations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id13">Aer 0.2</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id14">New Features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id15">Bug Fixes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id16">Compatibility Considerations</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id12">Ignis 0.1</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id13">New Features</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id14">Compatibility Considerations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id17">Ignis 0.1</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id18">New Features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id19">Compatibility Considerations</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id15">Aqua 0.5</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id16">New Features</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id17">Bug Fixes</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id18">Compatibility Considerations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id20">Aqua 0.5</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id21">New Features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id22">Bug Fixes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id23">Compatibility Considerations</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../release_notes.html#ibm-q-provider-0-1">IBM Q Provider 0.1</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id19">New Features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id24">New Features</a></li>
 </ul>
 </li>
 </ul>
@@ -1536,38 +1577,38 @@
 <li class="toctree-l2"><a class="reference internal" href="../release_notes.html#qiskit-0-8">Qiskit 0.8</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../release_notes.html#terra-0-7">Terra 0.7</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../release_notes.html#aer-0-1">Aer 0.1</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id20">Ignis 0.1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id25">Ignis 0.1</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../release_notes.html#qiskit-0-7">Qiskit 0.7</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id21">Terra 0.7</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id22">New Features</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id23">Compatibility Considerations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id26">Terra 0.7</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id27">New Features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id28">Compatibility Considerations</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id24">Aer 0.1</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id25">New Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id29">Aer 0.1</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id30">New Features</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../release_notes.html#aqua-0-4">Aqua 0.4</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id26">New Features</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id27">Compatibility Considerations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id31">New Features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id32">Compatibility Considerations</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../release_notes.html#qiskit-0-6">Qiskit 0.6</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../release_notes.html#terra-0-6">Terra 0.6</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id28">Highlights</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id29">Compatibility Considerations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id33">Highlights</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id34">Compatibility Considerations</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../release_notes.html#qiskit-0-5">Qiskit 0.5</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../release_notes.html#terra-0-5">Terra 0.5</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id30">Highlights</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id31">Compatibility Considerations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id35">Highlights</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id36">Compatibility Considerations</a></li>
 </ul>
 </li>
 </ul>
@@ -1580,60 +1621,136 @@
 <li class="toctree-l3"><a class="reference internal" href="qiskit.aqua.html">qiskit.aqua package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.aqua.html#subpackages">Subpackages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.aqua.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.aqua.html#module-qiskit.aqua._credentials_preferences">qiskit.aqua._credentials_preferences module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.aqua.html#module-qiskit.aqua._discover">qiskit.aqua._discover module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.aqua.html#module-qiskit.aqua._logging">qiskit.aqua._logging module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.aqua.html#module-qiskit.aqua.aqua_error">qiskit.aqua.aqua_error module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.aqua.html#module-qiskit.aqua.operator">qiskit.aqua.operator module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.aqua.html#module-qiskit.aqua.pluggable">qiskit.aqua.pluggable module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.aqua.html#module-qiskit.aqua.preferences">qiskit.aqua.preferences module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.aqua.html#module-qiskit.aqua.qiskit_aqua">qiskit.aqua.qiskit_aqua module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.aqua.html#module-qiskit.aqua.qiskit_aqua_globals">qiskit.aqua.qiskit_aqua_globals module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.aqua.html#module-qiskit.aqua.quantum_instance">qiskit.aqua.quantum_instance module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.aqua.html#module-qiskit.aqua.version">qiskit.aqua.version module</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.assembler.html">qiskit.assembler package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.assembler.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.assembler.html#module-qiskit.assembler.assemble_circuits">qiskit.assembler.assemble_circuits module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.assembler.html#module-qiskit.assembler.assemble_schedules">qiskit.assembler.assemble_schedules module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.assembler.html#module-qiskit.assembler.disassemble">qiskit.assembler.disassemble module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.assembler.html#module-qiskit.assembler.models">qiskit.assembler.models module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.assembler.html#module-qiskit.assembler.run_config">qiskit.assembler.run_config module</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.chemistry.html">qiskit.chemistry package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.chemistry.html#subpackages">Subpackages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.chemistry.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.chemistry.html#module-qiskit.chemistry._logging">qiskit.chemistry._logging module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.chemistry.html#module-qiskit.chemistry.bksf">qiskit.chemistry.bksf module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.chemistry.html#module-qiskit.chemistry.fermionic_operator">qiskit.chemistry.fermionic_operator module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.chemistry.html#module-qiskit.chemistry.mp2info">qiskit.chemistry.mp2info module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.chemistry.html#module-qiskit.chemistry.particle_hole">qiskit.chemistry.particle_hole module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.chemistry.html#module-qiskit.chemistry.qiskit_chemistry">qiskit.chemistry.qiskit_chemistry module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.chemistry.html#module-qiskit.chemistry.qiskit_chemistry_error">qiskit.chemistry.qiskit_chemistry_error module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.chemistry.html#module-qiskit.chemistry.qiskit_chemistry_problem">qiskit.chemistry.qiskit_chemistry_problem module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.chemistry.html#module-qiskit.chemistry.qmolecule">qiskit.chemistry.qmolecule module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.chemistry.html#module-qiskit.chemistry.version">qiskit.chemistry.version module</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.circuit.html">qiskit.circuit package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#module-qiskit.circuit.classicalregister">qiskit.circuit.classicalregister module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#module-qiskit.circuit.compositegate">qiskit.circuit.compositegate module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#module-qiskit.circuit.decorators">qiskit.circuit.decorators module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#module-qiskit.circuit.gate">qiskit.circuit.gate module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#module-qiskit.circuit.instruction">qiskit.circuit.instruction module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#module-qiskit.circuit.instructionset">qiskit.circuit.instructionset module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#module-qiskit.circuit.measure">qiskit.circuit.measure module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#module-qiskit.circuit.parameter">qiskit.circuit.parameter module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#module-qiskit.circuit.parametertable">qiskit.circuit.parametertable module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#module-qiskit.circuit.quantumcircuit">qiskit.circuit.quantumcircuit module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#module-qiskit.circuit.quantumregister">qiskit.circuit.quantumregister module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#module-qiskit.circuit.register">qiskit.circuit.register module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#module-qiskit.circuit.reset">qiskit.circuit.reset module</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.compiler.html">qiskit.compiler package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.compiler.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.compiler.html#module-qiskit.compiler.assemble">qiskit.compiler.assemble module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.compiler.html#module-qiskit.compiler.transpile">qiskit.compiler.transpile module</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.converters.html">qiskit.converters package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.converters.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.converters.html#module-qiskit.converters.ast_to_dag">qiskit.converters.ast_to_dag module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.converters.html#module-qiskit.converters.circuit_to_dag">qiskit.converters.circuit_to_dag module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.converters.html#module-qiskit.converters.circuit_to_instruction">qiskit.converters.circuit_to_instruction module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.converters.html#module-qiskit.converters.circuits_to_qobj">qiskit.converters.circuits_to_qobj module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.converters.html#module-qiskit.converters.dag_to_circuit">qiskit.converters.dag_to_circuit module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.converters.html#module-qiskit.converters.qobj_to_circuits">qiskit.converters.qobj_to_circuits module</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.dagcircuit.html">qiskit.dagcircuit package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.dagcircuit.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.dagcircuit.html#module-qiskit.dagcircuit.dagcircuit">qiskit.dagcircuit.dagcircuit module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.dagcircuit.html#module-qiskit.dagcircuit.dagnode">qiskit.dagcircuit.dagnode module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.dagcircuit.html#module-qiskit.dagcircuit.exceptions">qiskit.dagcircuit.exceptions module</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.extensions.html">qiskit.extensions package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.extensions.html#subpackages">Subpackages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.extensions.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.extensions.html#module-qiskit.extensions.exceptions">qiskit.extensions.exceptions module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.extensions.html#module-qiskit.extensions.initializer">qiskit.extensions.initializer module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.extensions.html#module-qiskit.extensions.unitary">qiskit.extensions.unitary module</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.mapper.html">qiskit.mapper package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.mapper.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.mapper.html#module-qiskit.mapper.compiling">qiskit.mapper.compiling module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.mapper.html#module-qiskit.mapper.coupling">qiskit.mapper.coupling module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.mapper.html#module-qiskit.mapper.exceptions">qiskit.mapper.exceptions module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.mapper.html#module-qiskit.mapper.layout">qiskit.mapper.layout module</a></li>
 </ul>
 </li>
 <li class="toctree-l3 current"><a class="reference internal" href="qiskit.providers.html">qiskit.providers package</a><ul class="current">
 <li class="toctree-l4 current"><a class="reference internal" href="qiskit.providers.html#subpackages">Subpackages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.providers.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.providers.html#module-qiskit.providers.basebackend">qiskit.providers.basebackend module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.providers.html#module-qiskit.providers.basejob">qiskit.providers.basejob module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.providers.html#module-qiskit.providers.baseprovider">qiskit.providers.baseprovider module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.providers.html#module-qiskit.providers.exceptions">qiskit.providers.exceptions module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.providers.html#module-qiskit.providers.jobstatus">qiskit.providers.jobstatus module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.providers.html#module-qiskit.providers.providerutils">qiskit.providers.providerutils module</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.pulse.html">qiskit.pulse package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.pulse.html#subpackages">Subpackages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.pulse.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.pulse.html#module-qiskit.pulse.cmd_def">qiskit.pulse.cmd_def module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.pulse.html#module-qiskit.pulse.configuration">qiskit.pulse.configuration module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.pulse.html#module-qiskit.pulse.exceptions">qiskit.pulse.exceptions module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.pulse.html#module-qiskit.pulse.interfaces">qiskit.pulse.interfaces module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.pulse.html#module-qiskit.pulse.ops">qiskit.pulse.ops module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.pulse.html#module-qiskit.pulse.schedule">qiskit.pulse.schedule module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.pulse.html#module-qiskit.pulse.timeslots">qiskit.pulse.timeslots module</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.qasm.html">qiskit.qasm package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.qasm.html#subpackages">Subpackages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.qasm.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.qasm.html#module-qiskit.qasm.exceptions">qiskit.qasm.exceptions module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.qasm.html#module-qiskit.qasm.qasm">qiskit.qasm.qasm module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.qasm.html#module-qiskit.qasm.qasmlexer">qiskit.qasm.qasmlexer module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.qasm.html#module-qiskit.qasm.qasmparser">qiskit.qasm.qasmparser module</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.qobj.html">qiskit.qobj package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.qobj.html#subpackages">Subpackages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.qobj.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.qobj.html#module-qiskit.qobj.qobj">qiskit.qobj.qobj module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.qobj.html#module-qiskit.qobj.utils">qiskit.qobj.utils module</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.quantum_info.html">qiskit.quantum_info package</a><ul>
@@ -1642,45 +1759,86 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.result.html">qiskit.result package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.result.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.result.html#module-qiskit.result.exceptions">qiskit.result.exceptions module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.result.html#module-qiskit.result.models">qiskit.result.models module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.result.html#module-qiskit.result.postprocess">qiskit.result.postprocess module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.result.html#module-qiskit.result.result">qiskit.result.result module</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.test.html">qiskit.test package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.test.html#subpackages">Subpackages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.test.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.test.html#module-qiskit.test.base">qiskit.test.base module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.test.html#qiskit-test-decorators-module">qiskit.test.decorators module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.test.html#qiskit-test-http-recorder-module">qiskit.test.http_recorder module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.test.html#qiskit-test-mock-module">qiskit.test.mock module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.test.html#qiskit-test-reference-circuits-module">qiskit.test.reference_circuits module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.test.html#qiskit-test-testing-options-module">qiskit.test.testing_options module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.test.html#module-qiskit.test.utils">qiskit.test.utils module</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.tools.html">qiskit.tools package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.tools.html#subpackages">Subpackages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.tools.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.tools.html#module-qiskit.tools.compiler">qiskit.tools.compiler module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.tools.html#module-qiskit.tools.logging">qiskit.tools.logging module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.tools.html#module-qiskit.tools.parallel">qiskit.tools.parallel module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.tools.html#module-qiskit.tools.visualization">qiskit.tools.visualization module</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.transpiler.html">qiskit.transpiler package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.transpiler.html#subpackages">Subpackages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.transpiler.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.transpiler.html#module-qiskit.transpiler.basepasses">qiskit.transpiler.basepasses module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.transpiler.html#module-qiskit.transpiler.coupling">qiskit.transpiler.coupling module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.transpiler.html#module-qiskit.transpiler.exceptions">qiskit.transpiler.exceptions module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.transpiler.html#module-qiskit.transpiler.fencedobjs">qiskit.transpiler.fencedobjs module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.transpiler.html#module-qiskit.transpiler.layout">qiskit.transpiler.layout module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.transpiler.html#module-qiskit.transpiler.models">qiskit.transpiler.models module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.transpiler.html#module-qiskit.transpiler.passmanager">qiskit.transpiler.passmanager module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.transpiler.html#module-qiskit.transpiler.propertyset">qiskit.transpiler.propertyset module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.transpiler.html#module-qiskit.transpiler.transpile_circuit">qiskit.transpiler.transpile_circuit module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.transpiler.html#module-qiskit.transpiler.transpile_config">qiskit.transpiler.transpile_config module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.transpiler.html#module-qiskit.transpiler.transpiler">qiskit.transpiler.transpiler module</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.validation.html">qiskit.validation package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.validation.html#subpackages">Subpackages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.validation.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.validation.html#module-qiskit.validation.base">qiskit.validation.base module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.validation.html#module-qiskit.validation.exceptions">qiskit.validation.exceptions module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.validation.html#module-qiskit.validation.validate">qiskit.validation.validate module</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.visualization.html">qiskit.visualization package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.visualization.html#subpackages">Subpackages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.visualization.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.visualization.html#qiskit-visualization-bloch-module">qiskit.visualization.bloch module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.visualization.html#module-qiskit.visualization.circuit_visualization">qiskit.visualization.circuit_visualization module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.visualization.html#module-qiskit.visualization.counts_visualization">qiskit.visualization.counts_visualization module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.visualization.html#module-qiskit.visualization.dag_visualization">qiskit.visualization.dag_visualization module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.visualization.html#module-qiskit.visualization.exceptions">qiskit.visualization.exceptions module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.visualization.html#module-qiskit.visualization.gate_map">qiskit.visualization.gate_map module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.visualization.html#module-qiskit.visualization.interpolation">qiskit.visualization.interpolation module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.visualization.html#module-qiskit.visualization.latex">qiskit.visualization.latex module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.visualization.html#module-qiskit.visualization.matplotlib">qiskit.visualization.matplotlib module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.visualization.html#module-qiskit.visualization.pulse_visualization">qiskit.visualization.pulse_visualization module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.visualization.html#module-qiskit.visualization.qcstyle">qiskit.visualization.qcstyle module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.visualization.html#module-qiskit.visualization.state_visualization">qiskit.visualization.state_visualization module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.visualization.html#module-qiskit.visualization.text">qiskit.visualization.text module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.visualization.html#module-qiskit.visualization.utils">qiskit.visualization.utils module</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="qiskit.html#submodules">Submodules</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="qiskit._util.html">qiskit._util module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.exceptions.html">qiskit.exceptions module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.execute.html">qiskit.execute module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.qiskiterror.html">qiskit.qiskiterror module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.user_config.html">qiskit.user_config module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.util.html">qiskit.util module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.version.html">qiskit.version module</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="qiskit.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qiskit.html#module-qiskit._util">qiskit._util module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qiskit.html#module-qiskit.exceptions">qiskit.exceptions module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qiskit.html#module-qiskit.execute">qiskit.execute module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qiskit.html#module-qiskit.qiskiterror">qiskit.qiskiterror module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qiskit.html#module-qiskit.user_config">qiskit.user_config module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qiskit.html#module-qiskit.util">qiskit.util module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qiskit.html#module-qiskit.version">qiskit.version module</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../contributing_to_qiskit.html">Contributing to Qiskit</a><ul>
@@ -1746,11 +1904,11 @@ local backends that do not have this are not considered.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>backends</strong> (<em>list</em><em>[</em><a class="reference internal" href="qiskit.providers.basebackend.html#qiskit.providers.basebackend.BaseBackend" title="qiskit.providers.basebackend.BaseBackend"><em>BaseBackend</em></a><em>]</em>) – backends to choose from</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>backends</strong> (<em>list</em><em>[</em><a class="reference internal" href="qiskit.providers.html#qiskit.providers.basebackend.BaseBackend" title="qiskit.providers.basebackend.BaseBackend"><em>BaseBackend</em></a><em>]</em>) – backends to choose from</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">the the least busy backend</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="qiskit.providers.basebackend.html#qiskit.providers.basebackend.BaseBackend" title="qiskit.providers.basebackend.BaseBackend">BaseBackend</a></td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="qiskit.providers.html#qiskit.providers.basebackend.BaseBackend" title="qiskit.providers.basebackend.BaseBackend">BaseBackend</a></td>
 </tr>
 <tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><code class="xref py py-exc docutils literal notranslate"><span class="pre">QiskitError</span></code> – if passing a list of backend names that is
 either empty or none have attribute <code class="docutils literal notranslate"><span class="pre">pending_jobs</span></code></td>
@@ -1764,84 +1922,68 @@ either empty or none have attribute <code class="docutils literal notranslate"><
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="qiskit.providers.ibmq.api.html">qiskit.providers.ibmq.api package</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="qiskit.providers.ibmq.api.html#submodules">Submodules</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.providers.ibmq.api.exceptions.html">qiskit.providers.ibmq.api.exceptions module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.providers.ibmq.api.ibmqconnector.html">qiskit.providers.ibmq.api.ibmqconnector module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.providers.ibmq.api.utils.html">qiskit.providers.ibmq.api.utils module</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="qiskit.providers.ibmq.api.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qiskit.providers.ibmq.api.html#module-qiskit.providers.ibmq.api.exceptions">qiskit.providers.ibmq.api.exceptions module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qiskit.providers.ibmq.api.html#module-qiskit.providers.ibmq.api.ibmqconnector">qiskit.providers.ibmq.api.ibmqconnector module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qiskit.providers.ibmq.api.html#module-qiskit.providers.ibmq.api.utils">qiskit.providers.ibmq.api.utils module</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="qiskit.providers.ibmq.api_v2.html">qiskit.providers.ibmq.api_v2 package</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="qiskit.providers.ibmq.api_v2.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.providers.ibmq.api_v2.clients.html">qiskit.providers.ibmq.api_v2.clients package</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="qiskit.providers.ibmq.api_v2.clients.html#submodules">Submodules</a><ul>
-<li class="toctree-l5"><a class="reference internal" href="qiskit.providers.ibmq.api_v2.clients.account.html">qiskit.providers.ibmq.api_v2.clients.account module</a></li>
-<li class="toctree-l5"><a class="reference internal" href="qiskit.providers.ibmq.api_v2.clients.auth.html">qiskit.providers.ibmq.api_v2.clients.auth module</a></li>
-<li class="toctree-l5"><a class="reference internal" href="qiskit.providers.ibmq.api_v2.clients.base.html">qiskit.providers.ibmq.api_v2.clients.base module</a></li>
-<li class="toctree-l5"><a class="reference internal" href="qiskit.providers.ibmq.api_v2.clients.version.html">qiskit.providers.ibmq.api_v2.clients.version module</a></li>
-<li class="toctree-l5"><a class="reference internal" href="qiskit.providers.ibmq.api_v2.clients.websocket.html">qiskit.providers.ibmq.api_v2.clients.websocket module</a></li>
-</ul>
-</li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.providers.ibmq.api_v2.clients.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.providers.ibmq.api_v2.clients.html#module-qiskit.providers.ibmq.api_v2.clients.account">qiskit.providers.ibmq.api_v2.clients.account module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.providers.ibmq.api_v2.clients.html#module-qiskit.providers.ibmq.api_v2.clients.auth">qiskit.providers.ibmq.api_v2.clients.auth module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.providers.ibmq.api_v2.clients.html#module-qiskit.providers.ibmq.api_v2.clients.base">qiskit.providers.ibmq.api_v2.clients.base module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.providers.ibmq.api_v2.clients.html#module-qiskit.providers.ibmq.api_v2.clients.version">qiskit.providers.ibmq.api_v2.clients.version module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.providers.ibmq.api_v2.clients.html#module-qiskit.providers.ibmq.api_v2.clients.websocket">qiskit.providers.ibmq.api_v2.clients.websocket module</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.providers.ibmq.api_v2.rest.html">qiskit.providers.ibmq.api_v2.rest package</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="qiskit.providers.ibmq.api_v2.rest.html#submodules">Submodules</a><ul>
-<li class="toctree-l5"><a class="reference internal" href="qiskit.providers.ibmq.api_v2.rest.auth.html">qiskit.providers.ibmq.api_v2.rest.auth module</a></li>
-<li class="toctree-l5"><a class="reference internal" href="qiskit.providers.ibmq.api_v2.rest.backend.html">qiskit.providers.ibmq.api_v2.rest.backend module</a></li>
-<li class="toctree-l5"><a class="reference internal" href="qiskit.providers.ibmq.api_v2.rest.base.html">qiskit.providers.ibmq.api_v2.rest.base module</a></li>
-<li class="toctree-l5"><a class="reference internal" href="qiskit.providers.ibmq.api_v2.rest.job.html">qiskit.providers.ibmq.api_v2.rest.job module</a></li>
-<li class="toctree-l5"><a class="reference internal" href="qiskit.providers.ibmq.api_v2.rest.root.html">qiskit.providers.ibmq.api_v2.rest.root module</a></li>
-<li class="toctree-l5"><a class="reference internal" href="qiskit.providers.ibmq.api_v2.rest.version_finder.html">qiskit.providers.ibmq.api_v2.rest.version_finder module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.providers.ibmq.api_v2.rest.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.providers.ibmq.api_v2.rest.html#module-qiskit.providers.ibmq.api_v2.rest.auth">qiskit.providers.ibmq.api_v2.rest.auth module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.providers.ibmq.api_v2.rest.html#module-qiskit.providers.ibmq.api_v2.rest.backend">qiskit.providers.ibmq.api_v2.rest.backend module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.providers.ibmq.api_v2.rest.html#module-qiskit.providers.ibmq.api_v2.rest.base">qiskit.providers.ibmq.api_v2.rest.base module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.providers.ibmq.api_v2.rest.html#module-qiskit.providers.ibmq.api_v2.rest.job">qiskit.providers.ibmq.api_v2.rest.job module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.providers.ibmq.api_v2.rest.html#module-qiskit.providers.ibmq.api_v2.rest.root">qiskit.providers.ibmq.api_v2.rest.root module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.providers.ibmq.api_v2.rest.html#module-qiskit.providers.ibmq.api_v2.rest.version_finder">qiskit.providers.ibmq.api_v2.rest.version_finder module</a></li>
 </ul>
 </li>
 </ul>
 </li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="qiskit.providers.ibmq.api_v2.html#submodules">Submodules</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.providers.ibmq.api_v2.exceptions.html">qiskit.providers.ibmq.api_v2.exceptions module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.providers.ibmq.api_v2.session.html">qiskit.providers.ibmq.api_v2.session module</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="qiskit.providers.ibmq.api_v2.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qiskit.providers.ibmq.api_v2.html#module-qiskit.providers.ibmq.api_v2.exceptions">qiskit.providers.ibmq.api_v2.exceptions module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qiskit.providers.ibmq.api_v2.html#module-qiskit.providers.ibmq.api_v2.session">qiskit.providers.ibmq.api_v2.session module</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="qiskit.providers.ibmq.circuits.html">qiskit.providers.ibmq.circuits package</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="qiskit.providers.ibmq.circuits.html#submodules">Submodules</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.providers.ibmq.circuits.exceptions.html">qiskit.providers.ibmq.circuits.exceptions module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.providers.ibmq.circuits.manager.html">qiskit.providers.ibmq.circuits.manager module</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="qiskit.providers.ibmq.circuits.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qiskit.providers.ibmq.circuits.html#module-qiskit.providers.ibmq.circuits.exceptions">qiskit.providers.ibmq.circuits.exceptions module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qiskit.providers.ibmq.circuits.html#module-qiskit.providers.ibmq.circuits.manager">qiskit.providers.ibmq.circuits.manager module</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="qiskit.providers.ibmq.credentials.html">qiskit.providers.ibmq.credentials package</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="qiskit.providers.ibmq.credentials.html#submodules">Submodules</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.providers.ibmq.credentials.configrc.html">qiskit.providers.ibmq.credentials.configrc module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.providers.ibmq.credentials.credentials.html">qiskit.providers.ibmq.credentials.credentials module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.providers.ibmq.credentials.environ.html">qiskit.providers.ibmq.credentials.environ module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.providers.ibmq.credentials.exceptions.html">qiskit.providers.ibmq.credentials.exceptions module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.providers.ibmq.credentials.hubgroupproject.html">qiskit.providers.ibmq.credentials.hubgroupproject module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.providers.ibmq.credentials.qconfig.html">qiskit.providers.ibmq.credentials.qconfig module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.providers.ibmq.credentials.updater.html">qiskit.providers.ibmq.credentials.updater module</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="qiskit.providers.ibmq.credentials.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qiskit.providers.ibmq.credentials.html#module-qiskit.providers.ibmq.credentials.configrc">qiskit.providers.ibmq.credentials.configrc module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qiskit.providers.ibmq.credentials.html#module-qiskit.providers.ibmq.credentials.credentials">qiskit.providers.ibmq.credentials.credentials module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qiskit.providers.ibmq.credentials.html#module-qiskit.providers.ibmq.credentials.environ">qiskit.providers.ibmq.credentials.environ module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qiskit.providers.ibmq.credentials.html#module-qiskit.providers.ibmq.credentials.exceptions">qiskit.providers.ibmq.credentials.exceptions module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qiskit.providers.ibmq.credentials.html#module-qiskit.providers.ibmq.credentials.hubgroupproject">qiskit.providers.ibmq.credentials.hubgroupproject module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qiskit.providers.ibmq.credentials.html#module-qiskit.providers.ibmq.credentials.qconfig">qiskit.providers.ibmq.credentials.qconfig module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qiskit.providers.ibmq.credentials.html#module-qiskit.providers.ibmq.credentials.updater">qiskit.providers.ibmq.credentials.updater module</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="qiskit.providers.ibmq.job.html">qiskit.providers.ibmq.job package</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="qiskit.providers.ibmq.job.html#submodules">Submodules</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.providers.ibmq.job.circuitjob.html">qiskit.providers.ibmq.job.circuitjob module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.providers.ibmq.job.ibmqjob.html">qiskit.providers.ibmq.job.ibmqjob module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.providers.ibmq.job.utils.html">qiskit.providers.ibmq.job.utils module</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="qiskit.providers.ibmq.job.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qiskit.providers.ibmq.job.html#module-qiskit.providers.ibmq.job.circuitjob">qiskit.providers.ibmq.job.circuitjob module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qiskit.providers.ibmq.job.html#module-qiskit.providers.ibmq.job.ibmqjob">qiskit.providers.ibmq.job.ibmqjob module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qiskit.providers.ibmq.job.html#module-qiskit.providers.ibmq.job.utils">qiskit.providers.ibmq.job.utils module</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="qiskit.providers.ibmq.utils.html">qiskit.providers.ibmq.utils package</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="qiskit.providers.ibmq.utils.html#submodules">Submodules</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.providers.ibmq.utils.deprecation.html">qiskit.providers.ibmq.utils.deprecation module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.providers.ibmq.utils.qobj_utils.html">qiskit.providers.ibmq.utils.qobj_utils module</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="qiskit.providers.ibmq.utils.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qiskit.providers.ibmq.utils.html#module-qiskit.providers.ibmq.utils.deprecation">qiskit.providers.ibmq.utils.deprecation module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qiskit.providers.ibmq.utils.html#module-qiskit.providers.ibmq.utils.qobj_utils">qiskit.providers.ibmq.utils.qobj_utils module</a></li>
 </ul>
 </li>
 </ul>
@@ -1849,18 +1991,1070 @@ either empty or none have attribute <code class="docutils literal notranslate"><
 </div>
 <div class="section" id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="qiskit.providers.ibmq.accountprovider.html">qiskit.providers.ibmq.accountprovider module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="qiskit.providers.ibmq.apiconstants.html">qiskit.providers.ibmq.apiconstants module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="qiskit.providers.ibmq.exceptions.html">qiskit.providers.ibmq.exceptions module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="qiskit.providers.ibmq.ibmqbackend.html">qiskit.providers.ibmq.ibmqbackend module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="qiskit.providers.ibmq.ibmqfactory.html">qiskit.providers.ibmq.ibmqfactory module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="qiskit.providers.ibmq.ibmqprovider.html">qiskit.providers.ibmq.ibmqprovider module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="qiskit.providers.ibmq.ibmqsingleprovider.html">qiskit.providers.ibmq.ibmqsingleprovider module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="qiskit.providers.ibmq.version.html">qiskit.providers.ibmq.version module</a></li>
-</ul>
 </div>
+<div class="section" id="module-qiskit.providers.ibmq.accountprovider">
+<span id="qiskit-providers-ibmq-accountprovider-module"></span><h2>qiskit.providers.ibmq.accountprovider module<a class="headerlink" href="#module-qiskit.providers.ibmq.accountprovider" title="Permalink to this headline">¶</a></h2>
+<p>Provider for a single IBM Quantum Experience account.</p>
+<dl class="class">
+<dt id="qiskit.providers.ibmq.accountprovider.AccountProvider">
+<em class="property">class </em><code class="descname">AccountProvider</code><span class="sig-paren">(</span><em>credentials</em>, <em>access_token</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/providers/ibmq/accountprovider.html#AccountProvider"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.providers.ibmq.accountprovider.AccountProvider" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="qiskit.providers.html#qiskit.providers.baseprovider.BaseProvider" title="qiskit.providers.baseprovider.BaseProvider"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.providers.baseprovider.BaseProvider</span></code></a></p>
+<p>Provider for a single IBM Quantum Experience account.</p>
+<dl class="method">
+<dt id="qiskit.providers.ibmq.accountprovider.AccountProvider.backends">
+<code class="descname">backends</code><span class="sig-paren">(</span><em>name=None</em>, <em>filters=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/providers/ibmq/accountprovider.html#AccountProvider.backends"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.providers.ibmq.accountprovider.AccountProvider.backends" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return all backends accessible via this provider, subject to optional filtering.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>name</strong> (<em>str</em>) – backend name to filter by</li>
+<li><strong>filters</strong> (<em>callable</em>) – <p>more complex filters, such as lambda functions
+e.g. AccountProvider.backends(</p>
+<blockquote>
+<div>filters=lambda b: b.configuration[‘n_qubits’] &gt; 5)</div></blockquote>
+</li>
+<li><strong>kwargs</strong> – simple filters specifying a true/false criteria in the
+backend configuration or backend status or provider credentials
+e.g. AccountProvider.backends(n_qubits=5, operational=True)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">list of backends available that match the filter</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list[<a class="reference internal" href="#qiskit.providers.ibmq.ibmqbackend.IBMQBackend" title="qiskit.providers.ibmq.ibmqbackend.IBMQBackend">IBMQBackend</a>]</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-qiskit.providers.ibmq.apiconstants">
+<span id="qiskit-providers-ibmq-apiconstants-module"></span><h2>qiskit.providers.ibmq.apiconstants module<a class="headerlink" href="#module-qiskit.providers.ibmq.apiconstants" title="Permalink to this headline">¶</a></h2>
+<p>Values used by the API for different values.</p>
+<dl class="class">
+<dt id="qiskit.providers.ibmq.apiconstants.ApiJobKind">
+<em class="property">class </em><code class="descname">ApiJobKind</code><a class="reference internal" href="../_modules/qiskit/providers/ibmq/apiconstants.html#ApiJobKind"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.providers.ibmq.apiconstants.ApiJobKind" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
+<p>Possible values used by the API for a job kind.</p>
+<dl class="attribute">
+<dt id="qiskit.providers.ibmq.apiconstants.ApiJobKind.CIRCUIT">
+<code class="descname">CIRCUIT</code><em class="property"> = 'q-circuit'</em><a class="headerlink" href="#qiskit.providers.ibmq.apiconstants.ApiJobKind.CIRCUIT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="qiskit.providers.ibmq.apiconstants.ApiJobKind.QOBJECT">
+<code class="descname">QOBJECT</code><em class="property"> = 'q-object'</em><a class="headerlink" href="#qiskit.providers.ibmq.apiconstants.ApiJobKind.QOBJECT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="qiskit.providers.ibmq.apiconstants.ApiJobKind.QOBJECT_STORAGE">
+<code class="descname">QOBJECT_STORAGE</code><em class="property"> = 'q-object-external-storage'</em><a class="headerlink" href="#qiskit.providers.ibmq.apiconstants.ApiJobKind.QOBJECT_STORAGE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="qiskit.providers.ibmq.apiconstants.ApiJobStatus">
+<em class="property">class </em><code class="descname">ApiJobStatus</code><a class="reference internal" href="../_modules/qiskit/providers/ibmq/apiconstants.html#ApiJobStatus"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.providers.ibmq.apiconstants.ApiJobStatus" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
+<p>Possible values used by the API for a job status.</p>
+<p>The enum names represent the strings returned by the API verbatim in
+several endpoints (<cite>status()</cite>, websocket information, etc). The general
+flow is:</p>
+<p><cite>CREATING -&gt; CREATED -&gt; VALIDATING -&gt; VALIDATED -&gt; RUNNING -&gt; COMPLETED</cite></p>
+<dl class="attribute">
+<dt id="qiskit.providers.ibmq.apiconstants.ApiJobStatus.CANCELLED">
+<code class="descname">CANCELLED</code><em class="property"> = 'CANCELLED'</em><a class="headerlink" href="#qiskit.providers.ibmq.apiconstants.ApiJobStatus.CANCELLED" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="qiskit.providers.ibmq.apiconstants.ApiJobStatus.COMPLETED">
+<code class="descname">COMPLETED</code><em class="property"> = 'COMPLETED'</em><a class="headerlink" href="#qiskit.providers.ibmq.apiconstants.ApiJobStatus.COMPLETED" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="qiskit.providers.ibmq.apiconstants.ApiJobStatus.CREATED">
+<code class="descname">CREATED</code><em class="property"> = 'CREATED'</em><a class="headerlink" href="#qiskit.providers.ibmq.apiconstants.ApiJobStatus.CREATED" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="qiskit.providers.ibmq.apiconstants.ApiJobStatus.CREATING">
+<code class="descname">CREATING</code><em class="property"> = 'CREATING'</em><a class="headerlink" href="#qiskit.providers.ibmq.apiconstants.ApiJobStatus.CREATING" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="qiskit.providers.ibmq.apiconstants.ApiJobStatus.ERROR_CREATING_JOB">
+<code class="descname">ERROR_CREATING_JOB</code><em class="property"> = 'ERROR_CREATING_JOB'</em><a class="headerlink" href="#qiskit.providers.ibmq.apiconstants.ApiJobStatus.ERROR_CREATING_JOB" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="qiskit.providers.ibmq.apiconstants.ApiJobStatus.ERROR_RUNNING_JOB">
+<code class="descname">ERROR_RUNNING_JOB</code><em class="property"> = 'ERROR_RUNNING_JOB'</em><a class="headerlink" href="#qiskit.providers.ibmq.apiconstants.ApiJobStatus.ERROR_RUNNING_JOB" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="qiskit.providers.ibmq.apiconstants.ApiJobStatus.ERROR_VALIDATING_JOB">
+<code class="descname">ERROR_VALIDATING_JOB</code><em class="property"> = 'ERROR_VALIDATING_JOB'</em><a class="headerlink" href="#qiskit.providers.ibmq.apiconstants.ApiJobStatus.ERROR_VALIDATING_JOB" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="qiskit.providers.ibmq.apiconstants.ApiJobStatus.RUNNING">
+<code class="descname">RUNNING</code><em class="property"> = 'RUNNING'</em><a class="headerlink" href="#qiskit.providers.ibmq.apiconstants.ApiJobStatus.RUNNING" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="qiskit.providers.ibmq.apiconstants.ApiJobStatus.VALIDATED">
+<code class="descname">VALIDATED</code><em class="property"> = 'VALIDATED'</em><a class="headerlink" href="#qiskit.providers.ibmq.apiconstants.ApiJobStatus.VALIDATED" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="qiskit.providers.ibmq.apiconstants.ApiJobStatus.VALIDATING">
+<code class="descname">VALIDATING</code><em class="property"> = 'VALIDATING'</em><a class="headerlink" href="#qiskit.providers.ibmq.apiconstants.ApiJobStatus.VALIDATING" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-qiskit.providers.ibmq.exceptions">
+<span id="qiskit-providers-ibmq-exceptions-module"></span><h2>qiskit.providers.ibmq.exceptions module<a class="headerlink" href="#module-qiskit.providers.ibmq.exceptions" title="Permalink to this headline">¶</a></h2>
+<p>Exception for the IBMQ module.</p>
+<dl class="exception">
+<dt id="qiskit.providers.ibmq.exceptions.IBMQAccountError">
+<em class="property">exception </em><code class="descname">IBMQAccountError</code><span class="sig-paren">(</span><em>*message</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/providers/ibmq/exceptions.html#IBMQAccountError"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.providers.ibmq.exceptions.IBMQAccountError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#qiskit.providers.ibmq.exceptions.IBMQError" title="qiskit.providers.ibmq.exceptions.IBMQError"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.providers.ibmq.exceptions.IBMQError</span></code></a></p>
+<p>Base class for errors raised by account management.</p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="qiskit.providers.ibmq.exceptions.IBMQApiUrlError">
+<em class="property">exception </em><code class="descname">IBMQApiUrlError</code><span class="sig-paren">(</span><em>*message</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/providers/ibmq/exceptions.html#IBMQApiUrlError"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.providers.ibmq.exceptions.IBMQApiUrlError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#qiskit.providers.ibmq.exceptions.IBMQAccountError" title="qiskit.providers.ibmq.exceptions.IBMQAccountError"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.providers.ibmq.exceptions.IBMQAccountError</span></code></a></p>
+<p>Errors raised due to mixing API versions.</p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="qiskit.providers.ibmq.exceptions.IBMQBackendError">
+<em class="property">exception </em><code class="descname">IBMQBackendError</code><span class="sig-paren">(</span><em>*message</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/providers/ibmq/exceptions.html#IBMQBackendError"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.providers.ibmq.exceptions.IBMQBackendError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#qiskit.providers.ibmq.exceptions.IBMQError" title="qiskit.providers.ibmq.exceptions.IBMQError"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.providers.ibmq.exceptions.IBMQError</span></code></a></p>
+<p>IBM Q Backend Errors.</p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="qiskit.providers.ibmq.exceptions.IBMQBackendValueError">
+<em class="property">exception </em><code class="descname">IBMQBackendValueError</code><span class="sig-paren">(</span><em>*message</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/providers/ibmq/exceptions.html#IBMQBackendValueError"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.providers.ibmq.exceptions.IBMQBackendValueError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#qiskit.providers.ibmq.exceptions.IBMQError" title="qiskit.providers.ibmq.exceptions.IBMQError"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.providers.ibmq.exceptions.IBMQError</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">ValueError</span></code></p>
+<p>Value errors thrown within IBMQBackend.</p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="qiskit.providers.ibmq.exceptions.IBMQError">
+<em class="property">exception </em><code class="descname">IBMQError</code><span class="sig-paren">(</span><em>*message</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/providers/ibmq/exceptions.html#IBMQError"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.providers.ibmq.exceptions.IBMQError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="qiskit.html#qiskit.exceptions.QiskitError" title="qiskit.exceptions.QiskitError"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.exceptions.QiskitError</span></code></a></p>
+<p>Base class for errors raised by the IBMQ provider module.</p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="qiskit.providers.ibmq.exceptions.IBMQProviderError">
+<em class="property">exception </em><code class="descname">IBMQProviderError</code><span class="sig-paren">(</span><em>*message</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/providers/ibmq/exceptions.html#IBMQProviderError"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.providers.ibmq.exceptions.IBMQProviderError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#qiskit.providers.ibmq.exceptions.IBMQAccountError" title="qiskit.providers.ibmq.exceptions.IBMQAccountError"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.providers.ibmq.exceptions.IBMQAccountError</span></code></a></p>
+<p>Errors related to provider handling.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-qiskit.providers.ibmq.ibmqbackend">
+<span id="qiskit-providers-ibmq-ibmqbackend-module"></span><h2>qiskit.providers.ibmq.ibmqbackend module<a class="headerlink" href="#module-qiskit.providers.ibmq.ibmqbackend" title="Permalink to this headline">¶</a></h2>
+<p>Module for interfacing with an IBMQ Backend.</p>
+<dl class="class">
+<dt id="qiskit.providers.ibmq.ibmqbackend.IBMQBackend">
+<em class="property">class </em><code class="descname">IBMQBackend</code><span class="sig-paren">(</span><em>configuration</em>, <em>provider</em>, <em>credentials</em>, <em>api</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/providers/ibmq/ibmqbackend.html#IBMQBackend"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.providers.ibmq.ibmqbackend.IBMQBackend" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="qiskit.providers.html#qiskit.providers.basebackend.BaseBackend" title="qiskit.providers.basebackend.BaseBackend"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.providers.basebackend.BaseBackend</span></code></a></p>
+<p>Backend class interfacing with an IBMQ backend.</p>
+<dl class="method">
+<dt id="qiskit.providers.ibmq.ibmqbackend.IBMQBackend.defaults">
+<code class="descname">defaults</code><span class="sig-paren">(</span><em>refresh=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/providers/ibmq/ibmqbackend.html#IBMQBackend.defaults"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.providers.ibmq.ibmqbackend.IBMQBackend.defaults" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the pulse defaults for the backend.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>refresh</strong> (<em>bool</em>) – if True, the return is via a QX API call.
+Otherwise, a cached version is returned.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="docutils">
+<dt>the pulse defaults for the backend. If the backend</dt>
+<dd>does not support defaults, it returns <code class="docutils literal notranslate"><span class="pre">None</span></code>.</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="qiskit.providers.models.html#qiskit.providers.models.pulsedefaults.PulseDefaults" title="qiskit.providers.models.pulsedefaults.PulseDefaults">PulseDefaults</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="qiskit.providers.ibmq.ibmqbackend.IBMQBackend.jobs">
+<code class="descname">jobs</code><span class="sig-paren">(</span><em>limit=10</em>, <em>skip=0</em>, <em>status=None</em>, <em>db_filter=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/providers/ibmq/ibmqbackend.html#IBMQBackend.jobs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.providers.ibmq.ibmqbackend.IBMQBackend.jobs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the jobs submitted to this backend.</p>
+<p>Return the jobs submitted to this backend, with optional filtering and
+pagination. Note that the API has a limit for the number of jobs
+returned in a single call, and this function might involve making
+several calls to the API. See also the <cite>skip</cite> parameter for more control
+over pagination.</p>
+<p>Note that jobs submitted with earlier versions of Qiskit
+(in particular, those that predate the Qobj format) are not included
+in the returned list.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>limit</strong> (<em>int</em>) – number of jobs to retrieve.</li>
+<li><strong>skip</strong> (<em>int</em>) – starting index for the job retrieval.</li>
+<li><strong>status</strong> (<em>None</em><em> or </em><em>qiskit.providers.JobStatus</em><em> or </em><em>str</em>) – only get jobs
+with this status, where status is e.g. <cite>JobStatus.RUNNING</cite> or
+<cite>‘RUNNING’</cite></li>
+<li><strong>db_filter</strong> (<em>dict</em>) – <p><a class="reference external" href="https://loopback.io/doc/en/lb2/Querying-data.html">loopback-based filter</a>.
+This is an interface to a database <code class="docutils literal notranslate"><span class="pre">where</span></code> filter. Some
+examples of its usage are:</p>
+<p>Filter last five jobs with errors:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">job_list</span> <span class="o">=</span> <span class="n">backend</span><span class="o">.</span><span class="n">jobs</span><span class="p">(</span><span class="n">limit</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">status</span><span class="o">=</span><span class="n">JobStatus</span><span class="o">.</span><span class="n">ERROR</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Filter last five jobs with counts=1024, and counts for
+states <code class="docutils literal notranslate"><span class="pre">00</span></code> and <code class="docutils literal notranslate"><span class="pre">11</span></code> each exceeding 400:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cnts_filter</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;shots&#39;</span><span class="p">:</span> <span class="mi">1024</span><span class="p">,</span>
+               <span class="s1">&#39;qasms.result.data.counts.00&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;gt&#39;</span><span class="p">:</span> <span class="mi">400</span><span class="p">},</span>
+               <span class="s1">&#39;qasms.result.data.counts.11&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;gt&#39;</span><span class="p">:</span> <span class="mi">400</span><span class="p">}}</span>
+<span class="n">job_list</span> <span class="o">=</span> <span class="n">backend</span><span class="o">.</span><span class="n">jobs</span><span class="p">(</span><span class="n">limit</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">db_filter</span><span class="o">=</span><span class="n">cnts_filter</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Filter last five jobs from 30 days ago:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">past_date</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span> <span class="o">-</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+<span class="n">date_filter</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;creationDate&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;lt&#39;</span><span class="p">:</span> <span class="n">past_date</span><span class="o">.</span><span class="n">isoformat</span><span class="p">()}}</span>
+<span class="n">job_list</span> <span class="o">=</span> <span class="n">backend</span><span class="o">.</span><span class="n">jobs</span><span class="p">(</span><span class="n">limit</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">db_filter</span><span class="o">=</span><span class="n">date_filter</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">list of IBMQJob instances</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">list(<a class="reference internal" href="qiskit.providers.ibmq.job.html#qiskit.providers.ibmq.job.ibmqjob.IBMQJob" title="qiskit.providers.ibmq.job.ibmqjob.IBMQJob">IBMQJob</a>)</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><code class="xref py py-exc docutils literal notranslate"><span class="pre">IBMQBackendValueError</span></code> – status keyword value unrecognized</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="qiskit.providers.ibmq.ibmqbackend.IBMQBackend.properties">
+<code class="descname">properties</code><span class="sig-paren">(</span><em>refresh=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/providers/ibmq/ibmqbackend.html#IBMQBackend.properties"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.providers.ibmq.ibmqbackend.IBMQBackend.properties" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the online backend properties.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>refresh</strong> (<em>bool</em>) – if True, the return is via a QX API call.
+Otherwise, a cached version is returned.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The properties of the backend.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="qiskit.providers.models.html#qiskit.providers.models.backendproperties.BackendProperties" title="qiskit.providers.models.backendproperties.BackendProperties">BackendProperties</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="qiskit.providers.ibmq.ibmqbackend.IBMQBackend.retrieve_job">
+<code class="descname">retrieve_job</code><span class="sig-paren">(</span><em>job_id</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/providers/ibmq/ibmqbackend.html#IBMQBackend.retrieve_job"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.providers.ibmq.ibmqbackend.IBMQBackend.retrieve_job" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a job submitted to this backend.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>job_id</strong> (<em>str</em>) – the job id of the job to retrieve</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">class instance</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="qiskit.providers.ibmq.job.html#qiskit.providers.ibmq.job.ibmqjob.IBMQJob" title="qiskit.providers.ibmq.job.ibmqjob.IBMQJob">IBMQJob</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><code class="xref py py-exc docutils literal notranslate"><span class="pre">IBMQBackendError</span></code> – if retrieval failed</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="qiskit.providers.ibmq.ibmqbackend.IBMQBackend.run">
+<code class="descname">run</code><span class="sig-paren">(</span><em>qobj</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/providers/ibmq/ibmqbackend.html#IBMQBackend.run"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.providers.ibmq.ibmqbackend.IBMQBackend.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run a Qobj asynchronously.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>qobj</strong> (<a class="reference internal" href="qiskit.qobj.html#qiskit.qobj.qobj.Qobj" title="qiskit.qobj.qobj.Qobj"><em>Qobj</em></a>) – description of job</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">an instance derived from BaseJob</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="qiskit.providers.ibmq.job.html#qiskit.providers.ibmq.job.ibmqjob.IBMQJob" title="qiskit.providers.ibmq.job.ibmqjob.IBMQJob">IBMQJob</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="qiskit.providers.ibmq.ibmqbackend.IBMQBackend.status">
+<code class="descname">status</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/providers/ibmq/ibmqbackend.html#IBMQBackend.status"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.providers.ibmq.ibmqbackend.IBMQBackend.status" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the online backend status.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">The status of the backend.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first"><a class="reference internal" href="qiskit.providers.models.html#qiskit.providers.models.backendstatus.BackendStatus" title="qiskit.providers.models.backendstatus.BackendStatus">BackendStatus</a></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><ul class="first last simple">
+<li><code class="xref py py-exc docutils literal notranslate"><span class="pre">LookupError</span></code> – If status for the backend can’t be found.</li>
+<li><code class="xref py py-exc docutils literal notranslate"><span class="pre">IBMQBackendError</span></code> – If the status can’t be formatted properly.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="qiskit.providers.ibmq.ibmqbackend.IBMQSimulator">
+<em class="property">class </em><code class="descname">IBMQSimulator</code><span class="sig-paren">(</span><em>configuration</em>, <em>provider</em>, <em>credentials</em>, <em>api</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/providers/ibmq/ibmqbackend.html#IBMQSimulator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.providers.ibmq.ibmqbackend.IBMQSimulator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#qiskit.providers.ibmq.ibmqbackend.IBMQBackend" title="qiskit.providers.ibmq.ibmqbackend.IBMQBackend"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.providers.ibmq.ibmqbackend.IBMQBackend</span></code></a></p>
+<p>Backend class interfacing with an IBMQ simulator.</p>
+<dl class="method">
+<dt id="qiskit.providers.ibmq.ibmqbackend.IBMQSimulator.properties">
+<code class="descname">properties</code><span class="sig-paren">(</span><em>refresh=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/providers/ibmq/ibmqbackend.html#IBMQSimulator.properties"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.providers.ibmq.ibmqbackend.IBMQSimulator.properties" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the online backend properties.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="qiskit.providers.ibmq.ibmqbackend.IBMQSimulator.run">
+<code class="descname">run</code><span class="sig-paren">(</span><em>qobj</em>, <em>backend_options=None</em>, <em>noise_model=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/providers/ibmq/ibmqbackend.html#IBMQSimulator.run"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.providers.ibmq.ibmqbackend.IBMQSimulator.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run qobj asynchronously.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>qobj</strong> (<a class="reference internal" href="qiskit.qobj.html#qiskit.qobj.qobj.Qobj" title="qiskit.qobj.qobj.Qobj"><em>Qobj</em></a>) – description of job</li>
+<li><strong>backend_options</strong> (<em>dict</em>) – backend options</li>
+<li><strong>noise_model</strong> (<a class="reference internal" href="qiskit.providers.aer.noise.html#qiskit.providers.aer.noise.noise_model.NoiseModel" title="qiskit.providers.aer.noise.noise_model.NoiseModel"><em>NoiseModel</em></a>) – noise model</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">an instance derived from BaseJob</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="qiskit.providers.ibmq.job.html#qiskit.providers.ibmq.job.ibmqjob.IBMQJob" title="qiskit.providers.ibmq.job.ibmqjob.IBMQJob">IBMQJob</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-qiskit.providers.ibmq.ibmqfactory">
+<span id="qiskit-providers-ibmq-ibmqfactory-module"></span><h2>qiskit.providers.ibmq.ibmqfactory module<a class="headerlink" href="#module-qiskit.providers.ibmq.ibmqfactory" title="Permalink to this headline">¶</a></h2>
+<p>Factory and credentials manager for IBM Q Experience.</p>
+<dl class="class">
+<dt id="qiskit.providers.ibmq.ibmqfactory.IBMQFactory">
+<em class="property">class </em><code class="descname">IBMQFactory</code><a class="reference internal" href="../_modules/qiskit/providers/ibmq/ibmqfactory.html#IBMQFactory"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.providers.ibmq.ibmqfactory.IBMQFactory" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Factory and credentials manager for IBM Q Experience.</p>
+<dl class="method">
+<dt id="qiskit.providers.ibmq.ibmqfactory.IBMQFactory.active_account">
+<code class="descname">active_account</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/providers/ibmq/ibmqfactory.html#IBMQFactory.active_account"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.providers.ibmq.ibmqfactory.IBMQFactory.active_account" title="Permalink to this definition">¶</a></dt>
+<dd><p>List the IBM Q Experience v2 account currently in the session.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">information about the account currently in the session.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><code class="xref py py-exc docutils literal notranslate"><span class="pre">IBMQAccountError</span></code> – if an IBM Q Experience v1 account is already in
+use.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="qiskit.providers.ibmq.ibmqfactory.IBMQFactory.active_accounts">
+<code class="descname">active_accounts</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/providers/ibmq/ibmqfactory.html#IBMQFactory.active_accounts"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.providers.ibmq.ibmqfactory.IBMQFactory.active_accounts" title="Permalink to this definition">¶</a></dt>
+<dd><p>List all IBM Q Experience v1 accounts currently in the session.</p>
+<dl class="docutils">
+<dt>Note: this method is being deprecated, and is only available when using</dt>
+<dd>v1 accounts.</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><dl class="docutils">
+<dt>a list with information about the accounts currently</dt>
+<dd>in the session.</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">list[dict]</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><code class="xref py py-exc docutils literal notranslate"><span class="pre">IBMQAccountError</span></code> – if the method is used with an IBM Q Experience
+v2 account.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="qiskit.providers.ibmq.ibmqfactory.IBMQFactory.backends">
+<code class="descname">backends</code><span class="sig-paren">(</span><em>name=None</em>, <em>filters=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/providers/ibmq/ibmqfactory.html#IBMQFactory.backends"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.providers.ibmq.ibmqfactory.IBMQFactory.backends" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return all backends accessible via IBMQ provider, subject to optional filtering.</p>
+<dl class="docutils">
+<dt>Note: this method is being deprecated. Please use an IBM Q Experience v2</dt>
+<dd><p class="first">account, and:</p>
+<p>provider = IBMQ.get_provider(…)
+provider.backends()</p>
+<p class="last">instead.</p>
+</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>name</strong> (<em>str</em>) – backend name to filter by</li>
+<li><strong>filters</strong> (<em>callable</em>) – more complex filters, such as lambda functions
+e.g. IBMQ.backends(filters=lambda b: b.configuration[‘n_qubits’] &gt; 5)</li>
+<li><strong>kwargs</strong> – simple filters specifying a true/false criteria in the
+backend configuration or backend status or provider credentials
+e.g. IBMQ.backends(n_qubits=5, operational=True, hub=’internal’)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">list of backends available that match the filter</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list[<a class="reference internal" href="#qiskit.providers.ibmq.ibmqbackend.IBMQBackend" title="qiskit.providers.ibmq.ibmqbackend.IBMQBackend">IBMQBackend</a>]</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="qiskit.providers.ibmq.ibmqfactory.IBMQFactory.delete_account">
+<em class="property">static </em><code class="descname">delete_account</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/providers/ibmq/ibmqfactory.html#IBMQFactory.delete_account"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.providers.ibmq.ibmqfactory.IBMQFactory.delete_account" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete the saved account from disk.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><code class="xref py py-exc docutils literal notranslate"><span class="pre">IBMQAccountError</span></code> – if no valid IBM Q Experience v2 credentials found.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="qiskit.providers.ibmq.ibmqfactory.IBMQFactory.delete_accounts">
+<code class="descname">delete_accounts</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/providers/ibmq/ibmqfactory.html#IBMQFactory.delete_accounts"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.providers.ibmq.ibmqfactory.IBMQFactory.delete_accounts" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete saved IBM Q Experience v1 accounts from disk, subject to optional filtering.</p>
+<dl class="docutils">
+<dt>Note: this method is being deprecated, and only available when using</dt>
+<dd>v1 accounts.</dd>
+</dl>
+<p>The filter kwargs can be <cite>token</cite>, <cite>url</cite>, <cite>hub</cite>, <cite>group</cite>, <cite>project</cite>.
+If no filter is passed, all accounts will be deleted from disk.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><code class="xref py py-exc docutils literal notranslate"><span class="pre">IBMQAccountError</span></code> – if the method is used with an IBM Q Experience v2
+account, or if no account matched the filter.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="qiskit.providers.ibmq.ibmqfactory.IBMQFactory.disable_account">
+<code class="descname">disable_account</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/providers/ibmq/ibmqfactory.html#IBMQFactory.disable_account"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.providers.ibmq.ibmqfactory.IBMQFactory.disable_account" title="Permalink to this definition">¶</a></dt>
+<dd><p>Disable the account in the current session.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><code class="xref py py-exc docutils literal notranslate"><span class="pre">IBMQAccountError</span></code> – if IBM Q Experience API v1 credentials are found,
+or if no account is in use in the session.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="qiskit.providers.ibmq.ibmqfactory.IBMQFactory.disable_accounts">
+<code class="descname">disable_accounts</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/providers/ibmq/ibmqfactory.html#IBMQFactory.disable_accounts"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.providers.ibmq.ibmqfactory.IBMQFactory.disable_accounts" title="Permalink to this definition">¶</a></dt>
+<dd><p>Disable IBM Q Experience v1 accounts in the current session.</p>
+<dl class="docutils">
+<dt>Note: this method is being deprecated, and only available when using</dt>
+<dd>v1 accounts.</dd>
+</dl>
+<p>The filter kwargs can be <cite>token</cite>, <cite>url</cite>, <cite>hub</cite>, <cite>group</cite>, <cite>project</cite>.
+If no filter is passed, all accounts in the current session will be disabled.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><code class="xref py py-exc docutils literal notranslate"><span class="pre">IBMQAccountError</span></code> – if the method is used with an IBM Q Experience v2
+account, or if no account matched the filter.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="qiskit.providers.ibmq.ibmqfactory.IBMQFactory.enable_account">
+<code class="descname">enable_account</code><span class="sig-paren">(</span><em>token</em>, <em>url='https://auth.quantum-computing.ibm.com/api'</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/providers/ibmq/ibmqfactory.html#IBMQFactory.enable_account"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.providers.ibmq.ibmqfactory.IBMQFactory.enable_account" title="Permalink to this definition">¶</a></dt>
+<dd><p>Authenticate against IBM Q Experience for use during this session.</p>
+<dl class="docutils">
+<dt>Note: with version 0.3 of this qiskit-ibmq-provider package, use of</dt>
+<dd>the legacy Quantum Experience and Qconsole (also known
+as the IBM Q Experience v1) credentials is deprecated. The new
+default is to use the IBM Q Experience v2 credentials.</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>token</strong> (<em>str</em>) – IBM Q Experience API token.</li>
+<li><strong>url</strong> (<em>str</em>) – URL for the IBM Q Experience authentication server.</li>
+<li><strong>**kwargs</strong> (<em>dict</em>) – additional settings for the connection:
+* proxies (dict): proxy configuration.
+* verify (bool): verify the server’s TLS certificate.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">the provider for the default open access project.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first"><a class="reference internal" href="#qiskit.providers.ibmq.accountprovider.AccountProvider" title="qiskit.providers.ibmq.accountprovider.AccountProvider">AccountProvider</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><ul class="first last simple">
+<li><code class="xref py py-exc docutils literal notranslate"><span class="pre">IBMQAccountError</span></code> – if an IBM Q Experience v2 account is already in
+use, or if attempting using both IBM Q Experience v1 and v2
+accounts.</li>
+<li><code class="xref py py-exc docutils literal notranslate"><span class="pre">IBMQApiUrlError</span></code> – if the input token and url are for an IBM Q
+Experience v2 account, but the url is not a valid
+authentication URL.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="qiskit.providers.ibmq.ibmqfactory.IBMQFactory.get_backend">
+<code class="descname">get_backend</code><span class="sig-paren">(</span><em>name=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/providers/ibmq/ibmqfactory.html#IBMQFactory.get_backend"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.providers.ibmq.ibmqfactory.IBMQFactory.get_backend" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a single backend matching the specified filtering.</p>
+<dl class="docutils">
+<dt>Note: this method is being deprecated. Please use an IBM Q Experience v2</dt>
+<dd><p class="first">account, and:</p>
+<p>provider = IBMQ.get_provider(…)
+provider.get_backend(‘name’)</p>
+<p class="last">instead.</p>
+</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>name</strong> (<em>str</em>) – name of the backend.</li>
+<li><strong>**kwargs</strong> (<em>dict</em>) – dict used for filtering.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">a backend matching the filtering.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first"><a class="reference internal" href="qiskit.providers.html#qiskit.providers.basebackend.BaseBackend" title="qiskit.providers.basebackend.BaseBackend">BaseBackend</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><code class="xref py py-exc docutils literal notranslate"><span class="pre">QiskitBackendNotFoundError</span></code> – if no backend could be found or
+more than one backend matches the filtering criteria.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="qiskit.providers.ibmq.ibmqfactory.IBMQFactory.get_provider">
+<code class="descname">get_provider</code><span class="sig-paren">(</span><em>hub=None</em>, <em>group=None</em>, <em>project=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/providers/ibmq/ibmqfactory.html#IBMQFactory.get_provider"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.providers.ibmq.ibmqfactory.IBMQFactory.get_provider" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a provider for a single hub/group/project combination.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">provider that match the specified criteria.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#qiskit.providers.ibmq.accountprovider.AccountProvider" title="qiskit.providers.ibmq.accountprovider.AccountProvider">AccountProvider</a></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><code class="xref py py-exc docutils literal notranslate"><span class="pre">IBMQProviderError</span></code> – if no provider matches the specified criteria,
+or more than one provider match the specified criteria.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="qiskit.providers.ibmq.ibmqfactory.IBMQFactory.load_account">
+<code class="descname">load_account</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/providers/ibmq/ibmqfactory.html#IBMQFactory.load_account"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.providers.ibmq.ibmqfactory.IBMQFactory.load_account" title="Permalink to this definition">¶</a></dt>
+<dd><p>Authenticate against IBM Q Experience from stored credentials.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">the provider for the default open access project.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#qiskit.providers.ibmq.accountprovider.AccountProvider" title="qiskit.providers.ibmq.accountprovider.AccountProvider">AccountProvider</a></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><code class="xref py py-exc docutils literal notranslate"><span class="pre">IBMQAccountError</span></code> – if an IBM Q Experience v1 account is already in
+use, or no IBM Q Experience v2 accounts can be found.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="qiskit.providers.ibmq.ibmqfactory.IBMQFactory.load_accounts">
+<code class="descname">load_accounts</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/providers/ibmq/ibmqfactory.html#IBMQFactory.load_accounts"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.providers.ibmq.ibmqfactory.IBMQFactory.load_accounts" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load IBM Q Experience v1 accounts found in the system into current session.</p>
+<p>Will also load v2 accounts for backward compatibility, but can lead to
+issues if mixing v1 and v2 credentials in other method calls.</p>
+<dl class="docutils">
+<dt>Note: this method is being deprecated, and only available when using</dt>
+<dd>v1 accounts.</dd>
+</dl>
+<p>Automatically load the accounts found in the system. This method
+looks for credentials in the following locations, in order, and
+returns as soon as credentials are found:</p>
+<ol class="arabic simple">
+<li>in the <cite>Qconfig.py</cite> file in the current working directory.</li>
+<li>in the environment variables.</li>
+<li>in the <cite>qiskitrc</cite> configuration file</li>
+</ol>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><code class="xref py py-exc docutils literal notranslate"><span class="pre">IBMQAccountError</span></code> – If mixing v1 and v2 account credentials</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="qiskit.providers.ibmq.ibmqfactory.IBMQFactory.providers">
+<code class="descname">providers</code><span class="sig-paren">(</span><em>hub=None</em>, <em>group=None</em>, <em>project=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/providers/ibmq/ibmqfactory.html#IBMQFactory.providers"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.providers.ibmq.ibmqfactory.IBMQFactory.providers" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a list of providers with optional filtering.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>hub</strong> (<em>str</em>) – name of the hub.</li>
+<li><strong>group</strong> (<em>str</em>) – name of the group.</li>
+<li><strong>project</strong> (<em>str</em>) – name of the project.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><dl class="docutils">
+<dt>list of providers that match the specified</dt>
+<dd><p class="first last">criteria.</p>
+</dd>
+</dl>
+</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list[<a class="reference internal" href="#qiskit.providers.ibmq.accountprovider.AccountProvider" title="qiskit.providers.ibmq.accountprovider.AccountProvider">AccountProvider</a>]</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="qiskit.providers.ibmq.ibmqfactory.IBMQFactory.save_account">
+<em class="property">static </em><code class="descname">save_account</code><span class="sig-paren">(</span><em>token</em>, <em>url='https://auth.quantum-computing.ibm.com/api'</em>, <em>overwrite=False</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/providers/ibmq/ibmqfactory.html#IBMQFactory.save_account"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.providers.ibmq.ibmqfactory.IBMQFactory.save_account" title="Permalink to this definition">¶</a></dt>
+<dd><p>Save the account to disk for future use.</p>
+<dl class="docutils">
+<dt>Note: IBM Q Experience v1 credentials are being deprecated. Please</dt>
+<dd>use IBM Q Experience v2 credentials instead.</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>token</strong> (<em>str</em>) – IBM Q Experience API token.</li>
+<li><strong>url</strong> (<em>str</em>) – URL for the IBM Q Experience authentication server.</li>
+<li><strong>overwrite</strong> (<em>bool</em>) – overwrite existing credentials.</li>
+<li><strong>**kwargs</strong> (<em>dict</em>) – <ul>
+<li>proxies (dict): Proxy configuration for the API.</li>
+<li>verify (bool): If False, ignores SSL certificates errors</li>
+</ul>
+</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="qiskit.providers.ibmq.ibmqfactory.IBMQFactory.stored_account">
+<em class="property">static </em><code class="descname">stored_account</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/providers/ibmq/ibmqfactory.html#IBMQFactory.stored_account"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.providers.ibmq.ibmqfactory.IBMQFactory.stored_account" title="Permalink to this definition">¶</a></dt>
+<dd><p>List the account stored on disk.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">dictionary with information about the account stored on disk.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><code class="xref py py-exc docutils literal notranslate"><span class="pre">IBMQAccountError</span></code> – if no valid IBM Q Experience v2 credentials found.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="qiskit.providers.ibmq.ibmqfactory.IBMQFactory.stored_accounts">
+<code class="descname">stored_accounts</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/providers/ibmq/ibmqfactory.html#IBMQFactory.stored_accounts"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.providers.ibmq.ibmqfactory.IBMQFactory.stored_accounts" title="Permalink to this definition">¶</a></dt>
+<dd><p>List all IBM Q Experience v1 accounts stored to disk.</p>
+<dl class="docutils">
+<dt>Note: this method is being deprecated, and only available when using</dt>
+<dd>v1 accounts.</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><dl class="docutils">
+<dt>a list with information about the accounts stored</dt>
+<dd>on disk.</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">list[dict]</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><code class="xref py py-exc docutils literal notranslate"><span class="pre">IBMQAccountError</span></code> – if the method is used with an IBM Q Experience v2 account.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="qiskit.providers.ibmq.ibmqfactory.IBMQFactory.update_account">
+<em class="property">static </em><code class="descname">update_account</code><span class="sig-paren">(</span><em>force=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/providers/ibmq/ibmqfactory.html#IBMQFactory.update_account"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.providers.ibmq.ibmqfactory.IBMQFactory.update_account" title="Permalink to this definition">¶</a></dt>
+<dd><p>Interactive helper from migrating stored credentials to IBM Q Experience v2.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>force</strong> (<em>bool</em>) – if <cite>True</cite>, disable interactive prompts and perform
+the changes.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">if the updating is possible, credentials for the API
+version 2; and <cite>None</cite> otherwise.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="qiskit.providers.ibmq.api.html#qiskit.providers.ibmq.api.utils.Credentials" title="qiskit.providers.ibmq.api.utils.Credentials">Credentials</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-qiskit.providers.ibmq.ibmqprovider">
+<span id="qiskit-providers-ibmq-ibmqprovider-module"></span><h2>qiskit.providers.ibmq.ibmqprovider module<a class="headerlink" href="#module-qiskit.providers.ibmq.ibmqprovider" title="Permalink to this headline">¶</a></h2>
+<p>Provider for remote IBMQ backends with admin features.</p>
+<dl class="class">
+<dt id="qiskit.providers.ibmq.ibmqprovider.IBMQProvider">
+<em class="property">class </em><code class="descname">IBMQProvider</code><a class="reference internal" href="../_modules/qiskit/providers/ibmq/ibmqprovider.html#IBMQProvider"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.providers.ibmq.ibmqprovider.IBMQProvider" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="qiskit.providers.html#qiskit.providers.baseprovider.BaseProvider" title="qiskit.providers.baseprovider.BaseProvider"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.providers.baseprovider.BaseProvider</span></code></a></p>
+<p>Provider for remote IBMQ backends with admin features.</p>
+<p>This class is the entry point for handling backends from IBMQ, allowing
+using different accounts.</p>
+<dl class="method">
+<dt id="qiskit.providers.ibmq.ibmqprovider.IBMQProvider.active_accounts">
+<code class="descname">active_accounts</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/providers/ibmq/ibmqprovider.html#IBMQProvider.active_accounts"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.providers.ibmq.ibmqprovider.IBMQProvider.active_accounts" title="Permalink to this definition">¶</a></dt>
+<dd><p>List all accounts currently in the session.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><dl class="docutils">
+<dt>a list with information about the accounts currently</dt>
+<dd>in the session.</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">list[dict]</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="qiskit.providers.ibmq.ibmqprovider.IBMQProvider.backends">
+<code class="descname">backends</code><span class="sig-paren">(</span><em>name=None</em>, <em>filters=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/providers/ibmq/ibmqprovider.html#IBMQProvider.backends"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.providers.ibmq.ibmqprovider.IBMQProvider.backends" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return all backends accessible via IBMQ provider, subject to optional filtering.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>name</strong> (<em>str</em>) – backend name to filter by</li>
+<li><strong>filters</strong> (<em>callable</em>) – more complex filters, such as lambda functions
+e.g. IBMQ.backends(filters=lambda b: b.configuration[‘n_qubits’] &gt; 5)</li>
+<li><strong>kwargs</strong> – simple filters specifying a true/false criteria in the
+backend configuration or backend status or provider credentials
+e.g. IBMQ.backends(n_qubits=5, operational=True, hub=’internal’)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">list of backends available that match the filter</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list[<a class="reference internal" href="#qiskit.providers.ibmq.ibmqbackend.IBMQBackend" title="qiskit.providers.ibmq.ibmqbackend.IBMQBackend">IBMQBackend</a>]</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="qiskit.providers.ibmq.ibmqprovider.IBMQProvider.delete_accounts">
+<code class="descname">delete_accounts</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/providers/ibmq/ibmqprovider.html#IBMQProvider.delete_accounts"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.providers.ibmq.ibmqprovider.IBMQProvider.delete_accounts" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete saved accounts from disk, subject to optional filtering.</p>
+<p>The filter kwargs can be <cite>token</cite>, <cite>url</cite>, <cite>hub</cite>, <cite>group</cite>, <cite>project</cite>.
+If no filter is passed, all accounts will be deleted from disk.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><code class="xref py py-exc docutils literal notranslate"><span class="pre">IBMQAccountError</span></code> – if no account matched the filter.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="qiskit.providers.ibmq.ibmqprovider.IBMQProvider.disable_accounts">
+<code class="descname">disable_accounts</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/providers/ibmq/ibmqprovider.html#IBMQProvider.disable_accounts"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.providers.ibmq.ibmqprovider.IBMQProvider.disable_accounts" title="Permalink to this definition">¶</a></dt>
+<dd><p>Disable accounts in the current session, subject to optional filtering.</p>
+<p>The filter kwargs can be <cite>token</cite>, <cite>url</cite>, <cite>hub</cite>, <cite>group</cite>, <cite>project</cite>.
+If no filter is passed, all accounts in the current session will be disabled.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><code class="xref py py-exc docutils literal notranslate"><span class="pre">IBMQAccountError</span></code> – if no account matched the filter.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="qiskit.providers.ibmq.ibmqprovider.IBMQProvider.enable_account">
+<code class="descname">enable_account</code><span class="sig-paren">(</span><em>token</em>, <em>url='https://quantumexperience.ng.bluemix.net/api'</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/providers/ibmq/ibmqprovider.html#IBMQProvider.enable_account"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.providers.ibmq.ibmqprovider.IBMQProvider.enable_account" title="Permalink to this definition">¶</a></dt>
+<dd><p>Authenticate a new IBMQ account and add for use during this session.</p>
+<p>Login into Quantum Experience or IBMQ using the provided credentials,
+adding the account to the current session. The account is not stored
+in disk.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>token</strong> (<em>str</em>) – Quantum Experience or IBM Q API token.</li>
+<li><strong>url</strong> (<em>str</em>) – URL for Quantum Experience or IBM Q (for IBM Q,
+including the hub, group and project in the URL).</li>
+<li><strong>**kwargs</strong> (<em>dict</em>) – <ul>
+<li>proxies (dict): Proxy configuration for the API.</li>
+<li>verify (bool): If False, ignores SSL certificates errors</li>
+</ul>
+</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="qiskit.providers.ibmq.ibmqprovider.IBMQProvider.load_accounts">
+<code class="descname">load_accounts</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/providers/ibmq/ibmqprovider.html#IBMQProvider.load_accounts"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.providers.ibmq.ibmqprovider.IBMQProvider.load_accounts" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load IBMQ accounts found in the system into current session,
+subject to optional filtering.</p>
+<p>Automatically load the accounts found in the system. This method
+looks for credentials in the following locations, in order, and
+returns as soon as credentials are found:</p>
+<ol class="arabic simple">
+<li>in the <cite>Qconfig.py</cite> file in the current working directory.</li>
+<li>in the environment variables.</li>
+<li>in the <cite>qiskitrc</cite> configuration file</li>
+</ol>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><code class="xref py py-exc docutils literal notranslate"><span class="pre">IBMQAccountError</span></code> – if no credentials are found.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="qiskit.providers.ibmq.ibmqprovider.IBMQProvider.save_account">
+<code class="descname">save_account</code><span class="sig-paren">(</span><em>token</em>, <em>url='https://quantumexperience.ng.bluemix.net/api'</em>, <em>overwrite=False</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/providers/ibmq/ibmqprovider.html#IBMQProvider.save_account"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.providers.ibmq.ibmqprovider.IBMQProvider.save_account" title="Permalink to this definition">¶</a></dt>
+<dd><p>Save the account to disk for future use.</p>
+<p>Login into Quantum Experience or IBMQ using the provided credentials,
+adding the account to the current session. The account is stored in
+disk for future use.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>token</strong> (<em>str</em>) – Quantum Experience or IBM Q API token.</li>
+<li><strong>url</strong> (<em>str</em>) – URL for Quantum Experience or IBM Q (for IBM Q,
+including the hub, group and project in the URL).</li>
+<li><strong>overwrite</strong> (<em>bool</em>) – overwrite existing credentials.</li>
+<li><strong>**kwargs</strong> (<em>dict</em>) – <ul>
+<li>proxies (dict): Proxy configuration for the API.</li>
+<li>verify (bool): If False, ignores SSL certificates errors</li>
+</ul>
+</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="qiskit.providers.ibmq.ibmqprovider.IBMQProvider.stored_accounts">
+<code class="descname">stored_accounts</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/providers/ibmq/ibmqprovider.html#IBMQProvider.stored_accounts"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.providers.ibmq.ibmqprovider.IBMQProvider.stored_accounts" title="Permalink to this definition">¶</a></dt>
+<dd><p>List all accounts stored to disk.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><dl class="docutils">
+<dt>a list with information about the accounts stored</dt>
+<dd>on disk.</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">list[dict]</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-qiskit.providers.ibmq.ibmqsingleprovider">
+<span id="qiskit-providers-ibmq-ibmqsingleprovider-module"></span><h2>qiskit.providers.ibmq.ibmqsingleprovider module<a class="headerlink" href="#module-qiskit.providers.ibmq.ibmqsingleprovider" title="Permalink to this headline">¶</a></h2>
+<p>Provider for a single IBMQ account.</p>
+<dl class="class">
+<dt id="qiskit.providers.ibmq.ibmqsingleprovider.IBMQSingleProvider">
+<em class="property">class </em><code class="descname">IBMQSingleProvider</code><span class="sig-paren">(</span><em>credentials</em>, <em>ibmq_provider</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/providers/ibmq/ibmqsingleprovider.html#IBMQSingleProvider"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.providers.ibmq.ibmqsingleprovider.IBMQSingleProvider" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="qiskit.providers.html#qiskit.providers.baseprovider.BaseProvider" title="qiskit.providers.baseprovider.BaseProvider"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.providers.baseprovider.BaseProvider</span></code></a></p>
+<p>Provider for single IBMQ accounts.</p>
+<p>Note: this class is not part of the public API and is not guaranteed to be
+present in future releases.</p>
+<dl class="method">
+<dt id="qiskit.providers.ibmq.ibmqsingleprovider.IBMQSingleProvider.backends">
+<code class="descname">backends</code><span class="sig-paren">(</span><em>name=None</em>, <em>filters=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/providers/ibmq/ibmqsingleprovider.html#IBMQSingleProvider.backends"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.providers.ibmq.ibmqsingleprovider.IBMQSingleProvider.backends" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a list of backends matching the specified filtering.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>name</strong> (<em>str</em>) – name of the backend.</li>
+<li><strong>**kwargs</strong> (<em>dict</em>) – dict used for filtering.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><dl class="docutils">
+<dt>a list of backends matching the filtering</dt>
+<dd><p class="first last">criteria.</p>
+</dd>
+</dl>
+</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list[<a class="reference internal" href="qiskit.providers.html#qiskit.providers.basebackend.BaseBackend" title="qiskit.providers.basebackend.BaseBackend">BaseBackend</a>]</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-qiskit.providers.ibmq.version">
+<span id="qiskit-providers-ibmq-version-module"></span><h2>qiskit.providers.ibmq.version module<a class="headerlink" href="#module-qiskit.providers.ibmq.version" title="Permalink to this headline">¶</a></h2>
+<p>Contains the package version.</p>
 </div>
 </div>
 
@@ -1869,10 +3063,10 @@ either empty or none have attribute <code class="docutils literal notranslate"><
 
       <div class="clearer"></div>
     </div><div class="pagenation">
-     <a id="button-prev" href="qiskit.providers.basicaer.unitary_simulator.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
+     <a id="button-prev" href="qiskit.providers.basicaer.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
          <div class="pagenation-text">
             <span class="pagenation-direction">Previous</span>
-            <div>qiskit.providers.basicaer.unitary_simulator module</div>
+            <div>qiskit.providers.basicaer package</div>
          </div>
      </a>
      <a id="button-next" href="qiskit.providers.ibmq.api.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
@@ -1925,23 +3119,23 @@ either empty or none have attribute <code class="docutils literal notranslate"><
       var el = document.getElementById('language');
       var optionsToSelect = ['en', 'ja']
       function changeLoc(evt) {
-        var language = evt.target.options[el.selectedIndex].value;
-        var pathname = window.location.pathname.slice(prefix.length);
-        if (language === getDefaultLanguage()) {
-          window.location.pathname =
-            `${prefix}${pathname.replace(localeRegExp, '/')}`;
-        } else {
-          window.location.pathname =
-            `${prefix}${pathname.replace(localeRegExp, `/locale/${language}/`)}`;
+	        var language = evt.target.options[el.selectedIndex].value;
+	        var pathname = window.location.pathname.slice(prefix.length);
+	        if (language === getDefaultLanguage()) {
+	          window.location.pathname =
+	            `${prefix}${pathname.replace(localeRegExp, '/')}`;
+	        } else {
+	          window.location.pathname =
+	            `${prefix}${pathname.replace(localeRegExp, `/locale/${language}/`)}`;
         }
       };
       el.addEventListener('change', changeLoc);
 
       function extractLanguageFromUrl(pathname) {
-        const match = pathname.slice(prefix.length).match(localeRegExp);
-        return typeof match[2] === 'undefined' ?
-                getDefaultLanguage() : match[2];
-	    }
+	        const match = pathname.slice(prefix.length).match(localeRegExp);
+	        return typeof match[2] === 'undefined' ?
+	               getDefaultLanguage() : match[2];
+	      }
 
       function changeSelect(select) {
         const optionToSelect = extractLanguageFromUrl(window.location.pathname);

@@ -34,7 +34,7 @@
        </script>
         <script src="https://cloud.ibm.com/analytics/build/bluemix-analytics.min.js"></script>
     
-    <title>qiskit.qobj.models.pulse &#8212; Qiskit 0.11.0 documentation</title>
+    <title>qiskit.qobj.models.pulse &#8212; Qiskit 0.11.1 documentation</title>
 
     <link rel="stylesheet" href="../../../../_static/material-icons.css" type="text/css" />
     <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
@@ -189,7 +189,7 @@
                    <span class="n">QobjExperiment</span><span class="p">,</span> <span class="n">QobjConfig</span><span class="p">)</span>
 
 
-<div class="viewcode-block" id="QobjMeasurementOptionSchema"><a class="viewcode-back" href="../../../../autodoc/qiskit.qobj.models.pulse.html#qiskit.qobj.models.pulse.QobjMeasurementOptionSchema">[docs]</a><span class="k">class</span> <span class="nc">QobjMeasurementOptionSchema</span><span class="p">(</span><span class="n">BaseSchema</span><span class="p">):</span>
+<div class="viewcode-block" id="QobjMeasurementOptionSchema"><a class="viewcode-back" href="../../../../autodoc/qiskit.qobj.models.html#qiskit.qobj.models.pulse.QobjMeasurementOptionSchema">[docs]</a><span class="k">class</span> <span class="nc">QobjMeasurementOptionSchema</span><span class="p">(</span><span class="n">BaseSchema</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Schema for QobjMeasOptiton.&quot;&quot;&quot;</span>
 
     <span class="c1"># Required properties.</span>
@@ -198,7 +198,7 @@
                             <span class="n">required</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="PulseLibraryItemSchema"><a class="viewcode-back" href="../../../../autodoc/qiskit.qobj.models.pulse.html#qiskit.qobj.models.pulse.PulseLibraryItemSchema">[docs]</a><span class="k">class</span> <span class="nc">PulseLibraryItemSchema</span><span class="p">(</span><span class="n">BaseSchema</span><span class="p">):</span>
+<div class="viewcode-block" id="PulseLibraryItemSchema"><a class="viewcode-back" href="../../../../autodoc/qiskit.qobj.models.html#qiskit.qobj.models.pulse.PulseLibraryItemSchema">[docs]</a><span class="k">class</span> <span class="nc">PulseLibraryItemSchema</span><span class="p">(</span><span class="n">BaseSchema</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Schema for PulseLibraryItem.&quot;&quot;&quot;</span>
 
     <span class="c1"># Required properties.</span>
@@ -206,7 +206,7 @@
     <span class="n">samples</span> <span class="o">=</span> <span class="n">List</span><span class="p">(</span><span class="n">Complex</span><span class="p">(),</span> <span class="n">required</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">validate</span><span class="o">=</span><span class="n">Length</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span></div>
 
 
-<div class="viewcode-block" id="PulseQobjInstructionSchema"><a class="viewcode-back" href="../../../../autodoc/qiskit.qobj.models.pulse.html#qiskit.qobj.models.pulse.PulseQobjInstructionSchema">[docs]</a><span class="k">class</span> <span class="nc">PulseQobjInstructionSchema</span><span class="p">(</span><span class="n">QobjInstructionSchema</span><span class="p">):</span>
+<div class="viewcode-block" id="PulseQobjInstructionSchema"><a class="viewcode-back" href="../../../../autodoc/qiskit.qobj.models.html#qiskit.qobj.models.pulse.PulseQobjInstructionSchema">[docs]</a><span class="k">class</span> <span class="nc">PulseQobjInstructionSchema</span><span class="p">(</span><span class="n">QobjInstructionSchema</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Schema for PulseQobjInstruction.&quot;&quot;&quot;</span>
     <span class="c1"># pylint: disable=invalid-name</span>
 
@@ -228,7 +228,7 @@
     <span class="nb">type</span> <span class="o">=</span> <span class="n">String</span><span class="p">()</span></div>
 
 
-<div class="viewcode-block" id="PulseQobjExperimentConfigSchema"><a class="viewcode-back" href="../../../../autodoc/qiskit.qobj.models.pulse.html#qiskit.qobj.models.pulse.PulseQobjExperimentConfigSchema">[docs]</a><span class="k">class</span> <span class="nc">PulseQobjExperimentConfigSchema</span><span class="p">(</span><span class="n">QobjExperimentConfigSchema</span><span class="p">):</span>
+<div class="viewcode-block" id="PulseQobjExperimentConfigSchema"><a class="viewcode-back" href="../../../../autodoc/qiskit.qobj.models.html#qiskit.qobj.models.pulse.PulseQobjExperimentConfigSchema">[docs]</a><span class="k">class</span> <span class="nc">PulseQobjExperimentConfigSchema</span><span class="p">(</span><span class="n">QobjExperimentConfigSchema</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Schema for PulseQobjExperimentConfig.&quot;&quot;&quot;</span>
 
     <span class="c1"># Optional properties.</span>
@@ -236,7 +236,7 @@
     <span class="n">meas_lo_freq</span> <span class="o">=</span> <span class="n">List</span><span class="p">(</span><span class="n">Number</span><span class="p">())</span></div>
 
 
-<div class="viewcode-block" id="PulseQobjExperimentSchema"><a class="viewcode-back" href="../../../../autodoc/qiskit.qobj.models.pulse.html#qiskit.qobj.models.pulse.PulseQobjExperimentSchema">[docs]</a><span class="k">class</span> <span class="nc">PulseQobjExperimentSchema</span><span class="p">(</span><span class="n">QobjExperimentSchema</span><span class="p">):</span>
+<div class="viewcode-block" id="PulseQobjExperimentSchema"><a class="viewcode-back" href="../../../../autodoc/qiskit.qobj.models.html#qiskit.qobj.models.pulse.PulseQobjExperimentSchema">[docs]</a><span class="k">class</span> <span class="nc">PulseQobjExperimentSchema</span><span class="p">(</span><span class="n">QobjExperimentSchema</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Schema for PulseQobjExperiment.&quot;&quot;&quot;</span>
 
     <span class="c1"># Required properties.</span>
@@ -247,7 +247,7 @@
     <span class="n">config</span> <span class="o">=</span> <span class="n">Nested</span><span class="p">(</span><span class="n">PulseQobjExperimentConfigSchema</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="PulseQobjConfigSchema"><a class="viewcode-back" href="../../../../autodoc/qiskit.qobj.models.pulse.html#qiskit.qobj.models.pulse.PulseQobjConfigSchema">[docs]</a><span class="k">class</span> <span class="nc">PulseQobjConfigSchema</span><span class="p">(</span><span class="n">QobjConfigSchema</span><span class="p">):</span>
+<div class="viewcode-block" id="PulseQobjConfigSchema"><a class="viewcode-back" href="../../../../autodoc/qiskit.qobj.models.html#qiskit.qobj.models.pulse.PulseQobjConfigSchema">[docs]</a><span class="k">class</span> <span class="nc">PulseQobjConfigSchema</span><span class="p">(</span><span class="n">QobjConfigSchema</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Schema for PulseQobjConfig of device backend.&quot;&quot;&quot;</span>
     <span class="c1"># pylint: disable=invalid-name</span>
 
@@ -264,7 +264,7 @@
     <span class="n">rep_time</span> <span class="o">=</span> <span class="n">Integer</span><span class="p">(</span><span class="n">validate</span><span class="o">=</span><span class="n">Range</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span></div>
 
 
-<div class="viewcode-block" id="QobjMeasurementOption"><a class="viewcode-back" href="../../../../autodoc/qiskit.qobj.models.pulse.html#qiskit.qobj.models.pulse.QobjMeasurementOption">[docs]</a><span class="nd">@bind_schema</span><span class="p">(</span><span class="n">QobjMeasurementOptionSchema</span><span class="p">)</span>
+<div class="viewcode-block" id="QobjMeasurementOption"><a class="viewcode-back" href="../../../../autodoc/qiskit.qobj.models.html#qiskit.qobj.models.pulse.QobjMeasurementOption">[docs]</a><span class="nd">@bind_schema</span><span class="p">(</span><span class="n">QobjMeasurementOptionSchema</span><span class="p">)</span>
 <span class="k">class</span> <span class="nc">QobjMeasurementOption</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Model for QobjMeasurementOption.</span>
 
@@ -282,7 +282,7 @@
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="PulseLibraryItem"><a class="viewcode-back" href="../../../../autodoc/qiskit.qobj.models.pulse.html#qiskit.qobj.models.pulse.PulseLibraryItem">[docs]</a><span class="nd">@bind_schema</span><span class="p">(</span><span class="n">PulseLibraryItemSchema</span><span class="p">)</span>
+<div class="viewcode-block" id="PulseLibraryItem"><a class="viewcode-back" href="../../../../autodoc/qiskit.qobj.models.html#qiskit.qobj.models.pulse.PulseLibraryItem">[docs]</a><span class="nd">@bind_schema</span><span class="p">(</span><span class="n">PulseLibraryItemSchema</span><span class="p">)</span>
 <span class="k">class</span> <span class="nc">PulseLibraryItem</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Model for PulseLibraryItem.</span>
 
@@ -301,7 +301,7 @@
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="PulseQobjInstruction"><a class="viewcode-back" href="../../../../autodoc/qiskit.qobj.models.pulse.html#qiskit.qobj.models.pulse.PulseQobjInstruction">[docs]</a><span class="nd">@bind_schema</span><span class="p">(</span><span class="n">PulseQobjInstructionSchema</span><span class="p">)</span>
+<div class="viewcode-block" id="PulseQobjInstruction"><a class="viewcode-back" href="../../../../autodoc/qiskit.qobj.models.html#qiskit.qobj.models.pulse.PulseQobjInstruction">[docs]</a><span class="nd">@bind_schema</span><span class="p">(</span><span class="n">PulseQobjInstructionSchema</span><span class="p">)</span>
 <span class="k">class</span> <span class="nc">PulseQobjInstruction</span><span class="p">(</span><span class="n">QobjInstruction</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Model for PulseQobjInstruction inherit from QobjInstruction.</span>
 
@@ -321,7 +321,7 @@
                          <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="PulseQobjExperimentConfig"><a class="viewcode-back" href="../../../../autodoc/qiskit.qobj.models.pulse.html#qiskit.qobj.models.pulse.PulseQobjExperimentConfig">[docs]</a><span class="nd">@bind_schema</span><span class="p">(</span><span class="n">PulseQobjExperimentConfigSchema</span><span class="p">)</span>
+<div class="viewcode-block" id="PulseQobjExperimentConfig"><a class="viewcode-back" href="../../../../autodoc/qiskit.qobj.models.html#qiskit.qobj.models.pulse.PulseQobjExperimentConfig">[docs]</a><span class="nd">@bind_schema</span><span class="p">(</span><span class="n">PulseQobjExperimentConfigSchema</span><span class="p">)</span>
 <span class="k">class</span> <span class="nc">PulseQobjExperimentConfig</span><span class="p">(</span><span class="n">QobjExperimentConfig</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Model for PulseQobjExperimentConfig inherit from QobjExperimentConfig.</span>
 
@@ -331,7 +331,7 @@
     <span class="k">pass</span></div>
 
 
-<div class="viewcode-block" id="PulseQobjExperiment"><a class="viewcode-back" href="../../../../autodoc/qiskit.qobj.models.pulse.html#qiskit.qobj.models.pulse.PulseQobjExperiment">[docs]</a><span class="nd">@bind_schema</span><span class="p">(</span><span class="n">PulseQobjExperimentSchema</span><span class="p">)</span>
+<div class="viewcode-block" id="PulseQobjExperiment"><a class="viewcode-back" href="../../../../autodoc/qiskit.qobj.models.html#qiskit.qobj.models.pulse.PulseQobjExperiment">[docs]</a><span class="nd">@bind_schema</span><span class="p">(</span><span class="n">PulseQobjExperimentSchema</span><span class="p">)</span>
 <span class="k">class</span> <span class="nc">PulseQobjExperiment</span><span class="p">(</span><span class="n">QobjExperiment</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Model for PulseQobjExperiment inherit from QobjExperiment.</span>
 
@@ -347,7 +347,7 @@
                          <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="PulseQobjConfig"><a class="viewcode-back" href="../../../../autodoc/qiskit.qobj.models.pulse.html#qiskit.qobj.models.pulse.PulseQobjConfig">[docs]</a><span class="nd">@bind_schema</span><span class="p">(</span><span class="n">PulseQobjConfigSchema</span><span class="p">)</span>
+<div class="viewcode-block" id="PulseQobjConfig"><a class="viewcode-back" href="../../../../autodoc/qiskit.qobj.models.html#qiskit.qobj.models.pulse.PulseQobjConfig">[docs]</a><span class="nd">@bind_schema</span><span class="p">(</span><span class="n">PulseQobjConfigSchema</span><span class="p">)</span>
 <span class="k">class</span> <span class="nc">PulseQobjConfig</span><span class="p">(</span><span class="n">QobjConfig</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Model for PulseQobjConfig inherit from QobjConfig.</span>
 
@@ -425,23 +425,23 @@
       var el = document.getElementById('language');
       var optionsToSelect = ['en', 'ja']
       function changeLoc(evt) {
-        var language = evt.target.options[el.selectedIndex].value;
-        var pathname = window.location.pathname.slice(prefix.length);
-        if (language === getDefaultLanguage()) {
-          window.location.pathname =
-            `${prefix}${pathname.replace(localeRegExp, '/')}`;
-        } else {
-          window.location.pathname =
-            `${prefix}${pathname.replace(localeRegExp, `/locale/${language}/`)}`;
+	        var language = evt.target.options[el.selectedIndex].value;
+	        var pathname = window.location.pathname.slice(prefix.length);
+	        if (language === getDefaultLanguage()) {
+	          window.location.pathname =
+	            `${prefix}${pathname.replace(localeRegExp, '/')}`;
+	        } else {
+	          window.location.pathname =
+	            `${prefix}${pathname.replace(localeRegExp, `/locale/${language}/`)}`;
         }
       };
       el.addEventListener('change', changeLoc);
 
       function extractLanguageFromUrl(pathname) {
-        const match = pathname.slice(prefix.length).match(localeRegExp);
-        return typeof match[2] === 'undefined' ?
-                getDefaultLanguage() : match[2];
-	    }
+	        const match = pathname.slice(prefix.length).match(localeRegExp);
+	        return typeof match[2] === 'undefined' ?
+	               getDefaultLanguage() : match[2];
+	      }
 
       function changeSelect(select) {
         const optionToSelect = extractLanguageFromUrl(window.location.pathname);

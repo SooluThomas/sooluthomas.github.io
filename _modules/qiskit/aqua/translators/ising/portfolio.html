@@ -34,7 +34,7 @@
        </script>
         <script src="https://cloud.ibm.com/analytics/build/bluemix-analytics.min.js"></script>
     
-    <title>qiskit.aqua.translators.ising.portfolio &#8212; Qiskit 0.11.0 documentation</title>
+    <title>qiskit.aqua.translators.ising.portfolio &#8212; Qiskit 0.11.1 documentation</title>
 
     <link rel="stylesheet" href="../../../../../_static/material-icons.css" type="text/css" />
     <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css" />
@@ -195,7 +195,7 @@
 <span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="k">import</span> <span class="n">make_spd_matrix</span>
 
 
-<div class="viewcode-block" id="random_model"><a class="viewcode-back" href="../../../../../autodoc/qiskit.aqua.translators.ising.portfolio.html#qiskit.aqua.translators.ising.portfolio.random_model">[docs]</a><span class="k">def</span> <span class="nf">random_model</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="random_model"><a class="viewcode-back" href="../../../../../autodoc/qiskit.aqua.translators.ising.html#qiskit.aqua.translators.ising.portfolio.random_model">[docs]</a><span class="k">def</span> <span class="nf">random_model</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Generate random model (mu, sigma) for portfolio optimization problem.</span>
 
 <span class="sd">    Args:</span>
@@ -219,7 +219,7 @@
     <span class="k">return</span> <span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span></div>
 
 
-<div class="viewcode-block" id="get_portfolio_qubitops"><a class="viewcode-back" href="../../../../../autodoc/qiskit.aqua.translators.ising.portfolio.html#qiskit.aqua.translators.ising.portfolio.get_portfolio_qubitops">[docs]</a><span class="k">def</span> <span class="nf">get_portfolio_qubitops</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">budget</span><span class="p">,</span> <span class="n">penalty</span><span class="p">):</span>
+<div class="viewcode-block" id="get_portfolio_qubitops"><a class="viewcode-back" href="../../../../../autodoc/qiskit.aqua.translators.ising.html#qiskit.aqua.translators.ising.portfolio.get_portfolio_qubitops">[docs]</a><span class="k">def</span> <span class="nf">get_portfolio_qubitops</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">budget</span><span class="p">,</span> <span class="n">penalty</span><span class="p">):</span>
 
     <span class="c1"># get problem dimension</span>
     <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">mu</span><span class="p">)</span>
@@ -255,19 +255,19 @@
     <span class="k">return</span> <span class="n">Operator</span><span class="p">(</span><span class="n">paulis</span><span class="o">=</span><span class="n">pauli_list</span><span class="p">),</span> <span class="n">offset</span></div>
 
 
-<div class="viewcode-block" id="portfolio_value"><a class="viewcode-back" href="../../../../../autodoc/qiskit.aqua.translators.ising.portfolio.html#qiskit.aqua.translators.ising.portfolio.portfolio_value">[docs]</a><span class="k">def</span> <span class="nf">portfolio_value</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">budget</span><span class="p">,</span> <span class="n">penalty</span><span class="p">):</span>
+<div class="viewcode-block" id="portfolio_value"><a class="viewcode-back" href="../../../../../autodoc/qiskit.aqua.translators.ising.html#qiskit.aqua.translators.ising.portfolio.portfolio_value">[docs]</a><span class="k">def</span> <span class="nf">portfolio_value</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">budget</span><span class="p">,</span> <span class="n">penalty</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">q</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">sigma</span><span class="p">,</span> <span class="n">x</span><span class="p">))</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="n">penalty</span> <span class="o">*</span> <span class="nb">pow</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">-</span> <span class="n">budget</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="portfolio_expected_value"><a class="viewcode-back" href="../../../../../autodoc/qiskit.aqua.translators.ising.portfolio.html#qiskit.aqua.translators.ising.portfolio.portfolio_expected_value">[docs]</a><span class="k">def</span> <span class="nf">portfolio_expected_value</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">mu</span><span class="p">):</span>
+<div class="viewcode-block" id="portfolio_expected_value"><a class="viewcode-back" href="../../../../../autodoc/qiskit.aqua.translators.ising.html#qiskit.aqua.translators.ising.portfolio.portfolio_expected_value">[docs]</a><span class="k">def</span> <span class="nf">portfolio_expected_value</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">mu</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="portfolio_variance"><a class="viewcode-back" href="../../../../../autodoc/qiskit.aqua.translators.ising.portfolio.html#qiskit.aqua.translators.ising.portfolio.portfolio_variance">[docs]</a><span class="k">def</span> <span class="nf">portfolio_variance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">sigma</span><span class="p">):</span>
+<div class="viewcode-block" id="portfolio_variance"><a class="viewcode-back" href="../../../../../autodoc/qiskit.aqua.translators.ising.html#qiskit.aqua.translators.ising.portfolio.portfolio_variance">[docs]</a><span class="k">def</span> <span class="nf">portfolio_variance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">sigma</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">sigma</span><span class="p">,</span> <span class="n">x</span><span class="p">))</span></div>
 
 
-<div class="viewcode-block" id="sample_most_likely"><a class="viewcode-back" href="../../../../../autodoc/qiskit.aqua.translators.ising.portfolio.html#qiskit.aqua.translators.ising.portfolio.sample_most_likely">[docs]</a><span class="k">def</span> <span class="nf">sample_most_likely</span><span class="p">(</span><span class="n">state_vector</span><span class="p">):</span>
+<div class="viewcode-block" id="sample_most_likely"><a class="viewcode-back" href="../../../../../autodoc/qiskit.aqua.translators.ising.html#qiskit.aqua.translators.ising.portfolio.sample_most_likely">[docs]</a><span class="k">def</span> <span class="nf">sample_most_likely</span><span class="p">(</span><span class="n">state_vector</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Compute the most likely binary string from state vector.</span>
 
 <span class="sd">    Args:</span>
@@ -339,23 +339,23 @@
       var el = document.getElementById('language');
       var optionsToSelect = ['en', 'ja']
       function changeLoc(evt) {
-        var language = evt.target.options[el.selectedIndex].value;
-        var pathname = window.location.pathname.slice(prefix.length);
-        if (language === getDefaultLanguage()) {
-          window.location.pathname =
-            `${prefix}${pathname.replace(localeRegExp, '/')}`;
-        } else {
-          window.location.pathname =
-            `${prefix}${pathname.replace(localeRegExp, `/locale/${language}/`)}`;
+	        var language = evt.target.options[el.selectedIndex].value;
+	        var pathname = window.location.pathname.slice(prefix.length);
+	        if (language === getDefaultLanguage()) {
+	          window.location.pathname =
+	            `${prefix}${pathname.replace(localeRegExp, '/')}`;
+	        } else {
+	          window.location.pathname =
+	            `${prefix}${pathname.replace(localeRegExp, `/locale/${language}/`)}`;
         }
       };
       el.addEventListener('change', changeLoc);
 
       function extractLanguageFromUrl(pathname) {
-        const match = pathname.slice(prefix.length).match(localeRegExp);
-        return typeof match[2] === 'undefined' ?
-                getDefaultLanguage() : match[2];
-	    }
+	        const match = pathname.slice(prefix.length).match(localeRegExp);
+	        return typeof match[2] === 'undefined' ?
+	               getDefaultLanguage() : match[2];
+	      }
 
       function changeSelect(select) {
         const optionToSelect = extractLanguageFromUrl(window.location.pathname);

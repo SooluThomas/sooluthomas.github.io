@@ -34,7 +34,7 @@
        </script>
         <script src="https://cloud.ibm.com/analytics/build/bluemix-analytics.min.js"></script>
     
-    <title>qiskit.pulse.commands.pulse_decorators &#8212; Qiskit 0.11.0 documentation</title>
+    <title>qiskit.pulse.commands.pulse_decorators &#8212; Qiskit 0.11.1 documentation</title>
 
     <link rel="stylesheet" href="../../../../_static/material-icons.css" type="text/css" />
     <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
@@ -189,7 +189,7 @@
 <span class="kn">from</span> <span class="nn">.sample_pulse</span> <span class="k">import</span> <span class="n">SamplePulse</span>
 
 
-<div class="viewcode-block" id="functional_pulse"><a class="viewcode-back" href="../../../../autodoc/qiskit.pulse.commands.pulse_decorators.html#qiskit.pulse.commands.pulse_decorators.functional_pulse">[docs]</a><span class="k">def</span> <span class="nf">functional_pulse</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+<div class="viewcode-block" id="functional_pulse"><a class="viewcode-back" href="../../../../autodoc/qiskit.pulse.commands.html#qiskit.pulse.commands.pulse_decorators.functional_pulse">[docs]</a><span class="k">def</span> <span class="nf">functional_pulse</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;A decorator for generating SamplePulse from python callable.</span>
 <span class="sd">    Args:</span>
 <span class="sd">        func (callable): A function describing pulse envelope.</span>
@@ -256,23 +256,23 @@
       var el = document.getElementById('language');
       var optionsToSelect = ['en', 'ja']
       function changeLoc(evt) {
-        var language = evt.target.options[el.selectedIndex].value;
-        var pathname = window.location.pathname.slice(prefix.length);
-        if (language === getDefaultLanguage()) {
-          window.location.pathname =
-            `${prefix}${pathname.replace(localeRegExp, '/')}`;
-        } else {
-          window.location.pathname =
-            `${prefix}${pathname.replace(localeRegExp, `/locale/${language}/`)}`;
+	        var language = evt.target.options[el.selectedIndex].value;
+	        var pathname = window.location.pathname.slice(prefix.length);
+	        if (language === getDefaultLanguage()) {
+	          window.location.pathname =
+	            `${prefix}${pathname.replace(localeRegExp, '/')}`;
+	        } else {
+	          window.location.pathname =
+	            `${prefix}${pathname.replace(localeRegExp, `/locale/${language}/`)}`;
         }
       };
       el.addEventListener('change', changeLoc);
 
       function extractLanguageFromUrl(pathname) {
-        const match = pathname.slice(prefix.length).match(localeRegExp);
-        return typeof match[2] === 'undefined' ?
-                getDefaultLanguage() : match[2];
-	    }
+	        const match = pathname.slice(prefix.length).match(localeRegExp);
+	        return typeof match[2] === 'undefined' ?
+	               getDefaultLanguage() : match[2];
+	      }
 
       function changeSelect(select) {
         const optionToSelect = extractLanguageFromUrl(window.location.pathname);

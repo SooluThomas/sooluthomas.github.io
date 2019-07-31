@@ -34,7 +34,7 @@
        </script>
         <script src="https://cloud.ibm.com/analytics/build/bluemix-analytics.min.js"></script>
     
-    <title>qiskit.aqua.components.optimizers.nlopts.esch &#8212; Qiskit 0.11.0 documentation</title>
+    <title>qiskit.aqua.components.optimizers.nlopts.esch &#8212; Qiskit 0.11.1 documentation</title>
 
     <link rel="stylesheet" href="../../../../../../_static/material-icons.css" type="text/css" />
     <link rel="stylesheet" href="../../../../../../_static/pygments.css" type="text/css" />
@@ -196,7 +196,7 @@
     <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;nlopt is not installed. Please install it if you want to use them.&#39;</span><span class="p">)</span>
 
 
-<div class="viewcode-block" id="ESCH"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.aqua.components.optimizers.nlopts.esch.html#qiskit.aqua.components.optimizers.nlopts.esch.ESCH">[docs]</a><span class="k">class</span> <span class="nc">ESCH</span><span class="p">(</span><span class="n">Optimizer</span><span class="p">):</span>
+<div class="viewcode-block" id="ESCH"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.aqua.components.optimizers.nlopts.html#qiskit.aqua.components.optimizers.nlopts.esch.ESCH">[docs]</a><span class="k">class</span> <span class="nc">ESCH</span><span class="p">(</span><span class="n">Optimizer</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;ESCH (evolutionary algorithm).</span>
 
 <span class="sd">    NLopt global optimizer, derivative-free</span>
@@ -240,11 +240,11 @@
             <span class="k">if</span> <span class="n">k</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_configuration</span><span class="p">[</span><span class="s1">&#39;options&#39;</span><span class="p">]:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_options</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span>
 
-<div class="viewcode-block" id="ESCH.check_pluggable_valid"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.aqua.components.optimizers.nlopts.esch.html#qiskit.aqua.components.optimizers.nlopts.esch.ESCH.check_pluggable_valid">[docs]</a>    <span class="nd">@staticmethod</span>
+<div class="viewcode-block" id="ESCH.check_pluggable_valid"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.aqua.components.optimizers.nlopts.html#qiskit.aqua.components.optimizers.nlopts.esch.ESCH.check_pluggable_valid">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">check_pluggable_valid</span><span class="p">():</span>
         <span class="n">check_nlopt_valid</span><span class="p">(</span><span class="n">ESCH</span><span class="o">.</span><span class="n">CONFIGURATION</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">])</span></div>
 
-<div class="viewcode-block" id="ESCH.optimize"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.aqua.components.optimizers.nlopts.esch.html#qiskit.aqua.components.optimizers.nlopts.esch.ESCH.optimize">[docs]</a>    <span class="k">def</span> <span class="nf">optimize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num_vars</span><span class="p">,</span> <span class="n">objective_function</span><span class="p">,</span> <span class="n">gradient_function</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<div class="viewcode-block" id="ESCH.optimize"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.aqua.components.optimizers.nlopts.html#qiskit.aqua.components.optimizers.nlopts.esch.ESCH.optimize">[docs]</a>    <span class="k">def</span> <span class="nf">optimize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num_vars</span><span class="p">,</span> <span class="n">objective_function</span><span class="p">,</span> <span class="n">gradient_function</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                  <span class="n">variable_bounds</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">initial_point</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">optimize</span><span class="p">(</span><span class="n">num_vars</span><span class="p">,</span> <span class="n">objective_function</span><span class="p">,</span> <span class="n">gradient_function</span><span class="p">,</span> <span class="n">variable_bounds</span><span class="p">,</span> <span class="n">initial_point</span><span class="p">)</span>
 
@@ -299,23 +299,23 @@
       var el = document.getElementById('language');
       var optionsToSelect = ['en', 'ja']
       function changeLoc(evt) {
-        var language = evt.target.options[el.selectedIndex].value;
-        var pathname = window.location.pathname.slice(prefix.length);
-        if (language === getDefaultLanguage()) {
-          window.location.pathname =
-            `${prefix}${pathname.replace(localeRegExp, '/')}`;
-        } else {
-          window.location.pathname =
-            `${prefix}${pathname.replace(localeRegExp, `/locale/${language}/`)}`;
+	        var language = evt.target.options[el.selectedIndex].value;
+	        var pathname = window.location.pathname.slice(prefix.length);
+	        if (language === getDefaultLanguage()) {
+	          window.location.pathname =
+	            `${prefix}${pathname.replace(localeRegExp, '/')}`;
+	        } else {
+	          window.location.pathname =
+	            `${prefix}${pathname.replace(localeRegExp, `/locale/${language}/`)}`;
         }
       };
       el.addEventListener('change', changeLoc);
 
       function extractLanguageFromUrl(pathname) {
-        const match = pathname.slice(prefix.length).match(localeRegExp);
-        return typeof match[2] === 'undefined' ?
-                getDefaultLanguage() : match[2];
-	    }
+	        const match = pathname.slice(prefix.length).match(localeRegExp);
+	        return typeof match[2] === 'undefined' ?
+	               getDefaultLanguage() : match[2];
+	      }
 
       function changeSelect(select) {
         const optionToSelect = extractLanguageFromUrl(window.location.pathname);

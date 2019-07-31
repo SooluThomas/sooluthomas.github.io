@@ -34,7 +34,7 @@
        </script>
         <script src="https://cloud.ibm.com/analytics/build/bluemix-analytics.min.js"></script>
     
-    <title>qiskit.ignis.verification.tomography.basis.paulibasis &#8212; Qiskit 0.11.0 documentation</title>
+    <title>qiskit.ignis.verification.tomography.basis.paulibasis &#8212; Qiskit 0.11.1 documentation</title>
 
     <link rel="stylesheet" href="../../../../../../_static/material-icons.css" type="text/css" />
     <link rel="stylesheet" href="../../../../../../_static/pygments.css" type="text/css" />
@@ -199,7 +199,7 @@
 <span class="c1"># Built-in circuit functions</span>
 <span class="c1">###########################################################################</span>
 
-<div class="viewcode-block" id="pauli_measurement_circuit"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.ignis.verification.tomography.basis.paulibasis.html#qiskit.ignis.verification.tomography.basis.paulibasis.pauli_measurement_circuit">[docs]</a><span class="k">def</span> <span class="nf">pauli_measurement_circuit</span><span class="p">(</span><span class="n">op</span><span class="p">,</span> <span class="n">qubit</span><span class="p">,</span> <span class="n">clbit</span><span class="p">):</span>
+<div class="viewcode-block" id="pauli_measurement_circuit"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.ignis.verification.tomography.basis.html#qiskit.ignis.verification.tomography.basis.paulibasis.pauli_measurement_circuit">[docs]</a><span class="k">def</span> <span class="nf">pauli_measurement_circuit</span><span class="p">(</span><span class="n">op</span><span class="p">,</span> <span class="n">qubit</span><span class="p">,</span> <span class="n">clbit</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Return a qubit Pauli operator measurement circuit.</span>
 
@@ -225,7 +225,7 @@
     <span class="k">return</span> <span class="n">circ</span></div>
 
 
-<div class="viewcode-block" id="pauli_preparation_circuit"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.ignis.verification.tomography.basis.paulibasis.html#qiskit.ignis.verification.tomography.basis.paulibasis.pauli_preparation_circuit">[docs]</a><span class="k">def</span> <span class="nf">pauli_preparation_circuit</span><span class="p">(</span><span class="n">op</span><span class="p">,</span> <span class="n">qubit</span><span class="p">):</span>
+<div class="viewcode-block" id="pauli_preparation_circuit"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.ignis.verification.tomography.basis.html#qiskit.ignis.verification.tomography.basis.paulibasis.pauli_preparation_circuit">[docs]</a><span class="k">def</span> <span class="nf">pauli_preparation_circuit</span><span class="p">(</span><span class="n">op</span><span class="p">,</span> <span class="n">qubit</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Return a qubit Pauli eigenstate preparation circuit.</span>
 
@@ -261,7 +261,7 @@
 <span class="c1"># Matrix functions for built-in bases</span>
 <span class="c1">###########################################################################</span>
 
-<div class="viewcode-block" id="pauli_preparation_matrix"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.ignis.verification.tomography.basis.paulibasis.html#qiskit.ignis.verification.tomography.basis.paulibasis.pauli_preparation_matrix">[docs]</a><span class="k">def</span> <span class="nf">pauli_preparation_matrix</span><span class="p">(</span><span class="n">label</span><span class="p">):</span>
+<div class="viewcode-block" id="pauli_preparation_matrix"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.ignis.verification.tomography.basis.html#qiskit.ignis.verification.tomography.basis.paulibasis.pauli_preparation_matrix">[docs]</a><span class="k">def</span> <span class="nf">pauli_preparation_matrix</span><span class="p">(</span><span class="n">label</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Return the matrix corresonding to a Pauli eigenstate preparation.</span>
 
@@ -295,7 +295,7 @@
     <span class="k">return</span> <span class="n">res</span></div>
 
 
-<div class="viewcode-block" id="pauli_measurement_matrix"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.ignis.verification.tomography.basis.paulibasis.html#qiskit.ignis.verification.tomography.basis.paulibasis.pauli_measurement_matrix">[docs]</a><span class="k">def</span> <span class="nf">pauli_measurement_matrix</span><span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="n">outcome</span><span class="p">):</span>
+<div class="viewcode-block" id="pauli_measurement_matrix"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.ignis.verification.tomography.basis.html#qiskit.ignis.verification.tomography.basis.paulibasis.pauli_measurement_matrix">[docs]</a><span class="k">def</span> <span class="nf">pauli_measurement_matrix</span><span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="n">outcome</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Return the matrix corresonding to a Pauli measurement outcome.</span>
 
@@ -395,23 +395,23 @@
       var el = document.getElementById('language');
       var optionsToSelect = ['en', 'ja']
       function changeLoc(evt) {
-        var language = evt.target.options[el.selectedIndex].value;
-        var pathname = window.location.pathname.slice(prefix.length);
-        if (language === getDefaultLanguage()) {
-          window.location.pathname =
-            `${prefix}${pathname.replace(localeRegExp, '/')}`;
-        } else {
-          window.location.pathname =
-            `${prefix}${pathname.replace(localeRegExp, `/locale/${language}/`)}`;
+	        var language = evt.target.options[el.selectedIndex].value;
+	        var pathname = window.location.pathname.slice(prefix.length);
+	        if (language === getDefaultLanguage()) {
+	          window.location.pathname =
+	            `${prefix}${pathname.replace(localeRegExp, '/')}`;
+	        } else {
+	          window.location.pathname =
+	            `${prefix}${pathname.replace(localeRegExp, `/locale/${language}/`)}`;
         }
       };
       el.addEventListener('change', changeLoc);
 
       function extractLanguageFromUrl(pathname) {
-        const match = pathname.slice(prefix.length).match(localeRegExp);
-        return typeof match[2] === 'undefined' ?
-                getDefaultLanguage() : match[2];
-	    }
+	        const match = pathname.slice(prefix.length).match(localeRegExp);
+	        return typeof match[2] === 'undefined' ?
+	               getDefaultLanguage() : match[2];
+	      }
 
       function changeSelect(select) {
         const optionToSelect = extractLanguageFromUrl(window.location.pathname);

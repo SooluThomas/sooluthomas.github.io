@@ -34,7 +34,7 @@
        </script>
         <script src="https://cloud.ibm.com/analytics/build/bluemix-analytics.min.js"></script>
     
-    <title>qiskit.providers.ibmq.api_v2.clients.auth &#8212; Qiskit 0.11.0 documentation</title>
+    <title>qiskit.providers.ibmq.api_v2.clients.auth &#8212; Qiskit 0.11.1 documentation</title>
 
     <link rel="stylesheet" href="../../../../../../_static/material-icons.css" type="text/css" />
     <link rel="stylesheet" href="../../../../../../_static/pygments.css" type="text/css" />
@@ -192,7 +192,7 @@
 <span class="kn">from</span> <span class="nn">.base</span> <span class="k">import</span> <span class="n">BaseClient</span>
 
 
-<div class="viewcode-block" id="AuthClient"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.providers.ibmq.api_v2.clients.auth.html#qiskit.providers.ibmq.api_v2.clients.auth.AuthClient">[docs]</a><span class="k">class</span> <span class="nc">AuthClient</span><span class="p">(</span><span class="n">BaseClient</span><span class="p">):</span>
+<div class="viewcode-block" id="AuthClient"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.providers.ibmq.api_v2.clients.html#qiskit.providers.ibmq.api_v2.clients.auth.AuthClient">[docs]</a><span class="k">class</span> <span class="nc">AuthClient</span><span class="p">(</span><span class="n">BaseClient</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Client for accessing authentication features of IBM Q Experience.&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">api_token</span><span class="p">,</span> <span class="n">auth_url</span><span class="p">,</span> <span class="o">**</span><span class="n">request_kwargs</span><span class="p">):</span>
@@ -259,7 +259,7 @@
 
     <span class="c1"># User account-related public functions.</span>
 
-<div class="viewcode-block" id="AuthClient.user_urls"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.providers.ibmq.api_v2.clients.auth.html#qiskit.providers.ibmq.api_v2.clients.auth.AuthClient.user_urls">[docs]</a>    <span class="k">def</span> <span class="nf">user_urls</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="AuthClient.user_urls"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.providers.ibmq.api_v2.clients.html#qiskit.providers.ibmq.api_v2.clients.auth.AuthClient.user_urls">[docs]</a>    <span class="k">def</span> <span class="nf">user_urls</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Retrieve the API URLs from the authentication server.</span>
 
 <span class="sd">        Returns:</span>
@@ -271,7 +271,7 @@
         <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client_auth</span><span class="o">.</span><span class="n">user_info</span><span class="p">()</span>
         <span class="k">return</span> <span class="n">response</span><span class="p">[</span><span class="s1">&#39;urls&#39;</span><span class="p">]</span></div>
 
-<div class="viewcode-block" id="AuthClient.user_hubs"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.providers.ibmq.api_v2.clients.auth.html#qiskit.providers.ibmq.api_v2.clients.auth.AuthClient.user_hubs">[docs]</a>    <span class="k">def</span> <span class="nf">user_hubs</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="AuthClient.user_hubs"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.providers.ibmq.api_v2.clients.html#qiskit.providers.ibmq.api_v2.clients.auth.AuthClient.user_hubs">[docs]</a>    <span class="k">def</span> <span class="nf">user_hubs</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Retrieve the hubs available to the user.</span>
 
 <span class="sd">        The first entry in the list will be the default one, as indicated by</span>
@@ -302,7 +302,7 @@
 
     <span class="c1"># Miscellaneous public functions.</span>
 
-<div class="viewcode-block" id="AuthClient.api_version"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.providers.ibmq.api_v2.clients.auth.html#qiskit.providers.ibmq.api_v2.clients.auth.AuthClient.api_version">[docs]</a>    <span class="k">def</span> <span class="nf">api_version</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="AuthClient.api_version"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.providers.ibmq.api_v2.clients.html#qiskit.providers.ibmq.api_v2.clients.auth.AuthClient.api_version">[docs]</a>    <span class="k">def</span> <span class="nf">api_version</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return the version of the API.</span>
 
 <span class="sd">        Returns:</span>
@@ -310,7 +310,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">client_api</span><span class="o">.</span><span class="n">version</span><span class="p">()</span></div>
 
-<div class="viewcode-block" id="AuthClient.current_access_token"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.providers.ibmq.api_v2.clients.auth.html#qiskit.providers.ibmq.api_v2.clients.auth.AuthClient.current_access_token">[docs]</a>    <span class="k">def</span> <span class="nf">current_access_token</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="AuthClient.current_access_token"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.providers.ibmq.api_v2.clients.html#qiskit.providers.ibmq.api_v2.clients.auth.AuthClient.current_access_token">[docs]</a>    <span class="k">def</span> <span class="nf">current_access_token</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return the current access token.</span>
 
 <span class="sd">        Returns:</span>
@@ -318,7 +318,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">client_auth</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">access_token</span></div>
 
-<div class="viewcode-block" id="AuthClient.current_service_urls"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.providers.ibmq.api_v2.clients.auth.html#qiskit.providers.ibmq.api_v2.clients.auth.AuthClient.current_service_urls">[docs]</a>    <span class="k">def</span> <span class="nf">current_service_urls</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="AuthClient.current_service_urls"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.providers.ibmq.api_v2.clients.html#qiskit.providers.ibmq.api_v2.clients.auth.AuthClient.current_service_urls">[docs]</a>    <span class="k">def</span> <span class="nf">current_service_urls</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return the current service URLs.</span>
 
 <span class="sd">        Returns:</span>
@@ -376,23 +376,23 @@
       var el = document.getElementById('language');
       var optionsToSelect = ['en', 'ja']
       function changeLoc(evt) {
-        var language = evt.target.options[el.selectedIndex].value;
-        var pathname = window.location.pathname.slice(prefix.length);
-        if (language === getDefaultLanguage()) {
-          window.location.pathname =
-            `${prefix}${pathname.replace(localeRegExp, '/')}`;
-        } else {
-          window.location.pathname =
-            `${prefix}${pathname.replace(localeRegExp, `/locale/${language}/`)}`;
+	        var language = evt.target.options[el.selectedIndex].value;
+	        var pathname = window.location.pathname.slice(prefix.length);
+	        if (language === getDefaultLanguage()) {
+	          window.location.pathname =
+	            `${prefix}${pathname.replace(localeRegExp, '/')}`;
+	        } else {
+	          window.location.pathname =
+	            `${prefix}${pathname.replace(localeRegExp, `/locale/${language}/`)}`;
         }
       };
       el.addEventListener('change', changeLoc);
 
       function extractLanguageFromUrl(pathname) {
-        const match = pathname.slice(prefix.length).match(localeRegExp);
-        return typeof match[2] === 'undefined' ?
-                getDefaultLanguage() : match[2];
-	    }
+	        const match = pathname.slice(prefix.length).match(localeRegExp);
+	        return typeof match[2] === 'undefined' ?
+	               getDefaultLanguage() : match[2];
+	      }
 
       function changeSelect(select) {
         const optionToSelect = extractLanguageFromUrl(window.location.pathname);

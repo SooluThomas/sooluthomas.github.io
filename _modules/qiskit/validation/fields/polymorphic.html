@@ -34,7 +34,7 @@
        </script>
         <script src="https://cloud.ibm.com/analytics/build/bluemix-analytics.min.js"></script>
     
-    <title>qiskit.validation.fields.polymorphic &#8212; Qiskit 0.11.0 documentation</title>
+    <title>qiskit.validation.fields.polymorphic &#8212; Qiskit 0.11.1 documentation</title>
 
     <link rel="stylesheet" href="../../../../_static/material-icons.css" type="text/css" />
     <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
@@ -195,7 +195,7 @@
 <span class="kn">from</span> <span class="nn">qiskit.validation</span> <span class="k">import</span> <span class="n">ModelTypeValidator</span>
 
 
-<div class="viewcode-block" id="BasePolyField"><a class="viewcode-back" href="../../../../autodoc/qiskit.validation.fields.polymorphic.html#qiskit.validation.fields.polymorphic.BasePolyField">[docs]</a><span class="k">class</span> <span class="nc">BasePolyField</span><span class="p">(</span><span class="n">PolyField</span><span class="p">,</span> <span class="n">ModelTypeValidator</span><span class="p">):</span>
+<div class="viewcode-block" id="BasePolyField"><a class="viewcode-back" href="../../../../autodoc/qiskit.validation.fields.html#qiskit.validation.fields.polymorphic.BasePolyField">[docs]</a><span class="k">class</span> <span class="nc">BasePolyField</span><span class="p">(</span><span class="n">PolyField</span><span class="p">,</span> <span class="n">ModelTypeValidator</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Base class for polymorphic fields.</span>
 
 <span class="sd">    Defines a Field that can contain data fitting different ``BaseSchema``.</span>
@@ -228,11 +228,11 @@
 
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">to_dict_selector</span><span class="p">,</span> <span class="n">from_dict_selector</span><span class="p">,</span> <span class="n">many</span><span class="o">=</span><span class="n">many</span><span class="p">,</span> <span class="o">**</span><span class="n">metadata</span><span class="p">)</span>
 
-<div class="viewcode-block" id="BasePolyField.to_dict_selector"><a class="viewcode-back" href="../../../../autodoc/qiskit.validation.fields.polymorphic.html#qiskit.validation.fields.polymorphic.BasePolyField.to_dict_selector">[docs]</a>    <span class="k">def</span> <span class="nf">to_dict_selector</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">choices</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<div class="viewcode-block" id="BasePolyField.to_dict_selector"><a class="viewcode-back" href="../../../../autodoc/qiskit.validation.fields.html#qiskit.validation.fields.polymorphic.BasePolyField.to_dict_selector">[docs]</a>    <span class="k">def</span> <span class="nf">to_dict_selector</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">choices</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return an schema in ``choices`` for serialization.&quot;&quot;&quot;</span>
         <span class="k">raise</span> <span class="ne">NotImplementedError</span></div>
 
-<div class="viewcode-block" id="BasePolyField.from_dict_selector"><a class="viewcode-back" href="../../../../autodoc/qiskit.validation.fields.polymorphic.html#qiskit.validation.fields.polymorphic.BasePolyField.from_dict_selector">[docs]</a>    <span class="k">def</span> <span class="nf">from_dict_selector</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">choices</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<div class="viewcode-block" id="BasePolyField.from_dict_selector"><a class="viewcode-back" href="../../../../autodoc/qiskit.validation.fields.html#qiskit.validation.fields.polymorphic.BasePolyField.from_dict_selector">[docs]</a>    <span class="k">def</span> <span class="nf">from_dict_selector</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">choices</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return an schema in ``choices`` for deserialization.&quot;&quot;&quot;</span>
         <span class="k">raise</span> <span class="ne">NotImplementedError</span></div>
 
@@ -257,7 +257,7 @@
     <span class="k">def</span> <span class="nf">_expected_types</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">schema</span><span class="o">.</span><span class="n">model_cls</span> <span class="k">for</span> <span class="n">schema</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_choices</span><span class="p">)</span>
 
-<div class="viewcode-block" id="BasePolyField.check_type"><a class="viewcode-back" href="../../../../autodoc/qiskit.validation.fields.polymorphic.html#qiskit.validation.fields.polymorphic.BasePolyField.check_type">[docs]</a>    <span class="k">def</span> <span class="nf">check_type</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">attr</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+<div class="viewcode-block" id="BasePolyField.check_type"><a class="viewcode-back" href="../../../../autodoc/qiskit.validation.fields.html#qiskit.validation.fields.polymorphic.BasePolyField.check_type">[docs]</a>    <span class="k">def</span> <span class="nf">check_type</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">attr</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Check if the type of the value is one of the possible choices.</span>
 
 <span class="sd">        Possible choices are the model classes bound to the possible schemas.</span>
@@ -283,7 +283,7 @@
         <span class="k">return</span> <span class="n">value</span></div></div>
 
 
-<div class="viewcode-block" id="TryFrom"><a class="viewcode-back" href="../../../../autodoc/qiskit.validation.fields.polymorphic.html#qiskit.validation.fields.polymorphic.TryFrom">[docs]</a><span class="k">class</span> <span class="nc">TryFrom</span><span class="p">(</span><span class="n">BasePolyField</span><span class="p">):</span>
+<div class="viewcode-block" id="TryFrom"><a class="viewcode-back" href="../../../../autodoc/qiskit.validation.fields.html#qiskit.validation.fields.polymorphic.TryFrom">[docs]</a><span class="k">class</span> <span class="nc">TryFrom</span><span class="p">(</span><span class="n">BasePolyField</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Polymorphic field that returns the first candidate schema that matches.</span>
 
 <span class="sd">    Polymorphic field that accepts a list of candidate schemas, and iterates</span>
@@ -303,7 +303,7 @@
 <span class="sd">        metadata (dict): the same keyword arguments that ``PolyField`` receives.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-<div class="viewcode-block" id="TryFrom.to_dict_selector"><a class="viewcode-back" href="../../../../autodoc/qiskit.validation.fields.polymorphic.html#qiskit.validation.fields.polymorphic.TryFrom.to_dict_selector">[docs]</a>    <span class="k">def</span> <span class="nf">to_dict_selector</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">choices</span><span class="p">,</span> <span class="n">base_object</span><span class="p">,</span> <span class="o">*</span><span class="n">_</span><span class="p">):</span>
+<div class="viewcode-block" id="TryFrom.to_dict_selector"><a class="viewcode-back" href="../../../../autodoc/qiskit.validation.fields.html#qiskit.validation.fields.polymorphic.TryFrom.to_dict_selector">[docs]</a>    <span class="k">def</span> <span class="nf">to_dict_selector</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">choices</span><span class="p">,</span> <span class="n">base_object</span><span class="p">,</span> <span class="o">*</span><span class="n">_</span><span class="p">):</span>
         <span class="c1"># pylint: disable=arguments-differ</span>
         <span class="k">if</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">base_object</span><span class="p">,</span> <span class="s1">&#39;schema&#39;</span><span class="p">):</span>
             <span class="k">if</span> <span class="n">base_object</span><span class="o">.</span><span class="n">schema</span><span class="o">.</span><span class="vm">__class__</span> <span class="ow">in</span> <span class="n">choices</span><span class="p">:</span>
@@ -311,7 +311,7 @@
 
         <span class="k">return</span> <span class="kc">None</span></div>
 
-<div class="viewcode-block" id="TryFrom.from_dict_selector"><a class="viewcode-back" href="../../../../autodoc/qiskit.validation.fields.polymorphic.html#qiskit.validation.fields.polymorphic.TryFrom.from_dict_selector">[docs]</a>    <span class="k">def</span> <span class="nf">from_dict_selector</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">choices</span><span class="p">,</span> <span class="n">base_dict</span><span class="p">,</span> <span class="o">*</span><span class="n">_</span><span class="p">):</span>
+<div class="viewcode-block" id="TryFrom.from_dict_selector"><a class="viewcode-back" href="../../../../autodoc/qiskit.validation.fields.html#qiskit.validation.fields.polymorphic.TryFrom.from_dict_selector">[docs]</a>    <span class="k">def</span> <span class="nf">from_dict_selector</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">choices</span><span class="p">,</span> <span class="n">base_dict</span><span class="p">,</span> <span class="o">*</span><span class="n">_</span><span class="p">):</span>
         <span class="c1"># pylint: disable=arguments-differ</span>
         <span class="k">for</span> <span class="n">schema_cls</span> <span class="ow">in</span> <span class="n">choices</span><span class="p">:</span>
             <span class="k">try</span><span class="p">:</span>
@@ -324,7 +324,7 @@
         <span class="k">return</span> <span class="kc">None</span></div></div>
 
 
-<div class="viewcode-block" id="ByAttribute"><a class="viewcode-back" href="../../../../autodoc/qiskit.validation.fields.polymorphic.html#qiskit.validation.fields.polymorphic.ByAttribute">[docs]</a><span class="k">class</span> <span class="nc">ByAttribute</span><span class="p">(</span><span class="n">BasePolyField</span><span class="p">):</span>
+<div class="viewcode-block" id="ByAttribute"><a class="viewcode-back" href="../../../../autodoc/qiskit.validation.fields.html#qiskit.validation.fields.polymorphic.ByAttribute">[docs]</a><span class="k">class</span> <span class="nc">ByAttribute</span><span class="p">(</span><span class="n">BasePolyField</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Polymorphic field that disambiguates based on an attribute&#39;s existence.</span>
 
 <span class="sd">    Polymorphic field that accepts a dictionary of (``&#39;attribute&#39;: schema``)</span>
@@ -343,7 +343,7 @@
 <span class="sd">        metadata (dict): the same keyword arguments that ``PolyField`` receives.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-<div class="viewcode-block" id="ByAttribute.to_dict_selector"><a class="viewcode-back" href="../../../../autodoc/qiskit.validation.fields.polymorphic.html#qiskit.validation.fields.polymorphic.ByAttribute.to_dict_selector">[docs]</a>    <span class="k">def</span> <span class="nf">to_dict_selector</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">choices</span><span class="p">,</span> <span class="n">base_object</span><span class="p">,</span> <span class="o">*</span><span class="n">_</span><span class="p">):</span>
+<div class="viewcode-block" id="ByAttribute.to_dict_selector"><a class="viewcode-back" href="../../../../autodoc/qiskit.validation.fields.html#qiskit.validation.fields.polymorphic.ByAttribute.to_dict_selector">[docs]</a>    <span class="k">def</span> <span class="nf">to_dict_selector</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">choices</span><span class="p">,</span> <span class="n">base_object</span><span class="p">,</span> <span class="o">*</span><span class="n">_</span><span class="p">):</span>
         <span class="c1"># pylint: disable=arguments-differ</span>
         <span class="k">if</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">base_object</span><span class="p">,</span> <span class="s1">&#39;schema&#39;</span><span class="p">):</span>
             <span class="k">if</span> <span class="n">base_object</span><span class="o">.</span><span class="n">schema</span><span class="o">.</span><span class="vm">__class__</span> <span class="ow">in</span> <span class="n">choices</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
@@ -351,7 +351,7 @@
 
         <span class="k">return</span> <span class="kc">None</span></div>
 
-<div class="viewcode-block" id="ByAttribute.from_dict_selector"><a class="viewcode-back" href="../../../../autodoc/qiskit.validation.fields.polymorphic.html#qiskit.validation.fields.polymorphic.ByAttribute.from_dict_selector">[docs]</a>    <span class="k">def</span> <span class="nf">from_dict_selector</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">choices</span><span class="p">,</span> <span class="n">base_dict</span><span class="p">,</span> <span class="o">*</span><span class="n">_</span><span class="p">):</span>
+<div class="viewcode-block" id="ByAttribute.from_dict_selector"><a class="viewcode-back" href="../../../../autodoc/qiskit.validation.fields.html#qiskit.validation.fields.polymorphic.ByAttribute.from_dict_selector">[docs]</a>    <span class="k">def</span> <span class="nf">from_dict_selector</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">choices</span><span class="p">,</span> <span class="n">base_dict</span><span class="p">,</span> <span class="o">*</span><span class="n">_</span><span class="p">):</span>
         <span class="c1"># pylint: disable=arguments-differ</span>
         <span class="k">for</span> <span class="n">attribute</span><span class="p">,</span> <span class="n">schema_cls</span> <span class="ow">in</span> <span class="n">choices</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
             <span class="k">if</span> <span class="n">attribute</span> <span class="ow">in</span> <span class="n">base_dict</span><span class="p">:</span>
@@ -360,7 +360,7 @@
         <span class="k">return</span> <span class="kc">None</span></div></div>
 
 
-<div class="viewcode-block" id="ByType"><a class="viewcode-back" href="../../../../autodoc/qiskit.validation.fields.polymorphic.html#qiskit.validation.fields.polymorphic.ByType">[docs]</a><span class="k">class</span> <span class="nc">ByType</span><span class="p">(</span><span class="n">ModelTypeValidator</span><span class="p">):</span>
+<div class="viewcode-block" id="ByType"><a class="viewcode-back" href="../../../../autodoc/qiskit.validation.fields.html#qiskit.validation.fields.polymorphic.ByType">[docs]</a><span class="k">class</span> <span class="nc">ByType</span><span class="p">(</span><span class="n">ModelTypeValidator</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Polymorphic field that disambiguates based on an attribute&#39;s type.</span>
 
 <span class="sd">    Polymorphic field that accepts a list of ``Fields``, and checks that the</span>
@@ -404,7 +404,7 @@
 
         <span class="bp">self</span><span class="o">.</span><span class="n">fail</span><span class="p">(</span><span class="s1">&#39;invalid&#39;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="n">value</span><span class="p">,</span> <span class="n">types</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">choices</span><span class="p">)</span>
 
-<div class="viewcode-block" id="ByType.check_type"><a class="viewcode-back" href="../../../../autodoc/qiskit.validation.fields.polymorphic.html#qiskit.validation.fields.polymorphic.ByType.check_type">[docs]</a>    <span class="k">def</span> <span class="nf">check_type</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">attr</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+<div class="viewcode-block" id="ByType.check_type"><a class="viewcode-back" href="../../../../autodoc/qiskit.validation.fields.html#qiskit.validation.fields.polymorphic.ByType.check_type">[docs]</a>    <span class="k">def</span> <span class="nf">check_type</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">attr</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Check if at least one of the possible choices validates the value.</span>
 
 <span class="sd">        Possible choices are assumed to be ``ModelTypeValidator`` fields.</span>
@@ -469,23 +469,23 @@
       var el = document.getElementById('language');
       var optionsToSelect = ['en', 'ja']
       function changeLoc(evt) {
-        var language = evt.target.options[el.selectedIndex].value;
-        var pathname = window.location.pathname.slice(prefix.length);
-        if (language === getDefaultLanguage()) {
-          window.location.pathname =
-            `${prefix}${pathname.replace(localeRegExp, '/')}`;
-        } else {
-          window.location.pathname =
-            `${prefix}${pathname.replace(localeRegExp, `/locale/${language}/`)}`;
+	        var language = evt.target.options[el.selectedIndex].value;
+	        var pathname = window.location.pathname.slice(prefix.length);
+	        if (language === getDefaultLanguage()) {
+	          window.location.pathname =
+	            `${prefix}${pathname.replace(localeRegExp, '/')}`;
+	        } else {
+	          window.location.pathname =
+	            `${prefix}${pathname.replace(localeRegExp, `/locale/${language}/`)}`;
         }
       };
       el.addEventListener('change', changeLoc);
 
       function extractLanguageFromUrl(pathname) {
-        const match = pathname.slice(prefix.length).match(localeRegExp);
-        return typeof match[2] === 'undefined' ?
-                getDefaultLanguage() : match[2];
-	    }
+	        const match = pathname.slice(prefix.length).match(localeRegExp);
+	        return typeof match[2] === 'undefined' ?
+	               getDefaultLanguage() : match[2];
+	      }
 
       function changeSelect(select) {
         const optionToSelect = extractLanguageFromUrl(window.location.pathname);

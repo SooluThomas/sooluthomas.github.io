@@ -34,7 +34,7 @@
        </script>
         <script src="https://cloud.ibm.com/analytics/build/bluemix-analytics.min.js"></script>
     
-    <title>qiskit.aqua.components.initial_states.var_form_based &#8212; Qiskit 0.11.0 documentation</title>
+    <title>qiskit.aqua.components.initial_states.var_form_based &#8212; Qiskit 0.11.1 documentation</title>
 
     <link rel="stylesheet" href="../../../../../_static/material-icons.css" type="text/css" />
     <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css" />
@@ -184,7 +184,7 @@
 <span class="c1"># that they have been altered from the originals.</span>
 
 
-<div class="viewcode-block" id="VarFormBased"><a class="viewcode-back" href="../../../../../autodoc/qiskit.aqua.components.initial_states.var_form_based.html#qiskit.aqua.components.initial_states.VarFormBased">[docs]</a><span class="k">class</span> <span class="nc">VarFormBased</span><span class="p">:</span>
+<div class="viewcode-block" id="VarFormBased"><a class="viewcode-back" href="../../../../../autodoc/qiskit.aqua.components.initial_states.html#qiskit.aqua.components.initial_states.VarFormBased">[docs]</a><span class="k">class</span> <span class="nc">VarFormBased</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;An initial state derived from a variational form.</span>
 <span class="sd">       Intended to be used programmatically only.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -202,7 +202,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_var_form</span> <span class="o">=</span> <span class="n">var_form</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_var_form_params</span> <span class="o">=</span> <span class="n">params</span>
 
-<div class="viewcode-block" id="VarFormBased.construct_circuit"><a class="viewcode-back" href="../../../../../autodoc/qiskit.aqua.components.initial_states.var_form_based.html#qiskit.aqua.components.initial_states.VarFormBased.construct_circuit">[docs]</a>    <span class="k">def</span> <span class="nf">construct_circuit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mode</span><span class="p">,</span> <span class="n">register</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="VarFormBased.construct_circuit"><a class="viewcode-back" href="../../../../../autodoc/qiskit.aqua.components.initial_states.html#qiskit.aqua.components.initial_states.VarFormBased.construct_circuit">[docs]</a>    <span class="k">def</span> <span class="nf">construct_circuit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mode</span><span class="p">,</span> <span class="n">register</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Construct the statevector of desired initial state.</span>
 
@@ -274,23 +274,23 @@
       var el = document.getElementById('language');
       var optionsToSelect = ['en', 'ja']
       function changeLoc(evt) {
-        var language = evt.target.options[el.selectedIndex].value;
-        var pathname = window.location.pathname.slice(prefix.length);
-        if (language === getDefaultLanguage()) {
-          window.location.pathname =
-            `${prefix}${pathname.replace(localeRegExp, '/')}`;
-        } else {
-          window.location.pathname =
-            `${prefix}${pathname.replace(localeRegExp, `/locale/${language}/`)}`;
+	        var language = evt.target.options[el.selectedIndex].value;
+	        var pathname = window.location.pathname.slice(prefix.length);
+	        if (language === getDefaultLanguage()) {
+	          window.location.pathname =
+	            `${prefix}${pathname.replace(localeRegExp, '/')}`;
+	        } else {
+	          window.location.pathname =
+	            `${prefix}${pathname.replace(localeRegExp, `/locale/${language}/`)}`;
         }
       };
       el.addEventListener('change', changeLoc);
 
       function extractLanguageFromUrl(pathname) {
-        const match = pathname.slice(prefix.length).match(localeRegExp);
-        return typeof match[2] === 'undefined' ?
-                getDefaultLanguage() : match[2];
-	    }
+	        const match = pathname.slice(prefix.length).match(localeRegExp);
+	        return typeof match[2] === 'undefined' ?
+	               getDefaultLanguage() : match[2];
+	      }
 
       function changeSelect(select) {
         const optionToSelect = extractLanguageFromUrl(window.location.pathname);

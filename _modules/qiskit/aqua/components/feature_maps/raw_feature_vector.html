@@ -34,7 +34,7 @@
        </script>
         <script src="https://cloud.ibm.com/analytics/build/bluemix-analytics.min.js"></script>
     
-    <title>qiskit.aqua.components.feature_maps.raw_feature_vector &#8212; Qiskit 0.11.0 documentation</title>
+    <title>qiskit.aqua.components.feature_maps.raw_feature_vector &#8212; Qiskit 0.11.1 documentation</title>
 
     <link rel="stylesheet" href="../../../../../_static/material-icons.css" type="text/css" />
     <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css" />
@@ -199,7 +199,7 @@
 <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
 
 
-<div class="viewcode-block" id="RawFeatureVector"><a class="viewcode-back" href="../../../../../autodoc/qiskit.aqua.components.feature_maps.raw_feature_vector.html#qiskit.aqua.components.feature_maps.raw_feature_vector.RawFeatureVector">[docs]</a><span class="k">class</span> <span class="nc">RawFeatureVector</span><span class="p">(</span><span class="n">FeatureMap</span><span class="p">):</span>
+<div class="viewcode-block" id="RawFeatureVector"><a class="viewcode-back" href="../../../../../autodoc/qiskit.aqua.components.feature_maps.html#qiskit.aqua.components.feature_maps.raw_feature_vector.RawFeatureVector">[docs]</a><span class="k">class</span> <span class="nc">RawFeatureVector</span><span class="p">(</span><span class="n">FeatureMap</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Using raw feature vector as the initial state vector</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -233,7 +233,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_feature_dimension</span> <span class="o">=</span> <span class="n">feature_dimension</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_num_qubits</span> <span class="o">=</span> <span class="n">next_power_of_2_base</span><span class="p">(</span><span class="n">feature_dimension</span><span class="p">)</span>
 
-<div class="viewcode-block" id="RawFeatureVector.construct_circuit"><a class="viewcode-back" href="../../../../../autodoc/qiskit.aqua.components.feature_maps.raw_feature_vector.html#qiskit.aqua.components.feature_maps.raw_feature_vector.RawFeatureVector.construct_circuit">[docs]</a>    <span class="k">def</span> <span class="nf">construct_circuit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">qr</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">inverse</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<div class="viewcode-block" id="RawFeatureVector.construct_circuit"><a class="viewcode-back" href="../../../../../autodoc/qiskit.aqua.components.feature_maps.html#qiskit.aqua.components.feature_maps.raw_feature_vector.RawFeatureVector.construct_circuit">[docs]</a>    <span class="k">def</span> <span class="nf">construct_circuit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">qr</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">inverse</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Construct the second order expansion based on given data.</span>
 
@@ -306,23 +306,23 @@
       var el = document.getElementById('language');
       var optionsToSelect = ['en', 'ja']
       function changeLoc(evt) {
-        var language = evt.target.options[el.selectedIndex].value;
-        var pathname = window.location.pathname.slice(prefix.length);
-        if (language === getDefaultLanguage()) {
-          window.location.pathname =
-            `${prefix}${pathname.replace(localeRegExp, '/')}`;
-        } else {
-          window.location.pathname =
-            `${prefix}${pathname.replace(localeRegExp, `/locale/${language}/`)}`;
+	        var language = evt.target.options[el.selectedIndex].value;
+	        var pathname = window.location.pathname.slice(prefix.length);
+	        if (language === getDefaultLanguage()) {
+	          window.location.pathname =
+	            `${prefix}${pathname.replace(localeRegExp, '/')}`;
+	        } else {
+	          window.location.pathname =
+	            `${prefix}${pathname.replace(localeRegExp, `/locale/${language}/`)}`;
         }
       };
       el.addEventListener('change', changeLoc);
 
       function extractLanguageFromUrl(pathname) {
-        const match = pathname.slice(prefix.length).match(localeRegExp);
-        return typeof match[2] === 'undefined' ?
-                getDefaultLanguage() : match[2];
-	    }
+	        const match = pathname.slice(prefix.length).match(localeRegExp);
+	        return typeof match[2] === 'undefined' ?
+	               getDefaultLanguage() : match[2];
+	      }
 
       function changeSelect(select) {
         const optionToSelect = extractLanguageFromUrl(window.location.pathname);

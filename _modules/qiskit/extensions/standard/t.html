@@ -34,7 +34,7 @@
        </script>
         <script src="https://cloud.ibm.com/analytics/build/bluemix-analytics.min.js"></script>
     
-    <title>qiskit.extensions.standard.t &#8212; Qiskit 0.11.0 documentation</title>
+    <title>qiskit.extensions.standard.t &#8212; Qiskit 0.11.1 documentation</title>
 
     <link rel="stylesheet" href="../../../../_static/material-icons.css" type="text/css" />
     <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
@@ -198,7 +198,7 @@
 <span class="kn">from</span> <span class="nn">qiskit.extensions.standard.u1</span> <span class="k">import</span> <span class="n">U1Gate</span>
 
 
-<div class="viewcode-block" id="TGate"><a class="viewcode-back" href="../../../../autodoc/qiskit.extensions.standard.t.html#qiskit.circuit.compositegate.TGate">[docs]</a><span class="k">class</span> <span class="nc">TGate</span><span class="p">(</span><span class="n">Gate</span><span class="p">):</span>
+<div class="viewcode-block" id="TGate"><a class="viewcode-back" href="../../../../autodoc/qiskit.extensions.standard.html#qiskit.circuit.compositegate.TGate">[docs]</a><span class="k">class</span> <span class="nc">TGate</span><span class="p">(</span><span class="n">Gate</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;T Gate: pi/4 rotation around Z axis.&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
@@ -218,17 +218,17 @@
             <span class="n">definition</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">inst</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">definition</span> <span class="o">=</span> <span class="n">definition</span>
 
-<div class="viewcode-block" id="TGate.inverse"><a class="viewcode-back" href="../../../../autodoc/qiskit.extensions.standard.t.html#qiskit.circuit.compositegate.TGate.inverse">[docs]</a>    <span class="k">def</span> <span class="nf">inverse</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="TGate.inverse"><a class="viewcode-back" href="../../../../autodoc/qiskit.extensions.standard.html#qiskit.circuit.compositegate.TGate.inverse">[docs]</a>    <span class="k">def</span> <span class="nf">inverse</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Invert this gate.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">TdgGate</span><span class="p">()</span></div>
 
-<div class="viewcode-block" id="TGate.to_matrix"><a class="viewcode-back" href="../../../../autodoc/qiskit.extensions.standard.t.html#qiskit.circuit.compositegate.TGate.to_matrix">[docs]</a>    <span class="k">def</span> <span class="nf">to_matrix</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="TGate.to_matrix"><a class="viewcode-back" href="../../../../autodoc/qiskit.extensions.standard.html#qiskit.circuit.compositegate.TGate.to_matrix">[docs]</a>    <span class="k">def</span> <span class="nf">to_matrix</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return a Numpy.array for the S gate.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
                             <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="mi">1</span><span class="n">j</span><span class="p">)</span> <span class="o">/</span> <span class="n">numpy</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)]],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">complex</span><span class="p">)</span></div></div>
 
 
-<div class="viewcode-block" id="TdgGate"><a class="viewcode-back" href="../../../../autodoc/qiskit.extensions.standard.t.html#qiskit.circuit.compositegate.TdgGate">[docs]</a><span class="k">class</span> <span class="nc">TdgGate</span><span class="p">(</span><span class="n">Gate</span><span class="p">):</span>
+<div class="viewcode-block" id="TdgGate"><a class="viewcode-back" href="../../../../autodoc/qiskit.extensions.standard.html#qiskit.circuit.compositegate.TdgGate">[docs]</a><span class="k">class</span> <span class="nc">TdgGate</span><span class="p">(</span><span class="n">Gate</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;T Gate: -pi/4 rotation around Z axis.&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
@@ -248,24 +248,24 @@
             <span class="n">definition</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">inst</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">definition</span> <span class="o">=</span> <span class="n">definition</span>
 
-<div class="viewcode-block" id="TdgGate.inverse"><a class="viewcode-back" href="../../../../autodoc/qiskit.extensions.standard.t.html#qiskit.circuit.compositegate.TdgGate.inverse">[docs]</a>    <span class="k">def</span> <span class="nf">inverse</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="TdgGate.inverse"><a class="viewcode-back" href="../../../../autodoc/qiskit.extensions.standard.html#qiskit.circuit.compositegate.TdgGate.inverse">[docs]</a>    <span class="k">def</span> <span class="nf">inverse</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Invert this gate.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">TGate</span><span class="p">()</span></div>
 
-<div class="viewcode-block" id="TdgGate.to_matrix"><a class="viewcode-back" href="../../../../autodoc/qiskit.extensions.standard.t.html#qiskit.circuit.compositegate.TdgGate.to_matrix">[docs]</a>    <span class="k">def</span> <span class="nf">to_matrix</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="TdgGate.to_matrix"><a class="viewcode-back" href="../../../../autodoc/qiskit.extensions.standard.html#qiskit.circuit.compositegate.TdgGate.to_matrix">[docs]</a>    <span class="k">def</span> <span class="nf">to_matrix</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return a Numpy.array for the S gate.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
                             <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="mi">1</span><span class="n">j</span><span class="p">)</span> <span class="o">/</span> <span class="n">numpy</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)]],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">complex</span><span class="p">)</span></div></div>
 
 
-<div class="viewcode-block" id="t"><a class="viewcode-back" href="../../../../autodoc/qiskit.extensions.standard.t.html#qiskit.circuit.compositegate.t">[docs]</a><span class="nd">@_to_bits</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<div class="viewcode-block" id="t"><a class="viewcode-back" href="../../../../autodoc/qiskit.extensions.standard.html#qiskit.circuit.compositegate.t">[docs]</a><span class="nd">@_to_bits</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 <span class="nd">@_op_expand</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">t</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">q</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Apply T to q.&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">TGate</span><span class="p">(),</span> <span class="p">[</span><span class="n">q</span><span class="p">],</span> <span class="p">[])</span></div>
 
 
-<div class="viewcode-block" id="tdg"><a class="viewcode-back" href="../../../../autodoc/qiskit.extensions.standard.t.html#qiskit.circuit.compositegate.tdg">[docs]</a><span class="nd">@_to_bits</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<div class="viewcode-block" id="tdg"><a class="viewcode-back" href="../../../../autodoc/qiskit.extensions.standard.html#qiskit.circuit.compositegate.tdg">[docs]</a><span class="nd">@_to_bits</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 <span class="nd">@_op_expand</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">tdg</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">q</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Apply Tdg to q.&quot;&quot;&quot;</span>
@@ -326,23 +326,23 @@
       var el = document.getElementById('language');
       var optionsToSelect = ['en', 'ja']
       function changeLoc(evt) {
-        var language = evt.target.options[el.selectedIndex].value;
-        var pathname = window.location.pathname.slice(prefix.length);
-        if (language === getDefaultLanguage()) {
-          window.location.pathname =
-            `${prefix}${pathname.replace(localeRegExp, '/')}`;
-        } else {
-          window.location.pathname =
-            `${prefix}${pathname.replace(localeRegExp, `/locale/${language}/`)}`;
+	        var language = evt.target.options[el.selectedIndex].value;
+	        var pathname = window.location.pathname.slice(prefix.length);
+	        if (language === getDefaultLanguage()) {
+	          window.location.pathname =
+	            `${prefix}${pathname.replace(localeRegExp, '/')}`;
+	        } else {
+	          window.location.pathname =
+	            `${prefix}${pathname.replace(localeRegExp, `/locale/${language}/`)}`;
         }
       };
       el.addEventListener('change', changeLoc);
 
       function extractLanguageFromUrl(pathname) {
-        const match = pathname.slice(prefix.length).match(localeRegExp);
-        return typeof match[2] === 'undefined' ?
-                getDefaultLanguage() : match[2];
-	    }
+	        const match = pathname.slice(prefix.length).match(localeRegExp);
+	        return typeof match[2] === 'undefined' ?
+	               getDefaultLanguage() : match[2];
+	      }
 
       function changeSelect(select) {
         const optionToSelect = extractLanguageFromUrl(window.location.pathname);

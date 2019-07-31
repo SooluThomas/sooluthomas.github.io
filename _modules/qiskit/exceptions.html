@@ -34,7 +34,7 @@
        </script>
         <script src="https://cloud.ibm.com/analytics/build/bluemix-analytics.min.js"></script>
     
-    <title>qiskit.exceptions &#8212; Qiskit 0.11.0 documentation</title>
+    <title>qiskit.exceptions &#8212; Qiskit 0.11.1 documentation</title>
 
     <link rel="stylesheet" href="../../_static/material-icons.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -186,7 +186,7 @@
 <span class="sd">&quot;&quot;&quot;Exceptions for errors raised by Qiskit.&quot;&quot;&quot;</span>
 
 
-<div class="viewcode-block" id="QiskitError"><a class="viewcode-back" href="../../autodoc/qiskit.exceptions.html#qiskit.exceptions.QiskitError">[docs]</a><span class="k">class</span> <span class="nc">QiskitError</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
+<div class="viewcode-block" id="QiskitError"><a class="viewcode-back" href="../../autodoc/qiskit.html#qiskit.exceptions.QiskitError">[docs]</a><span class="k">class</span> <span class="nc">QiskitError</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Base class for errors raised by Qiskit.&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">message</span><span class="p">):</span>
@@ -199,12 +199,12 @@
         <span class="k">return</span> <span class="nb">repr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">message</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="QiskitIndexError"><a class="viewcode-back" href="../../autodoc/qiskit.exceptions.html#qiskit.exceptions.QiskitIndexError">[docs]</a><span class="k">class</span> <span class="nc">QiskitIndexError</span><span class="p">(</span><span class="n">QiskitError</span><span class="p">,</span> <span class="ne">IndexError</span><span class="p">):</span>
+<div class="viewcode-block" id="QiskitIndexError"><a class="viewcode-back" href="../../autodoc/qiskit.html#qiskit.exceptions.QiskitIndexError">[docs]</a><span class="k">class</span> <span class="nc">QiskitIndexError</span><span class="p">(</span><span class="n">QiskitError</span><span class="p">,</span> <span class="ne">IndexError</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Raised when a sequence subscript is out of range.&quot;&quot;&quot;</span>
     <span class="k">pass</span></div>
 
 
-<div class="viewcode-block" id="QiskitUserConfigError"><a class="viewcode-back" href="../../autodoc/qiskit.exceptions.html#qiskit.exceptions.QiskitUserConfigError">[docs]</a><span class="k">class</span> <span class="nc">QiskitUserConfigError</span><span class="p">(</span><span class="n">QiskitError</span><span class="p">):</span>
+<div class="viewcode-block" id="QiskitUserConfigError"><a class="viewcode-back" href="../../autodoc/qiskit.html#qiskit.exceptions.QiskitUserConfigError">[docs]</a><span class="k">class</span> <span class="nc">QiskitUserConfigError</span><span class="p">(</span><span class="n">QiskitError</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Raised when an error is encountered reading a user config file.&quot;&quot;&quot;</span>
     <span class="n">message</span> <span class="o">=</span> <span class="s2">&quot;User config invalid&quot;</span></div>
 </pre></div>
@@ -257,23 +257,23 @@
       var el = document.getElementById('language');
       var optionsToSelect = ['en', 'ja']
       function changeLoc(evt) {
-        var language = evt.target.options[el.selectedIndex].value;
-        var pathname = window.location.pathname.slice(prefix.length);
-        if (language === getDefaultLanguage()) {
-          window.location.pathname =
-            `${prefix}${pathname.replace(localeRegExp, '/')}`;
-        } else {
-          window.location.pathname =
-            `${prefix}${pathname.replace(localeRegExp, `/locale/${language}/`)}`;
+	        var language = evt.target.options[el.selectedIndex].value;
+	        var pathname = window.location.pathname.slice(prefix.length);
+	        if (language === getDefaultLanguage()) {
+	          window.location.pathname =
+	            `${prefix}${pathname.replace(localeRegExp, '/')}`;
+	        } else {
+	          window.location.pathname =
+	            `${prefix}${pathname.replace(localeRegExp, `/locale/${language}/`)}`;
         }
       };
       el.addEventListener('change', changeLoc);
 
       function extractLanguageFromUrl(pathname) {
-        const match = pathname.slice(prefix.length).match(localeRegExp);
-        return typeof match[2] === 'undefined' ?
-                getDefaultLanguage() : match[2];
-	    }
+	        const match = pathname.slice(prefix.length).match(localeRegExp);
+	        return typeof match[2] === 'undefined' ?
+	               getDefaultLanguage() : match[2];
+	      }
 
       function changeSelect(select) {
         const optionToSelect = extractLanguageFromUrl(window.location.pathname);

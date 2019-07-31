@@ -34,7 +34,7 @@
        </script>
         <script src="https://cloud.ibm.com/analytics/build/bluemix-analytics.min.js"></script>
     
-    <title>qiskit.pulse.channels.pulse_channels &#8212; Qiskit 0.11.0 documentation</title>
+    <title>qiskit.pulse.channels.pulse_channels &#8212; Qiskit 0.11.1 documentation</title>
 
     <link rel="stylesheet" href="../../../../_static/material-icons.css" type="text/css" />
     <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
@@ -184,24 +184,24 @@
 <span class="kn">from</span> <span class="nn">.channels</span> <span class="k">import</span> <span class="n">Channel</span>
 
 
-<div class="viewcode-block" id="PulseChannel"><a class="viewcode-back" href="../../../../autodoc/qiskit.pulse.channels.pulse_channels.html#qiskit.pulse.channels.pulse_channels.PulseChannel">[docs]</a><span class="k">class</span> <span class="nc">PulseChannel</span><span class="p">(</span><span class="n">Channel</span><span class="p">,</span> <span class="n">metaclass</span><span class="o">=</span><span class="n">ABCMeta</span><span class="p">):</span>
+<div class="viewcode-block" id="PulseChannel"><a class="viewcode-back" href="../../../../autodoc/qiskit.pulse.channels.html#qiskit.pulse.channels.pulse_channels.PulseChannel">[docs]</a><span class="k">class</span> <span class="nc">PulseChannel</span><span class="p">(</span><span class="n">Channel</span><span class="p">,</span> <span class="n">metaclass</span><span class="o">=</span><span class="n">ABCMeta</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Base class of Channel supporting pulse output.&quot;&quot;&quot;</span>
     <span class="k">pass</span></div>
 
 
-<div class="viewcode-block" id="DriveChannel"><a class="viewcode-back" href="../../../../autodoc/qiskit.pulse.channels.pulse_channels.html#qiskit.pulse.channels.pulse_channels.DriveChannel">[docs]</a><span class="k">class</span> <span class="nc">DriveChannel</span><span class="p">(</span><span class="n">PulseChannel</span><span class="p">):</span>
+<div class="viewcode-block" id="DriveChannel"><a class="viewcode-back" href="../../../../autodoc/qiskit.pulse.channels.html#qiskit.pulse.channels.pulse_channels.DriveChannel">[docs]</a><span class="k">class</span> <span class="nc">DriveChannel</span><span class="p">(</span><span class="n">PulseChannel</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Drive Channel.&quot;&quot;&quot;</span>
 
     <span class="n">prefix</span> <span class="o">=</span> <span class="s1">&#39;d&#39;</span></div>
 
 
-<div class="viewcode-block" id="MeasureChannel"><a class="viewcode-back" href="../../../../autodoc/qiskit.pulse.channels.pulse_channels.html#qiskit.pulse.channels.pulse_channels.MeasureChannel">[docs]</a><span class="k">class</span> <span class="nc">MeasureChannel</span><span class="p">(</span><span class="n">PulseChannel</span><span class="p">):</span>
+<div class="viewcode-block" id="MeasureChannel"><a class="viewcode-back" href="../../../../autodoc/qiskit.pulse.channels.html#qiskit.pulse.channels.pulse_channels.MeasureChannel">[docs]</a><span class="k">class</span> <span class="nc">MeasureChannel</span><span class="p">(</span><span class="n">PulseChannel</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Measure Channel.&quot;&quot;&quot;</span>
 
     <span class="n">prefix</span> <span class="o">=</span> <span class="s1">&#39;m&#39;</span></div>
 
 
-<div class="viewcode-block" id="ControlChannel"><a class="viewcode-back" href="../../../../autodoc/qiskit.pulse.channels.pulse_channels.html#qiskit.pulse.channels.pulse_channels.ControlChannel">[docs]</a><span class="k">class</span> <span class="nc">ControlChannel</span><span class="p">(</span><span class="n">PulseChannel</span><span class="p">):</span>
+<div class="viewcode-block" id="ControlChannel"><a class="viewcode-back" href="../../../../autodoc/qiskit.pulse.channels.html#qiskit.pulse.channels.pulse_channels.ControlChannel">[docs]</a><span class="k">class</span> <span class="nc">ControlChannel</span><span class="p">(</span><span class="n">PulseChannel</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Control Channel.&quot;&quot;&quot;</span>
 
     <span class="n">prefix</span> <span class="o">=</span> <span class="s1">&#39;u&#39;</span></div>
@@ -255,23 +255,23 @@
       var el = document.getElementById('language');
       var optionsToSelect = ['en', 'ja']
       function changeLoc(evt) {
-        var language = evt.target.options[el.selectedIndex].value;
-        var pathname = window.location.pathname.slice(prefix.length);
-        if (language === getDefaultLanguage()) {
-          window.location.pathname =
-            `${prefix}${pathname.replace(localeRegExp, '/')}`;
-        } else {
-          window.location.pathname =
-            `${prefix}${pathname.replace(localeRegExp, `/locale/${language}/`)}`;
+	        var language = evt.target.options[el.selectedIndex].value;
+	        var pathname = window.location.pathname.slice(prefix.length);
+	        if (language === getDefaultLanguage()) {
+	          window.location.pathname =
+	            `${prefix}${pathname.replace(localeRegExp, '/')}`;
+	        } else {
+	          window.location.pathname =
+	            `${prefix}${pathname.replace(localeRegExp, `/locale/${language}/`)}`;
         }
       };
       el.addEventListener('change', changeLoc);
 
       function extractLanguageFromUrl(pathname) {
-        const match = pathname.slice(prefix.length).match(localeRegExp);
-        return typeof match[2] === 'undefined' ?
-                getDefaultLanguage() : match[2];
-	    }
+	        const match = pathname.slice(prefix.length).match(localeRegExp);
+	        return typeof match[2] === 'undefined' ?
+	               getDefaultLanguage() : match[2];
+	      }
 
       function changeSelect(select) {
         const optionToSelect = extractLanguageFromUrl(window.location.pathname);

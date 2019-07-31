@@ -34,7 +34,7 @@
        </script>
         <script src="https://cloud.ibm.com/analytics/build/bluemix-analytics.min.js"></script>
     
-    <title>qiskit.chemistry package &#8212; Qiskit 0.11.0 documentation</title>
+    <title>qiskit.chemistry package &#8212; Qiskit 0.11.1 documentation</title>
 
     <link rel="stylesheet" href="../_static/material-icons.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -52,7 +52,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="qiskit.chemistry.aqua_extensions package" href="qiskit.chemistry.aqua_extensions.html" />
-    <link rel="prev" title="qiskit.assembler.run_config module" href="qiskit.assembler.run_config.html" /> 
+    <link rel="prev" title="qiskit.assembler package" href="qiskit.assembler.html" /> 
   </head>
 <body>
   <header>
@@ -111,20 +111,7 @@
   
       
       <nav class="mdl-navigation">
-          <p class="caption"><span class="caption-text">Contents:</span></p>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../overview.html#qiskit-elements">Qiskit Elements</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../overview.html#qiskit-terra">Qiskit Terra</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../overview.html#qiskit-aer">Qiskit Aer</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../overview.html#qiskit-ignis">Qiskit Ignis</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../overview.html#qiskit-aqua">Qiskit Aqua</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../overview.html#qiskit-components">Qiskit Components</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../overview.html#qiskit-chemistry">Qiskit Chemistry</a></li>
-</ul>
-</li>
+          <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../install.html">Installing Qiskit</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../install.html#requirements">Requirements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../install.html#install">Install</a></li>
@@ -147,18 +134,6 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../faq.html">Frequently Asked Questions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../terra/index.html">Qiskit Terra</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../terra/overview.html">Overview</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../terra/overview.html#terra-organization">Terra Organization</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../terra/overview.html#quantum-circuits">Quantum Circuits</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../terra/overview.html#transpiler">Transpiler</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../terra/overview.html#tools">Tools</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../terra/overview.html#backends-and-results">Backends and Results</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../terra/overview.html#quantum-information">Quantum Information</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../terra/overview.html#visualization-tools">Visualization Tools</a></li>
-</ul>
-</li>
-</ul>
-</li>
 <li class="toctree-l2"><a class="reference internal" href="../terra/quantum_circuits.html">Circuits and Registers</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../terra/quantum_circuits.html#creating-registers">Creating Registers</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../terra/quantum_circuits.html#creating-circuits">Creating Circuits</a></li>
@@ -307,7 +282,6 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../aer/index.html">Qiskit Aer</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../aer/overview.html">Overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../aer/simulate_experiments.html">Simulate an experiment</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../aer/simulate_experiments.html#introduction">Introduction</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../aer/simulate_experiments.html#qasmsimulator">QasmSimulator</a><ul>
@@ -354,18 +328,6 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../ignis/index.html">Qiskit Ignis</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../ignis/overview.html">Overview</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../ignis/overview.html#circuits">Circuits</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../ignis/overview.html#fitters">Fitters</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../ignis/overview.html#filters">Filters</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../ignis/overview.html#ignis-organization">Ignis Organization</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../ignis/overview.html#characterization">Characterization</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../ignis/overview.html#verification">Verification</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../ignis/overview.html#mitigation">Mitigation</a></li>
-</ul>
-</li>
 <li class="toctree-l2"><a class="reference internal" href="../ignis/characterization.html">Characterization</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../ignis/characterization.html#circuits">Circuits</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../ignis/characterization.html#coherence">Coherence</a></li>
@@ -415,13 +377,6 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../aqua/index.html">Qiskit Aqua</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../aqua/library.html">Aqua: A Library of Quantum Algorithms</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../aqua/overview.html">Overview</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../aqua/overview.html#modularity-and-extensibility">Modularity and Extensibility</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../aqua/overview.html#novel-features">Novel Features</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../aqua/overview.html#contributors-in-alphabetical-order">Contributors (in Alphabetical Order)</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../aqua/overview.html#license">License</a></li>
-</ul>
-</li>
 <li class="toctree-l3"><a class="reference internal" href="../aqua/installation.html">Installation and Setup</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../aqua/installation.html#dependencies">Dependencies</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../aqua/installation.html#installation">Installation</a></li>
@@ -517,15 +472,10 @@
 <li class="toctree-l4"><a class="reference internal" href="../aqua/circuit_collection.html#circuits">Circuits</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="../aqua/library.html#contributors-in-alphabetical-order">Contributors (in Alphabetical Order)</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../aqua/chemistry/qiskit_chemistry.html">Qiskit Chemistry</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../aqua/chemistry/qiskit_chemistry_overview.html">Overview</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../aqua/chemistry/qiskit_chemistry_overview.html#modularity-and-extensibility">Modularity and Extensibility</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../aqua/chemistry/qiskit_chemistry_overview.html#novel-features">Novel Features</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../aqua/chemistry/qiskit_chemistry_overview.html#license">License</a></li>
-</ul>
-</li>
 <li class="toctree-l3"><a class="reference internal" href="../aqua/chemistry/qiskit_chemistry_installation.html">Installation and Setup</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../aqua/chemistry/qiskit_chemistry_installation.html#dependencies">Dependencies</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../aqua/chemistry/qiskit_chemistry_installation.html#code-installation">Code Installation</a></li>
@@ -561,6 +511,10 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../aqua/chemistry/release_history.html">Release history</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../aqua/chemistry/release_history.html#release-notes">Release Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../aqua/chemistry/qiskit_chemistry.html#features">Features</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../aqua/chemistry/qiskit_chemistry.html#license">License</a></li>
 </ul>
 </li>
 </ul>
@@ -646,16 +600,24 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../release_notes.html">Release Notes</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../release_notes.html#qiskit-0-11">Qiskit 0.11</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../release_notes.html#qiskit-0-11-1">Qiskit 0.11.1</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../release_notes.html#terra-0-8">Terra 0.8</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#aer-0-2">Aer 0.2</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#aer-0-2">Aer 0.2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#ignis-0-1">Ignis 0.1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#aqua-0-5">Aqua 0.5</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#ibm-q-provider-0-3">IBM Q Provider 0.3</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../release_notes.html#qiskit-0-11">Qiskit 0.11</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id1">Terra 0.8</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id2">Aer 0.2</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../release_notes.html#new-features">New features</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../release_notes.html#improvements">Improvements</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#ignis-0-1">Ignis 0.1</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#aqua-0-5">Aqua 0.5</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#ibm-q-provider-0-3">IBM Q Provider 0.3</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id3">Ignis 0.1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id4">Aqua 0.5</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id5">IBM Q Provider 0.3</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../release_notes.html#updating-to-the-new-ibm-q-experience-v2">Updating to the new IBM Q Experience v2</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../release_notes.html#updating-your-programs">Updating your programs</a></li>
 </ul>
@@ -663,43 +625,43 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../release_notes.html#qiskit-0-10">Qiskit 0.10</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id1">Terra 0.8</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id2">Aer 0.2</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id3">Ignis 0.1</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id4">Aqua 0.5</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id6">Terra 0.8</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id7">Aer 0.2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id8">Ignis 0.1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id9">Aqua 0.5</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../release_notes.html#ibm-q-provider-0-2">IBM Q Provider 0.2</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id5">New Features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id10">New Features</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../release_notes.html#bug-fixes">Bug Fixes</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../release_notes.html#qiskit-0-9">Qiskit 0.9</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id6">Terra 0.8</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id11">Terra 0.8</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../release_notes.html#highlights">Highlights</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id7">New Features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id12">New Features</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../release_notes.html#compatibility-considerations">Compatibility Considerations</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id8">Aer 0.2</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id9">New Features</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id10">Bug Fixes</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id11">Compatibility Considerations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id13">Aer 0.2</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id14">New Features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id15">Bug Fixes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id16">Compatibility Considerations</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id12">Ignis 0.1</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id13">New Features</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id14">Compatibility Considerations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id17">Ignis 0.1</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id18">New Features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id19">Compatibility Considerations</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id15">Aqua 0.5</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id16">New Features</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id17">Bug Fixes</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id18">Compatibility Considerations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id20">Aqua 0.5</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id21">New Features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id22">Bug Fixes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id23">Compatibility Considerations</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../release_notes.html#ibm-q-provider-0-1">IBM Q Provider 0.1</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id19">New Features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id24">New Features</a></li>
 </ul>
 </li>
 </ul>
@@ -707,38 +669,38 @@
 <li class="toctree-l2"><a class="reference internal" href="../release_notes.html#qiskit-0-8">Qiskit 0.8</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../release_notes.html#terra-0-7">Terra 0.7</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../release_notes.html#aer-0-1">Aer 0.1</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id20">Ignis 0.1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id25">Ignis 0.1</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../release_notes.html#qiskit-0-7">Qiskit 0.7</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id21">Terra 0.7</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id22">New Features</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id23">Compatibility Considerations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id26">Terra 0.7</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id27">New Features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id28">Compatibility Considerations</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id24">Aer 0.1</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id25">New Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id29">Aer 0.1</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id30">New Features</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../release_notes.html#aqua-0-4">Aqua 0.4</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id26">New Features</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id27">Compatibility Considerations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id31">New Features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id32">Compatibility Considerations</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../release_notes.html#qiskit-0-6">Qiskit 0.6</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../release_notes.html#terra-0-6">Terra 0.6</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id28">Highlights</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id29">Compatibility Considerations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id33">Highlights</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id34">Compatibility Considerations</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../release_notes.html#qiskit-0-5">Qiskit 0.5</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../release_notes.html#terra-0-5">Terra 0.5</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id30">Highlights</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id31">Compatibility Considerations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id35">Highlights</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id36">Compatibility Considerations</a></li>
 </ul>
 </li>
 </ul>
@@ -751,60 +713,136 @@
 <li class="toctree-l3"><a class="reference internal" href="qiskit.aqua.html">qiskit.aqua package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.aqua.html#subpackages">Subpackages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.aqua.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.aqua.html#module-qiskit.aqua._credentials_preferences">qiskit.aqua._credentials_preferences module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.aqua.html#module-qiskit.aqua._discover">qiskit.aqua._discover module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.aqua.html#module-qiskit.aqua._logging">qiskit.aqua._logging module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.aqua.html#module-qiskit.aqua.aqua_error">qiskit.aqua.aqua_error module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.aqua.html#module-qiskit.aqua.operator">qiskit.aqua.operator module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.aqua.html#module-qiskit.aqua.pluggable">qiskit.aqua.pluggable module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.aqua.html#module-qiskit.aqua.preferences">qiskit.aqua.preferences module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.aqua.html#module-qiskit.aqua.qiskit_aqua">qiskit.aqua.qiskit_aqua module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.aqua.html#module-qiskit.aqua.qiskit_aqua_globals">qiskit.aqua.qiskit_aqua_globals module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.aqua.html#module-qiskit.aqua.quantum_instance">qiskit.aqua.quantum_instance module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.aqua.html#module-qiskit.aqua.version">qiskit.aqua.version module</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.assembler.html">qiskit.assembler package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.assembler.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.assembler.html#module-qiskit.assembler.assemble_circuits">qiskit.assembler.assemble_circuits module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.assembler.html#module-qiskit.assembler.assemble_schedules">qiskit.assembler.assemble_schedules module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.assembler.html#module-qiskit.assembler.disassemble">qiskit.assembler.disassemble module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.assembler.html#module-qiskit.assembler.models">qiskit.assembler.models module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.assembler.html#module-qiskit.assembler.run_config">qiskit.assembler.run_config module</a></li>
 </ul>
 </li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">qiskit.chemistry package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#subpackages">Subpackages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-qiskit.chemistry._logging">qiskit.chemistry._logging module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-qiskit.chemistry.bksf">qiskit.chemistry.bksf module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-qiskit.chemistry.fermionic_operator">qiskit.chemistry.fermionic_operator module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-qiskit.chemistry.mp2info">qiskit.chemistry.mp2info module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-qiskit.chemistry.particle_hole">qiskit.chemistry.particle_hole module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-qiskit.chemistry.qiskit_chemistry">qiskit.chemistry.qiskit_chemistry module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-qiskit.chemistry.qiskit_chemistry_error">qiskit.chemistry.qiskit_chemistry_error module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-qiskit.chemistry.qiskit_chemistry_problem">qiskit.chemistry.qiskit_chemistry_problem module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-qiskit.chemistry.qmolecule">qiskit.chemistry.qmolecule module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-qiskit.chemistry.version">qiskit.chemistry.version module</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.circuit.html">qiskit.circuit package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#module-qiskit.circuit.classicalregister">qiskit.circuit.classicalregister module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#module-qiskit.circuit.compositegate">qiskit.circuit.compositegate module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#module-qiskit.circuit.decorators">qiskit.circuit.decorators module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#module-qiskit.circuit.gate">qiskit.circuit.gate module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#module-qiskit.circuit.instruction">qiskit.circuit.instruction module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#module-qiskit.circuit.instructionset">qiskit.circuit.instructionset module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#module-qiskit.circuit.measure">qiskit.circuit.measure module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#module-qiskit.circuit.parameter">qiskit.circuit.parameter module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#module-qiskit.circuit.parametertable">qiskit.circuit.parametertable module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#module-qiskit.circuit.quantumcircuit">qiskit.circuit.quantumcircuit module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#module-qiskit.circuit.quantumregister">qiskit.circuit.quantumregister module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#module-qiskit.circuit.register">qiskit.circuit.register module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#module-qiskit.circuit.reset">qiskit.circuit.reset module</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.compiler.html">qiskit.compiler package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.compiler.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.compiler.html#module-qiskit.compiler.assemble">qiskit.compiler.assemble module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.compiler.html#module-qiskit.compiler.transpile">qiskit.compiler.transpile module</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.converters.html">qiskit.converters package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.converters.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.converters.html#module-qiskit.converters.ast_to_dag">qiskit.converters.ast_to_dag module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.converters.html#module-qiskit.converters.circuit_to_dag">qiskit.converters.circuit_to_dag module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.converters.html#module-qiskit.converters.circuit_to_instruction">qiskit.converters.circuit_to_instruction module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.converters.html#module-qiskit.converters.circuits_to_qobj">qiskit.converters.circuits_to_qobj module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.converters.html#module-qiskit.converters.dag_to_circuit">qiskit.converters.dag_to_circuit module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.converters.html#module-qiskit.converters.qobj_to_circuits">qiskit.converters.qobj_to_circuits module</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.dagcircuit.html">qiskit.dagcircuit package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.dagcircuit.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.dagcircuit.html#module-qiskit.dagcircuit.dagcircuit">qiskit.dagcircuit.dagcircuit module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.dagcircuit.html#module-qiskit.dagcircuit.dagnode">qiskit.dagcircuit.dagnode module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.dagcircuit.html#module-qiskit.dagcircuit.exceptions">qiskit.dagcircuit.exceptions module</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.extensions.html">qiskit.extensions package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.extensions.html#subpackages">Subpackages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.extensions.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.extensions.html#module-qiskit.extensions.exceptions">qiskit.extensions.exceptions module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.extensions.html#module-qiskit.extensions.initializer">qiskit.extensions.initializer module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.extensions.html#module-qiskit.extensions.unitary">qiskit.extensions.unitary module</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.mapper.html">qiskit.mapper package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.mapper.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.mapper.html#module-qiskit.mapper.compiling">qiskit.mapper.compiling module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.mapper.html#module-qiskit.mapper.coupling">qiskit.mapper.coupling module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.mapper.html#module-qiskit.mapper.exceptions">qiskit.mapper.exceptions module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.mapper.html#module-qiskit.mapper.layout">qiskit.mapper.layout module</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.providers.html">qiskit.providers package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.providers.html#subpackages">Subpackages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.providers.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.providers.html#module-qiskit.providers.basebackend">qiskit.providers.basebackend module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.providers.html#module-qiskit.providers.basejob">qiskit.providers.basejob module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.providers.html#module-qiskit.providers.baseprovider">qiskit.providers.baseprovider module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.providers.html#module-qiskit.providers.exceptions">qiskit.providers.exceptions module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.providers.html#module-qiskit.providers.jobstatus">qiskit.providers.jobstatus module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.providers.html#module-qiskit.providers.providerutils">qiskit.providers.providerutils module</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.pulse.html">qiskit.pulse package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.pulse.html#subpackages">Subpackages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.pulse.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.pulse.html#module-qiskit.pulse.cmd_def">qiskit.pulse.cmd_def module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.pulse.html#module-qiskit.pulse.configuration">qiskit.pulse.configuration module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.pulse.html#module-qiskit.pulse.exceptions">qiskit.pulse.exceptions module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.pulse.html#module-qiskit.pulse.interfaces">qiskit.pulse.interfaces module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.pulse.html#module-qiskit.pulse.ops">qiskit.pulse.ops module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.pulse.html#module-qiskit.pulse.schedule">qiskit.pulse.schedule module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.pulse.html#module-qiskit.pulse.timeslots">qiskit.pulse.timeslots module</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.qasm.html">qiskit.qasm package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.qasm.html#subpackages">Subpackages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.qasm.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.qasm.html#module-qiskit.qasm.exceptions">qiskit.qasm.exceptions module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.qasm.html#module-qiskit.qasm.qasm">qiskit.qasm.qasm module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.qasm.html#module-qiskit.qasm.qasmlexer">qiskit.qasm.qasmlexer module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.qasm.html#module-qiskit.qasm.qasmparser">qiskit.qasm.qasmparser module</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.qobj.html">qiskit.qobj package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.qobj.html#subpackages">Subpackages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.qobj.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.qobj.html#module-qiskit.qobj.qobj">qiskit.qobj.qobj module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.qobj.html#module-qiskit.qobj.utils">qiskit.qobj.utils module</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.quantum_info.html">qiskit.quantum_info package</a><ul>
@@ -813,45 +851,86 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.result.html">qiskit.result package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.result.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.result.html#module-qiskit.result.exceptions">qiskit.result.exceptions module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.result.html#module-qiskit.result.models">qiskit.result.models module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.result.html#module-qiskit.result.postprocess">qiskit.result.postprocess module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.result.html#module-qiskit.result.result">qiskit.result.result module</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.test.html">qiskit.test package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.test.html#subpackages">Subpackages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.test.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.test.html#module-qiskit.test.base">qiskit.test.base module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.test.html#qiskit-test-decorators-module">qiskit.test.decorators module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.test.html#qiskit-test-http-recorder-module">qiskit.test.http_recorder module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.test.html#qiskit-test-mock-module">qiskit.test.mock module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.test.html#qiskit-test-reference-circuits-module">qiskit.test.reference_circuits module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.test.html#qiskit-test-testing-options-module">qiskit.test.testing_options module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.test.html#module-qiskit.test.utils">qiskit.test.utils module</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.tools.html">qiskit.tools package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.tools.html#subpackages">Subpackages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.tools.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.tools.html#module-qiskit.tools.compiler">qiskit.tools.compiler module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.tools.html#module-qiskit.tools.logging">qiskit.tools.logging module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.tools.html#module-qiskit.tools.parallel">qiskit.tools.parallel module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.tools.html#module-qiskit.tools.visualization">qiskit.tools.visualization module</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.transpiler.html">qiskit.transpiler package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.transpiler.html#subpackages">Subpackages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.transpiler.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.transpiler.html#module-qiskit.transpiler.basepasses">qiskit.transpiler.basepasses module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.transpiler.html#module-qiskit.transpiler.coupling">qiskit.transpiler.coupling module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.transpiler.html#module-qiskit.transpiler.exceptions">qiskit.transpiler.exceptions module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.transpiler.html#module-qiskit.transpiler.fencedobjs">qiskit.transpiler.fencedobjs module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.transpiler.html#module-qiskit.transpiler.layout">qiskit.transpiler.layout module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.transpiler.html#module-qiskit.transpiler.models">qiskit.transpiler.models module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.transpiler.html#module-qiskit.transpiler.passmanager">qiskit.transpiler.passmanager module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.transpiler.html#module-qiskit.transpiler.propertyset">qiskit.transpiler.propertyset module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.transpiler.html#module-qiskit.transpiler.transpile_circuit">qiskit.transpiler.transpile_circuit module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.transpiler.html#module-qiskit.transpiler.transpile_config">qiskit.transpiler.transpile_config module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.transpiler.html#module-qiskit.transpiler.transpiler">qiskit.transpiler.transpiler module</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.validation.html">qiskit.validation package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.validation.html#subpackages">Subpackages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.validation.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.validation.html#module-qiskit.validation.base">qiskit.validation.base module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.validation.html#module-qiskit.validation.exceptions">qiskit.validation.exceptions module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.validation.html#module-qiskit.validation.validate">qiskit.validation.validate module</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.visualization.html">qiskit.visualization package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.visualization.html#subpackages">Subpackages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.visualization.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.visualization.html#qiskit-visualization-bloch-module">qiskit.visualization.bloch module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.visualization.html#module-qiskit.visualization.circuit_visualization">qiskit.visualization.circuit_visualization module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.visualization.html#module-qiskit.visualization.counts_visualization">qiskit.visualization.counts_visualization module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.visualization.html#module-qiskit.visualization.dag_visualization">qiskit.visualization.dag_visualization module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.visualization.html#module-qiskit.visualization.exceptions">qiskit.visualization.exceptions module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.visualization.html#module-qiskit.visualization.gate_map">qiskit.visualization.gate_map module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.visualization.html#module-qiskit.visualization.interpolation">qiskit.visualization.interpolation module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.visualization.html#module-qiskit.visualization.latex">qiskit.visualization.latex module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.visualization.html#module-qiskit.visualization.matplotlib">qiskit.visualization.matplotlib module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.visualization.html#module-qiskit.visualization.pulse_visualization">qiskit.visualization.pulse_visualization module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.visualization.html#module-qiskit.visualization.qcstyle">qiskit.visualization.qcstyle module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.visualization.html#module-qiskit.visualization.state_visualization">qiskit.visualization.state_visualization module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.visualization.html#module-qiskit.visualization.text">qiskit.visualization.text module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.visualization.html#module-qiskit.visualization.utils">qiskit.visualization.utils module</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="qiskit.html#submodules">Submodules</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="qiskit._util.html">qiskit._util module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.exceptions.html">qiskit.exceptions module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.execute.html">qiskit.execute module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.qiskiterror.html">qiskit.qiskiterror module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.user_config.html">qiskit.user_config module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.util.html">qiskit.util module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.version.html">qiskit.version module</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="qiskit.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qiskit.html#module-qiskit._util">qiskit._util module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qiskit.html#module-qiskit.exceptions">qiskit.exceptions module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qiskit.html#module-qiskit.execute">qiskit.execute module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qiskit.html#module-qiskit.qiskiterror">qiskit.qiskiterror module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qiskit.html#module-qiskit.user_config">qiskit.user_config module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qiskit.html#module-qiskit.util">qiskit.util module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qiskit.html#module-qiskit.version">qiskit.version module</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../contributing_to_qiskit.html">Contributing to Qiskit</a><ul>
@@ -940,20 +1019,7 @@
   
       
       <nav class="mdl-navigation">
-          <p class="caption"><span class="caption-text">Contents:</span></p>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../overview.html#qiskit-elements">Qiskit Elements</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../overview.html#qiskit-terra">Qiskit Terra</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../overview.html#qiskit-aer">Qiskit Aer</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../overview.html#qiskit-ignis">Qiskit Ignis</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../overview.html#qiskit-aqua">Qiskit Aqua</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../overview.html#qiskit-components">Qiskit Components</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../overview.html#qiskit-chemistry">Qiskit Chemistry</a></li>
-</ul>
-</li>
+          <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../install.html">Installing Qiskit</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../install.html#requirements">Requirements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../install.html#install">Install</a></li>
@@ -976,18 +1042,6 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../faq.html">Frequently Asked Questions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../terra/index.html">Qiskit Terra</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../terra/overview.html">Overview</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../terra/overview.html#terra-organization">Terra Organization</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../terra/overview.html#quantum-circuits">Quantum Circuits</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../terra/overview.html#transpiler">Transpiler</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../terra/overview.html#tools">Tools</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../terra/overview.html#backends-and-results">Backends and Results</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../terra/overview.html#quantum-information">Quantum Information</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../terra/overview.html#visualization-tools">Visualization Tools</a></li>
-</ul>
-</li>
-</ul>
-</li>
 <li class="toctree-l2"><a class="reference internal" href="../terra/quantum_circuits.html">Circuits and Registers</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../terra/quantum_circuits.html#creating-registers">Creating Registers</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../terra/quantum_circuits.html#creating-circuits">Creating Circuits</a></li>
@@ -1136,7 +1190,6 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../aer/index.html">Qiskit Aer</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../aer/overview.html">Overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../aer/simulate_experiments.html">Simulate an experiment</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../aer/simulate_experiments.html#introduction">Introduction</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../aer/simulate_experiments.html#qasmsimulator">QasmSimulator</a><ul>
@@ -1183,18 +1236,6 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../ignis/index.html">Qiskit Ignis</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../ignis/overview.html">Overview</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../ignis/overview.html#circuits">Circuits</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../ignis/overview.html#fitters">Fitters</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../ignis/overview.html#filters">Filters</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../ignis/overview.html#ignis-organization">Ignis Organization</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../ignis/overview.html#characterization">Characterization</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../ignis/overview.html#verification">Verification</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../ignis/overview.html#mitigation">Mitigation</a></li>
-</ul>
-</li>
 <li class="toctree-l2"><a class="reference internal" href="../ignis/characterization.html">Characterization</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../ignis/characterization.html#circuits">Circuits</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../ignis/characterization.html#coherence">Coherence</a></li>
@@ -1244,13 +1285,6 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../aqua/index.html">Qiskit Aqua</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../aqua/library.html">Aqua: A Library of Quantum Algorithms</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../aqua/overview.html">Overview</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../aqua/overview.html#modularity-and-extensibility">Modularity and Extensibility</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../aqua/overview.html#novel-features">Novel Features</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../aqua/overview.html#contributors-in-alphabetical-order">Contributors (in Alphabetical Order)</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../aqua/overview.html#license">License</a></li>
-</ul>
-</li>
 <li class="toctree-l3"><a class="reference internal" href="../aqua/installation.html">Installation and Setup</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../aqua/installation.html#dependencies">Dependencies</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../aqua/installation.html#installation">Installation</a></li>
@@ -1346,15 +1380,10 @@
 <li class="toctree-l4"><a class="reference internal" href="../aqua/circuit_collection.html#circuits">Circuits</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="../aqua/library.html#contributors-in-alphabetical-order">Contributors (in Alphabetical Order)</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../aqua/chemistry/qiskit_chemistry.html">Qiskit Chemistry</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../aqua/chemistry/qiskit_chemistry_overview.html">Overview</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../aqua/chemistry/qiskit_chemistry_overview.html#modularity-and-extensibility">Modularity and Extensibility</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../aqua/chemistry/qiskit_chemistry_overview.html#novel-features">Novel Features</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../aqua/chemistry/qiskit_chemistry_overview.html#license">License</a></li>
-</ul>
-</li>
 <li class="toctree-l3"><a class="reference internal" href="../aqua/chemistry/qiskit_chemistry_installation.html">Installation and Setup</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../aqua/chemistry/qiskit_chemistry_installation.html#dependencies">Dependencies</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../aqua/chemistry/qiskit_chemistry_installation.html#code-installation">Code Installation</a></li>
@@ -1390,6 +1419,10 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../aqua/chemistry/release_history.html">Release history</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../aqua/chemistry/release_history.html#release-notes">Release Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../aqua/chemistry/qiskit_chemistry.html#features">Features</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../aqua/chemistry/qiskit_chemistry.html#license">License</a></li>
 </ul>
 </li>
 </ul>
@@ -1475,16 +1508,24 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../release_notes.html">Release Notes</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../release_notes.html#qiskit-0-11">Qiskit 0.11</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../release_notes.html#qiskit-0-11-1">Qiskit 0.11.1</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../release_notes.html#terra-0-8">Terra 0.8</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#aer-0-2">Aer 0.2</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#aer-0-2">Aer 0.2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#ignis-0-1">Ignis 0.1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#aqua-0-5">Aqua 0.5</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#ibm-q-provider-0-3">IBM Q Provider 0.3</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../release_notes.html#qiskit-0-11">Qiskit 0.11</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id1">Terra 0.8</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id2">Aer 0.2</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../release_notes.html#new-features">New features</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../release_notes.html#improvements">Improvements</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#ignis-0-1">Ignis 0.1</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#aqua-0-5">Aqua 0.5</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#ibm-q-provider-0-3">IBM Q Provider 0.3</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id3">Ignis 0.1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id4">Aqua 0.5</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id5">IBM Q Provider 0.3</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../release_notes.html#updating-to-the-new-ibm-q-experience-v2">Updating to the new IBM Q Experience v2</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../release_notes.html#updating-your-programs">Updating your programs</a></li>
 </ul>
@@ -1492,43 +1533,43 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../release_notes.html#qiskit-0-10">Qiskit 0.10</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id1">Terra 0.8</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id2">Aer 0.2</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id3">Ignis 0.1</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id4">Aqua 0.5</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id6">Terra 0.8</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id7">Aer 0.2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id8">Ignis 0.1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id9">Aqua 0.5</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../release_notes.html#ibm-q-provider-0-2">IBM Q Provider 0.2</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id5">New Features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id10">New Features</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../release_notes.html#bug-fixes">Bug Fixes</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../release_notes.html#qiskit-0-9">Qiskit 0.9</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id6">Terra 0.8</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id11">Terra 0.8</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../release_notes.html#highlights">Highlights</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id7">New Features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id12">New Features</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../release_notes.html#compatibility-considerations">Compatibility Considerations</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id8">Aer 0.2</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id9">New Features</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id10">Bug Fixes</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id11">Compatibility Considerations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id13">Aer 0.2</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id14">New Features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id15">Bug Fixes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id16">Compatibility Considerations</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id12">Ignis 0.1</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id13">New Features</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id14">Compatibility Considerations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id17">Ignis 0.1</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id18">New Features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id19">Compatibility Considerations</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id15">Aqua 0.5</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id16">New Features</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id17">Bug Fixes</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id18">Compatibility Considerations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id20">Aqua 0.5</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id21">New Features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id22">Bug Fixes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id23">Compatibility Considerations</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../release_notes.html#ibm-q-provider-0-1">IBM Q Provider 0.1</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id19">New Features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id24">New Features</a></li>
 </ul>
 </li>
 </ul>
@@ -1536,38 +1577,38 @@
 <li class="toctree-l2"><a class="reference internal" href="../release_notes.html#qiskit-0-8">Qiskit 0.8</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../release_notes.html#terra-0-7">Terra 0.7</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../release_notes.html#aer-0-1">Aer 0.1</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id20">Ignis 0.1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id25">Ignis 0.1</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../release_notes.html#qiskit-0-7">Qiskit 0.7</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id21">Terra 0.7</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id22">New Features</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id23">Compatibility Considerations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id26">Terra 0.7</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id27">New Features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id28">Compatibility Considerations</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id24">Aer 0.1</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id25">New Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release_notes.html#id29">Aer 0.1</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id30">New Features</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../release_notes.html#aqua-0-4">Aqua 0.4</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id26">New Features</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id27">Compatibility Considerations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id31">New Features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id32">Compatibility Considerations</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../release_notes.html#qiskit-0-6">Qiskit 0.6</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../release_notes.html#terra-0-6">Terra 0.6</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id28">Highlights</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id29">Compatibility Considerations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id33">Highlights</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id34">Compatibility Considerations</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../release_notes.html#qiskit-0-5">Qiskit 0.5</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../release_notes.html#terra-0-5">Terra 0.5</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id30">Highlights</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id31">Compatibility Considerations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id35">Highlights</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../release_notes.html#id36">Compatibility Considerations</a></li>
 </ul>
 </li>
 </ul>
@@ -1580,60 +1621,136 @@
 <li class="toctree-l3"><a class="reference internal" href="qiskit.aqua.html">qiskit.aqua package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.aqua.html#subpackages">Subpackages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.aqua.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.aqua.html#module-qiskit.aqua._credentials_preferences">qiskit.aqua._credentials_preferences module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.aqua.html#module-qiskit.aqua._discover">qiskit.aqua._discover module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.aqua.html#module-qiskit.aqua._logging">qiskit.aqua._logging module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.aqua.html#module-qiskit.aqua.aqua_error">qiskit.aqua.aqua_error module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.aqua.html#module-qiskit.aqua.operator">qiskit.aqua.operator module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.aqua.html#module-qiskit.aqua.pluggable">qiskit.aqua.pluggable module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.aqua.html#module-qiskit.aqua.preferences">qiskit.aqua.preferences module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.aqua.html#module-qiskit.aqua.qiskit_aqua">qiskit.aqua.qiskit_aqua module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.aqua.html#module-qiskit.aqua.qiskit_aqua_globals">qiskit.aqua.qiskit_aqua_globals module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.aqua.html#module-qiskit.aqua.quantum_instance">qiskit.aqua.quantum_instance module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.aqua.html#module-qiskit.aqua.version">qiskit.aqua.version module</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.assembler.html">qiskit.assembler package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.assembler.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.assembler.html#module-qiskit.assembler.assemble_circuits">qiskit.assembler.assemble_circuits module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.assembler.html#module-qiskit.assembler.assemble_schedules">qiskit.assembler.assemble_schedules module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.assembler.html#module-qiskit.assembler.disassemble">qiskit.assembler.disassemble module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.assembler.html#module-qiskit.assembler.models">qiskit.assembler.models module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.assembler.html#module-qiskit.assembler.run_config">qiskit.assembler.run_config module</a></li>
 </ul>
 </li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">qiskit.chemistry package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#subpackages">Subpackages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-qiskit.chemistry._logging">qiskit.chemistry._logging module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-qiskit.chemistry.bksf">qiskit.chemistry.bksf module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-qiskit.chemistry.fermionic_operator">qiskit.chemistry.fermionic_operator module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-qiskit.chemistry.mp2info">qiskit.chemistry.mp2info module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-qiskit.chemistry.particle_hole">qiskit.chemistry.particle_hole module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-qiskit.chemistry.qiskit_chemistry">qiskit.chemistry.qiskit_chemistry module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-qiskit.chemistry.qiskit_chemistry_error">qiskit.chemistry.qiskit_chemistry_error module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-qiskit.chemistry.qiskit_chemistry_problem">qiskit.chemistry.qiskit_chemistry_problem module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-qiskit.chemistry.qmolecule">qiskit.chemistry.qmolecule module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-qiskit.chemistry.version">qiskit.chemistry.version module</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.circuit.html">qiskit.circuit package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#module-qiskit.circuit.classicalregister">qiskit.circuit.classicalregister module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#module-qiskit.circuit.compositegate">qiskit.circuit.compositegate module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#module-qiskit.circuit.decorators">qiskit.circuit.decorators module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#module-qiskit.circuit.gate">qiskit.circuit.gate module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#module-qiskit.circuit.instruction">qiskit.circuit.instruction module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#module-qiskit.circuit.instructionset">qiskit.circuit.instructionset module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#module-qiskit.circuit.measure">qiskit.circuit.measure module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#module-qiskit.circuit.parameter">qiskit.circuit.parameter module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#module-qiskit.circuit.parametertable">qiskit.circuit.parametertable module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#module-qiskit.circuit.quantumcircuit">qiskit.circuit.quantumcircuit module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#module-qiskit.circuit.quantumregister">qiskit.circuit.quantumregister module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#module-qiskit.circuit.register">qiskit.circuit.register module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#module-qiskit.circuit.reset">qiskit.circuit.reset module</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.compiler.html">qiskit.compiler package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.compiler.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.compiler.html#module-qiskit.compiler.assemble">qiskit.compiler.assemble module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.compiler.html#module-qiskit.compiler.transpile">qiskit.compiler.transpile module</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.converters.html">qiskit.converters package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.converters.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.converters.html#module-qiskit.converters.ast_to_dag">qiskit.converters.ast_to_dag module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.converters.html#module-qiskit.converters.circuit_to_dag">qiskit.converters.circuit_to_dag module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.converters.html#module-qiskit.converters.circuit_to_instruction">qiskit.converters.circuit_to_instruction module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.converters.html#module-qiskit.converters.circuits_to_qobj">qiskit.converters.circuits_to_qobj module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.converters.html#module-qiskit.converters.dag_to_circuit">qiskit.converters.dag_to_circuit module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.converters.html#module-qiskit.converters.qobj_to_circuits">qiskit.converters.qobj_to_circuits module</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.dagcircuit.html">qiskit.dagcircuit package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.dagcircuit.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.dagcircuit.html#module-qiskit.dagcircuit.dagcircuit">qiskit.dagcircuit.dagcircuit module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.dagcircuit.html#module-qiskit.dagcircuit.dagnode">qiskit.dagcircuit.dagnode module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.dagcircuit.html#module-qiskit.dagcircuit.exceptions">qiskit.dagcircuit.exceptions module</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.extensions.html">qiskit.extensions package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.extensions.html#subpackages">Subpackages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.extensions.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.extensions.html#module-qiskit.extensions.exceptions">qiskit.extensions.exceptions module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.extensions.html#module-qiskit.extensions.initializer">qiskit.extensions.initializer module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.extensions.html#module-qiskit.extensions.unitary">qiskit.extensions.unitary module</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.mapper.html">qiskit.mapper package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.mapper.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.mapper.html#module-qiskit.mapper.compiling">qiskit.mapper.compiling module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.mapper.html#module-qiskit.mapper.coupling">qiskit.mapper.coupling module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.mapper.html#module-qiskit.mapper.exceptions">qiskit.mapper.exceptions module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.mapper.html#module-qiskit.mapper.layout">qiskit.mapper.layout module</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.providers.html">qiskit.providers package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.providers.html#subpackages">Subpackages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.providers.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.providers.html#module-qiskit.providers.basebackend">qiskit.providers.basebackend module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.providers.html#module-qiskit.providers.basejob">qiskit.providers.basejob module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.providers.html#module-qiskit.providers.baseprovider">qiskit.providers.baseprovider module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.providers.html#module-qiskit.providers.exceptions">qiskit.providers.exceptions module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.providers.html#module-qiskit.providers.jobstatus">qiskit.providers.jobstatus module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.providers.html#module-qiskit.providers.providerutils">qiskit.providers.providerutils module</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.pulse.html">qiskit.pulse package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.pulse.html#subpackages">Subpackages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.pulse.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.pulse.html#module-qiskit.pulse.cmd_def">qiskit.pulse.cmd_def module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.pulse.html#module-qiskit.pulse.configuration">qiskit.pulse.configuration module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.pulse.html#module-qiskit.pulse.exceptions">qiskit.pulse.exceptions module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.pulse.html#module-qiskit.pulse.interfaces">qiskit.pulse.interfaces module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.pulse.html#module-qiskit.pulse.ops">qiskit.pulse.ops module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.pulse.html#module-qiskit.pulse.schedule">qiskit.pulse.schedule module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.pulse.html#module-qiskit.pulse.timeslots">qiskit.pulse.timeslots module</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.qasm.html">qiskit.qasm package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.qasm.html#subpackages">Subpackages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.qasm.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.qasm.html#module-qiskit.qasm.exceptions">qiskit.qasm.exceptions module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.qasm.html#module-qiskit.qasm.qasm">qiskit.qasm.qasm module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.qasm.html#module-qiskit.qasm.qasmlexer">qiskit.qasm.qasmlexer module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.qasm.html#module-qiskit.qasm.qasmparser">qiskit.qasm.qasmparser module</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.qobj.html">qiskit.qobj package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.qobj.html#subpackages">Subpackages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.qobj.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.qobj.html#module-qiskit.qobj.qobj">qiskit.qobj.qobj module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.qobj.html#module-qiskit.qobj.utils">qiskit.qobj.utils module</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.quantum_info.html">qiskit.quantum_info package</a><ul>
@@ -1642,45 +1759,86 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.result.html">qiskit.result package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.result.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.result.html#module-qiskit.result.exceptions">qiskit.result.exceptions module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.result.html#module-qiskit.result.models">qiskit.result.models module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.result.html#module-qiskit.result.postprocess">qiskit.result.postprocess module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.result.html#module-qiskit.result.result">qiskit.result.result module</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.test.html">qiskit.test package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.test.html#subpackages">Subpackages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.test.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.test.html#module-qiskit.test.base">qiskit.test.base module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.test.html#qiskit-test-decorators-module">qiskit.test.decorators module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.test.html#qiskit-test-http-recorder-module">qiskit.test.http_recorder module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.test.html#qiskit-test-mock-module">qiskit.test.mock module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.test.html#qiskit-test-reference-circuits-module">qiskit.test.reference_circuits module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.test.html#qiskit-test-testing-options-module">qiskit.test.testing_options module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.test.html#module-qiskit.test.utils">qiskit.test.utils module</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.tools.html">qiskit.tools package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.tools.html#subpackages">Subpackages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.tools.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.tools.html#module-qiskit.tools.compiler">qiskit.tools.compiler module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.tools.html#module-qiskit.tools.logging">qiskit.tools.logging module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.tools.html#module-qiskit.tools.parallel">qiskit.tools.parallel module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.tools.html#module-qiskit.tools.visualization">qiskit.tools.visualization module</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.transpiler.html">qiskit.transpiler package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.transpiler.html#subpackages">Subpackages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.transpiler.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.transpiler.html#module-qiskit.transpiler.basepasses">qiskit.transpiler.basepasses module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.transpiler.html#module-qiskit.transpiler.coupling">qiskit.transpiler.coupling module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.transpiler.html#module-qiskit.transpiler.exceptions">qiskit.transpiler.exceptions module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.transpiler.html#module-qiskit.transpiler.fencedobjs">qiskit.transpiler.fencedobjs module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.transpiler.html#module-qiskit.transpiler.layout">qiskit.transpiler.layout module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.transpiler.html#module-qiskit.transpiler.models">qiskit.transpiler.models module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.transpiler.html#module-qiskit.transpiler.passmanager">qiskit.transpiler.passmanager module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.transpiler.html#module-qiskit.transpiler.propertyset">qiskit.transpiler.propertyset module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.transpiler.html#module-qiskit.transpiler.transpile_circuit">qiskit.transpiler.transpile_circuit module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.transpiler.html#module-qiskit.transpiler.transpile_config">qiskit.transpiler.transpile_config module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.transpiler.html#module-qiskit.transpiler.transpiler">qiskit.transpiler.transpiler module</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.validation.html">qiskit.validation package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.validation.html#subpackages">Subpackages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.validation.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.validation.html#module-qiskit.validation.base">qiskit.validation.base module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.validation.html#module-qiskit.validation.exceptions">qiskit.validation.exceptions module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.validation.html#module-qiskit.validation.validate">qiskit.validation.validate module</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.visualization.html">qiskit.visualization package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.visualization.html#subpackages">Subpackages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.visualization.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.visualization.html#qiskit-visualization-bloch-module">qiskit.visualization.bloch module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.visualization.html#module-qiskit.visualization.circuit_visualization">qiskit.visualization.circuit_visualization module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.visualization.html#module-qiskit.visualization.counts_visualization">qiskit.visualization.counts_visualization module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.visualization.html#module-qiskit.visualization.dag_visualization">qiskit.visualization.dag_visualization module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.visualization.html#module-qiskit.visualization.exceptions">qiskit.visualization.exceptions module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.visualization.html#module-qiskit.visualization.gate_map">qiskit.visualization.gate_map module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.visualization.html#module-qiskit.visualization.interpolation">qiskit.visualization.interpolation module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.visualization.html#module-qiskit.visualization.latex">qiskit.visualization.latex module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.visualization.html#module-qiskit.visualization.matplotlib">qiskit.visualization.matplotlib module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.visualization.html#module-qiskit.visualization.pulse_visualization">qiskit.visualization.pulse_visualization module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.visualization.html#module-qiskit.visualization.qcstyle">qiskit.visualization.qcstyle module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.visualization.html#module-qiskit.visualization.state_visualization">qiskit.visualization.state_visualization module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.visualization.html#module-qiskit.visualization.text">qiskit.visualization.text module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.visualization.html#module-qiskit.visualization.utils">qiskit.visualization.utils module</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="qiskit.html#submodules">Submodules</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="qiskit._util.html">qiskit._util module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.exceptions.html">qiskit.exceptions module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.execute.html">qiskit.execute module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.qiskiterror.html">qiskit.qiskiterror module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.user_config.html">qiskit.user_config module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.util.html">qiskit.util module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.version.html">qiskit.version module</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="qiskit.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qiskit.html#module-qiskit._util">qiskit._util module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qiskit.html#module-qiskit.exceptions">qiskit.exceptions module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qiskit.html#module-qiskit.execute">qiskit.execute module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qiskit.html#module-qiskit.qiskiterror">qiskit.qiskiterror module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qiskit.html#module-qiskit.user_config">qiskit.user_config module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qiskit.html#module-qiskit.util">qiskit.util module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qiskit.html#module-qiskit.version">qiskit.version module</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../contributing_to_qiskit.html">Contributing to Qiskit</a><ul>
@@ -2008,7 +2166,7 @@ integrals in spin orbitals</p>
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>params</strong> (<em>dictionary/filename</em>) – Chemistry input data</li>
 <li><strong>output</strong> (<em>filename</em>) – Output data</li>
-<li><strong>backend</strong> (<a class="reference internal" href="qiskit.aqua.html#qiskit.aqua.QuantumInstance" title="qiskit.aqua.QuantumInstance"><em>QuantumInstance</em></a><em> or </em><a class="reference internal" href="qiskit.providers.basebackend.html#qiskit.providers.basebackend.BaseBackend" title="qiskit.providers.basebackend.BaseBackend"><em>BaseBackend</em></a>) – the experimental settings to be used in place of backend name</li>
+<li><strong>backend</strong> (<a class="reference internal" href="qiskit.aqua.html#qiskit.aqua.QuantumInstance" title="qiskit.aqua.QuantumInstance"><em>QuantumInstance</em></a><em> or </em><a class="reference internal" href="qiskit.providers.html#qiskit.providers.basebackend.BaseBackend" title="qiskit.providers.basebackend.BaseBackend"><em>BaseBackend</em></a>) – the experimental settings to be used in place of backend name</li>
 </ul>
 </td>
 </tr>
@@ -2029,7 +2187,7 @@ integrals in spin orbitals</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>params</strong> (<em>dictionary/filename</em>) – Chemistry input data</li>
-<li><strong>backend</strong> (<a class="reference internal" href="qiskit.aqua.html#qiskit.aqua.QuantumInstance" title="qiskit.aqua.QuantumInstance"><em>QuantumInstance</em></a><em> or </em><a class="reference internal" href="qiskit.providers.basebackend.html#qiskit.providers.basebackend.BaseBackend" title="qiskit.providers.basebackend.BaseBackend"><em>BaseBackend</em></a>) – the experimental settings to be used in place of backend name</li>
+<li><strong>backend</strong> (<a class="reference internal" href="qiskit.aqua.html#qiskit.aqua.QuantumInstance" title="qiskit.aqua.QuantumInstance"><em>QuantumInstance</em></a><em> or </em><a class="reference internal" href="qiskit.providers.html#qiskit.providers.basebackend.BaseBackend" title="qiskit.providers.basebackend.BaseBackend"><em>BaseBackend</em></a>) – the experimental settings to be used in place of backend name</li>
 </ul>
 </td>
 </tr>
@@ -2051,7 +2209,7 @@ integrals in spin orbitals</p>
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>params</strong> (<em>dictionary/filename</em>) – Chemistry input data</li>
 <li><strong>output</strong> (<em>filename</em>) – Output data</li>
-<li><strong>backend</strong> (<a class="reference internal" href="qiskit.aqua.html#qiskit.aqua.QuantumInstance" title="qiskit.aqua.QuantumInstance"><em>QuantumInstance</em></a><em> or </em><a class="reference internal" href="qiskit.providers.basebackend.html#qiskit.providers.basebackend.BaseBackend" title="qiskit.providers.basebackend.BaseBackend"><em>BaseBackend</em></a>) – the experimental settings to be used in place of backend name</li>
+<li><strong>backend</strong> (<a class="reference internal" href="qiskit.aqua.html#qiskit.aqua.QuantumInstance" title="qiskit.aqua.QuantumInstance"><em>QuantumInstance</em></a><em> or </em><a class="reference internal" href="qiskit.providers.html#qiskit.providers.basebackend.BaseBackend" title="qiskit.providers.basebackend.BaseBackend"><em>BaseBackend</em></a>) – the experimental settings to be used in place of backend name</li>
 </ul>
 </td>
 </tr>
@@ -2484,17 +2642,13 @@ configurations.</p>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.chemistry.aqua_extensions.components.html">qiskit.chemistry.aqua_extensions.components package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.chemistry.aqua_extensions.components.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l5"><a class="reference internal" href="qiskit.chemistry.aqua_extensions.components.initial_states.html">qiskit.chemistry.aqua_extensions.components.initial_states package</a><ul>
-<li class="toctree-l6"><a class="reference internal" href="qiskit.chemistry.aqua_extensions.components.initial_states.html#submodules">Submodules</a><ul>
-<li class="toctree-l7"><a class="reference internal" href="qiskit.chemistry.aqua_extensions.components.initial_states.hartree_fock.html">qiskit.chemistry.aqua_extensions.components.initial_states.hartree_fock module</a></li>
-</ul>
-</li>
+<li class="toctree-l6"><a class="reference internal" href="qiskit.chemistry.aqua_extensions.components.initial_states.html#submodules">Submodules</a></li>
+<li class="toctree-l6"><a class="reference internal" href="qiskit.chemistry.aqua_extensions.components.initial_states.html#module-qiskit.chemistry.aqua_extensions.components.initial_states.hartree_fock">qiskit.chemistry.aqua_extensions.components.initial_states.hartree_fock module</a></li>
 </ul>
 </li>
 <li class="toctree-l5"><a class="reference internal" href="qiskit.chemistry.aqua_extensions.components.variational_forms.html">qiskit.chemistry.aqua_extensions.components.variational_forms package</a><ul>
-<li class="toctree-l6"><a class="reference internal" href="qiskit.chemistry.aqua_extensions.components.variational_forms.html#submodules">Submodules</a><ul>
-<li class="toctree-l7"><a class="reference internal" href="qiskit.chemistry.aqua_extensions.components.variational_forms.uccsd.html">qiskit.chemistry.aqua_extensions.components.variational_forms.uccsd module</a></li>
-</ul>
-</li>
+<li class="toctree-l6"><a class="reference internal" href="qiskit.chemistry.aqua_extensions.components.variational_forms.html#submodules">Submodules</a></li>
+<li class="toctree-l6"><a class="reference internal" href="qiskit.chemistry.aqua_extensions.components.variational_forms.html#module-qiskit.chemistry.aqua_extensions.components.variational_forms.uccsd">qiskit.chemistry.aqua_extensions.components.variational_forms.uccsd module</a></li>
 </ul>
 </li>
 </ul>
@@ -2506,12 +2660,10 @@ configurations.</p>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="qiskit.chemistry.core.html">qiskit.chemistry.core package</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="qiskit.chemistry.core.html#submodules">Submodules</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.chemistry.core._discover_chemoperator.html">qiskit.chemistry.core._discover_chemoperator module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.chemistry.core.chemistry_operator.html">qiskit.chemistry.core.chemistry_operator module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.chemistry.core.hamiltonian.html">qiskit.chemistry.core.hamiltonian module</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="qiskit.chemistry.core.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qiskit.chemistry.core.html#module-qiskit.chemistry.core._discover_chemoperator">qiskit.chemistry.core._discover_chemoperator module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qiskit.chemistry.core.html#module-qiskit.chemistry.core.chemistry_operator">qiskit.chemistry.core.chemistry_operator module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qiskit.chemistry.core.html#module-qiskit.chemistry.core.hamiltonian">qiskit.chemistry.core.hamiltonian module</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="qiskit.chemistry.drivers.html">qiskit.chemistry.drivers package</a><ul>
@@ -2519,66 +2671,50 @@ configurations.</p>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.chemistry.drivers.gaussiand.html">qiskit.chemistry.drivers.gaussiand package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.chemistry.drivers.gaussiand.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l5"><a class="reference internal" href="qiskit.chemistry.drivers.gaussiand.gauopen.html">qiskit.chemistry.drivers.gaussiand.gauopen package</a><ul>
-<li class="toctree-l6"><a class="reference internal" href="qiskit.chemistry.drivers.gaussiand.gauopen.html#submodules">Submodules</a><ul>
-<li class="toctree-l7"><a class="reference internal" href="qiskit.chemistry.drivers.gaussiand.gauopen.QCMatEl.html">qiskit.chemistry.drivers.gaussiand.gauopen.QCMatEl module</a></li>
-<li class="toctree-l7"><a class="reference internal" href="qiskit.chemistry.drivers.gaussiand.gauopen.QCOpMat.html">qiskit.chemistry.drivers.gaussiand.gauopen.QCOpMat module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="qiskit.chemistry.drivers.gaussiand.gauopen.html#submodules">Submodules</a></li>
+<li class="toctree-l6"><a class="reference internal" href="qiskit.chemistry.drivers.gaussiand.gauopen.html#qiskit-chemistry-drivers-gaussiand-gauopen-qcmatel-module">qiskit.chemistry.drivers.gaussiand.gauopen.QCMatEl module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="qiskit.chemistry.drivers.gaussiand.gauopen.html#qiskit-chemistry-drivers-gaussiand-gauopen-qcopmat-module">qiskit.chemistry.drivers.gaussiand.gauopen.QCOpMat module</a></li>
 </ul>
 </li>
 </ul>
 </li>
-</ul>
-</li>
-<li class="toctree-l4"><a class="reference internal" href="qiskit.chemistry.drivers.gaussiand.html#submodules">Submodules</a><ul>
-<li class="toctree-l5"><a class="reference internal" href="qiskit.chemistry.drivers.gaussiand.gaussiandriver.html">qiskit.chemistry.drivers.gaussiand.gaussiandriver module</a></li>
-</ul>
-</li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.chemistry.drivers.gaussiand.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.chemistry.drivers.gaussiand.html#module-qiskit.chemistry.drivers.gaussiand.gaussiandriver">qiskit.chemistry.drivers.gaussiand.gaussiandriver module</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.chemistry.drivers.hdf5d.html">qiskit.chemistry.drivers.hdf5d package</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="qiskit.chemistry.drivers.hdf5d.html#submodules">Submodules</a><ul>
-<li class="toctree-l5"><a class="reference internal" href="qiskit.chemistry.drivers.hdf5d.hdf5driver.html">qiskit.chemistry.drivers.hdf5d.hdf5driver module</a></li>
-</ul>
-</li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.chemistry.drivers.hdf5d.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.chemistry.drivers.hdf5d.html#module-qiskit.chemistry.drivers.hdf5d.hdf5driver">qiskit.chemistry.drivers.hdf5d.hdf5driver module</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.chemistry.drivers.psi4d.html">qiskit.chemistry.drivers.psi4d package</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="qiskit.chemistry.drivers.psi4d.html#submodules">Submodules</a><ul>
-<li class="toctree-l5"><a class="reference internal" href="qiskit.chemistry.drivers.psi4d.psi4driver.html">qiskit.chemistry.drivers.psi4d.psi4driver module</a></li>
-</ul>
-</li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.chemistry.drivers.psi4d.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.chemistry.drivers.psi4d.html#module-qiskit.chemistry.drivers.psi4d.psi4driver">qiskit.chemistry.drivers.psi4d.psi4driver module</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.chemistry.drivers.pyquanted.html">qiskit.chemistry.drivers.pyquanted package</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="qiskit.chemistry.drivers.pyquanted.html#submodules">Submodules</a><ul>
-<li class="toctree-l5"><a class="reference internal" href="qiskit.chemistry.drivers.pyquanted.integrals.html">qiskit.chemistry.drivers.pyquanted.integrals module</a></li>
-<li class="toctree-l5"><a class="reference internal" href="qiskit.chemistry.drivers.pyquanted.pyquantedriver.html">qiskit.chemistry.drivers.pyquanted.pyquantedriver module</a></li>
-<li class="toctree-l5"><a class="reference internal" href="qiskit.chemistry.drivers.pyquanted.transform.html">qiskit.chemistry.drivers.pyquanted.transform module</a></li>
-</ul>
-</li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.chemistry.drivers.pyquanted.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.chemistry.drivers.pyquanted.html#module-qiskit.chemistry.drivers.pyquanted.integrals">qiskit.chemistry.drivers.pyquanted.integrals module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.chemistry.drivers.pyquanted.html#module-qiskit.chemistry.drivers.pyquanted.pyquantedriver">qiskit.chemistry.drivers.pyquanted.pyquantedriver module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.chemistry.drivers.pyquanted.html#module-qiskit.chemistry.drivers.pyquanted.transform">qiskit.chemistry.drivers.pyquanted.transform module</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.chemistry.drivers.pyscfd.html">qiskit.chemistry.drivers.pyscfd package</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="qiskit.chemistry.drivers.pyscfd.html#submodules">Submodules</a><ul>
-<li class="toctree-l5"><a class="reference internal" href="qiskit.chemistry.drivers.pyscfd.integrals.html">qiskit.chemistry.drivers.pyscfd.integrals module</a></li>
-<li class="toctree-l5"><a class="reference internal" href="qiskit.chemistry.drivers.pyscfd.pyscfdriver.html">qiskit.chemistry.drivers.pyscfd.pyscfdriver module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.chemistry.drivers.pyscfd.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.chemistry.drivers.pyscfd.html#module-qiskit.chemistry.drivers.pyscfd.integrals">qiskit.chemistry.drivers.pyscfd.integrals module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.chemistry.drivers.pyscfd.html#module-qiskit.chemistry.drivers.pyscfd.pyscfdriver">qiskit.chemistry.drivers.pyscfd.pyscfdriver module</a></li>
 </ul>
 </li>
 </ul>
 </li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="qiskit.chemistry.drivers.html#submodules">Submodules</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.chemistry.drivers._basedriver.html">qiskit.chemistry.drivers._basedriver module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.chemistry.drivers._discover_driver.html">qiskit.chemistry.drivers._discover_driver module</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="qiskit.chemistry.drivers.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qiskit.chemistry.drivers.html#module-qiskit.chemistry.drivers._basedriver">qiskit.chemistry.drivers._basedriver module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qiskit.chemistry.drivers.html#module-qiskit.chemistry.drivers._discover_driver">qiskit.chemistry.drivers._discover_driver module</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="qiskit.chemistry.parser.html">qiskit.chemistry.parser package</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="qiskit.chemistry.parser.html#submodules">Submodules</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.chemistry.parser._inputparser.html">qiskit.chemistry.parser._inputparser module</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="qiskit.chemistry.parser.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qiskit.chemistry.parser.html#module-qiskit.chemistry.parser._inputparser">qiskit.chemistry.parser._inputparser module</a></li>
 </ul>
 </li>
 </ul>
@@ -2586,20 +2722,1064 @@ configurations.</p>
 </div>
 <div class="section" id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="qiskit.chemistry._logging.html">qiskit.chemistry._logging module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="qiskit.chemistry.bksf.html">qiskit.chemistry.bksf module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="qiskit.chemistry.fermionic_operator.html">qiskit.chemistry.fermionic_operator module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="qiskit.chemistry.mp2info.html">qiskit.chemistry.mp2info module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="qiskit.chemistry.particle_hole.html">qiskit.chemistry.particle_hole module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="qiskit.chemistry.qiskit_chemistry.html">qiskit.chemistry.qiskit_chemistry module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="qiskit.chemistry.qiskit_chemistry_error.html">qiskit.chemistry.qiskit_chemistry_error module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="qiskit.chemistry.qiskit_chemistry_problem.html">qiskit.chemistry.qiskit_chemistry_problem module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="qiskit.chemistry.qmolecule.html">qiskit.chemistry.qmolecule module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="qiskit.chemistry.version.html">qiskit.chemistry.version module</a></li>
-</ul>
 </div>
+<div class="section" id="module-qiskit.chemistry._logging">
+<span id="qiskit-chemistry-logging-module"></span><h2>qiskit.chemistry._logging module<a class="headerlink" href="#module-qiskit.chemistry._logging" title="Permalink to this headline">¶</a></h2>
+<p>Utilities for logging.</p>
+<dl class="function">
+<dt id="qiskit.chemistry._logging.build_logging_config">
+<code class="descname">build_logging_config</code><span class="sig-paren">(</span><em>level</em>, <em>filepath=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/chemistry/_logging.html#build_logging_config"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.chemistry._logging.build_logging_config" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div>Creates a the configuration dict of the named loggers using the default SDK
+configuration provided by <cite>_QISKIT_CHEMISTRY_LOGGING_CONFIG</cite>:</div></blockquote>
+<ul class="simple">
+<li>console logging using a custom format for levels != level parameter.</li>
+<li>console logging with simple format for level parameter.</li>
+<li>set logger level to level parameter.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>level</strong> (<em>number</em>) – logging level</li>
+<li><strong>filepath</strong> (<em>str</em>) – file to receive logging data</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="qiskit.chemistry._logging.get_logging_level">
+<code class="descname">get_logging_level</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/chemistry/_logging.html#get_logging_level"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.chemistry._logging.get_logging_level" title="Permalink to this definition">¶</a></dt>
+<dd><p>get level for the named logger.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="qiskit.chemistry._logging.get_qiskit_chemistry_logging">
+<code class="descname">get_qiskit_chemistry_logging</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/chemistry/_logging.html#get_qiskit_chemistry_logging"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.chemistry._logging.get_qiskit_chemistry_logging" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the current Qiskit Chemistry logging level</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">logging level</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="qiskit.chemistry._logging.set_logging_config">
+<code class="descname">set_logging_config</code><span class="sig-paren">(</span><em>logging_config</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/chemistry/_logging.html#set_logging_config"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.chemistry._logging.set_logging_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update logger configurations using a SDK default one.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">This function modifies the configuration of the standard logging system
+for the loggers, and might interfere with custom logger
+configurations.</p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="qiskit.chemistry._logging.set_qiskit_chemistry_logging">
+<code class="descname">set_qiskit_chemistry_logging</code><span class="sig-paren">(</span><em>level</em>, <em>filepath=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/chemistry/_logging.html#set_qiskit_chemistry_logging"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.chemistry._logging.set_qiskit_chemistry_logging" title="Permalink to this definition">¶</a></dt>
+<dd><p>Updates the Qiskit Chemistry logging with the appropriate logging level</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>level</strong> (<em>int</em>) – minimum severity of the messages that are displayed.</li>
+<li><strong>filepath</strong> (<em>str</em>) – file to receive logging data</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-qiskit.chemistry.bksf">
+<span id="qiskit-chemistry-bksf-module"></span><h2>qiskit.chemistry.bksf module<a class="headerlink" href="#module-qiskit.chemistry.bksf" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="qiskit.chemistry.bksf.bksf_mapping">
+<code class="descname">bksf_mapping</code><span class="sig-paren">(</span><em>fer_op</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/chemistry/bksf.html#bksf_mapping"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.chemistry.bksf.bksf_mapping" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transform from InteractionOpeator to QubitOperator for Bravyi-Kitaev fast algorithm.</p>
+<p>The electronic Hamiltonian is represented in terms of creation and
+annihilation operators. These creation and annihilation operators could be
+used to define Majorana modes as follows:</p>
+<blockquote>
+<div>c_{2i} = a_i + a^{dagger}_i,
+c_{2i+1} = (a_i - a^{dagger}_{i})/(1j)</div></blockquote>
+<dl class="docutils">
+<dt>These Majorana modes can be used to define edge operators B_i and A_{ij}:</dt>
+<dd>B_i=c_{2i}c_{2i+1},
+A_{ij}=c_{2i}c_{2j}</dd>
+</dl>
+<p>using these edge operators the fermionic algebra can be generated and
+hence all the terms in the electronic Hamiltonian can be expressed in
+terms of edge operators. The terms in electronic Hamiltonian can be
+divided into five types (arXiv 1208.5986). We can find the edge operator
+expression for each of those five types. For example, the excitation
+operator term in Hamiltonian when represented in terms of edge operators
+becomes:</p>
+<blockquote>
+<div>a_i^{dagger}a_j+a_j^{dagger}a_i = (-1j/2)*(A_ij*B_i+B_j*A_ij)</div></blockquote>
+<p>For the sake of brevity the reader is encouraged to look up the
+expressions of other terms from the code below. The variables for edge
+operators are chosen according to the nomenclature defined above
+(B_i and A_ij). A detailed description of these operators and the terms
+of the electronic Hamiltonian are provided in (arXiv 1712.00446).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>fer_op</strong> (<a class="reference internal" href="#qiskit.chemistry.FermionicOperator" title="qiskit.chemistry.FermionicOperator"><em>FermionicOperator</em></a>) – the fermionic operator in the second quanitzed form</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">mapped qubit operator</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="qiskit.aqua.html#qiskit.aqua.Operator" title="qiskit.aqua.Operator">Operator</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="qiskit.chemistry.bksf.bravyi_kitaev_fast_edge_list">
+<code class="descname">bravyi_kitaev_fast_edge_list</code><span class="sig-paren">(</span><em>fer_op</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/chemistry/bksf.html#bravyi_kitaev_fast_edge_list"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.chemistry.bksf.bravyi_kitaev_fast_edge_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>Construct edge list required for the bksf algorithm.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>fer_op</strong> (<em>FeriomicOperator</em>) – the fermionic operator in the second quantized form</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="docutils">
+<dt>edge_list, a 2xE matrix, where E is total number of edge</dt>
+<dd>and each pair denotes (from, to)</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">numpy.ndarray</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="qiskit.chemistry.bksf.edge_operator_aij">
+<code class="descname">edge_operator_aij</code><span class="sig-paren">(</span><em>edge_list</em>, <em>i</em>, <em>j</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/chemistry/bksf.html#edge_operator_aij"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.chemistry.bksf.edge_operator_aij" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate the edge operator A_ij.</p>
+<p>The definitions used here are consistent with arXiv:quant-ph/0003137</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>edge_list</strong> (<em>numpy.ndarray</em>) – a 2xE matrix, where E is total number of edge
+and each pair denotes (from, to)</li>
+<li><strong>i</strong> (<em>int</em>) – specifying the edge operator A</li>
+<li><strong>j</strong> (<em>int</em>) – specifying the edge operator A</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">qubit operator</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="qiskit.aqua.html#qiskit.aqua.Operator" title="qiskit.aqua.Operator">Operator</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="qiskit.chemistry.bksf.edge_operator_bi">
+<code class="descname">edge_operator_bi</code><span class="sig-paren">(</span><em>edge_list</em>, <em>i</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/chemistry/bksf.html#edge_operator_bi"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.chemistry.bksf.edge_operator_bi" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate the edge operator B_i.</p>
+<p>The definitions used here are consistent with arXiv:quant-ph/0003137</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>edge_list</strong> (<em>numpy.ndarray</em>) – a 2xE matrix, where E is total number of edge
+and each pair denotes (from, to)</li>
+<li><strong>i</strong> (<em>int</em>) – index for specifying the edge operator B.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">qubit operator</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="qiskit.aqua.html#qiskit.aqua.Operator" title="qiskit.aqua.Operator">Operator</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="qiskit.chemistry.bksf.generate_fermions">
+<code class="descname">generate_fermions</code><span class="sig-paren">(</span><em>fer_op</em>, <em>i</em>, <em>j</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/chemistry/bksf.html#generate_fermions"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.chemistry.bksf.generate_fermions" title="Permalink to this definition">¶</a></dt>
+<dd><p>The qubit operator for generating fermions in bravyi_kitaev_fast representation.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>fer_op</strong> (<a class="reference internal" href="#qiskit.chemistry.FermionicOperator" title="qiskit.chemistry.FermionicOperator"><em>FermionicOperator</em></a>) – the fermionic operator in the second quanitzed form</li>
+<li><strong>i</strong> (<em>int</em>) – index of fermions</li>
+<li><strong>j</strong> (<em>int</em>) – index of fermions</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">the qubit operator</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="qiskit.aqua.html#qiskit.aqua.Operator" title="qiskit.aqua.Operator">Operator</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="qiskit.chemistry.bksf.number_operator">
+<code class="descname">number_operator</code><span class="sig-paren">(</span><em>fer_op</em>, <em>mode_number=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/chemistry/bksf.html#number_operator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.chemistry.bksf.number_operator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find the qubit operator for the number operator in bravyi_kitaev_fast representation.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>fer_op</strong> (<a class="reference internal" href="#qiskit.chemistry.FermionicOperator" title="qiskit.chemistry.FermionicOperator"><em>FermionicOperator</em></a>) – the fermionic operator in the second quanitzed form</li>
+<li><strong>mode_number</strong> (<em>int</em>) – index, it corresponds to the mode for which number operator is required.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">the qubit operator</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="qiskit.aqua.html#qiskit.aqua.Operator" title="qiskit.aqua.Operator">Operator</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="qiskit.chemistry.bksf.stabilizers">
+<code class="descname">stabilizers</code><span class="sig-paren">(</span><em>fer_op</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/chemistry/bksf.html#stabilizers"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.chemistry.bksf.stabilizers" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="qiskit.chemistry.bksf.vacuum_operator">
+<code class="descname">vacuum_operator</code><span class="sig-paren">(</span><em>fer_op</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/chemistry/bksf.html#vacuum_operator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.chemistry.bksf.vacuum_operator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Use the stabilizers to find the vacuum state in bravyi_kitaev_fast.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>fer_op</strong> (<a class="reference internal" href="#qiskit.chemistry.FermionicOperator" title="qiskit.chemistry.FermionicOperator"><em>FermionicOperator</em></a>) – the fermionic operator in the second quanitzed form</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">the qubit operator</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="qiskit.aqua.html#qiskit.aqua.Operator" title="qiskit.aqua.Operator">Operator</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-qiskit.chemistry.fermionic_operator">
+<span id="qiskit-chemistry-fermionic-operator-module"></span><h2>qiskit.chemistry.fermionic_operator module<a class="headerlink" href="#module-qiskit.chemistry.fermionic_operator" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="qiskit.chemistry.fermionic_operator.FermionicOperator">
+<em class="property">class </em><code class="descname">FermionicOperator</code><span class="sig-paren">(</span><em>h1</em>, <em>h2=None</em>, <em>ph_trans_shift=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/chemistry/fermionic_operator.html#FermionicOperator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.chemistry.fermionic_operator.FermionicOperator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>A set of functions to map fermionic Hamiltonians to qubit Hamiltonians.</p>
+<p>References:
+- E. Wigner and P. Jordan., Über das Paulische Äguivalenzverbot, </p>
+<blockquote>
+<div><ol class="upperalpha simple" start="26">
+<li>Phys., 47:631 (1928). </li>
+</ol>
+</div></blockquote>
+<ul>
+<li><ol class="first upperalpha simple" start="19">
+<li>Bravyi and A. Kitaev. Fermionic quantum computation, </li>
+</ol>
+<blockquote>
+<div><p>Ann. of Phys., 298(1):210–226 (2002). </p>
+</div></blockquote>
+</li>
+<li><ol class="first upperalpha simple">
+<li>Tranter, S. Sofia, J. Seeley, M. Kaicher, J. McClean, R. Babbush, </li>
+</ol>
+<blockquote>
+<div><p>P. Coveney, F. Mintert, F. Wilhelm, and P. Love. The Bravyi–Kitaev transformation: Properties and applications. Int. Journal of Quantum Chemistry, 115(19):1431–1441 (2015). </p>
+</div></blockquote>
+</li>
+<li><ol class="first upperalpha simple" start="19">
+<li>Bravyi, J. M. Gambetta, A. Mezzacapo, and K. Temme, </li>
+</ol>
+<blockquote>
+<div><p>arXiv e-print arXiv:1701.08213 (2017). </p>
+</div></blockquote>
+</li>
+<li><ol class="first upperalpha simple" start="11">
+<li>Setia, J. D. Whitfield, arXiv:1712.00446 (2017)</li>
+</ol>
+</li>
+</ul>
+<dl class="method">
+<dt id="qiskit.chemistry.fermionic_operator.FermionicOperator.fermion_mode_elimination">
+<code class="descname">fermion_mode_elimination</code><span class="sig-paren">(</span><em>fermion_mode_array</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/chemistry/fermionic_operator.html#FermionicOperator.fermion_mode_elimination"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.chemistry.fermionic_operator.FermionicOperator.fermion_mode_elimination" title="Permalink to this definition">¶</a></dt>
+<dd><p>Eliminate modes.</p>
+<p>Generate a new fermionic operator with the modes in fermion_mode_array deleted</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>fermion_mode_array</strong> (<em>list</em>) – orbital index for elimination</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Fermionic Hamiltonian</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#qiskit.chemistry.FermionicOperator" title="qiskit.chemistry.FermionicOperator">FermionicOperator</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="qiskit.chemistry.fermionic_operator.FermionicOperator.fermion_mode_freezing">
+<code class="descname">fermion_mode_freezing</code><span class="sig-paren">(</span><em>fermion_mode_array</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/chemistry/fermionic_operator.html#FermionicOperator.fermion_mode_freezing"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.chemistry.fermionic_operator.FermionicOperator.fermion_mode_freezing" title="Permalink to this definition">¶</a></dt>
+<dd><p>Freezing modes and extracting its energy.</p>
+<p>Generate a fermionic operator with the modes in fermion_mode_array deleted and
+provide the shifted energy after freezing.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>fermion_mode_array</strong> (<em>list</em>) – orbital index for freezing</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Fermionic Hamiltonian
+float: energy of frozen modes</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#qiskit.chemistry.FermionicOperator" title="qiskit.chemistry.FermionicOperator">FermionicOperator</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="qiskit.chemistry.fermionic_operator.FermionicOperator.h1">
+<code class="descname">h1</code><a class="headerlink" href="#qiskit.chemistry.fermionic_operator.FermionicOperator.h1" title="Permalink to this definition">¶</a></dt>
+<dd><p>Getter of one body integral tensor.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="qiskit.chemistry.fermionic_operator.FermionicOperator.h2">
+<code class="descname">h2</code><a class="headerlink" href="#qiskit.chemistry.fermionic_operator.FermionicOperator.h2" title="Permalink to this definition">¶</a></dt>
+<dd><p>Getter of two body integral tensor.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="qiskit.chemistry.fermionic_operator.FermionicOperator.mapping">
+<code class="descname">mapping</code><span class="sig-paren">(</span><em>map_type</em>, <em>threshold=1e-08</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/chemistry/fermionic_operator.html#FermionicOperator.mapping"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.chemistry.fermionic_operator.FermionicOperator.mapping" title="Permalink to this definition">¶</a></dt>
+<dd><p>Map fermionic operator to qubit operator.</p>
+<p>Using multiprocess to speedup the mapping, the improvement can be
+observed when h2 is a non-sparse matrix.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>map_type</strong> (<em>str</em>) – case-insensitive mapping type.
+“jordan_wigner”, “parity”, “bravyi_kitaev”, “bksf”</li>
+<li><strong>threshold</strong> (<em>float</em>) – threshold for Pauli simplification</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">create an Operator object in Paulis form.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first"><a class="reference internal" href="qiskit.aqua.html#qiskit.aqua.Operator" title="qiskit.aqua.Operator">Operator</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><code class="xref py py-exc docutils literal notranslate"><span class="pre">QiskitChemistryError</span></code> – if the <cite>map_type</cite> can not be recognized.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="qiskit.chemistry.fermionic_operator.FermionicOperator.modes">
+<code class="descname">modes</code><a class="headerlink" href="#qiskit.chemistry.fermionic_operator.FermionicOperator.modes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Getter of modes.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="qiskit.chemistry.fermionic_operator.FermionicOperator.particle_hole_transformation">
+<code class="descname">particle_hole_transformation</code><span class="sig-paren">(</span><em>num_particles</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/chemistry/fermionic_operator.html#FermionicOperator.particle_hole_transformation"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.chemistry.fermionic_operator.FermionicOperator.particle_hole_transformation" title="Permalink to this definition">¶</a></dt>
+<dd><p>The ‘standard’ second quantized Hamiltonian can be transformed in the
+particle-hole (p/h) picture, which makes the expansion of the trail wavefunction
+from the HF reference state more natural. In fact, for both trail wavefunctions
+implemented in q-lib (‘heuristic’ hardware efficient and UCCSD) the p/h Hamiltonian
+improves the speed of convergence of the VQE algorithm for the calculation of
+the electronic ground state properties.
+For more information on the p/h formalism see:
+P. Barkoutsos, arXiv:1805.04340(https://arxiv.org/abs/1805.04340).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>num_particles</strong> (<em>int</em>) – number of particles</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="qiskit.chemistry.fermionic_operator.FermionicOperator.total_angular_momentum">
+<code class="descname">total_angular_momentum</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/chemistry/fermionic_operator.html#FermionicOperator.total_angular_momentum"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.chemistry.fermionic_operator.FermionicOperator.total_angular_momentum" title="Permalink to this definition">¶</a></dt>
+<dd><p>Total angular momentum.</p>
+<p>A data_preprocess_helper fermionic operator which can be used to evaluate the total
+angular momentum of the given eigenstate.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Fermionic Hamiltonian</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#qiskit.chemistry.FermionicOperator" title="qiskit.chemistry.FermionicOperator">FermionicOperator</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="qiskit.chemistry.fermionic_operator.FermionicOperator.total_magnetization">
+<code class="descname">total_magnetization</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/chemistry/fermionic_operator.html#FermionicOperator.total_magnetization"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.chemistry.fermionic_operator.FermionicOperator.total_magnetization" title="Permalink to this definition">¶</a></dt>
+<dd><p>A data_preprocess_helper fermionic operator which can be used to         evaluate the magnetization of the given eigenstate.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Fermionic Hamiltonian</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#qiskit.chemistry.FermionicOperator" title="qiskit.chemistry.FermionicOperator">FermionicOperator</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="qiskit.chemistry.fermionic_operator.FermionicOperator.total_particle_number">
+<code class="descname">total_particle_number</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/chemistry/fermionic_operator.html#FermionicOperator.total_particle_number"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.chemistry.fermionic_operator.FermionicOperator.total_particle_number" title="Permalink to this definition">¶</a></dt>
+<dd><p>A data_preprocess_helper fermionic operator which can be used to evaluate the number of
+particle of the given eigenstate.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Fermionic Hamiltonian</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#qiskit.chemistry.FermionicOperator" title="qiskit.chemistry.FermionicOperator">FermionicOperator</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="qiskit.chemistry.fermionic_operator.FermionicOperator.transform">
+<code class="descname">transform</code><span class="sig-paren">(</span><em>unitary_matrix</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/chemistry/fermionic_operator.html#FermionicOperator.transform"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.chemistry.fermionic_operator.FermionicOperator.transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transform the one and two body term based on unitary_matrix.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-qiskit.chemistry.mp2info">
+<span id="qiskit-chemistry-mp2info-module"></span><h2>qiskit.chemistry.mp2info module<a class="headerlink" href="#module-qiskit.chemistry.mp2info" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="qiskit.chemistry.mp2info.MP2Info">
+<em class="property">class </em><code class="descname">MP2Info</code><span class="sig-paren">(</span><em>qmolecule</em>, <em>threshold=1e-12</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/chemistry/mp2info.html#MP2Info"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.chemistry.mp2info.MP2Info" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>A utility class for Moller-Plesset 2nd order (MP2) information</p>
+<dl class="docutils">
+<dt>Each double excitation given by [i,a,j,b] has a coefficient computed using</dt>
+<dd>coeff = -(2 * Tiajb - Tibja)/(oe[b] + oe[a] - oe[i] - oe[j])</dd>
+</dl>
+<p>where oe[] is the orbital energy</p>
+<dl class="docutils">
+<dt>and an energy delta given by</dt>
+<dd>e_delta = coeff * Tiajb</dd>
+</dl>
+<p>All the computations are done using the molecule orbitals but the indexes used
+in the excitation information passed in and out are in the block spin orbital
+numbering as normally used by the chemistry stack.</p>
+<dl class="attribute">
+<dt id="qiskit.chemistry.mp2info.MP2Info.mp2_delta">
+<code class="descname">mp2_delta</code><a class="headerlink" href="#qiskit.chemistry.mp2info.MP2Info.mp2_delta" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the MP2 delta energy correction for the molecule</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The MP2 delta energy</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">float</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="qiskit.chemistry.mp2info.MP2Info.mp2_energy">
+<code class="descname">mp2_energy</code><a class="headerlink" href="#qiskit.chemistry.mp2info.MP2Info.mp2_energy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the MP2 energy for the molecule</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The MP2 energy</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">float</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="qiskit.chemistry.mp2info.MP2Info.mp2_get_term_info">
+<code class="descname">mp2_get_term_info</code><span class="sig-paren">(</span><em>excitation_list</em>, <em>freeze_core=False</em>, <em>orbital_reduction=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/chemistry/mp2info.html#MP2Info.mp2_get_term_info"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.chemistry.mp2info.MP2Info.mp2_get_term_info" title="Permalink to this definition">¶</a></dt>
+<dd><p>With a reduced active space the set of used excitations can be less than allowing
+all available excitations. Given a (sub)set of excitations in the space this will return
+a list of correlation coefficients and a list of correlation energies ordered as per
+the excitation list provided.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>excitation_list</strong> (<em>list</em>) – A list of excitations for which to get the coeff and e_delta</li>
+<li><strong>freeze_core</strong> (<em>bool</em>) – Whether core orbitals are frozen or not</li>
+<li><strong>orbital_reduction</strong> (<em>list</em>) – An optional list of ints indicating removed orbitals</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">List of coefficients and list of energy deltas</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list, list</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="qiskit.chemistry.mp2info.MP2Info.mp2_terms">
+<code class="descname">mp2_terms</code><span class="sig-paren">(</span><em>freeze_core=False</em>, <em>orbital_reduction=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/chemistry/mp2info.html#MP2Info.mp2_terms"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.chemistry.mp2info.MP2Info.mp2_terms" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the set of MP2 terms for the molecule taking into account index adjustments
+due to frozen core and/or other orbital reduction</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>freeze_core</strong> (<em>bool</em>) – Whether core orbitals are frozen or not</li>
+<li><strong>orbital_reduction</strong> (<em>list</em>) – An optional list of ints indicating removed orbitals</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><dl class="docutils">
+<dt>A dictionary of excitations where the key is a string in the form</dt>
+<dd><p class="first last">from_to_from_to e.g. 0_4_6_10 and the value is a tuple of
+(coeff, e_delta)</p>
+</dd>
+</dl>
+</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dict</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-qiskit.chemistry.particle_hole">
+<span id="qiskit-chemistry-particle-hole-module"></span><h2>qiskit.chemistry.particle_hole module<a class="headerlink" href="#module-qiskit.chemistry.particle_hole" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="qiskit.chemistry.particle_hole.last_two_indices_swap">
+<code class="descname">last_two_indices_swap</code><span class="sig-paren">(</span><em>array_ind_two_body_term</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/chemistry/particle_hole.html#last_two_indices_swap"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.chemistry.particle_hole.last_two_indices_swap" title="Permalink to this definition">¶</a></dt>
+<dd><p>Swap 2 last indices of an array</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>array_ind_two_body_term</strong> (<em>list</em>) – TBD</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">TBD</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">list</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="qiskit.chemistry.particle_hole.normal_order_integrals">
+<code class="descname">normal_order_integrals</code><span class="sig-paren">(</span><em>n_qubits</em>, <em>n_occupied</em>, <em>array_to_normal_order</em>, <em>array_mapping</em>, <em>h1_old</em>, <em>h2_old</em>, <em>h1_new</em>, <em>h2_new</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/chemistry/particle_hole.html#normal_order_integrals"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.chemistry.particle_hole.normal_order_integrals" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given an operator and the rFs and rsgtu from Gaussian it produces new
+h1,h2,id_terms usable for the generation of the Hamiltonian in Pauli strings form.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>n_qubits</strong> (<em>int</em>) – number of qubits</li>
+<li><strong>n_occupied</strong> (<em>int</em>) – number of electrons (occupied orbitals)</li>
+<li><strong>array_to_normal_order</strong> (<em>list</em>) – e.g. [i,j,k,l] indices of the term to normal order</li>
+<li><strong>array_mapping</strong> (<em>list</em>) – e.g. two body terms list  [‘adag’, ‘adag’, ‘a’, ‘a’],</li>
+<li><strong>body terms list</strong> (<em>single</em>) – [‘adag’, ‘a’]</li>
+<li><strong>h1_old</strong> (<em>numpy.ndarray</em>) – e.g. rFs.dat (dim(rsgtu) = [n_qubits,n_qubits,n_qubits,n_qubits])
+loaded with QuTip function (qutip.fileio.qload) or numpy.array</li>
+<li><strong>h2_old</strong> (<em>numpy.ndarray</em>) – e.g. rsgtu.dat (dim(rsgtu) = [n_qubits,n_qubits])</li>
+<li><strong>h1_new</strong> (<em>numpy.ndarray</em>) – e.g. numpy.zeros([n_qubits, n_qubits])</li>
+<li><strong>h2_new</strong> (<em>numpy.ndarray</em>) – e.g. numpy.zeros([n_qubits, n_qubits, n_qubits, n_qubits])</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">h1_new, h2_new, id_term</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">numpy.ndarray, numpy.ndarray, float</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="qiskit.chemistry.particle_hole.particle_hole_transformation">
+<code class="descname">particle_hole_transformation</code><span class="sig-paren">(</span><em>n_qubits</em>, <em>n_occupied</em>, <em>h1_old_matrix</em>, <em>h2_old_matrix</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/chemistry/particle_hole.html#particle_hole_transformation"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.chemistry.particle_hole.particle_hole_transformation" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function produces the necessary h1, h2, identity for work with Fermionic Operators script.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>n_qubits</strong> (<em>int</em>) – number of qubits</li>
+<li><strong>n_occupied</strong> (<em>int</em>) – number of electrons</li>
+<li><strong>h1_old_matrix</strong> (<em>numpy.ndarray</em>) – rFs terms from Gaussian</li>
+<li><strong>h2_old_matrix</strong> (<em>numpy.ndarray</em>) – rsgtu terms from Gaussian</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">h1_prime, h2_prime, identities</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">numpy.ndarray, numpy.ndarray, float</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="qiskit.chemistry.particle_hole.sort">
+<code class="descname">sort</code><span class="sig-paren">(</span><em>seq</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/chemistry/particle_hole.html#sort"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.chemistry.particle_hole.sort" title="Permalink to this definition">¶</a></dt>
+<dd><p>Tool function for normal order, should not be used separately</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>seq</strong> (<em>list</em>) – array</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">integer e.g. swapped array, number of swaps</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">list</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-qiskit.chemistry.qiskit_chemistry">
+<span id="qiskit-chemistry-qiskit-chemistry-module"></span><h2>qiskit.chemistry.qiskit_chemistry module<a class="headerlink" href="#module-qiskit.chemistry.qiskit_chemistry" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="qiskit.chemistry.qiskit_chemistry.QiskitChemistry">
+<em class="property">class </em><code class="descname">QiskitChemistry</code><a class="reference internal" href="../_modules/qiskit/chemistry/qiskit_chemistry.html#QiskitChemistry"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.chemistry.qiskit_chemistry.QiskitChemistry" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Main Chemistry class.</p>
+<dl class="attribute">
+<dt id="qiskit.chemistry.qiskit_chemistry.QiskitChemistry.chemistry_result">
+<code class="descname">chemistry_result</code><a class="headerlink" href="#qiskit.chemistry.qiskit_chemistry.QiskitChemistry.chemistry_result" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns Chemistry result.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="qiskit.chemistry.qiskit_chemistry.QiskitChemistry.hdf5_file">
+<code class="descname">hdf5_file</code><a class="headerlink" href="#qiskit.chemistry.qiskit_chemistry.QiskitChemistry.hdf5_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns Chemistry hdf5 path with chemistry results, if used.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="qiskit.chemistry.qiskit_chemistry.QiskitChemistry.operator">
+<code class="descname">operator</code><a class="headerlink" href="#qiskit.chemistry.qiskit_chemistry.QiskitChemistry.operator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns Chemistry Operator.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="qiskit.chemistry.qiskit_chemistry.QiskitChemistry.parser">
+<code class="descname">parser</code><a class="headerlink" href="#qiskit.chemistry.qiskit_chemistry.QiskitChemistry.parser" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns Chemistry parser.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="qiskit.chemistry.qiskit_chemistry.QiskitChemistry.qiskit_aqua">
+<code class="descname">qiskit_aqua</code><a class="headerlink" href="#qiskit.chemistry.qiskit_chemistry.QiskitChemistry.qiskit_aqua" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns Qiskit Aqua object.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="qiskit.chemistry.qiskit_chemistry.QiskitChemistry.run">
+<code class="descname">run</code><span class="sig-paren">(</span><em>params</em>, <em>output=None</em>, <em>backend=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/chemistry/qiskit_chemistry.html#QiskitChemistry.run"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.chemistry.qiskit_chemistry.QiskitChemistry.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Runs the Qiskit Chemistry experiment</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>params</strong> (<em>dictionary/filename</em>) – Chemistry input data</li>
+<li><strong>output</strong> (<em>filename</em>) – Output data</li>
+<li><strong>backend</strong> (<a class="reference internal" href="qiskit.aqua.html#qiskit.aqua.QuantumInstance" title="qiskit.aqua.QuantumInstance"><em>QuantumInstance</em></a><em> or </em><a class="reference internal" href="qiskit.providers.html#qiskit.providers.basebackend.BaseBackend" title="qiskit.providers.basebackend.BaseBackend"><em>BaseBackend</em></a>) – the experimental settings to be used in place of backend name</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">result dictionary</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="qiskit.chemistry.qiskit_chemistry.QiskitChemistry.run_driver">
+<code class="descname">run_driver</code><span class="sig-paren">(</span><em>params</em>, <em>backend=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/chemistry/qiskit_chemistry.html#QiskitChemistry.run_driver"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.chemistry.qiskit_chemistry.QiskitChemistry.run_driver" title="Permalink to this definition">¶</a></dt>
+<dd><p>Runs the Qiskit Chemistry driver</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>params</strong> (<em>dictionary/filename</em>) – Chemistry input data</li>
+<li><strong>backend</strong> (<a class="reference internal" href="qiskit.aqua.html#qiskit.aqua.QuantumInstance" title="qiskit.aqua.QuantumInstance"><em>QuantumInstance</em></a><em> or </em><a class="reference internal" href="qiskit.providers.html#qiskit.providers.basebackend.BaseBackend" title="qiskit.providers.basebackend.BaseBackend"><em>BaseBackend</em></a>) – the experimental settings to be used in place of backend name</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="qiskit.chemistry.qiskit_chemistry.run_driver_to_json">
+<code class="descname">run_driver_to_json</code><span class="sig-paren">(</span><em>params</em>, <em>jsonfile='algorithm.json'</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/chemistry/qiskit_chemistry.html#run_driver_to_json"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.chemistry.qiskit_chemistry.run_driver_to_json" title="Permalink to this definition">¶</a></dt>
+<dd><p>Runs the Aqua Chemistry driver only</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>params</strong> (<em>dictionary/filename</em>) – Chemistry input data</li>
+<li><strong>jsonfile</strong> (<em>filename</em>) – Name of file that will contain the Aqua JSON input data</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Result dictionary containing the jsonfile name</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="qiskit.chemistry.qiskit_chemistry.run_experiment">
+<code class="descname">run_experiment</code><span class="sig-paren">(</span><em>params</em>, <em>output=None</em>, <em>backend=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/chemistry/qiskit_chemistry.html#run_experiment"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.chemistry.qiskit_chemistry.run_experiment" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run Chemistry from params.</p>
+<p>Using params and returning a result dictionary</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>params</strong> (<em>dictionary/filename</em>) – Chemistry input data</li>
+<li><strong>output</strong> (<em>filename</em>) – Output data</li>
+<li><strong>backend</strong> (<a class="reference internal" href="qiskit.aqua.html#qiskit.aqua.QuantumInstance" title="qiskit.aqua.QuantumInstance"><em>QuantumInstance</em></a><em> or </em><a class="reference internal" href="qiskit.providers.html#qiskit.providers.basebackend.BaseBackend" title="qiskit.providers.basebackend.BaseBackend"><em>BaseBackend</em></a>) – the experimental settings to be used in place of backend name</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Result dictionary containing result of chemistry computation</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-qiskit.chemistry.qiskit_chemistry_error">
+<span id="qiskit-chemistry-qiskit-chemistry-error-module"></span><h2>qiskit.chemistry.qiskit_chemistry_error module<a class="headerlink" href="#module-qiskit.chemistry.qiskit_chemistry_error" title="Permalink to this headline">¶</a></h2>
+<p>Exception for errors raised by the QiskitChemistry SDK.</p>
+<dl class="exception">
+<dt id="qiskit.chemistry.qiskit_chemistry_error.QiskitChemistryError">
+<em class="property">exception </em><code class="descname">QiskitChemistryError</code><span class="sig-paren">(</span><em>*message</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/chemistry/qiskit_chemistry_error.html#QiskitChemistryError"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.chemistry.qiskit_chemistry_error.QiskitChemistryError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+<p>Base class for errors raised by the QiskitChemistry SDK.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-qiskit.chemistry.qiskit_chemistry_problem">
+<span id="qiskit-chemistry-qiskit-chemistry-problem-module"></span><h2>qiskit.chemistry.qiskit_chemistry_problem module<a class="headerlink" href="#module-qiskit.chemistry.qiskit_chemistry_problem" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="qiskit.chemistry.qiskit_chemistry_problem.ChemistryProblem">
+<em class="property">class </em><code class="descname">ChemistryProblem</code><a class="reference internal" href="../_modules/qiskit/chemistry/qiskit_chemistry_problem.html#ChemistryProblem"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.chemistry.qiskit_chemistry_problem.ChemistryProblem" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
+<p>An enumeration.</p>
+<dl class="attribute">
+<dt id="qiskit.chemistry.qiskit_chemistry_problem.ChemistryProblem.ENERGY">
+<code class="descname">ENERGY</code><em class="property"> = 'energy'</em><a class="headerlink" href="#qiskit.chemistry.qiskit_chemistry_problem.ChemistryProblem.ENERGY" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="qiskit.chemistry.qiskit_chemistry_problem.ChemistryProblem.EXCITED_STATES">
+<code class="descname">EXCITED_STATES</code><em class="property"> = 'excited_states'</em><a class="headerlink" href="#qiskit.chemistry.qiskit_chemistry_problem.ChemistryProblem.EXCITED_STATES" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-qiskit.chemistry.qmolecule">
+<span id="qiskit-chemistry-qmolecule-module"></span><h2>qiskit.chemistry.qmolecule module<a class="headerlink" href="#module-qiskit.chemistry.qmolecule" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="qiskit.chemistry.qmolecule.QMolecule">
+<em class="property">class </em><code class="descname">QMolecule</code><span class="sig-paren">(</span><em>filename=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/chemistry/qmolecule.html#QMolecule"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.chemistry.qmolecule.QMolecule" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Molecule data class with driver information.</p>
+<dl class="attribute">
+<dt id="qiskit.chemistry.qmolecule.QMolecule.BOHR">
+<code class="descname">BOHR</code><em class="property"> = 0.52917721092</em><a class="headerlink" href="#qiskit.chemistry.qmolecule.QMolecule.BOHR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="qiskit.chemistry.qmolecule.QMolecule.DEBYE">
+<code class="descname">DEBYE</code><em class="property"> = 0.393430307</em><a class="headerlink" href="#qiskit.chemistry.qmolecule.QMolecule.DEBYE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="qiskit.chemistry.qmolecule.QMolecule.Z">
+<code class="descname">Z</code><span class="sig-paren">(</span><em>natom</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/chemistry/qmolecule.html#QMolecule.Z"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.chemistry.qmolecule.QMolecule.Z" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="qiskit.chemistry.qmolecule.QMolecule.core_orbitals">
+<code class="descname">core_orbitals</code><a class="headerlink" href="#qiskit.chemistry.qmolecule.QMolecule.core_orbitals" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="qiskit.chemistry.qmolecule.QMolecule.filename">
+<code class="descname">filename</code><a class="headerlink" href="#qiskit.chemistry.qmolecule.QMolecule.filename" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="qiskit.chemistry.qmolecule.QMolecule.has_dipole_integrals">
+<code class="descname">has_dipole_integrals</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/chemistry/qmolecule.html#QMolecule.has_dipole_integrals"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.chemistry.qmolecule.QMolecule.has_dipole_integrals" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="qiskit.chemistry.qmolecule.QMolecule.load">
+<code class="descname">load</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/chemistry/qmolecule.html#QMolecule.load"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.chemistry.qmolecule.QMolecule.load" title="Permalink to this definition">¶</a></dt>
+<dd><p>loads info saved.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="qiskit.chemistry.qmolecule.QMolecule.log">
+<code class="descname">log</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/chemistry/qmolecule.html#QMolecule.log"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.chemistry.qmolecule.QMolecule.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="qiskit.chemistry.qmolecule.QMolecule.mo_to_spin">
+<em class="property">static </em><code class="descname">mo_to_spin</code><span class="sig-paren">(</span><em>mohij</em>, <em>mohijkl</em>, <em>threshold=1e-12</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/chemistry/qmolecule.html#QMolecule.mo_to_spin"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.chemistry.qmolecule.QMolecule.mo_to_spin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert one and two-body MO integrals to spin orbital basis</p>
+<p>Takes one and two body integrals in molecular orbital basis and returns
+integrals in spin orbitals</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>mohij</strong> – One body orbitals in molecular basis</li>
+<li><strong>mohijkl</strong> – Two body orbitals in molecular basis</li>
+<li><strong>threshold</strong> – Threshold value for assignments</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">One and two body integrals in spin orbitals</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="qiskit.chemistry.qmolecule.QMolecule.one_body_integrals">
+<code class="descname">one_body_integrals</code><a class="headerlink" href="#qiskit.chemistry.qmolecule.QMolecule.one_body_integrals" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="qiskit.chemistry.qmolecule.QMolecule.onee_to_spin">
+<em class="property">static </em><code class="descname">onee_to_spin</code><span class="sig-paren">(</span><em>mohij</em>, <em>threshold=1e-12</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/chemistry/qmolecule.html#QMolecule.onee_to_spin"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.chemistry.qmolecule.QMolecule.onee_to_spin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert one-body MO integrals to spin orbital basis</p>
+<p>Takes one body integrals in molecular orbital basis and returns
+integrals in spin orbitals</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>mohij</strong> – One body orbitals in molecular basis</li>
+<li><strong>threshold</strong> – Threshold value for assignments</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">One body integrals in spin orbitals</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="qiskit.chemistry.qmolecule.QMolecule.oneeints2mo">
+<em class="property">static </em><code class="descname">oneeints2mo</code><span class="sig-paren">(</span><em>ints</em>, <em>moc</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/chemistry/qmolecule.html#QMolecule.oneeints2mo"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.chemistry.qmolecule.QMolecule.oneeints2mo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts one-body integrals from AO to MO basis</p>
+<p>Returns one electron integrals in AO basis converted to given MO basis</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>ints</strong> – N^2 one electron integrals in AO basis</li>
+<li><strong>moc</strong> – Molecular orbital coefficients</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">integrals in MO basis</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="qiskit.chemistry.qmolecule.QMolecule.remove_file">
+<code class="descname">remove_file</code><span class="sig-paren">(</span><em>file_name=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/chemistry/qmolecule.html#QMolecule.remove_file"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.chemistry.qmolecule.QMolecule.remove_file" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="qiskit.chemistry.qmolecule.QMolecule.save">
+<code class="descname">save</code><span class="sig-paren">(</span><em>file_name=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/chemistry/qmolecule.html#QMolecule.save"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.chemistry.qmolecule.QMolecule.save" title="Permalink to this definition">¶</a></dt>
+<dd><p>Saves the info from the driver.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="qiskit.chemistry.qmolecule.QMolecule.symbols">
+<code class="descname">symbols</code><em class="property"> = ['_', 'H', 'He', 'Li', 'Be', 'B', 'C', 'N', 'O', 'F', 'Ne', 'Na', 'Mg', 'Al', 'Si', 'P', 'S', 'Cl', 'Ar', 'K', 'Ca', 'Sc', 'Ti', 'V', 'Cr', 'Mn', 'Fe', 'Co', 'Ni', 'Cu', 'Zn', 'Ga', 'Ge', 'As', 'Se', 'Br', 'Kr', 'Rb', 'Sr', 'Y', 'Zr', 'Nb', 'Mo', 'Tc', 'Ru', 'Rh', 'Pd', 'Ag', 'Cd', 'In', 'Sn', 'Sb', 'Te', 'I', 'Xe', 'Cs', 'Ba', 'La', 'Ce', 'Pr', 'Nd', 'Pm', 'Sm', 'Eu', 'Gd', 'Tb', 'Dy', 'Ho', 'Er', 'Tm', 'Yb', 'Lu', 'Hf', 'Ta', 'W', 'Re', 'Os', 'Ir', 'Pt', 'Au', 'Hg', 'Tl', 'Pb', 'Bi', 'Po', 'At', 'Rn', 'Fr', 'Ra', 'Ac', 'Th', 'Pa', 'U', 'Np', 'Pu', 'Am', 'Cm', 'Bk', 'Cf', 'Es', 'Fm', 'Md', 'No', 'Lr', 'Rf', 'Db', 'Sg', 'Bh', 'Hs', 'Mt', 'Ds', 'Rg', 'Cn', 'Nh', 'Fl', 'Mc', 'Lv', 'Ts', 'Og']</em><a class="headerlink" href="#qiskit.chemistry.qmolecule.QMolecule.symbols" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="qiskit.chemistry.qmolecule.QMolecule.two_body_integrals">
+<code class="descname">two_body_integrals</code><a class="headerlink" href="#qiskit.chemistry.qmolecule.QMolecule.two_body_integrals" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="qiskit.chemistry.qmolecule.QMolecule.twoe_to_spin">
+<em class="property">static </em><code class="descname">twoe_to_spin</code><span class="sig-paren">(</span><em>mohijkl</em>, <em>threshold=1e-12</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/chemistry/qmolecule.html#QMolecule.twoe_to_spin"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.chemistry.qmolecule.QMolecule.twoe_to_spin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert two-body MO integrals to spin orbital basis</p>
+<p>Takes two body integrals in molecular orbital basis and returns
+integrals in spin orbitals</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>mohijkl</strong> – Two body orbitals in molecular basis</li>
+<li><strong>threshold</strong> – Threshold value for assignments</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Two body integrals in spin orbitals</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="qiskit.chemistry.qmolecule.QMolecule.twoeints2mo">
+<em class="property">static </em><code class="descname">twoeints2mo</code><span class="sig-paren">(</span><em>ints</em>, <em>moc</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/chemistry/qmolecule.html#QMolecule.twoeints2mo"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.chemistry.qmolecule.QMolecule.twoeints2mo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts two-body integrals from AO to MO basis</p>
+<p>Returns two electron integrals in AO basis converted to given MO basis</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>ints</strong> – N^2 two electron integrals in AO basis</li>
+<li><strong>moc</strong> – Molecular orbital coefficients</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">integrals in MO basis</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="qiskit.chemistry.qmolecule.QMolecule.x_dipole_integrals">
+<code class="descname">x_dipole_integrals</code><a class="headerlink" href="#qiskit.chemistry.qmolecule.QMolecule.x_dipole_integrals" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="qiskit.chemistry.qmolecule.QMolecule.y_dipole_integrals">
+<code class="descname">y_dipole_integrals</code><a class="headerlink" href="#qiskit.chemistry.qmolecule.QMolecule.y_dipole_integrals" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="qiskit.chemistry.qmolecule.QMolecule.z_dipole_integrals">
+<code class="descname">z_dipole_integrals</code><a class="headerlink" href="#qiskit.chemistry.qmolecule.QMolecule.z_dipole_integrals" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-qiskit.chemistry.version">
+<span id="qiskit-chemistry-version-module"></span><h2>qiskit.chemistry.version module<a class="headerlink" href="#module-qiskit.chemistry.version" title="Permalink to this headline">¶</a></h2>
+<p>Contains the version.</p>
 </div>
 </div>
 
@@ -2608,10 +3788,10 @@ configurations.</p>
 
       <div class="clearer"></div>
     </div><div class="pagenation">
-     <a id="button-prev" href="qiskit.assembler.run_config.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
+     <a id="button-prev" href="qiskit.assembler.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
          <div class="pagenation-text">
             <span class="pagenation-direction">Previous</span>
-            <div>qiskit.assembler.run_config module</div>
+            <div>qiskit.assembler package</div>
          </div>
      </a>
      <a id="button-next" href="qiskit.chemistry.aqua_extensions.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
@@ -2664,23 +3844,23 @@ configurations.</p>
       var el = document.getElementById('language');
       var optionsToSelect = ['en', 'ja']
       function changeLoc(evt) {
-        var language = evt.target.options[el.selectedIndex].value;
-        var pathname = window.location.pathname.slice(prefix.length);
-        if (language === getDefaultLanguage()) {
-          window.location.pathname =
-            `${prefix}${pathname.replace(localeRegExp, '/')}`;
-        } else {
-          window.location.pathname =
-            `${prefix}${pathname.replace(localeRegExp, `/locale/${language}/`)}`;
+	        var language = evt.target.options[el.selectedIndex].value;
+	        var pathname = window.location.pathname.slice(prefix.length);
+	        if (language === getDefaultLanguage()) {
+	          window.location.pathname =
+	            `${prefix}${pathname.replace(localeRegExp, '/')}`;
+	        } else {
+	          window.location.pathname =
+	            `${prefix}${pathname.replace(localeRegExp, `/locale/${language}/`)}`;
         }
       };
       el.addEventListener('change', changeLoc);
 
       function extractLanguageFromUrl(pathname) {
-        const match = pathname.slice(prefix.length).match(localeRegExp);
-        return typeof match[2] === 'undefined' ?
-                getDefaultLanguage() : match[2];
-	    }
+	        const match = pathname.slice(prefix.length).match(localeRegExp);
+	        return typeof match[2] === 'undefined' ?
+	               getDefaultLanguage() : match[2];
+	      }
 
       function changeSelect(select) {
         const optionToSelect = extractLanguageFromUrl(window.location.pathname);

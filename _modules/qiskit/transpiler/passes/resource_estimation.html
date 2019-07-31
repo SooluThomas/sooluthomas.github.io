@@ -34,7 +34,7 @@
        </script>
         <script src="https://cloud.ibm.com/analytics/build/bluemix-analytics.min.js"></script>
     
-    <title>qiskit.transpiler.passes.resource_estimation &#8212; Qiskit 0.11.0 documentation</title>
+    <title>qiskit.transpiler.passes.resource_estimation &#8212; Qiskit 0.11.1 documentation</title>
 
     <link rel="stylesheet" href="../../../../_static/material-icons.css" type="text/css" />
     <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
@@ -194,7 +194,7 @@
 <span class="kn">from</span> <span class="nn">qiskit.transpiler.passes.num_tensor_factors</span> <span class="k">import</span> <span class="n">NumTensorFactors</span>
 
 
-<div class="viewcode-block" id="ResourceEstimation"><a class="viewcode-back" href="../../../../autodoc/qiskit.transpiler.passes.resource_estimation.html#qiskit.transpiler.passes.resource_estimation.ResourceEstimation">[docs]</a><span class="k">class</span> <span class="nc">ResourceEstimation</span><span class="p">(</span><span class="n">AnalysisPass</span><span class="p">):</span>
+<div class="viewcode-block" id="ResourceEstimation"><a class="viewcode-back" href="../../../../autodoc/qiskit.transpiler.passes.html#qiskit.transpiler.passes.resource_estimation.ResourceEstimation">[docs]</a><span class="k">class</span> <span class="nc">ResourceEstimation</span><span class="p">(</span><span class="n">AnalysisPass</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Requires Depth(), Width(), Size(), CountOps(), and NumTensorFactors().</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
@@ -202,7 +202,7 @@
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">requires</span> <span class="o">+=</span> <span class="p">[</span><span class="n">Depth</span><span class="p">(),</span> <span class="n">Width</span><span class="p">(),</span> <span class="n">Size</span><span class="p">(),</span> <span class="n">CountOps</span><span class="p">(),</span> <span class="n">NumTensorFactors</span><span class="p">()]</span>
 
-<div class="viewcode-block" id="ResourceEstimation.run"><a class="viewcode-back" href="../../../../autodoc/qiskit.transpiler.passes.resource_estimation.html#qiskit.transpiler.passes.resource_estimation.ResourceEstimation.run">[docs]</a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">_</span><span class="p">):</span>
+<div class="viewcode-block" id="ResourceEstimation.run"><a class="viewcode-back" href="../../../../autodoc/qiskit.transpiler.passes.html#qiskit.transpiler.passes.resource_estimation.ResourceEstimation.run">[docs]</a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">_</span><span class="p">):</span>
         <span class="k">pass</span></div></div>
 </pre></div>
 
@@ -254,23 +254,23 @@
       var el = document.getElementById('language');
       var optionsToSelect = ['en', 'ja']
       function changeLoc(evt) {
-        var language = evt.target.options[el.selectedIndex].value;
-        var pathname = window.location.pathname.slice(prefix.length);
-        if (language === getDefaultLanguage()) {
-          window.location.pathname =
-            `${prefix}${pathname.replace(localeRegExp, '/')}`;
-        } else {
-          window.location.pathname =
-            `${prefix}${pathname.replace(localeRegExp, `/locale/${language}/`)}`;
+	        var language = evt.target.options[el.selectedIndex].value;
+	        var pathname = window.location.pathname.slice(prefix.length);
+	        if (language === getDefaultLanguage()) {
+	          window.location.pathname =
+	            `${prefix}${pathname.replace(localeRegExp, '/')}`;
+	        } else {
+	          window.location.pathname =
+	            `${prefix}${pathname.replace(localeRegExp, `/locale/${language}/`)}`;
         }
       };
       el.addEventListener('change', changeLoc);
 
       function extractLanguageFromUrl(pathname) {
-        const match = pathname.slice(prefix.length).match(localeRegExp);
-        return typeof match[2] === 'undefined' ?
-                getDefaultLanguage() : match[2];
-	    }
+	        const match = pathname.slice(prefix.length).match(localeRegExp);
+	        return typeof match[2] === 'undefined' ?
+	               getDefaultLanguage() : match[2];
+	      }
 
       function changeSelect(select) {
         const optionToSelect = extractLanguageFromUrl(window.location.pathname);

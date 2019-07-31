@@ -34,7 +34,7 @@
        </script>
         <script src="https://cloud.ibm.com/analytics/build/bluemix-analytics.min.js"></script>
     
-    <title>qiskit.pulse.commands.instruction &#8212; Qiskit 0.11.0 documentation</title>
+    <title>qiskit.pulse.commands.instruction &#8212; Qiskit 0.11.1 documentation</title>
 
     <link rel="stylesheet" href="../../../../_static/material-icons.css" type="text/css" />
     <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
@@ -200,7 +200,7 @@
 <span class="c1"># pylint: disable=missing-return-doc,missing-type-doc</span>
 
 
-<div class="viewcode-block" id="Instruction"><a class="viewcode-back" href="../../../../autodoc/qiskit.pulse.commands.instruction.html#qiskit.pulse.commands.instruction.Instruction">[docs]</a><span class="k">class</span> <span class="nc">Instruction</span><span class="p">(</span><span class="n">ScheduleComponent</span><span class="p">):</span>
+<div class="viewcode-block" id="Instruction"><a class="viewcode-back" href="../../../../autodoc/qiskit.pulse.commands.html#qiskit.pulse.commands.instruction.Instruction">[docs]</a><span class="k">class</span> <span class="nc">Instruction</span><span class="p">(</span><span class="n">ScheduleComponent</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;An abstract class for leaf nodes of schedule.&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">command</span><span class="p">,</span> <span class="o">*</span><span class="n">channels</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Channel</span><span class="p">],</span>
@@ -282,7 +282,7 @@
         <span class="sd">&quot;&quot;&quot;Iterable for getting instructions from Schedule tree.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="nb">tuple</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_instructions</span><span class="p">())</span>
 
-<div class="viewcode-block" id="Instruction.ch_duration"><a class="viewcode-back" href="../../../../autodoc/qiskit.pulse.commands.instruction.html#qiskit.pulse.commands.instruction.Instruction.ch_duration">[docs]</a>    <span class="k">def</span> <span class="nf">ch_duration</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">channels</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Channel</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<div class="viewcode-block" id="Instruction.ch_duration"><a class="viewcode-back" href="../../../../autodoc/qiskit.pulse.commands.html#qiskit.pulse.commands.instruction.Instruction.ch_duration">[docs]</a>    <span class="k">def</span> <span class="nf">ch_duration</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">channels</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Channel</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;Return duration of the supplied channels in this Instruction.</span>
 
 <span class="sd">        Args:</span>
@@ -290,7 +290,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeslots</span><span class="o">.</span><span class="n">ch_duration</span><span class="p">(</span><span class="o">*</span><span class="n">channels</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="Instruction.ch_start_time"><a class="viewcode-back" href="../../../../autodoc/qiskit.pulse.commands.instruction.html#qiskit.pulse.commands.instruction.Instruction.ch_start_time">[docs]</a>    <span class="k">def</span> <span class="nf">ch_start_time</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">channels</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Channel</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<div class="viewcode-block" id="Instruction.ch_start_time"><a class="viewcode-back" href="../../../../autodoc/qiskit.pulse.commands.html#qiskit.pulse.commands.instruction.Instruction.ch_start_time">[docs]</a>    <span class="k">def</span> <span class="nf">ch_start_time</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">channels</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Channel</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;Return minimum start time for supplied channels.</span>
 
 <span class="sd">        Args:</span>
@@ -298,7 +298,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeslots</span><span class="o">.</span><span class="n">ch_start_time</span><span class="p">(</span><span class="o">*</span><span class="n">channels</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="Instruction.ch_stop_time"><a class="viewcode-back" href="../../../../autodoc/qiskit.pulse.commands.instruction.html#qiskit.pulse.commands.instruction.Instruction.ch_stop_time">[docs]</a>    <span class="k">def</span> <span class="nf">ch_stop_time</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">channels</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Channel</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<div class="viewcode-block" id="Instruction.ch_stop_time"><a class="viewcode-back" href="../../../../autodoc/qiskit.pulse.commands.html#qiskit.pulse.commands.instruction.Instruction.ch_stop_time">[docs]</a>    <span class="k">def</span> <span class="nf">ch_stop_time</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">channels</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Channel</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;Return maximum start time for supplied channels.</span>
 
 <span class="sd">        Args:</span>
@@ -318,11 +318,11 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">yield</span> <span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span>
 
-<div class="viewcode-block" id="Instruction.flatten"><a class="viewcode-back" href="../../../../autodoc/qiskit.pulse.commands.instruction.html#qiskit.pulse.commands.instruction.Instruction.flatten">[docs]</a>    <span class="k">def</span> <span class="nf">flatten</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;Instruction&#39;</span><span class="p">:</span>
+<div class="viewcode-block" id="Instruction.flatten"><a class="viewcode-back" href="../../../../autodoc/qiskit.pulse.commands.html#qiskit.pulse.commands.instruction.Instruction.flatten">[docs]</a>    <span class="k">def</span> <span class="nf">flatten</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;Instruction&#39;</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;Return itself as already single instruction.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span></div>
 
-<div class="viewcode-block" id="Instruction.union"><a class="viewcode-back" href="../../../../autodoc/qiskit.pulse.commands.instruction.html#qiskit.pulse.commands.instruction.Instruction.union">[docs]</a>    <span class="k">def</span> <span class="nf">union</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">schedules</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">ScheduleComponent</span><span class="p">],</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;ScheduleComponent&#39;</span><span class="p">:</span>
+<div class="viewcode-block" id="Instruction.union"><a class="viewcode-back" href="../../../../autodoc/qiskit.pulse.commands.html#qiskit.pulse.commands.instruction.Instruction.union">[docs]</a>    <span class="k">def</span> <span class="nf">union</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">schedules</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">ScheduleComponent</span><span class="p">],</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;ScheduleComponent&#39;</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;Return a new schedule which is the union of `self` and `schedule`.</span>
 
 <span class="sd">        Args:</span>
@@ -331,7 +331,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">ops</span><span class="o">.</span><span class="n">union</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">schedules</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="Instruction.shift"><a class="viewcode-back" href="../../../../autodoc/qiskit.pulse.commands.instruction.html#qiskit.pulse.commands.instruction.Instruction.shift">[docs]</a>    <span class="k">def</span> <span class="nf">shift</span><span class="p">(</span><span class="bp">self</span><span class="p">:</span> <span class="n">ScheduleComponent</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;ScheduleComponent&#39;</span><span class="p">:</span>
+<div class="viewcode-block" id="Instruction.shift"><a class="viewcode-back" href="../../../../autodoc/qiskit.pulse.commands.html#qiskit.pulse.commands.instruction.Instruction.shift">[docs]</a>    <span class="k">def</span> <span class="nf">shift</span><span class="p">(</span><span class="bp">self</span><span class="p">:</span> <span class="n">ScheduleComponent</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;ScheduleComponent&#39;</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;Return a new schedule shifted forward by `time`.</span>
 
 <span class="sd">        Args:</span>
@@ -340,7 +340,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">ops</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="Instruction.insert"><a class="viewcode-back" href="../../../../autodoc/qiskit.pulse.commands.instruction.html#qiskit.pulse.commands.instruction.Instruction.insert">[docs]</a>    <span class="k">def</span> <span class="nf">insert</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start_time</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">schedule</span><span class="p">:</span> <span class="n">ScheduleComponent</span><span class="p">,</span> <span class="n">buffer</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+<div class="viewcode-block" id="Instruction.insert"><a class="viewcode-back" href="../../../../autodoc/qiskit.pulse.commands.html#qiskit.pulse.commands.instruction.Instruction.insert">[docs]</a>    <span class="k">def</span> <span class="nf">insert</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start_time</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">schedule</span><span class="p">:</span> <span class="n">ScheduleComponent</span><span class="p">,</span> <span class="n">buffer</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
                <span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;ScheduleComponent&#39;</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;Return a new schedule with `schedule` inserted within `self` at `start_time`.</span>
 
@@ -352,7 +352,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">ops</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start_time</span><span class="p">,</span> <span class="n">schedule</span><span class="p">,</span> <span class="n">buffer</span><span class="o">=</span><span class="n">buffer</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="Instruction.append"><a class="viewcode-back" href="../../../../autodoc/qiskit.pulse.commands.instruction.html#qiskit.pulse.commands.instruction.Instruction.append">[docs]</a>    <span class="k">def</span> <span class="nf">append</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">schedule</span><span class="p">:</span> <span class="n">ScheduleComponent</span><span class="p">,</span> <span class="n">buffer</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+<div class="viewcode-block" id="Instruction.append"><a class="viewcode-back" href="../../../../autodoc/qiskit.pulse.commands.html#qiskit.pulse.commands.instruction.Instruction.append">[docs]</a>    <span class="k">def</span> <span class="nf">append</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">schedule</span><span class="p">:</span> <span class="n">ScheduleComponent</span><span class="p">,</span> <span class="n">buffer</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
                <span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;ScheduleComponent&#39;</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;Return a new schedule with `schedule` inserted at the maximum time over</span>
 <span class="sd">        all channels shared between `self` and `schedule`.</span>
@@ -364,7 +364,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">ops</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">schedule</span><span class="p">,</span> <span class="n">buffer</span><span class="o">=</span><span class="n">buffer</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="Instruction.draw"><a class="viewcode-back" href="../../../../autodoc/qiskit.pulse.commands.instruction.html#qiskit.pulse.commands.instruction.Instruction.draw">[docs]</a>    <span class="k">def</span> <span class="nf">draw</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dt</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<div class="viewcode-block" id="Instruction.draw"><a class="viewcode-back" href="../../../../autodoc/qiskit.pulse.commands.html#qiskit.pulse.commands.instruction.Instruction.draw">[docs]</a>    <span class="k">def</span> <span class="nf">draw</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dt</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
              <span class="n">filename</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">interp_method</span><span class="p">:</span> <span class="n">Callable</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">scaling</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
              <span class="n">channels_to_plot</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Channel</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">plot_all</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
              <span class="n">plot_range</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">interactive</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
@@ -466,23 +466,23 @@
       var el = document.getElementById('language');
       var optionsToSelect = ['en', 'ja']
       function changeLoc(evt) {
-        var language = evt.target.options[el.selectedIndex].value;
-        var pathname = window.location.pathname.slice(prefix.length);
-        if (language === getDefaultLanguage()) {
-          window.location.pathname =
-            `${prefix}${pathname.replace(localeRegExp, '/')}`;
-        } else {
-          window.location.pathname =
-            `${prefix}${pathname.replace(localeRegExp, `/locale/${language}/`)}`;
+	        var language = evt.target.options[el.selectedIndex].value;
+	        var pathname = window.location.pathname.slice(prefix.length);
+	        if (language === getDefaultLanguage()) {
+	          window.location.pathname =
+	            `${prefix}${pathname.replace(localeRegExp, '/')}`;
+	        } else {
+	          window.location.pathname =
+	            `${prefix}${pathname.replace(localeRegExp, `/locale/${language}/`)}`;
         }
       };
       el.addEventListener('change', changeLoc);
 
       function extractLanguageFromUrl(pathname) {
-        const match = pathname.slice(prefix.length).match(localeRegExp);
-        return typeof match[2] === 'undefined' ?
-                getDefaultLanguage() : match[2];
-	    }
+	        const match = pathname.slice(prefix.length).match(localeRegExp);
+	        return typeof match[2] === 'undefined' ?
+	               getDefaultLanguage() : match[2];
+	      }
 
       function changeSelect(select) {
         const optionToSelect = extractLanguageFromUrl(window.location.pathname);

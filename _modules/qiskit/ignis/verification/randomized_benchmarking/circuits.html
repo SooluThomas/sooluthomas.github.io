@@ -34,7 +34,7 @@
        </script>
         <script src="https://cloud.ibm.com/analytics/build/bluemix-analytics.min.js"></script>
     
-    <title>qiskit.ignis.verification.randomized_benchmarking.circuits &#8212; Qiskit 0.11.0 documentation</title>
+    <title>qiskit.ignis.verification.randomized_benchmarking.circuits &#8212; Qiskit 0.11.1 documentation</title>
 
     <link rel="stylesheet" href="../../../../../_static/material-icons.css" type="text/css" />
     <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css" />
@@ -198,7 +198,7 @@
 <span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">clifford_utils</span> <span class="k">as</span> <span class="n">clutils</span>
 
 
-<div class="viewcode-block" id="handle_length_multiplier"><a class="viewcode-back" href="../../../../../autodoc/qiskit.ignis.verification.randomized_benchmarking.circuits.html#qiskit.ignis.verification.randomized_benchmarking.circuits.handle_length_multiplier">[docs]</a><span class="k">def</span> <span class="nf">handle_length_multiplier</span><span class="p">(</span><span class="n">length_multiplier</span><span class="p">,</span> <span class="n">len_pattern</span><span class="p">):</span>
+<div class="viewcode-block" id="handle_length_multiplier"><a class="viewcode-back" href="../../../../../autodoc/qiskit.ignis.verification.randomized_benchmarking.html#qiskit.ignis.verification.randomized_benchmarking.circuits.handle_length_multiplier">[docs]</a><span class="k">def</span> <span class="nf">handle_length_multiplier</span><span class="p">(</span><span class="n">length_multiplier</span><span class="p">,</span> <span class="n">len_pattern</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Check validity of length_multiplier.</span>
 <span class="sd">    In addition, transform it into a vector if it is a constant.</span>
@@ -224,7 +224,7 @@
     <span class="k">return</span> <span class="n">length_multiplier</span></div>
 
 
-<div class="viewcode-block" id="check_pattern"><a class="viewcode-back" href="../../../../../autodoc/qiskit.ignis.verification.randomized_benchmarking.circuits.html#qiskit.ignis.verification.randomized_benchmarking.circuits.check_pattern">[docs]</a><span class="k">def</span> <span class="nf">check_pattern</span><span class="p">(</span><span class="n">pattern</span><span class="p">):</span>
+<div class="viewcode-block" id="check_pattern"><a class="viewcode-back" href="../../../../../autodoc/qiskit.ignis.verification.randomized_benchmarking.html#qiskit.ignis.verification.randomized_benchmarking.circuits.check_pattern">[docs]</a><span class="k">def</span> <span class="nf">check_pattern</span><span class="p">(</span><span class="n">pattern</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Verifies that the input pattern is valid</span>
 <span class="sd">    i.e., that each qubit appears at most once</span>
@@ -252,7 +252,7 @@
     <span class="k">return</span> <span class="n">pattern_flat</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">pattern_flat</span><span class="p">)</span><span class="o">.</span><span class="n">item</span><span class="p">()</span></div>
 
 
-<div class="viewcode-block" id="calc_xdata"><a class="viewcode-back" href="../../../../../autodoc/qiskit.ignis.verification.randomized_benchmarking.circuits.html#qiskit.ignis.verification.randomized_benchmarking.circuits.calc_xdata">[docs]</a><span class="k">def</span> <span class="nf">calc_xdata</span><span class="p">(</span><span class="n">length_vector</span><span class="p">,</span> <span class="n">length_multiplier</span><span class="p">):</span>
+<div class="viewcode-block" id="calc_xdata"><a class="viewcode-back" href="../../../../../autodoc/qiskit.ignis.verification.randomized_benchmarking.html#qiskit.ignis.verification.randomized_benchmarking.circuits.calc_xdata">[docs]</a><span class="k">def</span> <span class="nf">calc_xdata</span><span class="p">(</span><span class="n">length_vector</span><span class="p">,</span> <span class="n">length_multiplier</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Calculate the set of sequences lengths</span>
 
@@ -271,7 +271,7 @@
     <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">xdata</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="load_tables"><a class="viewcode-back" href="../../../../../autodoc/qiskit.ignis.verification.randomized_benchmarking.circuits.html#qiskit.ignis.verification.randomized_benchmarking.circuits.load_tables">[docs]</a><span class="k">def</span> <span class="nf">load_tables</span><span class="p">(</span><span class="n">max_nrb</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
+<div class="viewcode-block" id="load_tables"><a class="viewcode-back" href="../../../../../autodoc/qiskit.ignis.verification.randomized_benchmarking.html#qiskit.ignis.verification.randomized_benchmarking.circuits.load_tables">[docs]</a><span class="k">def</span> <span class="nf">load_tables</span><span class="p">(</span><span class="n">max_nrb</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Returns the needed Clifford tables</span>
 
@@ -311,7 +311,7 @@
     <span class="k">return</span> <span class="n">clifford_tables</span></div>
 
 
-<div class="viewcode-block" id="randomized_benchmarking_seq"><a class="viewcode-back" href="../../../../../autodoc/qiskit.ignis.verification.randomized_benchmarking.circuits.html#qiskit.ignis.verification.randomized_benchmarking.circuits.randomized_benchmarking_seq">[docs]</a><span class="k">def</span> <span class="nf">randomized_benchmarking_seq</span><span class="p">(</span><span class="n">nseeds</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">length_vector</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<div class="viewcode-block" id="randomized_benchmarking_seq"><a class="viewcode-back" href="../../../../../autodoc/qiskit.ignis.verification.randomized_benchmarking.html#qiskit.ignis.verification.randomized_benchmarking.circuits.randomized_benchmarking_seq">[docs]</a><span class="k">def</span> <span class="nf">randomized_benchmarking_seq</span><span class="p">(</span><span class="n">nseeds</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">length_vector</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                                 <span class="n">rb_pattern</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                                 <span class="n">length_multiplier</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">seed_offset</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
                                 <span class="n">align_cliffs</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
@@ -429,7 +429,7 @@
     <span class="k">return</span> <span class="n">circuits</span><span class="p">,</span> <span class="n">xdata</span></div>
 
 
-<div class="viewcode-block" id="replace_q_indices"><a class="viewcode-back" href="../../../../../autodoc/qiskit.ignis.verification.randomized_benchmarking.circuits.html#qiskit.ignis.verification.randomized_benchmarking.circuits.replace_q_indices">[docs]</a><span class="k">def</span> <span class="nf">replace_q_indices</span><span class="p">(</span><span class="n">circuit</span><span class="p">,</span> <span class="n">q_nums</span><span class="p">,</span> <span class="n">qr</span><span class="p">):</span>
+<div class="viewcode-block" id="replace_q_indices"><a class="viewcode-back" href="../../../../../autodoc/qiskit.ignis.verification.randomized_benchmarking.html#qiskit.ignis.verification.randomized_benchmarking.circuits.replace_q_indices">[docs]</a><span class="k">def</span> <span class="nf">replace_q_indices</span><span class="p">(</span><span class="n">circuit</span><span class="p">,</span> <span class="n">q_nums</span><span class="p">,</span> <span class="n">qr</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Take a circuit that is ordered from 0,1,2 qubits and replace 0 with the</span>
 <span class="sd">    qubit label in the first index of q_nums, 1 with the second index...</span>
@@ -500,23 +500,23 @@
       var el = document.getElementById('language');
       var optionsToSelect = ['en', 'ja']
       function changeLoc(evt) {
-        var language = evt.target.options[el.selectedIndex].value;
-        var pathname = window.location.pathname.slice(prefix.length);
-        if (language === getDefaultLanguage()) {
-          window.location.pathname =
-            `${prefix}${pathname.replace(localeRegExp, '/')}`;
-        } else {
-          window.location.pathname =
-            `${prefix}${pathname.replace(localeRegExp, `/locale/${language}/`)}`;
+	        var language = evt.target.options[el.selectedIndex].value;
+	        var pathname = window.location.pathname.slice(prefix.length);
+	        if (language === getDefaultLanguage()) {
+	          window.location.pathname =
+	            `${prefix}${pathname.replace(localeRegExp, '/')}`;
+	        } else {
+	          window.location.pathname =
+	            `${prefix}${pathname.replace(localeRegExp, `/locale/${language}/`)}`;
         }
       };
       el.addEventListener('change', changeLoc);
 
       function extractLanguageFromUrl(pathname) {
-        const match = pathname.slice(prefix.length).match(localeRegExp);
-        return typeof match[2] === 'undefined' ?
-                getDefaultLanguage() : match[2];
-	    }
+	        const match = pathname.slice(prefix.length).match(localeRegExp);
+	        return typeof match[2] === 'undefined' ?
+	               getDefaultLanguage() : match[2];
+	      }
 
       function changeSelect(select) {
         const optionToSelect = extractLanguageFromUrl(window.location.pathname);

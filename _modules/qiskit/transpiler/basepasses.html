@@ -34,7 +34,7 @@
        </script>
         <script src="https://cloud.ibm.com/analytics/build/bluemix-analytics.min.js"></script>
     
-    <title>qiskit.transpiler.basepasses &#8212; Qiskit 0.11.0 documentation</title>
+    <title>qiskit.transpiler.basepasses &#8212; Qiskit 0.11.1 documentation</title>
 
     <link rel="stylesheet" href="../../../_static/material-icons.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
@@ -191,7 +191,7 @@
 <span class="kn">from</span> <span class="nn">.propertyset</span> <span class="k">import</span> <span class="n">PropertySet</span>
 
 
-<div class="viewcode-block" id="MetaPass"><a class="viewcode-back" href="../../../autodoc/qiskit.transpiler.basepasses.html#qiskit.transpiler.basepasses.MetaPass">[docs]</a><span class="k">class</span> <span class="nc">MetaPass</span><span class="p">(</span><span class="nb">type</span><span class="p">):</span>
+<div class="viewcode-block" id="MetaPass"><a class="viewcode-back" href="../../../autodoc/qiskit.transpiler.html#qiskit.transpiler.basepasses.MetaPass">[docs]</a><span class="k">class</span> <span class="nc">MetaPass</span><span class="p">(</span><span class="nb">type</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Enforces the creation of some fields in the pass</span>
 <span class="sd">    while allowing passes to override __init__</span>
@@ -218,7 +218,7 @@
         <span class="k">return</span> <span class="nb">frozenset</span><span class="p">(</span><span class="n">arguments</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="BasePass"><a class="viewcode-back" href="../../../autodoc/qiskit.transpiler.basepasses.html#qiskit.transpiler.basepasses.BasePass">[docs]</a><span class="k">class</span> <span class="nc">BasePass</span><span class="p">(</span><span class="n">metaclass</span><span class="o">=</span><span class="n">MetaPass</span><span class="p">):</span>
+<div class="viewcode-block" id="BasePass"><a class="viewcode-back" href="../../../autodoc/qiskit.transpiler.html#qiskit.transpiler.basepasses.BasePass">[docs]</a><span class="k">class</span> <span class="nc">BasePass</span><span class="p">(</span><span class="n">metaclass</span><span class="o">=</span><span class="n">MetaPass</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Base class for transpiler passes.&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -233,11 +233,11 @@
     <span class="k">def</span> <span class="nf">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
         <span class="k">return</span> <span class="nb">hash</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">==</span> <span class="nb">hash</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
 
-<div class="viewcode-block" id="BasePass.name"><a class="viewcode-back" href="../../../autodoc/qiskit.transpiler.basepasses.html#qiskit.transpiler.basepasses.BasePass.name">[docs]</a>    <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="BasePass.name"><a class="viewcode-back" href="../../../autodoc/qiskit.transpiler.html#qiskit.transpiler.basepasses.BasePass.name">[docs]</a>    <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; The name of the pass. &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span></div>
 
-<div class="viewcode-block" id="BasePass.run"><a class="viewcode-back" href="../../../autodoc/qiskit.transpiler.basepasses.html#qiskit.transpiler.basepasses.BasePass.run">[docs]</a>    <span class="nd">@abstractmethod</span>
+<div class="viewcode-block" id="BasePass.run"><a class="viewcode-back" href="../../../autodoc/qiskit.transpiler.html#qiskit.transpiler.basepasses.BasePass.run">[docs]</a>    <span class="nd">@abstractmethod</span>
     <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dag</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Run a pass on the DAGCircuit. This is implemented by the pass developer.</span>
@@ -262,12 +262,12 @@
         <span class="k">return</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">AnalysisPass</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="AnalysisPass"><a class="viewcode-back" href="../../../autodoc/qiskit.transpiler.basepasses.html#qiskit.transpiler.basepasses.AnalysisPass">[docs]</a><span class="k">class</span> <span class="nc">AnalysisPass</span><span class="p">(</span><span class="n">BasePass</span><span class="p">):</span>  <span class="c1"># pylint: disable=abstract-method</span>
+<div class="viewcode-block" id="AnalysisPass"><a class="viewcode-back" href="../../../autodoc/qiskit.transpiler.html#qiskit.transpiler.basepasses.AnalysisPass">[docs]</a><span class="k">class</span> <span class="nc">AnalysisPass</span><span class="p">(</span><span class="n">BasePass</span><span class="p">):</span>  <span class="c1"># pylint: disable=abstract-method</span>
     <span class="sd">&quot;&quot;&quot; An analysis pass: change property set, not DAG. &quot;&quot;&quot;</span>
     <span class="k">pass</span></div>
 
 
-<div class="viewcode-block" id="TransformationPass"><a class="viewcode-back" href="../../../autodoc/qiskit.transpiler.basepasses.html#qiskit.transpiler.basepasses.TransformationPass">[docs]</a><span class="k">class</span> <span class="nc">TransformationPass</span><span class="p">(</span><span class="n">BasePass</span><span class="p">):</span>  <span class="c1"># pylint: disable=abstract-method</span>
+<div class="viewcode-block" id="TransformationPass"><a class="viewcode-back" href="../../../autodoc/qiskit.transpiler.html#qiskit.transpiler.basepasses.TransformationPass">[docs]</a><span class="k">class</span> <span class="nc">TransformationPass</span><span class="p">(</span><span class="n">BasePass</span><span class="p">):</span>  <span class="c1"># pylint: disable=abstract-method</span>
     <span class="sd">&quot;&quot;&quot; A transformation pass: change DAG, not property set. &quot;&quot;&quot;</span>
     <span class="k">pass</span></div>
 </pre></div>
@@ -320,23 +320,23 @@
       var el = document.getElementById('language');
       var optionsToSelect = ['en', 'ja']
       function changeLoc(evt) {
-        var language = evt.target.options[el.selectedIndex].value;
-        var pathname = window.location.pathname.slice(prefix.length);
-        if (language === getDefaultLanguage()) {
-          window.location.pathname =
-            `${prefix}${pathname.replace(localeRegExp, '/')}`;
-        } else {
-          window.location.pathname =
-            `${prefix}${pathname.replace(localeRegExp, `/locale/${language}/`)}`;
+	        var language = evt.target.options[el.selectedIndex].value;
+	        var pathname = window.location.pathname.slice(prefix.length);
+	        if (language === getDefaultLanguage()) {
+	          window.location.pathname =
+	            `${prefix}${pathname.replace(localeRegExp, '/')}`;
+	        } else {
+	          window.location.pathname =
+	            `${prefix}${pathname.replace(localeRegExp, `/locale/${language}/`)}`;
         }
       };
       el.addEventListener('change', changeLoc);
 
       function extractLanguageFromUrl(pathname) {
-        const match = pathname.slice(prefix.length).match(localeRegExp);
-        return typeof match[2] === 'undefined' ?
-                getDefaultLanguage() : match[2];
-	    }
+	        const match = pathname.slice(prefix.length).match(localeRegExp);
+	        return typeof match[2] === 'undefined' ?
+	               getDefaultLanguage() : match[2];
+	      }
 
       function changeSelect(select) {
         const optionToSelect = extractLanguageFromUrl(window.location.pathname);

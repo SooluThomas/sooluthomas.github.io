@@ -34,7 +34,7 @@
        </script>
         <script src="https://cloud.ibm.com/analytics/build/bluemix-analytics.min.js"></script>
     
-    <title>qiskit.qobj.converters.lo_config &#8212; Qiskit 0.11.0 documentation</title>
+    <title>qiskit.qobj.converters.lo_config &#8212; Qiskit 0.11.1 documentation</title>
 
     <link rel="stylesheet" href="../../../../_static/material-icons.css" type="text/css" />
     <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
@@ -181,7 +181,7 @@
 <span class="kn">from</span> <span class="nn">qiskit.pulse</span> <span class="k">import</span> <span class="n">DriveChannel</span><span class="p">,</span> <span class="n">MeasureChannel</span><span class="p">,</span> <span class="n">LoConfig</span>
 
 
-<div class="viewcode-block" id="LoConfigConverter"><a class="viewcode-back" href="../../../../autodoc/qiskit.qobj.converters.lo_config.html#qiskit.qobj.converters.lo_config.LoConfigConverter">[docs]</a><span class="k">class</span> <span class="nc">LoConfigConverter</span><span class="p">:</span>
+<div class="viewcode-block" id="LoConfigConverter"><a class="viewcode-back" href="../../../../autodoc/qiskit.qobj.converters.html#qiskit.qobj.converters.lo_config.LoConfigConverter">[docs]</a><span class="k">class</span> <span class="nc">LoConfigConverter</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; This class supports to convert LoConfig into ~`lo_freq` attribute of configs.</span>
 <span class="sd">    The format of LO frequency setup can be easily modified by replacing</span>
 <span class="sd">    `get_qubit_los` and `get_meas_los` to align with your backend.</span>
@@ -232,7 +232,7 @@
 
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">qobj_model</span><span class="p">(</span><span class="o">**</span><span class="n">lo_config</span><span class="p">)</span>
 
-<div class="viewcode-block" id="LoConfigConverter.get_qubit_los"><a class="viewcode-back" href="../../../../autodoc/qiskit.qobj.converters.lo_config.html#qiskit.qobj.converters.lo_config.LoConfigConverter.get_qubit_los">[docs]</a>    <span class="k">def</span> <span class="nf">get_qubit_los</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">user_lo_config</span><span class="p">):</span>
+<div class="viewcode-block" id="LoConfigConverter.get_qubit_los"><a class="viewcode-back" href="../../../../autodoc/qiskit.qobj.converters.html#qiskit.qobj.converters.lo_config.LoConfigConverter.get_qubit_los">[docs]</a>    <span class="k">def</span> <span class="nf">get_qubit_los</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">user_lo_config</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Embed default qubit LO frequencies from backend and format them to list object.</span>
 <span class="sd">        If configured lo frequency is the same as default, this method returns `None`.</span>
 
@@ -256,7 +256,7 @@
 
         <span class="k">return</span> <span class="n">_q_los</span></div>
 
-<div class="viewcode-block" id="LoConfigConverter.get_meas_los"><a class="viewcode-back" href="../../../../autodoc/qiskit.qobj.converters.lo_config.html#qiskit.qobj.converters.lo_config.LoConfigConverter.get_meas_los">[docs]</a>    <span class="k">def</span> <span class="nf">get_meas_los</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">user_lo_config</span><span class="p">):</span>
+<div class="viewcode-block" id="LoConfigConverter.get_meas_los"><a class="viewcode-back" href="../../../../autodoc/qiskit.qobj.converters.html#qiskit.qobj.converters.lo_config.LoConfigConverter.get_meas_los">[docs]</a>    <span class="k">def</span> <span class="nf">get_meas_los</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">user_lo_config</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Embed default meas LO frequencies from backend and format them to list object.</span>
 <span class="sd">        If configured lo frequency is the same as default, this method returns `None`.</span>
 
@@ -329,23 +329,23 @@
       var el = document.getElementById('language');
       var optionsToSelect = ['en', 'ja']
       function changeLoc(evt) {
-        var language = evt.target.options[el.selectedIndex].value;
-        var pathname = window.location.pathname.slice(prefix.length);
-        if (language === getDefaultLanguage()) {
-          window.location.pathname =
-            `${prefix}${pathname.replace(localeRegExp, '/')}`;
-        } else {
-          window.location.pathname =
-            `${prefix}${pathname.replace(localeRegExp, `/locale/${language}/`)}`;
+	        var language = evt.target.options[el.selectedIndex].value;
+	        var pathname = window.location.pathname.slice(prefix.length);
+	        if (language === getDefaultLanguage()) {
+	          window.location.pathname =
+	            `${prefix}${pathname.replace(localeRegExp, '/')}`;
+	        } else {
+	          window.location.pathname =
+	            `${prefix}${pathname.replace(localeRegExp, `/locale/${language}/`)}`;
         }
       };
       el.addEventListener('change', changeLoc);
 
       function extractLanguageFromUrl(pathname) {
-        const match = pathname.slice(prefix.length).match(localeRegExp);
-        return typeof match[2] === 'undefined' ?
-                getDefaultLanguage() : match[2];
-	    }
+	        const match = pathname.slice(prefix.length).match(localeRegExp);
+	        return typeof match[2] === 'undefined' ?
+	               getDefaultLanguage() : match[2];
+	      }
 
       function changeSelect(select) {
         const optionToSelect = extractLanguageFromUrl(window.location.pathname);

@@ -34,7 +34,7 @@
        </script>
         <script src="https://cloud.ibm.com/analytics/build/bluemix-analytics.min.js"></script>
     
-    <title>qiskit.providers.models.pulsedefaults &#8212; Qiskit 0.11.0 documentation</title>
+    <title>qiskit.providers.models.pulsedefaults &#8212; Qiskit 0.11.1 documentation</title>
 
     <link rel="stylesheet" href="../../../../_static/material-icons.css" type="text/css" />
     <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
@@ -187,7 +187,7 @@
 <span class="kn">from</span> <span class="nn">qiskit.pulse</span> <span class="k">import</span> <span class="n">CmdDef</span>
 
 
-<div class="viewcode-block" id="MeasurementKernelSchema"><a class="viewcode-back" href="../../../../autodoc/qiskit.providers.models.pulsedefaults.html#qiskit.providers.models.pulsedefaults.MeasurementKernelSchema">[docs]</a><span class="k">class</span> <span class="nc">MeasurementKernelSchema</span><span class="p">(</span><span class="n">BaseSchema</span><span class="p">):</span>
+<div class="viewcode-block" id="MeasurementKernelSchema"><a class="viewcode-back" href="../../../../autodoc/qiskit.providers.models.html#qiskit.providers.models.pulsedefaults.MeasurementKernelSchema">[docs]</a><span class="k">class</span> <span class="nc">MeasurementKernelSchema</span><span class="p">(</span><span class="n">BaseSchema</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Schema for MeasurementKernel.&quot;&quot;&quot;</span>
 
     <span class="c1"># Optional properties.</span>
@@ -195,7 +195,7 @@
     <span class="n">params</span> <span class="o">=</span> <span class="n">Nested</span><span class="p">(</span><span class="n">ObjSchema</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="DiscriminatorSchema"><a class="viewcode-back" href="../../../../autodoc/qiskit.providers.models.pulsedefaults.html#qiskit.providers.models.pulsedefaults.DiscriminatorSchema">[docs]</a><span class="k">class</span> <span class="nc">DiscriminatorSchema</span><span class="p">(</span><span class="n">BaseSchema</span><span class="p">):</span>
+<div class="viewcode-block" id="DiscriminatorSchema"><a class="viewcode-back" href="../../../../autodoc/qiskit.providers.models.html#qiskit.providers.models.pulsedefaults.DiscriminatorSchema">[docs]</a><span class="k">class</span> <span class="nc">DiscriminatorSchema</span><span class="p">(</span><span class="n">BaseSchema</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Schema for Discriminator.&quot;&quot;&quot;</span>
 
     <span class="c1"># Optional properties.</span>
@@ -203,7 +203,7 @@
     <span class="n">params</span> <span class="o">=</span> <span class="n">Nested</span><span class="p">(</span><span class="n">ObjSchema</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="CommandSchema"><a class="viewcode-back" href="../../../../autodoc/qiskit.providers.models.pulsedefaults.html#qiskit.providers.models.pulsedefaults.CommandSchema">[docs]</a><span class="k">class</span> <span class="nc">CommandSchema</span><span class="p">(</span><span class="n">BaseSchema</span><span class="p">):</span>
+<div class="viewcode-block" id="CommandSchema"><a class="viewcode-back" href="../../../../autodoc/qiskit.providers.models.html#qiskit.providers.models.pulsedefaults.CommandSchema">[docs]</a><span class="k">class</span> <span class="nc">CommandSchema</span><span class="p">(</span><span class="n">BaseSchema</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Schema for Command.&quot;&quot;&quot;</span>
 
     <span class="c1"># Required properties.</span>
@@ -215,7 +215,7 @@
     <span class="n">sequence</span> <span class="o">=</span> <span class="n">Nested</span><span class="p">(</span><span class="n">PulseQobjInstructionSchema</span><span class="p">,</span> <span class="n">many</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="PulseDefaultsSchema"><a class="viewcode-back" href="../../../../autodoc/qiskit.providers.models.pulsedefaults.html#qiskit.providers.models.pulsedefaults.PulseDefaultsSchema">[docs]</a><span class="k">class</span> <span class="nc">PulseDefaultsSchema</span><span class="p">(</span><span class="n">BaseSchema</span><span class="p">):</span>
+<div class="viewcode-block" id="PulseDefaultsSchema"><a class="viewcode-back" href="../../../../autodoc/qiskit.providers.models.html#qiskit.providers.models.pulsedefaults.PulseDefaultsSchema">[docs]</a><span class="k">class</span> <span class="nc">PulseDefaultsSchema</span><span class="p">(</span><span class="n">BaseSchema</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Schema for PulseDefaults.&quot;&quot;&quot;</span>
 
     <span class="c1"># Required properties.</span>
@@ -230,7 +230,7 @@
     <span class="n">discriminator</span> <span class="o">=</span> <span class="n">Nested</span><span class="p">(</span><span class="n">DiscriminatorSchema</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="MeasurementKernel"><a class="viewcode-back" href="../../../../autodoc/qiskit.providers.models.pulsedefaults.html#qiskit.providers.models.pulsedefaults.MeasurementKernel">[docs]</a><span class="nd">@bind_schema</span><span class="p">(</span><span class="n">MeasurementKernelSchema</span><span class="p">)</span>
+<div class="viewcode-block" id="MeasurementKernel"><a class="viewcode-back" href="../../../../autodoc/qiskit.providers.models.html#qiskit.providers.models.pulsedefaults.MeasurementKernel">[docs]</a><span class="nd">@bind_schema</span><span class="p">(</span><span class="n">MeasurementKernelSchema</span><span class="p">)</span>
 <span class="k">class</span> <span class="nc">MeasurementKernel</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Model for MeasurementKernel.</span>
 
@@ -240,7 +240,7 @@
     <span class="k">pass</span></div>
 
 
-<div class="viewcode-block" id="Discriminator"><a class="viewcode-back" href="../../../../autodoc/qiskit.providers.models.pulsedefaults.html#qiskit.providers.models.pulsedefaults.Discriminator">[docs]</a><span class="nd">@bind_schema</span><span class="p">(</span><span class="n">DiscriminatorSchema</span><span class="p">)</span>
+<div class="viewcode-block" id="Discriminator"><a class="viewcode-back" href="../../../../autodoc/qiskit.providers.models.html#qiskit.providers.models.pulsedefaults.Discriminator">[docs]</a><span class="nd">@bind_schema</span><span class="p">(</span><span class="n">DiscriminatorSchema</span><span class="p">)</span>
 <span class="k">class</span> <span class="nc">Discriminator</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Model for Discriminator.</span>
 
@@ -250,7 +250,7 @@
     <span class="k">pass</span></div>
 
 
-<div class="viewcode-block" id="Command"><a class="viewcode-back" href="../../../../autodoc/qiskit.providers.models.pulsedefaults.html#qiskit.providers.models.pulsedefaults.Command">[docs]</a><span class="nd">@bind_schema</span><span class="p">(</span><span class="n">CommandSchema</span><span class="p">)</span>
+<div class="viewcode-block" id="Command"><a class="viewcode-back" href="../../../../autodoc/qiskit.providers.models.html#qiskit.providers.models.pulsedefaults.Command">[docs]</a><span class="nd">@bind_schema</span><span class="p">(</span><span class="n">CommandSchema</span><span class="p">)</span>
 <span class="k">class</span> <span class="nc">Command</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Model for Command.</span>
 
@@ -266,7 +266,7 @@
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="PulseDefaults"><a class="viewcode-back" href="../../../../autodoc/qiskit.providers.models.pulsedefaults.html#qiskit.providers.models.pulsedefaults.PulseDefaults">[docs]</a><span class="nd">@bind_schema</span><span class="p">(</span><span class="n">PulseDefaultsSchema</span><span class="p">)</span>
+<div class="viewcode-block" id="PulseDefaults"><a class="viewcode-back" href="../../../../autodoc/qiskit.providers.models.html#qiskit.providers.models.pulsedefaults.PulseDefaults">[docs]</a><span class="nd">@bind_schema</span><span class="p">(</span><span class="n">PulseDefaultsSchema</span><span class="p">)</span>
 <span class="k">class</span> <span class="nc">PulseDefaults</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Model for PulseDefaults.</span>
 
@@ -292,7 +292,7 @@
 
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
-<div class="viewcode-block" id="PulseDefaults.build_cmd_def"><a class="viewcode-back" href="../../../../autodoc/qiskit.providers.models.pulsedefaults.html#qiskit.providers.models.pulsedefaults.PulseDefaults.build_cmd_def">[docs]</a>    <span class="k">def</span> <span class="nf">build_cmd_def</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="PulseDefaults.build_cmd_def"><a class="viewcode-back" href="../../../../autodoc/qiskit.providers.models.html#qiskit.providers.models.pulsedefaults.PulseDefaults.build_cmd_def">[docs]</a>    <span class="k">def</span> <span class="nf">build_cmd_def</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Construct the `CmdDef` object for the backend.</span>
 
 <span class="sd">        Returns:</span>
@@ -349,23 +349,23 @@
       var el = document.getElementById('language');
       var optionsToSelect = ['en', 'ja']
       function changeLoc(evt) {
-        var language = evt.target.options[el.selectedIndex].value;
-        var pathname = window.location.pathname.slice(prefix.length);
-        if (language === getDefaultLanguage()) {
-          window.location.pathname =
-            `${prefix}${pathname.replace(localeRegExp, '/')}`;
-        } else {
-          window.location.pathname =
-            `${prefix}${pathname.replace(localeRegExp, `/locale/${language}/`)}`;
+	        var language = evt.target.options[el.selectedIndex].value;
+	        var pathname = window.location.pathname.slice(prefix.length);
+	        if (language === getDefaultLanguage()) {
+	          window.location.pathname =
+	            `${prefix}${pathname.replace(localeRegExp, '/')}`;
+	        } else {
+	          window.location.pathname =
+	            `${prefix}${pathname.replace(localeRegExp, `/locale/${language}/`)}`;
         }
       };
       el.addEventListener('change', changeLoc);
 
       function extractLanguageFromUrl(pathname) {
-        const match = pathname.slice(prefix.length).match(localeRegExp);
-        return typeof match[2] === 'undefined' ?
-                getDefaultLanguage() : match[2];
-	    }
+	        const match = pathname.slice(prefix.length).match(localeRegExp);
+	        return typeof match[2] === 'undefined' ?
+	               getDefaultLanguage() : match[2];
+	      }
 
       function changeSelect(select) {
         const optionToSelect = extractLanguageFromUrl(window.location.pathname);

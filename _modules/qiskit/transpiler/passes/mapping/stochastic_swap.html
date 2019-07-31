@@ -34,7 +34,7 @@
        </script>
         <script src="https://cloud.ibm.com/analytics/build/bluemix-analytics.min.js"></script>
     
-    <title>qiskit.transpiler.passes.mapping.stochastic_swap &#8212; Qiskit 0.11.0 documentation</title>
+    <title>qiskit.transpiler.passes.mapping.stochastic_swap &#8212; Qiskit 0.11.1 documentation</title>
 
     <link rel="stylesheet" href="../../../../../_static/material-icons.css" type="text/css" />
     <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css" />
@@ -213,7 +213,7 @@
 <span class="c1"># the circuit.</span>
 
 
-<div class="viewcode-block" id="StochasticSwap"><a class="viewcode-back" href="../../../../../autodoc/qiskit.transpiler.passes.mapping.stochastic_swap.html#qiskit.transpiler.passes.mapping.stochastic_swap.StochasticSwap">[docs]</a><span class="k">class</span> <span class="nc">StochasticSwap</span><span class="p">(</span><span class="n">TransformationPass</span><span class="p">):</span>
+<div class="viewcode-block" id="StochasticSwap"><a class="viewcode-back" href="../../../../../autodoc/qiskit.transpiler.passes.mapping.html#qiskit.transpiler.passes.mapping.stochastic_swap.StochasticSwap">[docs]</a><span class="k">class</span> <span class="nc">StochasticSwap</span><span class="p">(</span><span class="n">TransformationPass</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Maps a DAGCircuit onto a `coupling_map` adding swap gates.</span>
 
@@ -254,7 +254,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">qregs</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">rng</span> <span class="o">=</span> <span class="kc">None</span>
 
-<div class="viewcode-block" id="StochasticSwap.run"><a class="viewcode-back" href="../../../../../autodoc/qiskit.transpiler.passes.mapping.stochastic_swap.html#qiskit.transpiler.passes.mapping.stochastic_swap.StochasticSwap.run">[docs]</a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dag</span><span class="p">):</span>
+<div class="viewcode-block" id="StochasticSwap.run"><a class="viewcode-back" href="../../../../../autodoc/qiskit.transpiler.passes.mapping.html#qiskit.transpiler.passes.mapping.stochastic_swap.StochasticSwap.run">[docs]</a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dag</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Run the StochasticSwap pass on `dag`.</span>
 
@@ -624,7 +624,7 @@
     <span class="k">return</span> <span class="kc">True</span><span class="p">,</span> <span class="n">best_circuit</span><span class="p">,</span> <span class="n">best_depth</span><span class="p">,</span> <span class="n">best_lay</span><span class="p">,</span> <span class="kc">False</span>
 
 
-<div class="viewcode-block" id="regtuple_to_numeric"><a class="viewcode-back" href="../../../../../autodoc/qiskit.transpiler.passes.mapping.stochastic_swap.html#qiskit.transpiler.passes.mapping.stochastic_swap.regtuple_to_numeric">[docs]</a><span class="k">def</span> <span class="nf">regtuple_to_numeric</span><span class="p">(</span><span class="n">items</span><span class="p">,</span> <span class="n">qregs</span><span class="p">):</span>
+<div class="viewcode-block" id="regtuple_to_numeric"><a class="viewcode-back" href="../../../../../autodoc/qiskit.transpiler.passes.mapping.html#qiskit.transpiler.passes.mapping.stochastic_swap.regtuple_to_numeric">[docs]</a><span class="k">def</span> <span class="nf">regtuple_to_numeric</span><span class="p">(</span><span class="n">items</span><span class="p">,</span> <span class="n">qregs</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Takes (QuantumRegister, int) tuples and converts</span>
 <span class="sd">    them into an integer array.</span>
 
@@ -647,7 +647,7 @@
     <span class="k">return</span> <span class="n">out</span></div>
 
 
-<div class="viewcode-block" id="gates_to_idx"><a class="viewcode-back" href="../../../../../autodoc/qiskit.transpiler.passes.mapping.stochastic_swap.html#qiskit.transpiler.passes.mapping.stochastic_swap.gates_to_idx">[docs]</a><span class="k">def</span> <span class="nf">gates_to_idx</span><span class="p">(</span><span class="n">gates</span><span class="p">,</span> <span class="n">qregs</span><span class="p">):</span>
+<div class="viewcode-block" id="gates_to_idx"><a class="viewcode-back" href="../../../../../autodoc/qiskit.transpiler.passes.mapping.html#qiskit.transpiler.passes.mapping.stochastic_swap.gates_to_idx">[docs]</a><span class="k">def</span> <span class="nf">gates_to_idx</span><span class="p">(</span><span class="n">gates</span><span class="p">,</span> <span class="n">qregs</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Converts gate tuples into a nested list of integers.</span>
 
 <span class="sd">    Args:</span>
@@ -718,23 +718,23 @@
       var el = document.getElementById('language');
       var optionsToSelect = ['en', 'ja']
       function changeLoc(evt) {
-        var language = evt.target.options[el.selectedIndex].value;
-        var pathname = window.location.pathname.slice(prefix.length);
-        if (language === getDefaultLanguage()) {
-          window.location.pathname =
-            `${prefix}${pathname.replace(localeRegExp, '/')}`;
-        } else {
-          window.location.pathname =
-            `${prefix}${pathname.replace(localeRegExp, `/locale/${language}/`)}`;
+	        var language = evt.target.options[el.selectedIndex].value;
+	        var pathname = window.location.pathname.slice(prefix.length);
+	        if (language === getDefaultLanguage()) {
+	          window.location.pathname =
+	            `${prefix}${pathname.replace(localeRegExp, '/')}`;
+	        } else {
+	          window.location.pathname =
+	            `${prefix}${pathname.replace(localeRegExp, `/locale/${language}/`)}`;
         }
       };
       el.addEventListener('change', changeLoc);
 
       function extractLanguageFromUrl(pathname) {
-        const match = pathname.slice(prefix.length).match(localeRegExp);
-        return typeof match[2] === 'undefined' ?
-                getDefaultLanguage() : match[2];
-	    }
+	        const match = pathname.slice(prefix.length).match(localeRegExp);
+	        return typeof match[2] === 'undefined' ?
+	               getDefaultLanguage() : match[2];
+	      }
 
       function changeSelect(select) {
         const optionToSelect = extractLanguageFromUrl(window.location.pathname);

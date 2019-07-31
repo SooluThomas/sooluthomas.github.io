@@ -34,7 +34,7 @@
        </script>
         <script src="https://cloud.ibm.com/analytics/build/bluemix-analytics.min.js"></script>
     
-    <title>qiskit.chemistry.drivers.hdf5d.hdf5driver &#8212; Qiskit 0.11.0 documentation</title>
+    <title>qiskit.chemistry.drivers.hdf5d.hdf5driver &#8212; Qiskit 0.11.1 documentation</title>
 
     <link rel="stylesheet" href="../../../../../_static/material-icons.css" type="text/css" />
     <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css" />
@@ -191,7 +191,7 @@
 <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
 
 
-<div class="viewcode-block" id="HDF5Driver"><a class="viewcode-back" href="../../../../../autodoc/qiskit.chemistry.drivers.hdf5d.hdf5driver.html#qiskit.chemistry.drivers.HDF5Driver">[docs]</a><span class="k">class</span> <span class="nc">HDF5Driver</span><span class="p">(</span><span class="n">BaseDriver</span><span class="p">):</span>
+<div class="viewcode-block" id="HDF5Driver"><a class="viewcode-back" href="../../../../../autodoc/qiskit.chemistry.drivers.hdf5d.html#qiskit.chemistry.drivers.HDF5Driver">[docs]</a><span class="k">class</span> <span class="nc">HDF5Driver</span><span class="p">(</span><span class="n">BaseDriver</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Python implementation of a hdf5 driver.&quot;&quot;&quot;</span>
 
     <span class="n">KEY_HDF5_INPUT</span> <span class="o">=</span> <span class="s1">&#39;hdf5_input&#39;</span>
@@ -223,7 +223,7 @@
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_hdf5_input</span> <span class="o">=</span> <span class="n">hdf5_input</span>
 
-<div class="viewcode-block" id="HDF5Driver.init_from_input"><a class="viewcode-back" href="../../../../../autodoc/qiskit.chemistry.drivers.hdf5d.hdf5driver.html#qiskit.chemistry.drivers.HDF5Driver.init_from_input">[docs]</a>    <span class="nd">@classmethod</span>
+<div class="viewcode-block" id="HDF5Driver.init_from_input"><a class="viewcode-back" href="../../../../../autodoc/qiskit.chemistry.drivers.hdf5d.html#qiskit.chemistry.drivers.HDF5Driver.init_from_input">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">init_from_input</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">section</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Initialize via section dictionary.</span>
@@ -241,7 +241,7 @@
         <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;init_from_input: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">kwargs</span><span class="p">))</span>
         <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="HDF5Driver.run"><a class="viewcode-back" href="../../../../../autodoc/qiskit.chemistry.drivers.hdf5d.hdf5driver.html#qiskit.chemistry.drivers.HDF5Driver.run">[docs]</a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="HDF5Driver.run"><a class="viewcode-back" href="../../../../../autodoc/qiskit.chemistry.drivers.hdf5d.html#qiskit.chemistry.drivers.HDF5Driver.run">[docs]</a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">hdf5_file</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_hdf5_input</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">work_path</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isabs</span><span class="p">(</span><span class="n">hdf5_file</span><span class="p">):</span>
             <span class="n">hdf5_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">work_path</span><span class="p">,</span> <span class="n">hdf5_file</span><span class="p">))</span>
@@ -302,23 +302,23 @@
       var el = document.getElementById('language');
       var optionsToSelect = ['en', 'ja']
       function changeLoc(evt) {
-        var language = evt.target.options[el.selectedIndex].value;
-        var pathname = window.location.pathname.slice(prefix.length);
-        if (language === getDefaultLanguage()) {
-          window.location.pathname =
-            `${prefix}${pathname.replace(localeRegExp, '/')}`;
-        } else {
-          window.location.pathname =
-            `${prefix}${pathname.replace(localeRegExp, `/locale/${language}/`)}`;
+	        var language = evt.target.options[el.selectedIndex].value;
+	        var pathname = window.location.pathname.slice(prefix.length);
+	        if (language === getDefaultLanguage()) {
+	          window.location.pathname =
+	            `${prefix}${pathname.replace(localeRegExp, '/')}`;
+	        } else {
+	          window.location.pathname =
+	            `${prefix}${pathname.replace(localeRegExp, `/locale/${language}/`)}`;
         }
       };
       el.addEventListener('change', changeLoc);
 
       function extractLanguageFromUrl(pathname) {
-        const match = pathname.slice(prefix.length).match(localeRegExp);
-        return typeof match[2] === 'undefined' ?
-                getDefaultLanguage() : match[2];
-	    }
+	        const match = pathname.slice(prefix.length).match(localeRegExp);
+	        return typeof match[2] === 'undefined' ?
+	               getDefaultLanguage() : match[2];
+	      }
 
       function changeSelect(select) {
         const optionToSelect = extractLanguageFromUrl(window.location.pathname);

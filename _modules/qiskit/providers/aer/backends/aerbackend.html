@@ -34,7 +34,7 @@
        </script>
         <script src="https://cloud.ibm.com/analytics/build/bluemix-analytics.min.js"></script>
     
-    <title>qiskit.providers.aer.backends.aerbackend &#8212; Qiskit 0.11.0 documentation</title>
+    <title>qiskit.providers.aer.backends.aerbackend &#8212; Qiskit 0.11.1 documentation</title>
 
     <link rel="stylesheet" href="../../../../../_static/material-icons.css" type="text/css" />
     <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css" />
@@ -205,7 +205,7 @@
 <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
 
 
-<div class="viewcode-block" id="AerJSONEncoder"><a class="viewcode-back" href="../../../../../autodoc/qiskit.providers.aer.backends.aerbackend.html#qiskit.providers.aer.backends.aerbackend.AerJSONEncoder">[docs]</a><span class="k">class</span> <span class="nc">AerJSONEncoder</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">JSONEncoder</span><span class="p">):</span>
+<div class="viewcode-block" id="AerJSONEncoder"><a class="viewcode-back" href="../../../../../autodoc/qiskit.providers.aer.backends.html#qiskit.providers.aer.backends.aerbackend.AerJSONEncoder">[docs]</a><span class="k">class</span> <span class="nc">AerJSONEncoder</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">JSONEncoder</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    JSON encoder for NumPy arrays and complex numbers.</span>
 
@@ -216,7 +216,7 @@
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="c1"># pylint: disable=method-hidden,arguments-differ</span>
-<div class="viewcode-block" id="AerJSONEncoder.default"><a class="viewcode-back" href="../../../../../autodoc/qiskit.providers.aer.backends.aerbackend.html#qiskit.providers.aer.backends.aerbackend.AerJSONEncoder.default">[docs]</a>    <span class="k">def</span> <span class="nf">default</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">):</span>
+<div class="viewcode-block" id="AerJSONEncoder.default"><a class="viewcode-back" href="../../../../../autodoc/qiskit.providers.aer.backends.html#qiskit.providers.aer.backends.aerbackend.AerJSONEncoder.default">[docs]</a>    <span class="k">def</span> <span class="nf">default</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">):</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">ndarray</span><span class="p">):</span>
             <span class="k">return</span> <span class="n">obj</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="nb">complex</span><span class="p">):</span>
@@ -226,7 +226,7 @@
         <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">default</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span></div></div>
 
 
-<div class="viewcode-block" id="AerBackend"><a class="viewcode-back" href="../../../../../autodoc/qiskit.providers.aer.backends.aerbackend.html#qiskit.providers.aer.backends.aerbackend.AerBackend">[docs]</a><span class="k">class</span> <span class="nc">AerBackend</span><span class="p">(</span><span class="n">BaseBackend</span><span class="p">):</span>
+<div class="viewcode-block" id="AerBackend"><a class="viewcode-back" href="../../../../../autodoc/qiskit.providers.aer.backends.html#qiskit.providers.aer.backends.aerbackend.AerBackend">[docs]</a><span class="k">class</span> <span class="nc">AerBackend</span><span class="p">(</span><span class="n">BaseBackend</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Qiskit Aer Backend class.&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">controller</span><span class="p">,</span> <span class="n">configuration</span><span class="p">,</span> <span class="n">provider</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
@@ -249,7 +249,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_controller</span> <span class="o">=</span> <span class="n">controller</span>
 
     <span class="c1"># pylint: disable=arguments-differ</span>
-<div class="viewcode-block" id="AerBackend.run"><a class="viewcode-back" href="../../../../../autodoc/qiskit.providers.aer.backends.aerbackend.html#qiskit.providers.aer.backends.aerbackend.AerBackend.run">[docs]</a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">qobj</span><span class="p">,</span> <span class="n">backend_options</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">noise_model</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">validate</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<div class="viewcode-block" id="AerBackend.run"><a class="viewcode-back" href="../../../../../autodoc/qiskit.providers.aer.backends.html#qiskit.providers.aer.backends.aerbackend.AerBackend.run">[docs]</a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">qobj</span><span class="p">,</span> <span class="n">backend_options</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">noise_model</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">validate</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Run a qobj on the backend.&quot;&quot;&quot;</span>
         <span class="c1"># Submit job</span>
         <span class="n">job_id</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">())</span>
@@ -258,7 +258,7 @@
         <span class="n">aer_job</span><span class="o">.</span><span class="n">submit</span><span class="p">()</span>
         <span class="k">return</span> <span class="n">aer_job</span></div>
 
-<div class="viewcode-block" id="AerBackend.status"><a class="viewcode-back" href="../../../../../autodoc/qiskit.providers.aer.backends.aerbackend.html#qiskit.providers.aer.backends.aerbackend.AerBackend.status">[docs]</a>    <span class="k">def</span> <span class="nf">status</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="AerBackend.status"><a class="viewcode-back" href="../../../../../autodoc/qiskit.providers.aer.backends.html#qiskit.providers.aer.backends.aerbackend.AerBackend.status">[docs]</a>    <span class="k">def</span> <span class="nf">status</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return backend status.</span>
 
 <span class="sd">        Returns:</span>
@@ -400,23 +400,23 @@
       var el = document.getElementById('language');
       var optionsToSelect = ['en', 'ja']
       function changeLoc(evt) {
-        var language = evt.target.options[el.selectedIndex].value;
-        var pathname = window.location.pathname.slice(prefix.length);
-        if (language === getDefaultLanguage()) {
-          window.location.pathname =
-            `${prefix}${pathname.replace(localeRegExp, '/')}`;
-        } else {
-          window.location.pathname =
-            `${prefix}${pathname.replace(localeRegExp, `/locale/${language}/`)}`;
+	        var language = evt.target.options[el.selectedIndex].value;
+	        var pathname = window.location.pathname.slice(prefix.length);
+	        if (language === getDefaultLanguage()) {
+	          window.location.pathname =
+	            `${prefix}${pathname.replace(localeRegExp, '/')}`;
+	        } else {
+	          window.location.pathname =
+	            `${prefix}${pathname.replace(localeRegExp, `/locale/${language}/`)}`;
         }
       };
       el.addEventListener('change', changeLoc);
 
       function extractLanguageFromUrl(pathname) {
-        const match = pathname.slice(prefix.length).match(localeRegExp);
-        return typeof match[2] === 'undefined' ?
-                getDefaultLanguage() : match[2];
-	    }
+	        const match = pathname.slice(prefix.length).match(localeRegExp);
+	        return typeof match[2] === 'undefined' ?
+	               getDefaultLanguage() : match[2];
+	      }
 
       function changeSelect(select) {
         const optionToSelect = extractLanguageFromUrl(window.location.pathname);

@@ -34,7 +34,7 @@
        </script>
         <script src="https://cloud.ibm.com/analytics/build/bluemix-analytics.min.js"></script>
     
-    <title>qiskit.qobj.converters.pulse_instruction &#8212; Qiskit 0.11.0 documentation</title>
+    <title>qiskit.qobj.converters.pulse_instruction &#8212; Qiskit 0.11.1 documentation</title>
 
     <link rel="stylesheet" href="../../../../_static/material-icons.css" type="text/css" />
     <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
@@ -193,7 +193,7 @@
 <span class="kn">from</span> <span class="nn">qiskit</span> <span class="k">import</span> <span class="n">QiskitError</span>
 
 
-<div class="viewcode-block" id="ConversionMethodBinder"><a class="viewcode-back" href="../../../../autodoc/qiskit.qobj.converters.pulse_instruction.html#qiskit.qobj.converters.pulse_instruction.ConversionMethodBinder">[docs]</a><span class="k">class</span> <span class="nc">ConversionMethodBinder</span><span class="p">:</span>
+<div class="viewcode-block" id="ConversionMethodBinder"><a class="viewcode-back" href="../../../../autodoc/qiskit.qobj.converters.html#qiskit.qobj.converters.pulse_instruction.ConversionMethodBinder">[docs]</a><span class="k">class</span> <span class="nc">ConversionMethodBinder</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;Conversion method registrar.&quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Acts as method registration decorator and tracker for conversion methods.&quot;&quot;&quot;</span>
@@ -218,7 +218,7 @@
 
         <span class="k">return</span> <span class="n">_apply_converter</span>
 
-<div class="viewcode-block" id="ConversionMethodBinder.get_bound_method"><a class="viewcode-back" href="../../../../autodoc/qiskit.qobj.converters.pulse_instruction.html#qiskit.qobj.converters.pulse_instruction.ConversionMethodBinder.get_bound_method">[docs]</a>    <span class="k">def</span> <span class="nf">get_bound_method</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bound</span><span class="p">):</span>
+<div class="viewcode-block" id="ConversionMethodBinder.get_bound_method"><a class="viewcode-back" href="../../../../autodoc/qiskit.qobj.converters.html#qiskit.qobj.converters.pulse_instruction.ConversionMethodBinder.get_bound_method">[docs]</a>    <span class="k">def</span> <span class="nf">get_bound_method</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bound</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Get conversion method for bound object.&quot;&quot;&quot;</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_bound_instructions</span><span class="p">[</span><span class="n">bound</span><span class="p">]</span>
@@ -226,7 +226,7 @@
             <span class="k">raise</span> <span class="n">PulseError</span><span class="p">(</span><span class="s1">&#39;Bound method for </span><span class="si">%s</span><span class="s1"> is not found.&#39;</span> <span class="o">%</span> <span class="n">bound</span><span class="p">)</span></div></div>
 
 
-<div class="viewcode-block" id="InstructionToQobjConverter"><a class="viewcode-back" href="../../../../autodoc/qiskit.qobj.converters.pulse_instruction.html#qiskit.qobj.converters.pulse_instruction.InstructionToQobjConverter">[docs]</a><span class="k">class</span> <span class="nc">InstructionToQobjConverter</span><span class="p">:</span>
+<div class="viewcode-block" id="InstructionToQobjConverter"><a class="viewcode-back" href="../../../../autodoc/qiskit.qobj.converters.html#qiskit.qobj.converters.pulse_instruction.InstructionToQobjConverter">[docs]</a><span class="k">class</span> <span class="nc">InstructionToQobjConverter</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;Converts pulse Instructions to Qobj models.</span>
 
 <span class="sd">    Converter is constructed with qobj model and experimental configuration,</span>
@@ -273,7 +273,7 @@
         <span class="n">method</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">bind_instruction</span><span class="o">.</span><span class="n">get_bound_method</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">instruction</span><span class="p">))</span>
         <span class="k">return</span> <span class="n">method</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">shift</span><span class="p">,</span> <span class="n">instruction</span><span class="p">)</span>
 
-<div class="viewcode-block" id="InstructionToQobjConverter.convert_acquire"><a class="viewcode-back" href="../../../../autodoc/qiskit.qobj.converters.pulse_instruction.html#qiskit.qobj.converters.pulse_instruction.InstructionToQobjConverter.convert_acquire">[docs]</a>    <span class="nd">@bind_instruction</span><span class="p">(</span><span class="n">commands</span><span class="o">.</span><span class="n">AcquireInstruction</span><span class="p">)</span>
+<div class="viewcode-block" id="InstructionToQobjConverter.convert_acquire"><a class="viewcode-back" href="../../../../autodoc/qiskit.qobj.converters.html#qiskit.qobj.converters.pulse_instruction.InstructionToQobjConverter.convert_acquire">[docs]</a>    <span class="nd">@bind_instruction</span><span class="p">(</span><span class="n">commands</span><span class="o">.</span><span class="n">AcquireInstruction</span><span class="p">)</span>
     <span class="k">def</span> <span class="nf">convert_acquire</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">shift</span><span class="p">,</span> <span class="n">instruction</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return converted `AcquireInstruction`.</span>
 
@@ -319,7 +319,7 @@
                 <span class="p">})</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_qobj_model</span><span class="p">(</span><span class="o">**</span><span class="n">command_dict</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="InstructionToQobjConverter.convert_frame_change"><a class="viewcode-back" href="../../../../autodoc/qiskit.qobj.converters.pulse_instruction.html#qiskit.qobj.converters.pulse_instruction.InstructionToQobjConverter.convert_frame_change">[docs]</a>    <span class="nd">@bind_instruction</span><span class="p">(</span><span class="n">commands</span><span class="o">.</span><span class="n">FrameChangeInstruction</span><span class="p">)</span>
+<div class="viewcode-block" id="InstructionToQobjConverter.convert_frame_change"><a class="viewcode-back" href="../../../../autodoc/qiskit.qobj.converters.html#qiskit.qobj.converters.pulse_instruction.InstructionToQobjConverter.convert_frame_change">[docs]</a>    <span class="nd">@bind_instruction</span><span class="p">(</span><span class="n">commands</span><span class="o">.</span><span class="n">FrameChangeInstruction</span><span class="p">)</span>
     <span class="k">def</span> <span class="nf">convert_frame_change</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">shift</span><span class="p">,</span> <span class="n">instruction</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return converted `FrameChangeInstruction`.</span>
 
@@ -337,7 +337,7 @@
         <span class="p">}</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_qobj_model</span><span class="p">(</span><span class="o">**</span><span class="n">command_dict</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="InstructionToQobjConverter.convert_persistent_value"><a class="viewcode-back" href="../../../../autodoc/qiskit.qobj.converters.pulse_instruction.html#qiskit.qobj.converters.pulse_instruction.InstructionToQobjConverter.convert_persistent_value">[docs]</a>    <span class="nd">@bind_instruction</span><span class="p">(</span><span class="n">commands</span><span class="o">.</span><span class="n">PersistentValueInstruction</span><span class="p">)</span>
+<div class="viewcode-block" id="InstructionToQobjConverter.convert_persistent_value"><a class="viewcode-back" href="../../../../autodoc/qiskit.qobj.converters.html#qiskit.qobj.converters.pulse_instruction.InstructionToQobjConverter.convert_persistent_value">[docs]</a>    <span class="nd">@bind_instruction</span><span class="p">(</span><span class="n">commands</span><span class="o">.</span><span class="n">PersistentValueInstruction</span><span class="p">)</span>
     <span class="k">def</span> <span class="nf">convert_persistent_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">shift</span><span class="p">,</span> <span class="n">instruction</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return converted `PersistentValueInstruction`.</span>
 
@@ -355,7 +355,7 @@
         <span class="p">}</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_qobj_model</span><span class="p">(</span><span class="o">**</span><span class="n">command_dict</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="InstructionToQobjConverter.convert_drive"><a class="viewcode-back" href="../../../../autodoc/qiskit.qobj.converters.pulse_instruction.html#qiskit.qobj.converters.pulse_instruction.InstructionToQobjConverter.convert_drive">[docs]</a>    <span class="nd">@bind_instruction</span><span class="p">(</span><span class="n">commands</span><span class="o">.</span><span class="n">PulseInstruction</span><span class="p">)</span>
+<div class="viewcode-block" id="InstructionToQobjConverter.convert_drive"><a class="viewcode-back" href="../../../../autodoc/qiskit.qobj.converters.html#qiskit.qobj.converters.pulse_instruction.InstructionToQobjConverter.convert_drive">[docs]</a>    <span class="nd">@bind_instruction</span><span class="p">(</span><span class="n">commands</span><span class="o">.</span><span class="n">PulseInstruction</span><span class="p">)</span>
     <span class="k">def</span> <span class="nf">convert_drive</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">shift</span><span class="p">,</span> <span class="n">instruction</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return converted `PulseInstruction`.</span>
 
@@ -372,7 +372,7 @@
         <span class="p">}</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_qobj_model</span><span class="p">(</span><span class="o">**</span><span class="n">command_dict</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="InstructionToQobjConverter.convert_snapshot"><a class="viewcode-back" href="../../../../autodoc/qiskit.qobj.converters.pulse_instruction.html#qiskit.qobj.converters.pulse_instruction.InstructionToQobjConverter.convert_snapshot">[docs]</a>    <span class="nd">@bind_instruction</span><span class="p">(</span><span class="n">commands</span><span class="o">.</span><span class="n">Snapshot</span><span class="p">)</span>
+<div class="viewcode-block" id="InstructionToQobjConverter.convert_snapshot"><a class="viewcode-back" href="../../../../autodoc/qiskit.qobj.converters.html#qiskit.qobj.converters.pulse_instruction.InstructionToQobjConverter.convert_snapshot">[docs]</a>    <span class="nd">@bind_instruction</span><span class="p">(</span><span class="n">commands</span><span class="o">.</span><span class="n">Snapshot</span><span class="p">)</span>
     <span class="k">def</span> <span class="nf">convert_snapshot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">shift</span><span class="p">,</span> <span class="n">instruction</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return converted `Snapshot`.</span>
 
@@ -487,7 +487,7 @@
     <span class="k">return</span> <span class="n">parsed_fun</span><span class="p">,</span> <span class="n">params</span>
 
 
-<div class="viewcode-block" id="QobjToInstructionConverter"><a class="viewcode-back" href="../../../../autodoc/qiskit.qobj.converters.pulse_instruction.html#qiskit.qobj.converters.pulse_instruction.QobjToInstructionConverter">[docs]</a><span class="k">class</span> <span class="nc">QobjToInstructionConverter</span><span class="p">:</span>
+<div class="viewcode-block" id="QobjToInstructionConverter"><a class="viewcode-back" href="../../../../autodoc/qiskit.qobj.converters.html#qiskit.qobj.converters.pulse_instruction.QobjToInstructionConverter">[docs]</a><span class="k">class</span> <span class="nc">QobjToInstructionConverter</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;Converts Qobj models to pulse Instructions</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1"># pylint: disable=invalid-name,missing-return-type-doc</span>
@@ -515,7 +515,7 @@
         <span class="n">method</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">bind_name</span><span class="o">.</span><span class="n">get_bound_method</span><span class="p">(</span><span class="n">instruction</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">method</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">instruction</span><span class="p">)</span>
 
-<div class="viewcode-block" id="QobjToInstructionConverter.get_channel"><a class="viewcode-back" href="../../../../autodoc/qiskit.qobj.converters.pulse_instruction.html#qiskit.qobj.converters.pulse_instruction.QobjToInstructionConverter.get_channel">[docs]</a>    <span class="k">def</span> <span class="nf">get_channel</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">channel</span><span class="p">):</span>
+<div class="viewcode-block" id="QobjToInstructionConverter.get_channel"><a class="viewcode-back" href="../../../../autodoc/qiskit.qobj.converters.html#qiskit.qobj.converters.pulse_instruction.QobjToInstructionConverter.get_channel">[docs]</a>    <span class="k">def</span> <span class="nf">get_channel</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">channel</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Parse and retrieve channel from ch string.</span>
 
 <span class="sd">        Args:</span>
@@ -540,7 +540,7 @@
 
         <span class="k">raise</span> <span class="n">PulseError</span><span class="p">(</span><span class="s1">&#39;Channel </span><span class="si">%s</span><span class="s1"> is not valid&#39;</span> <span class="o">%</span> <span class="n">channel</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="QobjToInstructionConverter.convert_acquire"><a class="viewcode-back" href="../../../../autodoc/qiskit.qobj.converters.pulse_instruction.html#qiskit.qobj.converters.pulse_instruction.QobjToInstructionConverter.convert_acquire">[docs]</a>    <span class="nd">@bind_name</span><span class="p">(</span><span class="s1">&#39;acquire&#39;</span><span class="p">)</span>
+<div class="viewcode-block" id="QobjToInstructionConverter.convert_acquire"><a class="viewcode-back" href="../../../../autodoc/qiskit.qobj.converters.html#qiskit.qobj.converters.pulse_instruction.QobjToInstructionConverter.convert_acquire">[docs]</a>    <span class="nd">@bind_name</span><span class="p">(</span><span class="s1">&#39;acquire&#39;</span><span class="p">)</span>
     <span class="k">def</span> <span class="nf">convert_acquire</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">instruction</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return converted `AcquireInstruction`.</span>
 
@@ -592,7 +592,7 @@
 
         <span class="k">return</span> <span class="n">schedule</span></div>
 
-<div class="viewcode-block" id="QobjToInstructionConverter.convert_frame_change"><a class="viewcode-back" href="../../../../autodoc/qiskit.qobj.converters.pulse_instruction.html#qiskit.qobj.converters.pulse_instruction.QobjToInstructionConverter.convert_frame_change">[docs]</a>    <span class="nd">@bind_name</span><span class="p">(</span><span class="s1">&#39;fc&#39;</span><span class="p">)</span>
+<div class="viewcode-block" id="QobjToInstructionConverter.convert_frame_change"><a class="viewcode-back" href="../../../../autodoc/qiskit.qobj.converters.html#qiskit.qobj.converters.pulse_instruction.QobjToInstructionConverter.convert_frame_change">[docs]</a>    <span class="nd">@bind_name</span><span class="p">(</span><span class="s1">&#39;fc&#39;</span><span class="p">)</span>
     <span class="k">def</span> <span class="nf">convert_frame_change</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">instruction</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return converted `FrameChangeInstruction`.</span>
 
@@ -617,7 +617,7 @@
 
         <span class="k">return</span> <span class="n">commands</span><span class="o">.</span><span class="n">FrameChange</span><span class="p">(</span><span class="n">phase</span><span class="p">)(</span><span class="n">channel</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">t0</span></div>
 
-<div class="viewcode-block" id="QobjToInstructionConverter.convert_persistent_value"><a class="viewcode-back" href="../../../../autodoc/qiskit.qobj.converters.pulse_instruction.html#qiskit.qobj.converters.pulse_instruction.QobjToInstructionConverter.convert_persistent_value">[docs]</a>    <span class="nd">@bind_name</span><span class="p">(</span><span class="s1">&#39;pv&#39;</span><span class="p">)</span>
+<div class="viewcode-block" id="QobjToInstructionConverter.convert_persistent_value"><a class="viewcode-back" href="../../../../autodoc/qiskit.qobj.converters.html#qiskit.qobj.converters.pulse_instruction.QobjToInstructionConverter.convert_persistent_value">[docs]</a>    <span class="nd">@bind_name</span><span class="p">(</span><span class="s1">&#39;pv&#39;</span><span class="p">)</span>
     <span class="k">def</span> <span class="nf">convert_persistent_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">instruction</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return converted `PersistentValueInstruction`.</span>
 
@@ -642,7 +642,7 @@
 
         <span class="k">return</span> <span class="n">commands</span><span class="o">.</span><span class="n">PersistentValue</span><span class="p">(</span><span class="n">val</span><span class="p">)(</span><span class="n">channel</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">t0</span></div>
 
-<div class="viewcode-block" id="QobjToInstructionConverter.bind_pulse"><a class="viewcode-back" href="../../../../autodoc/qiskit.qobj.converters.pulse_instruction.html#qiskit.qobj.converters.pulse_instruction.QobjToInstructionConverter.bind_pulse">[docs]</a>    <span class="k">def</span> <span class="nf">bind_pulse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pulse</span><span class="p">):</span>
+<div class="viewcode-block" id="QobjToInstructionConverter.bind_pulse"><a class="viewcode-back" href="../../../../autodoc/qiskit.qobj.converters.html#qiskit.qobj.converters.pulse_instruction.QobjToInstructionConverter.bind_pulse">[docs]</a>    <span class="k">def</span> <span class="nf">bind_pulse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pulse</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Bind the supplied pulse to a converter method by pulse name.</span>
 
 <span class="sd">        Args:</span>
@@ -664,7 +664,7 @@
             <span class="n">channel</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_channel</span><span class="p">(</span><span class="n">instruction</span><span class="o">.</span><span class="n">ch</span><span class="p">)</span>
             <span class="k">return</span> <span class="n">pulse</span><span class="p">(</span><span class="n">channel</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">t0</span></div>
 
-<div class="viewcode-block" id="QobjToInstructionConverter.convert_snapshot"><a class="viewcode-back" href="../../../../autodoc/qiskit.qobj.converters.pulse_instruction.html#qiskit.qobj.converters.pulse_instruction.QobjToInstructionConverter.convert_snapshot">[docs]</a>    <span class="nd">@bind_name</span><span class="p">(</span><span class="s1">&#39;snapshot&#39;</span><span class="p">)</span>
+<div class="viewcode-block" id="QobjToInstructionConverter.convert_snapshot"><a class="viewcode-back" href="../../../../autodoc/qiskit.qobj.converters.html#qiskit.qobj.converters.pulse_instruction.QobjToInstructionConverter.convert_snapshot">[docs]</a>    <span class="nd">@bind_name</span><span class="p">(</span><span class="s1">&#39;snapshot&#39;</span><span class="p">)</span>
     <span class="k">def</span> <span class="nf">convert_snapshot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">instruction</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return converted `Snapshot`.</span>
 
@@ -725,23 +725,23 @@
       var el = document.getElementById('language');
       var optionsToSelect = ['en', 'ja']
       function changeLoc(evt) {
-        var language = evt.target.options[el.selectedIndex].value;
-        var pathname = window.location.pathname.slice(prefix.length);
-        if (language === getDefaultLanguage()) {
-          window.location.pathname =
-            `${prefix}${pathname.replace(localeRegExp, '/')}`;
-        } else {
-          window.location.pathname =
-            `${prefix}${pathname.replace(localeRegExp, `/locale/${language}/`)}`;
+	        var language = evt.target.options[el.selectedIndex].value;
+	        var pathname = window.location.pathname.slice(prefix.length);
+	        if (language === getDefaultLanguage()) {
+	          window.location.pathname =
+	            `${prefix}${pathname.replace(localeRegExp, '/')}`;
+	        } else {
+	          window.location.pathname =
+	            `${prefix}${pathname.replace(localeRegExp, `/locale/${language}/`)}`;
         }
       };
       el.addEventListener('change', changeLoc);
 
       function extractLanguageFromUrl(pathname) {
-        const match = pathname.slice(prefix.length).match(localeRegExp);
-        return typeof match[2] === 'undefined' ?
-                getDefaultLanguage() : match[2];
-	    }
+	        const match = pathname.slice(prefix.length).match(localeRegExp);
+	        return typeof match[2] === 'undefined' ?
+	               getDefaultLanguage() : match[2];
+	      }
 
       function changeSelect(select) {
         const optionToSelect = extractLanguageFromUrl(window.location.pathname);

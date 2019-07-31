@@ -34,7 +34,7 @@
        </script>
         <script src="https://cloud.ibm.com/analytics/build/bluemix-analytics.min.js"></script>
     
-    <title>qiskit.ignis.verification.tomography.basis.tomographybasis &#8212; Qiskit 0.11.0 documentation</title>
+    <title>qiskit.ignis.verification.tomography.basis.tomographybasis &#8212; Qiskit 0.11.1 documentation</title>
 
     <link rel="stylesheet" href="../../../../../../_static/material-icons.css" type="text/css" />
     <link rel="stylesheet" href="../../../../../../_static/pygments.css" type="text/css" />
@@ -192,7 +192,7 @@
 <span class="kn">from</span> <span class="nn">qiskit</span> <span class="k">import</span> <span class="n">QiskitError</span>
 
 
-<div class="viewcode-block" id="TomographyBasis"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.ignis.verification.tomography.basis.tomographybasis.html#qiskit.ignis.verification.tomography.basis.tomographybasis.TomographyBasis">[docs]</a><span class="k">class</span> <span class="nc">TomographyBasis</span><span class="p">:</span>
+<div class="viewcode-block" id="TomographyBasis"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.ignis.verification.tomography.basis.html#qiskit.ignis.verification.tomography.basis.tomographybasis.TomographyBasis">[docs]</a><span class="k">class</span> <span class="nc">TomographyBasis</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Tomography basis class.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -249,7 +249,7 @@
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_preparation_labels</span>
         <span class="k">return</span> <span class="kc">None</span>
 
-<div class="viewcode-block" id="TomographyBasis.measurement_circuit"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.ignis.verification.tomography.basis.tomographybasis.html#qiskit.ignis.verification.tomography.basis.tomographybasis.TomographyBasis.measurement_circuit">[docs]</a>    <span class="k">def</span> <span class="nf">measurement_circuit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">op</span><span class="p">,</span> <span class="n">qubit</span><span class="p">,</span> <span class="n">clbit</span><span class="p">):</span>
+<div class="viewcode-block" id="TomographyBasis.measurement_circuit"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.ignis.verification.tomography.basis.html#qiskit.ignis.verification.tomography.basis.tomographybasis.TomographyBasis.measurement_circuit">[docs]</a>    <span class="k">def</span> <span class="nf">measurement_circuit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">op</span><span class="p">,</span> <span class="n">qubit</span><span class="p">,</span> <span class="n">clbit</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return the measurement circuits.&quot;&quot;&quot;</span>
         <span class="c1"># Error Checking</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">measurement</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
@@ -272,7 +272,7 @@
         <span class="c1"># Return QuantumCircuit function output</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_measurement_circuit</span><span class="p">(</span><span class="n">op</span><span class="p">,</span> <span class="n">qubit</span><span class="p">,</span> <span class="n">clbit</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="TomographyBasis.preparation_circuit"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.ignis.verification.tomography.basis.tomographybasis.html#qiskit.ignis.verification.tomography.basis.tomographybasis.TomographyBasis.preparation_circuit">[docs]</a>    <span class="k">def</span> <span class="nf">preparation_circuit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">op</span><span class="p">,</span> <span class="n">qubit</span><span class="p">):</span>
+<div class="viewcode-block" id="TomographyBasis.preparation_circuit"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.ignis.verification.tomography.basis.html#qiskit.ignis.verification.tomography.basis.tomographybasis.TomographyBasis.preparation_circuit">[docs]</a>    <span class="k">def</span> <span class="nf">preparation_circuit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">op</span><span class="p">,</span> <span class="n">qubit</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return the preparation circuits.&quot;&quot;&quot;</span>
         <span class="c1"># Error Checking</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">preparation</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
@@ -290,7 +290,7 @@
 
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_preparation_circuit</span><span class="p">(</span><span class="n">op</span><span class="p">,</span> <span class="n">qubit</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="TomographyBasis.measurement_matrix"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.ignis.verification.tomography.basis.tomographybasis.html#qiskit.ignis.verification.tomography.basis.tomographybasis.TomographyBasis.measurement_matrix">[docs]</a>    <span class="k">def</span> <span class="nf">measurement_matrix</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">outcome</span><span class="p">):</span>
+<div class="viewcode-block" id="TomographyBasis.measurement_matrix"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.ignis.verification.tomography.basis.html#qiskit.ignis.verification.tomography.basis.tomographybasis.TomographyBasis.measurement_matrix">[docs]</a>    <span class="k">def</span> <span class="nf">measurement_matrix</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">outcome</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return the measurement matrix.&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">measurement</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
             <span class="k">raise</span> <span class="n">QiskitError</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> is not a measurement basis&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
@@ -310,7 +310,7 @@
 
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_measurement_matrix</span><span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="n">outcome</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="TomographyBasis.preparation_matrix"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.ignis.verification.tomography.basis.tomographybasis.html#qiskit.ignis.verification.tomography.basis.tomographybasis.TomographyBasis.preparation_matrix">[docs]</a>    <span class="k">def</span> <span class="nf">preparation_matrix</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="p">):</span>
+<div class="viewcode-block" id="TomographyBasis.preparation_matrix"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.ignis.verification.tomography.basis.html#qiskit.ignis.verification.tomography.basis.tomographybasis.TomographyBasis.preparation_matrix">[docs]</a>    <span class="k">def</span> <span class="nf">preparation_matrix</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return the preparation matrix.&quot;&quot;&quot;</span>
 
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">preparation</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
@@ -374,23 +374,23 @@
       var el = document.getElementById('language');
       var optionsToSelect = ['en', 'ja']
       function changeLoc(evt) {
-        var language = evt.target.options[el.selectedIndex].value;
-        var pathname = window.location.pathname.slice(prefix.length);
-        if (language === getDefaultLanguage()) {
-          window.location.pathname =
-            `${prefix}${pathname.replace(localeRegExp, '/')}`;
-        } else {
-          window.location.pathname =
-            `${prefix}${pathname.replace(localeRegExp, `/locale/${language}/`)}`;
+	        var language = evt.target.options[el.selectedIndex].value;
+	        var pathname = window.location.pathname.slice(prefix.length);
+	        if (language === getDefaultLanguage()) {
+	          window.location.pathname =
+	            `${prefix}${pathname.replace(localeRegExp, '/')}`;
+	        } else {
+	          window.location.pathname =
+	            `${prefix}${pathname.replace(localeRegExp, `/locale/${language}/`)}`;
         }
       };
       el.addEventListener('change', changeLoc);
 
       function extractLanguageFromUrl(pathname) {
-        const match = pathname.slice(prefix.length).match(localeRegExp);
-        return typeof match[2] === 'undefined' ?
-                getDefaultLanguage() : match[2];
-	    }
+	        const match = pathname.slice(prefix.length).match(localeRegExp);
+	        return typeof match[2] === 'undefined' ?
+	               getDefaultLanguage() : match[2];
+	      }
 
       function changeSelect(select) {
         const optionToSelect = extractLanguageFromUrl(window.location.pathname);

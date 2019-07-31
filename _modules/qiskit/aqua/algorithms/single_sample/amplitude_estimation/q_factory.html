@@ -34,7 +34,7 @@
        </script>
         <script src="https://cloud.ibm.com/analytics/build/bluemix-analytics.min.js"></script>
     
-    <title>qiskit.aqua.algorithms.single_sample.amplitude_estimation.q_factory &#8212; Qiskit 0.11.0 documentation</title>
+    <title>qiskit.aqua.algorithms.single_sample.amplitude_estimation.q_factory &#8212; Qiskit 0.11.1 documentation</title>
 
     <link rel="stylesheet" href="../../../../../../_static/material-icons.css" type="text/css" />
     <link rel="stylesheet" href="../../../../../../_static/pygments.css" type="text/css" />
@@ -189,7 +189,7 @@
 <span class="kn">from</span> <span class="nn">qiskit.aqua.algorithms.single_sample.amplitude_estimation.s_0_reflection</span> <span class="k">import</span> <span class="n">S0Factory</span>
 
 
-<div class="viewcode-block" id="QFactory"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.aqua.algorithms.single_sample.amplitude_estimation.q_factory.html#qiskit.aqua.algorithms.single_sample.amplitude_estimation.q_factory.QFactory">[docs]</a><span class="k">class</span> <span class="nc">QFactory</span><span class="p">(</span><span class="n">CircuitFactory</span><span class="p">):</span>
+<div class="viewcode-block" id="QFactory"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.aqua.algorithms.single_sample.amplitude_estimation.html#qiskit.aqua.algorithms.single_sample.amplitude_estimation.q_factory.QFactory">[docs]</a><span class="k">class</span> <span class="nc">QFactory</span><span class="p">(</span><span class="n">CircuitFactory</span><span class="p">):</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a_factory</span><span class="p">,</span> <span class="n">i_objective</span><span class="p">):</span>
 
@@ -216,19 +216,19 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_num_qubits</span> <span class="o">=</span> <span class="n">a_factory</span><span class="o">.</span><span class="n">num_target_qubits</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_num_ancillas</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_num_qubits_controlled</span> <span class="o">=</span> <span class="n">a_factory</span><span class="o">.</span><span class="n">num_target_qubits</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_num_ancillas_controlled</span>
 
-<div class="viewcode-block" id="QFactory.required_ancillas"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.aqua.algorithms.single_sample.amplitude_estimation.q_factory.html#qiskit.aqua.algorithms.single_sample.amplitude_estimation.q_factory.QFactory.required_ancillas">[docs]</a>    <span class="k">def</span> <span class="nf">required_ancillas</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="QFactory.required_ancillas"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.aqua.algorithms.single_sample.amplitude_estimation.html#qiskit.aqua.algorithms.single_sample.amplitude_estimation.q_factory.QFactory.required_ancillas">[docs]</a>    <span class="k">def</span> <span class="nf">required_ancillas</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_num_ancillas</span></div>
 
-<div class="viewcode-block" id="QFactory.required_ancillas_controlled"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.aqua.algorithms.single_sample.amplitude_estimation.q_factory.html#qiskit.aqua.algorithms.single_sample.amplitude_estimation.q_factory.QFactory.required_ancillas_controlled">[docs]</a>    <span class="k">def</span> <span class="nf">required_ancillas_controlled</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="QFactory.required_ancillas_controlled"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.aqua.algorithms.single_sample.amplitude_estimation.html#qiskit.aqua.algorithms.single_sample.amplitude_estimation.q_factory.QFactory.required_ancillas_controlled">[docs]</a>    <span class="k">def</span> <span class="nf">required_ancillas_controlled</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_num_ancillas_controlled</span></div>
 
-<div class="viewcode-block" id="QFactory.build"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.aqua.algorithms.single_sample.amplitude_estimation.q_factory.html#qiskit.aqua.algorithms.single_sample.amplitude_estimation.q_factory.QFactory.build">[docs]</a>    <span class="k">def</span> <span class="nf">build</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">qc</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">q_ancillas</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="QFactory.build"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.aqua.algorithms.single_sample.amplitude_estimation.html#qiskit.aqua.algorithms.single_sample.amplitude_estimation.q_factory.QFactory.build">[docs]</a>    <span class="k">def</span> <span class="nf">build</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">qc</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">q_ancillas</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">s_psi_0_reflection_factory</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="n">qc</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">q_ancillas</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">a_factory</span><span class="o">.</span><span class="n">build_inverse</span><span class="p">(</span><span class="n">qc</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">q_ancillas</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">s_0_reflection_factory</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="n">qc</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">q_ancillas</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">a_factory</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="n">qc</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">q_ancillas</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="QFactory.build_controlled"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.aqua.algorithms.single_sample.amplitude_estimation.q_factory.html#qiskit.aqua.algorithms.single_sample.amplitude_estimation.q_factory.QFactory.build_controlled">[docs]</a>    <span class="k">def</span> <span class="nf">build_controlled</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">qc</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">q_control</span><span class="p">,</span> <span class="n">q_ancillas</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">use_basis_gates</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<div class="viewcode-block" id="QFactory.build_controlled"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.aqua.algorithms.single_sample.amplitude_estimation.html#qiskit.aqua.algorithms.single_sample.amplitude_estimation.q_factory.QFactory.build_controlled">[docs]</a>    <span class="k">def</span> <span class="nf">build_controlled</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">qc</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">q_control</span><span class="p">,</span> <span class="n">q_ancillas</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">use_basis_gates</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
         <span class="c1"># A operators do not need to be controlled, since they cancel out in the not-controlled case</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">s_psi_0_reflection_factory</span><span class="o">.</span><span class="n">build_controlled</span><span class="p">(</span><span class="n">qc</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">q_control</span><span class="p">,</span> <span class="n">q_ancillas</span><span class="p">,</span> <span class="n">use_basis_gates</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">a_factory</span><span class="o">.</span><span class="n">build_inverse</span><span class="p">(</span><span class="n">qc</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">q_ancillas</span><span class="p">)</span>
@@ -284,23 +284,23 @@
       var el = document.getElementById('language');
       var optionsToSelect = ['en', 'ja']
       function changeLoc(evt) {
-        var language = evt.target.options[el.selectedIndex].value;
-        var pathname = window.location.pathname.slice(prefix.length);
-        if (language === getDefaultLanguage()) {
-          window.location.pathname =
-            `${prefix}${pathname.replace(localeRegExp, '/')}`;
-        } else {
-          window.location.pathname =
-            `${prefix}${pathname.replace(localeRegExp, `/locale/${language}/`)}`;
+	        var language = evt.target.options[el.selectedIndex].value;
+	        var pathname = window.location.pathname.slice(prefix.length);
+	        if (language === getDefaultLanguage()) {
+	          window.location.pathname =
+	            `${prefix}${pathname.replace(localeRegExp, '/')}`;
+	        } else {
+	          window.location.pathname =
+	            `${prefix}${pathname.replace(localeRegExp, `/locale/${language}/`)}`;
         }
       };
       el.addEventListener('change', changeLoc);
 
       function extractLanguageFromUrl(pathname) {
-        const match = pathname.slice(prefix.length).match(localeRegExp);
-        return typeof match[2] === 'undefined' ?
-                getDefaultLanguage() : match[2];
-	    }
+	        const match = pathname.slice(prefix.length).match(localeRegExp);
+	        return typeof match[2] === 'undefined' ?
+	               getDefaultLanguage() : match[2];
+	      }
 
       function changeSelect(select) {
         const optionToSelect = extractLanguageFromUrl(window.location.pathname);
