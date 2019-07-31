@@ -188,7 +188,7 @@
 <span class="kn">from</span> <span class="nn">qiskit.validation</span> <span class="k">import</span> <span class="n">ModelTypeValidator</span>
 
 
-<div class="viewcode-block" id="Complex"><a class="viewcode-back" href="../../../../autodoc/qiskit.validation.fields.html#qiskit.validation.fields.custom.Complex">[docs]</a><span class="k">class</span> <span class="nc">Complex</span><span class="p">(</span><span class="n">ModelTypeValidator</span><span class="p">):</span>
+<div class="viewcode-block" id="Complex"><a class="viewcode-back" href="../../../../autodoc/qiskit.validation.fields.custom.html#qiskit.validation.fields.custom.Complex">[docs]</a><span class="k">class</span> <span class="nc">Complex</span><span class="p">(</span><span class="n">ModelTypeValidator</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Field for complex numbers.</span>
 
 <span class="sd">    Field for parsing complex numbers:</span>
@@ -219,7 +219,7 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">fail</span><span class="p">(</span><span class="s1">&#39;invalid&#39;</span><span class="p">,</span> <span class="nb">input</span><span class="o">=</span><span class="n">value</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="InstructionParameter"><a class="viewcode-back" href="../../../../autodoc/qiskit.validation.fields.html#qiskit.validation.fields.custom.InstructionParameter">[docs]</a><span class="k">class</span> <span class="nc">InstructionParameter</span><span class="p">(</span><span class="n">ModelTypeValidator</span><span class="p">):</span>
+<div class="viewcode-block" id="InstructionParameter"><a class="viewcode-back" href="../../../../autodoc/qiskit.validation.fields.custom.html#qiskit.validation.fields.custom.InstructionParameter">[docs]</a><span class="k">class</span> <span class="nc">InstructionParameter</span><span class="p">(</span><span class="n">ModelTypeValidator</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Field for objects used in instruction parameters.</span>
 
 <span class="sd">    This field provides support for parsing objects of types that uses by</span>
@@ -281,7 +281,7 @@
 
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">fail</span><span class="p">(</span><span class="s1">&#39;invalid&#39;</span><span class="p">,</span> <span class="nb">input</span><span class="o">=</span><span class="n">value</span><span class="p">)</span>
 
-<div class="viewcode-block" id="InstructionParameter.check_type"><a class="viewcode-back" href="../../../../autodoc/qiskit.validation.fields.html#qiskit.validation.fields.custom.InstructionParameter.check_type">[docs]</a>    <span class="k">def</span> <span class="nf">check_type</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">attr</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+<div class="viewcode-block" id="InstructionParameter.check_type"><a class="viewcode-back" href="../../../../autodoc/qiskit.validation.fields.custom.html#qiskit.validation.fields.custom.InstructionParameter.check_type">[docs]</a>    <span class="k">def</span> <span class="nf">check_type</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">attr</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Customize check_type for handling containers.&quot;&quot;&quot;</span>
         <span class="c1"># Check the type in the standard way first, in order to fail quickly</span>
         <span class="c1"># in case of invalid values.</span>
@@ -295,7 +295,7 @@
         <span class="k">return</span> <span class="n">root_value</span></div></div>
 
 
-<div class="viewcode-block" id="DictParameters"><a class="viewcode-back" href="../../../../autodoc/qiskit.validation.fields.html#qiskit.validation.fields.custom.DictParameters">[docs]</a><span class="k">class</span> <span class="nc">DictParameters</span><span class="p">(</span><span class="n">ModelTypeValidator</span><span class="p">):</span>
+<div class="viewcode-block" id="DictParameters"><a class="viewcode-back" href="../../../../autodoc/qiskit.validation.fields.custom.html#qiskit.validation.fields.custom.DictParameters">[docs]</a><span class="k">class</span> <span class="nc">DictParameters</span><span class="p">(</span><span class="n">ModelTypeValidator</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Field for objects used in measurement kernel and discriminator parameters.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">default_error_messages</span> <span class="o">=</span> <span class="p">{</span>
@@ -317,7 +317,7 @@
     <span class="k">def</span> <span class="nf">_expected_types</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">valid_value_types</span>
 
-<div class="viewcode-block" id="DictParameters.check_type"><a class="viewcode-back" href="../../../../autodoc/qiskit.validation.fields.html#qiskit.validation.fields.custom.DictParameters.check_type">[docs]</a>    <span class="k">def</span> <span class="nf">check_type</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">attr</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+<div class="viewcode-block" id="DictParameters.check_type"><a class="viewcode-back" href="../../../../autodoc/qiskit.validation.fields.custom.html#qiskit.validation.fields.custom.DictParameters.check_type">[docs]</a>    <span class="k">def</span> <span class="nf">check_type</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">attr</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">return</span> <span class="kc">None</span>
 

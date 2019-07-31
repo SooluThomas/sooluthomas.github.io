@@ -189,7 +189,7 @@
 <span class="kn">from</span> <span class="nn">qiskit.aqua.components.variational_forms</span> <span class="k">import</span> <span class="n">VariationalForm</span>
 
 
-<div class="viewcode-block" id="SwapRZ"><a class="viewcode-back" href="../../../../../autodoc/qiskit.aqua.components.variational_forms.html#qiskit.aqua.components.variational_forms.SwapRZ">[docs]</a><span class="k">class</span> <span class="nc">SwapRZ</span><span class="p">(</span><span class="n">VariationalForm</span><span class="p">):</span>
+<div class="viewcode-block" id="SwapRZ"><a class="viewcode-back" href="../../../../../autodoc/qiskit.aqua.components.variational_forms.swaprz.html#qiskit.aqua.components.variational_forms.SwapRZ">[docs]</a><span class="k">class</span> <span class="nc">SwapRZ</span><span class="p">(</span><span class="n">VariationalForm</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Layers of Swap+Z rotations followed by entangling gates.&quot;&quot;&quot;</span>
 
     <span class="n">CONFIGURATION</span> <span class="o">=</span> <span class="p">{</span>
@@ -272,7 +272,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_num_parameters</span> <span class="o">+=</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_entangled_qubits</span><span class="p">)</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_entangler_map</span><span class="p">))</span> <span class="o">*</span> <span class="n">depth</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_bounds</span> <span class="o">=</span> <span class="p">[(</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)]</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">_num_parameters</span>
 
-<div class="viewcode-block" id="SwapRZ.construct_circuit"><a class="viewcode-back" href="../../../../../autodoc/qiskit.aqua.components.variational_forms.html#qiskit.aqua.components.variational_forms.SwapRZ.construct_circuit">[docs]</a>    <span class="k">def</span> <span class="nf">construct_circuit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parameters</span><span class="p">,</span> <span class="n">q</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="SwapRZ.construct_circuit"><a class="viewcode-back" href="../../../../../autodoc/qiskit.aqua.components.variational_forms.swaprz.html#qiskit.aqua.components.variational_forms.SwapRZ.construct_circuit">[docs]</a>    <span class="k">def</span> <span class="nf">construct_circuit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parameters</span><span class="p">,</span> <span class="n">q</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Construct the variational form, given its parameters.</span>
 

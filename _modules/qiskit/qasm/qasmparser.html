@@ -197,7 +197,7 @@
 <span class="kn">from</span> <span class="nn">.qasmlexer</span> <span class="k">import</span> <span class="n">QasmLexer</span>
 
 
-<div class="viewcode-block" id="QasmParser"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.html#qiskit.qasm.qasmparser.QasmParser">[docs]</a><span class="k">class</span> <span class="nc">QasmParser</span><span class="p">:</span>
+<div class="viewcode-block" id="QasmParser"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.qasmparser.html#qiskit.qasm.qasmparser.QasmParser">[docs]</a><span class="k">class</span> <span class="nc">QasmParser</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;OPENQASM Parser.&quot;&quot;&quot;</span>
 
     <span class="c1"># pylint: disable=unused-argument,missing-docstring,invalid-name</span>
@@ -232,7 +232,7 @@
         <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">parse_dir</span><span class="p">):</span>
             <span class="n">shutil</span><span class="o">.</span><span class="n">rmtree</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">parse_dir</span><span class="p">)</span>
 
-<div class="viewcode-block" id="QasmParser.update_symtab"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.html#qiskit.qasm.qasmparser.QasmParser.update_symtab">[docs]</a>    <span class="k">def</span> <span class="nf">update_symtab</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">):</span>
+<div class="viewcode-block" id="QasmParser.update_symtab"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.qasmparser.html#qiskit.qasm.qasmparser.QasmParser.update_symtab">[docs]</a>    <span class="k">def</span> <span class="nf">update_symtab</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Update a node in the symbol table.</span>
 
 <span class="sd">        Everything in the symtab must be a node with these attributes:</span>
@@ -250,7 +250,7 @@
                             <span class="nb">str</span><span class="p">(</span><span class="n">prev</span><span class="o">.</span><span class="n">line</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;, file&#39;</span><span class="p">,</span> <span class="n">prev</span><span class="o">.</span><span class="n">file</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">current_symtab</span><span class="p">[</span><span class="n">obj</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">obj</span></div>
 
-<div class="viewcode-block" id="QasmParser.verify_declared_bit"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.html#qiskit.qasm.qasmparser.QasmParser.verify_declared_bit">[docs]</a>    <span class="k">def</span> <span class="nf">verify_declared_bit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">):</span>
+<div class="viewcode-block" id="QasmParser.verify_declared_bit"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.qasmparser.html#qiskit.qasm.qasmparser.QasmParser.verify_declared_bit">[docs]</a>    <span class="k">def</span> <span class="nf">verify_declared_bit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Verify a qubit id against the gate prototype.&quot;&quot;&quot;</span>
         <span class="c1"># We are verifying gate args against the formal parameters of a</span>
         <span class="c1"># gate prototype.</span>
@@ -266,7 +266,7 @@
             <span class="k">raise</span> <span class="n">QasmError</span><span class="p">(</span><span class="s2">&quot;Bit&quot;</span><span class="p">,</span> <span class="n">obj</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
                             <span class="s1">&#39;is not declared as a bit in the gate.&#39;</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="QasmParser.verify_bit_list"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.html#qiskit.qasm.qasmparser.QasmParser.verify_bit_list">[docs]</a>    <span class="k">def</span> <span class="nf">verify_bit_list</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">):</span>
+<div class="viewcode-block" id="QasmParser.verify_bit_list"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.qasmparser.html#qiskit.qasm.qasmparser.QasmParser.verify_bit_list">[docs]</a>    <span class="k">def</span> <span class="nf">verify_bit_list</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Verify each qubit in a list of ids.&quot;&quot;&quot;</span>
         <span class="c1"># We expect the object to be a bitlist or an idlist, we don&#39;t care.</span>
         <span class="c1"># We will iterate it and ensure everything in it is declared as a bit,</span>
@@ -274,7 +274,7 @@
         <span class="k">for</span> <span class="n">children</span> <span class="ow">in</span> <span class="n">obj</span><span class="o">.</span><span class="n">children</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">verify_declared_bit</span><span class="p">(</span><span class="n">children</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="QasmParser.verify_exp_list"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.html#qiskit.qasm.qasmparser.QasmParser.verify_exp_list">[docs]</a>    <span class="k">def</span> <span class="nf">verify_exp_list</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">):</span>
+<div class="viewcode-block" id="QasmParser.verify_exp_list"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.qasmparser.html#qiskit.qasm.qasmparser.QasmParser.verify_exp_list">[docs]</a>    <span class="k">def</span> <span class="nf">verify_exp_list</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Verify each expression in a list.&quot;&quot;&quot;</span>
         <span class="c1"># A tad harder.  This is a list of expressions each of which could be</span>
         <span class="c1"># the head of a tree. We need to recursively walk each of these and</span>
@@ -296,7 +296,7 @@
                     <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">children</span><span class="p">,</span> <span class="s2">&quot;children&quot;</span><span class="p">):</span>
                         <span class="bp">self</span><span class="o">.</span><span class="n">verify_exp_list</span><span class="p">(</span><span class="n">children</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="QasmParser.verify_as_gate"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.html#qiskit.qasm.qasmparser.QasmParser.verify_as_gate">[docs]</a>    <span class="k">def</span> <span class="nf">verify_as_gate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">,</span> <span class="n">bitlist</span><span class="p">,</span> <span class="n">arglist</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="QasmParser.verify_as_gate"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.qasmparser.html#qiskit.qasm.qasmparser.QasmParser.verify_as_gate">[docs]</a>    <span class="k">def</span> <span class="nf">verify_as_gate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">,</span> <span class="n">bitlist</span><span class="p">,</span> <span class="n">arglist</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Verify a user defined gate call.&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">obj</span><span class="o">.</span><span class="n">name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">global_symtab</span><span class="p">:</span>
             <span class="k">raise</span> <span class="n">QasmError</span><span class="p">(</span><span class="s2">&quot;Cannot find gate definition for &#39;&quot;</span> <span class="o">+</span> <span class="n">obj</span><span class="o">.</span><span class="n">name</span>
@@ -329,7 +329,7 @@
                                 <span class="nb">str</span><span class="p">(</span><span class="n">g_sym</span><span class="o">.</span><span class="n">n_args</span><span class="p">()),</span> <span class="s2">&quot;qubits&quot;</span><span class="p">,</span> <span class="s2">&quot;line&quot;</span><span class="p">,</span>
                                 <span class="nb">str</span><span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">line</span><span class="p">),</span> <span class="s1">&#39;file&#39;</span><span class="p">,</span> <span class="n">obj</span><span class="o">.</span><span class="n">file</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="QasmParser.verify_reg"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.html#qiskit.qasm.qasmparser.QasmParser.verify_reg">[docs]</a>    <span class="k">def</span> <span class="nf">verify_reg</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">,</span> <span class="n">object_type</span><span class="p">):</span>
+<div class="viewcode-block" id="QasmParser.verify_reg"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.qasmparser.html#qiskit.qasm.qasmparser.QasmParser.verify_reg">[docs]</a>    <span class="k">def</span> <span class="nf">verify_reg</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">,</span> <span class="n">object_type</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Verify a register.&quot;&quot;&quot;</span>
         <span class="c1"># How to verify:</span>
         <span class="c1">#    types must match</span>
@@ -356,7 +356,7 @@
                                 <span class="s2">&quot;bound is 0 &lt;= index &lt;&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">bound</span><span class="p">),</span>
                                 <span class="s2">&quot;at line&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">line</span><span class="p">),</span> <span class="s2">&quot;file&quot;</span><span class="p">,</span> <span class="n">obj</span><span class="o">.</span><span class="n">file</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="QasmParser.verify_reg_list"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.html#qiskit.qasm.qasmparser.QasmParser.verify_reg_list">[docs]</a>    <span class="k">def</span> <span class="nf">verify_reg_list</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">,</span> <span class="n">object_type</span><span class="p">):</span>
+<div class="viewcode-block" id="QasmParser.verify_reg_list"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.qasmparser.html#qiskit.qasm.qasmparser.QasmParser.verify_reg_list">[docs]</a>    <span class="k">def</span> <span class="nf">verify_reg_list</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">,</span> <span class="n">object_type</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Verify a list of registers.&quot;&quot;&quot;</span>
         <span class="c1"># We expect the object to be a bitlist or an idlist, we don&#39;t care.</span>
         <span class="c1"># We will iterate it and ensure everything in it is declared as a bit,</span>
@@ -364,7 +364,7 @@
         <span class="k">for</span> <span class="n">children</span> <span class="ow">in</span> <span class="n">obj</span><span class="o">.</span><span class="n">children</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">verify_reg</span><span class="p">(</span><span class="n">children</span><span class="p">,</span> <span class="n">object_type</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="QasmParser.id_tuple_list"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.html#qiskit.qasm.qasmparser.QasmParser.id_tuple_list">[docs]</a>    <span class="k">def</span> <span class="nf">id_tuple_list</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">id_node</span><span class="p">):</span>
+<div class="viewcode-block" id="QasmParser.id_tuple_list"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.qasmparser.html#qiskit.qasm.qasmparser.QasmParser.id_tuple_list">[docs]</a>    <span class="k">def</span> <span class="nf">id_tuple_list</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">id_node</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return a list of (name, index) tuples for this id node.&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">id_node</span><span class="o">.</span><span class="n">type</span> <span class="o">!=</span> <span class="s2">&quot;id&quot;</span><span class="p">:</span>
             <span class="k">raise</span> <span class="n">QasmError</span><span class="p">(</span><span class="s2">&quot;internal error, id_tuple_list&quot;</span><span class="p">)</span>
@@ -382,7 +382,7 @@
             <span class="n">bit_list</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">id_node</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>
         <span class="k">return</span> <span class="n">bit_list</span></div>
 
-<div class="viewcode-block" id="QasmParser.verify_distinct"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.html#qiskit.qasm.qasmparser.QasmParser.verify_distinct">[docs]</a>    <span class="k">def</span> <span class="nf">verify_distinct</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">list_of_nodes</span><span class="p">):</span>
+<div class="viewcode-block" id="QasmParser.verify_distinct"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.qasmparser.html#qiskit.qasm.qasmparser.QasmParser.verify_distinct">[docs]</a>    <span class="k">def</span> <span class="nf">verify_distinct</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">list_of_nodes</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Check that objects in list_of_nodes represent distinct (qu)bits.</span>
 
 <span class="sd">        list_of_nodes is a list containing nodes of type id, indexed_id,</span>
@@ -426,11 +426,11 @@
             <span class="k">raise</span> <span class="n">QasmError</span><span class="p">(</span><span class="s2">&quot;duplicate identifiers at line </span><span class="si">%d</span><span class="s2"> file </span><span class="si">%s</span><span class="s2">&quot;</span>
                             <span class="o">%</span> <span class="p">(</span><span class="n">line_number</span><span class="p">,</span> <span class="n">filename</span><span class="p">))</span></div>
 
-<div class="viewcode-block" id="QasmParser.pop_scope"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.html#qiskit.qasm.qasmparser.QasmParser.pop_scope">[docs]</a>    <span class="k">def</span> <span class="nf">pop_scope</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="QasmParser.pop_scope"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.qasmparser.html#qiskit.qasm.qasmparser.QasmParser.pop_scope">[docs]</a>    <span class="k">def</span> <span class="nf">pop_scope</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return to the previous scope.&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">current_symtab</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">symbols</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span></div>
 
-<div class="viewcode-block" id="QasmParser.push_scope"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.html#qiskit.qasm.qasmparser.QasmParser.push_scope">[docs]</a>    <span class="k">def</span> <span class="nf">push_scope</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="QasmParser.push_scope"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.qasmparser.html#qiskit.qasm.qasmparser.QasmParser.push_scope">[docs]</a>    <span class="k">def</span> <span class="nf">push_scope</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Enter a new scope.&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">symbols</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">current_symtab</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">current_symtab</span> <span class="o">=</span> <span class="p">{}</span></div>
@@ -438,7 +438,7 @@
     <span class="c1"># ---- Begin the PLY parser ----</span>
     <span class="n">start</span> <span class="o">=</span> <span class="s1">&#39;main&#39;</span>
 
-<div class="viewcode-block" id="QasmParser.p_main"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.html#qiskit.qasm.qasmparser.QasmParser.p_main">[docs]</a>    <span class="k">def</span> <span class="nf">p_main</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
+<div class="viewcode-block" id="QasmParser.p_main"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.qasmparser.html#qiskit.qasm.qasmparser.QasmParser.p_main">[docs]</a>    <span class="k">def</span> <span class="nf">p_main</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">            main : program</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -448,13 +448,13 @@
     <span class="c1">#  program : statement</span>
     <span class="c1">#          | program statement</span>
     <span class="c1"># ----------------------------------------</span>
-<div class="viewcode-block" id="QasmParser.p_program_0"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.html#qiskit.qasm.qasmparser.QasmParser.p_program_0">[docs]</a>    <span class="k">def</span> <span class="nf">p_program_0</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
+<div class="viewcode-block" id="QasmParser.p_program_0"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.qasmparser.html#qiskit.qasm.qasmparser.QasmParser.p_program_0">[docs]</a>    <span class="k">def</span> <span class="nf">p_program_0</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">           program : statement</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">program</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">Program</span><span class="p">([</span><span class="n">program</span><span class="p">[</span><span class="mi">1</span><span class="p">]])</span></div>
 
-<div class="viewcode-block" id="QasmParser.p_program_1"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.html#qiskit.qasm.qasmparser.QasmParser.p_program_1">[docs]</a>    <span class="k">def</span> <span class="nf">p_program_1</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
+<div class="viewcode-block" id="QasmParser.p_program_1"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.qasmparser.html#qiskit.qasm.qasmparser.QasmParser.p_program_1">[docs]</a>    <span class="k">def</span> <span class="nf">p_program_1</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">           program : program statement</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -466,7 +466,7 @@
     <span class="c1">#            | quantum_op &#39;;&#39;</span>
     <span class="c1">#            | format &#39;;&#39;</span>
     <span class="c1"># ----------------------------------------</span>
-<div class="viewcode-block" id="QasmParser.p_statement"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.html#qiskit.qasm.qasmparser.QasmParser.p_statement">[docs]</a>    <span class="k">def</span> <span class="nf">p_statement</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
+<div class="viewcode-block" id="QasmParser.p_statement"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.qasmparser.html#qiskit.qasm.qasmparser.QasmParser.p_statement">[docs]</a>    <span class="k">def</span> <span class="nf">p_statement</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">           statement : decl</span>
 <span class="sd">                     | quantum_op &#39;;&#39;</span>
@@ -481,13 +481,13 @@
                                 <span class="o">+</span> <span class="s2">&quot;received&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">program</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">value</span><span class="p">))</span>
         <span class="n">program</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">program</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span></div>
 
-<div class="viewcode-block" id="QasmParser.p_format"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.html#qiskit.qasm.qasmparser.QasmParser.p_format">[docs]</a>    <span class="k">def</span> <span class="nf">p_format</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
+<div class="viewcode-block" id="QasmParser.p_format"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.qasmparser.html#qiskit.qasm.qasmparser.QasmParser.p_format">[docs]</a>    <span class="k">def</span> <span class="nf">p_format</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">           format : FORMAT</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">program</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">Format</span><span class="p">(</span><span class="n">program</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span></div>
 
-<div class="viewcode-block" id="QasmParser.p_format_0"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.html#qiskit.qasm.qasmparser.QasmParser.p_format_0">[docs]</a>    <span class="k">def</span> <span class="nf">p_format_0</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
+<div class="viewcode-block" id="QasmParser.p_format_0"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.qasmparser.html#qiskit.qasm.qasmparser.QasmParser.p_format_0">[docs]</a>    <span class="k">def</span> <span class="nf">p_format_0</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">           format : FORMAT error</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -498,13 +498,13 @@
     <span class="c1"># ----------------------------------------</span>
     <span class="c1">#  id : ID</span>
     <span class="c1"># ----------------------------------------</span>
-<div class="viewcode-block" id="QasmParser.p_id"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.html#qiskit.qasm.qasmparser.QasmParser.p_id">[docs]</a>    <span class="k">def</span> <span class="nf">p_id</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
+<div class="viewcode-block" id="QasmParser.p_id"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.qasmparser.html#qiskit.qasm.qasmparser.QasmParser.p_id">[docs]</a>    <span class="k">def</span> <span class="nf">p_id</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">           id : ID</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">program</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">program</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span></div>
 
-<div class="viewcode-block" id="QasmParser.p_id_e"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.html#qiskit.qasm.qasmparser.QasmParser.p_id_e">[docs]</a>    <span class="k">def</span> <span class="nf">p_id_e</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
+<div class="viewcode-block" id="QasmParser.p_id_e"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.qasmparser.html#qiskit.qasm.qasmparser.QasmParser.p_id_e">[docs]</a>    <span class="k">def</span> <span class="nf">p_id_e</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">           id : error</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -514,7 +514,7 @@
     <span class="c1"># ----------------------------------------</span>
     <span class="c1">#  indexed_id : ID [ int ]</span>
     <span class="c1"># ----------------------------------------</span>
-<div class="viewcode-block" id="QasmParser.p_indexed_id"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.html#qiskit.qasm.qasmparser.QasmParser.p_indexed_id">[docs]</a>    <span class="k">def</span> <span class="nf">p_indexed_id</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
+<div class="viewcode-block" id="QasmParser.p_indexed_id"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.qasmparser.html#qiskit.qasm.qasmparser.QasmParser.p_indexed_id">[docs]</a>    <span class="k">def</span> <span class="nf">p_indexed_id</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">           indexed_id : id &#39;[&#39; NNINTEGER &#39;]&#39;</span>
 <span class="sd">                      | id &#39;[&#39; NNINTEGER error</span>
@@ -532,7 +532,7 @@
     <span class="c1">#  primary : id</span>
     <span class="c1">#          | indexed_id</span>
     <span class="c1"># ----------------------------------------</span>
-<div class="viewcode-block" id="QasmParser.p_primary"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.html#qiskit.qasm.qasmparser.QasmParser.p_primary">[docs]</a>    <span class="k">def</span> <span class="nf">p_primary</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
+<div class="viewcode-block" id="QasmParser.p_primary"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.qasmparser.html#qiskit.qasm.qasmparser.QasmParser.p_primary">[docs]</a>    <span class="k">def</span> <span class="nf">p_primary</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">           primary : id</span>
 <span class="sd">                   | indexed_id</span>
@@ -543,13 +543,13 @@
     <span class="c1">#  id_list : id</span>
     <span class="c1">#          | id_list &#39;,&#39; id</span>
     <span class="c1"># ----------------------------------------</span>
-<div class="viewcode-block" id="QasmParser.p_id_list_0"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.html#qiskit.qasm.qasmparser.QasmParser.p_id_list_0">[docs]</a>    <span class="k">def</span> <span class="nf">p_id_list_0</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
+<div class="viewcode-block" id="QasmParser.p_id_list_0"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.qasmparser.html#qiskit.qasm.qasmparser.QasmParser.p_id_list_0">[docs]</a>    <span class="k">def</span> <span class="nf">p_id_list_0</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">           id_list : id</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">program</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">IdList</span><span class="p">([</span><span class="n">program</span><span class="p">[</span><span class="mi">1</span><span class="p">]])</span></div>
 
-<div class="viewcode-block" id="QasmParser.p_id_list_1"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.html#qiskit.qasm.qasmparser.QasmParser.p_id_list_1">[docs]</a>    <span class="k">def</span> <span class="nf">p_id_list_1</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
+<div class="viewcode-block" id="QasmParser.p_id_list_1"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.qasmparser.html#qiskit.qasm.qasmparser.QasmParser.p_id_list_1">[docs]</a>    <span class="k">def</span> <span class="nf">p_id_list_1</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">           id_list : id_list &#39;,&#39; id</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -560,14 +560,14 @@
     <span class="c1">#  gate_id_list : id</span>
     <span class="c1">#               | gate_id_list &#39;,&#39; id</span>
     <span class="c1"># ----------------------------------------</span>
-<div class="viewcode-block" id="QasmParser.p_gate_id_list_0"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.html#qiskit.qasm.qasmparser.QasmParser.p_gate_id_list_0">[docs]</a>    <span class="k">def</span> <span class="nf">p_gate_id_list_0</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
+<div class="viewcode-block" id="QasmParser.p_gate_id_list_0"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.qasmparser.html#qiskit.qasm.qasmparser.QasmParser.p_gate_id_list_0">[docs]</a>    <span class="k">def</span> <span class="nf">p_gate_id_list_0</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">           gate_id_list : id</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">program</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">IdList</span><span class="p">([</span><span class="n">program</span><span class="p">[</span><span class="mi">1</span><span class="p">]])</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">update_symtab</span><span class="p">(</span><span class="n">program</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span></div>
 
-<div class="viewcode-block" id="QasmParser.p_gate_id_list_1"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.html#qiskit.qasm.qasmparser.QasmParser.p_gate_id_list_1">[docs]</a>    <span class="k">def</span> <span class="nf">p_gate_id_list_1</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
+<div class="viewcode-block" id="QasmParser.p_gate_id_list_1"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.qasmparser.html#qiskit.qasm.qasmparser.QasmParser.p_gate_id_list_1">[docs]</a>    <span class="k">def</span> <span class="nf">p_gate_id_list_1</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">           gate_id_list : gate_id_list &#39;,&#39; id</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -579,7 +579,7 @@
     <span class="c1">#  bit_list : bit</span>
     <span class="c1">#           | bit_list &#39;,&#39; bit</span>
     <span class="c1"># ----------------------------------------</span>
-<div class="viewcode-block" id="QasmParser.p_bit_list_0"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.html#qiskit.qasm.qasmparser.QasmParser.p_bit_list_0">[docs]</a>    <span class="k">def</span> <span class="nf">p_bit_list_0</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
+<div class="viewcode-block" id="QasmParser.p_bit_list_0"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.qasmparser.html#qiskit.qasm.qasmparser.QasmParser.p_bit_list_0">[docs]</a>    <span class="k">def</span> <span class="nf">p_bit_list_0</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">           bit_list : id</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -587,7 +587,7 @@
         <span class="n">program</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">is_bit</span> <span class="o">=</span> <span class="kc">True</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">update_symtab</span><span class="p">(</span><span class="n">program</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span></div>
 
-<div class="viewcode-block" id="QasmParser.p_bit_list_1"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.html#qiskit.qasm.qasmparser.QasmParser.p_bit_list_1">[docs]</a>    <span class="k">def</span> <span class="nf">p_bit_list_1</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
+<div class="viewcode-block" id="QasmParser.p_bit_list_1"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.qasmparser.html#qiskit.qasm.qasmparser.QasmParser.p_bit_list_1">[docs]</a>    <span class="k">def</span> <span class="nf">p_bit_list_1</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">           bit_list : bit_list &#39;,&#39; id</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -600,13 +600,13 @@
     <span class="c1">#  primary_list : primary</span>
     <span class="c1">#               | primary_list &#39;,&#39; primary</span>
     <span class="c1"># ----------------------------------------</span>
-<div class="viewcode-block" id="QasmParser.p_primary_list_0"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.html#qiskit.qasm.qasmparser.QasmParser.p_primary_list_0">[docs]</a>    <span class="k">def</span> <span class="nf">p_primary_list_0</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
+<div class="viewcode-block" id="QasmParser.p_primary_list_0"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.qasmparser.html#qiskit.qasm.qasmparser.QasmParser.p_primary_list_0">[docs]</a>    <span class="k">def</span> <span class="nf">p_primary_list_0</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">           primary_list : primary</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">program</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">PrimaryList</span><span class="p">([</span><span class="n">program</span><span class="p">[</span><span class="mi">1</span><span class="p">]])</span></div>
 
-<div class="viewcode-block" id="QasmParser.p_primary_list_1"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.html#qiskit.qasm.qasmparser.QasmParser.p_primary_list_1">[docs]</a>    <span class="k">def</span> <span class="nf">p_primary_list_1</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
+<div class="viewcode-block" id="QasmParser.p_primary_list_1"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.qasmparser.html#qiskit.qasm.qasmparser.QasmParser.p_primary_list_1">[docs]</a>    <span class="k">def</span> <span class="nf">p_primary_list_1</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">           primary_list : primary_list &#39;,&#39; primary</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -618,7 +618,7 @@
     <span class="c1">#       | creg_decl</span>
     <span class="c1">#       | gate_decl</span>
     <span class="c1"># ----------------------------------------</span>
-<div class="viewcode-block" id="QasmParser.p_decl"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.html#qiskit.qasm.qasmparser.QasmParser.p_decl">[docs]</a>    <span class="k">def</span> <span class="nf">p_decl</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
+<div class="viewcode-block" id="QasmParser.p_decl"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.qasmparser.html#qiskit.qasm.qasmparser.QasmParser.p_decl">[docs]</a>    <span class="k">def</span> <span class="nf">p_decl</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">           decl : qreg_decl &#39;;&#39;</span>
 <span class="sd">                | creg_decl &#39;;&#39;</span>
@@ -635,7 +635,7 @@
     <span class="c1"># ----------------------------------------</span>
     <span class="c1">#  qreg_decl : QREG indexed_id</span>
     <span class="c1"># ----------------------------------------</span>
-<div class="viewcode-block" id="QasmParser.p_qreg_decl"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.html#qiskit.qasm.qasmparser.QasmParser.p_qreg_decl">[docs]</a>    <span class="k">def</span> <span class="nf">p_qreg_decl</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
+<div class="viewcode-block" id="QasmParser.p_qreg_decl"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.qasmparser.html#qiskit.qasm.qasmparser.QasmParser.p_qreg_decl">[docs]</a>    <span class="k">def</span> <span class="nf">p_qreg_decl</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">           qreg_decl : QREG indexed_id</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -647,7 +647,7 @@
             <span class="k">raise</span> <span class="n">QasmError</span><span class="p">(</span><span class="s2">&quot;QREG size must be positive&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">update_symtab</span><span class="p">(</span><span class="n">program</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span></div>
 
-<div class="viewcode-block" id="QasmParser.p_qreg_decl_e"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.html#qiskit.qasm.qasmparser.QasmParser.p_qreg_decl_e">[docs]</a>    <span class="k">def</span> <span class="nf">p_qreg_decl_e</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
+<div class="viewcode-block" id="QasmParser.p_qreg_decl_e"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.qasmparser.html#qiskit.qasm.qasmparser.QasmParser.p_qreg_decl_e">[docs]</a>    <span class="k">def</span> <span class="nf">p_qreg_decl_e</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">           qreg_decl : QREG error</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -657,7 +657,7 @@
     <span class="c1"># ----------------------------------------</span>
     <span class="c1">#  creg_decl : QREG indexed_id</span>
     <span class="c1"># ----------------------------------------</span>
-<div class="viewcode-block" id="QasmParser.p_creg_decl"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.html#qiskit.qasm.qasmparser.QasmParser.p_creg_decl">[docs]</a>    <span class="k">def</span> <span class="nf">p_creg_decl</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
+<div class="viewcode-block" id="QasmParser.p_creg_decl"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.qasmparser.html#qiskit.qasm.qasmparser.QasmParser.p_creg_decl">[docs]</a>    <span class="k">def</span> <span class="nf">p_creg_decl</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">           creg_decl : CREG indexed_id</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -669,7 +669,7 @@
             <span class="k">raise</span> <span class="n">QasmError</span><span class="p">(</span><span class="s2">&quot;CREG size must be positive&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">update_symtab</span><span class="p">(</span><span class="n">program</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span></div>
 
-<div class="viewcode-block" id="QasmParser.p_creg_decl_e"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.html#qiskit.qasm.qasmparser.QasmParser.p_creg_decl_e">[docs]</a>    <span class="k">def</span> <span class="nf">p_creg_decl_e</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
+<div class="viewcode-block" id="QasmParser.p_creg_decl_e"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.qasmparser.html#qiskit.qasm.qasmparser.QasmParser.p_creg_decl_e">[docs]</a>    <span class="k">def</span> <span class="nf">p_creg_decl_e</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">           creg_decl : CREG error</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -686,7 +686,7 @@
     <span class="c1">#            | GATE id gate_scope &#39;(&#39; gate_id_list &#39;)&#39; bit_list gate_body</span>
     <span class="c1">#</span>
     <span class="c1"># ----------------------------------------</span>
-<div class="viewcode-block" id="QasmParser.p_gate_decl_0"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.html#qiskit.qasm.qasmparser.QasmParser.p_gate_decl_0">[docs]</a>    <span class="k">def</span> <span class="nf">p_gate_decl_0</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
+<div class="viewcode-block" id="QasmParser.p_gate_decl_0"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.qasmparser.html#qiskit.qasm.qasmparser.QasmParser.p_gate_decl_0">[docs]</a>    <span class="k">def</span> <span class="nf">p_gate_decl_0</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">           gate_decl : GATE id gate_scope bit_list gate_body</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -697,7 +697,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">pop_scope</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">update_symtab</span><span class="p">(</span><span class="n">program</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span></div>
 
-<div class="viewcode-block" id="QasmParser.p_gate_decl_1"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.html#qiskit.qasm.qasmparser.QasmParser.p_gate_decl_1">[docs]</a>    <span class="k">def</span> <span class="nf">p_gate_decl_1</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
+<div class="viewcode-block" id="QasmParser.p_gate_decl_1"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.qasmparser.html#qiskit.qasm.qasmparser.QasmParser.p_gate_decl_1">[docs]</a>    <span class="k">def</span> <span class="nf">p_gate_decl_1</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">           gate_decl : GATE id gate_scope &#39;(&#39; &#39;)&#39; bit_list gate_body</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -708,7 +708,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">pop_scope</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">update_symtab</span><span class="p">(</span><span class="n">program</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span></div>
 
-<div class="viewcode-block" id="QasmParser.p_gate_decl_2"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.html#qiskit.qasm.qasmparser.QasmParser.p_gate_decl_2">[docs]</a>    <span class="k">def</span> <span class="nf">p_gate_decl_2</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
+<div class="viewcode-block" id="QasmParser.p_gate_decl_2"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.qasmparser.html#qiskit.qasm.qasmparser.QasmParser.p_gate_decl_2">[docs]</a>    <span class="k">def</span> <span class="nf">p_gate_decl_2</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        gate_decl : GATE id gate_scope &#39;(&#39; gate_id_list &#39;)&#39; bit_list gate_body</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -720,7 +720,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">pop_scope</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">update_symtab</span><span class="p">(</span><span class="n">program</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span></div>
 
-<div class="viewcode-block" id="QasmParser.p_gate_scope"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.html#qiskit.qasm.qasmparser.QasmParser.p_gate_scope">[docs]</a>    <span class="k">def</span> <span class="nf">p_gate_scope</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
+<div class="viewcode-block" id="QasmParser.p_gate_scope"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.qasmparser.html#qiskit.qasm.qasmparser.QasmParser.p_gate_scope">[docs]</a>    <span class="k">def</span> <span class="nf">p_gate_scope</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">           gate_scope :</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -736,7 +736,7 @@
     <span class="c1"># Error handling: gete_op will throw if there&#39;s a problem so we won&#39;t</span>
     <span class="c1">#                 get here with in the gate_op_list</span>
     <span class="c1"># ----------------------------------------</span>
-<div class="viewcode-block" id="QasmParser.p_gate_body_0"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.html#qiskit.qasm.qasmparser.QasmParser.p_gate_body_0">[docs]</a>    <span class="k">def</span> <span class="nf">p_gate_body_0</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
+<div class="viewcode-block" id="QasmParser.p_gate_body_0"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.qasmparser.html#qiskit.qasm.qasmparser.QasmParser.p_gate_body_0">[docs]</a>    <span class="k">def</span> <span class="nf">p_gate_body_0</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">           gate_body : &#39;{&#39; &#39;}&#39;</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -745,7 +745,7 @@
                             <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">program</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">value</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;&#39;&quot;</span><span class="p">)</span>
         <span class="n">program</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">GateBody</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="QasmParser.p_gate_body_1"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.html#qiskit.qasm.qasmparser.QasmParser.p_gate_body_1">[docs]</a>    <span class="k">def</span> <span class="nf">p_gate_body_1</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
+<div class="viewcode-block" id="QasmParser.p_gate_body_1"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.qasmparser.html#qiskit.qasm.qasmparser.QasmParser.p_gate_body_1">[docs]</a>    <span class="k">def</span> <span class="nf">p_gate_body_1</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">           gate_body : &#39;{&#39; gate_op_list &#39;}&#39;</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -758,13 +758,13 @@
     <span class="c1"># Error handling: gete_op will throw if there&#39;s a problem so we won&#39;t</span>
     <span class="c1">#                 get here with errors</span>
     <span class="c1"># ----------------------------------------</span>
-<div class="viewcode-block" id="QasmParser.p_gate_op_list_0"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.html#qiskit.qasm.qasmparser.QasmParser.p_gate_op_list_0">[docs]</a>    <span class="k">def</span> <span class="nf">p_gate_op_list_0</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
+<div class="viewcode-block" id="QasmParser.p_gate_op_list_0"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.qasmparser.html#qiskit.qasm.qasmparser.QasmParser.p_gate_op_list_0">[docs]</a>    <span class="k">def</span> <span class="nf">p_gate_op_list_0</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">            gate_op_list : gate_op</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">program</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">program</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span></div>
 
-<div class="viewcode-block" id="QasmParser.p_gate_op_list_1"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.html#qiskit.qasm.qasmparser.QasmParser.p_gate_op_list_1">[docs]</a>    <span class="k">def</span> <span class="nf">p_gate_op_list_1</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
+<div class="viewcode-block" id="QasmParser.p_gate_op_list_1"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.qasmparser.html#qiskit.qasm.qasmparser.QasmParser.p_gate_op_list_1">[docs]</a>    <span class="k">def</span> <span class="nf">p_gate_op_list_1</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">            gate_op_list : gate_op_list gate_op</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -784,7 +784,7 @@
     <span class="c1"># Note that it might not be unitary - this is the mechanism that</span>
     <span class="c1"># is also used to invoke calls to &#39;opaque&#39;</span>
     <span class="c1"># ----------------------------------------</span>
-<div class="viewcode-block" id="QasmParser.p_unitary_op_0"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.html#qiskit.qasm.qasmparser.QasmParser.p_unitary_op_0">[docs]</a>    <span class="k">def</span> <span class="nf">p_unitary_op_0</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
+<div class="viewcode-block" id="QasmParser.p_unitary_op_0"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.qasmparser.html#qiskit.qasm.qasmparser.QasmParser.p_unitary_op_0">[docs]</a>    <span class="k">def</span> <span class="nf">p_unitary_op_0</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">          unitary_op : U &#39;(&#39; exp_list &#39;)&#39; primary</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -792,7 +792,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">verify_reg</span><span class="p">(</span><span class="n">program</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span> <span class="s1">&#39;qreg&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">verify_exp_list</span><span class="p">(</span><span class="n">program</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span></div>
 
-<div class="viewcode-block" id="QasmParser.p_unitary_op_1"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.html#qiskit.qasm.qasmparser.QasmParser.p_unitary_op_1">[docs]</a>    <span class="k">def</span> <span class="nf">p_unitary_op_1</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
+<div class="viewcode-block" id="QasmParser.p_unitary_op_1"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.qasmparser.html#qiskit.qasm.qasmparser.QasmParser.p_unitary_op_1">[docs]</a>    <span class="k">def</span> <span class="nf">p_unitary_op_1</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        unitary_op : CX primary &#39;,&#39; primary</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -803,7 +803,7 @@
         <span class="c1"># TODO: check that if both primary are id, same size</span>
         <span class="c1"># TODO: this needs to be checked in other cases too</span>
 
-<div class="viewcode-block" id="QasmParser.p_unitary_op_2"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.html#qiskit.qasm.qasmparser.QasmParser.p_unitary_op_2">[docs]</a>    <span class="k">def</span> <span class="nf">p_unitary_op_2</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
+<div class="viewcode-block" id="QasmParser.p_unitary_op_2"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.qasmparser.html#qiskit.qasm.qasmparser.QasmParser.p_unitary_op_2">[docs]</a>    <span class="k">def</span> <span class="nf">p_unitary_op_2</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        unitary_op : id primary_list</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -812,7 +812,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">verify_reg_list</span><span class="p">(</span><span class="n">program</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="s1">&#39;qreg&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">verify_distinct</span><span class="p">([</span><span class="n">program</span><span class="p">[</span><span class="mi">2</span><span class="p">]])</span></div>
 
-<div class="viewcode-block" id="QasmParser.p_unitary_op_3"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.html#qiskit.qasm.qasmparser.QasmParser.p_unitary_op_3">[docs]</a>    <span class="k">def</span> <span class="nf">p_unitary_op_3</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
+<div class="viewcode-block" id="QasmParser.p_unitary_op_3"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.qasmparser.html#qiskit.qasm.qasmparser.QasmParser.p_unitary_op_3">[docs]</a>    <span class="k">def</span> <span class="nf">p_unitary_op_3</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        unitary_op : id &#39;(&#39; &#39;)&#39; primary_list</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -821,7 +821,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">verify_reg_list</span><span class="p">(</span><span class="n">program</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="s1">&#39;qreg&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">verify_distinct</span><span class="p">([</span><span class="n">program</span><span class="p">[</span><span class="mi">4</span><span class="p">]])</span></div>
 
-<div class="viewcode-block" id="QasmParser.p_unitary_op_4"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.html#qiskit.qasm.qasmparser.QasmParser.p_unitary_op_4">[docs]</a>    <span class="k">def</span> <span class="nf">p_unitary_op_4</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
+<div class="viewcode-block" id="QasmParser.p_unitary_op_4"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.qasmparser.html#qiskit.qasm.qasmparser.QasmParser.p_unitary_op_4">[docs]</a>    <span class="k">def</span> <span class="nf">p_unitary_op_4</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        unitary_op : id &#39;(&#39; exp_list &#39;)&#39; primary_list</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -842,7 +842,7 @@
     <span class="c1">#         | id &#39;(&#39; exp_list &#39;)&#39; id_list    &#39;;&#39;</span>
     <span class="c1">#         | BARRIER id_list                &#39;;&#39;</span>
     <span class="c1"># ----------------------------------------</span>
-<div class="viewcode-block" id="QasmParser.p_gate_op_0"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.html#qiskit.qasm.qasmparser.QasmParser.p_gate_op_0">[docs]</a>    <span class="k">def</span> <span class="nf">p_gate_op_0</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
+<div class="viewcode-block" id="QasmParser.p_gate_op_0"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.qasmparser.html#qiskit.qasm.qasmparser.QasmParser.p_gate_op_0">[docs]</a>    <span class="k">def</span> <span class="nf">p_gate_op_0</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        gate_op : U &#39;(&#39; exp_list &#39;)&#39; id &#39;;&#39;</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -850,20 +850,20 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">verify_declared_bit</span><span class="p">(</span><span class="n">program</span><span class="p">[</span><span class="mi">5</span><span class="p">])</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">verify_exp_list</span><span class="p">(</span><span class="n">program</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span></div>
 
-<div class="viewcode-block" id="QasmParser.p_gate_op_0e1"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.html#qiskit.qasm.qasmparser.QasmParser.p_gate_op_0e1">[docs]</a>    <span class="k">def</span> <span class="nf">p_gate_op_0e1</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
+<div class="viewcode-block" id="QasmParser.p_gate_op_0e1"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.qasmparser.html#qiskit.qasm.qasmparser.QasmParser.p_gate_op_0e1">[docs]</a>    <span class="k">def</span> <span class="nf">p_gate_op_0e1</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        gate_op : U &#39;(&#39; exp_list &#39;)&#39; error</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">raise</span> <span class="n">QasmError</span><span class="p">(</span><span class="s2">&quot;Invalid U inside gate definition. &quot;</span>
                         <span class="o">+</span> <span class="s2">&quot;Missing bit id or &#39;;&#39;&quot;</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="QasmParser.p_gate_op_0e2"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.html#qiskit.qasm.qasmparser.QasmParser.p_gate_op_0e2">[docs]</a>    <span class="k">def</span> <span class="nf">p_gate_op_0e2</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
+<div class="viewcode-block" id="QasmParser.p_gate_op_0e2"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.qasmparser.html#qiskit.qasm.qasmparser.QasmParser.p_gate_op_0e2">[docs]</a>    <span class="k">def</span> <span class="nf">p_gate_op_0e2</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        gate_op : U &#39;(&#39; exp_list error</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">raise</span> <span class="n">QasmError</span><span class="p">(</span><span class="s2">&quot;Missing &#39;)&#39; in U invocation in gate definition.&quot;</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="QasmParser.p_gate_op_1"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.html#qiskit.qasm.qasmparser.QasmParser.p_gate_op_1">[docs]</a>    <span class="k">def</span> <span class="nf">p_gate_op_1</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
+<div class="viewcode-block" id="QasmParser.p_gate_op_1"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.qasmparser.html#qiskit.qasm.qasmparser.QasmParser.p_gate_op_1">[docs]</a>    <span class="k">def</span> <span class="nf">p_gate_op_1</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        gate_op : CX id &#39;,&#39; id &#39;;&#39;</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -872,7 +872,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">verify_declared_bit</span><span class="p">(</span><span class="n">program</span><span class="p">[</span><span class="mi">4</span><span class="p">])</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">verify_distinct</span><span class="p">([</span><span class="n">program</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">program</span><span class="p">[</span><span class="mi">4</span><span class="p">]])</span></div>
 
-<div class="viewcode-block" id="QasmParser.p_gate_op_1e1"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.html#qiskit.qasm.qasmparser.QasmParser.p_gate_op_1e1">[docs]</a>    <span class="k">def</span> <span class="nf">p_gate_op_1e1</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
+<div class="viewcode-block" id="QasmParser.p_gate_op_1e1"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.qasmparser.html#qiskit.qasm.qasmparser.QasmParser.p_gate_op_1e1">[docs]</a>    <span class="k">def</span> <span class="nf">p_gate_op_1e1</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        gate_op : CX error</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -880,7 +880,7 @@
                         <span class="o">+</span> <span class="s2">&quot;Expected an ID or &#39;,&#39;, received &#39;&quot;</span>
                         <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">program</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">value</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;&#39;&quot;</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="QasmParser.p_gate_op_1e2"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.html#qiskit.qasm.qasmparser.QasmParser.p_gate_op_1e2">[docs]</a>    <span class="k">def</span> <span class="nf">p_gate_op_1e2</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
+<div class="viewcode-block" id="QasmParser.p_gate_op_1e2"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.qasmparser.html#qiskit.qasm.qasmparser.QasmParser.p_gate_op_1e2">[docs]</a>    <span class="k">def</span> <span class="nf">p_gate_op_1e2</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        gate_op : CX id &#39;,&#39; error</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -888,7 +888,7 @@
                         <span class="o">+</span> <span class="s2">&quot;Expected an ID or &#39;;&#39;, received &#39;&quot;</span>
                         <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">program</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">.</span><span class="n">value</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;&#39;&quot;</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="QasmParser.p_gate_op_2"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.html#qiskit.qasm.qasmparser.QasmParser.p_gate_op_2">[docs]</a>    <span class="k">def</span> <span class="nf">p_gate_op_2</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
+<div class="viewcode-block" id="QasmParser.p_gate_op_2"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.qasmparser.html#qiskit.qasm.qasmparser.QasmParser.p_gate_op_2">[docs]</a>    <span class="k">def</span> <span class="nf">p_gate_op_2</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        gate_op : id id_list &#39;;&#39;</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -900,13 +900,13 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">verify_bit_list</span><span class="p">(</span><span class="n">program</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">verify_distinct</span><span class="p">([</span><span class="n">program</span><span class="p">[</span><span class="mi">2</span><span class="p">]])</span></div>
 
-<div class="viewcode-block" id="QasmParser.p_gate_op_2e"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.html#qiskit.qasm.qasmparser.QasmParser.p_gate_op_2e">[docs]</a>    <span class="k">def</span> <span class="nf">p_gate_op_2e</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
+<div class="viewcode-block" id="QasmParser.p_gate_op_2e"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.qasmparser.html#qiskit.qasm.qasmparser.QasmParser.p_gate_op_2e">[docs]</a>    <span class="k">def</span> <span class="nf">p_gate_op_2e</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        gate_op : id  id_list error</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">raise</span> <span class="n">QasmError</span><span class="p">(</span><span class="s2">&quot;Invalid gate invocation inside gate definition.&quot;</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="QasmParser.p_gate_op_3"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.html#qiskit.qasm.qasmparser.QasmParser.p_gate_op_3">[docs]</a>    <span class="k">def</span> <span class="nf">p_gate_op_3</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
+<div class="viewcode-block" id="QasmParser.p_gate_op_3"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.qasmparser.html#qiskit.qasm.qasmparser.QasmParser.p_gate_op_3">[docs]</a>    <span class="k">def</span> <span class="nf">p_gate_op_3</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        gate_op : id &#39;(&#39; &#39;)&#39; id_list &#39;;&#39;</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -915,7 +915,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">verify_bit_list</span><span class="p">(</span><span class="n">program</span><span class="p">[</span><span class="mi">4</span><span class="p">])</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">verify_distinct</span><span class="p">([</span><span class="n">program</span><span class="p">[</span><span class="mi">4</span><span class="p">]])</span></div>
 
-<div class="viewcode-block" id="QasmParser.p_gate_op_4"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.html#qiskit.qasm.qasmparser.QasmParser.p_gate_op_4">[docs]</a>    <span class="k">def</span> <span class="nf">p_gate_op_4</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
+<div class="viewcode-block" id="QasmParser.p_gate_op_4"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.qasmparser.html#qiskit.qasm.qasmparser.QasmParser.p_gate_op_4">[docs]</a>    <span class="k">def</span> <span class="nf">p_gate_op_4</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        gate_op : id &#39;(&#39; exp_list &#39;)&#39; id_list &#39;;&#39;</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -925,21 +925,21 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">verify_exp_list</span><span class="p">(</span><span class="n">program</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">verify_distinct</span><span class="p">([</span><span class="n">program</span><span class="p">[</span><span class="mi">5</span><span class="p">]])</span></div>
 
-<div class="viewcode-block" id="QasmParser.p_gate_op_4e0"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.html#qiskit.qasm.qasmparser.QasmParser.p_gate_op_4e0">[docs]</a>    <span class="k">def</span> <span class="nf">p_gate_op_4e0</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
+<div class="viewcode-block" id="QasmParser.p_gate_op_4e0"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.qasmparser.html#qiskit.qasm.qasmparser.QasmParser.p_gate_op_4e0">[docs]</a>    <span class="k">def</span> <span class="nf">p_gate_op_4e0</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        gate_op : id &#39;(&#39; &#39;)&#39;  error</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">raise</span> <span class="n">QasmError</span><span class="p">(</span><span class="s2">&quot;Invalid bit list inside gate definition or&quot;</span>
                         <span class="o">+</span> <span class="s2">&quot; missing &#39;;&#39;&quot;</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="QasmParser.p_gate_op_4e1"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.html#qiskit.qasm.qasmparser.QasmParser.p_gate_op_4e1">[docs]</a>    <span class="k">def</span> <span class="nf">p_gate_op_4e1</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
+<div class="viewcode-block" id="QasmParser.p_gate_op_4e1"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.qasmparser.html#qiskit.qasm.qasmparser.QasmParser.p_gate_op_4e1">[docs]</a>    <span class="k">def</span> <span class="nf">p_gate_op_4e1</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        gate_op : id &#39;(&#39;   error</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">raise</span> <span class="n">QasmError</span><span class="p">(</span><span class="s2">&quot;Unmatched () for gate invocation inside gate&quot;</span>
                         <span class="o">+</span> <span class="s2">&quot; invocation.&quot;</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="QasmParser.p_gate_op_5"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.html#qiskit.qasm.qasmparser.QasmParser.p_gate_op_5">[docs]</a>    <span class="k">def</span> <span class="nf">p_gate_op_5</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
+<div class="viewcode-block" id="QasmParser.p_gate_op_5"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.qasmparser.html#qiskit.qasm.qasmparser.QasmParser.p_gate_op_5">[docs]</a>    <span class="k">def</span> <span class="nf">p_gate_op_5</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        gate_op : BARRIER id_list &#39;;&#39;</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -947,7 +947,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">verify_bit_list</span><span class="p">(</span><span class="n">program</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">verify_distinct</span><span class="p">([</span><span class="n">program</span><span class="p">[</span><span class="mi">2</span><span class="p">]])</span></div>
 
-<div class="viewcode-block" id="QasmParser.p_gate_op_5e"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.html#qiskit.qasm.qasmparser.QasmParser.p_gate_op_5e">[docs]</a>    <span class="k">def</span> <span class="nf">p_gate_op_5e</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
+<div class="viewcode-block" id="QasmParser.p_gate_op_5e"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.qasmparser.html#qiskit.qasm.qasmparser.QasmParser.p_gate_op_5e">[docs]</a>    <span class="k">def</span> <span class="nf">p_gate_op_5e</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        gate_op : BARRIER error</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -960,7 +960,7 @@
     <span class="c1">#</span>
     <span class="c1"># These are like gate declarations only wihtout a body.</span>
     <span class="c1"># ----------------------------------------</span>
-<div class="viewcode-block" id="QasmParser.p_opaque_0"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.html#qiskit.qasm.qasmparser.QasmParser.p_opaque_0">[docs]</a>    <span class="k">def</span> <span class="nf">p_opaque_0</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
+<div class="viewcode-block" id="QasmParser.p_opaque_0"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.qasmparser.html#qiskit.qasm.qasmparser.QasmParser.p_opaque_0">[docs]</a>    <span class="k">def</span> <span class="nf">p_opaque_0</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">           opaque : OPAQUE id gate_scope bit_list</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -972,7 +972,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">pop_scope</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">update_symtab</span><span class="p">(</span><span class="n">program</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span></div>
 
-<div class="viewcode-block" id="QasmParser.p_opaque_1"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.html#qiskit.qasm.qasmparser.QasmParser.p_opaque_1">[docs]</a>    <span class="k">def</span> <span class="nf">p_opaque_1</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
+<div class="viewcode-block" id="QasmParser.p_opaque_1"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.qasmparser.html#qiskit.qasm.qasmparser.QasmParser.p_opaque_1">[docs]</a>    <span class="k">def</span> <span class="nf">p_opaque_1</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">           opaque : OPAQUE id gate_scope &#39;(&#39; &#39;)&#39; bit_list</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -980,7 +980,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">pop_scope</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">update_symtab</span><span class="p">(</span><span class="n">program</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span></div>
 
-<div class="viewcode-block" id="QasmParser.p_opaque_2"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.html#qiskit.qasm.qasmparser.QasmParser.p_opaque_2">[docs]</a>    <span class="k">def</span> <span class="nf">p_opaque_2</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
+<div class="viewcode-block" id="QasmParser.p_opaque_2"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.qasmparser.html#qiskit.qasm.qasmparser.QasmParser.p_opaque_2">[docs]</a>    <span class="k">def</span> <span class="nf">p_opaque_2</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">           opaque : OPAQUE id gate_scope &#39;(&#39; gate_id_list &#39;)&#39; bit_list</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -991,7 +991,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">pop_scope</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">update_symtab</span><span class="p">(</span><span class="n">program</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span></div>
 
-<div class="viewcode-block" id="QasmParser.p_opaque_1e"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.html#qiskit.qasm.qasmparser.QasmParser.p_opaque_1e">[docs]</a>    <span class="k">def</span> <span class="nf">p_opaque_1e</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
+<div class="viewcode-block" id="QasmParser.p_opaque_1e"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.qasmparser.html#qiskit.qasm.qasmparser.QasmParser.p_opaque_1e">[docs]</a>    <span class="k">def</span> <span class="nf">p_opaque_1e</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">           opaque : OPAQUE id gate_scope &#39;(&#39; error</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -1000,7 +1000,7 @@
     <span class="c1"># ----------------------------------------</span>
     <span class="c1"># measure : MEASURE primary ASSIGN primary</span>
     <span class="c1"># ----------------------------------------</span>
-<div class="viewcode-block" id="QasmParser.p_measure"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.html#qiskit.qasm.qasmparser.QasmParser.p_measure">[docs]</a>    <span class="k">def</span> <span class="nf">p_measure</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
+<div class="viewcode-block" id="QasmParser.p_measure"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.qasmparser.html#qiskit.qasm.qasmparser.QasmParser.p_measure">[docs]</a>    <span class="k">def</span> <span class="nf">p_measure</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">           measure : MEASURE primary ASSIGN primary</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -1008,7 +1008,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">verify_reg</span><span class="p">(</span><span class="n">program</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="s1">&#39;qreg&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">verify_reg</span><span class="p">(</span><span class="n">program</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="s1">&#39;creg&#39;</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="QasmParser.p_measure_e"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.html#qiskit.qasm.qasmparser.QasmParser.p_measure_e">[docs]</a>    <span class="k">def</span> <span class="nf">p_measure_e</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
+<div class="viewcode-block" id="QasmParser.p_measure_e"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.qasmparser.html#qiskit.qasm.qasmparser.QasmParser.p_measure_e">[docs]</a>    <span class="k">def</span> <span class="nf">p_measure_e</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">           measure : MEASURE primary error</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -1020,7 +1020,7 @@
     <span class="c1">#</span>
     <span class="c1"># Errors are covered by handling erros in primary_list</span>
     <span class="c1"># ----------------------------------------</span>
-<div class="viewcode-block" id="QasmParser.p_barrier"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.html#qiskit.qasm.qasmparser.QasmParser.p_barrier">[docs]</a>    <span class="k">def</span> <span class="nf">p_barrier</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
+<div class="viewcode-block" id="QasmParser.p_barrier"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.qasmparser.html#qiskit.qasm.qasmparser.QasmParser.p_barrier">[docs]</a>    <span class="k">def</span> <span class="nf">p_barrier</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        barrier : BARRIER primary_list</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -1031,7 +1031,7 @@
     <span class="c1"># ----------------------------------------</span>
     <span class="c1"># reset : RESET primary</span>
     <span class="c1"># ----------------------------------------</span>
-<div class="viewcode-block" id="QasmParser.p_reset"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.html#qiskit.qasm.qasmparser.QasmParser.p_reset">[docs]</a>    <span class="k">def</span> <span class="nf">p_reset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
+<div class="viewcode-block" id="QasmParser.p_reset"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.qasmparser.html#qiskit.qasm.qasmparser.QasmParser.p_reset">[docs]</a>    <span class="k">def</span> <span class="nf">p_reset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        reset : RESET primary</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -1041,7 +1041,7 @@
     <span class="c1"># ----------------------------------------</span>
     <span class="c1"># IF &#39;(&#39; ID MATCHES NNINTEGER &#39;)&#39; quantum_op</span>
     <span class="c1"># ----------------------------------------</span>
-<div class="viewcode-block" id="QasmParser.p_if"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.html#qiskit.qasm.qasmparser.QasmParser.p_if">[docs]</a>    <span class="k">def</span> <span class="nf">p_if</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
+<div class="viewcode-block" id="QasmParser.p_if"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.qasmparser.html#qiskit.qasm.qasmparser.QasmParser.p_if">[docs]</a>    <span class="k">def</span> <span class="nf">p_if</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        if : IF &#39;(&#39; id MATCHES NNINTEGER &#39;)&#39; quantum_op</span>
 <span class="sd">        if : IF &#39;(&#39; id error</span>
@@ -1078,7 +1078,7 @@
     <span class="c1">#                   | if</span>
     <span class="c1">#</span>
     <span class="c1"># ----------------------------------------</span>
-<div class="viewcode-block" id="QasmParser.p_quantum_op"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.html#qiskit.qasm.qasmparser.QasmParser.p_quantum_op">[docs]</a>    <span class="k">def</span> <span class="nf">p_quantum_op</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
+<div class="viewcode-block" id="QasmParser.p_quantum_op"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.qasmparser.html#qiskit.qasm.qasmparser.QasmParser.p_quantum_op">[docs]</a>    <span class="k">def</span> <span class="nf">p_quantum_op</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">            quantum_op : unitary_op</span>
 <span class="sd">                       | opaque</span>
@@ -1099,37 +1099,37 @@
     <span class="c1">#</span>
     <span class="c1"># We will trust &#39;expression&#39; to throw before we have to handle it here</span>
     <span class="c1"># ----------------------------------------</span>
-<div class="viewcode-block" id="QasmParser.p_unary_0"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.html#qiskit.qasm.qasmparser.QasmParser.p_unary_0">[docs]</a>    <span class="k">def</span> <span class="nf">p_unary_0</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
+<div class="viewcode-block" id="QasmParser.p_unary_0"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.qasmparser.html#qiskit.qasm.qasmparser.QasmParser.p_unary_0">[docs]</a>    <span class="k">def</span> <span class="nf">p_unary_0</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">           unary : NNINTEGER</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">program</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">Int</span><span class="p">(</span><span class="n">program</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span></div>
 
-<div class="viewcode-block" id="QasmParser.p_unary_1"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.html#qiskit.qasm.qasmparser.QasmParser.p_unary_1">[docs]</a>    <span class="k">def</span> <span class="nf">p_unary_1</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
+<div class="viewcode-block" id="QasmParser.p_unary_1"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.qasmparser.html#qiskit.qasm.qasmparser.QasmParser.p_unary_1">[docs]</a>    <span class="k">def</span> <span class="nf">p_unary_1</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">           unary : REAL</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">program</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">Real</span><span class="p">(</span><span class="n">sympy</span><span class="o">.</span><span class="n">Number</span><span class="p">(</span><span class="n">program</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span></div>
 
-<div class="viewcode-block" id="QasmParser.p_unary_2"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.html#qiskit.qasm.qasmparser.QasmParser.p_unary_2">[docs]</a>    <span class="k">def</span> <span class="nf">p_unary_2</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
+<div class="viewcode-block" id="QasmParser.p_unary_2"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.qasmparser.html#qiskit.qasm.qasmparser.QasmParser.p_unary_2">[docs]</a>    <span class="k">def</span> <span class="nf">p_unary_2</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">           unary : PI</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">program</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">Real</span><span class="p">(</span><span class="n">sympy</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="QasmParser.p_unary_3"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.html#qiskit.qasm.qasmparser.QasmParser.p_unary_3">[docs]</a>    <span class="k">def</span> <span class="nf">p_unary_3</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
+<div class="viewcode-block" id="QasmParser.p_unary_3"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.qasmparser.html#qiskit.qasm.qasmparser.QasmParser.p_unary_3">[docs]</a>    <span class="k">def</span> <span class="nf">p_unary_3</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">           unary : id</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">program</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">program</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span></div>
 
-<div class="viewcode-block" id="QasmParser.p_unary_4"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.html#qiskit.qasm.qasmparser.QasmParser.p_unary_4">[docs]</a>    <span class="k">def</span> <span class="nf">p_unary_4</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
+<div class="viewcode-block" id="QasmParser.p_unary_4"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.qasmparser.html#qiskit.qasm.qasmparser.QasmParser.p_unary_4">[docs]</a>    <span class="k">def</span> <span class="nf">p_unary_4</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">           unary : &#39;(&#39; expression &#39;)&#39;</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">program</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">program</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span></div>
 
-<div class="viewcode-block" id="QasmParser.p_unary_6"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.html#qiskit.qasm.qasmparser.QasmParser.p_unary_6">[docs]</a>    <span class="k">def</span> <span class="nf">p_unary_6</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
+<div class="viewcode-block" id="QasmParser.p_unary_6"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.qasmparser.html#qiskit.qasm.qasmparser.QasmParser.p_unary_6">[docs]</a>    <span class="k">def</span> <span class="nf">p_unary_6</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">           unary : id &#39;(&#39; expression &#39;)&#39;</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -1143,14 +1143,14 @@
     <span class="c1"># Prefix</span>
     <span class="c1"># ----------------------------------------</span>
 
-<div class="viewcode-block" id="QasmParser.p_expression_1"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.html#qiskit.qasm.qasmparser.QasmParser.p_expression_1">[docs]</a>    <span class="k">def</span> <span class="nf">p_expression_1</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
+<div class="viewcode-block" id="QasmParser.p_expression_1"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.qasmparser.html#qiskit.qasm.qasmparser.QasmParser.p_expression_1">[docs]</a>    <span class="k">def</span> <span class="nf">p_expression_1</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">            expression : &#39;-&#39; expression %prec negative</span>
 <span class="sd">                        | &#39;+&#39; expression %prec positive</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">program</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">Prefix</span><span class="p">([</span><span class="n">node</span><span class="o">.</span><span class="n">UnaryOperator</span><span class="p">(</span><span class="n">program</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="n">program</span><span class="p">[</span><span class="mi">2</span><span class="p">]])</span></div>
 
-<div class="viewcode-block" id="QasmParser.p_expression_0"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.html#qiskit.qasm.qasmparser.QasmParser.p_expression_0">[docs]</a>    <span class="k">def</span> <span class="nf">p_expression_0</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
+<div class="viewcode-block" id="QasmParser.p_expression_0"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.qasmparser.html#qiskit.qasm.qasmparser.QasmParser.p_expression_0">[docs]</a>    <span class="k">def</span> <span class="nf">p_expression_0</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        expression : expression &#39;*&#39; expression</span>
 <span class="sd">                    | expression &#39;/&#39; expression</span>
@@ -1161,7 +1161,7 @@
         <span class="n">program</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">BinaryOp</span><span class="p">([</span><span class="n">node</span><span class="o">.</span><span class="n">BinaryOperator</span><span class="p">(</span><span class="n">program</span><span class="p">[</span><span class="mi">2</span><span class="p">]),</span>
                                     <span class="n">program</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">program</span><span class="p">[</span><span class="mi">3</span><span class="p">]])</span></div>
 
-<div class="viewcode-block" id="QasmParser.p_expression_2"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.html#qiskit.qasm.qasmparser.QasmParser.p_expression_2">[docs]</a>    <span class="k">def</span> <span class="nf">p_expression_2</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
+<div class="viewcode-block" id="QasmParser.p_expression_2"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.qasmparser.html#qiskit.qasm.qasmparser.QasmParser.p_expression_2">[docs]</a>    <span class="k">def</span> <span class="nf">p_expression_2</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">            expression : unary</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -1171,27 +1171,27 @@
     <span class="c1"># exp_list : exp</span>
     <span class="c1">#          | exp_list &#39;,&#39; exp</span>
     <span class="c1"># ----------------------------------------</span>
-<div class="viewcode-block" id="QasmParser.p_exp_list_0"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.html#qiskit.qasm.qasmparser.QasmParser.p_exp_list_0">[docs]</a>    <span class="k">def</span> <span class="nf">p_exp_list_0</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
+<div class="viewcode-block" id="QasmParser.p_exp_list_0"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.qasmparser.html#qiskit.qasm.qasmparser.QasmParser.p_exp_list_0">[docs]</a>    <span class="k">def</span> <span class="nf">p_exp_list_0</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">           exp_list : expression</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">program</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">ExpressionList</span><span class="p">([</span><span class="n">program</span><span class="p">[</span><span class="mi">1</span><span class="p">]])</span></div>
 
-<div class="viewcode-block" id="QasmParser.p_exp_list_1"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.html#qiskit.qasm.qasmparser.QasmParser.p_exp_list_1">[docs]</a>    <span class="k">def</span> <span class="nf">p_exp_list_1</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
+<div class="viewcode-block" id="QasmParser.p_exp_list_1"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.qasmparser.html#qiskit.qasm.qasmparser.QasmParser.p_exp_list_1">[docs]</a>    <span class="k">def</span> <span class="nf">p_exp_list_1</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">           exp_list : exp_list &#39;,&#39; expression</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">program</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">program</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
         <span class="n">program</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">add_child</span><span class="p">(</span><span class="n">program</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span></div>
 
-<div class="viewcode-block" id="QasmParser.p_ignore"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.html#qiskit.qasm.qasmparser.QasmParser.p_ignore">[docs]</a>    <span class="k">def</span> <span class="nf">p_ignore</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
+<div class="viewcode-block" id="QasmParser.p_ignore"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.qasmparser.html#qiskit.qasm.qasmparser.QasmParser.p_ignore">[docs]</a>    <span class="k">def</span> <span class="nf">p_ignore</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">           ignore : STRING</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="c1"># this should never hit but it keeps the insuppressible warnings at bay</span>
         <span class="k">pass</span></div>
 
-<div class="viewcode-block" id="QasmParser.p_error"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.html#qiskit.qasm.qasmparser.QasmParser.p_error">[docs]</a>    <span class="k">def</span> <span class="nf">p_error</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
+<div class="viewcode-block" id="QasmParser.p_error"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.qasmparser.html#qiskit.qasm.qasmparser.QasmParser.p_error">[docs]</a>    <span class="k">def</span> <span class="nf">p_error</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
         <span class="c1"># EOF is a special case because the stupid error token isn&#39;t placed</span>
         <span class="c1"># on the stack</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">program</span><span class="p">:</span>
@@ -1201,7 +1201,7 @@
         <span class="n">col</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">find_column</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lexer</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">program</span><span class="p">)</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Error near line&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lexer</span><span class="o">.</span><span class="n">lineno</span><span class="p">),</span> <span class="s1">&#39;Column&#39;</span><span class="p">,</span> <span class="n">col</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="QasmParser.find_column"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.html#qiskit.qasm.qasmparser.QasmParser.find_column">[docs]</a>    <span class="k">def</span> <span class="nf">find_column</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_</span><span class="p">,</span> <span class="n">token</span><span class="p">):</span>
+<div class="viewcode-block" id="QasmParser.find_column"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.qasmparser.html#qiskit.qasm.qasmparser.QasmParser.find_column">[docs]</a>    <span class="k">def</span> <span class="nf">find_column</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_</span><span class="p">,</span> <span class="n">token</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Compute the column.</span>
 
 <span class="sd">        Input is the input text string.</span>
@@ -1215,7 +1215,7 @@
         <span class="n">column</span> <span class="o">=</span> <span class="p">(</span><span class="n">token</span><span class="o">.</span><span class="n">lexpos</span> <span class="o">-</span> <span class="n">last_cr</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
         <span class="k">return</span> <span class="n">column</span></div>
 
-<div class="viewcode-block" id="QasmParser.get_tokens"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.html#qiskit.qasm.qasmparser.QasmParser.get_tokens">[docs]</a>    <span class="k">def</span> <span class="nf">get_tokens</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="QasmParser.get_tokens"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.qasmparser.html#qiskit.qasm.qasmparser.QasmParser.get_tokens">[docs]</a>    <span class="k">def</span> <span class="nf">get_tokens</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Returns a generator of the tokens.&quot;&quot;&quot;</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
@@ -1228,7 +1228,7 @@
         <span class="k">except</span> <span class="n">QasmError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
             <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Exception tokenizing qasm file:&#39;</span><span class="p">,</span> <span class="n">e</span><span class="o">.</span><span class="n">msg</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="QasmParser.parse_debug"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.html#qiskit.qasm.qasmparser.QasmParser.parse_debug">[docs]</a>    <span class="k">def</span> <span class="nf">parse_debug</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">val</span><span class="p">):</span>
+<div class="viewcode-block" id="QasmParser.parse_debug"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.qasmparser.html#qiskit.qasm.qasmparser.QasmParser.parse_debug">[docs]</a>    <span class="k">def</span> <span class="nf">parse_debug</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">val</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Set the parse_deb field.&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">val</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">parse_deb</span> <span class="o">=</span> <span class="kc">True</span>
@@ -1238,7 +1238,7 @@
             <span class="k">raise</span> <span class="n">QasmError</span><span class="p">(</span><span class="s2">&quot;Illegal debug value &#39;&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
                             <span class="o">+</span> <span class="s2">&quot;&#39; must be True or False.&quot;</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="QasmParser.parse"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.html#qiskit.qasm.qasmparser.QasmParser.parse">[docs]</a>    <span class="k">def</span> <span class="nf">parse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+<div class="viewcode-block" id="QasmParser.parse"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.qasmparser.html#qiskit.qasm.qasmparser.QasmParser.parse">[docs]</a>    <span class="k">def</span> <span class="nf">parse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Parse some data.&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">parser</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">lexer</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">lexer</span><span class="p">,</span> <span class="n">debug</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">parse_deb</span><span class="p">)</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">qasm</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
@@ -1246,14 +1246,14 @@
                             <span class="o">+</span> <span class="s2">&quot;see previous messages for details.&quot;</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">qasm</span></div>
 
-<div class="viewcode-block" id="QasmParser.print_tree"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.html#qiskit.qasm.qasmparser.QasmParser.print_tree">[docs]</a>    <span class="k">def</span> <span class="nf">print_tree</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="QasmParser.print_tree"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.qasmparser.html#qiskit.qasm.qasmparser.QasmParser.print_tree">[docs]</a>    <span class="k">def</span> <span class="nf">print_tree</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Print parsed OPENQASM.&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">qasm</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">qasm</span><span class="o">.</span><span class="n">to_string</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;No parsed qasm to print&quot;</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="QasmParser.run"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.html#qiskit.qasm.qasmparser.QasmParser.run">[docs]</a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+<div class="viewcode-block" id="QasmParser.run"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.qasmparser.html#qiskit.qasm.qasmparser.QasmParser.run">[docs]</a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Parser runner.</span>
 
 <span class="sd">        To use this module stand-alone.</span>

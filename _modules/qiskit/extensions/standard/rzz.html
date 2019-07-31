@@ -195,7 +195,7 @@
 <span class="kn">from</span> <span class="nn">qiskit.extensions.standard.cx</span> <span class="k">import</span> <span class="n">CnotGate</span>
 
 
-<div class="viewcode-block" id="RZZGate"><a class="viewcode-back" href="../../../../autodoc/qiskit.extensions.standard.html#qiskit.circuit.compositegate.RZZGate">[docs]</a><span class="k">class</span> <span class="nc">RZZGate</span><span class="p">(</span><span class="n">Gate</span><span class="p">):</span>
+<div class="viewcode-block" id="RZZGate"><a class="viewcode-back" href="../../../../autodoc/qiskit.extensions.standard.rzz.html#qiskit.circuit.compositegate.RZZGate">[docs]</a><span class="k">class</span> <span class="nc">RZZGate</span><span class="p">(</span><span class="n">Gate</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Two-qubit ZZ-rotation gate.&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">theta</span><span class="p">):</span>
@@ -217,12 +217,12 @@
             <span class="n">definition</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">inst</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">definition</span> <span class="o">=</span> <span class="n">definition</span>
 
-<div class="viewcode-block" id="RZZGate.inverse"><a class="viewcode-back" href="../../../../autodoc/qiskit.extensions.standard.html#qiskit.circuit.compositegate.RZZGate.inverse">[docs]</a>    <span class="k">def</span> <span class="nf">inverse</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="RZZGate.inverse"><a class="viewcode-back" href="../../../../autodoc/qiskit.extensions.standard.rzz.html#qiskit.circuit.compositegate.RZZGate.inverse">[docs]</a>    <span class="k">def</span> <span class="nf">inverse</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Invert this gate.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">RZZGate</span><span class="p">(</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span></div></div>
 
 
-<div class="viewcode-block" id="rzz"><a class="viewcode-back" href="../../../../autodoc/qiskit.extensions.standard.html#qiskit.circuit.compositegate.rzz">[docs]</a><span class="nd">@_to_bits</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<div class="viewcode-block" id="rzz"><a class="viewcode-back" href="../../../../autodoc/qiskit.extensions.standard.rzz.html#qiskit.circuit.compositegate.rzz">[docs]</a><span class="nd">@_to_bits</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 <span class="nd">@_op_expand</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">broadcastable</span><span class="o">=</span><span class="p">[</span><span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">])</span>
 <span class="k">def</span> <span class="nf">rzz</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">theta</span><span class="p">,</span> <span class="n">qubit1</span><span class="p">,</span> <span class="n">qubit2</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Apply RZZ to circuit.&quot;&quot;&quot;</span>

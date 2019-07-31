@@ -314,7 +314,7 @@
     <span class="k">return</span> <span class="n">qubit_op</span>
 
 
-<div class="viewcode-block" id="bravyi_kitaev_fast_edge_list"><a class="viewcode-back" href="../../../autodoc/qiskit.chemistry.html#qiskit.chemistry.bksf.bravyi_kitaev_fast_edge_list">[docs]</a><span class="k">def</span> <span class="nf">bravyi_kitaev_fast_edge_list</span><span class="p">(</span><span class="n">fer_op</span><span class="p">):</span>
+<div class="viewcode-block" id="bravyi_kitaev_fast_edge_list"><a class="viewcode-back" href="../../../autodoc/qiskit.chemistry.bksf.html#qiskit.chemistry.bksf.bravyi_kitaev_fast_edge_list">[docs]</a><span class="k">def</span> <span class="nf">bravyi_kitaev_fast_edge_list</span><span class="p">(</span><span class="n">fer_op</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Construct edge list required for the bksf algorithm.</span>
 
@@ -373,7 +373,7 @@
     <span class="k">return</span> <span class="n">edge_list</span></div>
 
 
-<div class="viewcode-block" id="edge_operator_aij"><a class="viewcode-back" href="../../../autodoc/qiskit.chemistry.html#qiskit.chemistry.bksf.edge_operator_aij">[docs]</a><span class="k">def</span> <span class="nf">edge_operator_aij</span><span class="p">(</span><span class="n">edge_list</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">):</span>
+<div class="viewcode-block" id="edge_operator_aij"><a class="viewcode-back" href="../../../autodoc/qiskit.chemistry.bksf.html#qiskit.chemistry.bksf.edge_operator_aij">[docs]</a><span class="k">def</span> <span class="nf">edge_operator_aij</span><span class="p">(</span><span class="n">edge_list</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Calculate the edge operator A_ij.</span>
 
 <span class="sd">    The definitions used here are consistent with arXiv:quant-ph/0003137</span>
@@ -417,7 +417,7 @@
     <span class="k">return</span> <span class="n">qubit_op</span></div>
 
 
-<div class="viewcode-block" id="stabilizers"><a class="viewcode-back" href="../../../autodoc/qiskit.chemistry.html#qiskit.chemistry.bksf.stabilizers">[docs]</a><span class="k">def</span> <span class="nf">stabilizers</span><span class="p">(</span><span class="n">fer_op</span><span class="p">):</span>
+<div class="viewcode-block" id="stabilizers"><a class="viewcode-back" href="../../../autodoc/qiskit.chemistry.bksf.html#qiskit.chemistry.bksf.stabilizers">[docs]</a><span class="k">def</span> <span class="nf">stabilizers</span><span class="p">(</span><span class="n">fer_op</span><span class="p">):</span>
 
     <span class="n">edge_list</span> <span class="o">=</span> <span class="n">bravyi_kitaev_fast_edge_list</span><span class="p">(</span><span class="n">fer_op</span><span class="p">)</span>
     <span class="n">num_qubits</span> <span class="o">=</span> <span class="n">edge_list</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
@@ -438,7 +438,7 @@
     <span class="k">return</span> <span class="n">stabilizers</span></div>
 
 
-<div class="viewcode-block" id="edge_operator_bi"><a class="viewcode-back" href="../../../autodoc/qiskit.chemistry.html#qiskit.chemistry.bksf.edge_operator_bi">[docs]</a><span class="k">def</span> <span class="nf">edge_operator_bi</span><span class="p">(</span><span class="n">edge_list</span><span class="p">,</span> <span class="n">i</span><span class="p">):</span>
+<div class="viewcode-block" id="edge_operator_bi"><a class="viewcode-back" href="../../../autodoc/qiskit.chemistry.bksf.html#qiskit.chemistry.bksf.edge_operator_bi">[docs]</a><span class="k">def</span> <span class="nf">edge_operator_bi</span><span class="p">(</span><span class="n">edge_list</span><span class="p">,</span> <span class="n">i</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Calculate the edge operator B_i.</span>
 
 <span class="sd">    The definitions used here are consistent with arXiv:quant-ph/0003137</span>
@@ -460,7 +460,7 @@
     <span class="k">return</span> <span class="n">qubit_op</span></div>
 
 
-<div class="viewcode-block" id="bksf_mapping"><a class="viewcode-back" href="../../../autodoc/qiskit.chemistry.html#qiskit.chemistry.bksf.bksf_mapping">[docs]</a><span class="k">def</span> <span class="nf">bksf_mapping</span><span class="p">(</span><span class="n">fer_op</span><span class="p">):</span>
+<div class="viewcode-block" id="bksf_mapping"><a class="viewcode-back" href="../../../autodoc/qiskit.chemistry.bksf.html#qiskit.chemistry.bksf.bksf_mapping">[docs]</a><span class="k">def</span> <span class="nf">bksf_mapping</span><span class="p">(</span><span class="n">fer_op</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Transform from InteractionOpeator to QubitOperator for Bravyi-Kitaev fast algorithm.</span>
 
@@ -535,7 +535,7 @@
     <span class="k">return</span> <span class="n">qubit_op</span></div>
 
 
-<div class="viewcode-block" id="vacuum_operator"><a class="viewcode-back" href="../../../autodoc/qiskit.chemistry.html#qiskit.chemistry.bksf.vacuum_operator">[docs]</a><span class="k">def</span> <span class="nf">vacuum_operator</span><span class="p">(</span><span class="n">fer_op</span><span class="p">):</span>
+<div class="viewcode-block" id="vacuum_operator"><a class="viewcode-back" href="../../../autodoc/qiskit.chemistry.bksf.html#qiskit.chemistry.bksf.vacuum_operator">[docs]</a><span class="k">def</span> <span class="nf">vacuum_operator</span><span class="p">(</span><span class="n">fer_op</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Use the stabilizers to find the vacuum state in bravyi_kitaev_fast.</span>
 
 <span class="sd">    Args:</span>
@@ -564,7 +564,7 @@
     <span class="k">return</span> <span class="n">vac_operator</span></div>
 
 
-<div class="viewcode-block" id="number_operator"><a class="viewcode-back" href="../../../autodoc/qiskit.chemistry.html#qiskit.chemistry.bksf.number_operator">[docs]</a><span class="k">def</span> <span class="nf">number_operator</span><span class="p">(</span><span class="n">fer_op</span><span class="p">,</span> <span class="n">mode_number</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="number_operator"><a class="viewcode-back" href="../../../autodoc/qiskit.chemistry.bksf.html#qiskit.chemistry.bksf.number_operator">[docs]</a><span class="k">def</span> <span class="nf">number_operator</span><span class="p">(</span><span class="n">fer_op</span><span class="p">,</span> <span class="n">mode_number</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Find the qubit operator for the number operator in bravyi_kitaev_fast representation.</span>
 
 <span class="sd">    Args:</span>
@@ -592,7 +592,7 @@
     <span class="k">return</span> <span class="n">num_operator</span></div>
 
 
-<div class="viewcode-block" id="generate_fermions"><a class="viewcode-back" href="../../../autodoc/qiskit.chemistry.html#qiskit.chemistry.bksf.generate_fermions">[docs]</a><span class="k">def</span> <span class="nf">generate_fermions</span><span class="p">(</span><span class="n">fer_op</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">):</span>
+<div class="viewcode-block" id="generate_fermions"><a class="viewcode-back" href="../../../autodoc/qiskit.chemistry.bksf.html#qiskit.chemistry.bksf.generate_fermions">[docs]</a><span class="k">def</span> <span class="nf">generate_fermions</span><span class="p">(</span><span class="n">fer_op</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;The qubit operator for generating fermions in bravyi_kitaev_fast representation.</span>
 
 <span class="sd">    Args:</span>

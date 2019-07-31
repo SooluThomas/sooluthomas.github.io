@@ -194,7 +194,7 @@
                                 <span class="s1">&#39;.qiskit&#39;</span><span class="p">,</span> <span class="s1">&#39;settings.conf&#39;</span><span class="p">)</span>
 
 
-<div class="viewcode-block" id="UserConfig"><a class="viewcode-back" href="../../autodoc/qiskit.html#qiskit.user_config.UserConfig">[docs]</a><span class="k">class</span> <span class="nc">UserConfig</span><span class="p">:</span>
+<div class="viewcode-block" id="UserConfig"><a class="viewcode-back" href="../../autodoc/qiskit.user_config.html#qiskit.user_config.UserConfig">[docs]</a><span class="k">class</span> <span class="nc">UserConfig</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;Class representing a user config file</span>
 
 <span class="sd">    The config file format should look like:</span>
@@ -216,7 +216,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">settings</span> <span class="o">=</span> <span class="p">{}</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">config_parser</span> <span class="o">=</span> <span class="n">configparser</span><span class="o">.</span><span class="n">ConfigParser</span><span class="p">()</span>
 
-<div class="viewcode-block" id="UserConfig.read_config_file"><a class="viewcode-back" href="../../autodoc/qiskit.html#qiskit.user_config.UserConfig.read_config_file">[docs]</a>    <span class="k">def</span> <span class="nf">read_config_file</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="UserConfig.read_config_file"><a class="viewcode-back" href="../../autodoc/qiskit.user_config.html#qiskit.user_config.UserConfig.read_config_file">[docs]</a>    <span class="k">def</span> <span class="nf">read_config_file</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Read config file and parse the contents into the settings attr.&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">filename</span><span class="p">):</span>
             <span class="k">return</span>
@@ -234,7 +234,7 @@
                 <span class="bp">self</span><span class="o">.</span><span class="n">settings</span><span class="p">[</span><span class="s1">&#39;circuit_drawer&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">circuit_drawer</span></div></div>
 
 
-<div class="viewcode-block" id="get_config"><a class="viewcode-back" href="../../autodoc/qiskit.html#qiskit.user_config.get_config">[docs]</a><span class="k">def</span> <span class="nf">get_config</span><span class="p">():</span>
+<div class="viewcode-block" id="get_config"><a class="viewcode-back" href="../../autodoc/qiskit.user_config.html#qiskit.user_config.get_config">[docs]</a><span class="k">def</span> <span class="nf">get_config</span><span class="p">():</span>
     <span class="sd">&quot;&quot;&quot;Read the config file from the default location or env var</span>
 
 <span class="sd">    It will read a config file at either the default location</span>

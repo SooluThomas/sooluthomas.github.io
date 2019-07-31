@@ -200,7 +200,7 @@
 <span class="kn">from</span> <span class="nn">.quantum_error</span> <span class="k">import</span> <span class="n">QuantumError</span>
 
 
-<div class="viewcode-block" id="kraus_error"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.providers.aer.noise.errors.html#qiskit.providers.aer.noise.errors.standard_errors.kraus_error">[docs]</a><span class="k">def</span> <span class="nf">kraus_error</span><span class="p">(</span><span class="n">noise_ops</span><span class="p">,</span> <span class="n">standard_gates</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">canonical_kraus</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<div class="viewcode-block" id="kraus_error"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.providers.aer.noise.errors.standard_errors.html#qiskit.providers.aer.noise.errors.standard_errors.kraus_error">[docs]</a><span class="k">def</span> <span class="nf">kraus_error</span><span class="p">(</span><span class="n">noise_ops</span><span class="p">,</span> <span class="n">standard_gates</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">canonical_kraus</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Kraus error channel.</span>
 
 <span class="sd">    Args:</span>
@@ -226,7 +226,7 @@
     <span class="k">return</span> <span class="n">QuantumError</span><span class="p">(</span><span class="n">kraus</span><span class="p">,</span> <span class="n">standard_gates</span><span class="o">=</span><span class="n">standard_gates</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="mixed_unitary_error"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.providers.aer.noise.errors.html#qiskit.providers.aer.noise.errors.standard_errors.mixed_unitary_error">[docs]</a><span class="k">def</span> <span class="nf">mixed_unitary_error</span><span class="p">(</span><span class="n">noise_ops</span><span class="p">,</span> <span class="n">standard_gates</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<div class="viewcode-block" id="mixed_unitary_error"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.providers.aer.noise.errors.standard_errors.html#qiskit.providers.aer.noise.errors.standard_errors.mixed_unitary_error">[docs]</a><span class="k">def</span> <span class="nf">mixed_unitary_error</span><span class="p">(</span><span class="n">noise_ops</span><span class="p">,</span> <span class="n">standard_gates</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Mixed unitary quantum error channel.</span>
 
@@ -279,7 +279,7 @@
     <span class="k">return</span> <span class="n">QuantumError</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">instructions</span><span class="p">,</span> <span class="n">instructions_probs</span><span class="p">))</span></div>
 
 
-<div class="viewcode-block" id="coherent_unitary_error"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.providers.aer.noise.errors.html#qiskit.providers.aer.noise.errors.standard_errors.coherent_unitary_error">[docs]</a><span class="k">def</span> <span class="nf">coherent_unitary_error</span><span class="p">(</span><span class="n">unitary</span><span class="p">):</span>
+<div class="viewcode-block" id="coherent_unitary_error"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.providers.aer.noise.errors.standard_errors.html#qiskit.providers.aer.noise.errors.standard_errors.coherent_unitary_error">[docs]</a><span class="k">def</span> <span class="nf">coherent_unitary_error</span><span class="p">(</span><span class="n">unitary</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Coherent unitary quantum error channel.</span>
 
@@ -292,7 +292,7 @@
     <span class="k">return</span> <span class="n">mixed_unitary_error</span><span class="p">([(</span><span class="n">unitary</span><span class="p">,</span> <span class="mi">1</span><span class="p">)])</span></div>
 
 
-<div class="viewcode-block" id="pauli_error"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.providers.aer.noise.errors.html#qiskit.providers.aer.noise.errors.standard_errors.pauli_error">[docs]</a><span class="k">def</span> <span class="nf">pauli_error</span><span class="p">(</span><span class="n">noise_ops</span><span class="p">,</span> <span class="n">standard_gates</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<div class="viewcode-block" id="pauli_error"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.providers.aer.noise.errors.standard_errors.html#qiskit.providers.aer.noise.errors.standard_errors.pauli_error">[docs]</a><span class="k">def</span> <span class="nf">pauli_error</span><span class="p">(</span><span class="n">noise_ops</span><span class="p">,</span> <span class="n">standard_gates</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Pauli quantum error channel.</span>
 
@@ -438,7 +438,7 @@
     <span class="k">return</span> <span class="n">error</span>
 
 
-<div class="viewcode-block" id="depolarizing_error"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.providers.aer.noise.errors.html#qiskit.providers.aer.noise.errors.standard_errors.depolarizing_error">[docs]</a><span class="k">def</span> <span class="nf">depolarizing_error</span><span class="p">(</span><span class="n">param</span><span class="p">,</span> <span class="n">num_qubits</span><span class="p">,</span> <span class="n">standard_gates</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<div class="viewcode-block" id="depolarizing_error"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.providers.aer.noise.errors.standard_errors.html#qiskit.providers.aer.noise.errors.standard_errors.depolarizing_error">[docs]</a><span class="k">def</span> <span class="nf">depolarizing_error</span><span class="p">(</span><span class="n">param</span><span class="p">,</span> <span class="n">num_qubits</span><span class="p">,</span> <span class="n">standard_gates</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Depolarizing quantum error channel.</span>
 
@@ -490,7 +490,7 @@
     <span class="k">return</span> <span class="n">pauli_error</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">paulis</span><span class="p">,</span> <span class="n">probs</span><span class="p">),</span> <span class="n">standard_gates</span><span class="o">=</span><span class="n">standard_gates</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="reset_error"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.providers.aer.noise.errors.html#qiskit.providers.aer.noise.errors.standard_errors.reset_error">[docs]</a><span class="k">def</span> <span class="nf">reset_error</span><span class="p">(</span><span class="n">prob0</span><span class="p">,</span> <span class="n">prob1</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+<div class="viewcode-block" id="reset_error"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.providers.aer.noise.errors.standard_errors.html#qiskit.providers.aer.noise.errors.standard_errors.reset_error">[docs]</a><span class="k">def</span> <span class="nf">reset_error</span><span class="p">(</span><span class="n">prob0</span><span class="p">,</span> <span class="n">prob1</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Single qubit reset error channel.</span>
 
 <span class="sd">    The probability of no reset is given by 1 - prob0 - prob1</span>
@@ -528,7 +528,7 @@
 
 
 <span class="c1"># pylint: disable=invalid-name</span>
-<div class="viewcode-block" id="thermal_relaxation_error"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.providers.aer.noise.errors.html#qiskit.providers.aer.noise.errors.standard_errors.thermal_relaxation_error">[docs]</a><span class="k">def</span> <span class="nf">thermal_relaxation_error</span><span class="p">(</span><span class="n">t1</span><span class="p">,</span> <span class="n">t2</span><span class="p">,</span> <span class="n">time</span><span class="p">,</span> <span class="n">excited_state_population</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+<div class="viewcode-block" id="thermal_relaxation_error"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.providers.aer.noise.errors.standard_errors.html#qiskit.providers.aer.noise.errors.standard_errors.thermal_relaxation_error">[docs]</a><span class="k">def</span> <span class="nf">thermal_relaxation_error</span><span class="p">(</span><span class="n">t1</span><span class="p">,</span> <span class="n">t2</span><span class="p">,</span> <span class="n">time</span><span class="p">,</span> <span class="n">excited_state_population</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Single-qubit thermal relaxation quantum error channel.</span>
 
@@ -622,7 +622,7 @@
         <span class="k">return</span> <span class="n">QuantumError</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">circuits</span><span class="p">,</span> <span class="n">probabilities</span><span class="p">))</span></div>
 
 
-<div class="viewcode-block" id="phase_amplitude_damping_error"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.providers.aer.noise.errors.html#qiskit.providers.aer.noise.errors.standard_errors.phase_amplitude_damping_error">[docs]</a><span class="k">def</span> <span class="nf">phase_amplitude_damping_error</span><span class="p">(</span><span class="n">param_amp</span><span class="p">,</span>
+<div class="viewcode-block" id="phase_amplitude_damping_error"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.providers.aer.noise.errors.standard_errors.html#qiskit.providers.aer.noise.errors.standard_errors.phase_amplitude_damping_error">[docs]</a><span class="k">def</span> <span class="nf">phase_amplitude_damping_error</span><span class="p">(</span><span class="n">param_amp</span><span class="p">,</span>
                                   <span class="n">param_phase</span><span class="p">,</span>
                                   <span class="n">excited_state_population</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
                                   <span class="n">canonical_kraus</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
@@ -698,7 +698,7 @@
     <span class="k">return</span> <span class="n">kraus_error</span><span class="p">(</span><span class="n">noise_ops</span><span class="p">,</span> <span class="n">canonical_kraus</span><span class="o">=</span><span class="n">canonical_kraus</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="amplitude_damping_error"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.providers.aer.noise.errors.html#qiskit.providers.aer.noise.errors.standard_errors.amplitude_damping_error">[docs]</a><span class="k">def</span> <span class="nf">amplitude_damping_error</span><span class="p">(</span><span class="n">param_amp</span><span class="p">,</span>
+<div class="viewcode-block" id="amplitude_damping_error"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.providers.aer.noise.errors.standard_errors.html#qiskit.providers.aer.noise.errors.standard_errors.amplitude_damping_error">[docs]</a><span class="k">def</span> <span class="nf">amplitude_damping_error</span><span class="p">(</span><span class="n">param_amp</span><span class="p">,</span>
                             <span class="n">excited_state_population</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
                             <span class="n">canonical_kraus</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -738,7 +738,7 @@
         <span class="n">canonical_kraus</span><span class="o">=</span><span class="n">canonical_kraus</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="phase_damping_error"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.providers.aer.noise.errors.html#qiskit.providers.aer.noise.errors.standard_errors.phase_damping_error">[docs]</a><span class="k">def</span> <span class="nf">phase_damping_error</span><span class="p">(</span><span class="n">param_phase</span><span class="p">,</span> <span class="n">canonical_kraus</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<div class="viewcode-block" id="phase_damping_error"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.providers.aer.noise.errors.standard_errors.html#qiskit.providers.aer.noise.errors.standard_errors.phase_damping_error">[docs]</a><span class="k">def</span> <span class="nf">phase_damping_error</span><span class="p">(</span><span class="n">param_phase</span><span class="p">,</span> <span class="n">canonical_kraus</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Single-qubit combined phase and amplitude damping quantum error channel.</span>
 

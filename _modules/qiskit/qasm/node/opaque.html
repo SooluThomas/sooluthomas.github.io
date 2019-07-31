@@ -190,7 +190,7 @@
 <span class="kn">from</span> <span class="nn">.node</span> <span class="k">import</span> <span class="n">Node</span>
 
 
-<div class="viewcode-block" id="Opaque"><a class="viewcode-back" href="../../../../autodoc/qiskit.qasm.node.html#qiskit.qasm.node.opaque.Opaque">[docs]</a><span class="k">class</span> <span class="nc">Opaque</span><span class="p">(</span><span class="n">Node</span><span class="p">):</span>
+<div class="viewcode-block" id="Opaque"><a class="viewcode-back" href="../../../../autodoc/qiskit.qasm.node.opaque.html#qiskit.qasm.node.opaque.Opaque">[docs]</a><span class="k">class</span> <span class="nc">Opaque</span><span class="p">(</span><span class="n">Node</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Node for an OPENQASM opaque gate declaration.</span>
 
 <span class="sd">    children[0] is an id node.</span>
@@ -214,17 +214,17 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">arguments</span> <span class="o">=</span> <span class="kc">None</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">bitlist</span> <span class="o">=</span> <span class="n">children</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 
-<div class="viewcode-block" id="Opaque.n_args"><a class="viewcode-back" href="../../../../autodoc/qiskit.qasm.node.html#qiskit.qasm.node.opaque.Opaque.n_args">[docs]</a>    <span class="k">def</span> <span class="nf">n_args</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="Opaque.n_args"><a class="viewcode-back" href="../../../../autodoc/qiskit.qasm.node.opaque.html#qiskit.qasm.node.opaque.Opaque.n_args">[docs]</a>    <span class="k">def</span> <span class="nf">n_args</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return the number of parameter expressions.&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">arguments</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">arguments</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
         <span class="k">return</span> <span class="mi">0</span></div>
 
-<div class="viewcode-block" id="Opaque.n_bits"><a class="viewcode-back" href="../../../../autodoc/qiskit.qasm.node.html#qiskit.qasm.node.opaque.Opaque.n_bits">[docs]</a>    <span class="k">def</span> <span class="nf">n_bits</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="Opaque.n_bits"><a class="viewcode-back" href="../../../../autodoc/qiskit.qasm.node.opaque.html#qiskit.qasm.node.opaque.Opaque.n_bits">[docs]</a>    <span class="k">def</span> <span class="nf">n_bits</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return the number of qubit arguments.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">bitlist</span><span class="o">.</span><span class="n">size</span><span class="p">()</span></div>
 
-<div class="viewcode-block" id="Opaque.qasm"><a class="viewcode-back" href="../../../../autodoc/qiskit.qasm.node.html#qiskit.qasm.node.opaque.Opaque.qasm">[docs]</a>    <span class="k">def</span> <span class="nf">qasm</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">prec</span><span class="o">=</span><span class="mi">15</span><span class="p">):</span>
+<div class="viewcode-block" id="Opaque.qasm"><a class="viewcode-back" href="../../../../autodoc/qiskit.qasm.node.opaque.html#qiskit.qasm.node.opaque.Opaque.qasm">[docs]</a>    <span class="k">def</span> <span class="nf">qasm</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">prec</span><span class="o">=</span><span class="mi">15</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return the corresponding OPENQASM string.&quot;&quot;&quot;</span>
         <span class="n">string</span> <span class="o">=</span> <span class="s2">&quot;opaque </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">arguments</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>

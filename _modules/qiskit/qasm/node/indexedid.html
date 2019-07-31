@@ -190,7 +190,7 @@
 <span class="kn">from</span> <span class="nn">.node</span> <span class="k">import</span> <span class="n">Node</span>
 
 
-<div class="viewcode-block" id="IndexedId"><a class="viewcode-back" href="../../../../autodoc/qiskit.qasm.node.html#qiskit.qasm.node.indexedid.IndexedId">[docs]</a><span class="k">class</span> <span class="nc">IndexedId</span><span class="p">(</span><span class="n">Node</span><span class="p">):</span>
+<div class="viewcode-block" id="IndexedId"><a class="viewcode-back" href="../../../../autodoc/qiskit.qasm.node.indexedid.html#qiskit.qasm.node.indexedid.IndexedId">[docs]</a><span class="k">class</span> <span class="nc">IndexedId</span><span class="p">(</span><span class="n">Node</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Node for an OPENQASM indexed id.</span>
 
 <span class="sd">    children[0] is an id node.</span>
@@ -206,12 +206,12 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">file</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="o">.</span><span class="n">file</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">children</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">value</span>
 
-<div class="viewcode-block" id="IndexedId.to_string"><a class="viewcode-back" href="../../../../autodoc/qiskit.qasm.node.html#qiskit.qasm.node.indexedid.IndexedId.to_string">[docs]</a>    <span class="k">def</span> <span class="nf">to_string</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">indent</span><span class="p">):</span>
+<div class="viewcode-block" id="IndexedId.to_string"><a class="viewcode-back" href="../../../../autodoc/qiskit.qasm.node.indexedid.html#qiskit.qasm.node.indexedid.IndexedId.to_string">[docs]</a>    <span class="k">def</span> <span class="nf">to_string</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">indent</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Print with indent.&quot;&quot;&quot;</span>
         <span class="n">ind</span> <span class="o">=</span> <span class="n">indent</span> <span class="o">*</span> <span class="s1">&#39; &#39;</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">ind</span><span class="p">,</span> <span class="s1">&#39;indexed_id&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">index</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="IndexedId.qasm"><a class="viewcode-back" href="../../../../autodoc/qiskit.qasm.node.html#qiskit.qasm.node.indexedid.IndexedId.qasm">[docs]</a>    <span class="k">def</span> <span class="nf">qasm</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">prec</span><span class="o">=</span><span class="mi">15</span><span class="p">):</span>
+<div class="viewcode-block" id="IndexedId.qasm"><a class="viewcode-back" href="../../../../autodoc/qiskit.qasm.node.indexedid.html#qiskit.qasm.node.indexedid.IndexedId.qasm">[docs]</a>    <span class="k">def</span> <span class="nf">qasm</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">prec</span><span class="o">=</span><span class="mi">15</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return the corresponding OPENQASM string.&quot;&quot;&quot;</span>
         <span class="c1"># pylint: disable=unused-argument</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">+</span> <span class="s2">&quot;[</span><span class="si">%d</span><span class="s2">]&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">index</span></div></div>

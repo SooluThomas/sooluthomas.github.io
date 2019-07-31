@@ -203,10 +203,10 @@
 <span class="n">__unittest</span> <span class="o">=</span> <span class="kc">True</span>  <span class="c1"># Allows shorter stack trace for .assertDictAlmostEqual</span>
 
 
-<div class="viewcode-block" id="QiskitTestCase"><a class="viewcode-back" href="../../../autodoc/qiskit.test.html#qiskit.test.base.QiskitTestCase">[docs]</a><span class="k">class</span> <span class="nc">QiskitTestCase</span><span class="p">(</span><span class="n">unittest</span><span class="o">.</span><span class="n">TestCase</span><span class="p">):</span>
+<div class="viewcode-block" id="QiskitTestCase"><a class="viewcode-back" href="../../../autodoc/qiskit.test.base.html#qiskit.test.base.QiskitTestCase">[docs]</a><span class="k">class</span> <span class="nc">QiskitTestCase</span><span class="p">(</span><span class="n">unittest</span><span class="o">.</span><span class="n">TestCase</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Helper class that contains common functionality.&quot;&quot;&quot;</span>
 
-<div class="viewcode-block" id="QiskitTestCase.setUpClass"><a class="viewcode-back" href="../../../autodoc/qiskit.test.html#qiskit.test.base.QiskitTestCase.setUpClass">[docs]</a>    <span class="nd">@classmethod</span>
+<div class="viewcode-block" id="QiskitTestCase.setUpClass"><a class="viewcode-back" href="../../../autodoc/qiskit.test.base.html#qiskit.test.base.QiskitTestCase.setUpClass">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">setUpClass</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
         <span class="c1"># Determines if the TestCase is using IBMQ credentials.</span>
         <span class="bp">cls</span><span class="o">.</span><span class="n">using_ibmq_credentials</span> <span class="o">=</span> <span class="kc">False</span>
@@ -217,7 +217,7 @@
             <span class="n">filename</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">%s</span><span class="s1">.log&#39;</span> <span class="o">%</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">inspect</span><span class="o">.</span><span class="n">getfile</span><span class="p">(</span><span class="bp">cls</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
             <span class="n">setup_test_logging</span><span class="p">(</span><span class="bp">cls</span><span class="o">.</span><span class="n">log</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s1">&#39;LOG_LEVEL&#39;</span><span class="p">),</span> <span class="n">filename</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="QiskitTestCase.tearDown"><a class="viewcode-back" href="../../../autodoc/qiskit.test.html#qiskit.test.base.QiskitTestCase.tearDown">[docs]</a>    <span class="k">def</span> <span class="nf">tearDown</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="QiskitTestCase.tearDown"><a class="viewcode-back" href="../../../autodoc/qiskit.test.base.html#qiskit.test.base.QiskitTestCase.tearDown">[docs]</a>    <span class="k">def</span> <span class="nf">tearDown</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="c1"># Reset the default providers, as in practice they acts as a singleton</span>
         <span class="c1"># due to importing the wrapper from qiskit.</span>
         <span class="k">try</span><span class="p">:</span>
@@ -241,7 +241,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">normpath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">filename</span><span class="p">))</span>
 
-<div class="viewcode-block" id="QiskitTestCase.assertNoLogs"><a class="viewcode-back" href="../../../autodoc/qiskit.test.html#qiskit.test.base.QiskitTestCase.assertNoLogs">[docs]</a>    <span class="k">def</span> <span class="nf">assertNoLogs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">logger</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="QiskitTestCase.assertNoLogs"><a class="viewcode-back" href="../../../autodoc/qiskit.test.base.html#qiskit.test.base.QiskitTestCase.assertNoLogs">[docs]</a>    <span class="k">def</span> <span class="nf">assertNoLogs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">logger</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Assert that no message is sent to the specified logger and level.</span>
 
 <span class="sd">        Context manager to test that no message is sent to the specified</span>
@@ -249,7 +249,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">_AssertNoLogsContext</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">logger</span><span class="p">,</span> <span class="n">level</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="QiskitTestCase.assertDictAlmostEqual"><a class="viewcode-back" href="../../../autodoc/qiskit.test.html#qiskit.test.base.QiskitTestCase.assertDictAlmostEqual">[docs]</a>    <span class="k">def</span> <span class="nf">assertDictAlmostEqual</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dict1</span><span class="p">,</span> <span class="n">dict2</span><span class="p">,</span> <span class="n">delta</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">msg</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<div class="viewcode-block" id="QiskitTestCase.assertDictAlmostEqual"><a class="viewcode-back" href="../../../autodoc/qiskit.test.base.html#qiskit.test.base.QiskitTestCase.assertDictAlmostEqual">[docs]</a>    <span class="k">def</span> <span class="nf">assertDictAlmostEqual</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dict1</span><span class="p">,</span> <span class="n">dict2</span><span class="p">,</span> <span class="n">delta</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">msg</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                               <span class="n">places</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">default_value</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Assert two dictionaries with numeric values are almost equal.</span>
 

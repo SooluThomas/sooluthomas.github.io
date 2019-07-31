@@ -187,7 +187,7 @@
 <span class="kn">import</span> <span class="nn">json</span>
 
 
-<div class="viewcode-block" id="Preferences"><a class="viewcode-back" href="../../../autodoc/qiskit.aqua.html#qiskit.aqua.Preferences">[docs]</a><span class="k">class</span> <span class="nc">Preferences</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="viewcode-block" id="Preferences"><a class="viewcode-back" href="../../../autodoc/qiskit.aqua.preferences.html#qiskit.aqua.Preferences">[docs]</a><span class="k">class</span> <span class="nc">Preferences</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
 
     <span class="n">_FILENAME</span> <span class="o">=</span> <span class="s1">&#39;.qiskit_aqua&#39;</span>
     <span class="n">_VERSION</span> <span class="o">=</span> <span class="s1">&#39;1.0&#39;</span>
@@ -217,7 +217,7 @@
     <span class="k">def</span> <span class="nf">filepath</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_filepath</span>
 
-<div class="viewcode-block" id="Preferences.save"><a class="viewcode-back" href="../../../autodoc/qiskit.aqua.html#qiskit.aqua.Preferences.save">[docs]</a>    <span class="k">def</span> <span class="nf">save</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="Preferences.save"><a class="viewcode-back" href="../../../autodoc/qiskit.aqua.preferences.html#qiskit.aqua.Preferences.save">[docs]</a>    <span class="k">def</span> <span class="nf">save</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_credentials_preferences</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">credentials_preferences</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
             <span class="n">selected_credentials</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">credentials_preferences</span><span class="o">.</span><span class="n">selected_credentials</span>
@@ -238,7 +238,7 @@
                     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">filepath</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
                         <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_preferences</span><span class="p">,</span> <span class="n">fp</span><span class="p">,</span> <span class="n">sort_keys</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="Preferences.get_version"><a class="viewcode-back" href="../../../autodoc/qiskit.aqua.html#qiskit.aqua.Preferences.get_version">[docs]</a>    <span class="k">def</span> <span class="nf">get_version</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="Preferences.get_version"><a class="viewcode-back" href="../../../autodoc/qiskit.aqua.preferences.html#qiskit.aqua.Preferences.get_version">[docs]</a>    <span class="k">def</span> <span class="nf">get_version</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">if</span> <span class="s1">&#39;version&#39;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_preferences</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_preferences</span><span class="p">[</span><span class="s1">&#39;version&#39;</span><span class="p">]</span>
 
@@ -255,16 +255,16 @@
 
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_credentials_preferences</span>
 
-<div class="viewcode-block" id="Preferences.get_token"><a class="viewcode-back" href="../../../autodoc/qiskit.aqua.html#qiskit.aqua.Preferences.get_token">[docs]</a>    <span class="k">def</span> <span class="nf">get_token</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">default_value</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="Preferences.get_token"><a class="viewcode-back" href="../../../autodoc/qiskit.aqua.preferences.html#qiskit.aqua.Preferences.get_token">[docs]</a>    <span class="k">def</span> <span class="nf">get_token</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">default_value</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">credentials_preferences</span><span class="o">.</span><span class="n">get_token</span><span class="p">(</span><span class="n">default_value</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="Preferences.get_url"><a class="viewcode-back" href="../../../autodoc/qiskit.aqua.html#qiskit.aqua.Preferences.get_url">[docs]</a>    <span class="k">def</span> <span class="nf">get_url</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">default_value</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="Preferences.get_url"><a class="viewcode-back" href="../../../autodoc/qiskit.aqua.preferences.html#qiskit.aqua.Preferences.get_url">[docs]</a>    <span class="k">def</span> <span class="nf">get_url</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">default_value</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">credentials_preferences</span><span class="o">.</span><span class="n">get_url</span><span class="p">(</span><span class="n">default_value</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="Preferences.get_proxies"><a class="viewcode-back" href="../../../autodoc/qiskit.aqua.html#qiskit.aqua.Preferences.get_proxies">[docs]</a>    <span class="k">def</span> <span class="nf">get_proxies</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">default_value</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="Preferences.get_proxies"><a class="viewcode-back" href="../../../autodoc/qiskit.aqua.preferences.html#qiskit.aqua.Preferences.get_proxies">[docs]</a>    <span class="k">def</span> <span class="nf">get_proxies</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">default_value</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">credentials_preferences</span><span class="o">.</span><span class="n">get_proxies</span><span class="p">(</span><span class="n">default_value</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="Preferences.get_proxy_urls"><a class="viewcode-back" href="../../../autodoc/qiskit.aqua.html#qiskit.aqua.Preferences.get_proxy_urls">[docs]</a>    <span class="k">def</span> <span class="nf">get_proxy_urls</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">default_value</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="Preferences.get_proxy_urls"><a class="viewcode-back" href="../../../autodoc/qiskit.aqua.preferences.html#qiskit.aqua.Preferences.get_proxy_urls">[docs]</a>    <span class="k">def</span> <span class="nf">get_proxy_urls</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">default_value</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">credentials_preferences</span><span class="o">.</span><span class="n">get_proxy_urls</span><span class="p">(</span><span class="n">default_value</span><span class="p">)</span></div></div>
 </pre></div>
 

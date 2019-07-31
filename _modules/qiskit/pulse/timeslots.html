@@ -199,7 +199,7 @@
 <span class="c1"># pylint: disable=missing-return-doc</span>
 
 
-<div class="viewcode-block" id="Interval"><a class="viewcode-back" href="../../../autodoc/qiskit.pulse.html#qiskit.pulse.timeslots.Interval">[docs]</a><span class="k">class</span> <span class="nc">Interval</span><span class="p">:</span>
+<div class="viewcode-block" id="Interval"><a class="viewcode-back" href="../../../autodoc/qiskit.pulse.timeslots.html#qiskit.pulse.timeslots.Interval">[docs]</a><span class="k">class</span> <span class="nc">Interval</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;Time interval.&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">begin</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">end</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
@@ -234,7 +234,7 @@
         <span class="sd">&quot;&quot;&quot;Duration of this interval.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_end</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_begin</span>
 
-<div class="viewcode-block" id="Interval.has_overlap"><a class="viewcode-back" href="../../../autodoc/qiskit.pulse.html#qiskit.pulse.timeslots.Interval.has_overlap">[docs]</a>    <span class="k">def</span> <span class="nf">has_overlap</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">interval</span><span class="p">:</span> <span class="s1">&#39;Interval&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<div class="viewcode-block" id="Interval.has_overlap"><a class="viewcode-back" href="../../../autodoc/qiskit.pulse.timeslots.html#qiskit.pulse.timeslots.Interval.has_overlap">[docs]</a>    <span class="k">def</span> <span class="nf">has_overlap</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">interval</span><span class="p">:</span> <span class="s1">&#39;Interval&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;Check if self has overlap with `interval`.</span>
 
 <span class="sd">        Args:</span>
@@ -247,7 +247,7 @@
             <span class="k">return</span> <span class="kc">True</span>
         <span class="k">return</span> <span class="kc">False</span></div>
 
-<div class="viewcode-block" id="Interval.shift"><a class="viewcode-back" href="../../../autodoc/qiskit.pulse.html#qiskit.pulse.timeslots.Interval.shift">[docs]</a>    <span class="k">def</span> <span class="nf">shift</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;Interval&#39;</span><span class="p">:</span>
+<div class="viewcode-block" id="Interval.shift"><a class="viewcode-back" href="../../../autodoc/qiskit.pulse.timeslots.html#qiskit.pulse.timeslots.Interval.shift">[docs]</a>    <span class="k">def</span> <span class="nf">shift</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;Interval&#39;</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;Return a new interval shifted by `time` from self</span>
 
 <span class="sd">        Args:</span>
@@ -272,7 +272,7 @@
         <span class="k">return</span> <span class="kc">False</span></div>
 
 
-<div class="viewcode-block" id="Timeslot"><a class="viewcode-back" href="../../../autodoc/qiskit.pulse.html#qiskit.pulse.timeslots.Timeslot">[docs]</a><span class="k">class</span> <span class="nc">Timeslot</span><span class="p">:</span>
+<div class="viewcode-block" id="Timeslot"><a class="viewcode-back" href="../../../autodoc/qiskit.pulse.timeslots.html#qiskit.pulse.timeslots.Timeslot">[docs]</a><span class="k">class</span> <span class="nc">Timeslot</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;Named tuple of (Interval, Channel).&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">interval</span><span class="p">:</span> <span class="n">Interval</span><span class="p">,</span> <span class="n">channel</span><span class="p">:</span> <span class="n">Channel</span><span class="p">):</span>
@@ -289,7 +289,7 @@
         <span class="sd">&quot;&quot;&quot;Channel of this time slot.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_channel</span>
 
-<div class="viewcode-block" id="Timeslot.shift"><a class="viewcode-back" href="../../../autodoc/qiskit.pulse.html#qiskit.pulse.timeslots.Timeslot.shift">[docs]</a>    <span class="k">def</span> <span class="nf">shift</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;Timeslot&#39;</span><span class="p">:</span>
+<div class="viewcode-block" id="Timeslot.shift"><a class="viewcode-back" href="../../../autodoc/qiskit.pulse.timeslots.html#qiskit.pulse.timeslots.Timeslot.shift">[docs]</a>    <span class="k">def</span> <span class="nf">shift</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;Timeslot&#39;</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;Return a new Timeslot shifted by `time`.</span>
 
 <span class="sd">        Args:</span>
@@ -308,7 +308,7 @@
         <span class="k">return</span> <span class="kc">False</span></div>
 
 
-<div class="viewcode-block" id="TimeslotCollection"><a class="viewcode-back" href="../../../autodoc/qiskit.pulse.html#qiskit.pulse.timeslots.TimeslotCollection">[docs]</a><span class="k">class</span> <span class="nc">TimeslotCollection</span><span class="p">:</span>
+<div class="viewcode-block" id="TimeslotCollection"><a class="viewcode-back" href="../../../autodoc/qiskit.pulse.timeslots.html#qiskit.pulse.timeslots.TimeslotCollection">[docs]</a><span class="k">class</span> <span class="nc">TimeslotCollection</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;Collection of `Timeslot`s.&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">timeslots</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Timeslot</span><span class="p">]):</span>
@@ -354,7 +354,7 @@
         <span class="sd">&quot;&quot;&quot;Return maximum duration of timeslots over all channels.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">stop_time</span>
 
-<div class="viewcode-block" id="TimeslotCollection.ch_start_time"><a class="viewcode-back" href="../../../autodoc/qiskit.pulse.html#qiskit.pulse.timeslots.TimeslotCollection.ch_start_time">[docs]</a>    <span class="k">def</span> <span class="nf">ch_start_time</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">channels</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Channel</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<div class="viewcode-block" id="TimeslotCollection.ch_start_time"><a class="viewcode-back" href="../../../autodoc/qiskit.pulse.timeslots.html#qiskit.pulse.timeslots.TimeslotCollection.ch_start_time">[docs]</a>    <span class="k">def</span> <span class="nf">ch_start_time</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">channels</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Channel</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;Return earliest start time in this collection.</span>
 
 <span class="sd">        Args:</span>
@@ -366,7 +366,7 @@
             <span class="k">return</span> <span class="nb">min</span><span class="p">((</span><span class="n">interval</span><span class="o">.</span><span class="n">begin</span> <span class="k">for</span> <span class="n">interval</span> <span class="ow">in</span> <span class="n">intervals</span><span class="p">))</span>
         <span class="k">return</span> <span class="mi">0</span></div>
 
-<div class="viewcode-block" id="TimeslotCollection.ch_stop_time"><a class="viewcode-back" href="../../../autodoc/qiskit.pulse.html#qiskit.pulse.timeslots.TimeslotCollection.ch_stop_time">[docs]</a>    <span class="k">def</span> <span class="nf">ch_stop_time</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">channels</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Channel</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<div class="viewcode-block" id="TimeslotCollection.ch_stop_time"><a class="viewcode-back" href="../../../autodoc/qiskit.pulse.timeslots.html#qiskit.pulse.timeslots.TimeslotCollection.ch_stop_time">[docs]</a>    <span class="k">def</span> <span class="nf">ch_stop_time</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">channels</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Channel</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;Return maximum time of timeslots over all channels.</span>
 
 <span class="sd">        Args:</span>
@@ -378,7 +378,7 @@
             <span class="k">return</span> <span class="nb">max</span><span class="p">((</span><span class="n">interval</span><span class="o">.</span><span class="n">end</span> <span class="k">for</span> <span class="n">interval</span> <span class="ow">in</span> <span class="n">intervals</span><span class="p">))</span>
         <span class="k">return</span> <span class="mi">0</span></div>
 
-<div class="viewcode-block" id="TimeslotCollection.ch_duration"><a class="viewcode-back" href="../../../autodoc/qiskit.pulse.html#qiskit.pulse.timeslots.TimeslotCollection.ch_duration">[docs]</a>    <span class="k">def</span> <span class="nf">ch_duration</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">channels</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Channel</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<div class="viewcode-block" id="TimeslotCollection.ch_duration"><a class="viewcode-back" href="../../../autodoc/qiskit.pulse.timeslots.html#qiskit.pulse.timeslots.TimeslotCollection.ch_duration">[docs]</a>    <span class="k">def</span> <span class="nf">ch_duration</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">channels</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Channel</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;Return maximum duration of timeslots over all channels.</span>
 
 <span class="sd">        Args:</span>
@@ -386,7 +386,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">ch_stop_time</span><span class="p">(</span><span class="o">*</span><span class="n">channels</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="TimeslotCollection.is_mergeable_with"><a class="viewcode-back" href="../../../autodoc/qiskit.pulse.html#qiskit.pulse.timeslots.TimeslotCollection.is_mergeable_with">[docs]</a>    <span class="k">def</span> <span class="nf">is_mergeable_with</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">timeslots</span><span class="p">:</span> <span class="s1">&#39;TimeslotCollection&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<div class="viewcode-block" id="TimeslotCollection.is_mergeable_with"><a class="viewcode-back" href="../../../autodoc/qiskit.pulse.timeslots.html#qiskit.pulse.timeslots.TimeslotCollection.is_mergeable_with">[docs]</a>    <span class="k">def</span> <span class="nf">is_mergeable_with</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">timeslots</span><span class="p">:</span> <span class="s1">&#39;TimeslotCollection&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;Return if self is mergeable with `timeslots`.</span>
 
 <span class="sd">        Args:</span>
@@ -399,7 +399,7 @@
                         <span class="k">return</span> <span class="kc">False</span>
         <span class="k">return</span> <span class="kc">True</span></div>
 
-<div class="viewcode-block" id="TimeslotCollection.merged"><a class="viewcode-back" href="../../../autodoc/qiskit.pulse.html#qiskit.pulse.timeslots.TimeslotCollection.merged">[docs]</a>    <span class="k">def</span> <span class="nf">merged</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">timeslots</span><span class="p">:</span> <span class="s1">&#39;TimeslotCollection&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;TimeslotCollection&#39;</span><span class="p">:</span>
+<div class="viewcode-block" id="TimeslotCollection.merged"><a class="viewcode-back" href="../../../autodoc/qiskit.pulse.timeslots.html#qiskit.pulse.timeslots.TimeslotCollection.merged">[docs]</a>    <span class="k">def</span> <span class="nf">merged</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">timeslots</span><span class="p">:</span> <span class="s1">&#39;TimeslotCollection&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;TimeslotCollection&#39;</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;Return a new TimeslotCollection merged with a specified `timeslots`</span>
 
 <span class="sd">        Args:</span>
@@ -409,7 +409,7 @@
         <span class="n">slots</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">Timeslot</span><span class="p">(</span><span class="n">slot</span><span class="o">.</span><span class="n">interval</span><span class="p">,</span> <span class="n">slot</span><span class="o">.</span><span class="n">channel</span><span class="p">)</span> <span class="k">for</span> <span class="n">slot</span> <span class="ow">in</span> <span class="n">timeslots</span><span class="o">.</span><span class="n">timeslots</span><span class="p">])</span>
         <span class="k">return</span> <span class="n">TimeslotCollection</span><span class="p">(</span><span class="o">*</span><span class="n">slots</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="TimeslotCollection.shift"><a class="viewcode-back" href="../../../autodoc/qiskit.pulse.html#qiskit.pulse.timeslots.TimeslotCollection.shift">[docs]</a>    <span class="k">def</span> <span class="nf">shift</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;TimeslotCollection&#39;</span><span class="p">:</span>
+<div class="viewcode-block" id="TimeslotCollection.shift"><a class="viewcode-back" href="../../../autodoc/qiskit.pulse.timeslots.html#qiskit.pulse.timeslots.TimeslotCollection.shift">[docs]</a>    <span class="k">def</span> <span class="nf">shift</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;TimeslotCollection&#39;</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;Return a new TimeslotCollection shifted by `time`.</span>
 
 <span class="sd">        Args:</span>

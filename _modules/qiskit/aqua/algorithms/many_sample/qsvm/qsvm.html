@@ -202,7 +202,7 @@
 <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
 
 
-<div class="viewcode-block" id="QSVM"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.aqua.algorithms.many_sample.qsvm.html#qiskit.aqua.algorithms.QSVM">[docs]</a><span class="k">class</span> <span class="nc">QSVM</span><span class="p">(</span><span class="n">QuantumAlgorithm</span><span class="p">):</span>
+<div class="viewcode-block" id="QSVM"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.aqua.algorithms.many_sample.qsvm.qsvm.html#qiskit.aqua.algorithms.QSVM">[docs]</a><span class="k">class</span> <span class="nc">QSVM</span><span class="p">(</span><span class="n">QuantumAlgorithm</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Quantum SVM method.</span>
 
@@ -291,7 +291,7 @@
 
         <span class="bp">self</span><span class="o">.</span><span class="n">instance</span> <span class="o">=</span> <span class="n">qsvm_instance</span>
 
-<div class="viewcode-block" id="QSVM.init_params"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.aqua.algorithms.many_sample.qsvm.html#qiskit.aqua.algorithms.QSVM.init_params">[docs]</a>    <span class="nd">@classmethod</span>
+<div class="viewcode-block" id="QSVM.init_params"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.aqua.algorithms.many_sample.qsvm.qsvm.html#qiskit.aqua.algorithms.QSVM.init_params">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">init_params</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">algo_input</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Constructor from params.&quot;&quot;&quot;</span>
         <span class="n">feature_dimension</span> <span class="o">=</span> <span class="n">get_feature_dimension</span><span class="p">(</span><span class="n">algo_input</span><span class="o">.</span><span class="n">training_dataset</span><span class="p">)</span>
@@ -342,7 +342,7 @@
             <span class="n">kernel_value</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">measurement_basis</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">/</span> <span class="nb">sum</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
         <span class="k">return</span> <span class="n">kernel_value</span>
 
-<div class="viewcode-block" id="QSVM.construct_circuit"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.aqua.algorithms.many_sample.qsvm.html#qiskit.aqua.algorithms.QSVM.construct_circuit">[docs]</a>    <span class="k">def</span> <span class="nf">construct_circuit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x1</span><span class="p">,</span> <span class="n">x2</span><span class="p">,</span> <span class="n">measurement</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<div class="viewcode-block" id="QSVM.construct_circuit"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.aqua.algorithms.many_sample.qsvm.qsvm.html#qiskit.aqua.algorithms.QSVM.construct_circuit">[docs]</a>    <span class="k">def</span> <span class="nf">construct_circuit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x1</span><span class="p">,</span> <span class="n">x2</span><span class="p">,</span> <span class="n">measurement</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Generate inner product of x1 and x2 with the given feature map.</span>
 
@@ -356,7 +356,7 @@
         <span class="k">return</span> <span class="n">QSVM</span><span class="o">.</span><span class="n">_construct_circuit</span><span class="p">((</span><span class="n">x1</span><span class="p">,</span> <span class="n">x2</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_qubits</span><span class="p">,</span>
                                        <span class="bp">self</span><span class="o">.</span><span class="n">feature_map</span><span class="p">,</span> <span class="n">measurement</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="QSVM.construct_kernel_matrix"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.aqua.algorithms.many_sample.qsvm.html#qiskit.aqua.algorithms.QSVM.construct_kernel_matrix">[docs]</a>    <span class="k">def</span> <span class="nf">construct_kernel_matrix</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x1_vec</span><span class="p">,</span> <span class="n">x2_vec</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">quantum_instance</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="QSVM.construct_kernel_matrix"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.aqua.algorithms.many_sample.qsvm.qsvm.html#qiskit.aqua.algorithms.QSVM.construct_kernel_matrix">[docs]</a>    <span class="k">def</span> <span class="nf">construct_kernel_matrix</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x1_vec</span><span class="p">,</span> <span class="n">x2_vec</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">quantum_instance</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Construct kernel matrix, if x2_vec is None, self-innerproduct is conducted.</span>
 
@@ -430,7 +430,7 @@
 
         <span class="k">return</span> <span class="n">mat</span></div>
 
-<div class="viewcode-block" id="QSVM.train"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.aqua.algorithms.many_sample.qsvm.html#qiskit.aqua.algorithms.QSVM.train">[docs]</a>    <span class="k">def</span> <span class="nf">train</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="n">quantum_instance</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="QSVM.train"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.aqua.algorithms.many_sample.qsvm.qsvm.html#qiskit.aqua.algorithms.QSVM.train">[docs]</a>    <span class="k">def</span> <span class="nf">train</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="n">quantum_instance</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Train the svm.</span>
 
@@ -444,7 +444,7 @@
             <span class="k">if</span> <span class="n">quantum_instance</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">quantum_instance</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">instance</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="QSVM.test"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.aqua.algorithms.many_sample.qsvm.html#qiskit.aqua.algorithms.QSVM.test">[docs]</a>    <span class="k">def</span> <span class="nf">test</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="n">quantum_instance</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="QSVM.test"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.aqua.algorithms.many_sample.qsvm.qsvm.html#qiskit.aqua.algorithms.QSVM.test">[docs]</a>    <span class="k">def</span> <span class="nf">test</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="n">quantum_instance</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Test the svm.</span>
 
@@ -460,7 +460,7 @@
             <span class="k">if</span> <span class="n">quantum_instance</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">quantum_instance</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">instance</span><span class="o">.</span><span class="n">test</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="QSVM.predict"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.aqua.algorithms.many_sample.qsvm.html#qiskit.aqua.algorithms.QSVM.predict">[docs]</a>    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">quantum_instance</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="QSVM.predict"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.aqua.algorithms.many_sample.qsvm.qsvm.html#qiskit.aqua.algorithms.QSVM.predict">[docs]</a>    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">quantum_instance</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Predict using the svm.</span>
 
@@ -486,7 +486,7 @@
     <span class="k">def</span> <span class="nf">ret</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">new_value</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">instance</span><span class="o">.</span><span class="n">ret</span> <span class="o">=</span> <span class="n">new_value</span>
 
-<div class="viewcode-block" id="QSVM.load_model"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.aqua.algorithms.many_sample.qsvm.html#qiskit.aqua.algorithms.QSVM.load_model">[docs]</a>    <span class="k">def</span> <span class="nf">load_model</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">file_path</span><span class="p">):</span>
+<div class="viewcode-block" id="QSVM.load_model"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.aqua.algorithms.many_sample.qsvm.qsvm.html#qiskit.aqua.algorithms.QSVM.load_model">[docs]</a>    <span class="k">def</span> <span class="nf">load_model</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">file_path</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Load a model from a file path.</span>
 
 <span class="sd">        Args:</span>
@@ -494,7 +494,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">instance</span><span class="o">.</span><span class="n">load_model</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="QSVM.save_model"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.aqua.algorithms.many_sample.qsvm.html#qiskit.aqua.algorithms.QSVM.save_model">[docs]</a>    <span class="k">def</span> <span class="nf">save_model</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">file_path</span><span class="p">):</span>
+<div class="viewcode-block" id="QSVM.save_model"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.aqua.algorithms.many_sample.qsvm.qsvm.html#qiskit.aqua.algorithms.QSVM.save_model">[docs]</a>    <span class="k">def</span> <span class="nf">save_model</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">file_path</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Save the model to a file path.</span>
 
 <span class="sd">        Args:</span>

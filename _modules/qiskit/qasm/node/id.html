@@ -189,7 +189,7 @@
 <span class="kn">from</span> <span class="nn">.nodeexception</span> <span class="k">import</span> <span class="n">NodeException</span>
 
 
-<div class="viewcode-block" id="Id"><a class="viewcode-back" href="../../../../autodoc/qiskit.qasm.node.html#qiskit.qasm.node.id.Id">[docs]</a><span class="k">class</span> <span class="nc">Id</span><span class="p">(</span><span class="n">Node</span><span class="p">):</span>
+<div class="viewcode-block" id="Id"><a class="viewcode-back" href="../../../../autodoc/qiskit.qasm.node.id.html#qiskit.qasm.node.id.Id">[docs]</a><span class="k">class</span> <span class="nc">Id</span><span class="p">(</span><span class="n">Node</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Node for an OPENQASM id.</span>
 
 <span class="sd">    The node has no children but has fields name, line, and file.</span>
@@ -207,17 +207,17 @@
         <span class="c1"># this flag is set to True when the id appears in a gate declaration</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">is_bit</span> <span class="o">=</span> <span class="kc">False</span>
 
-<div class="viewcode-block" id="Id.to_string"><a class="viewcode-back" href="../../../../autodoc/qiskit.qasm.node.html#qiskit.qasm.node.id.Id.to_string">[docs]</a>    <span class="k">def</span> <span class="nf">to_string</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">indent</span><span class="p">):</span>
+<div class="viewcode-block" id="Id.to_string"><a class="viewcode-back" href="../../../../autodoc/qiskit.qasm.node.id.html#qiskit.qasm.node.id.Id.to_string">[docs]</a>    <span class="k">def</span> <span class="nf">to_string</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">indent</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Print the node with indent.&quot;&quot;&quot;</span>
         <span class="n">ind</span> <span class="o">=</span> <span class="n">indent</span> <span class="o">*</span> <span class="s1">&#39; &#39;</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">ind</span><span class="p">,</span> <span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="Id.qasm"><a class="viewcode-back" href="../../../../autodoc/qiskit.qasm.node.html#qiskit.qasm.node.id.Id.qasm">[docs]</a>    <span class="k">def</span> <span class="nf">qasm</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">prec</span><span class="o">=</span><span class="mi">15</span><span class="p">):</span>
+<div class="viewcode-block" id="Id.qasm"><a class="viewcode-back" href="../../../../autodoc/qiskit.qasm.node.id.html#qiskit.qasm.node.id.Id.qasm">[docs]</a>    <span class="k">def</span> <span class="nf">qasm</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">prec</span><span class="o">=</span><span class="mi">15</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return the corresponding OPENQASM string.&quot;&quot;&quot;</span>
         <span class="c1"># pylint: disable=unused-argument</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span></div>
 
-<div class="viewcode-block" id="Id.latex"><a class="viewcode-back" href="../../../../autodoc/qiskit.qasm.node.html#qiskit.qasm.node.id.Id.latex">[docs]</a>    <span class="k">def</span> <span class="nf">latex</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">prec</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">nested_scope</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="Id.latex"><a class="viewcode-back" href="../../../../autodoc/qiskit.qasm.node.id.html#qiskit.qasm.node.id.Id.latex">[docs]</a>    <span class="k">def</span> <span class="nf">latex</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">prec</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">nested_scope</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return the correspond math mode latex string.&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">nested_scope</span><span class="p">:</span>
             <span class="k">return</span> <span class="s2">&quot;</span><span class="se">\t</span><span class="s2">extrm{&quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">+</span> <span class="s2">&quot;}&quot;</span>
@@ -231,7 +231,7 @@
                 <span class="k">return</span> <span class="n">nested_scope</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">]</span><span class="o">.</span><span class="n">latex</span><span class="p">(</span><span class="n">prec</span><span class="p">,</span>
                                                          <span class="n">nested_scope</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span></div>
 
-<div class="viewcode-block" id="Id.sym"><a class="viewcode-back" href="../../../../autodoc/qiskit.qasm.node.html#qiskit.qasm.node.id.Id.sym">[docs]</a>    <span class="k">def</span> <span class="nf">sym</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nested_scope</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="Id.sym"><a class="viewcode-back" href="../../../../autodoc/qiskit.qasm.node.id.html#qiskit.qasm.node.id.Id.sym">[docs]</a>    <span class="k">def</span> <span class="nf">sym</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nested_scope</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return the correspond symbolic number.&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">nested_scope</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">nested_scope</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>
             <span class="k">raise</span> <span class="n">NodeException</span><span class="p">(</span><span class="s2">&quot;Expected local parameter name: &quot;</span><span class="p">,</span>
@@ -240,7 +240,7 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">nested_scope</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">]</span><span class="o">.</span><span class="n">sym</span><span class="p">(</span><span class="n">nested_scope</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span></div>
 
-<div class="viewcode-block" id="Id.real"><a class="viewcode-back" href="../../../../autodoc/qiskit.qasm.node.html#qiskit.qasm.node.id.Id.real">[docs]</a>    <span class="k">def</span> <span class="nf">real</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nested_scope</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="Id.real"><a class="viewcode-back" href="../../../../autodoc/qiskit.qasm.node.id.html#qiskit.qasm.node.id.Id.real">[docs]</a>    <span class="k">def</span> <span class="nf">real</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nested_scope</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return the correspond floating point number.&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">nested_scope</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">nested_scope</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>
             <span class="k">raise</span> <span class="n">NodeException</span><span class="p">(</span><span class="s2">&quot;Expected local parameter name: &quot;</span><span class="p">,</span>

@@ -352,7 +352,7 @@
     <span class="k">return</span> <span class="n">discretized_pulse</span>
 
 
-<div class="viewcode-block" id="sampler"><a class="viewcode-back" href="../../../../autodoc/qiskit.pulse.samplers.html#qiskit.pulse.samplers.decorators.sampler">[docs]</a><span class="k">def</span> <span class="nf">sampler</span><span class="p">(</span><span class="n">sample_function</span><span class="p">:</span> <span class="n">Callable</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Callable</span><span class="p">:</span>
+<div class="viewcode-block" id="sampler"><a class="viewcode-back" href="../../../../autodoc/qiskit.pulse.samplers.decorators.html#qiskit.pulse.samplers.decorators.sampler">[docs]</a><span class="k">def</span> <span class="nf">sampler</span><span class="p">(</span><span class="n">sample_function</span><span class="p">:</span> <span class="n">Callable</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Callable</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;Sampler decorator base method.</span>
 
 <span class="sd">    Samplers are used for converting an continuous function to a discretized pulse.</span>
@@ -398,7 +398,7 @@
     <span class="k">return</span> <span class="n">generate_sampler</span></div>
 
 
-<div class="viewcode-block" id="left"><a class="viewcode-back" href="../../../../autodoc/qiskit.pulse.samplers.html#qiskit.pulse.samplers.decorators.left">[docs]</a><span class="k">def</span> <span class="nf">left</span><span class="p">(</span><span class="n">continuous_pulse</span><span class="p">:</span> <span class="n">Callable</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Callable</span><span class="p">:</span>
+<div class="viewcode-block" id="left"><a class="viewcode-back" href="../../../../autodoc/qiskit.pulse.samplers.decorators.html#qiskit.pulse.samplers.decorators.left">[docs]</a><span class="k">def</span> <span class="nf">left</span><span class="p">(</span><span class="n">continuous_pulse</span><span class="p">:</span> <span class="n">Callable</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Callable</span><span class="p">:</span>
     <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Left sampling strategy decorator.</span>
 
 <span class="sd">    See `pulse.samplers.sampler` for more information.</span>
@@ -413,7 +413,7 @@
     <span class="k">return</span> <span class="n">sampler</span><span class="p">(</span><span class="n">strategies</span><span class="o">.</span><span class="n">left_sample</span><span class="p">)(</span><span class="n">continuous_pulse</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="right"><a class="viewcode-back" href="../../../../autodoc/qiskit.pulse.samplers.html#qiskit.pulse.samplers.decorators.right">[docs]</a><span class="k">def</span> <span class="nf">right</span><span class="p">(</span><span class="n">continuous_pulse</span><span class="p">:</span> <span class="n">Callable</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Callable</span><span class="p">:</span>
+<div class="viewcode-block" id="right"><a class="viewcode-back" href="../../../../autodoc/qiskit.pulse.samplers.decorators.html#qiskit.pulse.samplers.decorators.right">[docs]</a><span class="k">def</span> <span class="nf">right</span><span class="p">(</span><span class="n">continuous_pulse</span><span class="p">:</span> <span class="n">Callable</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Callable</span><span class="p">:</span>
     <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Right sampling strategy decorator.</span>
 
 <span class="sd">    See `pulse.samplers.sampler` for more information.</span>
@@ -428,7 +428,7 @@
     <span class="k">return</span> <span class="n">sampler</span><span class="p">(</span><span class="n">strategies</span><span class="o">.</span><span class="n">right_sample</span><span class="p">)(</span><span class="n">continuous_pulse</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="midpoint"><a class="viewcode-back" href="../../../../autodoc/qiskit.pulse.samplers.html#qiskit.pulse.samplers.decorators.midpoint">[docs]</a><span class="k">def</span> <span class="nf">midpoint</span><span class="p">(</span><span class="n">continuous_pulse</span><span class="p">:</span> <span class="n">Callable</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Callable</span><span class="p">:</span>
+<div class="viewcode-block" id="midpoint"><a class="viewcode-back" href="../../../../autodoc/qiskit.pulse.samplers.decorators.html#qiskit.pulse.samplers.decorators.midpoint">[docs]</a><span class="k">def</span> <span class="nf">midpoint</span><span class="p">(</span><span class="n">continuous_pulse</span><span class="p">:</span> <span class="n">Callable</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Callable</span><span class="p">:</span>
     <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Midpoint sampling strategy decorator.</span>
 
 <span class="sd">    See `pulse.samplers.sampler` for more information.</span>

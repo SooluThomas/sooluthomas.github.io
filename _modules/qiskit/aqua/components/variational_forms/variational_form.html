@@ -193,7 +193,7 @@
 <span class="kn">from</span> <span class="nn">qiskit.aqua.utils</span> <span class="k">import</span> <span class="n">get_entangler_map</span><span class="p">,</span> <span class="n">validate_entangler_map</span>
 
 
-<div class="viewcode-block" id="VariationalForm"><a class="viewcode-back" href="../../../../../autodoc/qiskit.aqua.components.variational_forms.html#qiskit.aqua.components.variational_forms.VariationalForm">[docs]</a><span class="k">class</span> <span class="nc">VariationalForm</span><span class="p">(</span><span class="n">Pluggable</span><span class="p">):</span>
+<div class="viewcode-block" id="VariationalForm"><a class="viewcode-back" href="../../../../../autodoc/qiskit.aqua.components.variational_forms.variational_form.html#qiskit.aqua.components.variational_forms.VariationalForm">[docs]</a><span class="k">class</span> <span class="nc">VariationalForm</span><span class="p">(</span><span class="n">Pluggable</span><span class="p">):</span>
 
     <span class="sd">&quot;&quot;&quot;Base class for VariationalForms.</span>
 
@@ -213,7 +213,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_bounds</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
         <span class="k">pass</span>
 
-<div class="viewcode-block" id="VariationalForm.init_params"><a class="viewcode-back" href="../../../../../autodoc/qiskit.aqua.components.variational_forms.html#qiskit.aqua.components.variational_forms.VariationalForm.init_params">[docs]</a>    <span class="nd">@classmethod</span>
+<div class="viewcode-block" id="VariationalForm.init_params"><a class="viewcode-back" href="../../../../../autodoc/qiskit.aqua.components.variational_forms.variational_form.html#qiskit.aqua.components.variational_forms.VariationalForm.init_params">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">init_params</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
         <span class="n">var_form_params</span> <span class="o">=</span> <span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">Pluggable</span><span class="o">.</span><span class="n">SECTION_KEY_VAR_FORM</span><span class="p">)</span>
         <span class="n">args</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">var_form_params</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">k</span> <span class="o">!=</span> <span class="s1">&#39;name&#39;</span><span class="p">}</span>
@@ -226,7 +226,7 @@
 
         <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="o">**</span><span class="n">args</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="VariationalForm.construct_circuit"><a class="viewcode-back" href="../../../../../autodoc/qiskit.aqua.components.variational_forms.html#qiskit.aqua.components.variational_forms.VariationalForm.construct_circuit">[docs]</a>    <span class="nd">@abstractmethod</span>
+<div class="viewcode-block" id="VariationalForm.construct_circuit"><a class="viewcode-back" href="../../../../../autodoc/qiskit.aqua.components.variational_forms.variational_form.html#qiskit.aqua.components.variational_forms.VariationalForm.construct_circuit">[docs]</a>    <span class="nd">@abstractmethod</span>
     <span class="k">def</span> <span class="nf">construct_circuit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parameters</span><span class="p">,</span> <span class="n">q</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Construct the variational form, given its parameters.</span>
 
@@ -283,11 +283,11 @@
     <span class="k">def</span> <span class="nf">preferred_init_points</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="kc">None</span>
 
-<div class="viewcode-block" id="VariationalForm.get_entangler_map"><a class="viewcode-back" href="../../../../../autodoc/qiskit.aqua.components.variational_forms.html#qiskit.aqua.components.variational_forms.VariationalForm.get_entangler_map">[docs]</a>    <span class="nd">@staticmethod</span>
+<div class="viewcode-block" id="VariationalForm.get_entangler_map"><a class="viewcode-back" href="../../../../../autodoc/qiskit.aqua.components.variational_forms.variational_form.html#qiskit.aqua.components.variational_forms.VariationalForm.get_entangler_map">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">get_entangler_map</span><span class="p">(</span><span class="n">map_type</span><span class="p">,</span> <span class="n">num_qubits</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">get_entangler_map</span><span class="p">(</span><span class="n">map_type</span><span class="p">,</span> <span class="n">num_qubits</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="VariationalForm.validate_entangler_map"><a class="viewcode-back" href="../../../../../autodoc/qiskit.aqua.components.variational_forms.html#qiskit.aqua.components.variational_forms.VariationalForm.validate_entangler_map">[docs]</a>    <span class="nd">@staticmethod</span>
+<div class="viewcode-block" id="VariationalForm.validate_entangler_map"><a class="viewcode-back" href="../../../../../autodoc/qiskit.aqua.components.variational_forms.variational_form.html#qiskit.aqua.components.variational_forms.VariationalForm.validate_entangler_map">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">validate_entangler_map</span><span class="p">(</span><span class="n">entangler_map</span><span class="p">,</span> <span class="n">num_qubits</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">validate_entangler_map</span><span class="p">(</span><span class="n">entangler_map</span><span class="p">,</span> <span class="n">num_qubits</span><span class="p">)</span></div></div>
 </pre></div>
