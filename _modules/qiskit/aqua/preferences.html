@@ -34,7 +34,7 @@
        </script>
         <script src="https://cloud.ibm.com/analytics/build/bluemix-analytics.min.js"></script>
     
-    <title>qiskit.aqua.preferences &#8212; Qiskit 0.11.1 documentation</title>
+    <title>qiskit.aqua.preferences &#8212; Qiskit 0.11.0 documentation</title>
 
     <link rel="stylesheet" href="../../../_static/material-icons.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
@@ -306,36 +306,24 @@
         link.addEventListener('click', clickExternalLink);
     </script>
     <script>
-	    var localeRegExp = /\/(locale\/([a-z-]+)\/)?/i;
-	    var prefix = '/testTranslation';
-
-	    function getDefaultLanguage() {
-	      return 'en';
-	    }
-
       var el = document.getElementById('language');
       var optionsToSelect = ['en', 'ja']
-      function changeLoc(evt) {
-	        var language = evt.target.options[el.selectedIndex].value;
-	        var pathname = window.location.pathname.slice(prefix.length);
-	        if (language === getDefaultLanguage()) {
-	          window.location.pathname =
-	            `${prefix}${pathname.replace(localeRegExp, '/')}`;
-	        } else {
-	          window.location.pathname =
-	            `${prefix}${pathname.replace(localeRegExp, `/locale/${language}/`)}`;
+      var changeLoc = function(evt) {
+        var language = evt.target.options[el.selectedIndex].value;
+        if (language === 'ja') {
+          window.location.href = '/testTranslation/locale/ja';
+
+        }
+        if (language === 'en') {
+          window.location.href = '/testTranslation';
         }
       };
       el.addEventListener('change', changeLoc);
 
-      function extractLanguageFromUrl(pathname) {
-	        const match = pathname.slice(prefix.length).match(localeRegExp);
-	        return typeof match[2] === 'undefined' ?
-	               getDefaultLanguage() : match[2];
-	      }
-
-      function changeSelect(select) {
-        const optionToSelect = extractLanguageFromUrl(window.location.pathname);
+      var changeSelect = function(select) {
+        const tokens = window.location.pathname.split('/');
+        // const optionToSelect = tokens[tokens.length + 3] || 'en';
+        const optionToSelect = tokens[3] || 'en';
         for (var i = 0; i < select.options.length; i++) {
           var o = select.options[i];
           if (optionToSelect == o.value) {
