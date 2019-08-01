@@ -3093,7 +3093,7 @@ single circuit such as:</p>
 <p class="last"><code class="docutils literal notranslate"><span class="pre">0.7.x</span></code> and <code class="docutils literal notranslate"><span class="pre">0.1.x</span></code> mean any patch version on that minor version. For,
 example <code class="docutils literal notranslate"><span class="pre">0.7.x</span></code> will install the latest <code class="docutils literal notranslate"><span class="pre">0.7</span></code> version found on pypi which
 would be <code class="docutils literal notranslate"><span class="pre">0.7.2</span></code>. For the <code class="docutils literal notranslate"><span class="pre">0.7.0</span></code>, <code class="docutils literal notranslate"><span class="pre">0.7.1</span></code>, and <code class="docutils literal notranslate"><span class="pre">0.7.2</span></code> meta-package
-releases the <span class="xref std std-ref">versioning_strategy</span> policy was formalized yet.</p>
+releases the <a class="reference internal" href="development_strategy.html#versioning-strategy"><span class="std std-ref">Versioning</span></a> policy was formalized yet.</p>
 </div>
 </div>
 
@@ -3158,23 +3158,23 @@ releases the <span class="xref std std-ref">versioning_strategy</span> policy wa
       var el = document.getElementById('language');
       var optionsToSelect = ['en', 'ja']
       function changeLoc(evt) {
-	        var language = evt.target.options[el.selectedIndex].value;
-	        var pathname = window.location.pathname.slice(prefix.length);
-	        if (language === getDefaultLanguage()) {
-	          window.location.pathname =
-	            `${prefix}${pathname.replace(localeRegExp, '/')}`;
-	        } else {
-	          window.location.pathname =
-	            `${prefix}${pathname.replace(localeRegExp, `/locale/${language}/`)}`;
+        var language = evt.target.options[el.selectedIndex].value;
+        var pathname = window.location.pathname.slice(prefix.length);
+        if (language === getDefaultLanguage()) {
+          window.location.pathname =
+            `${prefix}${pathname.replace(localeRegExp, '/')}`;
+        } else {
+          window.location.pathname =
+            `${prefix}${pathname.replace(localeRegExp, `/locale/${language}/`)}`;
         }
       };
       el.addEventListener('change', changeLoc);
 
       function extractLanguageFromUrl(pathname) {
-	        const match = pathname.slice(prefix.length).match(localeRegExp);
-	        return typeof match[2] === 'undefined' ?
-	               getDefaultLanguage() : match[2];
-	      }
+        const match = pathname.slice(prefix.length).match(localeRegExp);
+        return typeof match[2] === 'undefined' ?
+                getDefaultLanguage() : match[2];
+	    }
 
       function changeSelect(select) {
         const optionToSelect = extractLanguageFromUrl(window.location.pathname);
