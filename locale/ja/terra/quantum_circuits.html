@@ -34,7 +34,7 @@
        </script>
         <script src="https://cloud.ibm.com/analytics/build/bluemix-analytics.min.js"></script>
     
-    <title>回路とレジスタ &#8212; Qiskit 0.11.0 ドキュメント</title>
+    <title>回路とレジスター &#8212; Qiskit 0.11.0 ドキュメント</title>
 
     <link rel="stylesheet" href="../_static/material-icons.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -52,8 +52,8 @@
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="検索" href="../search.html" />
-    <link rel="next" title="Elementary Operations" href="summary_of_quantum_operations.html" />
-    <link rel="prev" title="Overview" href="overview.html" /> 
+    <link rel="next" title="基本的操作" href="summary_of_quantum_operations.html" />
+    <link rel="prev" title="概要" href="overview.html" /> 
   </head>
 <body>
   <header>
@@ -115,12 +115,12 @@
           <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../overview.html">概要</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../overview.html#qiskit-elements">Qiskit Elements</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html#qiskit-elements">Qiskit の要素</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../overview.html#qiskit-terra">Qiskit Terra</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../overview.html#qiskit-aer">Qiskit Aer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../overview.html#qiskit-ignis">Qiskit Ignis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../overview.html#qiskit-aqua">Qiskit Aqua</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../overview.html#qiskit-components">Qiskit Components</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../overview.html#qiskit-components">Qiskit コンポーネント</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../overview.html#qiskit-chemistry">Qiskit Chemistry</a></li>
@@ -134,55 +134,55 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../getting_started.html">Getting Started</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../getting_started.html#workflow-step-by-step">Workflow Step--by--Step</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../getting_started.html#step-1-import-packages">Step 1 : Import Packages</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../getting_started.html#step-2-initialize-variables">Step 2 : Initialize Variables</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../getting_started.html#step-3-add-gates">Step 3 : Add Gates</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../getting_started.html#step-4-visualize-the-circuit">Step 4 : Visualize the Circuit</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../getting_started.html#step-5-simulate-the-experiment">Step 5 : Simulate the Experiment</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../getting_started.html#step-6-visualize-the-results">Step 6 : Visualize the Results</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started.html#workflow-step-by-step">ワークフローのステップバイステップ</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../getting_started.html#step-1-import-packages">手順1 : パッケージのインポート</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../getting_started.html#step-2-initialize-variables">ステップ2：変数の初期化</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../getting_started.html#step-3-add-gates">ステップ3：ゲートの追加</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../getting_started.html#step-4-visualize-the-circuit">ステップ４：回路の可視化</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../getting_started.html#step-5-simulate-the-experiment">実験のシミュレーション</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../getting_started.html#step-6-visualize-the-results">ステップ6：結果の可視化</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../getting_started.html#next-steps">Next Steps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started.html#next-steps">次のステップ</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../faq.html">Frequently Asked Questions</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Qiskit Terra</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="overview.html">Overview</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="overview.html#terra-organization">Terra Organization</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="overview.html#quantum-circuits">Quantum Circuits</a></li>
-<li class="toctree-l4"><a class="reference internal" href="overview.html#transpiler">Transpiler</a></li>
-<li class="toctree-l4"><a class="reference internal" href="overview.html#tools">Tools</a></li>
-<li class="toctree-l4"><a class="reference internal" href="overview.html#backends-and-results">Backends and Results</a></li>
-<li class="toctree-l4"><a class="reference internal" href="overview.html#quantum-information">Quantum Information</a></li>
-<li class="toctree-l4"><a class="reference internal" href="overview.html#visualization-tools">Visualization Tools</a></li>
+<li class="toctree-l3"><a class="reference internal" href="overview.html#terra-organization">Terra の構成</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="overview.html#quantum-circuits">量子回路</a></li>
+<li class="toctree-l4"><a class="reference internal" href="overview.html#transpiler">トランスパイラー</a></li>
+<li class="toctree-l4"><a class="reference internal" href="overview.html#tools">ツール</a></li>
+<li class="toctree-l4"><a class="reference internal" href="overview.html#backends-and-results">バックエンドと結果</a></li>
+<li class="toctree-l4"><a class="reference internal" href="overview.html#quantum-information">量子情報</a></li>
+<li class="toctree-l4"><a class="reference internal" href="overview.html#visualization-tools">可視化ツール</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Circuits and Registers</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#creating-registers">Creating Registers</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#creating-circuits">Creating Circuits</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#concatenating-circuits">Concatenating Circuits</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#creating-registers">レジスターの作成</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#creating-circuits">回路を作成する</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#concatenating-circuits">回路の結合</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#examining-circuit-results">Examining Circuit Results</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#determining-circuit-resources">Determining Circuit Resources</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#determining-circuit-resources">回路リソースの決定</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="summary_of_quantum_operations.html">Elementary Operations</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="summary_of_quantum_operations.html#single-qubit-quantum-states">Single Qubit Quantum states</a></li>
-<li class="toctree-l3"><a class="reference internal" href="summary_of_quantum_operations.html#single-qubit-gates">Single-Qubit Gates</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="summary_of_quantum_operations.html#u-gates">u gates</a></li>
-<li class="toctree-l4"><a class="reference internal" href="summary_of_quantum_operations.html#identity-gate">Identity gate</a></li>
-<li class="toctree-l4"><a class="reference internal" href="summary_of_quantum_operations.html#pauli-gates">Pauli gates</a></li>
-<li class="toctree-l4"><a class="reference internal" href="summary_of_quantum_operations.html#clifford-gates">Clifford gates</a></li>
-<li class="toctree-l4"><a class="reference internal" href="summary_of_quantum_operations.html#c3-gates"><span class="math notranslate nohighlight">\(C3\)</span> gates</a></li>
-<li class="toctree-l4"><a class="reference internal" href="summary_of_quantum_operations.html#standard-rotations">Standard Rotations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="summary_of_quantum_operations.html#single-qubit-quantum-states">単一キュービット量子ゲート</a></li>
+<li class="toctree-l3"><a class="reference internal" href="summary_of_quantum_operations.html#single-qubit-gates">単一キュービットゲート</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="summary_of_quantum_operations.html#u-gates">uゲート</a></li>
+<li class="toctree-l4"><a class="reference internal" href="summary_of_quantum_operations.html#identity-gate">単位ゲート</a></li>
+<li class="toctree-l4"><a class="reference internal" href="summary_of_quantum_operations.html#pauli-gates">パウリゲート</a></li>
+<li class="toctree-l4"><a class="reference internal" href="summary_of_quantum_operations.html#clifford-gates">クリフォードゲート</a></li>
+<li class="toctree-l4"><a class="reference internal" href="summary_of_quantum_operations.html#c3-gates"><span class="math notranslate nohighlight">\(C3\)</span> ゲート</a></li>
+<li class="toctree-l4"><a class="reference internal" href="summary_of_quantum_operations.html#standard-rotations">標準回転</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="summary_of_quantum_operations.html#multi-qubit-gates">Multi-Qubit Gates</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="summary_of_quantum_operations.html#mathematical-preliminaries">Mathematical Preliminaries</a></li>
+<li class="toctree-l3"><a class="reference internal" href="summary_of_quantum_operations.html#multi-qubit-gates">複数キュービットゲート</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="summary_of_quantum_operations.html#mathematical-preliminaries">数学的準備</a></li>
 <li class="toctree-l4"><a class="reference internal" href="summary_of_quantum_operations.html#basis-vector-ordering-in-qiskit">Basis vector ordering in Qiskit</a></li>
 <li class="toctree-l4"><a class="reference internal" href="summary_of_quantum_operations.html#controlled-operations-on-qubits">Controlled operations on qubits</a></li>
 </ul>
@@ -748,23 +748,23 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../release_notes.html#version-history">Version History</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contributing_to_qiskit.html">Contributing to Qiskit</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../contributing_to_qiskit.html#where-things-are">Where Things Are</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../contributing_to_qiskit.html#getting-started">Getting Started</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../contributing_to_qiskit.html#writing-and-building-documentation">Writing and Building Documentation</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../contributing_to_qiskit.html#translating-documentation">Translating Documentation</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../contributing_to_qiskit.html#joining-the-qiskitdocs-crowdin-project">Joining the QiskitDocs Crowdin Project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing_to_qiskit.html#where-things-are">Qiskitのコードのロケーションについて</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing_to_qiskit.html#getting-started">はじめに</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing_to_qiskit.html#writing-and-building-documentation">ドキュメンテーションの記述とビルド</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../contributing_to_qiskit.html#translating-documentation">ドキュメンテーションの翻訳について</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../contributing_to_qiskit.html#joining-the-qiskitdocs-crowdin-project">QiskitDocs Crowdin プロジェクトに参加する</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../contributing_to_qiskit.html#translation-workflow">翻訳のワークフロー</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../contributing_to_qiskit.html#installing-from-source">Installing from Source</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../contributing_to_qiskit.html#installing-terra-from-source">Installing Terra from Source</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../contributing_to_qiskit.html#installing-ibmq-provider-from-source">Installing IBMQ Provider from Source</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../contributing_to_qiskit.html#installing-aer-from-source">Installing Aer from Source</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../contributing_to_qiskit.html#installing-ignis-from-source">Installing Ignis from Source</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../contributing_to_qiskit.html#installing-aqua-from-source">Installing Aqua from Source</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../contributing_to_qiskit.html#install-chemistry-from-source">Install Chemistry from Source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing_to_qiskit.html#installing-from-source">ソースからインストールする方法</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../contributing_to_qiskit.html#installing-terra-from-source">ソースから Terra をインストールする</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../contributing_to_qiskit.html#installing-ibmq-provider-from-source">IBMQプロバイダのソースコードからのインストール</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../contributing_to_qiskit.html#installing-aer-from-source">Aerのソースコードからのインストール</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../contributing_to_qiskit.html#installing-ignis-from-source">Ignisのソースコードからのインストール</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../contributing_to_qiskit.html#installing-aqua-from-source">Aquaのソースコードからのインストール</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../contributing_to_qiskit.html#install-chemistry-from-source">Chemistryのソースコードからのインストール</a></li>
 </ul>
 </li>
 </ul>
@@ -836,12 +836,12 @@
           <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../overview.html">概要</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../overview.html#qiskit-elements">Qiskit Elements</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html#qiskit-elements">Qiskit の要素</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../overview.html#qiskit-terra">Qiskit Terra</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../overview.html#qiskit-aer">Qiskit Aer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../overview.html#qiskit-ignis">Qiskit Ignis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../overview.html#qiskit-aqua">Qiskit Aqua</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../overview.html#qiskit-components">Qiskit Components</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../overview.html#qiskit-components">Qiskit コンポーネント</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../overview.html#qiskit-chemistry">Qiskit Chemistry</a></li>
@@ -855,55 +855,55 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../getting_started.html">Getting Started</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../getting_started.html#workflow-step-by-step">Workflow Step--by--Step</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../getting_started.html#step-1-import-packages">Step 1 : Import Packages</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../getting_started.html#step-2-initialize-variables">Step 2 : Initialize Variables</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../getting_started.html#step-3-add-gates">Step 3 : Add Gates</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../getting_started.html#step-4-visualize-the-circuit">Step 4 : Visualize the Circuit</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../getting_started.html#step-5-simulate-the-experiment">Step 5 : Simulate the Experiment</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../getting_started.html#step-6-visualize-the-results">Step 6 : Visualize the Results</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started.html#workflow-step-by-step">ワークフローのステップバイステップ</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../getting_started.html#step-1-import-packages">手順1 : パッケージのインポート</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../getting_started.html#step-2-initialize-variables">ステップ2：変数の初期化</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../getting_started.html#step-3-add-gates">ステップ3：ゲートの追加</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../getting_started.html#step-4-visualize-the-circuit">ステップ４：回路の可視化</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../getting_started.html#step-5-simulate-the-experiment">実験のシミュレーション</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../getting_started.html#step-6-visualize-the-results">ステップ6：結果の可視化</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../getting_started.html#next-steps">Next Steps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started.html#next-steps">次のステップ</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../faq.html">Frequently Asked Questions</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Qiskit Terra</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="overview.html">Overview</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="overview.html#terra-organization">Terra Organization</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="overview.html#quantum-circuits">Quantum Circuits</a></li>
-<li class="toctree-l4"><a class="reference internal" href="overview.html#transpiler">Transpiler</a></li>
-<li class="toctree-l4"><a class="reference internal" href="overview.html#tools">Tools</a></li>
-<li class="toctree-l4"><a class="reference internal" href="overview.html#backends-and-results">Backends and Results</a></li>
-<li class="toctree-l4"><a class="reference internal" href="overview.html#quantum-information">Quantum Information</a></li>
-<li class="toctree-l4"><a class="reference internal" href="overview.html#visualization-tools">Visualization Tools</a></li>
+<li class="toctree-l3"><a class="reference internal" href="overview.html#terra-organization">Terra の構成</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="overview.html#quantum-circuits">量子回路</a></li>
+<li class="toctree-l4"><a class="reference internal" href="overview.html#transpiler">トランスパイラー</a></li>
+<li class="toctree-l4"><a class="reference internal" href="overview.html#tools">ツール</a></li>
+<li class="toctree-l4"><a class="reference internal" href="overview.html#backends-and-results">バックエンドと結果</a></li>
+<li class="toctree-l4"><a class="reference internal" href="overview.html#quantum-information">量子情報</a></li>
+<li class="toctree-l4"><a class="reference internal" href="overview.html#visualization-tools">可視化ツール</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Circuits and Registers</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#creating-registers">Creating Registers</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#creating-circuits">Creating Circuits</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#concatenating-circuits">Concatenating Circuits</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#creating-registers">レジスターの作成</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#creating-circuits">回路を作成する</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#concatenating-circuits">回路の結合</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#examining-circuit-results">Examining Circuit Results</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#determining-circuit-resources">Determining Circuit Resources</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#determining-circuit-resources">回路リソースの決定</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="summary_of_quantum_operations.html">Elementary Operations</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="summary_of_quantum_operations.html#single-qubit-quantum-states">Single Qubit Quantum states</a></li>
-<li class="toctree-l3"><a class="reference internal" href="summary_of_quantum_operations.html#single-qubit-gates">Single-Qubit Gates</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="summary_of_quantum_operations.html#u-gates">u gates</a></li>
-<li class="toctree-l4"><a class="reference internal" href="summary_of_quantum_operations.html#identity-gate">Identity gate</a></li>
-<li class="toctree-l4"><a class="reference internal" href="summary_of_quantum_operations.html#pauli-gates">Pauli gates</a></li>
-<li class="toctree-l4"><a class="reference internal" href="summary_of_quantum_operations.html#clifford-gates">Clifford gates</a></li>
-<li class="toctree-l4"><a class="reference internal" href="summary_of_quantum_operations.html#c3-gates"><span class="math notranslate nohighlight">\(C3\)</span> gates</a></li>
-<li class="toctree-l4"><a class="reference internal" href="summary_of_quantum_operations.html#standard-rotations">Standard Rotations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="summary_of_quantum_operations.html#single-qubit-quantum-states">単一キュービット量子ゲート</a></li>
+<li class="toctree-l3"><a class="reference internal" href="summary_of_quantum_operations.html#single-qubit-gates">単一キュービットゲート</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="summary_of_quantum_operations.html#u-gates">uゲート</a></li>
+<li class="toctree-l4"><a class="reference internal" href="summary_of_quantum_operations.html#identity-gate">単位ゲート</a></li>
+<li class="toctree-l4"><a class="reference internal" href="summary_of_quantum_operations.html#pauli-gates">パウリゲート</a></li>
+<li class="toctree-l4"><a class="reference internal" href="summary_of_quantum_operations.html#clifford-gates">クリフォードゲート</a></li>
+<li class="toctree-l4"><a class="reference internal" href="summary_of_quantum_operations.html#c3-gates"><span class="math notranslate nohighlight">\(C3\)</span> ゲート</a></li>
+<li class="toctree-l4"><a class="reference internal" href="summary_of_quantum_operations.html#standard-rotations">標準回転</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="summary_of_quantum_operations.html#multi-qubit-gates">Multi-Qubit Gates</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="summary_of_quantum_operations.html#mathematical-preliminaries">Mathematical Preliminaries</a></li>
+<li class="toctree-l3"><a class="reference internal" href="summary_of_quantum_operations.html#multi-qubit-gates">複数キュービットゲート</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="summary_of_quantum_operations.html#mathematical-preliminaries">数学的準備</a></li>
 <li class="toctree-l4"><a class="reference internal" href="summary_of_quantum_operations.html#basis-vector-ordering-in-qiskit">Basis vector ordering in Qiskit</a></li>
 <li class="toctree-l4"><a class="reference internal" href="summary_of_quantum_operations.html#controlled-operations-on-qubits">Controlled operations on qubits</a></li>
 </ul>
@@ -1469,23 +1469,23 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../release_notes.html#version-history">Version History</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contributing_to_qiskit.html">Contributing to Qiskit</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../contributing_to_qiskit.html#where-things-are">Where Things Are</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../contributing_to_qiskit.html#getting-started">Getting Started</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../contributing_to_qiskit.html#writing-and-building-documentation">Writing and Building Documentation</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../contributing_to_qiskit.html#translating-documentation">Translating Documentation</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../contributing_to_qiskit.html#joining-the-qiskitdocs-crowdin-project">Joining the QiskitDocs Crowdin Project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing_to_qiskit.html#where-things-are">Qiskitのコードのロケーションについて</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing_to_qiskit.html#getting-started">はじめに</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing_to_qiskit.html#writing-and-building-documentation">ドキュメンテーションの記述とビルド</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../contributing_to_qiskit.html#translating-documentation">ドキュメンテーションの翻訳について</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../contributing_to_qiskit.html#joining-the-qiskitdocs-crowdin-project">QiskitDocs Crowdin プロジェクトに参加する</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../contributing_to_qiskit.html#translation-workflow">翻訳のワークフロー</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../contributing_to_qiskit.html#installing-from-source">Installing from Source</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../contributing_to_qiskit.html#installing-terra-from-source">Installing Terra from Source</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../contributing_to_qiskit.html#installing-ibmq-provider-from-source">Installing IBMQ Provider from Source</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../contributing_to_qiskit.html#installing-aer-from-source">Installing Aer from Source</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../contributing_to_qiskit.html#installing-ignis-from-source">Installing Ignis from Source</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../contributing_to_qiskit.html#installing-aqua-from-source">Installing Aqua from Source</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../contributing_to_qiskit.html#install-chemistry-from-source">Install Chemistry from Source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing_to_qiskit.html#installing-from-source">ソースからインストールする方法</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../contributing_to_qiskit.html#installing-terra-from-source">ソースから Terra をインストールする</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../contributing_to_qiskit.html#installing-ibmq-provider-from-source">IBMQプロバイダのソースコードからのインストール</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../contributing_to_qiskit.html#installing-aer-from-source">Aerのソースコードからのインストール</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../contributing_to_qiskit.html#installing-ignis-from-source">Ignisのソースコードからのインストール</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../contributing_to_qiskit.html#installing-aqua-from-source">Aquaのソースコードからのインストール</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../contributing_to_qiskit.html#install-chemistry-from-source">Chemistryのソースコードからのインストール</a></li>
 </ul>
 </li>
 </ul>
@@ -1518,12 +1518,9 @@
         <div class="page-content">
         
   <div class="section" id="circuits-and-registers">
-<h1>回路とレジスタ<a class="headerlink" href="#circuits-and-registers" title="このヘッドラインへのパーマリンク">¶</a></h1>
-<p>The <code class="docutils literal notranslate"><span class="pre">QuantumCircuit</span></code>, <code class="docutils literal notranslate"><span class="pre">QuantumRegister</span></code>, and <code class="docutils literal notranslate"><span class="pre">ClassicalRegister</span></code>
-are the main objects for Qiskit Terra. You can create custom circuits,
-combine existing circuits, manipulate a circuit's structure,
-and index into circuit elements.</p>
-<p>The following imports will be used in the examples below.</p>
+<h1>回路とレジスター<a class="headerlink" href="#circuits-and-registers" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<p><code class="docutils literal notranslate"><span class="pre">QuantumCircuit</span></code>, <code class="docutils literal notranslate"><span class="pre">QuantumRegister</span></code>, <code class="docutils literal notranslate"><span class="pre">ClassicalRegister</span></code> はそれぞれ、Qiskit Terraのmain objects になります。オリジナルのカスタム回路をつくったり、既存の回路を組み合わせたり、回路の構造を改変したり、回路の要素にインデックスをつけたりすることができます。</p>
+<p>以下に例を示します。</p>
 <div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">qiskit</span> <span class="k">import</span> <span class="n">QuantumCircuit</span><span class="p">,</span> <span class="n">ClassicalRegister</span><span class="p">,</span> <span class="n">QuantumRegister</span>
 <span class="kn">from</span> <span class="nn">qiskit</span> <span class="k">import</span> <span class="n">BasicAer</span><span class="p">,</span> <span class="n">execute</span>
@@ -1531,8 +1528,8 @@ and index into circuit elements.</p>
 </pre></div>
 </div>
 <div class="section" id="creating-registers">
-<h2>Creating Registers<a class="headerlink" href="#creating-registers" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<p>Quantum and classical registers are declared using the following:</p>
+<h2>レジスターの作成<a class="headerlink" href="#creating-registers" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>以下を用いて量子及び古典のレジスターを宣言します。</p>
 <div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">q0</span> <span class="o">=</span> <span class="n">QuantumRegister</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;q0&#39;</span><span class="p">)</span>
 <span class="n">c0</span> <span class="o">=</span> <span class="n">ClassicalRegister</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;c0&#39;</span><span class="p">)</span>
 <span class="n">q1</span> <span class="o">=</span> <span class="n">QuantumRegister</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;q1&#39;</span><span class="p">)</span>
@@ -1540,9 +1537,7 @@ and index into circuit elements.</p>
 <span class="n">q_test</span> <span class="o">=</span> <span class="n">QuantumRegister</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;q0&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>The name is optional. If not given Qiskit will name it <code class="docutils literal notranslate"><span class="pre">qi</span></code> where
-<code class="docutils literal notranslate"><span class="pre">i</span></code> is an integer which will count from 0. The name and size can
-be returned using the following:</p>
+<p>名前は任意です。特に指定しない場合、 Qiskitがデフォルトで &quot;qi&quot; と名付けます。このとき、&quot;i&quot; は0から始まる整数です。名前とサイズは以下のコマンドで確認できます。</p>
 <div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">q0</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">q0</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
 </pre></div>
@@ -1551,7 +1546,7 @@ be returned using the following:</p>
 2
 </pre></div>
 </div>
-<p>You can test if the register are the same or different.</p>
+<p>レジスターが異なるかどうかをテストすることができます。</p>
 <div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">q0</span><span class="o">==</span><span class="n">q0</span>
 </pre></div>
 </div>
@@ -1572,9 +1567,8 @@ be returned using the following:</p>
 </div>
 </div>
 <div class="section" id="creating-circuits">
-<h2>Creating Circuits<a class="headerlink" href="#creating-circuits" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<p>Quantum Circuits are made using registers. Either when initiated or by
-using the <code class="docutils literal notranslate"><span class="pre">add_register</span></code> command.</p>
+<h2>回路を作成する<a class="headerlink" href="#creating-circuits" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>量子回路は、初期化の際、または &quot;add_register&quot; コマンドを使って、レジスターで作成されます。</p>
 <div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">circ</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="n">q0</span><span class="p">,</span> <span class="n">q1</span><span class="p">)</span>
 <span class="n">circ</span><span class="o">.</span><span class="n">x</span><span class="p">(</span><span class="n">q0</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 <span class="n">circ</span><span class="o">.</span><span class="n">x</span><span class="p">(</span><span class="n">q1</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
@@ -1582,7 +1576,7 @@ using the <code class="docutils literal notranslate"><span class="pre">add_regis
 </pre></div>
 </div>
 <img alt="Quantum circuit with 4 qubits, X gates on qubits 1 and 2." src="../_images/quantum_circuits_13_0.png" />
-<p>is the same as</p>
+<p>は、以下と同じです。</p>
 <div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">circ2</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">()</span>
 <span class="n">circ2</span><span class="o">.</span><span class="n">add_register</span><span class="p">(</span><span class="n">q0</span><span class="p">)</span>
 <span class="n">circ2</span><span class="o">.</span><span class="n">add_register</span><span class="p">(</span><span class="n">q1</span><span class="p">)</span>
@@ -1594,8 +1588,7 @@ using the <code class="docutils literal notranslate"><span class="pre">add_regis
 <img alt="Quantum circuit with 4 qubits, X gates on qubits 1 and 2." src="../_images/quantum_circuits_13_0.png" />
 <div class="admonition note">
 <p class="first admonition-title">注釈</p>
-<p class="last">The order of registers in the list is the order they are initiated
-or added <strong>not</strong> the tensor product for quantum registers.</p>
+<p class="last">リスト上のレジスターは、量子レジスターのテンソル積としてではなく、初期化または &quot;add_register&quot; で追加された順番で表示されます。</p>
 </div>
 <div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">copy</span> <span class="k">import</span> <span class="n">deepcopy</span>
 
@@ -1619,8 +1612,7 @@ supply the the number of qubits (required) and the number of classical bits
 <span class="n">qc</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="n">num_qubits</span><span class="p">,</span> <span class="n">num_bits</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>With this syntax, registers are created automatically and can be accessed as
-properties of the <code class="docutils literal notranslate"><span class="pre">QuantumCircuit</span></code>.</p>
+<p>この文法で、レジスターは自動的に作成され、<code class="docutils literal notranslate"><span class="pre">QuantumCircuit</span></code> の特性としてアクセス可能です。</p>
 <div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">qc</span><span class="o">.</span><span class="n">qregs</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">qc</span><span class="o">.</span><span class="n">cregs</span><span class="p">)</span>
 </pre></div>
@@ -1644,11 +1636,8 @@ by a bit.</p>
 </pre></div>
 </div>
 <img alt="Quantum circuit with 2 qubits, 2 bits, an H gate on qubit 0, CNOT targeting qubit 1 controlled by qubit 0 and measurements on both qubits." src="../_images/quantum_circuits_3.png" />
-<p>The indexing method above works for <code class="docutils literal notranslate"><span class="pre">QuantumCircuit</span></code> objects constructed with
-or without predefined <code class="docutils literal notranslate"><span class="pre">QuantumRegister</span></code> objects.</p>
-<p>For circuits with multiple registers, index ordering will correspond to the
-order registers were added to the circuit, and can be verified by inspecting the
-circuit's <code class="docutils literal notranslate"><span class="pre">qubits</span></code> and <code class="docutils literal notranslate"><span class="pre">clbits</span></code> properties.</p>
+<p>上記のインデキシングの方式は、あらかじめ定義した``QuantumRegister`` を使って作成したか否かに関わらず`、<a href="#id1"><span class="problematic" id="id2">`</span></a>QuantumCircuit``オブジェクト上で動作します。</p>
+<p>複数のレジスターを持つ回路では、インデックスの順序は回路にレジスターが追加された順序に対応し、回路の``qubits`` 、 <code class="docutils literal notranslate"><span class="pre">clbits</span></code> プロパティを調べることで確認できます。</p>
 <div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">qr1</span> <span class="o">=</span> <span class="n">QuantumRegister</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;q1&#39;</span><span class="p">)</span>
 <span class="n">qr2</span> <span class="o">=</span> <span class="n">QuantumRegister</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;q2&#39;</span><span class="p">)</span>
 <span class="n">cr</span> <span class="o">=</span> <span class="n">ClassicalRegister</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">)</span>
@@ -1665,11 +1654,8 @@ circuit's <code class="docutils literal notranslate"><span class="pre">qubits</s
 <img alt="Quantum circuit with 2 qubits, 2 bits, a Hadamard gate on each qubit, a measurement from q1_0 to both bits." src="../_images/quantum_circuits_4.png" />
 </div>
 <div class="section" id="concatenating-circuits">
-<h2>Concatenating Circuits<a class="headerlink" href="#concatenating-circuits" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<p>In many situations you may have two circuits that you want to
-concatenate together to form a new circuit. This is very useful when one
-circuit has no measurements and the final circuit represents a
-measurement.</p>
+<h2>回路の結合<a class="headerlink" href="#concatenating-circuits" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>2つの回路を結合して、1つの新しい回路を作成したい場合が多くあります。ある回路が測定を持たず、最後の回路で測定させるとき、特に便利な手法です。</p>
 <div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">meas</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="n">q0</span><span class="p">,</span> <span class="n">q1</span><span class="p">,</span> <span class="n">c0</span><span class="p">,</span> <span class="n">c1</span><span class="p">)</span>
 <span class="n">meas</span><span class="o">.</span><span class="n">measure</span><span class="p">(</span><span class="n">q0</span><span class="p">,</span> <span class="n">c0</span><span class="p">)</span>
 <span class="n">meas</span><span class="o">.</span><span class="n">measure</span><span class="p">(</span><span class="n">q1</span><span class="p">,</span> <span class="n">c1</span><span class="p">)</span>
@@ -1706,12 +1692,12 @@ measurement.</p>
 </pre></div>
 </div>
 <img alt="Quantum circuit with 2 qubits, each with an H gate." src="../_images/quantum_circuits_21_0.png" />
-<p>The new register is added to the circuit:</p>
+<p>新しいレジスタを回路に追加します。</p>
 <div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">circ4</span><span class="o">+</span><span class="n">circ5</span><span class="p">)</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">output</span><span class="o">=</span><span class="s1">&#39;mpl&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <img alt="Quantum circuit with 4 qubits, an X gate on each of the first two, an H gate of each of the last two." src="../_images/quantum_circuits_23_0.png" />
-<p>We have also overloaded <code class="docutils literal notranslate"><span class="pre">+=</span></code> to the <code class="docutils literal notranslate"><span class="pre">QuantumCircuit</span></code> object:</p>
+<p><code class="docutils literal notranslate"><span class="pre">+=``も``QuantumCircuit</span></code> オブジェクトに対してオーバーロードされます。</p>
 <div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">circ4</span> <span class="o">+=</span> <span class="n">circ5</span>
 <span class="n">circ4</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">output</span><span class="o">=</span><span class="s1">&#39;mpl&#39;</span><span class="p">)</span>
 </pre></div>
@@ -1719,23 +1705,17 @@ measurement.</p>
 <img alt="Quantum circuit with 4 qubits, an X gate on each of the first two, an H gate of each of the last two." src="../_images/quantum_circuits_25_0.png" />
 <div class="section" id="examining-circuit-results">
 <h3>Examining Circuit Results<a class="headerlink" href="#examining-circuit-results" title="このヘッドラインへのパーマリンク">¶</a></h3>
-<p>In the circuit output, the most significant bit (MSB) is to the left and
-the least significant bit (LSB) is to the right (i.e.&nbsp;we follow the
-regular computer science little endian ordering). In this example:</p>
+<p>回路の出力では、最重要ビット(Most Significant Bit, MSB) が左に、最瑣末ビット(Least Significant Bit, LSB) が右に配置されます(通常のコンピュータ・サイエンスにおけるリトル・エンディアン)。次の例において:</p>
 <div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">circ</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">output</span><span class="o">=</span><span class="s1">&#39;mpl&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <img alt="Quantum circuit with 4 qubits, an X gate on the second and third qubits." src="../_images/quantum_circuits_27_0.png" />
-<p>qqubit register <span class="math notranslate nohighlight">\(Q_0\)</span> is prepared in the state <span class="math notranslate nohighlight">\(|10\rangle\)</span>
-and <span class="math notranslate nohighlight">\(Q_1\)</span> is in the state <span class="math notranslate nohighlight">\(|01\rangle\)</span> giving a total state
-<span class="math notranslate nohighlight">\(|0110\rangle\)</span> (<span class="math notranslate nohighlight">\(Q1\otimes Q0\)</span>).</p>
+<p>量子ビットレジスター <span class="math notranslate nohighlight">\(Q_0\)</span> は、状態:math:<cite>|10rangle</cite> に、 <span class="math notranslate nohighlight">\(Q_1\)</span> は状態 <span class="math notranslate nohighlight">\(|01\rangle\)</span> にセットされ、全体の状態は <span class="math notranslate nohighlight">\(|0110\rangle\)</span> (<span class="math notranslate nohighlight">\(Q1\otimes Q0\)</span>) となります。</p>
 <div class="admonition note">
 <p class="first admonition-title">注釈</p>
-<p class="last">The tensor order in Qiskit goes as <span class="math notranslate nohighlight">\(Q_n \otimes .. Q_1 \otimes Q_0\)</span></p>
+<p class="last">Qiskit内でのテンソルの順番は、 :math:<a href="#id1"><span class="problematic" id="id2">`</span></a>Q_n otimes .. Q_1 otimes Q_0`です。</p>
 </div>
-<p>That is the four qubit statevector of length 16 with the 6th element
-(<code class="docutils literal notranslate"><span class="pre">int('0110',2)=6</span></code>) being one. Note the element count starts from
-zero.</p>
+<p>これは長さ16の4量子ビットの状態ベクトルで、6番目(<code class="docutils literal notranslate"><span class="pre">int('0110',2)=6</span></code>) の要素が1になります。要素の番号は0から始まることに注意してください。</p>
 <div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">backend_sim</span> <span class="o">=</span> <span class="n">BasicAer</span><span class="o">.</span><span class="n">get_backend</span><span class="p">(</span><span class="s1">&#39;statevector_simulator&#39;</span><span class="p">)</span>
 <span class="n">result</span> <span class="o">=</span> <span class="n">execute</span><span class="p">(</span><span class="n">circ</span><span class="p">,</span> <span class="n">backend_sim</span><span class="p">)</span><span class="o">.</span><span class="n">result</span><span class="p">()</span>
 <span class="n">state</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">get_statevector</span><span class="p">(</span><span class="n">circ</span><span class="p">)</span>
@@ -1746,19 +1726,14 @@ zero.</p>
  0.+0.j 0.+0.j 0.+0.j 0.+0.j 0.+0.j 0.+0.j]
 </pre></div>
 </div>
-<p>To check the fidelity of this state with the <code class="docutils literal notranslate"><span class="pre">basis_state</span></code> in Qiskit
-Terra you can use:</p>
+<p>Qiskit Terraにおいて <code class="docutils literal notranslate"><span class="pre">basis_state</span></code> を用いてこの状態の忠実度を確認するには、以下を使用します：</p>
 <div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">state_fidelity</span><span class="p">(</span><span class="n">basis_state</span><span class="p">(</span><span class="s1">&#39;0110&#39;</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">state</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>1.0
 </pre></div>
 </div>
-<p>We can also use Qiskit Terra to make the unitary operator representing
-the circuit (provided there are no measurements). This will be a
-<span class="math notranslate nohighlight">\(16\times16\)</span> matrix equal to
-<span class="math notranslate nohighlight">\(I\otimes X\otimes X\otimes I\)</span>. To check this is correct we can
-use the <code class="docutils literal notranslate"><span class="pre">Pauli</span></code> class and the <code class="docutils literal notranslate"><span class="pre">process_fidelity</span></code> function.</p>
+<p>また、Qiskit Terraを使って、回路(測定値がない場合)を表現するユニタリー演算子を作成することができます。この例では <span class="math notranslate nohighlight">\(I\otimes X\otimes X\otimes I\)</span> の行列です。これが正しいことを確認するには、<code class="docutils literal notranslate"><span class="pre">Pauli</span></code> クラスと <code class="docutils literal notranslate"><span class="pre">process_fidelity</span></code> 関数を使用します。</p>
 <div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">backend_sim</span> <span class="o">=</span> <span class="n">BasicAer</span><span class="o">.</span><span class="n">get_backend</span><span class="p">(</span><span class="s1">&#39;unitary_simulator&#39;</span><span class="p">)</span>
 <span class="n">result</span> <span class="o">=</span> <span class="n">execute</span><span class="p">(</span><span class="n">circ</span><span class="p">,</span> <span class="n">backend_sim</span><span class="p">)</span><span class="o">.</span><span class="n">result</span><span class="p">()</span>
 <span class="n">unitary</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">get_unitary</span><span class="p">(</span><span class="n">circ</span><span class="p">)</span>
@@ -1768,15 +1743,12 @@ use the <code class="docutils literal notranslate"><span class="pre">Pauli</span
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>1.0
 </pre></div>
 </div>
-<p>To map the information of the quantum state to the classial world we
-have to use the example with measurements <code class="docutils literal notranslate"><span class="pre">qc</span></code>:</p>
+<p>量子状態の情報を古典系にマップするには、 測定``qc``を使用する必要があります。</p>
 <div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">qc</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">output</span><span class="o">=</span><span class="s1">&#39;mpl&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <img alt="Quantum circuit with 4 qubits and 4 bits, an X gate on the second and third qubits, measurements on all qubits recorded on all bits in a one to one fashion." src="../_images/quantum_circuits_35_0.png" />
-<p>This will map the quantum state to the classical world and since the
-state has no superpositions it will be deterministic and equal to
-<code class="docutils literal notranslate"><span class="pre">'01</span> <span class="pre">10'</span></code>. Here a space is used to separate the registers.</p>
+<p>これは、量子状態を古典系にマップします。この状態は重ね合わせがないので、決定論的で``'01 10'<a href="#id1"><span class="problematic" id="id2">``</span></a>に等しいです。ここでスペースはレジスターを分割するために使用されています。</p>
 <div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">backend_sim</span> <span class="o">=</span> <span class="n">BasicAer</span><span class="o">.</span><span class="n">get_backend</span><span class="p">(</span><span class="s1">&#39;qasm_simulator&#39;</span><span class="p">)</span>
 <span class="n">result</span> <span class="o">=</span> <span class="n">execute</span><span class="p">(</span><span class="n">qc</span><span class="p">,</span> <span class="n">backend_sim</span><span class="p">)</span><span class="o">.</span><span class="n">result</span><span class="p">()</span>
 <span class="n">counts</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">get_counts</span><span class="p">(</span><span class="n">qc</span><span class="p">)</span>
@@ -1786,8 +1758,7 @@ state has no superpositions it will be deterministic and equal to
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>{&#39;01 10&#39;: 1024}
 </pre></div>
 </div>
-<p>To show that it does not matter how you add the registers we run the
-same as above on the second example circuit:</p>
+<p>どのようにレジスターを追加したかは関係ないことを示すため、2番目の回路例に対して上と同じことを実行します。</p>
 <div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">backend_sim</span> <span class="o">=</span> <span class="n">BasicAer</span><span class="o">.</span><span class="n">get_backend</span><span class="p">(</span><span class="s1">&#39;statevector_simulator&#39;</span><span class="p">)</span>
 <span class="n">result</span> <span class="o">=</span> <span class="n">execute</span><span class="p">(</span><span class="n">circ2</span><span class="p">,</span> <span class="n">backend_sim</span><span class="p">)</span><span class="o">.</span><span class="n">result</span><span class="p">()</span>
 <span class="n">states</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">get_statevector</span><span class="p">(</span><span class="n">circ2</span><span class="p">)</span>
@@ -1821,10 +1792,8 @@ same as above on the second example circuit:</p>
 </div>
 </div>
 <div class="section" id="determining-circuit-resources">
-<h3>Determining Circuit Resources<a class="headerlink" href="#determining-circuit-resources" title="このヘッドラインへのパーマリンク">¶</a></h3>
-<p>A <code class="docutils literal notranslate"><span class="pre">QuantumCircuit</span></code> object provides methods for inquiring its resource
-use. This includes the number of qubits, operations, and a few other
-things.</p>
+<h3>回路リソースの決定<a class="headerlink" href="#determining-circuit-resources" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<p><a href="#id1"><span class="problematic" id="id2">``</span></a>QuantumCircuit``オブジェクトは、量子回路が使用しているリソースを調べるメソッドを提供しています。これには、量子ビットや演算子、その他の数が含まれます。</p>
 <div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">q</span> <span class="o">=</span> <span class="n">QuantumRegister</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
 <span class="n">circuit</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="n">q</span><span class="p">)</span>
 <span class="n">circuit</span><span class="o">.</span><span class="n">h</span><span class="p">(</span><span class="n">q</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
@@ -1885,13 +1854,13 @@ things.</p>
      <a id="button-prev" href="overview.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
          <div class="pagenation-text">
             <span class="pagenation-direction">Previous</span>
-            <div>Overview</div>
+            <div>概要</div>
          </div>
      </a>
      <a id="button-next" href="summary_of_quantum_operations.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
         <div class="pagenation-text">
             <span class="pagenation-direction">Next</span>
-            <div>Elementary Operations</div>
+            <div>基本的操作</div>
         </div>
      </a>
         

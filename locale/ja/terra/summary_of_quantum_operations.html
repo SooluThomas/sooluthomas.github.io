@@ -34,7 +34,7 @@
        </script>
         <script src="https://cloud.ibm.com/analytics/build/bluemix-analytics.min.js"></script>
     
-    <title>Elementary Operations &#8212; Qiskit 0.11.0 ドキュメント</title>
+    <title>基本的操作 &#8212; Qiskit 0.11.0 ドキュメント</title>
 
     <link rel="stylesheet" href="../_static/material-icons.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -53,7 +53,7 @@
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="検索" href="../search.html" />
     <link rel="next" title="Custom gates" href="custom_gates.html" />
-    <link rel="prev" title="回路とレジスタ" href="quantum_circuits.html" /> 
+    <link rel="prev" title="回路とレジスター" href="quantum_circuits.html" /> 
   </head>
 <body>
   <header>
@@ -115,12 +115,12 @@
           <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../overview.html">概要</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../overview.html#qiskit-elements">Qiskit Elements</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html#qiskit-elements">Qiskit の要素</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../overview.html#qiskit-terra">Qiskit Terra</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../overview.html#qiskit-aer">Qiskit Aer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../overview.html#qiskit-ignis">Qiskit Ignis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../overview.html#qiskit-aqua">Qiskit Aqua</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../overview.html#qiskit-components">Qiskit Components</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../overview.html#qiskit-components">Qiskit コンポーネント</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../overview.html#qiskit-chemistry">Qiskit Chemistry</a></li>
@@ -134,55 +134,55 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../getting_started.html">Getting Started</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../getting_started.html#workflow-step-by-step">Workflow Step--by--Step</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../getting_started.html#step-1-import-packages">Step 1 : Import Packages</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../getting_started.html#step-2-initialize-variables">Step 2 : Initialize Variables</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../getting_started.html#step-3-add-gates">Step 3 : Add Gates</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../getting_started.html#step-4-visualize-the-circuit">Step 4 : Visualize the Circuit</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../getting_started.html#step-5-simulate-the-experiment">Step 5 : Simulate the Experiment</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../getting_started.html#step-6-visualize-the-results">Step 6 : Visualize the Results</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started.html#workflow-step-by-step">ワークフローのステップバイステップ</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../getting_started.html#step-1-import-packages">手順1 : パッケージのインポート</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../getting_started.html#step-2-initialize-variables">ステップ2：変数の初期化</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../getting_started.html#step-3-add-gates">ステップ3：ゲートの追加</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../getting_started.html#step-4-visualize-the-circuit">ステップ４：回路の可視化</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../getting_started.html#step-5-simulate-the-experiment">実験のシミュレーション</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../getting_started.html#step-6-visualize-the-results">ステップ6：結果の可視化</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../getting_started.html#next-steps">Next Steps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started.html#next-steps">次のステップ</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../faq.html">Frequently Asked Questions</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Qiskit Terra</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="overview.html">Overview</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="overview.html#terra-organization">Terra Organization</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="overview.html#quantum-circuits">Quantum Circuits</a></li>
-<li class="toctree-l4"><a class="reference internal" href="overview.html#transpiler">Transpiler</a></li>
-<li class="toctree-l4"><a class="reference internal" href="overview.html#tools">Tools</a></li>
-<li class="toctree-l4"><a class="reference internal" href="overview.html#backends-and-results">Backends and Results</a></li>
-<li class="toctree-l4"><a class="reference internal" href="overview.html#quantum-information">Quantum Information</a></li>
-<li class="toctree-l4"><a class="reference internal" href="overview.html#visualization-tools">Visualization Tools</a></li>
+<li class="toctree-l3"><a class="reference internal" href="overview.html#terra-organization">Terra の構成</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="overview.html#quantum-circuits">量子回路</a></li>
+<li class="toctree-l4"><a class="reference internal" href="overview.html#transpiler">トランスパイラー</a></li>
+<li class="toctree-l4"><a class="reference internal" href="overview.html#tools">ツール</a></li>
+<li class="toctree-l4"><a class="reference internal" href="overview.html#backends-and-results">バックエンドと結果</a></li>
+<li class="toctree-l4"><a class="reference internal" href="overview.html#quantum-information">量子情報</a></li>
+<li class="toctree-l4"><a class="reference internal" href="overview.html#visualization-tools">可視化ツール</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="quantum_circuits.html">Circuits and Registers</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="quantum_circuits.html#creating-registers">Creating Registers</a></li>
-<li class="toctree-l3"><a class="reference internal" href="quantum_circuits.html#creating-circuits">Creating Circuits</a></li>
-<li class="toctree-l3"><a class="reference internal" href="quantum_circuits.html#concatenating-circuits">Concatenating Circuits</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="quantum_circuits.html#creating-registers">レジスターの作成</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quantum_circuits.html#creating-circuits">回路を作成する</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quantum_circuits.html#concatenating-circuits">回路の結合</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="quantum_circuits.html#examining-circuit-results">Examining Circuit Results</a></li>
-<li class="toctree-l4"><a class="reference internal" href="quantum_circuits.html#determining-circuit-resources">Determining Circuit Resources</a></li>
+<li class="toctree-l4"><a class="reference internal" href="quantum_circuits.html#determining-circuit-resources">回路リソースの決定</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Elementary Operations</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#single-qubit-quantum-states">Single Qubit Quantum states</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#single-qubit-gates">Single-Qubit Gates</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#u-gates">u gates</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#identity-gate">Identity gate</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pauli-gates">Pauli gates</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#clifford-gates">Clifford gates</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#c3-gates"><span class="math notranslate nohighlight">\(C3\)</span> gates</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#standard-rotations">Standard Rotations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#single-qubit-quantum-states">単一キュービット量子ゲート</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#single-qubit-gates">単一キュービットゲート</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#u-gates">uゲート</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#identity-gate">単位ゲート</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pauli-gates">パウリゲート</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#clifford-gates">クリフォードゲート</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c3-gates"><span class="math notranslate nohighlight">\(C3\)</span> ゲート</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#standard-rotations">標準回転</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#multi-qubit-gates">Multi-Qubit Gates</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#mathematical-preliminaries">Mathematical Preliminaries</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#multi-qubit-gates">複数キュービットゲート</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#mathematical-preliminaries">数学的準備</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#basis-vector-ordering-in-qiskit">Basis vector ordering in Qiskit</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#controlled-operations-on-qubits">Controlled operations on qubits</a></li>
 </ul>
@@ -748,23 +748,23 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../release_notes.html#version-history">Version History</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contributing_to_qiskit.html">Contributing to Qiskit</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../contributing_to_qiskit.html#where-things-are">Where Things Are</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../contributing_to_qiskit.html#getting-started">Getting Started</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../contributing_to_qiskit.html#writing-and-building-documentation">Writing and Building Documentation</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../contributing_to_qiskit.html#translating-documentation">Translating Documentation</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../contributing_to_qiskit.html#joining-the-qiskitdocs-crowdin-project">Joining the QiskitDocs Crowdin Project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing_to_qiskit.html#where-things-are">Qiskitのコードのロケーションについて</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing_to_qiskit.html#getting-started">はじめに</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing_to_qiskit.html#writing-and-building-documentation">ドキュメンテーションの記述とビルド</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../contributing_to_qiskit.html#translating-documentation">ドキュメンテーションの翻訳について</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../contributing_to_qiskit.html#joining-the-qiskitdocs-crowdin-project">QiskitDocs Crowdin プロジェクトに参加する</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../contributing_to_qiskit.html#translation-workflow">翻訳のワークフロー</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../contributing_to_qiskit.html#installing-from-source">Installing from Source</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../contributing_to_qiskit.html#installing-terra-from-source">Installing Terra from Source</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../contributing_to_qiskit.html#installing-ibmq-provider-from-source">Installing IBMQ Provider from Source</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../contributing_to_qiskit.html#installing-aer-from-source">Installing Aer from Source</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../contributing_to_qiskit.html#installing-ignis-from-source">Installing Ignis from Source</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../contributing_to_qiskit.html#installing-aqua-from-source">Installing Aqua from Source</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../contributing_to_qiskit.html#install-chemistry-from-source">Install Chemistry from Source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing_to_qiskit.html#installing-from-source">ソースからインストールする方法</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../contributing_to_qiskit.html#installing-terra-from-source">ソースから Terra をインストールする</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../contributing_to_qiskit.html#installing-ibmq-provider-from-source">IBMQプロバイダのソースコードからのインストール</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../contributing_to_qiskit.html#installing-aer-from-source">Aerのソースコードからのインストール</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../contributing_to_qiskit.html#installing-ignis-from-source">Ignisのソースコードからのインストール</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../contributing_to_qiskit.html#installing-aqua-from-source">Aquaのソースコードからのインストール</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../contributing_to_qiskit.html#install-chemistry-from-source">Chemistryのソースコードからのインストール</a></li>
 </ul>
 </li>
 </ul>
@@ -836,12 +836,12 @@
           <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../overview.html">概要</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../overview.html#qiskit-elements">Qiskit Elements</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html#qiskit-elements">Qiskit の要素</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../overview.html#qiskit-terra">Qiskit Terra</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../overview.html#qiskit-aer">Qiskit Aer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../overview.html#qiskit-ignis">Qiskit Ignis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../overview.html#qiskit-aqua">Qiskit Aqua</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../overview.html#qiskit-components">Qiskit Components</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../overview.html#qiskit-components">Qiskit コンポーネント</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../overview.html#qiskit-chemistry">Qiskit Chemistry</a></li>
@@ -855,55 +855,55 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../getting_started.html">Getting Started</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../getting_started.html#workflow-step-by-step">Workflow Step--by--Step</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../getting_started.html#step-1-import-packages">Step 1 : Import Packages</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../getting_started.html#step-2-initialize-variables">Step 2 : Initialize Variables</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../getting_started.html#step-3-add-gates">Step 3 : Add Gates</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../getting_started.html#step-4-visualize-the-circuit">Step 4 : Visualize the Circuit</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../getting_started.html#step-5-simulate-the-experiment">Step 5 : Simulate the Experiment</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../getting_started.html#step-6-visualize-the-results">Step 6 : Visualize the Results</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started.html#workflow-step-by-step">ワークフローのステップバイステップ</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../getting_started.html#step-1-import-packages">手順1 : パッケージのインポート</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../getting_started.html#step-2-initialize-variables">ステップ2：変数の初期化</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../getting_started.html#step-3-add-gates">ステップ3：ゲートの追加</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../getting_started.html#step-4-visualize-the-circuit">ステップ４：回路の可視化</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../getting_started.html#step-5-simulate-the-experiment">実験のシミュレーション</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../getting_started.html#step-6-visualize-the-results">ステップ6：結果の可視化</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../getting_started.html#next-steps">Next Steps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started.html#next-steps">次のステップ</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../faq.html">Frequently Asked Questions</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Qiskit Terra</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="overview.html">Overview</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="overview.html#terra-organization">Terra Organization</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="overview.html#quantum-circuits">Quantum Circuits</a></li>
-<li class="toctree-l4"><a class="reference internal" href="overview.html#transpiler">Transpiler</a></li>
-<li class="toctree-l4"><a class="reference internal" href="overview.html#tools">Tools</a></li>
-<li class="toctree-l4"><a class="reference internal" href="overview.html#backends-and-results">Backends and Results</a></li>
-<li class="toctree-l4"><a class="reference internal" href="overview.html#quantum-information">Quantum Information</a></li>
-<li class="toctree-l4"><a class="reference internal" href="overview.html#visualization-tools">Visualization Tools</a></li>
+<li class="toctree-l3"><a class="reference internal" href="overview.html#terra-organization">Terra の構成</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="overview.html#quantum-circuits">量子回路</a></li>
+<li class="toctree-l4"><a class="reference internal" href="overview.html#transpiler">トランスパイラー</a></li>
+<li class="toctree-l4"><a class="reference internal" href="overview.html#tools">ツール</a></li>
+<li class="toctree-l4"><a class="reference internal" href="overview.html#backends-and-results">バックエンドと結果</a></li>
+<li class="toctree-l4"><a class="reference internal" href="overview.html#quantum-information">量子情報</a></li>
+<li class="toctree-l4"><a class="reference internal" href="overview.html#visualization-tools">可視化ツール</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="quantum_circuits.html">Circuits and Registers</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="quantum_circuits.html#creating-registers">Creating Registers</a></li>
-<li class="toctree-l3"><a class="reference internal" href="quantum_circuits.html#creating-circuits">Creating Circuits</a></li>
-<li class="toctree-l3"><a class="reference internal" href="quantum_circuits.html#concatenating-circuits">Concatenating Circuits</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="quantum_circuits.html#creating-registers">レジスターの作成</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quantum_circuits.html#creating-circuits">回路を作成する</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quantum_circuits.html#concatenating-circuits">回路の結合</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="quantum_circuits.html#examining-circuit-results">Examining Circuit Results</a></li>
-<li class="toctree-l4"><a class="reference internal" href="quantum_circuits.html#determining-circuit-resources">Determining Circuit Resources</a></li>
+<li class="toctree-l4"><a class="reference internal" href="quantum_circuits.html#determining-circuit-resources">回路リソースの決定</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Elementary Operations</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#single-qubit-quantum-states">Single Qubit Quantum states</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#single-qubit-gates">Single-Qubit Gates</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#u-gates">u gates</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#identity-gate">Identity gate</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pauli-gates">Pauli gates</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#clifford-gates">Clifford gates</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#c3-gates"><span class="math notranslate nohighlight">\(C3\)</span> gates</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#standard-rotations">Standard Rotations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#single-qubit-quantum-states">単一キュービット量子ゲート</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#single-qubit-gates">単一キュービットゲート</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#u-gates">uゲート</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#identity-gate">単位ゲート</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pauli-gates">パウリゲート</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#clifford-gates">クリフォードゲート</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c3-gates"><span class="math notranslate nohighlight">\(C3\)</span> ゲート</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#standard-rotations">標準回転</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#multi-qubit-gates">Multi-Qubit Gates</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#mathematical-preliminaries">Mathematical Preliminaries</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#multi-qubit-gates">複数キュービットゲート</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#mathematical-preliminaries">数学的準備</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#basis-vector-ordering-in-qiskit">Basis vector ordering in Qiskit</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#controlled-operations-on-qubits">Controlled operations on qubits</a></li>
 </ul>
@@ -1469,23 +1469,23 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../release_notes.html#version-history">Version History</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contributing_to_qiskit.html">Contributing to Qiskit</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../contributing_to_qiskit.html#where-things-are">Where Things Are</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../contributing_to_qiskit.html#getting-started">Getting Started</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../contributing_to_qiskit.html#writing-and-building-documentation">Writing and Building Documentation</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../contributing_to_qiskit.html#translating-documentation">Translating Documentation</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../contributing_to_qiskit.html#joining-the-qiskitdocs-crowdin-project">Joining the QiskitDocs Crowdin Project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing_to_qiskit.html#where-things-are">Qiskitのコードのロケーションについて</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing_to_qiskit.html#getting-started">はじめに</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing_to_qiskit.html#writing-and-building-documentation">ドキュメンテーションの記述とビルド</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../contributing_to_qiskit.html#translating-documentation">ドキュメンテーションの翻訳について</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../contributing_to_qiskit.html#joining-the-qiskitdocs-crowdin-project">QiskitDocs Crowdin プロジェクトに参加する</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../contributing_to_qiskit.html#translation-workflow">翻訳のワークフロー</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../contributing_to_qiskit.html#installing-from-source">Installing from Source</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../contributing_to_qiskit.html#installing-terra-from-source">Installing Terra from Source</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../contributing_to_qiskit.html#installing-ibmq-provider-from-source">Installing IBMQ Provider from Source</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../contributing_to_qiskit.html#installing-aer-from-source">Installing Aer from Source</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../contributing_to_qiskit.html#installing-ignis-from-source">Installing Ignis from Source</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../contributing_to_qiskit.html#installing-aqua-from-source">Installing Aqua from Source</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../contributing_to_qiskit.html#install-chemistry-from-source">Install Chemistry from Source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing_to_qiskit.html#installing-from-source">ソースからインストールする方法</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../contributing_to_qiskit.html#installing-terra-from-source">ソースから Terra をインストールする</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../contributing_to_qiskit.html#installing-ibmq-provider-from-source">IBMQプロバイダのソースコードからのインストール</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../contributing_to_qiskit.html#installing-aer-from-source">Aerのソースコードからのインストール</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../contributing_to_qiskit.html#installing-ignis-from-source">Ignisのソースコードからのインストール</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../contributing_to_qiskit.html#installing-aqua-from-source">Aquaのソースコードからのインストール</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../contributing_to_qiskit.html#install-chemistry-from-source">Chemistryのソースコードからのインストール</a></li>
 </ul>
 </li>
 </ul>
@@ -1518,13 +1518,9 @@
         <div class="page-content">
         
   <div class="section" id="elementary-operations">
-<h1>Elementary Operations<a class="headerlink" href="#elementary-operations" title="このヘッドラインへのパーマリンク">¶</a></h1>
-<p>In this section we will go into the different operations that are
-available in Qiskit Terra. These are: - Single-qubit quantum gates -
-Multi-qubit quantum gates - Measurements - Reset - Conditionals - State
-initialization</p>
-<p>We will also show you how to use the three different simulators: -
-unitary_simulator - qasm_simulator - statevector_simulator</p>
+<h1>基本的操作<a class="headerlink" href="#elementary-operations" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<p>この節では、Qiskit Terraで使用可能なそれぞれの操作を説明します。ここには、単一キュービット量子ゲート、複数キュービット量子ゲート、測定、リセット、条件付け、状態初期化があります。</p>
+<p>ユニタリーシミュレーター、qasmシミュレーター、状態ベクトルシミュレーターの、3つの異なるシミュレーターの使い方も説明します。</p>
 <div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Useful additional packages</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
@@ -1541,37 +1537,19 @@ unitary_simulator - qasm_simulator - statevector_simulator</p>
 </pre></div>
 </div>
 <div class="section" id="single-qubit-quantum-states">
-<h2>Single Qubit Quantum states<a class="headerlink" href="#single-qubit-quantum-states" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<p>A single qubit quantum state can be written as</p>
+<h2>単一キュービット量子ゲート<a class="headerlink" href="#single-qubit-quantum-states" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>単一キュービット量子状態は、次のように書けます。</p>
 <div class="math notranslate nohighlight">
 \[|\psi\rangle = \alpha|0\rangle + \beta |1\rangle\]</div>
-<p>where <span class="math notranslate nohighlight">\(\alpha\)</span> and <span class="math notranslate nohighlight">\(\beta\)</span> are complex numbers. In a
-measurement the probability of the bit being in <span class="math notranslate nohighlight">\(|0\rangle\)</span> is
-<span class="math notranslate nohighlight">\(|\alpha|^2\)</span> and <span class="math notranslate nohighlight">\(|1\rangle\)</span> is <span class="math notranslate nohighlight">\(|\beta|^2\)</span>. As a
-vector this is</p>
+<p>ここで、<span class="math notranslate nohighlight">\(\alpha\)</span> と <span class="math notranslate nohighlight">\(\beta\)</span> は複素数です。 測定において <span class="math notranslate nohighlight">\(|0\rangle\)</span> になる確率は <span class="math notranslate nohighlight">\(|\alpha|^2\)</span> であり <span class="math notranslate nohighlight">\(|1\rangle\)</span> になる確率は :math:<a href="#id1"><span class="problematic" id="id2">`</span></a><a href="#id3"><span class="problematic" id="id4">|</span></a>beta|^2`です。ベクトルとしてこれは次のように書けます。</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}|\psi\rangle =
-\begin{pmatrix}
-\alpha \\
-\beta
-\end{pmatrix}.\end{split}\]</div>
-<p>Note due to conservation probability <span class="math notranslate nohighlight">\(|\alpha|^2+ |\beta|^2 = 1\)</span>
-and since global phase is undetectable
-<span class="math notranslate nohighlight">\(|\psi\rangle := e^{i\delta} |\psi\rangle\)</span> we only requires two
-real numbers to describe a single qubit quantum state.</p>
-<p>A convenient representation is</p>
+\[|psirangle = begin{pmatrix} alpha \ beta end{pmatrix}　。\]</div>
+<p>確率が <span class="math notranslate nohighlight">\(|\alpha|^2+ |\beta|^2 = 1\)</span> のように保存され、グローバル位相:math:<a href="#id1"><span class="problematic" id="id2">`</span></a><a href="#id3"><span class="problematic" id="id4">|</span></a>psirangle := e^{idelta} <a href="#id5"><span class="problematic" id="id6">|</span></a>psirangle`が測定できないため、単一キュービットの量子状態を書き表すためには、２つの実数が必要になることに注意しないといけません。</p>
+<p>便利な表記法としては、以下があります。</p>
 <div class="math notranslate nohighlight">
 \[|\psi\rangle = \cos(\theta/2)|0\rangle + \sin(\theta/2)e^{i\phi}|1\rangle\]</div>
-<p>where <span class="math notranslate nohighlight">\(0\leq \phi &lt; 2\pi\)</span>, and <span class="math notranslate nohighlight">\(0\leq \theta \leq \pi\)</span>. From
-this it is clear that there is a one-to-one correspondence between qubit
-states (<span class="math notranslate nohighlight">\(\mathbb{C}^2\)</span>) and the points on the surface of a unit
-sphere (<span class="math notranslate nohighlight">\(\mathbb{R}^3\)</span>). This is called the Bloch sphere
-representation of a qubit state.</p>
-<p>Quantum gates/operations are usually represented as matrices. A gate
-which acts on a qubit is represented by a <span class="math notranslate nohighlight">\(2\times 2\)</span> unitary
-matrix <span class="math notranslate nohighlight">\(U\)</span>. The action of the quantum gate is found by multiplying
-the matrix representing the gate with the vector which represents the
-quantum state.</p>
+<p>ここで、 <span class="math notranslate nohighlight">\(0\leq \phi &lt; 2\pi\)</span>、と <span class="math notranslate nohighlight">\(0\leq \theta \leq \pi\)</span>mathbb{C}^2`) と単位球(<span class="math notranslate nohighlight">\(\mathbb{R}^3\)</span>)の球面上の各点との間に1対1の関係があることは明らかです。</p>
+<p>量子ゲート/操作は通常、行列で表現されます。あるキュービットに作用するゲートは、:math:<a href="#id1"><span class="problematic" id="id2">`</span></a>2times 2`のユニタリー行列 :math:<a href="#id3"><span class="problematic" id="id4">`</span></a>U`として表現されます。量子ゲートの作用は、量子状態を表すベクトルとゲートを表す行列の積の形として表されます。</p>
 <div class="math notranslate nohighlight">
 \[|\psi'\rangle = U|\psi\rangle\]</div>
 <p>A general unitary must be able to take the <span class="math notranslate nohighlight">\(|0\rangle\)</span> to the
@@ -1592,21 +1570,18 @@ e^{i\phi}\sin(\theta/2) &amp; b
 \cos(\theta/2) &amp; -e^{i\lambda}\sin(\theta/2) \\
 e^{i\phi}\sin(\theta/2) &amp; e^{i\lambda+i\phi}\cos(\theta/2)
 \end{pmatrix}.\end{split}\]</div>
-<p>This is the most general form of a single qubit unitary.</p>
+<p>これが単一キュービットのユニタリー演算子の最も一般的な形式です。</p>
 </div>
 <div class="section" id="single-qubit-gates">
-<h2>Single-Qubit Gates<a class="headerlink" href="#single-qubit-gates" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<p>The single-qubit gates available are: - u gates - Identity gate - Pauli
-gates - Clifford gates - <span class="math notranslate nohighlight">\(C3\)</span> gates - Standard rotation gates</p>
-<p>We have provided a backend: <code class="docutils literal notranslate"><span class="pre">unitary_simulator</span></code> to allow you to
-calculate the unitary matrices.</p>
+<h2>単一キュービットゲート<a class="headerlink" href="#single-qubit-gates" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>単一キュービットゲートでは、uゲート、恒等ゲート、パウリゲート、クリフォードゲート、<span class="math notranslate nohighlight">\(C3\)</span> ゲート、標準回転ゲートが利用可能です。</p>
+<p>我々は、ユニタリー行列を計算できるようにする <code class="docutils literal notranslate"><span class="pre">unitary_simulator</span></code> というバックエンドを提供しています。</p>
 <div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">q</span> <span class="o">=</span> <span class="n">QuantumRegister</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="section" id="u-gates">
-<h3>u gates<a class="headerlink" href="#u-gates" title="このヘッドラインへのパーマリンク">¶</a></h3>
-<p>In Qiskit we give you access to the general unitary using the <span class="math notranslate nohighlight">\(u3\)</span>
-gate</p>
+<h3>uゲート<a class="headerlink" href="#u-gates" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<p>Qiskitでは、:math:<a href="#id1"><span class="problematic" id="id2">`</span></a>u3`ゲートを使うことで一般的なユニタリー演算を実行できるようにしています。</p>
 <div class="math notranslate nohighlight">
 \[u3(\theta, \phi, \lambda) = U(\theta, \phi, \lambda)\]</div>
 <div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">qc</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="n">q</span><span class="p">)</span>
@@ -1623,15 +1598,10 @@ gate</p>
        [ 0.   +0.707j, -0.707+0.j   ]])
 </pre></div>
 </div>
-<p>The <span class="math notranslate nohighlight">\(u2(\phi, \lambda) =u3(\pi/2, \phi, \lambda)\)</span> has the matrix
-form</p>
+<p><span class="math notranslate nohighlight">\(u2(\phi, \lambda) =u3(\pi/2, \phi, \lambda)\)</span> は次のような行列形式になります。</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}u2(\phi, \lambda) =
-\frac{1}{\sqrt{2}} \begin{pmatrix}
-1 &amp; -e^{i\lambda} \\
-e^{i\phi} &amp; e^{i(\phi + \lambda)}
-\end{pmatrix}.\end{split}\]</div>
-<p>This is a useful gate as it allows us to create superpositions</p>
+\[u2(phi, lambda) = frac{1}{sqrt{2}} begin{pmatrix} 1 &amp; -e^{ilambda} \ e^{iphi} &amp; e^{i(phi + lambda)} end{pmatrix}\]</div>
+<p>これは、重ね合わせ状態を作ることができるようになるための有効なゲートです。</p>
 <div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">qc</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="n">q</span><span class="p">)</span>
 <span class="n">qc</span><span class="o">.</span><span class="n">u2</span><span class="p">(</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="n">q</span><span class="p">)</span>
 <span class="n">qc</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">output</span><span class="o">=</span><span class="s1">&#39;mpl&#39;</span><span class="p">)</span>
@@ -1646,14 +1616,10 @@ e^{i\phi} &amp; e^{i(\phi + \lambda)}
        [ 0.   +0.707j, -0.707+0.j   ]])
 </pre></div>
 </div>
-<p>The <span class="math notranslate nohighlight">\(u1(\lambda)= u3(0, 0, \lambda)\)</span> gate has the matrix form</p>
+<p><span class="math notranslate nohighlight">\(u1(\lambda)= u3(0, 0, \lambda)\)</span> ゲートは、次のような行列形式になります。</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}u1(\lambda) =
-\begin{pmatrix}
-1 &amp; 0 \\
-0 &amp; e^{i \lambda}
-\end{pmatrix},\end{split}\]</div>
-<p>which is a useful as it allows us to apply a quantum phase.</p>
+\[u1(lambda) = begin{pmatrix} 1 &amp; 0 \ 0 &amp; e^{i lambda} end{pmatrix}、\]</div>
+<p>これは、量子位相を適用することができるように役立ちます。</p>
 <div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">qc</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="n">q</span><span class="p">)</span>
 <span class="n">qc</span><span class="o">.</span><span class="n">u1</span><span class="p">(</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="n">q</span><span class="p">)</span>
 <span class="n">qc</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">output</span><span class="o">=</span><span class="s1">&#39;mpl&#39;</span><span class="p">)</span>
@@ -1668,16 +1634,10 @@ e^{i\phi} &amp; e^{i(\phi + \lambda)}
        [0.+0.j, 0.+1.j]])
 </pre></div>
 </div>
-<p>The <span class="math notranslate nohighlight">\(u0(\delta)= u3(0, 0, 0)\)</span> gate is the identity matrix. It has
-the matrix form</p>
+<p>:math:<a href="#id1"><span class="problematic" id="id2">`</span></a>u0(delta)= u3(0, 0, 0)`は単位ゲートです。次にような行列の形式になります。</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}u0(\delta) =
-\begin{pmatrix}
-1 &amp; 0 \\
-0 &amp; 1
-\end{pmatrix}.\end{split}\]</div>
-<p>The identity gate does nothing (but can add noise in the real device for
-a period of time equal to fractions of the single qubit gate time)</p>
+\[u0(delta) = begin{pmatrix} 1 &amp; 0 \ 0 &amp; 1 end{pmatrix}\]</div>
+<p>単位ゲートは何もしません。（しかし、実デバイスでの単一キュービットゲート時間と等しい時間にかかるノイズを加えることができます。）</p>
 <div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">qc</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="n">q</span><span class="p">)</span>
 <span class="n">qc</span><span class="o">.</span><span class="n">u0</span><span class="p">(</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="n">q</span><span class="p">)</span>
 <span class="n">qc</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">output</span><span class="o">=</span><span class="s1">&#39;mpl&#39;</span><span class="p">)</span>
@@ -1694,7 +1654,7 @@ a period of time equal to fractions of the single qubit gate time)</p>
 </div>
 </div>
 <div class="section" id="identity-gate">
-<h3>Identity gate<a class="headerlink" href="#identity-gate" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<h3>単位ゲート<a class="headerlink" href="#identity-gate" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <p>The identity gate is <span class="math notranslate nohighlight">\(Id = u0(1)\)</span>.</p>
 <div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">qc</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="n">q</span><span class="p">)</span>
 <span class="n">qc</span><span class="o">.</span><span class="n">iden</span><span class="p">(</span><span class="n">q</span><span class="p">)</span>
@@ -1712,10 +1672,10 @@ a period of time equal to fractions of the single qubit gate time)</p>
 </div>
 </div>
 <div class="section" id="pauli-gates">
-<h3>Pauli gates<a class="headerlink" href="#pauli-gates" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<h3>パウリゲート<a class="headerlink" href="#pauli-gates" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <div class="section" id="x-bit-flip-gate">
-<h4><span class="math notranslate nohighlight">\(X\)</span>: bit-flip gate<a class="headerlink" href="#x-bit-flip-gate" title="このヘッドラインへのパーマリンク">¶</a></h4>
-<p>The bit-flip gate <span class="math notranslate nohighlight">\(X\)</span> is defined as:</p>
+<h4><span class="math notranslate nohighlight">\(X\)</span>: ビットフリップゲート<a class="headerlink" href="#x-bit-flip-gate" title="このヘッドラインへのパーマリンク">¶</a></h4>
+<p>ビットフリップゲート:math:<cite>X</cite> は次のように定義されます。</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}X   =
 \begin{pmatrix}
@@ -1738,8 +1698,8 @@ a period of time equal to fractions of the single qubit gate time)</p>
 </div>
 </div>
 <div class="section" id="y-bit-and-phase-flip-gate">
-<h4><span class="math notranslate nohighlight">\(Y\)</span>: bit- and phase-flip gate<a class="headerlink" href="#y-bit-and-phase-flip-gate" title="このヘッドラインへのパーマリンク">¶</a></h4>
-<p>The <span class="math notranslate nohighlight">\(Y\)</span> gate is defined as:</p>
+<h4><span class="math notranslate nohighlight">\(Y\)</span>:ビットと位相フリップゲート<a class="headerlink" href="#y-bit-and-phase-flip-gate" title="このヘッドラインへのパーマリンク">¶</a></h4>
+<p>:math:<a href="#id1"><span class="problematic" id="id2">`</span></a>Y`は次のように定義されます。</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}Y  =
 \begin{pmatrix}
@@ -1762,8 +1722,8 @@ i &amp; 0
 </div>
 </div>
 <div class="section" id="z-phase-flip-gate">
-<h4><span class="math notranslate nohighlight">\(Z\)</span>: phase-flip gate<a class="headerlink" href="#z-phase-flip-gate" title="このヘッドラインへのパーマリンク">¶</a></h4>
-<p>The phase flip gate <span class="math notranslate nohighlight">\(Z\)</span> is defined as:</p>
+<h4><span class="math notranslate nohighlight">\(Z\)</span>: 位相フリップゲート<a class="headerlink" href="#z-phase-flip-gate" title="このヘッドラインへのパーマリンク">¶</a></h4>
+<p>位相フリップゲート:math:<cite>Z</cite> は次のように定義されます。</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}Z =
 \begin{pmatrix}
@@ -1787,9 +1747,9 @@ i &amp; 0
 </div>
 </div>
 <div class="section" id="clifford-gates">
-<h3>Clifford gates<a class="headerlink" href="#clifford-gates" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<h3>クリフォードゲート<a class="headerlink" href="#clifford-gates" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <div class="section" id="hadamard-gate">
-<h4>Hadamard gate<a class="headerlink" href="#hadamard-gate" title="このヘッドラインへのパーマリンク">¶</a></h4>
+<h4>アダマールゲート<a class="headerlink" href="#hadamard-gate" title="このヘッドラインへのパーマリンク">¶</a></h4>
 <div class="math notranslate nohighlight">
 \[\begin{split}H =
 \frac{1}{\sqrt{2}}
@@ -1813,7 +1773,7 @@ i &amp; 0
 </div>
 </div>
 <div class="section" id="s-or-sqrt-z-phase-gate">
-<h4><span class="math notranslate nohighlight">\(S\)</span> (or, <span class="math notranslate nohighlight">\(\sqrt{Z}\)</span> phase) gate<a class="headerlink" href="#s-or-sqrt-z-phase-gate" title="このヘッドラインへのパーマリンク">¶</a></h4>
+<h4><span class="math notranslate nohighlight">\(S\)</span> （もしくは <span class="math notranslate nohighlight">\(\sqrt{Z}\)</span> 位相）ゲート<a class="headerlink" href="#s-or-sqrt-z-phase-gate" title="このヘッドラインへのパーマリンク">¶</a></h4>
 <div class="math notranslate nohighlight">
 \[\begin{split}S =
 \begin{pmatrix}
@@ -1836,7 +1796,7 @@ i &amp; 0
 </div>
 </div>
 <div class="section" id="s-dagger-or-conjugate-of-sqrt-z-phase-gate">
-<h4><span class="math notranslate nohighlight">\(S^{\dagger}\)</span> (or, conjugate of <span class="math notranslate nohighlight">\(\sqrt{Z}\)</span> phase) gate<a class="headerlink" href="#s-dagger-or-conjugate-of-sqrt-z-phase-gate" title="このヘッドラインへのパーマリンク">¶</a></h4>
+<h4><span class="math notranslate nohighlight">\(S^{\dagger}\)</span> (または :math:<a href="#id1"><span class="problematic" id="id2">`</span></a>sqrt{Z}`の共役位相) ゲート<a class="headerlink" href="#s-dagger-or-conjugate-of-sqrt-z-phase-gate" title="このヘッドラインへのパーマリンク">¶</a></h4>
 <div class="math notranslate nohighlight">
 \[\begin{split}S^{\dagger} =
 \begin{pmatrix}
@@ -1860,9 +1820,9 @@ i &amp; 0
 </div>
 </div>
 <div class="section" id="c3-gates">
-<h3><span class="math notranslate nohighlight">\(C3\)</span> gates<a class="headerlink" href="#c3-gates" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<h3><span class="math notranslate nohighlight">\(C3\)</span> ゲート<a class="headerlink" href="#c3-gates" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <div class="section" id="t-or-sqrt-s-phase-gate">
-<h4><span class="math notranslate nohighlight">\(T\)</span> (or, <span class="math notranslate nohighlight">\(\sqrt{S}\)</span> phase) gate<a class="headerlink" href="#t-or-sqrt-s-phase-gate" title="このヘッドラインへのパーマリンク">¶</a></h4>
+<h4><span class="math notranslate nohighlight">\(T\)</span> (または <span class="math notranslate nohighlight">\(\sqrt{S}\)</span> 位相) ゲート<a class="headerlink" href="#t-or-sqrt-s-phase-gate" title="このヘッドラインへのパーマリンク">¶</a></h4>
 <div class="math notranslate nohighlight">
 \[\begin{split}T =
 \begin{pmatrix}
@@ -1885,14 +1845,14 @@ i &amp; 0
 </div>
 </div>
 <div class="section" id="t-dagger-or-conjugate-of-sqrt-s-phase-gate">
-<h4><span class="math notranslate nohighlight">\(T^{\dagger}\)</span> (or, conjugate of <span class="math notranslate nohighlight">\(\sqrt{S}\)</span> phase) gate<a class="headerlink" href="#t-dagger-or-conjugate-of-sqrt-s-phase-gate" title="このヘッドラインへのパーマリンク">¶</a></h4>
+<h4><span class="math notranslate nohighlight">\(T^{\dagger}\)</span> (または:math:<a href="#id1"><span class="problematic" id="id2">`</span></a>sqrt{S}`位相共役) ゲート<a class="headerlink" href="#t-dagger-or-conjugate-of-sqrt-s-phase-gate" title="このヘッドラインへのパーマリンク">¶</a></h4>
 <div class="math notranslate nohighlight">
 \[\begin{split}T^{\dagger} =
 \begin{pmatrix}
 1 &amp; 0\\
 0 &amp; e^{-i \pi/4}
 \end{pmatrix}= u1(-\pi/4)\end{split}\]</div>
-<p>They can be added as below.</p>
+<p>それらは以下のように加えられます。</p>
 <div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">qc</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="n">q</span><span class="p">)</span>
 <span class="n">qc</span><span class="o">.</span><span class="n">tdg</span><span class="p">(</span><span class="n">q</span><span class="p">)</span>
 <span class="n">qc</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">output</span><span class="o">=</span><span class="s1">&#39;mpl&#39;</span><span class="p">)</span>
@@ -1910,13 +1870,12 @@ i &amp; 0
 </div>
 </div>
 <div class="section" id="standard-rotations">
-<h3>Standard Rotations<a class="headerlink" href="#standard-rotations" title="このヘッドラインへのパーマリンク">¶</a></h3>
-<p>The standard rotation gates are those that define rotations around the
-Paulis <span class="math notranslate nohighlight">\(P=\{X,Y,Z\}\)</span>. They are defined as</p>
+<h3>標準回転<a class="headerlink" href="#standard-rotations" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<p>標準回転ゲートは、パウリ行列 :math:<a href="#id1"><span class="problematic" id="id2">`</span></a>P={X,Y,Z}`での回転になります。これらは、次のように定義されます。</p>
 <div class="math notranslate nohighlight">
 \[R_P(\theta) = \exp(-i \theta P/2) = \cos(\theta/2)I -i \sin(\theta/2)P\]</div>
 <div class="section" id="rotation-around-x-axis">
-<h4>Rotation around X-axis<a class="headerlink" href="#rotation-around-x-axis" title="このヘッドラインへのパーマリンク">¶</a></h4>
+<h4>X軸周りの回転<a class="headerlink" href="#rotation-around-x-axis" title="このヘッドラインへのパーマリンク">¶</a></h4>
 <div class="math notranslate nohighlight">
 \[\begin{split}R_x(\theta) =
 \begin{pmatrix}
@@ -1939,7 +1898,7 @@ Paulis <span class="math notranslate nohighlight">\(P=\{X,Y,Z\}\)</span>. They a
 </div>
 </div>
 <div class="section" id="rotation-around-y-axis">
-<h4>Rotation around Y-axis<a class="headerlink" href="#rotation-around-y-axis" title="このヘッドラインへのパーマリンク">¶</a></h4>
+<h4>Y軸周りの回転<a class="headerlink" href="#rotation-around-y-axis" title="このヘッドラインへのパーマリンク">¶</a></h4>
 <div class="math notranslate nohighlight">
 \[\begin{split}R_y(\theta) =
 \begin{pmatrix}
@@ -1962,15 +1921,14 @@ Paulis <span class="math notranslate nohighlight">\(P=\{X,Y,Z\}\)</span>. They a
 </div>
 </div>
 <div class="section" id="rotation-around-z-axis">
-<h4>Rotation around Z-axis<a class="headerlink" href="#rotation-around-z-axis" title="このヘッドラインへのパーマリンク">¶</a></h4>
+<h4>Z軸周りの回転<a class="headerlink" href="#rotation-around-z-axis" title="このヘッドラインへのパーマリンク">¶</a></h4>
 <div class="math notranslate nohighlight">
 \[\begin{split}R_z(\phi) =
 \begin{pmatrix}
 e^{-i \phi/2} &amp; 0 \\
 0 &amp; e^{i \phi/2}
 \end{pmatrix}\equiv u1(\phi)\end{split}\]</div>
-<p>Note here we have used an equivalent as is different to u1 by global
-phase <span class="math notranslate nohighlight">\(e^{-i \phi/2}\)</span>.</p>
+<p>ここでは u1 とグローバル位相 <span class="math notranslate nohighlight">\(e^{-i \phi/2}\)</span> だけ異なるものを同じとしていることに注意してください。</p>
 <div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">qc</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="n">q</span><span class="p">)</span>
 <span class="n">qc</span><span class="o">.</span><span class="n">rz</span><span class="p">(</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="n">q</span><span class="p">)</span>
 <span class="n">qc</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">output</span><span class="o">=</span><span class="s1">&#39;mpl&#39;</span><span class="p">)</span>
@@ -1985,14 +1943,14 @@ phase <span class="math notranslate nohighlight">\(e^{-i \phi/2}\)</span>.</p>
        [0.+0.j, 0.+1.j]])
 </pre></div>
 </div>
-<p>Note this is different due only to a global phase</p>
+<p>ここでは、グローバル位相の分だけ異なります。</p>
 </div>
 </div>
 </div>
 <div class="section" id="multi-qubit-gates">
-<h2>Multi-Qubit Gates<a class="headerlink" href="#multi-qubit-gates" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<h2>複数キュービットゲート<a class="headerlink" href="#multi-qubit-gates" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <div class="section" id="mathematical-preliminaries">
-<h3>Mathematical Preliminaries<a class="headerlink" href="#mathematical-preliminaries" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<h3>数学的準備<a class="headerlink" href="#mathematical-preliminaries" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <p>The space of quantum computer grows exponential with the number of
 qubits. For <span class="math notranslate nohighlight">\(n\)</span> qubits the complex vector space has dimensions
 <span class="math notranslate nohighlight">\(d=2^n\)</span>. To describe states of a multi-qubit system, the tensor
@@ -2783,7 +2741,7 @@ decomposition to primitive gates of cx, rz and ry.</p>
      <a id="button-prev" href="quantum_circuits.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
          <div class="pagenation-text">
             <span class="pagenation-direction">Previous</span>
-            <div>回路とレジスタ</div>
+            <div>回路とレジスター</div>
          </div>
      </a>
      <a id="button-next" href="custom_gates.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
