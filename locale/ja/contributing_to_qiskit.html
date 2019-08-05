@@ -729,7 +729,10 @@
 <li class="toctree-l2"><a class="reference internal" href="#installing-from-source">ソースからインストールする方法</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#installing-terra-from-source">ソースから Terra をインストールする</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#installing-ibmq-provider-from-source">IBMQプロバイダのソースコードからのインストール</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#installing-aer-from-source">Aerのソースコードからのインストール</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#installing-aer-from-source">Aerのソースコードからのインストール</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#custom-options-during-wheel-builds">Custom options during wheel builds</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#installing-ignis-from-source">Ignisのソースコードからのインストール</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#installing-aqua-from-source">Aquaのソースコードからのインストール</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#install-chemistry-from-source">Chemistryのソースコードからのインストール</a></li>
@@ -1412,7 +1415,10 @@
 <li class="toctree-l2"><a class="reference internal" href="#installing-from-source">ソースからインストールする方法</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#installing-terra-from-source">ソースから Terra をインストールする</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#installing-ibmq-provider-from-source">IBMQプロバイダのソースコードからのインストール</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#installing-aer-from-source">Aerのソースコードからのインストール</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#installing-aer-from-source">Aerのソースコードからのインストール</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#custom-options-during-wheel-builds">Custom options during wheel builds</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#installing-ignis-from-source">Ignisのソースコードからのインストール</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#installing-aqua-from-source">Aquaのソースコードからのインストール</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#install-chemistry-from-source">Chemistryのソースコードからのインストール</a></li>
@@ -1765,7 +1771,7 @@ Windows</div>
 <span class="n">python</span> <span class="o">./</span><span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">bdist_wheel</span>
 </pre></div>
 </div>
-<p>wheelのビルドにカスタム・オプションを指定する必要がある場合は、<span class="xref std std-ref">aer_wheel_build_options</span> を参照してください。</p>
+<p>wheelのビルドにカスタム・オプションを指定する必要がある場合は、<a class="reference internal" href="#aer-wheel-build-options"><span class="std std-ref">Custom options during wheel builds</span></a> を参照してください。</p>
 <p>Phyton wheelは、ビルド後Aerレポジトリの <code class="docutils literal notranslate"><span class="pre">dist/</span></code> ディレクトリに保存されます。正確なバージョンは場合に依ります。</p>
 <div class="code sh highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">dist</span>
 <span class="n">pip</span> <span class="n">install</span> <span class="n">qiskit_aer</span><span class="o">-*.</span><span class="n">whl</span>
@@ -1806,7 +1812,7 @@ is the default choice.</p>
 <span class="n">python</span> <span class="o">./</span><span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">bdist_wheel</span>
 </pre></div>
 </div>
-<p>wheelのビルドにカスタム・オプションを指定する必要がある場合は、<span class="xref std std-ref">aer_wheel_build_options</span> を参照してください。</p>
+<p>wheelのビルドにカスタム・オプションを指定する必要がある場合は、<a class="reference internal" href="#aer-wheel-build-options"><span class="std std-ref">Custom options during wheel builds</span></a> を参照してください。</p>
 <p>Phyton wheelは、ビルド後Aerレポジトリの <code class="docutils literal notranslate"><span class="pre">dist/</span></code> ディレクトリに保存されます。正確なバージョンは場合に依ります。</p>
 <div class="code sh highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">dist</span>
 <span class="n">pip</span> <span class="n">install</span> <span class="n">qiskit_aer</span><span class="o">-*.</span><span class="n">whl</span>
@@ -1842,7 +1848,7 @@ dependencies.</p>
 <span class="n">python</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">bdist_wheel</span>
 </pre></div>
 </div>
-<p>wheelのビルドにカスタム・オプションを指定する必要がある場合は、<span class="xref std std-ref">aer_wheel_build_options</span> を参照してください。</p>
+<p>wheelのビルドにカスタム・オプションを指定する必要がある場合は、<a class="reference internal" href="#aer-wheel-build-options"><span class="std std-ref">Custom options during wheel builds</span></a> を参照してください。</p>
 <p>Phyton wheelは、ビルド後Aerレポジトリの <code class="docutils literal notranslate"><span class="pre">dist/</span></code> ディレクトリに保存されます。正確なバージョンは場合に依ります。</p>
 <div class="code sh highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">dist</span>
 <span class="n">pip</span> <span class="n">install</span> <span class="n">qiskit_aer</span><span class="o">-*.</span><span class="n">whl</span>
@@ -1853,6 +1859,8 @@ dependencies.</p>
 </ol>
 </div>
 </div>
+<div class="section" id="custom-options-during-wheel-builds">
+<span id="aer-wheel-build-options"></span><h4>Custom options during wheel builds<a class="headerlink" href="#custom-options-during-wheel-builds" title="このヘッドラインへのパーマリンク">¶</a></h4>
 <p>The Aer build system uses <a class="reference external" href="https://scikit-build.readthedocs.io/en/latest/index.html">scikit-build</a>
 to run the compilation when building it with the python interface. It acts as an interface for
 <a class="reference external" href="https://setuptools.readthedocs.io/en/latest/">setuptools</a> to call <a class="reference external" href="https://cmake.org/">CMake</a>
@@ -1924,6 +1932,7 @@ to build in parallel using 8 processes.</p>
 <div class="admonition note">
 <p class="first admonition-title">注釈</p>
 <p class="last">これらのオプションの中にはプラットフォーム固有ではないものがあります。プラットフォームがリストされている場合は、その環境で一般的に使用されているものの概要を説明しています。 詳しくはツールの資料を参照してください。</p>
+</div>
 </div>
 </div>
 <div class="section" id="installing-ignis-from-source">
