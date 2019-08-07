@@ -162,7 +162,7 @@
 <li class="toctree-l4"><a class="reference internal" href="summary_of_quantum_operations.html#controlled-operations-on-qubits">Controlled operations on qubits</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="summary_of_quantum_operations.html#two-qubit-gates">Two-qubit gates</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="summary_of_quantum_operations.html#two-qubit-gates">2-qubit (two-qubit) ゲート</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="summary_of_quantum_operations.html#controlled-pauli-gates">Controlled Pauli Gates</a></li>
 <li class="toctree-l4"><a class="reference internal" href="summary_of_quantum_operations.html#controlled-hadamard-gate">Controlled Hadamard gate</a></li>
 <li class="toctree-l4"><a class="reference internal" href="summary_of_quantum_operations.html#controlled-rotation-gates">Controlled rotation gates</a></li>
@@ -256,7 +256,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="transpiler/index.html">Rewiring Circuits</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="transpiler/getting_started.html">Getting Started with the Transpiler</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="transpiler/getting_started.html#tutorials">Tutorials</a></li>
+<li class="toctree-l4"><a class="reference internal" href="transpiler/getting_started.html#tutorials">チュートリアル</a></li>
 <li class="toctree-l4"><a class="reference internal" href="transpiler/getting_started.html#about-transpilation">About Transpilation</a></li>
 <li class="toctree-l4"><a class="reference internal" href="transpiler/getting_started.html#related-information">Related information</a></li>
 </ul>
@@ -848,7 +848,7 @@
 <li class="toctree-l4"><a class="reference internal" href="summary_of_quantum_operations.html#controlled-operations-on-qubits">Controlled operations on qubits</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="summary_of_quantum_operations.html#two-qubit-gates">Two-qubit gates</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="summary_of_quantum_operations.html#two-qubit-gates">2-qubit (two-qubit) ゲート</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="summary_of_quantum_operations.html#controlled-pauli-gates">Controlled Pauli Gates</a></li>
 <li class="toctree-l4"><a class="reference internal" href="summary_of_quantum_operations.html#controlled-hadamard-gate">Controlled Hadamard gate</a></li>
 <li class="toctree-l4"><a class="reference internal" href="summary_of_quantum_operations.html#controlled-rotation-gates">Controlled rotation gates</a></li>
@@ -942,7 +942,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="transpiler/index.html">Rewiring Circuits</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="transpiler/getting_started.html">Getting Started with the Transpiler</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="transpiler/getting_started.html#tutorials">Tutorials</a></li>
+<li class="toctree-l4"><a class="reference internal" href="transpiler/getting_started.html#tutorials">チュートリアル</a></li>
 <li class="toctree-l4"><a class="reference internal" href="transpiler/getting_started.html#about-transpilation">About Transpilation</a></li>
 <li class="toctree-l4"><a class="reference internal" href="transpiler/getting_started.html#related-information">Related information</a></li>
 </ul>
@@ -1510,14 +1510,7 @@ q0_2: |0>┤ H ├┤M├──────────────────�
                                            </pre></div>
 <div class="section" id="alternative-renderers-for-circuits">
 <h2>Alternative Renderers for Circuits<a class="headerlink" href="#alternative-renderers-for-circuits" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<p>While a text output is useful for quickly seeing the output while
-developing a circuit it doesn’t provide the most flexibility in it’s
-output. There are 2 other alternative output renderers for the quantum
-circuit. One uses <a class="reference external" href="https://matplotlib.org/">matplotlib</a> and the other
-uses <a class="reference external" href="https://www.latex-project.org/">LaTex</a> leveraging the <a class="reference external" href="https://github.com/CQuIC/qcircuit">qcircuit
-package</a>. These can be specified
-by using <code class="docutils literal notranslate"><span class="pre">mpl</span></code> and <code class="docutils literal notranslate"><span class="pre">latex</span></code> values for the <code class="docutils literal notranslate"><span class="pre">output</span></code> kwarg on the
-draw() method.</p>
+<p>テキスト出力は、回路の構築中、出力を早く見るのに便利な一方、最も柔軟な出力を提供しているわけではありません。量子回路には、他に2つの出力レンダラーがあります。 <a class="reference external" href="https://matplotlib.org/">matplotlib</a> を使うものと、 <a class="reference external" href="https://github.com/CQuIC/qcircuit">qcircuit パッケージ</a> を活用した <a class="reference external" href="https://www.latex-project.org/">LaTex</a> を使うものです。これらは draw() メソッドの <code class="docutils literal notranslate"><span class="pre">output</span></code> kwargに <code class="docutils literal notranslate"><span class="pre">mpl</span></code> もしくは <code class="docutils literal notranslate"><span class="pre">latex</span></code> の値をセットすることで指定できます。</p>
 <div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Matplotlib Drawing</span>
 <span class="n">circuit</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">output</span><span class="o">=</span><span class="s1">&#39;mpl&#39;</span><span class="p">)</span>
 </pre></div>

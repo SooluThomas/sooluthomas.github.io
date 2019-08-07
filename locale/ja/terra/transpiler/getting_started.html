@@ -34,7 +34,7 @@
        </script>
         <script src="https://cloud.ibm.com/analytics/build/bluemix-analytics.min.js"></script>
     
-    <title>Getting Started with the Transpiler &#8212; Qiskit 0.11.1 ドキュメント</title>
+    <title>Transpiler 入門 &#8212; Qiskit 0.11.1 ドキュメント</title>
 
     <link rel="stylesheet" href="../../_static/material-icons.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -162,7 +162,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../summary_of_quantum_operations.html#controlled-operations-on-qubits">Controlled operations on qubits</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../summary_of_quantum_operations.html#two-qubit-gates">Two-qubit gates</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../summary_of_quantum_operations.html#two-qubit-gates">2-qubit (two-qubit) ゲート</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../summary_of_quantum_operations.html#controlled-pauli-gates">Controlled Pauli Gates</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../summary_of_quantum_operations.html#controlled-hadamard-gate">Controlled Hadamard gate</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../summary_of_quantum_operations.html#controlled-rotation-gates">Controlled rotation gates</a></li>
@@ -256,7 +256,7 @@
 </li>
 <li class="toctree-l2 current"><a class="reference internal" href="index.html">Rewiring Circuits</a><ul class="current">
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Getting Started with the Transpiler</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#tutorials">Tutorials</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tutorials">チュートリアル</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#about-transpilation">About Transpilation</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#related-information">Related information</a></li>
 </ul>
@@ -848,7 +848,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../summary_of_quantum_operations.html#controlled-operations-on-qubits">Controlled operations on qubits</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../summary_of_quantum_operations.html#two-qubit-gates">Two-qubit gates</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../summary_of_quantum_operations.html#two-qubit-gates">2-qubit (two-qubit) ゲート</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../summary_of_quantum_operations.html#controlled-pauli-gates">Controlled Pauli Gates</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../summary_of_quantum_operations.html#controlled-hadamard-gate">Controlled Hadamard gate</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../summary_of_quantum_operations.html#controlled-rotation-gates">Controlled rotation gates</a></li>
@@ -942,7 +942,7 @@
 </li>
 <li class="toctree-l2 current"><a class="reference internal" href="index.html">Rewiring Circuits</a><ul class="current">
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Getting Started with the Transpiler</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#tutorials">Tutorials</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tutorials">チュートリアル</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#about-transpilation">About Transpilation</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#related-information">Related information</a></li>
 </ul>
@@ -1448,12 +1448,12 @@
         <div class="page-content">
         
   <div class="section" id="getting-started-with-the-transpiler">
-<h1><a class="toc-backref" href="#id2">Getting Started with the Transpiler</a><a class="headerlink" href="#getting-started-with-the-transpiler" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<h1><a class="toc-backref" href="#id2">Transpiler 入門</a><a class="headerlink" href="#getting-started-with-the-transpiler" title="このヘッドラインへのパーマリンク">¶</a></h1>
 <div class="contents topic" id="id1">
 <p class="topic-title first">目次</p>
 <ul class="simple">
-<li><a class="reference internal" href="#getting-started-with-the-transpiler" id="id2">Getting Started with the Transpiler</a><ul>
-<li><a class="reference internal" href="#tutorials" id="id3">Tutorials</a></li>
+<li><a class="reference internal" href="#getting-started-with-the-transpiler" id="id2">Transpiler 入門</a><ul>
+<li><a class="reference internal" href="#tutorials" id="id3">チュートリアル</a></li>
 <li><a class="reference internal" href="#about-transpilation" id="id4">About Transpilation</a></li>
 <li><a class="reference internal" href="#related-information" id="id5">Related information</a></li>
 </ul>
@@ -1467,15 +1467,12 @@ to (2) a larger translation from high-level applications (potentially many
 circuits, with classical control flow between them) down to the level of machine
 pulses. We refer to (1) as <em>transpilation</em> and reserve the term <em>compilation</em>
 for (2).</p>
-<p>You can use the transpiler to reduce the number of gates and qubits of a circuit
-in order to increase the fidelity of executions to do the most with the limited
-quantum resources available today.</p>
+<p>現時点では利用することが限られている量子リソースを最大限に活用するために、transpilerを使用して回路のゲートおよび量子ビットの数を減らすことで実行の精度を高めることができます。</p>
 <div class="section" id="tutorials">
-<h2><a class="toc-backref" href="#id3">Tutorials</a><a class="headerlink" href="#tutorials" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<h2><a class="toc-backref" href="#id3">チュートリアル</a><a class="headerlink" href="#tutorials" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <dl class="docutils">
 <dt><a class="reference external" href="https://github.com/Qiskit/qiskit-tutorials/blob/master/qiskit/terra/using_the_transpiler.ipynb">Introducing the Transpiler</a></dt>
-<dd>This tutorial introduces the Qiskit transpiler and walks through some
-examples of circuit transformations using transpiler passes.</dd>
+<dd>このチュートリアルでは Qiskit transpiler を紹介し、transpiler パスを使った回路変換の例をいくつか紹介します。</dd>
 <dt><a class="reference external" href="https://github.com/Qiskit/qiskit-tutorials/blob/master/qiskit/terra/writing_a_transpiler_pass.ipynb">Writing a Transpiler Pass</a></dt>
 <dd>This tutorial shows how to develop a simple transpiler pass. To do so,
 we first introduce the internal representation of quantum circuits in Qiskit,

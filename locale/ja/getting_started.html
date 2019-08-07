@@ -162,7 +162,7 @@
 <li class="toctree-l4"><a class="reference internal" href="terra/summary_of_quantum_operations.html#controlled-operations-on-qubits">Controlled operations on qubits</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="terra/summary_of_quantum_operations.html#two-qubit-gates">Two-qubit gates</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="terra/summary_of_quantum_operations.html#two-qubit-gates">2-qubit (two-qubit) ゲート</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="terra/summary_of_quantum_operations.html#controlled-pauli-gates">Controlled Pauli Gates</a></li>
 <li class="toctree-l4"><a class="reference internal" href="terra/summary_of_quantum_operations.html#controlled-hadamard-gate">Controlled Hadamard gate</a></li>
 <li class="toctree-l4"><a class="reference internal" href="terra/summary_of_quantum_operations.html#controlled-rotation-gates">Controlled rotation gates</a></li>
@@ -256,7 +256,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="terra/transpiler/index.html">Rewiring Circuits</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="terra/transpiler/getting_started.html">Getting Started with the Transpiler</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="terra/transpiler/getting_started.html#tutorials">Tutorials</a></li>
+<li class="toctree-l4"><a class="reference internal" href="terra/transpiler/getting_started.html#tutorials">チュートリアル</a></li>
 <li class="toctree-l4"><a class="reference internal" href="terra/transpiler/getting_started.html#about-transpilation">About Transpilation</a></li>
 <li class="toctree-l4"><a class="reference internal" href="terra/transpiler/getting_started.html#related-information">Related information</a></li>
 </ul>
@@ -848,7 +848,7 @@
 <li class="toctree-l4"><a class="reference internal" href="terra/summary_of_quantum_operations.html#controlled-operations-on-qubits">Controlled operations on qubits</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="terra/summary_of_quantum_operations.html#two-qubit-gates">Two-qubit gates</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="terra/summary_of_quantum_operations.html#two-qubit-gates">2-qubit (two-qubit) ゲート</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="terra/summary_of_quantum_operations.html#controlled-pauli-gates">Controlled Pauli Gates</a></li>
 <li class="toctree-l4"><a class="reference internal" href="terra/summary_of_quantum_operations.html#controlled-hadamard-gate">Controlled Hadamard gate</a></li>
 <li class="toctree-l4"><a class="reference internal" href="terra/summary_of_quantum_operations.html#controlled-rotation-gates">Controlled rotation gates</a></li>
@@ -942,7 +942,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="terra/transpiler/index.html">Rewiring Circuits</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="terra/transpiler/getting_started.html">Getting Started with the Transpiler</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="terra/transpiler/getting_started.html#tutorials">Tutorials</a></li>
+<li class="toctree-l4"><a class="reference internal" href="terra/transpiler/getting_started.html#tutorials">チュートリアル</a></li>
 <li class="toctree-l4"><a class="reference internal" href="terra/transpiler/getting_started.html#about-transpilation">About Transpilation</a></li>
 <li class="toctree-l4"><a class="reference internal" href="terra/transpiler/getting_started.html#related-information">Related information</a></li>
 </ul>
@@ -1537,7 +1537,7 @@
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">circuit</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>ここでは、二つの量子ビットをゼロの状態に、二つの古典ビットをゼロに初期化し、量子回路``circuit``に代入しています。</p>
+<p>ここでは、二つの量子ビットをゼロの状態に、二つの古典ビットをゼロに初期化し、量子回路 <code class="docutils literal notranslate"><span class="pre">circuit</span></code> に代入しています。</p>
 <p>構文：</p>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">QuantumCircuit(int,</span> <span class="pre">int)</span></code></li>
@@ -1557,9 +1557,9 @@
 \[|psirangle = left(|00rangle+|11rangleright)/sqrt{2}\]</div>
 <p>上記コードは以下のゲートが適用されています。</p>
 <ul class="simple">
-<li><code class="docutils literal notranslate"><span class="pre">QuantumCircuit.h(0)</span></code>: 量子ビット0に対するアダマール・ゲート <span class="math notranslate nohighlight">\(H\)</span> 。量子ビット0を <a href="#id1"><span class="problematic" id="id2">**</span></a>重ね合わせ状態**にします。</li>
+<li><code class="docutils literal notranslate"><span class="pre">QuantumCircuit.h(0)</span></code>: 量子ビット0に対するアダマール・ゲート <span class="math notranslate nohighlight">\(H\)</span> 。量子ビット0を <strong>重ね合わせ状態</strong> にします。</li>
 <li><code class="docutils literal notranslate"><span class="pre">QuantumCircuit.cx(0,1)</span></code>: 量子ビット0をコントロール・ビット、量子ビット1をターゲット・ビットとした制御NOTゲート(<span class="math notranslate nohighlight">\(C_{X}\)</span>)。量子ビットを <strong>量子もつれ状態</strong> にします。</li>
-<li><code class="docutils literal notranslate"><span class="pre">QuantumCircuit.measure([0,1],</span> <span class="pre">[0,1])</span></code>: 全ての量子レジスターと古典レジスターを``measure``に送ると、i番目の量子ビットの結果がi番目の古典ビットに保存されます。</li>
+<li><code class="docutils literal notranslate"><span class="pre">QuantumCircuit.measure([0,1],</span> <span class="pre">[0,1])</span></code>: 全ての量子レジスターと古典レジスターを <code class="docutils literal notranslate"><span class="pre">measure</span></code> に送ると、i番目の量子ビットの結果がi番目の古典ビットに保存されます。</li>
 </ul>
 </div>
 <div class="section" id="step-4-visualize-the-circuit">
@@ -1585,8 +1585,8 @@
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Total count for 00 and 11 are: {&#39;00&#39;: 479, &#39;11&#39;: 521}
 </pre></div>
 </div>
-<p>期待通りにビット文字列の出力が00になるのはだいたい50％です。回路の実行回数は <code class="docutils literal notranslate"><span class="pre">execute</span></code> メソッドの``shots`` 引数で指定できます。このシミュレーションの実行回数は1000(デフォルトは1024) に設定されています。</p>
-<p><code class="docutils literal notranslate"><span class="pre">result</span></code> オブジェクトを取得できたら、<a href="#id1"><span class="problematic" id="id2">``</span></a>get_counts(circuit)``メソッドを使用して回数を取得することができます。実行した実験の総計を得ることができます。</p>
+<p>期待通りにビット文字列の出力が00になるのはだいたい50％です。回路の実行回数は <code class="docutils literal notranslate"><span class="pre">execute</span></code> メソッドの <code class="docutils literal notranslate"><span class="pre">shots</span></code> 引数で指定できます。このシミュレーションの実行回数は1000(デフォルトは1024) に設定されています。</p>
+<p><code class="docutils literal notranslate"><span class="pre">result</span></code> オブジェクトを取得できたら、<code class="docutils literal notranslate"><span class="pre">get_counts(circuit)</span></code> メソッドを使用して回数を取得することができます。実行した実験の総計を得ることができます。</p>
 </div>
 <div class="section" id="step-6-visualize-the-results">
 <h3>ステップ6：結果の可視化<a class="headerlink" href="#step-6-visualize-the-results" title="このヘッドラインへのパーマリンク">¶</a></h3>
@@ -1595,10 +1595,10 @@
 </pre></div>
 </div>
 <img alt="Histogram of results." src="_images/getting_started_2_0.png" />
-<p>観測された確率:math:<cite>Pr(00)</cite> と :math:<a href="#id1"><span class="problematic" id="id2">`</span></a>Pr(11)`は、対応する事象が観測された回数を全実行回数で割った数値です。</p>
+<p>観測された確率 <span class="math notranslate nohighlight">\(Pr(00)\)</span> と <span class="math notranslate nohighlight">\(Pr(11)\)</span> は、対応する事象が観測された回数を全実行回数で割った数値です。</p>
 <div class="admonition note">
 <p class="first admonition-title">注釈</p>
-<p class="last"><code class="docutils literal notranslate"><span class="pre">execute``メソッドの</span> <span class="pre">``shots</span></code> 引数を変更して、推定される確率がどのように変化するか見てみましょう。</p>
+<p class="last"><code class="docutils literal notranslate"><span class="pre">execute</span></code> メソッドの <code class="docutils literal notranslate"><span class="pre">shots</span></code> 引数を変更して、推定される確率がどのように変化するか見てみましょう。</p>
 </div>
 </div>
 </div>
