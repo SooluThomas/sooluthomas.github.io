@@ -225,13 +225,13 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="plotting_data_in_qiskit.html">Plotting Data in Qiskit</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="plotting_data_in_qiskit.html#histograms">Histograms</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="plotting_data_in_qiskit.html#specifying-histogram-properties">Specifying Histogram Properties</a></li>
-<li class="toctree-l4"><a class="reference internal" href="plotting_data_in_qiskit.html#saving-histograms">Saving Histograms</a></li>
+<li class="toctree-l3"><a class="reference internal" href="plotting_data_in_qiskit.html#histograms">ヒストグラム</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="plotting_data_in_qiskit.html#specifying-histogram-properties">ヒストグラムプロパティーの指定</a></li>
+<li class="toctree-l4"><a class="reference internal" href="plotting_data_in_qiskit.html#saving-histograms">ヒストグラムの保存</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="plotting_data_in_qiskit.html#interactive-histograms">Interactive Histograms</a></li>
-<li class="toctree-l3"><a class="reference internal" href="plotting_data_in_qiskit.html#state-plots">State Plots</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="plotting_data_in_qiskit.html#interactive-histograms">インタラクティブなヒストグラム</a></li>
+<li class="toctree-l3"><a class="reference internal" href="plotting_data_in_qiskit.html#state-plots">状態プロット</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="plotting_data_in_qiskit.html#specifying-state-plot-properties">Specifying State Plot Properties</a></li>
 <li class="toctree-l4"><a class="reference internal" href="plotting_data_in_qiskit.html#saving-state-plots">Saving State Plots</a></li>
 </ul>
@@ -911,13 +911,13 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="plotting_data_in_qiskit.html">Plotting Data in Qiskit</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="plotting_data_in_qiskit.html#histograms">Histograms</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="plotting_data_in_qiskit.html#specifying-histogram-properties">Specifying Histogram Properties</a></li>
-<li class="toctree-l4"><a class="reference internal" href="plotting_data_in_qiskit.html#saving-histograms">Saving Histograms</a></li>
+<li class="toctree-l3"><a class="reference internal" href="plotting_data_in_qiskit.html#histograms">ヒストグラム</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="plotting_data_in_qiskit.html#specifying-histogram-properties">ヒストグラムプロパティーの指定</a></li>
+<li class="toctree-l4"><a class="reference internal" href="plotting_data_in_qiskit.html#saving-histograms">ヒストグラムの保存</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="plotting_data_in_qiskit.html#interactive-histograms">Interactive Histograms</a></li>
-<li class="toctree-l3"><a class="reference internal" href="plotting_data_in_qiskit.html#state-plots">State Plots</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="plotting_data_in_qiskit.html#interactive-histograms">インタラクティブなヒストグラム</a></li>
+<li class="toctree-l3"><a class="reference internal" href="plotting_data_in_qiskit.html#state-plots">状態プロット</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="plotting_data_in_qiskit.html#specifying-state-plot-properties">Specifying State Plot Properties</a></li>
 <li class="toctree-l4"><a class="reference internal" href="plotting_data_in_qiskit.html#saving-state-plots">Saving State Plots</a></li>
 </ul>
@@ -1566,7 +1566,7 @@ by a bit.</p>
 </pre></div>
 </div>
 <img alt="Quantum circuit with 2 qubits, 2 bits, an H gate on qubit 0, CNOT targeting qubit 1 controlled by qubit 0 and measurements on both qubits." src="../_images/quantum_circuits_3.png" />
-<p>上記のインデキシングの方式は、あらかじめ定義した``QuantumRegister`` を使って作成したか否かに関わらず`、<a href="#id1"><span class="problematic" id="id2">`</span></a>QuantumCircuit``オブジェクト上で動作します。</p>
+<p>上記のインデキシングの方式は、あらかじめ定義した <code class="docutils literal notranslate"><span class="pre">QuantumRegister</span></code> を使って作成したか否かに関わらず、<code class="docutils literal notranslate"><span class="pre">QuantumCircuit</span></code> オブジェクト上で動作します。</p>
 <p>複数のレジスターを持つ回路では、インデックスの順序は回路にレジスターが追加された順序に対応し、回路の``qubits`` 、 <code class="docutils literal notranslate"><span class="pre">clbits</span></code> プロパティを調べることで確認できます。</p>
 <div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">qr1</span> <span class="o">=</span> <span class="n">QuantumRegister</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;q1&#39;</span><span class="p">)</span>
 <span class="n">qr2</span> <span class="o">=</span> <span class="n">QuantumRegister</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;q2&#39;</span><span class="p">)</span>
@@ -1622,7 +1622,7 @@ by a bit.</p>
 </pre></div>
 </div>
 <img alt="Quantum circuit with 2 qubits, each with an H gate." src="../_images/quantum_circuits_21_0.png" />
-<p>新しいレジスタを回路に追加します。</p>
+<p>新しいレジスターを回路に追加します。</p>
 <div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">circ4</span><span class="o">+</span><span class="n">circ5</span><span class="p">)</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">output</span><span class="o">=</span><span class="s1">&#39;mpl&#39;</span><span class="p">)</span>
 </pre></div>
 </div>

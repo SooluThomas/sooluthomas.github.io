@@ -34,7 +34,7 @@
        </script>
         <script src="https://cloud.ibm.com/analytics/build/bluemix-analytics.min.js"></script>
     
-    <title>Plotting Data in Qiskit &#8212; Qiskit 0.11.1 ドキュメント</title>
+    <title>Qiskitでのデータプロット方法 &#8212; Qiskit 0.11.1 ドキュメント</title>
 
     <link rel="stylesheet" href="../_static/material-icons.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -225,13 +225,13 @@
 </ul>
 </li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Plotting Data in Qiskit</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#histograms">Histograms</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#specifying-histogram-properties">Specifying Histogram Properties</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#saving-histograms">Saving Histograms</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#histograms">ヒストグラム</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#specifying-histogram-properties">ヒストグラムプロパティーの指定</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#saving-histograms">ヒストグラムの保存</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#interactive-histograms">Interactive Histograms</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#state-plots">State Plots</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#interactive-histograms">インタラクティブなヒストグラム</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#state-plots">状態プロット</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#specifying-state-plot-properties">Specifying State Plot Properties</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#saving-state-plots">Saving State Plots</a></li>
 </ul>
@@ -911,13 +911,13 @@
 </ul>
 </li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Plotting Data in Qiskit</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#histograms">Histograms</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#specifying-histogram-properties">Specifying Histogram Properties</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#saving-histograms">Saving Histograms</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#histograms">ヒストグラム</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#specifying-histogram-properties">ヒストグラムプロパティーの指定</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#saving-histograms">ヒストグラムの保存</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#interactive-histograms">Interactive Histograms</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#state-plots">State Plots</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#interactive-histograms">インタラクティブなヒストグラム</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#state-plots">状態プロット</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#specifying-state-plot-properties">Specifying State Plot Properties</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#saving-state-plots">Saving State Plots</a></li>
 </ul>
@@ -1448,15 +1448,13 @@
         <div class="page-content">
         
   <div class="section" id="plotting-data-in-qiskit">
-<span id="id1"></span><h1>Plotting Data in Qiskit<a class="headerlink" href="#plotting-data-in-qiskit" title="このヘッドラインへのパーマリンク">¶</a></h1>
-<p>There are optional dependencies that are required to use all the visualization
-functions available in Qiskit. You can install these optional dependencies
-with the following command:</p>
+<span id="id1"></span><h1>Qiskitでのデータプロット方法<a class="headerlink" href="#plotting-data-in-qiskit" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<p>Qiskitで使うことのできるすべてのビジュアライゼーション機能を使用するためにはオプショナルな依存関係が必要です。 次のコマンドでこれらのオプショナルな依存関係をインストールできます。</p>
 <div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">qiskit</span><span class="o">-</span><span class="n">terra</span><span class="p">[</span><span class="n">visualization</span><span class="p">]</span>
 </pre></div>
 </div>
 <div class="section" id="histograms">
-<h2>Histograms<a class="headerlink" href="#histograms" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<h2>ヒストグラム<a class="headerlink" href="#histograms" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p>To visualize the data from a quantum circuit run on a real device or
 <code class="docutils literal notranslate"><span class="pre">qasm_simulator</span></code> we have made a simple function</p>
 <p><code class="docutils literal notranslate"><span class="pre">plot_histogram(data)</span></code></p>
@@ -1497,7 +1495,7 @@ with the following command:</p>
 </div>
 <img alt="Histogram of a Bell state." src="../_images/plotting_data_in_qiskit_6_0.png" />
 <div class="section" id="specifying-histogram-properties">
-<h3>Specifying Histogram Properties<a class="headerlink" href="#specifying-histogram-properties" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<h3>ヒストグラムプロパティーの指定<a class="headerlink" href="#specifying-histogram-properties" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <p>The <code class="docutils literal notranslate"><span class="pre">plot_histogram()</span></code> has a few options to adjust the output graph.
 The first option is the <code class="docutils literal notranslate"><span class="pre">legend</span></code> kwarg. This is used to provide a
 label for the executions. It takes a list of strings use to label each
@@ -1533,29 +1531,13 @@ output figure.</p>
 <img alt="Histogram with two sets of bars colored orange and black respectively." src="../_images/plotting_data_in_qiskit_9_0.png" />
 </div>
 <div class="section" id="saving-histograms">
-<h3>Saving Histograms<a class="headerlink" href="#saving-histograms" title="このヘッドラインへのパーマリンク">¶</a></h3>
-<p>When using the plot_histogram() function it returns a
-<code class="docutils literal notranslate"><span class="pre">matplotlib.Figure</span></code> for the rendered visualization. Jupyter notebooks
-understand this return type and renders it for us in this tutorial, but
-when running outside of jupyter you do not have this feature
-automatically. However, <code class="docutils literal notranslate"><span class="pre">matplotlib.Figure</span></code> class natively has methods
-to both display and save the visualization. You can call <code class="docutils literal notranslate"><span class="pre">.show()</span></code> on
-the returned object from <code class="docutils literal notranslate"><span class="pre">plot_histogram()</span></code> to open the image in a new
-window (assuming your configured matplotlib backend is interactive). Or
-alternatively you can call <code class="docutils literal notranslate"><span class="pre">.savefig(out.png)</span></code> to save the figure to
-<code class="docutils literal notranslate"><span class="pre">out.png</span></code>. The <code class="docutils literal notranslate"><span class="pre">savefig()</span></code> takes a path so you can just the location
-and filename where you’re saving the output.</p>
+<h3>ヒストグラムの保存<a class="headerlink" href="#saving-histograms" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<p>視覚化のために plot_histogram() 関数を呼び出した場合のリターンは <code class="docutils literal notranslate"><span class="pre">matplotlib.Figure</span></code> です。Jupyter notebook はリターンタイプを理解するので、このチュートリアルでは表示されますが、jupyter 以外で実行する場合にはこの機能は自動的には使えません。<code class="docutils literal notranslate"><span class="pre">matplotlib.Figure</span></code> クラス自体は視覚化されたものを表示、保存する機能をもともと持っています。<code class="docutils literal notranslate"><span class="pre">plot_histogram()</span></code> からの返却オブジェクトに対して <code class="docutils literal notranslate"><span class="pre">.show()</span></code> をコールするとイメージが新しいウィンドウで開きます (matplotlib バックエンドをインタラクティブに設定していることを想定)。あるいは <code class="docutils literal notranslate"><span class="pre">.savefig(out.png)</span></code> で 図を``out.png`` に保存できます。<code class="docutils literal notranslate"><span class="pre">savefig()</span></code> はパスを引数に取り、保存しようとしている図の場所やファイル名を指定できます。</p>
 </div>
 </div>
 <div class="section" id="interactive-histograms">
-<h2>Interactive Histograms<a class="headerlink" href="#interactive-histograms" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<p>There is an alternative function for plotting histograms when running in a
-Jupyter notebook. This function, <code class="docutils literal notranslate"><span class="pre">iplot_histogram()</span></code>, is made using an
-externally hosted JS library for use in Jupyter Notebooks. The
-interactive plot can only be used if you are running inside a Jupyter
-Notebook and only if you have external connectivity to the host with the
-JS library. If you use <code class="docutils literal notranslate"><span class="pre">iplot_histogram()</span></code> outside of a Jupyter
-Notebook, it will fail.</p>
+<h2>インタラクティブなヒストグラム<a class="headerlink" href="#interactive-histograms" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>Jupyter notebook で実行している時にはヒストグラムのプロットに別の関数が使えます。この関数、<code class="docutils literal notranslate"><span class="pre">iplot_histogram()</span></code> 、は Jupyter Notebook 利用のために外部でホストされた JS ライブラリで利用されます。つまり、インタラクティブなプロットは Jupyter Notebookの内部で実行しており、さらに JS ライブラリをもったホストへの外部接続がある場合に限って利用できます。<a href="#id1"><span class="problematic" id="id2">``</span></a>iplot_histogram()``を Jupyter Notebook の外部で実行すると失敗します。</p>
 <div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qiskit.visualization</span> <span class="k">import</span> <span class="n">iplot_histogram</span>
 </pre></div>
 </div>
@@ -1582,13 +1564,8 @@ Notebook, it will fail.</p>
     });
 </script></div>
 <div class="section" id="state-plots">
-<h2>State Plots<a class="headerlink" href="#state-plots" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<p>In many situations you want to see the state of a quantum computer. This
-could be for debugging. Here we assume you have this state (either from
-simulation or state tomography) and the goal is to visualize the quantum
-state. This requires exponential resources, so we advise to only view
-the state of small quantum systems. There are several functions for
-generating different types of visualization of a quantum state</p>
+<h2>状態プロット<a class="headerlink" href="#state-plots" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>多くの場合、量子コンピューターの状態を見たい場合があります。デバッグのためなどが考えられます。ここではこの状態(シミュレーションからか状態トモグラフィーから) があると仮定し、目的は量子状態を視覚化することです。これには指数関数的なリソースが必要になるので、小さな量子システムの状態の表示だけに留めるようにしてください。量子状態の様々なタイプ視覚化のための関数が幾つか用意されています。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">plot_state_city</span><span class="p">(</span><span class="n">quantum_state</span><span class="p">)</span>
 <span class="n">plot_state_paulivec</span><span class="p">(</span><span class="n">quantum_state</span><span class="p">)</span>
 <span class="n">plot_state_qsphere</span><span class="p">(</span><span class="n">quantum_state</span><span class="p">)</span>
@@ -1596,13 +1573,10 @@ generating different types of visualization of a quantum state</p>
 <span class="n">plot_bloch_multivector</span><span class="p">(</span><span class="n">quantum_state</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>A quantum state is either a state matrix <span class="math notranslate nohighlight">\(\rho\)</span> (Hermitian matrix)
-or statevector <span class="math notranslate nohighlight">\(|\psi\rangle\)</span> (complex vector). The state matrix
-is related to the statevector by</p>
+<p>量子状態は状態行列 <span class="math notranslate nohighlight">\(\rho\)</span> (エルミート行列)か状態ベクトル <span class="math notranslate nohighlight">\(|\psi\rangle\)</span> (複素ベクトル)です。状態行列は状態ベクトルと以下の関係にあります。</p>
 <div class="math notranslate nohighlight">
 \[\rho = |\psi\rangle\langle \psi|.\]</div>
-<p>And is more general as it can represent mixed states (positive sum of
-statevectors)</p>
+<p>またこれは混合状態(状態ベクトルの正値和) を表すのでより一般的です。</p>
 <div class="math notranslate nohighlight">
 \[\rho = \sum_k p_k |\psi_k\rangle\langle \psi_k |.\]</div>
 <div class="line-block">
