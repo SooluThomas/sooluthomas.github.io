@@ -826,10 +826,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#installing-from-source">Installing from Source</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#installing-terra-from-source">Installing Terra from Source</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#installing-aer-from-source">Installing Aer from Source</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#custom-options-during-wheel-builds">Custom options during wheel builds</a></li>
-</ul>
-</li>
+<li class="toctree-l3"><a class="reference internal" href="#installing-aer-from-source">Installing Aer from Source</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#installing-ignis-from-source">Installing Ignis from Source</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#installing-aqua-from-source">Installing Aqua from Source</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#install-chemistry-from-source">Install Chemistry from Source</a></li>
@@ -1610,10 +1607,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#installing-from-source">Installing from Source</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#installing-terra-from-source">Installing Terra from Source</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#installing-aer-from-source">Installing Aer from Source</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#custom-options-during-wheel-builds">Custom options during wheel builds</a></li>
-</ul>
-</li>
+<li class="toctree-l3"><a class="reference internal" href="#installing-aer-from-source">Installing Aer from Source</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#installing-ignis-from-source">Installing Ignis from Source</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#installing-aqua-from-source">Installing Aqua from Source</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#install-chemistry-from-source">Install Chemistry from Source</a></li>
@@ -1910,8 +1904,9 @@ run the example with the following command.</p>
 </div>
 </div>
 <p>After you’ve installed Terra, you can install Aer as an add-on to run additional simulators.</p>
-<blockquote>
-<div><p>If you do not intend to install any other components qiskit-terra will
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>If you do not intend to install any other components qiskit-terra will
 emit a <code class="docutils literal notranslate"><span class="pre">RuntimeWarning</span></code> warning that both qiskit-aer and
 qiskit-ibmq-provider are not installed. This is done because the more
 common case is to have users who intend to use the additional elements
@@ -1922,13 +1917,10 @@ you wish to suppress these warnings this is easy to do by adding:</p>
                         <span class="n">module</span><span class="o">=</span><span class="s1">&#39;qiskit&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>before any <code class="docutils literal notranslate"><span class="pre">qiskit</span></code> imports in your code. That will suppress just the
+<p class="last">before any <code class="docutils literal notranslate"><span class="pre">qiskit</span></code> imports in your code. That will suppress just the
 warning about the missing qiskit-aer and qiskit-ibmq-provider, but still
 display any other warnings from qiskit or other packages.</p>
-</div></blockquote>
-<p>&gt;&gt;&gt;&gt;&gt;&gt;&gt; master
-Installing IBMQ Provider from Source
-=====================================</p>
+</div>
 <ol class="arabic">
 <li><p class="first">Clone the qiskit-ibmq-provider repository.</p>
 <div class="code sh highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">Qiskit</span><span class="o">/</span><span class="n">qiskit</span><span class="o">-</span><span class="n">ibmq</span><span class="o">-</span><span class="n">provider</span><span class="o">.</span><span class="n">git</span>
@@ -2024,7 +2016,7 @@ you can build a python wheel manually.</p>
 </pre></div>
 </div>
 <p>If you need to set a custom option during the wheel build you can refer to
-<a class="reference internal" href="#aer-wheel-build-options"><span class="std std-ref">Custom options during wheel builds</span></a>.</p>
+<span class="xref std std-ref">aer_wheel_build_options</span>.</p>
 <p>After you build the python wheel it will be stored in the <code class="docutils literal notranslate"><span class="pre">dist/</span></code> dir in the
 Aer repository. The exact version will depend</p>
 <div class="code sh highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">dist</span>
@@ -2070,7 +2062,7 @@ for your environment you can build a python wheel manually.</p>
 </pre></div>
 </div>
 <p>If you need to set a custom option during the wheel build you can refer to
-<a class="reference internal" href="#aer-wheel-build-options"><span class="std std-ref">Custom options during wheel builds</span></a>.</p>
+<span class="xref std std-ref">aer_wheel_build_options</span>.</p>
 <p>After you build the python wheel it will be stored in the <code class="docutils literal notranslate"><span class="pre">dist/</span></code> dir in the
 Aer repository. The exact version will depend</p>
 <div class="code sh highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">dist</span>
@@ -2110,7 +2102,7 @@ that instead.</p>
 </pre></div>
 </div>
 <p>If you need to set a custom option during the wheel build you can refer to
-<a class="reference internal" href="#aer-wheel-build-options"><span class="std std-ref">Custom options during wheel builds</span></a>.</p>
+<span class="xref std std-ref">aer_wheel_build_options</span>.</p>
 <p>After you build the python wheel it will be stored in the <code class="docutils literal notranslate"><span class="pre">dist/</span></code> dir in the
 Aer repository. The exact version will depend</p>
 <div class="code sh highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">dist</span>
@@ -2123,8 +2115,6 @@ Aer under development.</p>
 </ol>
 </div>
 </div>
-<div class="section" id="custom-options-during-wheel-builds">
-<span id="aer-wheel-build-options"></span><h4>Custom options during wheel builds<a class="headerlink" href="#custom-options-during-wheel-builds" title="Permalink to this headline">¶</a></h4>
 <p>The Aer build system uses <a class="reference external" href="https://scikit-build.readthedocs.io/en/latest/index.html">scikit-build</a>
 to run the compilation when building it with the python interface. It acts as an interface for
 <a class="reference external" href="https://setuptools.readthedocs.io/en/latest/">setuptools</a> to call <a class="reference external" href="https://cmake.org/">CMake</a>
@@ -2211,7 +2201,6 @@ should be used or not</td>
 <p class="last">Some of these options are not platform specific, if a platform is listed
 this is just outlining it’s commonly used in that environment. Refer to the
 tool documentation for more information.</p>
-</div>
 </div>
 </div>
 <div class="section" id="installing-ignis-from-source">
