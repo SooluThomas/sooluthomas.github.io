@@ -59,7 +59,7 @@
     <link rel="index" title="索引" href="genindex.html" />
     <link rel="search" title="検索" href="search.html" />
     <link rel="next" title="Community Extensions" href="community.html" />
-    <link rel="prev" title="Release Notes" href="release_notes.html" /> 
+    <link rel="prev" title="Development Strategy" href="development_strategy.html" /> 
   </head>
 <body>
   <header>
@@ -140,7 +140,6 @@
 <li class="toctree-l2"><a class="reference internal" href="getting_started.html#next-steps">次のステップ</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="faq.html">Frequently Asked Questions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="terra/index.html">Qiskit Terra</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="terra/quantum_circuits.html">回路とレジスター</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="terra/quantum_circuits.html#creating-registers">レジスターの作成</a></li>
@@ -597,7 +596,47 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Qiskit に貢献する</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#where-things-are">Qiskitのコードのロケーションについて</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#getting-started">はじめに</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#writing-and-building-documentation">ドキュメンテーションの記述とビルド</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#translating-documentation">ドキュメンテーションの翻訳について</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#joining-the-qiskitdocs-crowdin-project">QiskitDocs Crowdin プロジェクトに参加する</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#translation-workflow">翻訳のワークフロー</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#installing-from-source">ソースからインストールする方法</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#installing-terra-from-source">ソースから Terra をインストールする</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#installing-aer-from-source">Aerのソースコードからのインストール</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#custom-options-during-wheel-builds">Custom options during wheel builds</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#installing-ignis-from-source">Ignisのソースコードからのインストール</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#installing-aqua-from-source">Aquaのソースコードからのインストール</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#install-chemistry-from-source">Chemistryのソースコードからのインストール</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="community.html">Community Extensions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="community.html#backend-providers">Backend Providers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="community.html#additional-providers">Additional providers</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="community.html#circuit-optimization">Circuit Optimization</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="community.html#additional-passes">Additional passes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="community.html#tools">Tools</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="community.html#additional-tools">Additional Tools</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="release_notes.html">Release Notes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="release_notes.html#version-history">Version History</a></li>
 <li class="toctree-l2"><a class="reference internal" href="release_notes.html#qiskit-0-11-1">Qiskit 0.11.1</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="release_notes.html#terra-0-8">Terra 0.8</a></li>
 <li class="toctree-l3"><a class="reference internal" href="release_notes.html#aer-0-2">Aer 0.2</a></li>
@@ -705,47 +744,7 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="release_notes.html#version-history">Version History</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Qiskit に貢献する</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#where-things-are">Qiskitのコードのロケーションについて</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#getting-started">はじめに</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#writing-and-building-documentation">ドキュメンテーションの記述とビルド</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#translating-documentation">ドキュメンテーションの翻訳について</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#joining-the-qiskitdocs-crowdin-project">QiskitDocs Crowdin プロジェクトに参加する</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#translation-workflow">翻訳のワークフロー</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#installing-from-source">ソースからインストールする方法</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#installing-terra-from-source">ソースから Terra をインストールする</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#installing-aer-from-source">Aerのソースコードからのインストール</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#custom-options-during-wheel-builds">Custom options during wheel builds</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#installing-ignis-from-source">Ignisのソースコードからのインストール</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#installing-aqua-from-source">Aquaのソースコードからのインストール</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#install-chemistry-from-source">Chemistryのソースコードからのインストール</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="community.html">Community Extensions</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="community.html#backend-providers">Backend Providers</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="community.html#additional-providers">Additional providers</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="community.html#circuit-optimization">Circuit Optimization</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="community.html#additional-passes">Additional passes</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="community.html#tools">Tools</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="community.html#additional-tools">Additional Tools</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="license.html">ライセンス</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">Frequently Asked Questions</a></li>
 </ul>
 
       </nav>
@@ -816,7 +815,6 @@
 <li class="toctree-l2"><a class="reference internal" href="getting_started.html#next-steps">次のステップ</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="faq.html">Frequently Asked Questions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="terra/index.html">Qiskit Terra</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="terra/quantum_circuits.html">回路とレジスター</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="terra/quantum_circuits.html#creating-registers">レジスターの作成</a></li>
@@ -1273,7 +1271,47 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Qiskit に貢献する</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#where-things-are">Qiskitのコードのロケーションについて</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#getting-started">はじめに</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#writing-and-building-documentation">ドキュメンテーションの記述とビルド</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#translating-documentation">ドキュメンテーションの翻訳について</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#joining-the-qiskitdocs-crowdin-project">QiskitDocs Crowdin プロジェクトに参加する</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#translation-workflow">翻訳のワークフロー</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#installing-from-source">ソースからインストールする方法</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#installing-terra-from-source">ソースから Terra をインストールする</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#installing-aer-from-source">Aerのソースコードからのインストール</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#custom-options-during-wheel-builds">Custom options during wheel builds</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#installing-ignis-from-source">Ignisのソースコードからのインストール</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#installing-aqua-from-source">Aquaのソースコードからのインストール</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#install-chemistry-from-source">Chemistryのソースコードからのインストール</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="community.html">Community Extensions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="community.html#backend-providers">Backend Providers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="community.html#additional-providers">Additional providers</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="community.html#circuit-optimization">Circuit Optimization</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="community.html#additional-passes">Additional passes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="community.html#tools">Tools</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="community.html#additional-tools">Additional Tools</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="release_notes.html">Release Notes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="release_notes.html#version-history">Version History</a></li>
 <li class="toctree-l2"><a class="reference internal" href="release_notes.html#qiskit-0-11-1">Qiskit 0.11.1</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="release_notes.html#terra-0-8">Terra 0.8</a></li>
 <li class="toctree-l3"><a class="reference internal" href="release_notes.html#aer-0-2">Aer 0.2</a></li>
@@ -1381,47 +1419,7 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="release_notes.html#version-history">Version History</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Qiskit に貢献する</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#where-things-are">Qiskitのコードのロケーションについて</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#getting-started">はじめに</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#writing-and-building-documentation">ドキュメンテーションの記述とビルド</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#translating-documentation">ドキュメンテーションの翻訳について</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#joining-the-qiskitdocs-crowdin-project">QiskitDocs Crowdin プロジェクトに参加する</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#translation-workflow">翻訳のワークフロー</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#installing-from-source">ソースからインストールする方法</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#installing-terra-from-source">ソースから Terra をインストールする</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#installing-aer-from-source">Aerのソースコードからのインストール</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#custom-options-during-wheel-builds">Custom options during wheel builds</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#installing-ignis-from-source">Ignisのソースコードからのインストール</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#installing-aqua-from-source">Aquaのソースコードからのインストール</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#install-chemistry-from-source">Chemistryのソースコードからのインストール</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="community.html">Community Extensions</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="community.html#backend-providers">Backend Providers</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="community.html#additional-providers">Additional providers</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="community.html#circuit-optimization">Circuit Optimization</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="community.html#additional-passes">Additional passes</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="community.html#tools">Tools</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="community.html#additional-tools">Additional Tools</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="license.html">ライセンス</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">Frequently Asked Questions</a></li>
 </ul>
 
       </nav>
@@ -2023,10 +2021,10 @@ to build in parallel using 8 processes.</p>
 
       <div class="clearer"></div>
     </div><div class="pagenation">
-     <a id="button-prev" href="release_notes.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
+     <a id="button-prev" href="development_strategy.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
          <div class="pagenation-text">
             <span class="pagenation-direction">Previous</span>
-            <div>Release Notes</div>
+            <div>Development Strategy</div>
          </div>
      </a>
      <a id="button-next" href="community.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
