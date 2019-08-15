@@ -58,7 +58,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Community Extensions" href="community.html" />
-    <link rel="prev" title="qiskit.version module" href="autodoc/qiskit.version.html" /> 
+    <link rel="prev" title="Development Strategy" href="development_strategy.html" /> 
   </head>
 <body>
   <header>
@@ -139,7 +139,6 @@
 <li class="toctree-l2"><a class="reference internal" href="getting_started.html#next-steps">Next Steps</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="faq.html">Frequently Asked Questions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="terra/index.html">Qiskit Terra</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="terra/quantum_circuits.html">Circuits and Registers</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="terra/quantum_circuits.html#creating-registers">Creating Registers</a></li>
@@ -596,7 +595,47 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Contributing to Qiskit</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#where-things-are">Where Things Are</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#getting-started">Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#writing-and-building-documentation">Writing and Building Documentation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#translating-documentation">Translating Documentation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#joining-the-qiskitdocs-crowdin-project">Joining the QiskitDocs Crowdin Project</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#translation-workflow">Translation Workflow</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#installing-from-source">Installing from Source</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#installing-terra-from-source">Installing Terra from Source</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#installing-aer-from-source">Installing Aer from Source</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#custom-options-during-wheel-builds">Custom options during wheel builds</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#installing-ignis-from-source">Installing Ignis from Source</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#installing-aqua-from-source">Installing Aqua from Source</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#install-chemistry-from-source">Install Chemistry from Source</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="community.html">Community Extensions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="community.html#backend-providers">Backend Providers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="community.html#additional-providers">Additional providers</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="community.html#circuit-optimization">Circuit Optimization</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="community.html#additional-passes">Additional passes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="community.html#tools">Tools</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="community.html#additional-tools">Additional Tools</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="release_notes.html">Release Notes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="release_notes.html#version-history">Version History</a></li>
 <li class="toctree-l2"><a class="reference internal" href="release_notes.html#qiskit-0-11-1">Qiskit 0.11.1</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="release_notes.html#terra-0-8">Terra 0.8</a></li>
 <li class="toctree-l3"><a class="reference internal" href="release_notes.html#aer-0-2">Aer 0.2</a></li>
@@ -704,7 +743,7 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="release_notes.html#version-history">Version History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">Frequently Asked Questions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="autodoc/qiskit.html">API References</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="autodoc/qiskit.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="autodoc/qiskit.aqua.html">qiskit.aqua package</a><ul>
@@ -813,43 +852,6 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Contributing to Qiskit</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#where-things-are">Where Things Are</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#getting-started">Getting Started</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#writing-and-building-documentation">Writing and Building Documentation</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#translating-documentation">Translating Documentation</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#joining-the-qiskitdocs-crowdin-project">Joining the QiskitDocs Crowdin Project</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#translation-workflow">Translation Workflow</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#installing-from-source">Installing from Source</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#installing-terra-from-source">Installing Terra from Source</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#installing-aer-from-source">Installing Aer from Source</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#installing-ignis-from-source">Installing Ignis from Source</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#installing-aqua-from-source">Installing Aqua from Source</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#install-chemistry-from-source">Install Chemistry from Source</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="community.html">Community Extensions</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="community.html#backend-providers">Backend Providers</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="community.html#additional-providers">Additional providers</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="community.html#circuit-optimization">Circuit Optimization</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="community.html#additional-passes">Additional passes</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="community.html#tools">Tools</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="community.html#additional-tools">Additional Tools</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
 </ul>
 
       </nav>
@@ -920,7 +922,6 @@
 <li class="toctree-l2"><a class="reference internal" href="getting_started.html#next-steps">Next Steps</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="faq.html">Frequently Asked Questions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="terra/index.html">Qiskit Terra</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="terra/quantum_circuits.html">Circuits and Registers</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="terra/quantum_circuits.html#creating-registers">Creating Registers</a></li>
@@ -1377,7 +1378,47 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Contributing to Qiskit</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#where-things-are">Where Things Are</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#getting-started">Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#writing-and-building-documentation">Writing and Building Documentation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#translating-documentation">Translating Documentation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#joining-the-qiskitdocs-crowdin-project">Joining the QiskitDocs Crowdin Project</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#translation-workflow">Translation Workflow</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#installing-from-source">Installing from Source</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#installing-terra-from-source">Installing Terra from Source</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#installing-aer-from-source">Installing Aer from Source</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#custom-options-during-wheel-builds">Custom options during wheel builds</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#installing-ignis-from-source">Installing Ignis from Source</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#installing-aqua-from-source">Installing Aqua from Source</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#install-chemistry-from-source">Install Chemistry from Source</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="community.html">Community Extensions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="community.html#backend-providers">Backend Providers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="community.html#additional-providers">Additional providers</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="community.html#circuit-optimization">Circuit Optimization</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="community.html#additional-passes">Additional passes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="community.html#tools">Tools</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="community.html#additional-tools">Additional Tools</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="release_notes.html">Release Notes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="release_notes.html#version-history">Version History</a></li>
 <li class="toctree-l2"><a class="reference internal" href="release_notes.html#qiskit-0-11-1">Qiskit 0.11.1</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="release_notes.html#terra-0-8">Terra 0.8</a></li>
 <li class="toctree-l3"><a class="reference internal" href="release_notes.html#aer-0-2">Aer 0.2</a></li>
@@ -1485,7 +1526,7 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="release_notes.html#version-history">Version History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">Frequently Asked Questions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="autodoc/qiskit.html">API References</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="autodoc/qiskit.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="autodoc/qiskit.aqua.html">qiskit.aqua package</a><ul>
@@ -1594,43 +1635,6 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Contributing to Qiskit</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#where-things-are">Where Things Are</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#getting-started">Getting Started</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#writing-and-building-documentation">Writing and Building Documentation</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#translating-documentation">Translating Documentation</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#joining-the-qiskitdocs-crowdin-project">Joining the QiskitDocs Crowdin Project</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#translation-workflow">Translation Workflow</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#installing-from-source">Installing from Source</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#installing-terra-from-source">Installing Terra from Source</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#installing-aer-from-source">Installing Aer from Source</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#installing-ignis-from-source">Installing Ignis from Source</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#installing-aqua-from-source">Installing Aqua from Source</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#install-chemistry-from-source">Install Chemistry from Source</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="community.html">Community Extensions</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="community.html#backend-providers">Backend Providers</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="community.html#additional-providers">Additional providers</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="community.html#circuit-optimization">Circuit Optimization</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="community.html#additional-passes">Additional passes</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="community.html#tools">Tools</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="community.html#additional-tools">Additional Tools</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
 </ul>
 
       </nav>
@@ -2016,7 +2020,7 @@ you can build a python wheel manually.</p>
 </pre></div>
 </div>
 <p>If you need to set a custom option during the wheel build you can refer to
-<span class="xref std std-ref">aer_wheel_build_options</span>.</p>
+<a class="reference internal" href="#aer-wheel-build-options"><span class="std std-ref">Custom options during wheel builds</span></a>.</p>
 <p>After you build the python wheel it will be stored in the <code class="docutils literal notranslate"><span class="pre">dist/</span></code> dir in the
 Aer repository. The exact version will depend</p>
 <div class="code sh highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">dist</span>
@@ -2062,7 +2066,7 @@ for your environment you can build a python wheel manually.</p>
 </pre></div>
 </div>
 <p>If you need to set a custom option during the wheel build you can refer to
-<span class="xref std std-ref">aer_wheel_build_options</span>.</p>
+<a class="reference internal" href="#aer-wheel-build-options"><span class="std std-ref">Custom options during wheel builds</span></a>.</p>
 <p>After you build the python wheel it will be stored in the <code class="docutils literal notranslate"><span class="pre">dist/</span></code> dir in the
 Aer repository. The exact version will depend</p>
 <div class="code sh highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">dist</span>
@@ -2102,7 +2106,7 @@ that instead.</p>
 </pre></div>
 </div>
 <p>If you need to set a custom option during the wheel build you can refer to
-<span class="xref std std-ref">aer_wheel_build_options</span>.</p>
+<a class="reference internal" href="#aer-wheel-build-options"><span class="std std-ref">Custom options during wheel builds</span></a>.</p>
 <p>After you build the python wheel it will be stored in the <code class="docutils literal notranslate"><span class="pre">dist/</span></code> dir in the
 Aer repository. The exact version will depend</p>
 <div class="code sh highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">dist</span>
@@ -2115,6 +2119,8 @@ Aer under development.</p>
 </ol>
 </div>
 </div>
+<div class="section" id="custom-options-during-wheel-builds">
+<span id="aer-wheel-build-options"></span><h4>Custom options during wheel builds<a class="headerlink" href="#custom-options-during-wheel-builds" title="Permalink to this headline">¶</a></h4>
 <p>The Aer build system uses <a class="reference external" href="https://scikit-build.readthedocs.io/en/latest/index.html">scikit-build</a>
 to run the compilation when building it with the python interface. It acts as an interface for
 <a class="reference external" href="https://setuptools.readthedocs.io/en/latest/">setuptools</a> to call <a class="reference external" href="https://cmake.org/">CMake</a>
@@ -2201,6 +2207,7 @@ should be used or not</td>
 <p class="last">Some of these options are not platform specific, if a platform is listed
 this is just outlining it’s commonly used in that environment. Refer to the
 tool documentation for more information.</p>
+</div>
 </div>
 </div>
 <div class="section" id="installing-ignis-from-source">
@@ -2307,10 +2314,10 @@ project don’t require a reinstall to be applied you can do this with:</p>
 
       <div class="clearer"></div>
     </div><div class="pagenation">
-     <a id="button-prev" href="autodoc/qiskit.version.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
+     <a id="button-prev" href="development_strategy.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
          <div class="pagenation-text">
             <span class="pagenation-direction">Previous</span>
-            <div>qiskit.version module</div>
+            <div>Development Strategy</div>
          </div>
      </a>
      <a id="button-next" href="community.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
