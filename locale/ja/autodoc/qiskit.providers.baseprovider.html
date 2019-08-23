@@ -1650,7 +1650,7 @@
 <dt id="qiskit.providers.baseprovider.BaseProvider">
 <em class="property">class </em><code class="descname">BaseProvider</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/providers/baseprovider.html#BaseProvider"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.providers.baseprovider.BaseProvider" title="この定義へのパーマリンク">¶</a></dt>
 <dd><p>ベースクラス: <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
-<p>Base class for a backend provider.</p>
+<p>Base class for a Backend Provider.</p>
 <dl class="method">
 <dt id="qiskit.providers.baseprovider.BaseProvider.backends">
 <code class="descname">backends</code><span class="sig-paren">(</span><em>name=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/providers/baseprovider.html#BaseProvider.backends"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.providers.baseprovider.BaseProvider.backends" title="この定義へのパーマリンク">¶</a></dt>
@@ -1661,12 +1661,12 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">パラメータ:</th><td class="field-body"><ul class="first simple">
 <li><strong>name</strong> (<em>str</em>) -- name of the backend.</li>
-<li><strong>**kwargs</strong> (<em>dict</em>) -- dict used for filtering.</li>
+<li><strong>**kwargs</strong> -- dict used for filtering.</li>
 </ul>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">戻り値:</th><td class="field-body"><p class="first"><dl class="docutils">
-<dt>a list of backends matching the filtering</dt>
+<dt>a list of Backends that match the filtering</dt>
 <dd><p class="first last">criteria.</p>
 </dd>
 </dl>
@@ -1690,7 +1690,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">パラメータ:</th><td class="field-body"><ul class="first simple">
 <li><strong>name</strong> (<em>str</em>) -- name of the backend.</li>
-<li><strong>**kwargs</strong> (<em>dict</em>) -- dict used for filtering.</li>
+<li><strong>**kwargs</strong> -- dict used for filtering.</li>
 </ul>
 </td>
 </tr>
@@ -1701,7 +1701,7 @@
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><code class="xref py py-exc docutils literal notranslate"><span class="pre">QiskitBackendNotFoundError</span></code> -- if no backend could be found or
-more than one backend matches.</p>
+more than one backend matches the filtering criteria.</p>
 </td>
 </tr>
 </tbody>

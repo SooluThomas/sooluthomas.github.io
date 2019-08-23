@@ -1657,6 +1657,65 @@
 <dd><p>Assemble a QasmQobjInstruction</p>
 </dd></dl>
 
+<dl class="method">
+<dt id="qiskit.circuit.gate.Gate.broadcast_arguments">
+<code class="descname">broadcast_arguments</code><span class="sig-paren">(</span><em>qargs</em>, <em>cargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/circuit/gate.html#Gate.broadcast_arguments"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.circuit.gate.Gate.broadcast_arguments" title="この定義へのパーマリンク">¶</a></dt>
+<dd><p>Validation and handling of the arguments and its relationship.</p>
+<p>For example:
+<cite>cx([q[0],q[1]], q[2])</cite> means <cite>cx(q[0], q[2]); cx(q[1], q[2])</cite>. This method
+yields the arguments in the right grouping. In the given example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ow">in</span><span class="p">:</span> <span class="p">[[</span><span class="n">q</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">q</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span> <span class="n">q</span><span class="p">[</span><span class="mi">2</span><span class="p">]],[]</span>
+<span class="n">outs</span><span class="p">:</span> <span class="p">[</span><span class="n">q</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">q</span><span class="p">[</span><span class="mi">2</span><span class="p">]],</span> <span class="p">[]</span>
+      <span class="p">[</span><span class="n">q</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">q</span><span class="p">[</span><span class="mi">2</span><span class="p">]],</span> <span class="p">[]</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt>The general broadcasting rules are:</dt>
+<dd><ul class="first last">
+<li><p class="first">If len(qargs) == 1:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">q</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">q</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="n">q</span><span class="p">[</span><span class="mi">0</span><span class="p">]],[</span><span class="n">q</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">If len(qargs) == 2:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[[</span><span class="n">q</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">q</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span> <span class="p">[</span><span class="n">r</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">r</span><span class="p">[</span><span class="mi">1</span><span class="p">]]]</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="n">q</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">r</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span> <span class="p">[</span><span class="n">q</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">r</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span>
+<span class="p">[[</span><span class="n">q</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span> <span class="p">[</span><span class="n">r</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">r</span><span class="p">[</span><span class="mi">1</span><span class="p">]]]</span>       <span class="o">-&gt;</span> <span class="p">[</span><span class="n">q</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">r</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span> <span class="p">[</span><span class="n">q</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">r</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span>
+<span class="p">[[</span><span class="n">q</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">q</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span> <span class="p">[</span><span class="n">r</span><span class="p">[</span><span class="mi">0</span><span class="p">]]]</span>       <span class="o">-&gt;</span> <span class="p">[</span><span class="n">q</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">r</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span> <span class="p">[</span><span class="n">q</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">r</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">If len(qargs) &gt;= 3:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">q</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">q</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span> <span class="p">[</span><span class="n">r</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">r</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span>  <span class="o">...</span><span class="p">]</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="n">q</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">r</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="o">...</span><span class="p">],</span> <span class="p">[</span><span class="n">q</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">r</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="o">...</span><span class="p">]</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">パラメータ:</th><td class="field-body"><ul class="first simple">
+<li><strong>qargs</strong> (<a class="reference internal" href="qiskit.validation.fields.containers.html#qiskit.validation.fields.containers.List" title="qiskit.validation.fields.containers.List"><em>List</em></a>) -- List of quantum bit arguments.</li>
+<li><strong>cargs</strong> (<a class="reference internal" href="qiskit.validation.fields.containers.html#qiskit.validation.fields.containers.List" title="qiskit.validation.fields.containers.List"><em>List</em></a>) -- List of classical bit arguments.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">戻り値:</th><td class="field-body"><p class="first">A tuple with single arguments.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">戻り値の型:</th><td class="field-body"><p class="first">Tuple(<a class="reference internal" href="qiskit.validation.fields.containers.html#qiskit.validation.fields.containers.List" title="qiskit.validation.fields.containers.List">List</a>, <a class="reference internal" href="qiskit.validation.fields.containers.html#qiskit.validation.fields.containers.List" title="qiskit.validation.fields.containers.List">List</a>)</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><code class="xref py py-exc docutils literal notranslate"><span class="pre">QiskitError</span></code> -- If the input is not valid. For example, the number of
+arguments does not match the gate expectation.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
 <dl class="attribute">
 <dt id="qiskit.circuit.gate.Gate.label">
 <code class="descname">label</code><a class="headerlink" href="#qiskit.circuit.gate.Gate.label" title="この定義へのパーマリンク">¶</a></dt>
@@ -1667,8 +1726,15 @@
 <dt id="qiskit.circuit.gate.Gate.to_matrix">
 <code class="descname">to_matrix</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/circuit/gate.html#Gate.to_matrix"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.circuit.gate.Gate.to_matrix" title="この定義へのパーマリンク">¶</a></dt>
 <dd><p>Return a Numpy.array for the gate unitary matrix.</p>
-<p>If a Gate subclass does not implement this method an exception
-will be raised when this base class method is called.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><code class="xref py py-exc docutils literal notranslate"><span class="pre">QiskitError</span></code> -- If a Gate subclass does not implement this method an
+exception will be raised when this base class method is called.</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 </dd></dl>

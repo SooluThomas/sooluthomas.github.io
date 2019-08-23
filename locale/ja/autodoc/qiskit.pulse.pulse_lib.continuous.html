@@ -1686,7 +1686,7 @@
 
 <dl class="function">
 <dt id="qiskit.pulse.pulse_lib.continuous.drag">
-<code class="descname">drag</code><span class="sig-paren">(</span><em>times: numpy.ndarray</em>, <em>amp: complex</em>, <em>center: float</em>, <em>sigma: float</em>, <em>beta: float</em>, <em>zeroed_width: Union[None</em>, <em>float] = None</em>, <em>rescale_amp: bool = False</em><span class="sig-paren">)</span> &#x2192; numpy.ndarray<a class="reference internal" href="../_modules/qiskit/pulse/pulse_lib/continuous.html#drag"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.pulse.pulse_lib.continuous.drag" title="この定義へのパーマリンク">¶</a></dt>
+<code class="descname">drag</code><span class="sig-paren">(</span><em>times: numpy.ndarray</em>, <em>amp: complex</em>, <em>center: float</em>, <em>sigma: float</em>, <em>beta: float</em>, <em>zeroed_width: Optional[float] = None</em>, <em>rescale_amp: bool = False</em><span class="sig-paren">)</span> &#x2192; numpy.ndarray<a class="reference internal" href="../_modules/qiskit/pulse/pulse_lib/continuous.html#drag"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.pulse.pulse_lib.continuous.drag" title="この定義へのパーマリンク">¶</a></dt>
 <dd><p>Continuous Y-only correction DRAG pulse for standard nonlinear oscillator (SNO) [1].</p>
 <dl class="docutils">
 <dt>[1] Gambetta, J. M., Motzoi, F., Merkel, S. T. &amp; Wilhelm, F. K.</dt>
@@ -1704,7 +1704,7 @@ in a weakly nonlinear oscillator. Phys. Rev. A 83, 012308 (2011).</dd>
 <li><strong>sigma</strong> -- Width (standard deviation) of pulse.</li>
 <li><strong>beta</strong> -- Y correction amplitude. For the SNO this is $beta=-frac{lambda_1^2}{4Delta_2}$.
 Where $lambds_1$ is the relative coupling strength between the first excited and second
-excited states and $Delta_2$ is the detuning between the resepective excited states.</li>
+excited states and $Delta_2$ is the detuning between the respective excited states.</li>
 <li><strong>zeroed_width</strong> -- Subtract baseline to gaussian pulses to make sure
 $Omega_g(center pm zeroed_width/2)=0$ is satisfied. This is used to avoid
 large discontinuities at the start of a gaussian pulse.</li>
@@ -1719,7 +1719,7 @@ be rescaled so that $Omega_g(center)-Omega_g(centerpm zeroed_width/2)=amp$.</li>
 
 <dl class="function">
 <dt id="qiskit.pulse.pulse_lib.continuous.gaussian">
-<code class="descname">gaussian</code><span class="sig-paren">(</span><em>times: numpy.ndarray</em>, <em>amp: complex</em>, <em>center: float</em>, <em>sigma: float</em>, <em>zeroed_width: Union[None</em>, <em>float] = None</em>, <em>rescale_amp: bool = False</em>, <em>ret_x: bool = False</em><span class="sig-paren">)</span> &#x2192; Union[numpy.ndarray, Tuple[numpy.ndarray, numpy.ndarray]]<a class="reference internal" href="../_modules/qiskit/pulse/pulse_lib/continuous.html#gaussian"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.pulse.pulse_lib.continuous.gaussian" title="この定義へのパーマリンク">¶</a></dt>
+<code class="descname">gaussian</code><span class="sig-paren">(</span><em>times: numpy.ndarray</em>, <em>amp: complex</em>, <em>center: float</em>, <em>sigma: float</em>, <em>zeroed_width: Optional[float] = None</em>, <em>rescale_amp: bool = False</em>, <em>ret_x: bool = False</em><span class="sig-paren">)</span> &#x2192; Union[numpy.ndarray, Tuple[numpy.ndarray, numpy.ndarray]]<a class="reference internal" href="../_modules/qiskit/pulse/pulse_lib/continuous.html#gaussian"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.pulse.pulse_lib.continuous.gaussian" title="この定義へのパーマリンク">¶</a></dt>
 <dd><p>Continuous unnormalized gaussian pulse.</p>
 <p>Integrated area under curve is $Omega_g(amp, sigma) = amp times np.sqrt(2pi sigma^2)$</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -1771,7 +1771,7 @@ $x=(times-center)/sigma.</li>
 
 <dl class="function">
 <dt id="qiskit.pulse.pulse_lib.continuous.gaussian_square">
-<code class="descname">gaussian_square</code><span class="sig-paren">(</span><em>times: numpy.ndarray</em>, <em>amp: complex</em>, <em>center: float</em>, <em>width: float</em>, <em>sigma: float</em>, <em>zeroed_width: Union[None</em>, <em>float] = None</em><span class="sig-paren">)</span> &#x2192; numpy.ndarray<a class="reference internal" href="../_modules/qiskit/pulse/pulse_lib/continuous.html#gaussian_square"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.pulse.pulse_lib.continuous.gaussian_square" title="この定義へのパーマリンク">¶</a></dt>
+<code class="descname">gaussian_square</code><span class="sig-paren">(</span><em>times: numpy.ndarray</em>, <em>amp: complex</em>, <em>center: float</em>, <em>width: float</em>, <em>sigma: float</em>, <em>zeroed_width: Optional[float] = None</em><span class="sig-paren">)</span> &#x2192; numpy.ndarray<a class="reference internal" href="../_modules/qiskit/pulse/pulse_lib/continuous.html#gaussian_square"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.pulse.pulse_lib.continuous.gaussian_square" title="この定義へのパーマリンク">¶</a></dt>
 <dd><p>Continuous gaussian square pulse.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1810,6 +1810,55 @@ to enforce $OmegaSquare(center pm zeroed_width/2)=0$.</li>
 </tr>
 </tbody>
 </table>
+</dd></dl>
+
+<dl class="function">
+<dt id="qiskit.pulse.pulse_lib.continuous.sech">
+<code class="descname">sech</code><span class="sig-paren">(</span><em>times: numpy.ndarray</em>, <em>amp: complex</em>, <em>center: float</em>, <em>sigma: float</em>, <em>ret_x: bool = False</em><span class="sig-paren">)</span> &#x2192; Union[numpy.ndarray, Tuple[numpy.ndarray, numpy.ndarray]]<a class="reference internal" href="../_modules/qiskit/pulse/pulse_lib/continuous.html#sech"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.pulse.pulse_lib.continuous.sech" title="この定義へのパーマリンク">¶</a></dt>
+<dd><p>Continuous unnormalized sech pulse.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">パラメータ:</th><td class="field-body"><ul class="first last simple">
+<li><strong>times</strong> -- Times to output pulse for.</li>
+<li><strong>amp</strong> -- Pulse amplitude at <cite>center</cite>.</li>
+<li><strong>center</strong> -- Center (mean) of pulse.</li>
+<li><strong>sigma</strong> -- Width (standard deviation) of pulse.</li>
+<li><strong>ret_x</strong> -- Return centered and standard deviation normalized pulse location.
+$x=(times-center)/sigma.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="qiskit.pulse.pulse_lib.continuous.sech_deriv">
+<code class="descname">sech_deriv</code><span class="sig-paren">(</span><em>times: numpy.ndarray</em>, <em>amp: complex</em>, <em>center: float</em>, <em>sigma: float</em>, <em>ret_sech: bool = False</em><span class="sig-paren">)</span> &#x2192; numpy.ndarray<a class="reference internal" href="../_modules/qiskit/pulse/pulse_lib/continuous.html#sech_deriv"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.pulse.pulse_lib.continuous.sech_deriv" title="この定義へのパーマリンク">¶</a></dt>
+<dd><p>Continuous unnormalized sech derivative pulse.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">パラメータ:</th><td class="field-body"><ul class="first last simple">
+<li><strong>times</strong> -- Times to output pulse for.</li>
+<li><strong>amp</strong> -- Pulse amplitude at <cite>center</cite>.</li>
+<li><strong>center</strong> -- Center (mean) of pulse.</li>
+<li><strong>sigma</strong> -- Width (standard deviation) of pulse.</li>
+<li><strong>ret_sech</strong> -- Return sech with which derivative was taken with.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="qiskit.pulse.pulse_lib.continuous.sech_fn">
+<code class="descname">sech_fn</code><span class="sig-paren">(</span><em>x</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/pulse/pulse_lib/continuous.html#sech_fn"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.pulse.pulse_lib.continuous.sech_fn" title="この定義へのパーマリンク">¶</a></dt>
+<dd><p>Hyperbolic secant function</p>
 </dd></dl>
 
 <dl class="function">

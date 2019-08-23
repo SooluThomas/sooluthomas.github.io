@@ -34,7 +34,7 @@
        </script>
         <script src="https://cloud.ibm.com/analytics/build/bluemix-analytics.min.js"></script>
     
-    <title>qiskit.quantum_info.analyzation.average &#8212; Qiskit 0.11.1 ドキュメント</title>
+    <title>qiskit.extensions.quantum_initializer.ucx &#8212; Qiskit 0.11.1 ドキュメント</title>
 
     <link rel="stylesheet" href="../../../../_static/material-icons.css" type="text/css" />
     <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
@@ -169,12 +169,12 @@
     <div class="document">
         <div class="page-content">
         
-  <h1>qiskit.quantum_info.analyzation.average のソースコード</h1><div class="highlight"><pre>
+  <h1>qiskit.extensions.quantum_initializer.ucx のソースコード</h1><div class="highlight"><pre>
 <span></span><span class="c1"># -*- coding: utf-8 -*-</span>
 
 <span class="c1"># This code is part of Qiskit.</span>
 <span class="c1">#</span>
-<span class="c1"># (C) Copyright IBM 2017, 2018.</span>
+<span class="c1"># (C) Copyright IBM 2019.</span>
 <span class="c1">#</span>
 <span class="c1"># This code is licensed under the Apache License, Version 2.0. You may</span>
 <span class="c1"># obtain a copy of this license in the LICENSE.txt file in the root directory</span>
@@ -184,37 +184,87 @@
 <span class="c1"># copyright notice, and modified files need to carry a notice indicating</span>
 <span class="c1"># that they have been altered from the originals.</span>
 
-<span class="sd">&quot;&quot;&quot;A collection of useful functions for post processing results.&quot;&quot;&quot;</span>
+<span class="c1"># pylint: disable=missing-param-doc</span>
+<span class="c1"># pylint: disable=missing-type-doc</span>
 
-<span class="kn">from</span> <span class="nn">.make_observable</span> <span class="k">import</span> <span class="n">make_dict_observable</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Implementation of the abstract class UCRot for uniformly controlled</span>
+<span class="sd">(also called multiplexed) single-qubit rotations around the X-axes</span>
+<span class="sd">(i.e., uniformly controlled R_x rotations).</span>
+<span class="sd">These gates can have several control qubits and a single target qubit.</span>
+<span class="sd">If the k control qubits are in the state ket(i) (in the computational bases),</span>
+<span class="sd">a single-qubit rotation R_x(a_i) is applied to the target qubit.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">math</span>
+
+<span class="kn">from</span> <span class="nn">qiskit</span> <span class="k">import</span> <span class="n">QuantumRegister</span><span class="p">,</span> <span class="n">QiskitError</span>
+<span class="kn">from</span> <span class="nn">qiskit.circuit.quantumcircuit</span> <span class="k">import</span> <span class="n">QuantumCircuit</span>
+<span class="kn">from</span> <span class="nn">qiskit.extensions.quantum_initializer.ucrot</span> <span class="k">import</span> <span class="n">UCRot</span>
 
 
-<div class="viewcode-block" id="average_data"><a class="viewcode-back" href="../../../../autodoc/qiskit.quantum_info.analyzation.average.html#qiskit.quantum_info.analyzation.average.average_data">[ドキュメント]</a><span class="k">def</span> <span class="nf">average_data</span><span class="p">(</span><span class="n">counts</span><span class="p">,</span> <span class="n">observable</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Compute the mean value of an diagonal observable.</span>
+<span class="k">class</span> <span class="nc">UCX</span><span class="p">(</span><span class="n">UCRot</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Uniformly controlled rotations (also called multiplexed rotations).</span>
+<span class="sd">    The decomposition is based on</span>
+<span class="sd">    &#39;Synthesis of Quantum Logic Circuits&#39; by V. Shende et al.</span>
+<span class="sd">    (https://arxiv.org/pdf/quant-ph/0406176.pdf)</span>
 
-<span class="sd">    Takes in a diagonal observable in dictionary, list or matrix format and then</span>
-<span class="sd">    calculates the sum_i value(i) P(i) where value(i) is the value of the</span>
-<span class="sd">    observable for state i.</span>
-
-<span class="sd">    Args:</span>
-<span class="sd">        counts (dict): a dict of outcomes from an experiment</span>
-<span class="sd">        observable (dict or matrix or list): The observable to be averaged over.</span>
-<span class="sd">        As an example, ZZ on qubits can be given as:</span>
-<span class="sd">        * dict: {&quot;00&quot;: 1, &quot;11&quot;: 1, &quot;01&quot;: -1, &quot;10&quot;: -1}</span>
-<span class="sd">        * matrix: [[1, 0, 0, 0], [0, -1, 0, 0, ], [0, 0, -1, 0], [0, 0, 0, 1]]</span>
-<span class="sd">        * matrix diagonal (list): [1, -1, -1, 1]</span>
-
-<span class="sd">    Returns:</span>
-<span class="sd">        Double: Average of the observable</span>
+<span class="sd">    Input:</span>
+<span class="sd">    angle_list = list of (real) rotation angles [a_0,...,a_{2^k-1}]</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">observable</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
-        <span class="n">observable</span> <span class="o">=</span> <span class="n">make_dict_observable</span><span class="p">(</span><span class="n">observable</span><span class="p">)</span>
-    <span class="n">temp</span> <span class="o">=</span> <span class="mi">0</span>
-    <span class="n">tot</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">counts</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
-    <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">counts</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">observable</span><span class="p">:</span>
-            <span class="n">temp</span> <span class="o">+=</span> <span class="n">counts</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">*</span> <span class="n">observable</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">/</span> <span class="n">tot</span>
-    <span class="k">return</span> <span class="n">temp</span></div>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">angle_list</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">angle_list</span><span class="p">,</span> <span class="s2">&quot;X&quot;</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">ucx</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">angle_list</span><span class="p">,</span> <span class="n">q_controls</span><span class="p">,</span> <span class="n">q_target</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Attach a uniformly controlled (also called multiplexed) Rx rotation gate to a circuit.</span>
+<span class="sd">    The decomposition is base on https://arxiv.org/pdf/quant-ph/0406176.pdf by Shende et al.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            angle_list (list): list of (real) rotation angles [a_0,...,a_{2^k-1}]</span>
+<span class="sd">            q_controls (QuantumRegister|list): list of k control qubits</span>
+<span class="sd">                (or empty list if no controls). The control qubits are ordered according to their</span>
+<span class="sd">                significance in increasing order: For example if q_controls=[q[1],q[2]]</span>
+<span class="sd">                (with q = QuantumRegister(2)), the rotation Rx(a_0)is performed if q[1] and q[2]</span>
+<span class="sd">                are in the state zero, the rotation  Rx(a_1) is performed if q[1] is in the state</span>
+<span class="sd">                 one and q[2] is in the state zero, and so on</span>
+<span class="sd">            q_target (QuantumRegister|Qubit): target qubit, where we act on with</span>
+<span class="sd">                the single-qubit rotation gates</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            QuantumCircuit: the uniformly controlled rotation gate is attached to the circuit.</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            QiskitError: if the list number of control qubits does not correspond to the provided</span>
+<span class="sd">                number of single-qubit unitaries; if an input is of the wrong type</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">q_controls</span><span class="p">,</span> <span class="n">QuantumRegister</span><span class="p">):</span>
+        <span class="n">q_controls</span> <span class="o">=</span> <span class="n">q_controls</span><span class="p">[:]</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">q_target</span><span class="p">,</span> <span class="n">QuantumRegister</span><span class="p">):</span>
+        <span class="n">q_target</span> <span class="o">=</span> <span class="n">q_target</span><span class="p">[:]</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">q_target</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">q_target</span> <span class="o">=</span> <span class="n">q_target</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">QiskitError</span><span class="p">(</span><span class="s2">&quot;The target qubit is a QuantumRegister containing more&quot;</span>
+                              <span class="s2">&quot; than one qubits.&quot;</span><span class="p">)</span>
+    <span class="c1"># Check if q_controls has type &quot;list&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">angle_list</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="n">QiskitError</span><span class="p">(</span><span class="s2">&quot;The angles must be provided as a list.&quot;</span><span class="p">)</span>
+    <span class="n">num_contr</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">log2</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">angle_list</span><span class="p">))</span>
+    <span class="k">if</span> <span class="n">num_contr</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">num_contr</span><span class="o">.</span><span class="n">is_integer</span><span class="p">():</span>
+        <span class="k">raise</span> <span class="n">QiskitError</span><span class="p">(</span><span class="s2">&quot;The number of controlled rotation gates is not a non-negative&quot;</span>
+                          <span class="s2">&quot; power of 2.&quot;</span><span class="p">)</span>
+    <span class="c1"># Check if number of control qubits does correspond to the number of rotations</span>
+    <span class="k">if</span> <span class="n">num_contr</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">q_controls</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="n">QiskitError</span><span class="p">(</span><span class="s2">&quot;Number of controlled rotations does not correspond to the number of&quot;</span>
+                          <span class="s2">&quot; control-qubits.&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">UCX</span><span class="p">(</span><span class="n">angle_list</span><span class="p">),</span> <span class="p">[</span><span class="n">q_target</span><span class="p">]</span> <span class="o">+</span> <span class="n">q_controls</span><span class="p">,</span> <span class="p">[])</span>
+
+
+<span class="n">QuantumCircuit</span><span class="o">.</span><span class="n">ucx</span> <span class="o">=</span> <span class="n">ucx</span>
 </pre></div>
 
         </div>

@@ -190,15 +190,19 @@
 <span class="kn">import</span> <span class="nn">logging</span>
 <span class="kn">import</span> <span class="nn">operator</span>
 <span class="kn">import</span> <span class="nn">math</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">functools</span> <span class="k">import</span> <span class="n">reduce</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">dlx</span> <span class="k">import</span> <span class="n">DLX</span>
+<span class="kn">from</span> <span class="nn">sympy</span> <span class="k">import</span> <span class="n">symbols</span>
+<span class="kn">from</span> <span class="nn">sympy.logic.boolalg</span> <span class="k">import</span> <span class="n">Xor</span><span class="p">,</span> <span class="n">And</span>
 <span class="kn">from</span> <span class="nn">qiskit</span> <span class="k">import</span> <span class="n">QuantumRegister</span><span class="p">,</span> <span class="n">QuantumCircuit</span>
+
 <span class="kn">from</span> <span class="nn">qiskit.aqua</span> <span class="k">import</span> <span class="n">AquaError</span>
 <span class="kn">from</span> <span class="nn">qiskit.aqua.circuits</span> <span class="k">import</span> <span class="n">ESOP</span>
 <span class="kn">from</span> <span class="nn">qiskit.aqua.components.oracles</span> <span class="k">import</span> <span class="n">Oracle</span>
 <span class="kn">from</span> <span class="nn">qiskit.aqua.utils.arithmetic</span> <span class="k">import</span> <span class="n">is_power_of_2</span>
-<span class="kn">from</span> <span class="nn">._pyeda_check</span> <span class="k">import</span> <span class="n">_check_pluggable_valid</span> <span class="k">as</span> <span class="n">check_pyeda_valid</span>
+<span class="kn">from</span> <span class="nn">.ast_utils</span> <span class="k">import</span> <span class="n">get_ast</span>
 
 <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
 
@@ -337,29 +341,17 @@
                     <span class="p">}</span>
                 <span class="p">},</span>
                 <span class="s2">&quot;optimization&quot;</span><span class="p">:</span> <span class="p">{</span>
-                    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
-                    <span class="s2">&quot;default&quot;</span><span class="p">:</span> <span class="s2">&quot;off&quot;</span><span class="p">,</span>
-                    <span class="s1">&#39;oneOf&#39;</span><span class="p">:</span> <span class="p">[</span>
-                        <span class="p">{</span>
-                            <span class="s1">&#39;enum&#39;</span><span class="p">:</span> <span class="p">[</span>
-                                <span class="s1">&#39;off&#39;</span><span class="p">,</span>
-                                <span class="s1">&#39;qm-dlx&#39;</span>
-                            <span class="p">]</span>
-                        <span class="p">}</span>
-                    <span class="p">]</span>
+                    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;boolean&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;default&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
                 <span class="p">},</span>
                 <span class="s1">&#39;mct_mode&#39;</span><span class="p">:</span> <span class="p">{</span>
                     <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;string&#39;</span><span class="p">,</span>
                     <span class="s1">&#39;default&#39;</span><span class="p">:</span> <span class="s1">&#39;basic&#39;</span><span class="p">,</span>
-                    <span class="s1">&#39;oneOf&#39;</span><span class="p">:</span> <span class="p">[</span>
-                        <span class="p">{</span>
-                            <span class="s1">&#39;enum&#39;</span><span class="p">:</span> <span class="p">[</span>
-                                <span class="s1">&#39;basic&#39;</span><span class="p">,</span>
-                                <span class="s1">&#39;basic-dirty-ancilla&#39;</span><span class="p">,</span>
-                                <span class="s1">&#39;advanced&#39;</span><span class="p">,</span>
-                                <span class="s1">&#39;noancilla&#39;</span><span class="p">,</span>
-                            <span class="p">]</span>
-                        <span class="p">}</span>
+                    <span class="s1">&#39;enum&#39;</span><span class="p">:</span> <span class="p">[</span>
+                        <span class="s1">&#39;basic&#39;</span><span class="p">,</span>
+                        <span class="s1">&#39;basic-dirty-ancilla&#39;</span><span class="p">,</span>
+                        <span class="s1">&#39;advanced&#39;</span><span class="p">,</span>
+                        <span class="s1">&#39;noancilla&#39;</span><span class="p">,</span>
                     <span class="p">]</span>
                 <span class="p">},</span>
             <span class="p">},</span>
@@ -367,17 +359,16 @@
         <span class="p">}</span>
     <span class="p">}</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bitmaps</span><span class="p">,</span> <span class="n">optimization</span><span class="o">=</span><span class="s1">&#39;off&#39;</span><span class="p">,</span> <span class="n">mct_mode</span><span class="o">=</span><span class="s1">&#39;basic&#39;</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bitmaps</span><span class="p">,</span> <span class="n">optimization</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">mct_mode</span><span class="o">=</span><span class="s1">&#39;basic&#39;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Constructor for Truth Table-based Oracle</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            bitmaps (str or [str]): A single binary string or a list of binary strings representing the desired</span>
 <span class="sd">                single- and multi-value truth table.</span>
-<span class="sd">            optimization (str): Optimization mode to use for minimizing the circuit.</span>
-<span class="sd">                Currently, besides no optimization (&#39;off&#39;), Aqua also supports a &#39;qm-dlx&#39; mode,</span>
-<span class="sd">                which uses the Quine-McCluskey algorithm to compute the prime implicants of the truth table,</span>
-<span class="sd">                and then compute an exact cover to try to reduce the circuit.</span>
+<span class="sd">            optimization (bool): Boolean flag for attempting circuit optimization.</span>
+<span class="sd">                When set, the Quine-McCluskey algorithm is used to compute the prime implicants of the truth table,</span>
+<span class="sd">                and then its exact cover is computed to try to reduce the circuit.</span>
 <span class="sd">            mct_mode (str): The mode to use when constructing multiple-control Toffoli.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">bitmaps</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
@@ -386,7 +377,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">validate</span><span class="p">(</span><span class="nb">locals</span><span class="p">())</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">_mct_mode</span> <span class="o">=</span> <span class="n">mct_mode</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_mct_mode</span> <span class="o">=</span> <span class="n">mct_mode</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_optimization</span> <span class="o">=</span> <span class="n">optimization</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_bitmaps</span> <span class="o">=</span> <span class="n">bitmaps</span>
@@ -400,6 +391,9 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_nbits</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">bitmaps</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="mi">2</span><span class="p">))</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_num_outputs</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">bitmaps</span><span class="p">)</span>
 
+        <span class="bp">self</span><span class="o">.</span><span class="n">_lit_to_var</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_var_to_lit</span> <span class="o">=</span> <span class="kc">None</span>
+
         <span class="n">esop_exprs</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">for</span> <span class="n">bitmap</span> <span class="ow">in</span> <span class="n">bitmaps</span><span class="p">:</span>
             <span class="n">esop_expr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_esop_ast</span><span class="p">(</span><span class="n">bitmap</span><span class="p">)</span>
@@ -411,13 +405,12 @@
 
         <span class="bp">self</span><span class="o">.</span><span class="n">construct_circuit</span><span class="p">()</span>
 
-<div class="viewcode-block" id="TruthTableOracle.check_pluggable_valid"><a class="viewcode-back" href="../../../../../autodoc/qiskit.aqua.components.oracles.truth_table_oracle.html#qiskit.aqua.components.oracles.TruthTableOracle.check_pluggable_valid">[ドキュメント]</a>    <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">check_pluggable_valid</span><span class="p">():</span>
-        <span class="n">check_pyeda_valid</span><span class="p">(</span><span class="n">TruthTableOracle</span><span class="o">.</span><span class="n">CONFIGURATION</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">])</span></div>
-
     <span class="k">def</span> <span class="nf">_get_esop_ast</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bitmap</span><span class="p">):</span>
-        <span class="kn">from</span> <span class="nn">pyeda.inter</span> <span class="k">import</span> <span class="n">exprvars</span><span class="p">,</span> <span class="n">And</span><span class="p">,</span> <span class="n">Xor</span>
-        <span class="n">v</span> <span class="o">=</span> <span class="n">exprvars</span><span class="p">(</span><span class="s1">&#39;v&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_nbits</span><span class="p">)</span>
+        <span class="n">v</span> <span class="o">=</span> <span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;v:</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_nbits</span><span class="p">))</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lit_to_var</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_lit_to_var</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span><span class="p">]</span> <span class="o">+</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="nb">str</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_var_to_lit</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_var_to_lit</span> <span class="o">=</span> <span class="p">{</span><span class="n">v</span><span class="p">:</span> <span class="n">l</span> <span class="k">for</span> <span class="n">v</span><span class="p">,</span> <span class="n">l</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_lit_to_var</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_nbits</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))}</span>
 
         <span class="k">def</span> <span class="nf">binstr_to_vars</span><span class="p">(</span><span class="n">binstr</span><span class="p">):</span>
             <span class="k">return</span> <span class="p">[</span>
@@ -425,14 +418,15 @@
                        <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">binstr</span><span class="p">,</span> <span class="nb">reversed</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_nbits</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)))</span>
                    <span class="p">][::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_optimization</span> <span class="o">==</span> <span class="s1">&#39;off&#39;</span><span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_optimization</span><span class="p">:</span>
             <span class="n">expression</span> <span class="o">=</span> <span class="n">Xor</span><span class="p">(</span><span class="o">*</span><span class="p">[</span>
                 <span class="n">And</span><span class="p">(</span><span class="o">*</span><span class="n">binstr_to_vars</span><span class="p">(</span><span class="n">term</span><span class="p">))</span> <span class="k">for</span> <span class="n">term</span> <span class="ow">in</span>
-                <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">binary_repr</span><span class="p">(</span><span class="n">idx</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_nbits</span><span class="p">)</span> <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">bitmap</span><span class="p">)</span> <span class="k">if</span> <span class="n">v</span> <span class="o">==</span> <span class="s1">&#39;1&#39;</span><span class="p">]])</span>
-        <span class="k">else</span><span class="p">:</span>  <span class="c1"># self._optimization == &#39;qm-dlx&#39;:</span>
+                <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">binary_repr</span><span class="p">(</span><span class="n">idx</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_nbits</span><span class="p">)</span> <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">bitmap</span><span class="p">)</span> <span class="k">if</span> <span class="n">v</span> <span class="o">==</span> <span class="s1">&#39;1&#39;</span><span class="p">]</span>
+            <span class="p">])</span>
+        <span class="k">else</span><span class="p">:</span>
             <span class="n">ones</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">bitmap</span><span class="p">)</span> <span class="k">if</span> <span class="n">v</span> <span class="o">==</span> <span class="s1">&#39;1&#39;</span><span class="p">]</span>
             <span class="k">if</span> <span class="ow">not</span> <span class="n">ones</span><span class="p">:</span>
-                <span class="k">return</span> <span class="p">(</span><span class="s1">&#39;const&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,)</span>
+                <span class="k">return</span> <span class="s1">&#39;const&#39;</span><span class="p">,</span> <span class="mi">0</span>
             <span class="n">dcs</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">bitmap</span><span class="p">)</span> <span class="k">if</span> <span class="n">v</span> <span class="o">==</span> <span class="s1">&#39;*&#39;</span> <span class="ow">or</span> <span class="n">v</span> <span class="o">==</span> <span class="s1">&#39;-&#39;</span> <span class="ow">or</span> <span class="n">v</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;x&#39;</span><span class="p">]</span>
             <span class="n">pis</span> <span class="o">=</span> <span class="n">get_prime_implicants</span><span class="p">(</span><span class="n">ones</span><span class="o">=</span><span class="n">ones</span><span class="p">,</span> <span class="n">dcs</span><span class="o">=</span><span class="n">dcs</span><span class="p">)</span>
             <span class="n">cover</span> <span class="o">=</span> <span class="n">get_exact_covers</span><span class="p">(</span><span class="n">ones</span><span class="p">,</span> <span class="n">pis</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
@@ -456,29 +450,11 @@
                     <span class="n">clauses</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">clause</span><span class="p">)</span>
             <span class="n">expression</span> <span class="o">=</span> <span class="n">Xor</span><span class="p">(</span><span class="o">*</span><span class="n">clauses</span><span class="p">)</span>
 
-        <span class="n">raw_ast</span> <span class="o">=</span> <span class="n">expression</span><span class="o">.</span><span class="n">to_ast</span><span class="p">()</span>
-        <span class="n">idx_mapping</span> <span class="o">=</span> <span class="p">{</span>
-            <span class="n">u</span><span class="p">:</span> <span class="n">v</span> <span class="o">+</span> <span class="mi">1</span> <span class="k">for</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">expression</span><span class="o">.</span><span class="n">usupport</span><span class="p">),</span> <span class="p">[</span><span class="n">v</span><span class="o">.</span><span class="n">indices</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">expression</span><span class="o">.</span><span class="n">support</span><span class="p">)])</span>
-        <span class="p">}</span>
-
-        <span class="k">if</span> <span class="n">raw_ast</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;and&#39;</span> <span class="ow">or</span> <span class="n">raw_ast</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;or&#39;</span> <span class="ow">or</span> <span class="n">raw_ast</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;xor&#39;</span><span class="p">:</span>
-            <span class="n">clauses</span> <span class="o">=</span> <span class="p">[]</span>
-            <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">raw_ast</span><span class="p">[</span><span class="mi">1</span><span class="p">:]:</span>
-                <span class="k">if</span> <span class="n">c</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;lit&#39;</span><span class="p">:</span>
-                    <span class="n">clauses</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="s1">&#39;lit&#39;</span><span class="p">,</span> <span class="p">(</span><span class="n">idx_mapping</span><span class="p">[</span><span class="n">c</span><span class="p">[</span><span class="mi">1</span><span class="p">]])</span> <span class="k">if</span> <span class="n">c</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="p">(</span><span class="o">-</span><span class="n">idx_mapping</span><span class="p">[</span><span class="o">-</span><span class="n">c</span><span class="p">[</span><span class="mi">1</span><span class="p">]])))</span>
-                <span class="k">elif</span> <span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;or&#39;</span> <span class="ow">or</span> <span class="n">c</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;and&#39;</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">raw_ast</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="n">c</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
-                    <span class="n">clause</span> <span class="o">=</span> <span class="p">[]</span>
-                    <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">c</span><span class="p">[</span><span class="mi">1</span><span class="p">:]:</span>
-                        <span class="n">clause</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="s1">&#39;lit&#39;</span><span class="p">,</span> <span class="p">(</span><span class="n">idx_mapping</span><span class="p">[</span><span class="n">l</span><span class="p">[</span><span class="mi">1</span><span class="p">]])</span> <span class="k">if</span> <span class="n">l</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="p">(</span><span class="o">-</span><span class="n">idx_mapping</span><span class="p">[</span><span class="o">-</span><span class="n">l</span><span class="p">[</span><span class="mi">1</span><span class="p">]])))</span>
-                    <span class="n">clauses</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">c</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="o">*</span><span class="n">clause</span><span class="p">))</span>
-                <span class="k">else</span><span class="p">:</span>
-                    <span class="k">raise</span> <span class="n">AquaError</span><span class="p">(</span><span class="s1">&#39;Unrecognized logic expression: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">raw_ast</span><span class="p">))</span>
-        <span class="k">elif</span> <span class="n">raw_ast</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;const&#39;</span> <span class="ow">or</span> <span class="n">raw_ast</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;lit&#39;</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">raw_ast</span>
+        <span class="n">ast</span> <span class="o">=</span> <span class="n">get_ast</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_var_to_lit</span><span class="p">,</span> <span class="n">expression</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">ast</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">ast</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="n">AquaError</span><span class="p">(</span><span class="s1">&#39;Unrecognized root expression type: </span><span class="si">{}</span><span class="s1">.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">raw_ast</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
-        <span class="n">ast</span> <span class="o">=</span> <span class="p">(</span><span class="n">raw_ast</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="o">*</span><span class="n">clauses</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">ast</span>
+            <span class="k">return</span> <span class="s1">&#39;const&#39;</span><span class="p">,</span> <span class="mi">0</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">variable_register</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -500,7 +476,11 @@
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_esops</span><span class="p">:</span>
             <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">e</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_esops</span><span class="p">):</span>
                 <span class="k">if</span> <span class="n">e</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-                    <span class="n">ci</span> <span class="o">=</span> <span class="n">e</span><span class="o">.</span><span class="n">construct_circuit</span><span class="p">(</span><span class="n">output_register</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_output_register</span><span class="p">,</span> <span class="n">output_idx</span><span class="o">=</span><span class="n">i</span><span class="p">)</span>
+                    <span class="n">ci</span> <span class="o">=</span> <span class="n">e</span><span class="o">.</span><span class="n">construct_circuit</span><span class="p">(</span>
+                        <span class="n">output_register</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_output_register</span><span class="p">,</span>
+                        <span class="n">output_idx</span><span class="o">=</span><span class="n">i</span><span class="p">,</span>
+                        <span class="n">mct_mode</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_mct_mode</span>
+                    <span class="p">)</span>
                     <span class="bp">self</span><span class="o">.</span><span class="n">_circuit</span> <span class="o">+=</span> <span class="n">ci</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_variable_register</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ancillary_register</span> <span class="o">=</span> <span class="kc">None</span>
             <span class="k">for</span> <span class="n">qreg</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_circuit</span><span class="o">.</span><span class="n">qregs</span><span class="p">:</span>

@@ -34,7 +34,7 @@
        </script>
         <script src="https://cloud.ibm.com/analytics/build/bluemix-analytics.min.js"></script>
     
-    <title>qiskit.quantum_info.analyzation.make_observable &#8212; Qiskit 0.11.1 ドキュメント</title>
+    <title>qiskit.extensions.quantum_initializer.ucy &#8212; Qiskit 0.11.1 ドキュメント</title>
 
     <link rel="stylesheet" href="../../../../_static/material-icons.css" type="text/css" />
     <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
@@ -169,12 +169,12 @@
     <div class="document">
         <div class="page-content">
         
-  <h1>qiskit.quantum_info.analyzation.make_observable のソースコード</h1><div class="highlight"><pre>
+  <h1>qiskit.extensions.quantum_initializer.ucy のソースコード</h1><div class="highlight"><pre>
 <span></span><span class="c1"># -*- coding: utf-8 -*-</span>
 
 <span class="c1"># This code is part of Qiskit.</span>
 <span class="c1">#</span>
-<span class="c1"># (C) Copyright IBM 2017, 2018.</span>
+<span class="c1"># (C) Copyright IBM 2019.</span>
 <span class="c1">#</span>
 <span class="c1"># This code is licensed under the Apache License, Version 2.0. You may</span>
 <span class="c1"># obtain a copy of this license in the LICENSE.txt file in the root directory</span>
@@ -184,36 +184,84 @@
 <span class="c1"># copyright notice, and modified files need to carry a notice indicating</span>
 <span class="c1"># that they have been altered from the originals.</span>
 
-<span class="sd">&quot;&quot;&quot;Helper functions for building dictionaries from matrices and lists.&quot;&quot;&quot;</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Implementation of the abstract class UCRot for uniformly controlled</span>
+<span class="sd">(also called multiplexed) single-qubit rotations</span>
+<span class="sd">around the Y-axes (i.e., uniformly controlled R_y rotations).</span>
+<span class="sd">These gates can have several control qubits and a single target qubit.</span>
+<span class="sd">If the k control qubits are in the state ket(i) (in the computational bases),</span>
+<span class="sd">a single-qubit rotation R_y(a_i) is applied to the target qubit.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">math</span>
 
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">qiskit</span> <span class="k">import</span> <span class="n">QuantumRegister</span><span class="p">,</span> <span class="n">QiskitError</span>
+<span class="kn">from</span> <span class="nn">qiskit.circuit.quantumcircuit</span> <span class="k">import</span> <span class="n">QuantumCircuit</span>
+<span class="kn">from</span> <span class="nn">qiskit.extensions.quantum_initializer.ucrot</span> <span class="k">import</span> <span class="n">UCRot</span>
 
 
-<div class="viewcode-block" id="make_dict_observable"><a class="viewcode-back" href="../../../../autodoc/qiskit.quantum_info.analyzation.make_observable.html#qiskit.quantum_info.analyzation.make_observable.make_dict_observable">[ドキュメント]</a><span class="k">def</span> <span class="nf">make_dict_observable</span><span class="p">(</span><span class="n">matrix_observable</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Convert an observable in matrix form to dictionary form.</span>
+<span class="k">class</span> <span class="nc">UCY</span><span class="p">(</span><span class="n">UCRot</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Uniformly controlled rotations (also called multiplexed rotations).</span>
+<span class="sd">    The decomposition is based on</span>
+<span class="sd">    &#39;Synthesis of Quantum Logic Circuits&#39; by V. Shende et al.</span>
+<span class="sd">    (https://arxiv.org/pdf/quant-ph/0406176.pdf)</span>
 
-<span class="sd">    Takes in a diagonal observable as a matrix and converts it to a dictionary</span>
-<span class="sd">    form. Can also handle a list sorted of the diagonal elements.</span>
-
-<span class="sd">    Args:</span>
-<span class="sd">        matrix_observable (list): The observable to be converted to dictionary</span>
-<span class="sd">        form. Can be a matrix or just an ordered list of observed values</span>
-
-<span class="sd">    Returns:</span>
-<span class="sd">        Dict: A dictionary with all observable states as keys, and corresponding</span>
-<span class="sd">        values being the observed value for that state</span>
+<span class="sd">    Input:</span>
+<span class="sd">    angle_list = list of (real) rotation angles [a_0,...,a_{2^k-1}]</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">dict_observable</span> <span class="o">=</span> <span class="p">{}</span>
-    <span class="n">observable</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">matrix_observable</span><span class="p">)</span>
-    <span class="n">observable_size</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">observable</span><span class="p">)</span>
-    <span class="n">observable_bits</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log2</span><span class="p">(</span><span class="n">observable_size</span><span class="p">)))</span>
-    <span class="n">binary_formater</span> <span class="o">=</span> <span class="s1">&#39;0</span><span class="si">{}</span><span class="s1">b&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">observable_bits</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">observable</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
-        <span class="n">observable</span> <span class="o">=</span> <span class="n">observable</span><span class="o">.</span><span class="n">diagonal</span><span class="p">()</span>
-    <span class="k">for</span> <span class="n">state_no</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">observable_size</span><span class="p">):</span>
-        <span class="n">state_str</span> <span class="o">=</span> <span class="nb">format</span><span class="p">(</span><span class="n">state_no</span><span class="p">,</span> <span class="n">binary_formater</span><span class="p">)</span>
-        <span class="n">dict_observable</span><span class="p">[</span><span class="n">state_str</span><span class="p">]</span> <span class="o">=</span> <span class="n">observable</span><span class="p">[</span><span class="n">state_no</span><span class="p">]</span>
-    <span class="k">return</span> <span class="n">dict_observable</span></div>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">angle_list</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">angle_list</span><span class="p">,</span> <span class="s2">&quot;Y&quot;</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">ucy</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">angle_list</span><span class="p">,</span> <span class="n">q_controls</span><span class="p">,</span> <span class="n">q_target</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Attach a uniformly controlled (also called multiplexed) Ry rotation gate to a circuit.</span>
+<span class="sd">    The decomposition is base on https://arxiv.org/pdf/quant-ph/0406176.pdf by Shende et al.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            angle_list (list[numbers): list of (real) rotation angles [a_0,...,a_{2^k-1}]</span>
+<span class="sd">            q_controls (QuantumRegister|list[Qubit]): list of k control qubits</span>
+<span class="sd">                (or empty list if no controls). The control qubits are ordered according to their</span>
+<span class="sd">                significance in increasing order: For example if q_controls=[q[1],q[2]]</span>
+<span class="sd">                (with q = QuantumRegister(2)), the rotation Ry(a_0)is performed if q[1] and q[2]</span>
+<span class="sd">                are in the state zero, the rotation  Ry(a_1) is performed if q[1] is in the state</span>
+<span class="sd">                 one and q[2] is in the state zero, and so on</span>
+<span class="sd">            q_target (QuantumRegister|Qubit): target qubit, where we act on with</span>
+<span class="sd">                the single-qubit rotation gates</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            QuantumCircuit: the uniformly controlled rotation gate is attached to the circuit.</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            QiskitError: if the list number of control qubits does not correspond to the provided</span>
+<span class="sd">                number of single-qubit unitaries; if an input is of the wrong type</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">q_controls</span><span class="p">,</span> <span class="n">QuantumRegister</span><span class="p">):</span>
+        <span class="n">q_controls</span> <span class="o">=</span> <span class="n">q_controls</span><span class="p">[:]</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">q_target</span><span class="p">,</span> <span class="n">QuantumRegister</span><span class="p">):</span>
+        <span class="n">q_target</span> <span class="o">=</span> <span class="n">q_target</span><span class="p">[:]</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">q_target</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">q_target</span> <span class="o">=</span> <span class="n">q_target</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">QiskitError</span><span class="p">(</span><span class="s2">&quot;The target qubit is a QuantumRegister containing&quot;</span>
+                              <span class="s2">&quot; more than one qubits.&quot;</span><span class="p">)</span>
+    <span class="c1"># Check if q_controls has type &quot;list&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">angle_list</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="n">QiskitError</span><span class="p">(</span><span class="s2">&quot;The angles must be provided as a list.&quot;</span><span class="p">)</span>
+    <span class="n">num_contr</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">log2</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">angle_list</span><span class="p">))</span>
+    <span class="k">if</span> <span class="n">num_contr</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">num_contr</span><span class="o">.</span><span class="n">is_integer</span><span class="p">():</span>
+        <span class="k">raise</span> <span class="n">QiskitError</span><span class="p">(</span><span class="s2">&quot;The number of controlled rotation gates is not&quot;</span>
+                          <span class="s2">&quot; a non-negative power of 2.&quot;</span><span class="p">)</span>
+    <span class="c1"># Check if number of control qubits does correspond to the number of rotations</span>
+    <span class="k">if</span> <span class="n">num_contr</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">q_controls</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="n">QiskitError</span><span class="p">(</span><span class="s2">&quot;Number of controlled rotations does not correspond to&quot;</span>
+                          <span class="s2">&quot; the number of control-qubits.&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">UCY</span><span class="p">(</span><span class="n">angle_list</span><span class="p">),</span> <span class="p">[</span><span class="n">q_target</span><span class="p">]</span> <span class="o">+</span> <span class="n">q_controls</span><span class="p">,</span> <span class="p">[])</span>
+
+
+<span class="n">QuantumCircuit</span><span class="o">.</span><span class="n">ucy</span> <span class="o">=</span> <span class="n">ucy</span>
 </pre></div>
 
         </div>

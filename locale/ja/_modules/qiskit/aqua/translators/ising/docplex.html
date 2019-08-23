@@ -232,7 +232,8 @@
 <span class="kn">from</span> <span class="nn">docplex.mp.model</span> <span class="k">import</span> <span class="n">Model</span>
 <span class="kn">from</span> <span class="nn">qiskit.quantum_info</span> <span class="k">import</span> <span class="n">Pauli</span>
 
-<span class="kn">from</span> <span class="nn">qiskit.aqua</span> <span class="k">import</span> <span class="n">Operator</span><span class="p">,</span> <span class="n">AquaError</span>
+<span class="kn">from</span> <span class="nn">qiskit.aqua</span> <span class="k">import</span> <span class="n">AquaError</span>
+<span class="kn">from</span> <span class="nn">qiskit.aqua.operators</span> <span class="k">import</span> <span class="n">WeightedPauliOperator</span>
 
 <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
 
@@ -247,7 +248,7 @@
 <span class="sd">            This value is used if &quot;auto_penalty&quot; is False.</span>
 
 <span class="sd">    Returns:</span>
-<span class="sd">        operator.Operator, float: operator for the Hamiltonian and a</span>
+<span class="sd">        operators.WeightedPauliOperator, float: operator for the Hamiltonian and a</span>
 <span class="sd">        constant shift for the obj function.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
@@ -280,6 +281,9 @@
     <span class="n">shift</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="n">zero</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">num_nodes</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">bool</span><span class="p">)</span>
 
+    <span class="c1"># convert a constant part of the object function into Hamiltonian.</span>
+    <span class="n">shift</span> <span class="o">+=</span> <span class="n">mdl</span><span class="o">.</span><span class="n">get_objective_expr</span><span class="p">()</span><span class="o">.</span><span class="n">get_constant</span><span class="p">()</span> <span class="o">*</span> <span class="n">sign</span>
+
     <span class="c1"># convert linear parts of the object function into Hamiltonian.</span>
     <span class="n">l_itr</span> <span class="o">=</span> <span class="n">mdl</span><span class="o">.</span><span class="n">get_objective_expr</span><span class="p">()</span><span class="o">.</span><span class="n">iter_terms</span><span class="p">()</span>
     <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">l_itr</span><span class="p">:</span>
@@ -298,10 +302,13 @@
         <span class="n">index2</span> <span class="o">=</span> <span class="n">qd</span><span class="p">[</span><span class="n">i</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]]</span>
         <span class="n">weight</span> <span class="o">=</span> <span class="n">i</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">sign</span> <span class="o">/</span> <span class="mi">4</span>
 
-        <span class="n">zp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">num_nodes</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">bool</span><span class="p">)</span>
-        <span class="n">zp</span><span class="p">[</span><span class="n">index1</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
-        <span class="n">zp</span><span class="p">[</span><span class="n">index2</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
-        <span class="n">pauli_list</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">weight</span><span class="p">,</span> <span class="n">Pauli</span><span class="p">(</span><span class="n">zp</span><span class="p">,</span> <span class="n">zero</span><span class="p">)])</span>
+        <span class="k">if</span> <span class="n">index1</span> <span class="o">==</span> <span class="n">index2</span><span class="p">:</span>
+            <span class="n">shift</span> <span class="o">+=</span> <span class="n">weight</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">zp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">num_nodes</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">bool</span><span class="p">)</span>
+            <span class="n">zp</span><span class="p">[</span><span class="n">index1</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="n">zp</span><span class="p">[</span><span class="n">index2</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="n">pauli_list</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">weight</span><span class="p">,</span> <span class="n">Pauli</span><span class="p">(</span><span class="n">zp</span><span class="p">,</span> <span class="n">zero</span><span class="p">)])</span>
 
         <span class="n">zp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">num_nodes</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">bool</span><span class="p">)</span>
         <span class="n">zp</span><span class="p">[</span><span class="n">index1</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
@@ -358,8 +365,7 @@
                 <span class="n">shift</span> <span class="o">+=</span> <span class="n">penalty_weight1_weight2</span>
 
     <span class="c1"># Remove paulis whose coefficients are zeros.</span>
-    <span class="n">qubitOp</span> <span class="o">=</span> <span class="n">Operator</span><span class="p">(</span><span class="n">paulis</span><span class="o">=</span><span class="n">pauli_list</span><span class="p">)</span>
-    <span class="n">qubitOp</span><span class="o">.</span><span class="n">zeros_coeff_elimination</span><span class="p">()</span>
+    <span class="n">qubitOp</span> <span class="o">=</span> <span class="n">WeightedPauliOperator</span><span class="p">(</span><span class="n">paulis</span><span class="o">=</span><span class="n">pauli_list</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="n">qubitOp</span><span class="p">,</span> <span class="n">shift</span></div>
 

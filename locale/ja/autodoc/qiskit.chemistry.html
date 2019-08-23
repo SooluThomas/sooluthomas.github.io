@@ -1668,6 +1668,11 @@
 <code class="descname">DEBYE</code><em class="property"> = 0.393430307</em><a class="headerlink" href="#qiskit.chemistry.QMolecule.DEBYE" title="この定義へのパーマリンク">¶</a></dt>
 <dd></dd></dl>
 
+<dl class="attribute">
+<dt id="qiskit.chemistry.QMolecule.QMOLECULE_VERSION">
+<code class="descname">QMOLECULE_VERSION</code><em class="property"> = 2</em><a class="headerlink" href="#qiskit.chemistry.QMolecule.QMOLECULE_VERSION" title="この定義へのパーマリンク">¶</a></dt>
+<dd></dd></dl>
+
 <dl class="method">
 <dt id="qiskit.chemistry.QMolecule.Z">
 <code class="descname">Z</code><span class="sig-paren">(</span><em>natom</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/chemistry/qmolecule.html#QMolecule.Z"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.chemistry.QMolecule.Z" title="この定義へのパーマリンク">¶</a></dt>
@@ -1699,30 +1704,6 @@
 <code class="descname">log</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/chemistry/qmolecule.html#QMolecule.log"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.chemistry.QMolecule.log" title="この定義へのパーマリンク">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="staticmethod">
-<dt id="qiskit.chemistry.QMolecule.mo_to_spin">
-<em class="property">static </em><code class="descname">mo_to_spin</code><span class="sig-paren">(</span><em>mohij</em>, <em>mohijkl</em>, <em>threshold=1e-12</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/chemistry/qmolecule.html#QMolecule.mo_to_spin"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.chemistry.QMolecule.mo_to_spin" title="この定義へのパーマリンク">¶</a></dt>
-<dd><p>Convert one and two-body MO integrals to spin orbital basis</p>
-<p>Takes one and two body integrals in molecular orbital basis and returns
-integrals in spin orbitals</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">パラメータ:</th><td class="field-body"><ul class="first simple">
-<li><strong>mohij</strong> -- One body orbitals in molecular basis</li>
-<li><strong>mohijkl</strong> -- Two body orbitals in molecular basis</li>
-<li><strong>threshold</strong> -- Threshold value for assignments</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">戻り値:</th><td class="field-body"><p class="first last">One and two body integrals in spin orbitals</p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
 <dl class="attribute">
 <dt id="qiskit.chemistry.QMolecule.one_body_integrals">
 <code class="descname">one_body_integrals</code><a class="headerlink" href="#qiskit.chemistry.QMolecule.one_body_integrals" title="この定義へのパーマリンク">¶</a></dt>
@@ -1730,16 +1711,18 @@ integrals in spin orbitals</p>
 
 <dl class="staticmethod">
 <dt id="qiskit.chemistry.QMolecule.onee_to_spin">
-<em class="property">static </em><code class="descname">onee_to_spin</code><span class="sig-paren">(</span><em>mohij</em>, <em>threshold=1e-12</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/chemistry/qmolecule.html#QMolecule.onee_to_spin"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.chemistry.QMolecule.onee_to_spin" title="この定義へのパーマリンク">¶</a></dt>
+<em class="property">static </em><code class="descname">onee_to_spin</code><span class="sig-paren">(</span><em>mohij</em>, <em>mohij_B=None</em>, <em>threshold=1e-12</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/chemistry/qmolecule.html#QMolecule.onee_to_spin"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.chemistry.QMolecule.onee_to_spin" title="この定義へのパーマリンク">¶</a></dt>
 <dd><p>Convert one-body MO integrals to spin orbital basis</p>
 <p>Takes one body integrals in molecular orbital basis and returns
-integrals in spin orbitals</p>
+integrals in spin orbitals ready for use as coefficients to
+one body terms 2nd quantized Hamiltonian.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">パラメータ:</th><td class="field-body"><ul class="first simple">
-<li><strong>mohij</strong> -- One body orbitals in molecular basis</li>
+<li><strong>mohij</strong> -- One body orbitals in molecular basis (Alpha)</li>
+<li><strong>mohij_b</strong> -- One body orbitals in molecular basis (Beta)</li>
 <li><strong>threshold</strong> -- Threshold value for assignments</li>
 </ul>
 </td>
@@ -1796,16 +1779,19 @@ integrals in spin orbitals</p>
 
 <dl class="staticmethod">
 <dt id="qiskit.chemistry.QMolecule.twoe_to_spin">
-<em class="property">static </em><code class="descname">twoe_to_spin</code><span class="sig-paren">(</span><em>mohijkl</em>, <em>threshold=1e-12</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/chemistry/qmolecule.html#QMolecule.twoe_to_spin"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.chemistry.QMolecule.twoe_to_spin" title="この定義へのパーマリンク">¶</a></dt>
+<em class="property">static </em><code class="descname">twoe_to_spin</code><span class="sig-paren">(</span><em>mohijkl</em>, <em>mohijkl_BB=None</em>, <em>mohijkl_BA=None</em>, <em>threshold=1e-12</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/chemistry/qmolecule.html#QMolecule.twoe_to_spin"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.chemistry.QMolecule.twoe_to_spin" title="この定義へのパーマリンク">¶</a></dt>
 <dd><p>Convert two-body MO integrals to spin orbital basis</p>
 <p>Takes two body integrals in molecular orbital basis and returns
-integrals in spin orbitals</p>
+integrals in spin orbitals ready for use as coefficients to
+two body terms in 2nd quantized Hamiltonian.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">パラメータ:</th><td class="field-body"><ul class="first simple">
-<li><strong>mohijkl</strong> -- Two body orbitals in molecular basis</li>
+<li><strong>mohijkl</strong> -- Two body orbitals in molecular basis (AlphaAlpha)</li>
+<li><strong>mohijkl_BB</strong> -- Two body orbitals in molecular basis (BetaBeta)</li>
+<li><strong>mohijkl_BA</strong> -- Two body orbitals in molecular basis (BetaAlpha)</li>
 <li><strong>threshold</strong> -- Threshold value for assignments</li>
 </ul>
 </td>
@@ -1838,6 +1824,11 @@ integrals in spin orbitals</p>
 </tbody>
 </table>
 </dd></dl>
+
+<dl class="staticmethod">
+<dt id="qiskit.chemistry.QMolecule.twoeints2mo_general">
+<em class="property">static </em><code class="descname">twoeints2mo_general</code><span class="sig-paren">(</span><em>ints</em>, <em>moc1</em>, <em>moc2</em>, <em>moc3</em>, <em>moc4</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/chemistry/qmolecule.html#QMolecule.twoeints2mo_general"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.chemistry.QMolecule.twoeints2mo_general" title="この定義へのパーマリンク">¶</a></dt>
+<dd></dd></dl>
 
 <dl class="attribute">
 <dt id="qiskit.chemistry.QMolecule.x_dipole_integrals">
@@ -2105,7 +2096,7 @@ observed when h2 is a non-sparse matrix.</p>
 <tr class="field-even field"><th class="field-name">戻り値:</th><td class="field-body"><p class="first">create an Operator object in Paulis form.</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">戻り値の型:</th><td class="field-body"><p class="first"><a class="reference internal" href="qiskit.aqua.html#qiskit.aqua.Operator" title="qiskit.aqua.Operator">Operator</a></p>
+<tr class="field-odd field"><th class="field-name">戻り値の型:</th><td class="field-body"><p class="first">WeightedPauliOperator</p>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><a class="reference internal" href="#qiskit.chemistry.QiskitChemistryError" title="qiskit.chemistry.QiskitChemistryError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">QiskitChemistryError</span></code></a> -- if the <cite>map_type</cite> can not be recognized.</p>
@@ -2136,7 +2127,8 @@ P. Barkoutsos, arXiv:1805.04340(https://arxiv.org/abs/1805.04340).</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">パラメータ:</th><td class="field-body"><strong>num_particles</strong> (<em>int</em>) -- number of particles</td>
+<tr class="field-odd field"><th class="field-name">パラメータ:</th><td class="field-body"><strong>num_particles</strong> (<em>list</em><em>, </em><em>int</em>) -- number of particles, if it is a list, the first number is alpha
+and the second number is beta.</td>
 </tr>
 </tbody>
 </table>

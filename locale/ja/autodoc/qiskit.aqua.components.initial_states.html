@@ -1668,7 +1668,7 @@ available.</p>
 
 <dl class="method">
 <dt id="qiskit.aqua.components.initial_states.InitialState.construct_circuit">
-<code class="descname">construct_circuit</code><span class="sig-paren">(</span><em>mode</em>, <em>register=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/components/initial_states/initial_state.html#InitialState.construct_circuit"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.aqua.components.initial_states.InitialState.construct_circuit" title="この定義へのパーマリンク">¶</a></dt>
+<code class="descname">construct_circuit</code><span class="sig-paren">(</span><em>mode='circuit'</em>, <em>register=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/components/initial_states/initial_state.html#InitialState.construct_circuit"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.aqua.components.initial_states.InitialState.construct_circuit" title="この定義へのパーマリンク">¶</a></dt>
 <dd><p>Construct the statevector of desired initial state.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1678,7 +1678,7 @@ available.</p>
 <li><strong>mode</strong> (<em>string</em>) -- <cite>vector</cite> or <cite>circuit</cite>. The <cite>vector</cite> mode produces the vector.
 While the <cite>circuit</cite> constructs the quantum circuit corresponding that
 vector.</li>
-<li><strong>register</strong> (<a class="reference internal" href="qiskit.circuit.quantumregister.html#qiskit.circuit.quantumregister.QuantumRegister" title="qiskit.circuit.quantumregister.QuantumRegister"><em>QuantumRegister</em></a>) -- register for circuit construction.</li>
+<li><strong>register</strong> (<a class="reference internal" href="qiskit.circuit.quantumregister.html#qiskit.circuit.quantumregister.QuantumRegister" title="qiskit.circuit.quantumregister.QuantumRegister"><em>QuantumRegister</em></a>) -- qubits for circuit construction.</li>
 </ul>
 </td>
 </tr>
@@ -1688,7 +1688,7 @@ vector.</li>
 <tr class="field-odd field"><th class="field-name">戻り値の型:</th><td class="field-body"><p class="first"><a class="reference internal" href="qiskit.circuit.quantumcircuit.html#qiskit.circuit.quantumcircuit.QuantumCircuit" title="qiskit.circuit.quantumcircuit.QuantumCircuit">QuantumCircuit</a> or numpy.ndarray</p>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><code class="xref py py-exc docutils literal notranslate"><span class="pre">ValueError</span></code> -- when mode is not 'vector' or 'circuit'.</p>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><code class="xref py py-exc docutils literal notranslate"><span class="pre">AquaError</span></code> -- when mode is not 'vector' or 'circuit'.</p>
 </td>
 </tr>
 </tbody>
@@ -1709,12 +1709,12 @@ vector.</li>
 <p>A custom initial state.</p>
 <dl class="attribute">
 <dt id="qiskit.aqua.components.initial_states.Custom.CONFIGURATION">
-<code class="descname">CONFIGURATION</code><em class="property"> = {'description': 'Custom initial state', 'input_schema': {'$schema': 'http://json-schema.org/schema#', 'additionalProperties': False, 'id': 'custom_state_schema', 'properties': {'state': {'default': 'zero', 'oneOf': [{'enum': ['zero', 'uniform', 'random']}], 'type': 'string'}, 'state_vector': {'default': None, 'items': {'type': 'number'}, 'type': ['array', 'null']}}, 'type': 'object'}, 'name': 'CUSTOM'}</em><a class="headerlink" href="#qiskit.aqua.components.initial_states.Custom.CONFIGURATION" title="この定義へのパーマリンク">¶</a></dt>
+<code class="descname">CONFIGURATION</code><em class="property"> = {'description': 'Custom initial state', 'input_schema': {'$schema': 'http://json-schema.org/schema#', 'additionalProperties': False, 'id': 'custom_state_schema', 'properties': {'state': {'default': 'zero', 'enum': ['zero', 'uniform', 'random'], 'type': 'string'}, 'state_vector': {'default': None, 'items': {'type': 'number'}, 'type': ['array', 'null']}}, 'type': 'object'}, 'name': 'CUSTOM'}</em><a class="headerlink" href="#qiskit.aqua.components.initial_states.Custom.CONFIGURATION" title="この定義へのパーマリンク">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="qiskit.aqua.components.initial_states.Custom.construct_circuit">
-<code class="descname">construct_circuit</code><span class="sig-paren">(</span><em>mode</em>, <em>register=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/components/initial_states/custom.html#Custom.construct_circuit"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.aqua.components.initial_states.Custom.construct_circuit" title="この定義へのパーマリンク">¶</a></dt>
+<code class="descname">construct_circuit</code><span class="sig-paren">(</span><em>mode='circuit'</em>, <em>register=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/components/initial_states/custom.html#Custom.construct_circuit"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.aqua.components.initial_states.Custom.construct_circuit" title="この定義へのパーマリンク">¶</a></dt>
 <dd><p>Construct the statevector of desired initial state.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1724,7 +1724,7 @@ vector.</li>
 <li><strong>mode</strong> (<em>string</em>) -- <cite>vector</cite> or <cite>circuit</cite>. The <cite>vector</cite> mode produces the vector.
 While the <cite>circuit</cite> constructs the quantum circuit corresponding that
 vector.</li>
-<li><strong>register</strong> (<a class="reference internal" href="qiskit.circuit.quantumregister.html#qiskit.circuit.quantumregister.QuantumRegister" title="qiskit.circuit.quantumregister.QuantumRegister"><em>QuantumRegister</em></a>) -- register for circuit construction.</li>
+<li><strong>register</strong> (<a class="reference internal" href="qiskit.circuit.quantumregister.html#qiskit.circuit.quantumregister.QuantumRegister" title="qiskit.circuit.quantumregister.QuantumRegister"><em>QuantumRegister</em></a>) -- qubits for circuit construction.</li>
 </ul>
 </td>
 </tr>
@@ -1751,7 +1751,7 @@ vector.</li>
 Intended to be used programmatically only.</p>
 <dl class="method">
 <dt id="qiskit.aqua.components.initial_states.VarFormBased.construct_circuit">
-<code class="descname">construct_circuit</code><span class="sig-paren">(</span><em>mode</em>, <em>register=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/components/initial_states/var_form_based.html#VarFormBased.construct_circuit"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.aqua.components.initial_states.VarFormBased.construct_circuit" title="この定義へのパーマリンク">¶</a></dt>
+<code class="descname">construct_circuit</code><span class="sig-paren">(</span><em>mode='circuit'</em>, <em>register=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/components/initial_states/var_form_based.html#VarFormBased.construct_circuit"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.aqua.components.initial_states.VarFormBased.construct_circuit" title="この定義へのパーマリンク">¶</a></dt>
 <dd><p>Construct the statevector of desired initial state.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1761,7 +1761,7 @@ Intended to be used programmatically only.</p>
 <li><strong>mode</strong> (<em>string</em>) -- <cite>vector</cite> or <cite>circuit</cite>. The <cite>vector</cite> mode produces the vector.
 While the <cite>circuit</cite> constructs the quantum circuit corresponding that
 vector.</li>
-<li><strong>register</strong> (<a class="reference internal" href="qiskit.circuit.quantumregister.html#qiskit.circuit.quantumregister.QuantumRegister" title="qiskit.circuit.quantumregister.QuantumRegister"><em>QuantumRegister</em></a>) -- register for circuit construction.</li>
+<li><strong>register</strong> (<a class="reference internal" href="qiskit.circuit.quantumregister.html#qiskit.circuit.quantumregister.QuantumRegister" title="qiskit.circuit.quantumregister.QuantumRegister"><em>QuantumRegister</em></a>) -- qubits for circuit construction.</li>
 </ul>
 </td>
 </tr>
@@ -1771,7 +1771,7 @@ vector.</li>
 <tr class="field-odd field"><th class="field-name">戻り値の型:</th><td class="field-body"><p class="first"><a class="reference internal" href="qiskit.circuit.quantumcircuit.html#qiskit.circuit.quantumcircuit.QuantumCircuit" title="qiskit.circuit.quantumcircuit.QuantumCircuit">QuantumCircuit</a> or numpy.ndarray</p>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><code class="xref py py-exc docutils literal notranslate"><span class="pre">ValueError</span></code> -- when mode is not 'vector' or 'circuit'.</p>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><code class="xref py py-exc docutils literal notranslate"><span class="pre">AquaError</span></code> -- when mode is not 'vector' or 'circuit'.</p>
 </td>
 </tr>
 </tbody>
@@ -1792,7 +1792,7 @@ vector.</li>
 
 <dl class="method">
 <dt id="qiskit.aqua.components.initial_states.Zero.construct_circuit">
-<code class="descname">construct_circuit</code><span class="sig-paren">(</span><em>mode</em>, <em>register=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/components/initial_states/zero.html#Zero.construct_circuit"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.aqua.components.initial_states.Zero.construct_circuit" title="この定義へのパーマリンク">¶</a></dt>
+<code class="descname">construct_circuit</code><span class="sig-paren">(</span><em>mode='circuit'</em>, <em>register=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/components/initial_states/zero.html#Zero.construct_circuit"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.aqua.components.initial_states.Zero.construct_circuit" title="この定義へのパーマリンク">¶</a></dt>
 <dd><p>Construct the statevector of desired initial state.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1802,7 +1802,7 @@ vector.</li>
 <li><strong>mode</strong> (<em>string</em>) -- <cite>vector</cite> or <cite>circuit</cite>. The <cite>vector</cite> mode produces the vector.
 While the <cite>circuit</cite> constructs the quantum circuit corresponding that
 vector.</li>
-<li><strong>register</strong> (<a class="reference internal" href="qiskit.circuit.quantumregister.html#qiskit.circuit.quantumregister.QuantumRegister" title="qiskit.circuit.quantumregister.QuantumRegister"><em>QuantumRegister</em></a>) -- register for circuit construction.</li>
+<li><strong>register</strong> (<a class="reference internal" href="qiskit.circuit.quantumregister.html#qiskit.circuit.quantumregister.QuantumRegister" title="qiskit.circuit.quantumregister.QuantumRegister"><em>QuantumRegister</em></a>) -- qubits for circuit construction.</li>
 </ul>
 </td>
 </tr>
@@ -1812,7 +1812,7 @@ vector.</li>
 <tr class="field-odd field"><th class="field-name">戻り値の型:</th><td class="field-body"><p class="first"><a class="reference internal" href="qiskit.circuit.quantumcircuit.html#qiskit.circuit.quantumcircuit.QuantumCircuit" title="qiskit.circuit.quantumcircuit.QuantumCircuit">QuantumCircuit</a> or numpy.ndarray</p>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><code class="xref py py-exc docutils literal notranslate"><span class="pre">ValueError</span></code> -- when mode is not 'vector' or 'circuit'.</p>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><code class="xref py py-exc docutils literal notranslate"><span class="pre">AquaError</span></code> -- when mode is not 'vector' or 'circuit'.</p>
 </td>
 </tr>
 </tbody>

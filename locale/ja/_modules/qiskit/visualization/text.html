@@ -192,7 +192,7 @@
 <span class="kn">import</span> <span class="nn">sys</span>
 <span class="kn">import</span> <span class="nn">sympy</span>
 <span class="kn">from</span> <span class="nn">numpy</span> <span class="k">import</span> <span class="n">ndarray</span>
-
+<span class="kn">from</span> <span class="nn">.tools.pi_check</span> <span class="k">import</span> <span class="n">pi_check</span>
 <span class="kn">from</span> <span class="nn">.exceptions</span> <span class="k">import</span> <span class="n">VisualizationError</span>
 
 
@@ -283,7 +283,10 @@
 
 
 <div class="viewcode-block" id="BoxOnClWire"><a class="viewcode-back" href="../../../autodoc/qiskit.visualization.text.html#qiskit.visualization.text.BoxOnClWire">[ドキュメント]</a><span class="k">class</span> <span class="nc">BoxOnClWire</span><span class="p">(</span><span class="n">DrawElement</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot; Draws a box on the classical wire</span>
+    <span class="sd">&quot;&quot;&quot;Draws a box on the classical wire.</span>
+
+<span class="sd">    ::</span>
+
 <span class="sd">        top: ┌───┐   ┌───┐</span>
 <span class="sd">        mid: ╡ A ╞ ══╡ A ╞══</span>
 <span class="sd">        bot: └───┘   └───┘</span>
@@ -302,30 +305,36 @@
 
 
 <div class="viewcode-block" id="BoxOnQuWire"><a class="viewcode-back" href="../../../autodoc/qiskit.visualization.text.html#qiskit.visualization.text.BoxOnQuWire">[ドキュメント]</a><span class="k">class</span> <span class="nc">BoxOnQuWire</span><span class="p">(</span><span class="n">DrawElement</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot; Draws a box on the quantum wire</span>
+    <span class="sd">&quot;&quot;&quot;Draws a box on the quantum wire.</span>
+
+<span class="sd">    ::</span>
+
 <span class="sd">        top: ┌───┐   ┌───┐</span>
 <span class="sd">        mid: ┤ A ├ ──┤ A ├──</span>
 <span class="sd">        bot: └───┘   └───┘</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">top_connect</span><span class="o">=</span><span class="s1">&#39;─&#39;</span><span class="p">,</span> <span class="n">bot_connect</span><span class="o">=</span><span class="s1">&#39;─&#39;</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">top_connect</span><span class="o">=</span><span class="s1">&#39;─&#39;</span><span class="p">,</span> <span class="n">conditional</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">label</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">top_format</span> <span class="o">=</span> <span class="s2">&quot;┌─</span><span class="si">%s</span><span class="s2">─┐&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">mid_format</span> <span class="o">=</span> <span class="s2">&quot;┤ </span><span class="si">%s</span><span class="s2"> ├&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">bot_format</span> <span class="o">=</span> <span class="s2">&quot;└─</span><span class="si">%s</span><span class="s2">─┘&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">top_pad</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">bot_pad</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mid_bck</span> <span class="o">=</span> <span class="s1">&#39;─&#39;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">top_connect</span> <span class="o">=</span> <span class="n">top_connect</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">bot_connect</span> <span class="o">=</span> <span class="n">bot_connect</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">bot_connect</span> <span class="o">=</span> <span class="s1">&#39;┬&#39;</span> <span class="k">if</span> <span class="n">conditional</span> <span class="k">else</span> <span class="s1">&#39;─&#39;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">mid_content</span> <span class="o">=</span> <span class="n">label</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">top_connector</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;│&quot;</span><span class="p">:</span> <span class="s1">&#39;┴&#39;</span><span class="p">}</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">bot_connector</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;│&quot;</span><span class="p">:</span> <span class="s1">&#39;┬&#39;</span><span class="p">}</span></div>
 
 
 <div class="viewcode-block" id="MeasureTo"><a class="viewcode-back" href="../../../autodoc/qiskit.visualization.text.html#qiskit.visualization.text.MeasureTo">[ドキュメント]</a><span class="k">class</span> <span class="nc">MeasureTo</span><span class="p">(</span><span class="n">DrawElement</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot; The element on the classic wire to which the measure is performed</span>
-<span class="sd">    top:  ║     ║</span>
-<span class="sd">    mid: ═╩═ ═══╩═══</span>
-<span class="sd">    bot:</span>
+    <span class="sd">&quot;&quot;&quot;The element on the classic wire to which the measure is performed.</span>
+
+<span class="sd">    ::</span>
+
+<span class="sd">        top:  ║     ║</span>
+<span class="sd">        mid: ═╩═ ═══╩═══</span>
+<span class="sd">        bot:</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -337,7 +346,10 @@
 
 
 <div class="viewcode-block" id="MeasureFrom"><a class="viewcode-back" href="../../../autodoc/qiskit.visualization.text.html#qiskit.visualization.text.MeasureFrom">[ドキュメント]</a><span class="k">class</span> <span class="nc">MeasureFrom</span><span class="p">(</span><span class="n">BoxOnQuWire</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot; The element on the quantum wire in which the measure is performed</span>
+    <span class="sd">&quot;&quot;&quot;The element on the quantum wire in which the measure is performed.</span>
+
+<span class="sd">    ::</span>
+
 <span class="sd">        top: ┌─┐    ┌─┐</span>
 <span class="sd">        mid: ┤M├ ───┤M├───</span>
 <span class="sd">        bot: └╥┘    └╥┘</span>
@@ -364,6 +376,9 @@
 <span class="sd">            input_length (int): Rhe amount of wires affected.</span>
 <span class="sd">            order (int): Which middle element is this one?</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">input_length</span> <span class="o">==</span> <span class="n">order</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">top_connect</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">label</span>
+            <span class="k">return</span>
         <span class="n">location_in_the_box</span> <span class="o">=</span> <span class="s1">&#39;*&#39;</span><span class="o">.</span><span class="n">center</span><span class="p">(</span><span class="n">input_length</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s1">&#39;*&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
         <span class="n">top_limit</span> <span class="o">=</span> <span class="n">order</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">2</span>
         <span class="n">bot_limit</span> <span class="o">=</span> <span class="n">top_limit</span> <span class="o">+</span> <span class="mi">2</span>
@@ -398,33 +413,40 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">top_connect</span> <span class="o">=</span> <span class="n">top_connect</span> <span class="k">if</span> <span class="n">top_connect</span> <span class="k">else</span> <span class="s1">&#39;─&#39;</span></div>
 
 
-<div class="viewcode-block" id="BoxOnQuWireMid"><a class="viewcode-back" href="../../../autodoc/qiskit.visualization.text.html#qiskit.visualization.text.BoxOnQuWireMid">[ドキュメント]</a><span class="k">class</span> <span class="nc">BoxOnQuWireMid</span><span class="p">(</span><span class="n">MultiBox</span><span class="p">,</span> <span class="n">BoxOnQuWire</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot; Draws the middle part of a box that affects more than one quantum wire&quot;&quot;&quot;</span>
+<div class="viewcode-block" id="BoxOnWireMid"><a class="viewcode-back" href="../../../autodoc/qiskit.visualization.text.html#qiskit.visualization.text.BoxOnWireMid">[ドキュメント]</a><span class="k">class</span> <span class="nc">BoxOnWireMid</span><span class="p">(</span><span class="n">MultiBox</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; A generic middle box&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">input_length</span><span class="p">,</span> <span class="n">order</span><span class="p">,</span> <span class="n">wire_label</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">label</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="n">input_length</span><span class="p">,</span> <span class="n">order</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">top_pad</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">bot_pad</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">top_connect</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">bot_connect</span> <span class="o">=</span> <span class="s2">&quot; &quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">wire_label</span> <span class="o">=</span> <span class="n">wire_label</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">left_fill</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">wire_label</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">top_format</span> <span class="o">=</span> <span class="s2">&quot;│</span><span class="si">{}</span><span class="s2"> </span><span class="si">%s</span><span class="s2"> │&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">top_pad</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">left_fill</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">mid_format</span> <span class="o">=</span> <span class="s2">&quot;┤</span><span class="si">{}</span><span class="s2"> </span><span class="si">%s</span><span class="s2"> ├&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">wire_label</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">bot_format</span> <span class="o">=</span> <span class="s2">&quot;│</span><span class="si">{}</span><span class="s2"> </span><span class="si">%s</span><span class="s2"> │&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bot_pad</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">left_fill</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">top_connect</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">bot_connect</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mid_content</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">center_label</span><span class="p">(</span><span class="n">input_length</span><span class="p">,</span> <span class="n">order</span><span class="p">)</span></div>
 
 
+<div class="viewcode-block" id="BoxOnQuWireMid"><a class="viewcode-back" href="../../../autodoc/qiskit.visualization.text.html#qiskit.visualization.text.BoxOnQuWireMid">[ドキュメント]</a><span class="k">class</span> <span class="nc">BoxOnQuWireMid</span><span class="p">(</span><span class="n">BoxOnWireMid</span><span class="p">,</span> <span class="n">BoxOnQuWire</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Draws the middle part of a box that affects more than one quantum wire&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">input_length</span><span class="p">,</span> <span class="n">order</span><span class="p">,</span> <span class="n">wire_label</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="n">input_length</span><span class="p">,</span> <span class="n">order</span><span class="p">,</span> <span class="n">wire_label</span><span class="o">=</span><span class="n">wire_label</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mid_format</span> <span class="o">=</span> <span class="s2">&quot;┤</span><span class="si">{}</span><span class="s2"> </span><span class="si">%s</span><span class="s2"> ├&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">wire_label</span><span class="p">)</span></div>
+
+
 <div class="viewcode-block" id="BoxOnQuWireBot"><a class="viewcode-back" href="../../../autodoc/qiskit.visualization.text.html#qiskit.visualization.text.BoxOnQuWireBot">[ドキュメント]</a><span class="k">class</span> <span class="nc">BoxOnQuWireBot</span><span class="p">(</span><span class="n">MultiBox</span><span class="p">,</span> <span class="n">BoxOnQuWire</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Draws the bottom part of a box that affects more than one quantum wire&quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">input_length</span><span class="p">,</span> <span class="n">bot_connect</span><span class="o">=</span><span class="s1">&#39;─&#39;</span><span class="p">,</span> <span class="n">wire_label</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">input_length</span><span class="p">,</span> <span class="n">bot_connect</span><span class="o">=</span><span class="s1">&#39;─&#39;</span><span class="p">,</span> <span class="n">wire_label</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">conditional</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">label</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">wire_label</span> <span class="o">=</span> <span class="n">wire_label</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">top_pad</span> <span class="o">=</span> <span class="s2">&quot; &quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">left_fill</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">wire_label</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">top_format</span> <span class="o">=</span> <span class="s2">&quot;│</span><span class="si">{}</span><span class="s2"> </span><span class="si">%s</span><span class="s2"> │&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">top_pad</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">left_fill</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">mid_format</span> <span class="o">=</span> <span class="s2">&quot;┤</span><span class="si">{}</span><span class="s2"> </span><span class="si">%s</span><span class="s2"> ├&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">wire_label</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">bot_format</span> <span class="o">=</span> <span class="s2">&quot;└</span><span class="si">{}</span><span class="s2">─</span><span class="si">%s</span><span class="s2">─┘&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bot_pad</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">left_fill</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">bot_connect</span> <span class="o">=</span> <span class="n">bot_connect</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">bot_format</span> <span class="o">=</span> <span class="s2">&quot;└</span><span class="si">{}%s</span><span class="s2">──┘&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bot_pad</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">left_fill</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">bot_connect</span> <span class="o">=</span> <span class="s1">&#39;┬&#39;</span> <span class="k">if</span> <span class="n">conditional</span> <span class="k">else</span> <span class="n">bot_connect</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">mid_content</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">top_connect</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
         <span class="k">if</span> <span class="n">input_length</span> <span class="o">&lt;=</span> <span class="mi">2</span><span class="p">:</span>
@@ -443,27 +465,26 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">bot_connect</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">bot_pad</span> <span class="o">=</span> <span class="s2">&quot; &quot;</span></div>
 
 
-<div class="viewcode-block" id="BoxOnClWireMid"><a class="viewcode-back" href="../../../autodoc/qiskit.visualization.text.html#qiskit.visualization.text.BoxOnClWireMid">[ドキュメント]</a><span class="k">class</span> <span class="nc">BoxOnClWireMid</span><span class="p">(</span><span class="n">MultiBox</span><span class="p">,</span> <span class="n">BoxOnClWire</span><span class="p">):</span>
+<div class="viewcode-block" id="BoxOnClWireMid"><a class="viewcode-back" href="../../../autodoc/qiskit.visualization.text.html#qiskit.visualization.text.BoxOnClWireMid">[ドキュメント]</a><span class="k">class</span> <span class="nc">BoxOnClWireMid</span><span class="p">(</span><span class="n">BoxOnWireMid</span><span class="p">,</span> <span class="n">BoxOnClWire</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Draws the middle part of a conditional box that affects more than one classical wire&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">input_length</span><span class="p">,</span> <span class="n">order</span><span class="p">,</span> <span class="n">wire_label</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">label</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">wire_label</span> <span class="o">=</span> <span class="n">wire_label</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">top_format</span> <span class="o">=</span> <span class="s2">&quot;│ </span><span class="si">%s</span><span class="s2"> │&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">bot_format</span> <span class="o">=</span> <span class="s2">&quot;│ </span><span class="si">%s</span><span class="s2"> │&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">top_pad</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">bot_pad</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">top_connect</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">bot_connect</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mid_content</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">center_label</span><span class="p">(</span><span class="n">input_length</span><span class="p">,</span> <span class="n">order</span><span class="p">)</span></div>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="n">input_length</span><span class="p">,</span> <span class="n">order</span><span class="p">,</span> <span class="n">wire_label</span><span class="o">=</span><span class="n">wire_label</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mid_format</span> <span class="o">=</span> <span class="s2">&quot;╡</span><span class="si">{}</span><span class="s2"> </span><span class="si">%s</span><span class="s2"> ╞&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">wire_label</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="BoxOnClWireBot"><a class="viewcode-back" href="../../../autodoc/qiskit.visualization.text.html#qiskit.visualization.text.BoxOnClWireBot">[ドキュメント]</a><span class="k">class</span> <span class="nc">BoxOnClWireBot</span><span class="p">(</span><span class="n">MultiBox</span><span class="p">,</span> <span class="n">BoxOnClWire</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Draws the bottom part of a conditional box that affects more than one classical wire&quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">input_length</span><span class="p">,</span> <span class="n">bot_connect</span><span class="o">=</span><span class="s1">&#39;─&#39;</span><span class="p">,</span> <span class="n">wire_label</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">input_length</span><span class="p">,</span> <span class="n">bot_connect</span><span class="o">=</span><span class="s1">&#39;─&#39;</span><span class="p">,</span> <span class="n">wire_label</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="o">**</span><span class="n">_</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">label</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">wire_label</span> <span class="o">=</span> <span class="n">wire_label</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">top_format</span> <span class="o">=</span> <span class="s2">&quot;│ </span><span class="si">%s</span><span class="s2"> │&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">top_pad</span> <span class="o">=</span> <span class="s2">&quot; &quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">left_fill</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">wire_label</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">top_pad</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">bot_pad</span> <span class="o">=</span> <span class="s1">&#39;─&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">top_format</span> <span class="o">=</span> <span class="s2">&quot;│</span><span class="si">{}</span><span class="s2"> </span><span class="si">%s</span><span class="s2"> │&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">top_pad</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">left_fill</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mid_format</span> <span class="o">=</span> <span class="s2">&quot;╡</span><span class="si">{}</span><span class="s2"> </span><span class="si">%s</span><span class="s2"> ╞&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">wire_label</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">bot_format</span> <span class="o">=</span> <span class="s2">&quot;└</span><span class="si">{}%s</span><span class="s2">──┘&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bot_pad</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">left_fill</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">bot_connect</span> <span class="o">=</span> <span class="n">bot_connect</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">mid_content</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">top_connect</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
@@ -487,7 +508,10 @@
 
 
 <div class="viewcode-block" id="Barrier"><a class="viewcode-back" href="../../../autodoc/qiskit.visualization.text.html#qiskit.visualization.text.Barrier">[ドキュメント]</a><span class="k">class</span> <span class="nc">Barrier</span><span class="p">(</span><span class="n">DirectOnQuWire</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot; Draws a barrier.</span>
+    <span class="sd">&quot;&quot;&quot;Draws a barrier.</span>
+
+<span class="sd">    ::</span>
+
 <span class="sd">        top:  ░     ░</span>
 <span class="sd">        mid: ─░─ ───░───</span>
 <span class="sd">        bot:  ░     ░</span>
@@ -502,36 +526,44 @@
 
 
 <div class="viewcode-block" id="Ex"><a class="viewcode-back" href="../../../autodoc/qiskit.visualization.text.html#qiskit.visualization.text.Ex">[ドキュメント]</a><span class="k">class</span> <span class="nc">Ex</span><span class="p">(</span><span class="n">DirectOnQuWire</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot; Draws an X (usually with a connector). E.g. the top part of a swap gate</span>
-<span class="sd">    top:</span>
-<span class="sd">    mid: ─X─ ───X───</span>
-<span class="sd">    bot:  │     │</span>
+    <span class="sd">&quot;&quot;&quot;Draws an X (usually with a connector). E.g. the top part of a swap gate.</span>
+
+<span class="sd">    ::</span>
+
+<span class="sd">        top:</span>
+<span class="sd">        mid: ─X─ ───X───</span>
+<span class="sd">        bot:  │     │</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bot_connect</span><span class="o">=</span><span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="n">top_connect</span><span class="o">=</span><span class="s2">&quot; &quot;</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bot_connect</span><span class="o">=</span><span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="n">top_connect</span><span class="o">=</span><span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="n">conditional</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="s2">&quot;X&quot;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">bot_connect</span> <span class="o">=</span> <span class="n">bot_connect</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">bot_connect</span> <span class="o">=</span> <span class="s2">&quot;│&quot;</span> <span class="k">if</span> <span class="n">conditional</span> <span class="k">else</span> <span class="n">bot_connect</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">top_connect</span> <span class="o">=</span> <span class="n">top_connect</span></div>
 
 
 <div class="viewcode-block" id="Reset"><a class="viewcode-back" href="../../../autodoc/qiskit.visualization.text.html#qiskit.visualization.text.Reset">[ドキュメント]</a><span class="k">class</span> <span class="nc">Reset</span><span class="p">(</span><span class="n">DirectOnQuWire</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Draws a reset gate&quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="s2">&quot;|0&gt;&quot;</span><span class="p">)</span></div>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">conditional</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="s2">&quot;|0&gt;&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">conditional</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">bot_connect</span> <span class="o">=</span> <span class="s2">&quot;│&quot;</span></div>
 
 
 <div class="viewcode-block" id="Bullet"><a class="viewcode-back" href="../../../autodoc/qiskit.visualization.text.html#qiskit.visualization.text.Bullet">[ドキュメント]</a><span class="k">class</span> <span class="nc">Bullet</span><span class="p">(</span><span class="n">DirectOnQuWire</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Draws a bullet (usually with a connector). E.g. the top part of a CX gate.</span>
-<span class="sd">    top:</span>
-<span class="sd">    mid: ─■─  ───■───</span>
-<span class="sd">    bot:  │      │</span>
+
+<span class="sd">    ::</span>
+
+<span class="sd">        top:</span>
+<span class="sd">        mid: ─■─  ───■───</span>
+<span class="sd">        bot:  │      │</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">top_connect</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">bot_connect</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">top_connect</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">bot_connect</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">conditional</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="s1">&#39;■&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">top_connect</span> <span class="o">=</span> <span class="n">top_connect</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">bot_connect</span> <span class="o">=</span> <span class="n">bot_connect</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">bot_connect</span> <span class="o">=</span> <span class="s1">&#39;│&#39;</span> <span class="k">if</span> <span class="n">conditional</span> <span class="k">else</span> <span class="n">bot_connect</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">mid_bck</span> <span class="o">=</span> <span class="s1">&#39;─&#39;</span></div>
 
 
@@ -592,7 +624,7 @@
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">label</span><span class="p">)</span>
 
 <div class="viewcode-block" id="InputWire.fillup_layer"><a class="viewcode-back" href="../../../autodoc/qiskit.visualization.text.html#qiskit.visualization.text.InputWire.fillup_layer">[ドキュメント]</a>    <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">fillup_layer</span><span class="p">(</span><span class="n">names</span><span class="p">):</span>  <span class="c1"># pylint: disable=arguments-differ</span>
+    <span class="k">def</span> <span class="nf">fillup_layer</span><span class="p">(</span><span class="n">names</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Creates a layer with InputWire elements.</span>
 <span class="sd">        Args:</span>
@@ -612,14 +644,17 @@
     <span class="sd">&quot;&quot;&quot; The text drawing&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">qregs</span><span class="p">,</span> <span class="n">cregs</span><span class="p">,</span> <span class="n">instructions</span><span class="p">,</span> <span class="n">plotbarriers</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-                 <span class="n">line_length</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">vertically_compressed</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+                 <span class="n">line_length</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">vertical_compression</span><span class="o">=</span><span class="s1">&#39;high&#39;</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">qregs</span> <span class="o">=</span> <span class="n">qregs</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">cregs</span> <span class="o">=</span> <span class="n">cregs</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">instructions</span> <span class="o">=</span> <span class="n">instructions</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">layout</span> <span class="o">=</span> <span class="n">layout</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">plotbarriers</span> <span class="o">=</span> <span class="n">plotbarriers</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">line_length</span> <span class="o">=</span> <span class="n">line_length</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">vertically_compressed</span> <span class="o">=</span> <span class="n">vertically_compressed</span>
+        <span class="k">if</span> <span class="n">vertical_compression</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;high&#39;</span><span class="p">,</span> <span class="s1">&#39;medium&#39;</span><span class="p">,</span> <span class="s1">&#39;low&#39;</span><span class="p">]:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Vertical compression can only be &#39;high&#39;, &#39;medium&#39;, or &#39;low&#39;&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">vertical_compression</span> <span class="o">=</span> <span class="n">vertical_compression</span>
 
     <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">single_string</span><span class="p">()</span>
@@ -627,25 +662,16 @@
     <span class="k">def</span> <span class="nf">_repr_html_</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="s1">&#39;&lt;pre style=&quot;word-wrap: normal;&#39;</span> \
                <span class="s1">&#39;white-space: pre;&#39;</span> \
-               <span class="s1">&#39;line-height: 15px;&quot;&gt;</span><span class="si">%s</span><span class="s1">&lt;/pre&gt;&#39;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">single_string</span><span class="p">()</span>
-
-    <span class="k">def</span> <span class="nf">_get_qubit_labels</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="n">qubits</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="k">for</span> <span class="n">qubit</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">qregs</span><span class="p">:</span>
-            <span class="n">qubits</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">_</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">qubit</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">qubit</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
-        <span class="k">return</span> <span class="n">qubits</span>
-
-    <span class="k">def</span> <span class="nf">_get_clbit_labels</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="n">clbits</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="k">for</span> <span class="n">clbit</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">cregs</span><span class="p">:</span>
-            <span class="n">clbits</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">_</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">clbit</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">clbit</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
-        <span class="k">return</span> <span class="n">clbits</span>
+               <span class="s1">&#39;background: #fff0;&#39;</span> \
+               <span class="s1">&#39;line-height: 1.1;&#39;</span> \
+               <span class="s1">&#39;font-family: &amp;quot;Courier New&amp;quot;,Courier,monospace&quot;&gt;&#39;</span> \
+               <span class="s1">&#39;</span><span class="si">%s</span><span class="s1">&lt;/pre&gt;&#39;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">single_string</span><span class="p">()</span>
 
 <div class="viewcode-block" id="TextDrawing.single_string"><a class="viewcode-back" href="../../../autodoc/qiskit.visualization.text.html#qiskit.visualization.text.TextDrawing.single_string">[ドキュメント]</a>    <span class="k">def</span> <span class="nf">single_string</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Creates a long string with the ascii art</span>
+        <span class="sd">&quot;&quot;&quot;Creates a long string with the ascii art.</span>
+
 <span class="sd">        Returns:</span>
-<span class="sd">            str: The lines joined by &#39;\n&#39;</span>
+<span class="sd">            str: The lines joined by a newline (``\\n``)</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lines</span><span class="p">())</span></div>
 
@@ -660,8 +686,8 @@
             <span class="n">text_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">single_string</span><span class="p">())</span></div>
 
 <div class="viewcode-block" id="TextDrawing.lines"><a class="viewcode-back" href="../../../autodoc/qiskit.visualization.text.html#qiskit.visualization.text.TextDrawing.lines">[ドキュメント]</a>    <span class="k">def</span> <span class="nf">lines</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">line_length</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Generates a list with lines. These lines form the text drawing.</span>
+        <span class="sd">&quot;&quot;&quot;Generates a list with lines. These lines form the text drawing.</span>
+
 <span class="sd">        Args:</span>
 <span class="sd">            line_length (int): Optional. Breaks the circuit drawing to this length. This</span>
 <span class="sd">                               useful when the drawing does not fit in the console. If</span>
@@ -720,40 +746,63 @@
         <span class="n">lines</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">for</span> <span class="n">layer_group</span> <span class="ow">in</span> <span class="n">layer_groups</span><span class="p">:</span>
             <span class="n">wires</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">layer_group</span><span class="p">)]</span>
-            <span class="n">lines</span> <span class="o">+=</span> <span class="n">TextDrawing</span><span class="o">.</span><span class="n">draw_wires</span><span class="p">(</span><span class="n">wires</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">vertically_compressed</span><span class="p">)</span>
+            <span class="n">lines</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">draw_wires</span><span class="p">(</span><span class="n">wires</span><span class="p">)</span>
 
         <span class="k">return</span> <span class="n">lines</span></div>
 
 <div class="viewcode-block" id="TextDrawing.wire_names"><a class="viewcode-back" href="../../../autodoc/qiskit.visualization.text.html#qiskit.visualization.text.TextDrawing.wire_names">[ドキュメント]</a>    <span class="k">def</span> <span class="nf">wire_names</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">with_initial_value</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Returns a list of names for each wire.</span>
+        <span class="sd">&quot;&quot;&quot;Returns a list of names for each wire.</span>
+
 <span class="sd">        Args:</span>
-<span class="sd">            with_initial_value (bool): Optional (Default: True). If true, adds the initial value to</span>
-<span class="sd">                                       the name.</span>
+<span class="sd">            with_initial_value (bool): Optional (Default: True). If true, adds</span>
+<span class="sd">                the initial value to the name.</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            List: The list of wire names.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">qubit_labels</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_qubit_labels</span><span class="p">()</span>
-        <span class="n">clbit_labels</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_clbit_labels</span><span class="p">()</span>
-
         <span class="k">if</span> <span class="n">with_initial_value</span><span class="p">:</span>
-            <span class="n">qubit_labels</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">: |0&gt;&#39;</span> <span class="o">%</span> <span class="n">qubit</span> <span class="k">for</span> <span class="n">qubit</span> <span class="ow">in</span> <span class="n">qubit_labels</span><span class="p">]</span>
-            <span class="n">clbit_labels</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">: 0 &#39;</span> <span class="o">%</span> <span class="n">clbit</span> <span class="k">for</span> <span class="n">clbit</span> <span class="ow">in</span> <span class="n">clbit_labels</span><span class="p">]</span>
+            <span class="n">initial_qubit_value</span> <span class="o">=</span> <span class="s1">&#39;|0&gt;&#39;</span>
+            <span class="n">initial_clbit_value</span> <span class="o">=</span> <span class="s1">&#39;0 &#39;</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="n">qubit_labels</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">: &#39;</span> <span class="o">%</span> <span class="n">qubit</span> <span class="k">for</span> <span class="n">qubit</span> <span class="ow">in</span> <span class="n">qubit_labels</span><span class="p">]</span>
-            <span class="n">clbit_labels</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">: &#39;</span> <span class="o">%</span> <span class="n">clbit</span> <span class="k">for</span> <span class="n">clbit</span> <span class="ow">in</span> <span class="n">clbit_labels</span><span class="p">]</span>
+            <span class="n">initial_qubit_value</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+            <span class="n">initial_clbit_value</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
 
+        <span class="n">qubit_labels</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">layout</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">bit</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">qregs</span><span class="p">:</span>
+                <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{name}</span><span class="s1">_</span><span class="si">{index}</span><span class="s1">: &#39;</span> <span class="o">+</span> <span class="n">initial_qubit_value</span>
+                <span class="n">qubit_labels</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">label</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">bit</span><span class="o">.</span><span class="n">register</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+                                                 <span class="n">index</span><span class="o">=</span><span class="n">bit</span><span class="o">.</span><span class="n">index</span><span class="p">,</span>
+                                                 <span class="n">physical</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">bit</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">qregs</span><span class="p">:</span>
+                <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;(</span><span class="si">{name}{index}</span><span class="s1">) q</span><span class="si">{physical}</span><span class="s1">&#39;</span> <span class="o">+</span> <span class="n">initial_qubit_value</span>
+                <span class="n">qubit_labels</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">label</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">layout</span><span class="p">[</span><span class="n">bit</span><span class="o">.</span><span class="n">index</span><span class="p">]</span><span class="o">.</span><span class="n">register</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+                                                 <span class="n">index</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">layout</span><span class="p">[</span><span class="n">bit</span><span class="o">.</span><span class="n">index</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">,</span>
+                                                 <span class="n">physical</span><span class="o">=</span><span class="n">bit</span><span class="o">.</span><span class="n">index</span><span class="p">))</span>
+        <span class="n">clbit_labels</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">bit</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">cregs</span><span class="p">:</span>
+            <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{name}</span><span class="s1">_</span><span class="si">{index}</span><span class="s1">: &#39;</span> <span class="o">+</span> <span class="n">initial_clbit_value</span>
+            <span class="n">clbit_labels</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">label</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">bit</span><span class="o">.</span><span class="n">register</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">bit</span><span class="o">.</span><span class="n">index</span><span class="p">))</span>
         <span class="k">return</span> <span class="n">qubit_labels</span> <span class="o">+</span> <span class="n">clbit_labels</span></div>
 
-<div class="viewcode-block" id="TextDrawing.draw_wires"><a class="viewcode-back" href="../../../autodoc/qiskit.visualization.text.html#qiskit.visualization.text.TextDrawing.draw_wires">[ドキュメント]</a>    <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">draw_wires</span><span class="p">(</span><span class="n">wires</span><span class="p">,</span> <span class="n">vertically_compressed</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<div class="viewcode-block" id="TextDrawing.should_compress"><a class="viewcode-back" href="../../../autodoc/qiskit.visualization.text.html#qiskit.visualization.text.TextDrawing.should_compress">[ドキュメント]</a>    <span class="k">def</span> <span class="nf">should_compress</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">top_line</span><span class="p">,</span> <span class="n">bot_line</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Decides if the top_line and bot_line should be merged,</span>
+<span class="sd">        based on `self.vertical_compression`.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">vertical_compression</span> <span class="o">==</span> <span class="s1">&#39;high&#39;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">vertical_compression</span> <span class="o">==</span> <span class="s1">&#39;low&#39;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
+        <span class="k">for</span> <span class="n">top</span><span class="p">,</span> <span class="n">bot</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">top_line</span><span class="p">,</span> <span class="n">bot_line</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">top</span> <span class="o">==</span> <span class="s1">&#39;┴&#39;</span> <span class="ow">and</span> <span class="n">bot</span> <span class="o">==</span> <span class="s1">&#39;┬&#39;</span><span class="p">:</span>
+                <span class="k">return</span> <span class="kc">False</span>
+        <span class="k">return</span> <span class="kc">True</span></div>
+
+<div class="viewcode-block" id="TextDrawing.draw_wires"><a class="viewcode-back" href="../../../autodoc/qiskit.visualization.text.html#qiskit.visualization.text.TextDrawing.draw_wires">[ドキュメント]</a>    <span class="k">def</span> <span class="nf">draw_wires</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">wires</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Given a list of wires, creates a list of lines with the text drawing.</span>
 <span class="sd">        Args:</span>
 <span class="sd">            wires (list): A list of wires with instructions.</span>
-<span class="sd">            vertically_compressed (bool): Default is `True`. It merges the lines</span>
-<span class="sd">                                     so the drawing will take less vertical room.</span>
 <span class="sd">        Returns:</span>
 <span class="sd">            list: A list of lines with the text drawing.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -768,7 +817,7 @@
             <span class="k">if</span> <span class="n">bot_line</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
                 <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">top_line</span><span class="p">)</span>
             <span class="k">else</span><span class="p">:</span>
-                <span class="k">if</span> <span class="n">vertically_compressed</span><span class="p">:</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">should_compress</span><span class="p">(</span><span class="n">top_line</span><span class="p">,</span> <span class="n">bot_line</span><span class="p">):</span>
                     <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">TextDrawing</span><span class="o">.</span><span class="n">merge_lines</span><span class="p">(</span><span class="n">lines</span><span class="o">.</span><span class="n">pop</span><span class="p">(),</span> <span class="n">top_line</span><span class="p">))</span>
                 <span class="k">else</span><span class="p">:</span>
                     <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">TextDrawing</span><span class="o">.</span><span class="n">merge_lines</span><span class="p">(</span><span class="n">lines</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">top_line</span><span class="p">,</span> <span class="n">icod</span><span class="o">=</span><span class="s2">&quot;bot&quot;</span><span class="p">))</span>
@@ -790,7 +839,7 @@
 <div class="viewcode-block" id="TextDrawing.label_for_conditional"><a class="viewcode-back" href="../../../autodoc/qiskit.visualization.text.html#qiskit.visualization.text.TextDrawing.label_for_conditional">[ドキュメント]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">label_for_conditional</span><span class="p">(</span><span class="n">instruction</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; Creates the label for a conditional instruction.&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="s1">&#39;=&#39;</span><span class="p">,</span> <span class="n">instruction</span><span class="o">.</span><span class="n">condition</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span></div>
+        <span class="k">return</span> <span class="s2">&quot;= </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">instruction</span><span class="o">.</span><span class="n">condition</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span></div>
 
 <div class="viewcode-block" id="TextDrawing.params_for_label"><a class="viewcode-back" href="../../../autodoc/qiskit.visualization.text.html#qiskit.visualization.text.TextDrawing.params_for_label">[ドキュメント]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">params_for_label</span><span class="p">(</span><span class="n">instruction</span><span class="p">):</span>
@@ -805,7 +854,8 @@
         <span class="n">ret</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">for</span> <span class="n">param</span> <span class="ow">in</span> <span class="n">instruction</span><span class="o">.</span><span class="n">op</span><span class="o">.</span><span class="n">params</span><span class="p">:</span>
             <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">param</span><span class="p">,</span> <span class="p">(</span><span class="n">sympy</span><span class="o">.</span><span class="n">Number</span><span class="p">,</span> <span class="nb">float</span><span class="p">)):</span>
-                <span class="n">ret</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%.5g</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">param</span><span class="p">)</span>
+                <span class="n">str_param</span> <span class="o">=</span> <span class="n">pi_check</span><span class="p">(</span><span class="n">param</span><span class="p">,</span> <span class="n">ndigits</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+                <span class="n">ret</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">str_param</span><span class="p">)</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">ret</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">param</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">ret</span></div>
@@ -890,6 +940,13 @@
 
         <span class="n">current_cons</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="n">connection_label</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">conditional</span> <span class="o">=</span> <span class="kc">False</span>
+
+        <span class="k">if</span> <span class="n">instruction</span><span class="o">.</span><span class="n">condition</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="c1"># conditional</span>
+            <span class="n">cllabel</span> <span class="o">=</span> <span class="n">TextDrawing</span><span class="o">.</span><span class="n">label_for_conditional</span><span class="p">(</span><span class="n">instruction</span><span class="p">)</span>
+            <span class="n">layer</span><span class="o">.</span><span class="n">set_cl_multibox</span><span class="p">(</span><span class="n">instruction</span><span class="o">.</span><span class="n">condition</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">cllabel</span><span class="p">,</span> <span class="n">top_connect</span><span class="o">=</span><span class="s1">&#39;┴&#39;</span><span class="p">)</span>
+            <span class="n">conditional</span> <span class="o">=</span> <span class="kc">True</span>
 
         <span class="c1"># add in a gate that operates over multiple qubits</span>
         <span class="k">def</span> <span class="nf">add_connected_gate</span><span class="p">(</span><span class="n">instruction</span><span class="p">,</span> <span class="n">gates</span><span class="p">,</span> <span class="n">layer</span><span class="p">,</span> <span class="n">current_cons</span><span class="p">):</span>
@@ -903,8 +960,7 @@
             <span class="n">layer</span><span class="o">.</span><span class="n">set_qubit</span><span class="p">(</span><span class="n">instruction</span><span class="o">.</span><span class="n">qargs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">gate</span><span class="p">)</span>
             <span class="n">layer</span><span class="o">.</span><span class="n">set_clbit</span><span class="p">(</span><span class="n">instruction</span><span class="o">.</span><span class="n">cargs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">MeasureTo</span><span class="p">())</span>
 
-        <span class="k">elif</span> <span class="n">instruction</span><span class="o">.</span><span class="n">name</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;barrier&#39;</span><span class="p">,</span> <span class="s1">&#39;snapshot&#39;</span><span class="p">,</span> <span class="s1">&#39;save&#39;</span><span class="p">,</span> <span class="s1">&#39;load&#39;</span><span class="p">,</span>
-                                  <span class="s1">&#39;noise&#39;</span><span class="p">]:</span>
+        <span class="k">elif</span> <span class="n">instruction</span><span class="o">.</span><span class="n">name</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;barrier&#39;</span><span class="p">,</span> <span class="s1">&#39;snapshot&#39;</span><span class="p">,</span> <span class="s1">&#39;save&#39;</span><span class="p">,</span> <span class="s1">&#39;load&#39;</span><span class="p">,</span> <span class="s1">&#39;noise&#39;</span><span class="p">]:</span>
             <span class="c1"># barrier</span>
             <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">plotbarriers</span><span class="p">:</span>
                 <span class="k">return</span> <span class="n">layer</span><span class="p">,</span> <span class="n">current_cons</span><span class="p">,</span> <span class="n">connection_label</span>
@@ -914,75 +970,70 @@
 
         <span class="k">elif</span> <span class="n">instruction</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;swap&#39;</span><span class="p">:</span>
             <span class="c1"># swap</span>
-            <span class="n">gates</span> <span class="o">=</span> <span class="p">[</span><span class="n">Ex</span><span class="p">()</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">instruction</span><span class="o">.</span><span class="n">qargs</span><span class="p">))]</span>
+            <span class="n">gates</span> <span class="o">=</span> <span class="p">[</span><span class="n">Ex</span><span class="p">(</span><span class="n">conditional</span><span class="o">=</span><span class="n">conditional</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">instruction</span><span class="o">.</span><span class="n">qargs</span><span class="p">))]</span>
             <span class="n">add_connected_gate</span><span class="p">(</span><span class="n">instruction</span><span class="p">,</span> <span class="n">gates</span><span class="p">,</span> <span class="n">layer</span><span class="p">,</span> <span class="n">current_cons</span><span class="p">)</span>
 
         <span class="k">elif</span> <span class="n">instruction</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;cswap&#39;</span><span class="p">:</span>
             <span class="c1"># cswap</span>
-            <span class="n">gates</span> <span class="o">=</span> <span class="p">[</span><span class="n">Bullet</span><span class="p">(),</span> <span class="n">Ex</span><span class="p">(),</span> <span class="n">Ex</span><span class="p">()]</span>
+            <span class="n">gates</span> <span class="o">=</span> <span class="p">[</span><span class="n">Bullet</span><span class="p">(</span><span class="n">conditional</span><span class="o">=</span><span class="n">conditional</span><span class="p">),</span>
+                     <span class="n">Ex</span><span class="p">(</span><span class="n">conditional</span><span class="o">=</span><span class="n">conditional</span><span class="p">),</span>
+                     <span class="n">Ex</span><span class="p">(</span><span class="n">conditional</span><span class="o">=</span><span class="n">conditional</span><span class="p">)]</span>
             <span class="n">add_connected_gate</span><span class="p">(</span><span class="n">instruction</span><span class="p">,</span> <span class="n">gates</span><span class="p">,</span> <span class="n">layer</span><span class="p">,</span> <span class="n">current_cons</span><span class="p">)</span>
 
         <span class="k">elif</span> <span class="n">instruction</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;reset&#39;</span><span class="p">:</span>
-            <span class="n">layer</span><span class="o">.</span><span class="n">set_qubit</span><span class="p">(</span><span class="n">instruction</span><span class="o">.</span><span class="n">qargs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">Reset</span><span class="p">())</span>
-
-        <span class="k">elif</span> <span class="n">instruction</span><span class="o">.</span><span class="n">condition</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="c1"># conditional</span>
-            <span class="n">cllabel</span> <span class="o">=</span> <span class="n">TextDrawing</span><span class="o">.</span><span class="n">label_for_conditional</span><span class="p">(</span><span class="n">instruction</span><span class="p">)</span>
-            <span class="n">qulabel</span> <span class="o">=</span> <span class="n">TextDrawing</span><span class="o">.</span><span class="n">label_for_box</span><span class="p">(</span><span class="n">instruction</span><span class="p">)</span>
-
-            <span class="n">layer</span><span class="o">.</span><span class="n">set_cl_multibox</span><span class="p">(</span><span class="n">instruction</span><span class="o">.</span><span class="n">condition</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">cllabel</span><span class="p">,</span> <span class="n">top_connect</span><span class="o">=</span><span class="s1">&#39;┴&#39;</span><span class="p">)</span>
-            <span class="n">layer</span><span class="o">.</span><span class="n">set_qubit</span><span class="p">(</span><span class="n">instruction</span><span class="o">.</span><span class="n">qargs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">BoxOnQuWire</span><span class="p">(</span><span class="n">qulabel</span><span class="p">,</span> <span class="n">bot_connect</span><span class="o">=</span><span class="s1">&#39;┬&#39;</span><span class="p">))</span>
+            <span class="n">layer</span><span class="o">.</span><span class="n">set_qubit</span><span class="p">(</span><span class="n">instruction</span><span class="o">.</span><span class="n">qargs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">Reset</span><span class="p">(</span><span class="n">conditional</span><span class="o">=</span><span class="n">conditional</span><span class="p">))</span>
 
         <span class="k">elif</span> <span class="n">instruction</span><span class="o">.</span><span class="n">name</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;cx&#39;</span><span class="p">,</span> <span class="s1">&#39;CX&#39;</span><span class="p">,</span> <span class="s1">&#39;ccx&#39;</span><span class="p">]:</span>
             <span class="c1"># cx/ccx</span>
-            <span class="n">gates</span> <span class="o">=</span> <span class="p">[</span><span class="n">Bullet</span><span class="p">()</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">instruction</span><span class="o">.</span><span class="n">qargs</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)]</span>
-            <span class="n">gates</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">BoxOnQuWire</span><span class="p">(</span><span class="s1">&#39;X&#39;</span><span class="p">))</span>
+            <span class="n">gates</span> <span class="o">=</span> <span class="p">[</span><span class="n">Bullet</span><span class="p">(</span><span class="n">conditional</span><span class="o">=</span><span class="n">conditional</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">instruction</span><span class="o">.</span><span class="n">qargs</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)]</span>
+            <span class="n">gates</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">BoxOnQuWire</span><span class="p">(</span><span class="s1">&#39;X&#39;</span><span class="p">,</span> <span class="n">conditional</span><span class="o">=</span><span class="n">conditional</span><span class="p">))</span>
             <span class="n">add_connected_gate</span><span class="p">(</span><span class="n">instruction</span><span class="p">,</span> <span class="n">gates</span><span class="p">,</span> <span class="n">layer</span><span class="p">,</span> <span class="n">current_cons</span><span class="p">)</span>
 
         <span class="k">elif</span> <span class="n">instruction</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;cy&#39;</span><span class="p">:</span>
             <span class="c1"># cy</span>
-            <span class="n">gates</span> <span class="o">=</span> <span class="p">[</span><span class="n">Bullet</span><span class="p">(),</span> <span class="n">BoxOnQuWire</span><span class="p">(</span><span class="s1">&#39;Y&#39;</span><span class="p">)]</span>
+            <span class="n">gates</span> <span class="o">=</span> <span class="p">[</span><span class="n">Bullet</span><span class="p">(</span><span class="n">conditional</span><span class="o">=</span><span class="n">conditional</span><span class="p">),</span> <span class="n">BoxOnQuWire</span><span class="p">(</span><span class="s1">&#39;Y&#39;</span><span class="p">)]</span>
             <span class="n">add_connected_gate</span><span class="p">(</span><span class="n">instruction</span><span class="p">,</span> <span class="n">gates</span><span class="p">,</span> <span class="n">layer</span><span class="p">,</span> <span class="n">current_cons</span><span class="p">)</span>
 
         <span class="k">elif</span> <span class="n">instruction</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;cz&#39;</span><span class="p">:</span>
             <span class="c1"># cz</span>
-            <span class="n">gates</span> <span class="o">=</span> <span class="p">[</span><span class="n">Bullet</span><span class="p">(),</span> <span class="n">Bullet</span><span class="p">()]</span>
+            <span class="n">gates</span> <span class="o">=</span> <span class="p">[</span><span class="n">Bullet</span><span class="p">(</span><span class="n">conditional</span><span class="o">=</span><span class="n">conditional</span><span class="p">),</span> <span class="n">Bullet</span><span class="p">(</span><span class="n">conditional</span><span class="o">=</span><span class="n">conditional</span><span class="p">)]</span>
             <span class="n">add_connected_gate</span><span class="p">(</span><span class="n">instruction</span><span class="p">,</span> <span class="n">gates</span><span class="p">,</span> <span class="n">layer</span><span class="p">,</span> <span class="n">current_cons</span><span class="p">)</span>
 
         <span class="k">elif</span> <span class="n">instruction</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;ch&#39;</span><span class="p">:</span>
             <span class="c1"># ch</span>
-            <span class="n">gates</span> <span class="o">=</span> <span class="p">[</span><span class="n">Bullet</span><span class="p">(),</span> <span class="n">BoxOnQuWire</span><span class="p">(</span><span class="s1">&#39;H&#39;</span><span class="p">)]</span>
+            <span class="n">gates</span> <span class="o">=</span> <span class="p">[</span><span class="n">Bullet</span><span class="p">(</span><span class="n">conditional</span><span class="o">=</span><span class="n">conditional</span><span class="p">),</span> <span class="n">BoxOnQuWire</span><span class="p">(</span><span class="s1">&#39;H&#39;</span><span class="p">)]</span>
             <span class="n">add_connected_gate</span><span class="p">(</span><span class="n">instruction</span><span class="p">,</span> <span class="n">gates</span><span class="p">,</span> <span class="n">layer</span><span class="p">,</span> <span class="n">current_cons</span><span class="p">)</span>
 
         <span class="k">elif</span> <span class="n">instruction</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;cu1&#39;</span><span class="p">:</span>
             <span class="c1"># cu1</span>
             <span class="n">connection_label</span> <span class="o">=</span> <span class="n">TextDrawing</span><span class="o">.</span><span class="n">params_for_label</span><span class="p">(</span><span class="n">instruction</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
-            <span class="n">gates</span> <span class="o">=</span> <span class="p">[</span><span class="n">Bullet</span><span class="p">(),</span> <span class="n">Bullet</span><span class="p">()]</span>
+            <span class="n">gates</span> <span class="o">=</span> <span class="p">[</span><span class="n">Bullet</span><span class="p">(</span><span class="n">conditional</span><span class="o">=</span><span class="n">conditional</span><span class="p">),</span> <span class="n">Bullet</span><span class="p">(</span><span class="n">conditional</span><span class="o">=</span><span class="n">conditional</span><span class="p">)]</span>
             <span class="n">add_connected_gate</span><span class="p">(</span><span class="n">instruction</span><span class="p">,</span> <span class="n">gates</span><span class="p">,</span> <span class="n">layer</span><span class="p">,</span> <span class="n">current_cons</span><span class="p">)</span>
 
         <span class="k">elif</span> <span class="n">instruction</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;rzz&#39;</span><span class="p">:</span>
             <span class="c1"># rzz</span>
             <span class="n">connection_label</span> <span class="o">=</span> <span class="s2">&quot;zz(</span><span class="si">%s</span><span class="s2">)&quot;</span> <span class="o">%</span> <span class="n">TextDrawing</span><span class="o">.</span><span class="n">params_for_label</span><span class="p">(</span><span class="n">instruction</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
-            <span class="n">gates</span> <span class="o">=</span> <span class="p">[</span><span class="n">Bullet</span><span class="p">(),</span> <span class="n">Bullet</span><span class="p">()]</span>
+            <span class="n">gates</span> <span class="o">=</span> <span class="p">[</span><span class="n">Bullet</span><span class="p">(</span><span class="n">conditional</span><span class="o">=</span><span class="n">conditional</span><span class="p">),</span> <span class="n">Bullet</span><span class="p">(</span><span class="n">conditional</span><span class="o">=</span><span class="n">conditional</span><span class="p">)]</span>
             <span class="n">add_connected_gate</span><span class="p">(</span><span class="n">instruction</span><span class="p">,</span> <span class="n">gates</span><span class="p">,</span> <span class="n">layer</span><span class="p">,</span> <span class="n">current_cons</span><span class="p">)</span>
 
         <span class="k">elif</span> <span class="n">instruction</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;cu3&#39;</span><span class="p">:</span>
             <span class="c1"># cu3</span>
             <span class="n">params</span> <span class="o">=</span> <span class="n">TextDrawing</span><span class="o">.</span><span class="n">params_for_label</span><span class="p">(</span><span class="n">instruction</span><span class="p">)</span>
-            <span class="n">gates</span> <span class="o">=</span> <span class="p">[</span><span class="n">Bullet</span><span class="p">(),</span> <span class="n">BoxOnQuWire</span><span class="p">(</span><span class="s2">&quot;U3(</span><span class="si">%s</span><span class="s2">)&quot;</span> <span class="o">%</span> <span class="s1">&#39;,&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">params</span><span class="p">))]</span>
+            <span class="n">gates</span> <span class="o">=</span> <span class="p">[</span><span class="n">Bullet</span><span class="p">(</span><span class="n">conditional</span><span class="o">=</span><span class="n">conditional</span><span class="p">),</span>
+                     <span class="n">BoxOnQuWire</span><span class="p">(</span><span class="s2">&quot;U3(</span><span class="si">%s</span><span class="s2">)&quot;</span> <span class="o">%</span> <span class="s1">&#39;,&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">params</span><span class="p">),</span> <span class="n">conditional</span><span class="o">=</span><span class="n">conditional</span><span class="p">)]</span>
             <span class="n">add_connected_gate</span><span class="p">(</span><span class="n">instruction</span><span class="p">,</span> <span class="n">gates</span><span class="p">,</span> <span class="n">layer</span><span class="p">,</span> <span class="n">current_cons</span><span class="p">)</span>
 
         <span class="k">elif</span> <span class="n">instruction</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;crz&#39;</span><span class="p">:</span>
             <span class="c1"># crz</span>
             <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;Rz(</span><span class="si">%s</span><span class="s2">)&quot;</span> <span class="o">%</span> <span class="n">TextDrawing</span><span class="o">.</span><span class="n">params_for_label</span><span class="p">(</span><span class="n">instruction</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
-
-            <span class="n">gates</span> <span class="o">=</span> <span class="p">[</span><span class="n">Bullet</span><span class="p">(),</span> <span class="n">BoxOnQuWire</span><span class="p">(</span><span class="n">label</span><span class="p">)]</span>
+            <span class="n">gates</span> <span class="o">=</span> <span class="p">[</span><span class="n">Bullet</span><span class="p">(</span><span class="n">conditional</span><span class="o">=</span><span class="n">conditional</span><span class="p">),</span> <span class="n">BoxOnQuWire</span><span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="n">conditional</span><span class="o">=</span><span class="n">conditional</span><span class="p">)]</span>
             <span class="n">add_connected_gate</span><span class="p">(</span><span class="n">instruction</span><span class="p">,</span> <span class="n">gates</span><span class="p">,</span> <span class="n">layer</span><span class="p">,</span> <span class="n">current_cons</span><span class="p">)</span>
 
         <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">instruction</span><span class="o">.</span><span class="n">qargs</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">instruction</span><span class="o">.</span><span class="n">cargs</span><span class="p">:</span>
             <span class="c1"># unitary gate</span>
             <span class="n">layer</span><span class="o">.</span><span class="n">set_qubit</span><span class="p">(</span><span class="n">instruction</span><span class="o">.</span><span class="n">qargs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
-                            <span class="n">BoxOnQuWire</span><span class="p">(</span><span class="n">TextDrawing</span><span class="o">.</span><span class="n">label_for_box</span><span class="p">(</span><span class="n">instruction</span><span class="p">)))</span>
+                            <span class="n">BoxOnQuWire</span><span class="p">(</span><span class="n">TextDrawing</span><span class="o">.</span><span class="n">label_for_box</span><span class="p">(</span><span class="n">instruction</span><span class="p">),</span>
+                                        <span class="n">conditional</span><span class="o">=</span><span class="n">conditional</span><span class="p">))</span>
 
         <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">instruction</span><span class="o">.</span><span class="n">qargs</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">2</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">instruction</span><span class="o">.</span><span class="n">cargs</span><span class="p">:</span>
             <span class="c1"># multiple qubit gate</span>
@@ -990,11 +1041,19 @@
             <span class="n">params</span> <span class="o">=</span> <span class="n">TextDrawing</span><span class="o">.</span><span class="n">params_for_label</span><span class="p">(</span><span class="n">instruction</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">params</span><span class="p">:</span>
                 <span class="n">label</span> <span class="o">+=</span> <span class="s2">&quot;(</span><span class="si">%s</span><span class="s2">)&quot;</span> <span class="o">%</span> <span class="s1">&#39;,&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
-            <span class="n">layer</span><span class="o">.</span><span class="n">set_qu_multibox</span><span class="p">(</span><span class="n">instruction</span><span class="o">.</span><span class="n">qargs</span><span class="p">,</span> <span class="n">label</span><span class="p">)</span>
+            <span class="n">layer</span><span class="o">.</span><span class="n">set_qu_multibox</span><span class="p">(</span><span class="n">instruction</span><span class="o">.</span><span class="n">qargs</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">conditional</span><span class="o">=</span><span class="n">conditional</span><span class="p">)</span>
 
+        <span class="k">elif</span> <span class="n">instruction</span><span class="o">.</span><span class="n">qargs</span> <span class="ow">and</span> <span class="n">instruction</span><span class="o">.</span><span class="n">cargs</span><span class="p">:</span>
+            <span class="c1"># multiple gate, involving both qargs AND cargs</span>
+            <span class="n">label</span> <span class="o">=</span> <span class="n">instruction</span><span class="o">.</span><span class="n">name</span>
+            <span class="n">params</span> <span class="o">=</span> <span class="n">TextDrawing</span><span class="o">.</span><span class="n">params_for_label</span><span class="p">(</span><span class="n">instruction</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">params</span><span class="p">:</span>
+                <span class="n">label</span> <span class="o">+=</span> <span class="s2">&quot;(</span><span class="si">%s</span><span class="s2">)&quot;</span> <span class="o">%</span> <span class="s1">&#39;,&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+            <span class="n">layer</span><span class="o">.</span><span class="n">_set_multibox</span><span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="n">qubits</span><span class="o">=</span><span class="n">instruction</span><span class="o">.</span><span class="n">qargs</span><span class="p">,</span> <span class="n">clbits</span><span class="o">=</span><span class="n">instruction</span><span class="o">.</span><span class="n">cargs</span><span class="p">,</span>
+                                <span class="n">conditional</span><span class="o">=</span><span class="n">conditional</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">raise</span> <span class="n">VisualizationError</span><span class="p">(</span>
-                <span class="s2">&quot;Text visualizer does not know how to handle this instruction&quot;</span><span class="p">,</span> <span class="n">instruction</span><span class="p">)</span>
+                <span class="s2">&quot;Text visualizer does not know how to handle this instruction: &quot;</span><span class="p">,</span> <span class="n">instruction</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
 
         <span class="c1"># sort into the order they were declared in</span>
         <span class="c1"># this ensures that connected boxes have lines in the right direction</span>
@@ -1068,36 +1127,70 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">clbit_layer</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">cregs</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">clbit</span><span class="p">)]</span> <span class="o">=</span> <span class="n">element</span></div>
 
-    <span class="k">def</span> <span class="nf">_set_multibox</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">wire_type</span><span class="p">,</span> <span class="n">bits</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">top_connect</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="c1"># pylint: disable=invalid-name</span>
-        <span class="n">bits</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">bits</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">wire_type</span> <span class="o">==</span> <span class="s2">&quot;cl&quot;</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">_set_multibox</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">qubits</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">clbits</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">top_connect</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">conditional</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">qubits</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">clbits</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">qubits</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">qubits</span><span class="p">)</span>
+            <span class="n">clbits</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">clbits</span><span class="p">)</span>
+            <span class="n">cbit_index</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">([</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cregs</span><span class="p">)</span> <span class="k">if</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">clbits</span><span class="p">])</span>
+            <span class="n">qbit_index</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">([</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">qregs</span><span class="p">)</span> <span class="k">if</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">qubits</span><span class="p">])</span>
+            <span class="n">qargs</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">qubits</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">qbit</span><span class="p">))</span> <span class="k">for</span> <span class="n">qbit</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">qregs</span> <span class="k">if</span> <span class="n">qbit</span> <span class="ow">in</span> <span class="n">qubits</span><span class="p">]</span>
+            <span class="n">cargs</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">clbits</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">cbit</span><span class="p">))</span> <span class="k">for</span> <span class="n">cbit</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">cregs</span> <span class="k">if</span> <span class="n">cbit</span> <span class="ow">in</span> <span class="n">clbits</span><span class="p">]</span>
+
+            <span class="n">box_height</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">qregs</span><span class="p">)</span> <span class="o">-</span> <span class="nb">min</span><span class="p">(</span><span class="n">qbit_index</span><span class="p">)</span> <span class="o">+</span> <span class="nb">max</span><span class="p">(</span><span class="n">cbit_index</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">set_qubit</span><span class="p">(</span><span class="n">qubits</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">BoxOnQuWireTop</span><span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="n">wire_label</span><span class="o">=</span><span class="n">qargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)))</span>
+            <span class="n">order</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="k">for</span> <span class="n">order</span><span class="p">,</span> <span class="n">bit_i</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">qbit_index</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">qregs</span><span class="p">))):</span>
+                <span class="k">if</span> <span class="n">bit_i</span> <span class="ow">in</span> <span class="n">qbit_index</span><span class="p">:</span>
+                    <span class="n">named_bit</span> <span class="o">=</span> <span class="n">qubits</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+                    <span class="n">wire_label</span> <span class="o">=</span> <span class="n">qargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">named_bit</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">qregs</span><span class="p">[</span><span class="n">bit_i</span><span class="p">]</span>
+                    <span class="n">wire_label</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">wire_label</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">set_qubit</span><span class="p">(</span><span class="n">named_bit</span><span class="p">,</span> <span class="n">BoxOnQuWireMid</span><span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="n">box_height</span><span class="p">,</span> <span class="n">order</span><span class="p">,</span>
+                                                         <span class="n">wire_label</span><span class="o">=</span><span class="n">wire_label</span><span class="p">))</span>
+            <span class="k">for</span> <span class="n">order</span><span class="p">,</span> <span class="n">bit_i</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">cbit_index</span><span class="p">)),</span> <span class="n">order</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">bit_i</span> <span class="ow">in</span> <span class="n">cbit_index</span><span class="p">:</span>
+                    <span class="n">named_bit</span> <span class="o">=</span> <span class="n">clbits</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+                    <span class="n">wire_label</span> <span class="o">=</span> <span class="n">cargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">named_bit</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cregs</span><span class="p">[</span><span class="n">bit_i</span><span class="p">]</span>
+                    <span class="n">wire_label</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">cargs</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">set_clbit</span><span class="p">(</span><span class="n">named_bit</span><span class="p">,</span> <span class="n">BoxOnClWireMid</span><span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="n">box_height</span><span class="p">,</span> <span class="n">order</span><span class="p">,</span>
+                                                         <span class="n">wire_label</span><span class="o">=</span><span class="n">wire_label</span><span class="p">))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">set_clbit</span><span class="p">(</span><span class="n">clbits</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span>
+                           <span class="n">BoxOnClWireBot</span><span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="n">box_height</span><span class="p">,</span> <span class="n">wire_label</span><span class="o">=</span><span class="n">cargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)))</span>
+            <span class="k">return</span>
+
+        <span class="k">if</span> <span class="n">qubits</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">clbits</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">bits</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">clbits</span><span class="p">)</span>
             <span class="n">bit_index</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">([</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cregs</span><span class="p">)</span> <span class="k">if</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">bits</span><span class="p">])</span>
             <span class="n">bits</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">cregs</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
             <span class="n">qargs</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">bits</span><span class="p">)</span>
             <span class="n">set_bit</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">set_clbit</span>
-            <span class="n">BoxOnWire</span> <span class="o">=</span> <span class="n">BoxOnClWire</span>
-            <span class="n">BoxOnWireTop</span> <span class="o">=</span> <span class="n">BoxOnClWireTop</span>
-            <span class="n">BoxOnWireMid</span> <span class="o">=</span> <span class="n">BoxOnClWireMid</span>
-            <span class="n">BoxOnWireBot</span> <span class="o">=</span> <span class="n">BoxOnClWireBot</span>
-        <span class="k">elif</span> <span class="n">wire_type</span> <span class="o">==</span> <span class="s2">&quot;qu&quot;</span><span class="p">:</span>
+            <span class="n">OnWire</span> <span class="o">=</span> <span class="n">BoxOnClWire</span>
+            <span class="n">OnWireTop</span> <span class="o">=</span> <span class="n">BoxOnClWireTop</span>
+            <span class="n">OnWireMid</span> <span class="o">=</span> <span class="n">BoxOnClWireMid</span>
+            <span class="n">OnWireBot</span> <span class="o">=</span> <span class="n">BoxOnClWireBot</span>
+        <span class="k">elif</span> <span class="n">clbits</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">qubits</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">bits</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">qubits</span><span class="p">)</span>
             <span class="n">bit_index</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">([</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">qregs</span><span class="p">)</span> <span class="k">if</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">bits</span><span class="p">])</span>
             <span class="n">qargs</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">bits</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">qbit</span><span class="p">))</span> <span class="k">for</span> <span class="n">qbit</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">qregs</span> <span class="k">if</span> <span class="n">qbit</span> <span class="ow">in</span> <span class="n">bits</span><span class="p">]</span>
             <span class="n">bits</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">qregs</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
             <span class="n">set_bit</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">set_qubit</span>
-            <span class="n">BoxOnWire</span> <span class="o">=</span> <span class="n">BoxOnQuWire</span>
-            <span class="n">BoxOnWireTop</span> <span class="o">=</span> <span class="n">BoxOnQuWireTop</span>
-            <span class="n">BoxOnWireMid</span> <span class="o">=</span> <span class="n">BoxOnQuWireMid</span>
-            <span class="n">BoxOnWireBot</span> <span class="o">=</span> <span class="n">BoxOnQuWireBot</span>
+            <span class="n">OnWire</span> <span class="o">=</span> <span class="n">BoxOnQuWire</span>
+            <span class="n">OnWireTop</span> <span class="o">=</span> <span class="n">BoxOnQuWireTop</span>
+            <span class="n">OnWireMid</span> <span class="o">=</span> <span class="n">BoxOnQuWireMid</span>
+            <span class="n">OnWireBot</span> <span class="o">=</span> <span class="n">BoxOnQuWireBot</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="n">VisualizationError</span><span class="p">(</span><span class="s2">&quot;_set_multibox only supports &#39;cl&#39; and &#39;qu&#39; as wire types.&quot;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="n">VisualizationError</span><span class="p">(</span><span class="s2">&quot;_set_multibox error!.&quot;</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">bit_index</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-            <span class="n">set_bit</span><span class="p">(</span><span class="n">bits</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">BoxOnWire</span><span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="n">top_connect</span><span class="o">=</span><span class="n">top_connect</span><span class="p">))</span>
+            <span class="n">set_bit</span><span class="p">(</span><span class="n">bits</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">OnWire</span><span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="n">top_connect</span><span class="o">=</span><span class="n">top_connect</span><span class="p">))</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">box_height</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">bit_index</span><span class="p">)</span> <span class="o">-</span> <span class="nb">min</span><span class="p">(</span><span class="n">bit_index</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
             <span class="n">set_bit</span><span class="p">(</span><span class="n">bits</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span>
-                    <span class="n">BoxOnWireTop</span><span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="n">top_connect</span><span class="o">=</span><span class="n">top_connect</span><span class="p">,</span> <span class="n">wire_label</span><span class="o">=</span><span class="n">qargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)))</span>
+                    <span class="n">OnWireTop</span><span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="n">top_connect</span><span class="o">=</span><span class="n">top_connect</span><span class="p">,</span> <span class="n">wire_label</span><span class="o">=</span><span class="n">qargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)))</span>
             <span class="k">for</span> <span class="n">order</span><span class="p">,</span> <span class="n">bit_i</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">bit_index</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="n">bit_index</span><span class="p">))):</span>
                 <span class="k">if</span> <span class="n">bit_i</span> <span class="ow">in</span> <span class="n">bit_index</span><span class="p">:</span>
                     <span class="n">named_bit</span> <span class="o">=</span> <span class="n">bits</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
@@ -1105,8 +1198,9 @@
                 <span class="k">else</span><span class="p">:</span>
                     <span class="n">named_bit</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">qregs</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">cregs</span><span class="p">)[</span><span class="n">bit_i</span><span class="p">]</span>
                     <span class="n">wire_label</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">qargs</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-                <span class="n">set_bit</span><span class="p">(</span><span class="n">named_bit</span><span class="p">,</span> <span class="n">BoxOnWireMid</span><span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="n">box_height</span><span class="p">,</span> <span class="n">order</span><span class="p">,</span> <span class="n">wire_label</span><span class="o">=</span><span class="n">wire_label</span><span class="p">))</span>
-            <span class="n">set_bit</span><span class="p">(</span><span class="n">bits</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">BoxOnWireBot</span><span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="n">box_height</span><span class="p">,</span> <span class="n">wire_label</span><span class="o">=</span><span class="n">qargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)))</span>
+                <span class="n">set_bit</span><span class="p">(</span><span class="n">named_bit</span><span class="p">,</span> <span class="n">OnWireMid</span><span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="n">box_height</span><span class="p">,</span> <span class="n">order</span><span class="p">,</span> <span class="n">wire_label</span><span class="o">=</span><span class="n">wire_label</span><span class="p">))</span>
+            <span class="n">set_bit</span><span class="p">(</span><span class="n">bits</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">OnWireBot</span><span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="n">box_height</span><span class="p">,</span> <span class="n">wire_label</span><span class="o">=</span><span class="n">qargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span>
+                                           <span class="n">conditional</span><span class="o">=</span><span class="n">conditional</span><span class="p">))</span>
 
 <div class="viewcode-block" id="Layer.set_cl_multibox"><a class="viewcode-back" href="../../../autodoc/qiskit.visualization.text.html#qiskit.visualization.text.Layer.set_cl_multibox">[ドキュメント]</a>    <span class="k">def</span> <span class="nf">set_cl_multibox</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">creg</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">top_connect</span><span class="o">=</span><span class="s1">&#39;┴&#39;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -1116,17 +1210,18 @@
 <span class="sd">            label (string): The label for the multi clbit box.</span>
 <span class="sd">            top_connect (char): The char to connect the box on the top.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">clbit</span> <span class="o">=</span> <span class="p">[</span><span class="n">bit</span> <span class="k">for</span> <span class="n">bit</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">cregs</span> <span class="k">if</span> <span class="n">bit</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">creg</span><span class="p">]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_set_multibox</span><span class="p">(</span><span class="s2">&quot;cl&quot;</span><span class="p">,</span> <span class="n">clbit</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">top_connect</span><span class="o">=</span><span class="n">top_connect</span><span class="p">)</span></div>
+        <span class="n">clbit</span> <span class="o">=</span> <span class="p">[</span><span class="n">bit</span> <span class="k">for</span> <span class="n">bit</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">cregs</span> <span class="k">if</span> <span class="n">bit</span><span class="o">.</span><span class="n">register</span> <span class="o">==</span> <span class="n">creg</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_set_multibox</span><span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="n">clbits</span><span class="o">=</span><span class="n">clbit</span><span class="p">,</span> <span class="n">top_connect</span><span class="o">=</span><span class="n">top_connect</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="Layer.set_qu_multibox"><a class="viewcode-back" href="../../../autodoc/qiskit.visualization.text.html#qiskit.visualization.text.Layer.set_qu_multibox">[ドキュメント]</a>    <span class="k">def</span> <span class="nf">set_qu_multibox</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bits</span><span class="p">,</span> <span class="n">label</span><span class="p">):</span>
+<div class="viewcode-block" id="Layer.set_qu_multibox"><a class="viewcode-back" href="../../../autodoc/qiskit.visualization.text.html#qiskit.visualization.text.Layer.set_qu_multibox">[ドキュメント]</a>    <span class="k">def</span> <span class="nf">set_qu_multibox</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bits</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">conditional</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Sets the multi qubit box.</span>
 <span class="sd">        Args:</span>
 <span class="sd">            bits (list[int]): A list of affected bits.</span>
 <span class="sd">            label (string): The label for the multi qubit box.</span>
+<span class="sd">            conditional (bool): If the box has a conditional</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_set_multibox</span><span class="p">(</span><span class="s2">&quot;qu&quot;</span><span class="p">,</span> <span class="n">bits</span><span class="p">,</span> <span class="n">label</span><span class="p">)</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_set_multibox</span><span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="n">qubits</span><span class="o">=</span><span class="n">bits</span><span class="p">,</span> <span class="n">conditional</span><span class="o">=</span><span class="n">conditional</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Layer.connect_with"><a class="viewcode-back" href="../../../autodoc/qiskit.visualization.text.html#qiskit.visualization.text.Layer.connect_with">[ドキュメント]</a>    <span class="k">def</span> <span class="nf">connect_with</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">wire_char</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>

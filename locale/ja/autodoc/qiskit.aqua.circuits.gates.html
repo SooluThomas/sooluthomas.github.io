@@ -1647,46 +1647,129 @@
 <span id="qiskit-aqua-circuits-gates-package"></span><h1>qiskit.aqua.circuits.gates package<a class="headerlink" href="#module-qiskit.aqua.circuits.gates" title="このヘッドラインへのパーマリンク">¶</a></h1>
 <dl class="function">
 <dt id="qiskit.aqua.circuits.gates.mcu1">
-<code class="descname">mcu1</code><span class="sig-paren">(</span><em>self</em>, <em>theta</em>, <em>control_qubits</em>, <em>target_qubit</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/circuits/gates/multi_control_u1_gate.html#mcu1"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.aqua.circuits.gates.mcu1" title="この定義へのパーマリンク">¶</a></dt>
-<dd><p>Apply Multiple-Controlled U1 gate
-:param theta: angle theta
-:param control_qubits: The list of control qubits
-:param target_qubit: The target qubit</p>
+<code class="descname">mcu1</code><span class="sig-paren">(</span><em>self</em>, <em>lam</em>, <em>control_qubits</em>, <em>target_qubit</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/circuits/gates/multi_control_u1_gate.html#mcu1"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.aqua.circuits.gates.mcu1" title="この定義へのパーマリンク">¶</a></dt>
+<dd><p>Apply Multiple-Controlled U1 gate</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">パラメータ:</th><td class="field-body"><ul class="first last simple">
+<li><strong>self</strong> (<a class="reference internal" href="qiskit.circuit.quantumcircuit.html#qiskit.circuit.quantumcircuit.QuantumCircuit" title="qiskit.circuit.quantumcircuit.QuantumCircuit"><em>QuantumCircuit</em></a>) -- The QuantumCircuit object to apply the mcu1 gate on.</li>
+<li><strong>lam</strong> (<em>float</em>) -- angle lambda</li>
+<li><strong>control_qubits</strong> (<em>list of Qubit</em>) -- The list of control qubits</li>
+<li><strong>target_qubit</strong> (<a class="reference internal" href="qiskit.circuit.quantumregister.html#qiskit.circuit.quantumregister.Qubit" title="qiskit.circuit.quantumregister.Qubit"><em>Qubit</em></a>) -- The target qubit</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="function">
-<dt id="qiskit.aqua.circuits.gates.mcu3">
-<code class="descname">mcu3</code><span class="sig-paren">(</span><em>self</em>, <em>theta</em>, <em>phi</em>, <em>lam</em>, <em>control_qubits</em>, <em>target_qubit</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/circuits/gates/multi_control_u3_gate.html#mcu3"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.aqua.circuits.gates.mcu3" title="この定義へのパーマリンク">¶</a></dt>
-<dd><p>Apply Multiple-Controlled U3 gate
-:param theta: angle theta
-:param phi: angle phi
-:param lam: angle lambda
-:param control_qubits: The list of control qubits
-:param target_qubit: The target qubit</p>
+<dt id="qiskit.aqua.circuits.gates.mcrx">
+<code class="descname">mcrx</code><span class="sig-paren">(</span><em>self</em>, <em>theta</em>, <em>q_controls</em>, <em>q_target</em>, <em>use_basis_gates=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/circuits/gates/multi_control_rotation_gates.html#mcrx"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.aqua.circuits.gates.mcrx" title="この定義へのパーマリンク">¶</a></dt>
+<dd><p>Apply Multiple-Controlled X rotation gate</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">パラメータ:</th><td class="field-body"><ul class="first last simple">
+<li><strong>self</strong> (<a class="reference internal" href="qiskit.circuit.quantumcircuit.html#qiskit.circuit.quantumcircuit.QuantumCircuit" title="qiskit.circuit.quantumcircuit.QuantumCircuit"><em>QuantumCircuit</em></a>) -- The QuantumCircuit object to apply the mcrx gate on.</li>
+<li><strong>theta</strong> (<em>float</em>) -- angle theta</li>
+<li><strong>control_qubits</strong> (<em>list of Qubit</em>) -- The list of control qubits</li>
+<li><strong>target_qubit</strong> (<a class="reference internal" href="qiskit.circuit.quantumregister.html#qiskit.circuit.quantumregister.Qubit" title="qiskit.circuit.quantumregister.Qubit"><em>Qubit</em></a>) -- The target qubit</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="qiskit.aqua.circuits.gates.mcry">
+<code class="descname">mcry</code><span class="sig-paren">(</span><em>self</em>, <em>theta</em>, <em>q_controls</em>, <em>q_target</em>, <em>q_ancillae</em>, <em>mode='basic'</em>, <em>use_basis_gates=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/circuits/gates/multi_control_rotation_gates.html#mcry"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.aqua.circuits.gates.mcry" title="この定義へのパーマリンク">¶</a></dt>
+<dd><p>Apply Multiple-Controlled Y rotation gate</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">パラメータ:</th><td class="field-body"><ul class="first last simple">
+<li><strong>self</strong> (<a class="reference internal" href="qiskit.circuit.quantumcircuit.html#qiskit.circuit.quantumcircuit.QuantumCircuit" title="qiskit.circuit.quantumcircuit.QuantumCircuit"><em>QuantumCircuit</em></a>) -- The QuantumCircuit object to apply the mcry gate on.</li>
+<li><strong>theta</strong> (<em>float</em>) -- angle theta</li>
+<li><strong>control_qubits</strong> (<em>list of Qubit</em>) -- The list of control qubits</li>
+<li><strong>target_qubit</strong> (<a class="reference internal" href="qiskit.circuit.quantumregister.html#qiskit.circuit.quantumregister.Qubit" title="qiskit.circuit.quantumregister.Qubit"><em>Qubit</em></a>) -- The target qubit</li>
+<li><strong>q_ancillae</strong> (<em>QuantumRegister | tuple</em><em>(</em><a class="reference internal" href="qiskit.circuit.quantumregister.html#qiskit.circuit.quantumregister.QuantumRegister" title="qiskit.circuit.quantumregister.QuantumRegister"><em>QuantumRegister</em></a><em>, </em><em>int</em><em>)</em>) -- The list of ancillary qubits.</li>
+<li><strong>mode</strong> (<em>string</em>) -- The implementation mode to use</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="qiskit.aqua.circuits.gates.mcrz">
+<code class="descname">mcrz</code><span class="sig-paren">(</span><em>self</em>, <em>lam</em>, <em>q_controls</em>, <em>q_target</em>, <em>use_basis_gates=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/circuits/gates/multi_control_rotation_gates.html#mcrz"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.aqua.circuits.gates.mcrz" title="この定義へのパーマリンク">¶</a></dt>
+<dd><p>Apply Multiple-Controlled Z rotation gate</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">パラメータ:</th><td class="field-body"><ul class="first last simple">
+<li><strong>self</strong> (<a class="reference internal" href="qiskit.circuit.quantumcircuit.html#qiskit.circuit.quantumcircuit.QuantumCircuit" title="qiskit.circuit.quantumcircuit.QuantumCircuit"><em>QuantumCircuit</em></a>) -- The QuantumCircuit object to apply the mcrz gate on.</li>
+<li><strong>phi</strong> (<em>float</em>) -- angle phi</li>
+<li><strong>control_qubits</strong> (<em>list of Qubit</em>) -- The list of control qubits</li>
+<li><strong>target_qubit</strong> (<a class="reference internal" href="qiskit.circuit.quantumregister.html#qiskit.circuit.quantumregister.Qubit" title="qiskit.circuit.quantumregister.Qubit"><em>Qubit</em></a>) -- The target qubit</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="function">
 <dt id="qiskit.aqua.circuits.gates.mct">
 <code class="descname">mct</code><span class="sig-paren">(</span><em>self</em>, <em>q_controls</em>, <em>q_target</em>, <em>q_ancilla</em>, <em>mode='basic'</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/circuits/gates/multi_control_toffoli_gate.html#mct"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.aqua.circuits.gates.mct" title="この定義へのパーマリンク">¶</a></dt>
-<dd><p>Apply Multiple-Control Toffoli operation
-:param q_controls: The list of control qubits
-:param q_target: The target qubit
-:param q_ancilla: The list of ancillary qubits
-:param mode: The implementation mode to use
-:type mode: string</p>
+<dd><p>Apply Multiple-Control Toffoli operation</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">パラメータ:</th><td class="field-body"><ul class="first last simple">
+<li><strong>self</strong> (<a class="reference internal" href="qiskit.circuit.quantumcircuit.html#qiskit.circuit.quantumcircuit.QuantumCircuit" title="qiskit.circuit.quantumcircuit.QuantumCircuit"><em>QuantumCircuit</em></a>) -- The QuantumCircuit object to apply the mct gate on.</li>
+<li><strong>q_controls</strong> (<em>QuantumRegister | list of Qubit</em>) -- The list of control qubits</li>
+<li><strong>q_target</strong> (<a class="reference internal" href="qiskit.circuit.quantumregister.html#qiskit.circuit.quantumregister.Qubit" title="qiskit.circuit.quantumregister.Qubit"><em>Qubit</em></a>) -- The target qubit</li>
+<li><strong>q_ancilla</strong> (<em>QuantumRegister | list of Qubit</em>) -- The list of ancillary qubits</li>
+<li><strong>mode</strong> (<em>str</em>) -- The implementation mode to use</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="function">
 <dt id="qiskit.aqua.circuits.gates.mcmt">
 <code class="descname">mcmt</code><span class="sig-paren">(</span><em>self</em>, <em>q_controls</em>, <em>q_ancillae</em>, <em>single_control_gate_fun</em>, <em>q_targets</em>, <em>mode='basic'</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/circuits/gates/multi_control_multi_target_gate.html#mcmt"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.aqua.circuits.gates.mcmt" title="この定義へのパーマリンク">¶</a></dt>
 <dd><p>Apply a Multi-Control, Multi-Target using a generic gate.
-It can also be used to implement a generic Multi-Control gate, as the target could also be of length 1.
-:param q_controls: The list of control qubits
-:param q_ancillae: The list of ancillary qubits
-:param single_control_gate_fun: The single control gate function (e.g QuantumCircuit.cz or QuantumCircuit.ch)
-:param q_targets: A list of qubits or a QuantumRegister to which the gate function should be applied.
-:param mode: The implementation mode to use (at the moment, only the basic mode is supported)
-:type mode: string</p>
+It can also be used to implement a generic Multi-Control gate, as the target could also be of length 1.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">パラメータ:</th><td class="field-body"><ul class="first last simple">
+<li><strong>self</strong> (<a class="reference internal" href="qiskit.circuit.quantumcircuit.html#qiskit.circuit.quantumcircuit.QuantumCircuit" title="qiskit.circuit.quantumcircuit.QuantumCircuit"><em>QuantumCircuit</em></a>) -- The QuantumCircuit object to apply the mcmt gate on.</li>
+<li><strong>q_controls</strong> (<em>QuantumRegister | list of Qubit</em>) -- The list of control qubits</li>
+<li><strong>q_ancillae</strong> (<em>QuantumRegister | list of Qubit</em>) -- The list of ancillary qubits</li>
+<li><strong>single_control_gate_fun</strong> (<a class="reference internal" href="qiskit.circuit.gate.html#qiskit.circuit.gate.Gate" title="qiskit.circuit.gate.Gate"><em>Gate</em></a>) -- The single control gate function (e.g QuantumCircuit.cz or QuantumCircuit.ch)</li>
+<li><strong>q_targets</strong> (<em>QuantumRegister | list of Qubit</em>) -- A list of qubits or a QuantumRegister
+to which the gate function should be applied.</li>
+<li><strong>mode</strong> (<em>str</em>) -- The implementation mode to use (at the moment, only the basic mode is supported)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="function">
@@ -1700,8 +1783,8 @@ It can also be used to implement a generic Multi-Control gate, as the target cou
 <tr class="field-odd field"><th class="field-name">パラメータ:</th><td class="field-body"><ul class="first last simple">
 <li><strong>self</strong> (<a class="reference internal" href="qiskit.circuit.quantumcircuit.html#qiskit.circuit.quantumcircuit.QuantumCircuit" title="qiskit.circuit.quantumcircuit.QuantumCircuit"><em>QuantumCircuit</em></a>) -- The QuantumCircuit object to build the conjunction on.</li>
 <li><strong>variable_register</strong> (<a class="reference internal" href="qiskit.circuit.quantumregister.html#qiskit.circuit.quantumregister.QuantumRegister" title="qiskit.circuit.quantumregister.QuantumRegister"><em>QuantumRegister</em></a>) -- The QuantumRegister holding the variable qubits.</li>
-<li><strong>flags</strong> (<em>list</em>) -- A list of +1/-1/0 to mark negations or omissions of qubits.</li>
-<li><strong>target_qubit</strong> (<em>tuple</em><em>(</em><a class="reference internal" href="qiskit.circuit.quantumregister.html#qiskit.circuit.quantumregister.QuantumRegister" title="qiskit.circuit.quantumregister.QuantumRegister"><em>QuantumRegister</em></a><em>, </em><em>int</em><em>)</em>) -- The target qubit to hold the conjunction result.</li>
+<li><strong>flags</strong> (<em>list of int</em>) -- A list of +1/-1/0 to mark negations or omissions of qubits.</li>
+<li><strong>target_qubit</strong> (<a class="reference internal" href="qiskit.circuit.quantumregister.html#qiskit.circuit.quantumregister.Qubit" title="qiskit.circuit.quantumregister.Qubit"><em>Qubit</em></a>) -- The target qubit to hold the conjunction result.</li>
 <li><strong>ancillary_register</strong> (<a class="reference internal" href="qiskit.circuit.quantumregister.html#qiskit.circuit.quantumregister.QuantumRegister" title="qiskit.circuit.quantumregister.QuantumRegister"><em>QuantumRegister</em></a>) -- The ancillary QuantumRegister for building the mct.</li>
 <li><strong>mct_mode</strong> (<em>str</em>) -- The mct building mode.</li>
 </ul>
@@ -1722,8 +1805,8 @@ It can also be used to implement a generic Multi-Control gate, as the target cou
 <tr class="field-odd field"><th class="field-name">パラメータ:</th><td class="field-body"><ul class="first last simple">
 <li><strong>self</strong> (<a class="reference internal" href="qiskit.circuit.quantumcircuit.html#qiskit.circuit.quantumcircuit.QuantumCircuit" title="qiskit.circuit.quantumcircuit.QuantumCircuit"><em>QuantumCircuit</em></a>) -- The QuantumCircuit object to build the disjunction on.</li>
 <li><strong>qr_variables</strong> (<a class="reference internal" href="qiskit.circuit.quantumregister.html#qiskit.circuit.quantumregister.QuantumRegister" title="qiskit.circuit.quantumregister.QuantumRegister"><em>QuantumRegister</em></a>) -- The QuantumRegister holding the variable qubits.</li>
-<li><strong>flags</strong> (<em>list</em>) -- A list of +1/-1/0 to mark negations or omissions of qubits.</li>
-<li><strong>qb_target</strong> (<em>tuple</em><em>(</em><a class="reference internal" href="qiskit.circuit.quantumregister.html#qiskit.circuit.quantumregister.QuantumRegister" title="qiskit.circuit.quantumregister.QuantumRegister"><em>QuantumRegister</em></a><em>, </em><em>int</em><em>)</em>) -- The target qubit to hold the disjunction result.</li>
+<li><strong>flags</strong> (<em>list of int</em>) -- A list of +1/-1/0 to mark negations or omissions of qubits.</li>
+<li><strong>qb_target</strong> (<a class="reference internal" href="qiskit.circuit.quantumregister.html#qiskit.circuit.quantumregister.Qubit" title="qiskit.circuit.quantumregister.Qubit"><em>Qubit</em></a>) -- The target qubit to hold the disjunction result.</li>
 <li><strong>qr_ancillae</strong> (<a class="reference internal" href="qiskit.circuit.quantumregister.html#qiskit.circuit.quantumregister.QuantumRegister" title="qiskit.circuit.quantumregister.QuantumRegister"><em>QuantumRegister</em></a>) -- The ancillary QuantumRegister for building the mct.</li>
 <li><strong>mct_mode</strong> (<em>str</em>) -- The mct building mode.</li>
 </ul>
@@ -1734,39 +1817,18 @@ It can also be used to implement a generic Multi-Control gate, as the target cou
 </dd></dl>
 
 <dl class="function">
-<dt id="qiskit.aqua.circuits.gates.ch">
-<code class="descname">ch</code><span class="sig-paren">(</span><em>self</em>, <em>q_control</em>, <em>q_target</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/circuits/gates/controlled_hadamard_gate.html#ch"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.aqua.circuits.gates.ch" title="この定義へのパーマリンク">¶</a></dt>
-<dd><p>Apply Controlled-Hadamard (ch) Gate.</p>
-<p>Note that this implementation of the ch uses a single cx gate,
-which is more efficient than what's currently provided in Terra.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">パラメータ:</th><td class="field-body"><ul class="first last simple">
-<li><strong>self</strong> (<a class="reference internal" href="qiskit.circuit.quantumcircuit.html#qiskit.circuit.quantumcircuit.QuantumCircuit" title="qiskit.circuit.quantumcircuit.QuantumCircuit"><em>QuantumCircuit</em></a>) -- The circuit to apply the ch gate on.</li>
-<li><strong>q_control</strong> (<em>(</em><a class="reference internal" href="qiskit.circuit.quantumregister.html#qiskit.circuit.quantumregister.QuantumRegister" title="qiskit.circuit.quantumregister.QuantumRegister"><em>QuantumRegister</em></a><em>, </em><em>int</em><em>)</em>) -- The control qubit.</li>
-<li><strong>q_target</strong> (<em>(</em><a class="reference internal" href="qiskit.circuit.quantumregister.html#qiskit.circuit.quantumregister.QuantumRegister" title="qiskit.circuit.quantumregister.QuantumRegister"><em>QuantumRegister</em></a><em>, </em><em>int</em><em>)</em>) -- The target qubit.</li>
-</ul>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="function">
 <dt id="qiskit.aqua.circuits.gates.cry">
-<code class="descname">cry</code><span class="sig-paren">(</span><em>self</em>, <em>theta</em>, <em>q_control</em>, <em>q_target</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/circuits/gates/controlled_ry_gates.html#cry"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.aqua.circuits.gates.cry" title="この定義へのパーマリンク">¶</a></dt>
+<code class="descname">cry</code><span class="sig-paren">(</span><em>self</em>, <em>theta</em>, <em>q_control</em>, <em>q_target</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/circuits/gates/controlled_ry_gate.html#cry"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.aqua.circuits.gates.cry" title="この定義へのパーマリンク">¶</a></dt>
 <dd><p>Apply Controlled-RY (cry) Gate.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">パラメータ:</th><td class="field-body"><ul class="first last simple">
-<li><strong>self</strong> (<a class="reference internal" href="qiskit.circuit.quantumcircuit.html#qiskit.circuit.quantumcircuit.QuantumCircuit" title="qiskit.circuit.quantumcircuit.QuantumCircuit"><em>QuantumCircuit</em></a>) -- The circuit to apply the ch gate on.</li>
+<li><strong>self</strong> (<a class="reference internal" href="qiskit.circuit.quantumcircuit.html#qiskit.circuit.quantumcircuit.QuantumCircuit" title="qiskit.circuit.quantumcircuit.QuantumCircuit"><em>QuantumCircuit</em></a>) -- The circuit to apply the cry gate on.</li>
 <li><strong>theta</strong> (<em>float</em>) -- The rotation angle.</li>
-<li><strong>q_control</strong> (<em>(</em><a class="reference internal" href="qiskit.circuit.quantumregister.html#qiskit.circuit.quantumregister.QuantumRegister" title="qiskit.circuit.quantumregister.QuantumRegister"><em>QuantumRegister</em></a><em>, </em><em>int</em><em>)</em>) -- The control qubit.</li>
-<li><strong>q_target</strong> (<em>(</em><a class="reference internal" href="qiskit.circuit.quantumregister.html#qiskit.circuit.quantumregister.QuantumRegister" title="qiskit.circuit.quantumregister.QuantumRegister"><em>QuantumRegister</em></a><em>, </em><em>int</em><em>)</em>) -- The target qubit.</li>
+<li><strong>q_control</strong> (<a class="reference internal" href="qiskit.circuit.quantumregister.html#qiskit.circuit.quantumregister.Qubit" title="qiskit.circuit.quantumregister.Qubit"><em>Qubit</em></a>) -- The control qubit.</li>
+<li><strong>q_target</strong> (<a class="reference internal" href="qiskit.circuit.quantumregister.html#qiskit.circuit.quantumregister.Qubit" title="qiskit.circuit.quantumregister.Qubit"><em>Qubit</em></a>) -- The target qubit.</li>
 </ul>
 </td>
 </tr>
@@ -1775,19 +1837,41 @@ which is more efficient than what's currently provided in Terra.</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="qiskit.aqua.circuits.gates.mcry">
-<code class="descname">mcry</code><span class="sig-paren">(</span><em>self</em>, <em>theta</em>, <em>q_controls</em>, <em>q_target</em>, <em>q_ancillae</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/circuits/gates/controlled_ry_gates.html#mcry"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.aqua.circuits.gates.mcry" title="この定義へのパーマリンク">¶</a></dt>
-<dd><p>Apply Multiple-Control RY (mcry) Gate.</p>
+<dt id="qiskit.aqua.circuits.gates.rccx">
+<code class="descname">rccx</code><span class="sig-paren">(</span><em>self</em>, <em>q_control_1</em>, <em>q_control_2</em>, <em>q_target</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/circuits/gates/relative_phase_toffoli.html#rccx"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.aqua.circuits.gates.rccx" title="この定義へのパーマリンク">¶</a></dt>
+<dd><p>Apply 2-Control Relative-Phase Toffoli gate from q_control_1 and q_control_2 to q_target.</p>
+<p>The implementation is based on <a class="reference external" href="https://arxiv.org/pdf/1508.03273.pdf">https://arxiv.org/pdf/1508.03273.pdf</a> Figure 3</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">パラメータ:</th><td class="field-body"><ul class="first last simple">
-<li><strong>self</strong> (<a class="reference internal" href="qiskit.circuit.quantumcircuit.html#qiskit.circuit.quantumcircuit.QuantumCircuit" title="qiskit.circuit.quantumcircuit.QuantumCircuit"><em>QuantumCircuit</em></a>) -- The circuit to apply the ch gate on.</li>
-<li><strong>theta</strong> (<em>float</em>) -- The rotation angle.</li>
-<li><strong>q_controls</strong> (<em>QuantumRegister |</em><em> (</em><a class="reference internal" href="qiskit.circuit.quantumregister.html#qiskit.circuit.quantumregister.QuantumRegister" title="qiskit.circuit.quantumregister.QuantumRegister"><em>QuantumRegister</em></a><em>, </em><em>int</em><em>)</em>) -- The control qubits.</li>
-<li><strong>q_target</strong> (<em>(</em><a class="reference internal" href="qiskit.circuit.quantumregister.html#qiskit.circuit.quantumregister.QuantumRegister" title="qiskit.circuit.quantumregister.QuantumRegister"><em>QuantumRegister</em></a><em>, </em><em>int</em><em>)</em>) -- The target qubit.</li>
-<li><strong>q_ancillae</strong> (<em>QuantumRegister |</em><em> (</em><a class="reference internal" href="qiskit.circuit.quantumregister.html#qiskit.circuit.quantumregister.QuantumRegister" title="qiskit.circuit.quantumregister.QuantumRegister"><em>QuantumRegister</em></a><em>, </em><em>int</em><em>)</em>) -- The ancillary qubits.</li>
+<li><strong>self</strong> (<a class="reference internal" href="qiskit.circuit.quantumcircuit.html#qiskit.circuit.quantumcircuit.QuantumCircuit" title="qiskit.circuit.quantumcircuit.QuantumCircuit"><em>QuantumCircuit</em></a>) -- The QuantumCircuit object to apply the rccx gate on.</li>
+<li><strong>q_control_1</strong> (<a class="reference internal" href="qiskit.circuit.quantumregister.html#qiskit.circuit.quantumregister.Qubit" title="qiskit.circuit.quantumregister.Qubit"><em>Qubit</em></a>) -- The 1st control qubit.</li>
+<li><strong>q_control_2</strong> (<a class="reference internal" href="qiskit.circuit.quantumregister.html#qiskit.circuit.quantumregister.Qubit" title="qiskit.circuit.quantumregister.Qubit"><em>Qubit</em></a>) -- The 2nd control qubit.</li>
+<li><strong>q_target</strong> (<a class="reference internal" href="qiskit.circuit.quantumregister.html#qiskit.circuit.quantumregister.Qubit" title="qiskit.circuit.quantumregister.Qubit"><em>Qubit</em></a>) -- The target qubit.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="qiskit.aqua.circuits.gates.rcccx">
+<code class="descname">rcccx</code><span class="sig-paren">(</span><em>self</em>, <em>q_control_1</em>, <em>q_control_2</em>, <em>q_control_3</em>, <em>q_target</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/circuits/gates/relative_phase_toffoli.html#rcccx"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.aqua.circuits.gates.rcccx" title="この定義へのパーマリンク">¶</a></dt>
+<dd><p>Apply 3-Control Relative-Phase Toffoli gate from q_control_1, q_control_2, and q_control_3 to q_target.</p>
+<p>The implementation is based on <a class="reference external" href="https://arxiv.org/pdf/1508.03273.pdf">https://arxiv.org/pdf/1508.03273.pdf</a> Figure 4</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">パラメータ:</th><td class="field-body"><ul class="first last simple">
+<li><strong>self</strong> (<a class="reference internal" href="qiskit.circuit.quantumcircuit.html#qiskit.circuit.quantumcircuit.QuantumCircuit" title="qiskit.circuit.quantumcircuit.QuantumCircuit"><em>QuantumCircuit</em></a>) -- The QuantumCircuit object to apply the rcccx gate on.</li>
+<li><strong>q_control_1</strong> (<a class="reference internal" href="qiskit.circuit.quantumregister.html#qiskit.circuit.quantumregister.Qubit" title="qiskit.circuit.quantumregister.Qubit"><em>Qubit</em></a>) -- The 1st control qubit.</li>
+<li><strong>q_control_2</strong> (<a class="reference internal" href="qiskit.circuit.quantumregister.html#qiskit.circuit.quantumregister.Qubit" title="qiskit.circuit.quantumregister.Qubit"><em>Qubit</em></a>) -- The 2nd control qubit.</li>
+<li><strong>q_control_3</strong> (<a class="reference internal" href="qiskit.circuit.quantumregister.html#qiskit.circuit.quantumregister.Qubit" title="qiskit.circuit.quantumregister.Qubit"><em>Qubit</em></a>) -- The 3rd control qubit.</li>
+<li><strong>q_target</strong> (<a class="reference internal" href="qiskit.circuit.quantumregister.html#qiskit.circuit.quantumregister.Qubit" title="qiskit.circuit.quantumregister.Qubit"><em>Qubit</em></a>) -- The target qubit.</li>
 </ul>
 </td>
 </tr>

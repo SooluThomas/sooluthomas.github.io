@@ -187,7 +187,7 @@
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">Configurations for pulse experiments.</span>
 <span class="sd">&quot;&quot;&quot;</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="k">import</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Union</span><span class="p">,</span> <span class="n">Tuple</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="k">import</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Union</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Optional</span>
 
 <span class="kn">from</span> <span class="nn">.channels</span> <span class="k">import</span> <span class="n">PulseChannel</span><span class="p">,</span> <span class="n">DriveChannel</span><span class="p">,</span> <span class="n">MeasureChannel</span>
 <span class="kn">from</span> <span class="nn">.exceptions</span> <span class="k">import</span> <span class="n">PulseError</span>
@@ -246,8 +246,8 @@
 <div class="viewcode-block" id="LoConfig"><a class="viewcode-back" href="../../../autodoc/qiskit.pulse.configuration.html#qiskit.pulse.configuration.LoConfig">[ドキュメント]</a><span class="k">class</span> <span class="nc">LoConfig</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;Pulse channel LO frequency container.&quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">channel_los</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="n">PulseChannel</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-                 <span class="n">lo_ranges</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="n">PulseChannel</span><span class="p">,</span> <span class="n">Union</span><span class="p">[</span><span class="n">LoRange</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">]]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">channel_los</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="n">PulseChannel</span><span class="p">,</span> <span class="nb">float</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                 <span class="n">lo_ranges</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="n">PulseChannel</span><span class="p">,</span> <span class="n">Union</span><span class="p">[</span><span class="n">LoRange</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">]]]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Lo channel configuration data structure.</span>
 
 <span class="sd">        Args:</span>

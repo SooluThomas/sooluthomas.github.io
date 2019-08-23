@@ -1643,79 +1643,8 @@
     <div class="document">
         <div class="page-content">
         
-  <div class="section" id="module-qiskit.transpiler.passes.mapping.legacy_swap">
-<span id="qiskit-transpiler-passes-mapping-legacy-swap-module"></span><h1>qiskit.transpiler.passes.mapping.legacy_swap module<a class="headerlink" href="#module-qiskit.transpiler.passes.mapping.legacy_swap" title="このヘッドラインへのパーマリンク">¶</a></h1>
-<p>A pass implementing the legacy swapper.</p>
-<p>Based on Sergey Bravyi's algorithm.</p>
-<dl class="class">
-<dt id="qiskit.transpiler.passes.mapping.legacy_swap.LegacySwap">
-<em class="property">class </em><code class="descname">LegacySwap</code><span class="sig-paren">(</span><em>coupling_map</em>, <em>initial_layout=None</em>, <em>trials=20</em>, <em>seed=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/transpiler/passes/mapping/legacy_swap.html#LegacySwap"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.transpiler.passes.mapping.legacy_swap.LegacySwap" title="この定義へのパーマリンク">¶</a></dt>
-<dd><p>ベースクラス: <a class="reference internal" href="qiskit.transpiler.basepasses.html#qiskit.transpiler.basepasses.TransformationPass" title="qiskit.transpiler.basepasses.TransformationPass"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.transpiler.basepasses.TransformationPass</span></code></a></p>
-<p>Maps a DAGCircuit onto a <cite>coupling_map</cite> adding swap gates.</p>
-<dl class="method">
-<dt id="qiskit.transpiler.passes.mapping.legacy_swap.LegacySwap.layer_permutation">
-<code class="descname">layer_permutation</code><span class="sig-paren">(</span><em>layer_partition</em>, <em>layout</em>, <em>qubit_subset</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/transpiler/passes/mapping/legacy_swap.html#LegacySwap.layer_permutation"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.transpiler.passes.mapping.legacy_swap.LegacySwap.layer_permutation" title="この定義へのパーマリンク">¶</a></dt>
-<dd><p>Find a swap circuit that implements a permutation for this layer.</p>
-<p>The goal is to swap qubits such that qubits in the same two-qubit gates
-are adjacent.</p>
-<p>Based on Sergey Bravyi's algorithm.</p>
-<p>The layer_partition is a list of (qu)bit lists and each qubit is a
-tuple (qreg, index).
-The layout is a dict mapping qubits in the circuit to qubits in the
-coupling graph and represents the current positions of the data.
-The qubit_subset is the subset of qubits in the coupling graph that
-we have chosen to map into.
-The coupling is a CouplingGraph.
-TRIALS is the number of attempts the randomized algorithm makes.</p>
-<p>Returns: success_flag, best_circ, best_d, best_layout, trivial_flag</p>
-<p>If success_flag is True, then best_circ contains a DAGCircuit with
-the swap circuit, best_d contains the depth of the swap circuit, and
-best_layout contains the new positions of the data qubits after the
-swap circuit has been applied. The trivial_flag is set if the layer
-has no multi-qubit gates.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="qiskit.transpiler.passes.mapping.legacy_swap.LegacySwap.run">
-<code class="descname">run</code><span class="sig-paren">(</span><em>dag</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/transpiler/passes/mapping/legacy_swap.html#LegacySwap.run"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.transpiler.passes.mapping.legacy_swap.LegacySwap.run" title="この定義へのパーマリンク">¶</a></dt>
-<dd><p>Map a DAGCircuit onto a CouplingGraph using swap gates.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">パラメータ:</th><td class="field-body"><strong>dag</strong> (<a class="reference internal" href="qiskit.dagcircuit.dagcircuit.html#qiskit.dagcircuit.dagcircuit.DAGCircuit" title="qiskit.dagcircuit.dagcircuit.DAGCircuit"><em>DAGCircuit</em></a>) -- input DAG circuit</td>
-</tr>
-<tr class="field-even field"><th class="field-name">戻り値:</th><td class="field-body">object containing a circuit equivalent to
-circuit_graph that respects couplings in coupling_map, and
-a layout dict mapping qubits of circuit_graph into qubits
-of coupling_map. The layout may differ from the initial_layout
-if the first layer of gates cannot be executed on the
-initial_layout.</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">戻り値の型:</th><td class="field-body"><a class="reference internal" href="qiskit.dagcircuit.dagcircuit.html#qiskit.dagcircuit.dagcircuit.DAGCircuit" title="qiskit.dagcircuit.dagcircuit.DAGCircuit">DAGCircuit</a></td>
-</tr>
-<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><code class="xref py py-exc docutils literal notranslate"><span class="pre">TranspilerError</span></code> -- if there was any error during the mapping or with the
-parameters.</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="qiskit.transpiler.passes.mapping.legacy_swap.LegacySwap.swap_mapper_layer_update">
-<code class="descname">swap_mapper_layer_update</code><span class="sig-paren">(</span><em>i</em>, <em>first_layer</em>, <em>best_layout</em>, <em>best_d</em>, <em>best_circ</em>, <em>layer_list</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/transpiler/passes/mapping/legacy_swap.html#LegacySwap.swap_mapper_layer_update"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.transpiler.passes.mapping.legacy_swap.LegacySwap.swap_mapper_layer_update" title="この定義へのパーマリンク">¶</a></dt>
-<dd><p>Update the QASM string for an iteration of swap_mapper.</p>
-<p>i = layer number
-first_layer = True if this is the first layer with multi-qubit gates
-best_layout = layout returned from swap algorithm
-best_d = depth returned from swap algorithm
-best_circ = swap circuit returned from swap algorithm
-layer_list = list of circuit objects for each layer</p>
-<p>Return DAGCircuit object to append to the output DAGCircuit.</p>
-</dd></dl>
-
-</dd></dl>
-
+  <div class="section" id="qiskit-transpiler-passes-mapping-legacy-swap-module">
+<h1>qiskit.transpiler.passes.mapping.legacy_swap module<a class="headerlink" href="#qiskit-transpiler-passes-mapping-legacy-swap-module" title="このヘッドラインへのパーマリンク">¶</a></h1>
 </div>
 
 

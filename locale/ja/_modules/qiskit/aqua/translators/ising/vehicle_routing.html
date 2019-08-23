@@ -188,11 +188,10 @@
 <span class="c1"># and provides some related routines (extracting a solution,</span>
 <span class="c1"># checking its objective function value).</span>
 
-<span class="kn">from</span> <span class="nn">collections</span> <span class="k">import</span> <span class="n">OrderedDict</span>
-
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">qiskit.quantum_info</span> <span class="k">import</span> <span class="n">Pauli</span>
-<span class="kn">from</span> <span class="nn">qiskit.aqua</span> <span class="k">import</span> <span class="n">Operator</span>
+
+<span class="kn">from</span> <span class="nn">qiskit.aqua.operators</span> <span class="k">import</span> <span class="n">WeightedPauliOperator</span>
 
 
 <div class="viewcode-block" id="get_vehiclerouting_matrices"><a class="viewcode-back" href="../../../../../autodoc/qiskit.aqua.translators.ising.vehicle_routing.html#qiskit.aqua.translators.ising.vehicle_routing.get_vehiclerouting_matrices">[ドキュメント]</a><span class="k">def</span> <span class="nf">get_vehiclerouting_matrices</span><span class="p">(</span><span class="n">instance</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">K</span><span class="p">):</span>
@@ -212,7 +211,7 @@
 <span class="sd">        c (float) : the constant offset.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
-    <span class="n">N</span> <span class="o">=</span> <span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">n</span>
+    <span class="c1"># N = (n - 1) * n</span>
     <span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">instance</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>  <span class="c1"># A parameter of cost function</span>
 
     <span class="c1"># Determine the weights w</span>
@@ -247,8 +246,8 @@
     <span class="n">Q</span> <span class="o">=</span> <span class="n">A</span> <span class="o">*</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">kron</span><span class="p">(</span><span class="n">Id_n</span><span class="p">,</span> <span class="n">Im_n_1</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">v</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">v</span><span class="p">))</span>
 
     <span class="c1"># g defines the contribution from the individual variables</span>
-    <span class="n">g</span> <span class="o">=</span> <span class="n">w</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">A</span> <span class="o">*</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">kron</span><span class="p">(</span><span class="n">Iv_n_1</span><span class="p">,</span><span class="n">Iv_n</span><span class="p">)</span> <span class="o">+</span> <span class="n">vn</span><span class="o">.</span><span class="n">T</span><span class="p">)</span> <span class="o">-</span> \
-            <span class="mi">2</span> <span class="o">*</span> <span class="n">A</span> <span class="o">*</span> <span class="n">K</span> <span class="o">*</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">kron</span><span class="p">(</span><span class="n">neg_Iv_n_1</span><span class="p">,</span> <span class="n">Iv_n</span><span class="p">)</span> <span class="o">+</span> <span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+    <span class="n">g</span> <span class="o">=</span> <span class="n">w</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">A</span> <span class="o">*</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">kron</span><span class="p">(</span><span class="n">Iv_n_1</span><span class="p">,</span> <span class="n">Iv_n</span><span class="p">)</span> <span class="o">+</span> <span class="n">vn</span><span class="o">.</span><span class="n">T</span><span class="p">)</span> <span class="o">-</span> \
+        <span class="mi">2</span> <span class="o">*</span> <span class="n">A</span> <span class="o">*</span> <span class="n">K</span> <span class="o">*</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">kron</span><span class="p">(</span><span class="n">neg_Iv_n_1</span><span class="p">,</span> <span class="n">Iv_n</span><span class="p">)</span> <span class="o">+</span> <span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
 
     <span class="c1"># c is the constant offset</span>
     <span class="n">c</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">A</span> <span class="o">*</span> <span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">A</span> <span class="o">*</span> <span class="p">(</span><span class="n">K</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
@@ -269,14 +268,13 @@
 <span class="sd">        cost (float): objective function value.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
     <span class="p">(</span><span class="n">Q</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span> <span class="o">=</span> <span class="n">get_vehiclerouting_matrices</span><span class="p">(</span><span class="n">instance</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">K</span><span class="p">)</span>
-    <span class="n">fun</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">around</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">Q</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">around</span><span class="p">(</span><span class="n">x</span><span class="p">)))</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span>
-        <span class="n">g</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">around</span><span class="p">(</span><span class="n">x</span><span class="p">))</span> <span class="o">+</span> <span class="n">c</span>
+    <span class="k">def</span> <span class="nf">fun</span><span class="p">(</span><span class="n">x</span><span class="p">):</span> <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">around</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">Q</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">around</span><span class="p">(</span><span class="n">x</span><span class="p">)))</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">around</span><span class="p">(</span><span class="n">x</span><span class="p">))</span> <span class="o">+</span> <span class="n">c</span>
     <span class="n">cost</span> <span class="o">=</span> <span class="n">fun</span><span class="p">(</span><span class="n">x_sol</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">cost</span></div>
 
 
 <div class="viewcode-block" id="get_vehiclerouting_qubitops"><a class="viewcode-back" href="../../../../../autodoc/qiskit.aqua.translators.ising.vehicle_routing.html#qiskit.aqua.translators.ising.vehicle_routing.get_vehiclerouting_qubitops">[ドキュメント]</a><span class="k">def</span> <span class="nf">get_vehiclerouting_qubitops</span><span class="p">(</span><span class="n">instance</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">K</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Converts an instnance of a vehicle routing problem into a list of Paulis.</span>
+    <span class="sd">&quot;&quot;&quot;Converts an instance of a vehicle routing problem into a list of Paulis.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        instance (numpy.ndarray) : a customers-to-customers distance matrix.</span>
@@ -284,8 +282,8 @@
 <span class="sd">        K (integer) : the number of vehicles available.</span>
 
 <span class="sd">    Returns:</span>
-<span class="sd">        operator.Operator: operator for the Hamiltonian.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        WeightedPauliOperator: operator for the Hamiltonian.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">N</span> <span class="o">=</span> <span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">n</span>
     <span class="p">(</span><span class="n">Q</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span> <span class="o">=</span> <span class="n">get_vehiclerouting_matrices</span><span class="p">(</span><span class="n">instance</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">K</span><span class="p">)</span>
@@ -318,11 +316,11 @@
                 <span class="n">pauli_list</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="mi">2</span> <span class="o">*</span> <span class="n">Qz</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">],</span> <span class="n">Pauli</span><span class="p">(</span><span class="n">vp</span><span class="p">,</span> <span class="n">wp</span><span class="p">)))</span>
 
     <span class="n">pauli_list</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">cz</span><span class="p">,</span> <span class="n">Pauli</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">N</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">N</span><span class="p">))))</span>
-    <span class="k">return</span> <span class="n">Operator</span><span class="p">(</span><span class="n">paulis</span><span class="o">=</span><span class="n">pauli_list</span><span class="p">)</span></div>
+    <span class="k">return</span> <span class="n">WeightedPauliOperator</span><span class="p">(</span><span class="n">paulis</span><span class="o">=</span><span class="n">pauli_list</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="get_vehiclerouting_solution"><a class="viewcode-back" href="../../../../../autodoc/qiskit.aqua.translators.ising.vehicle_routing.html#qiskit.aqua.translators.ising.vehicle_routing.get_vehiclerouting_solution">[ドキュメント]</a><span class="k">def</span> <span class="nf">get_vehiclerouting_solution</span><span class="p">(</span><span class="n">instance</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="n">result</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Tries to obtain a feasible solution (in vector form) of an instnance </span>
+    <span class="sd">&quot;&quot;&quot;Tries to obtain a feasible solution (in vector form) of an instance</span>
 <span class="sd">        of vehicle routing from the results dictionary.</span>
 
 <span class="sd">    Args:</span>

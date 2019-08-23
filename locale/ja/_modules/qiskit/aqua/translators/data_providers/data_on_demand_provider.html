@@ -214,28 +214,22 @@
                 <span class="s2">&quot;stockmarket&quot;</span><span class="p">:</span> <span class="p">{</span>
                     <span class="s2">&quot;type&quot;</span><span class="p">:</span>
                     <span class="s2">&quot;string&quot;</span><span class="p">,</span>
-                    <span class="s2">&quot;default&quot;</span><span class="p">:</span>
-                    <span class="n">StockMarket</span><span class="o">.</span><span class="n">NASDAQ</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
-                    <span class="s2">&quot;oneOf&quot;</span><span class="p">:</span> <span class="p">[{</span>
-                        <span class="s2">&quot;enum&quot;</span><span class="p">:</span> <span class="p">[</span>
-                            <span class="n">StockMarket</span><span class="o">.</span><span class="n">NASDAQ</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
-                            <span class="n">StockMarket</span><span class="o">.</span><span class="n">NYSE</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
-                        <span class="p">]</span>
-                    <span class="p">}]</span>
+                    <span class="s2">&quot;default&quot;</span><span class="p">:</span> <span class="n">StockMarket</span><span class="o">.</span><span class="n">NASDAQ</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
+                    <span class="s2">&quot;enum&quot;</span><span class="p">:</span> <span class="p">[</span>
+                        <span class="n">StockMarket</span><span class="o">.</span><span class="n">NASDAQ</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
+                        <span class="n">StockMarket</span><span class="o">.</span><span class="n">NYSE</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
+                    <span class="p">]</span>
                 <span class="p">},</span>
                 <span class="s2">&quot;datatype&quot;</span><span class="p">:</span> <span class="p">{</span>
                     <span class="s2">&quot;type&quot;</span><span class="p">:</span>
                     <span class="s2">&quot;string&quot;</span><span class="p">,</span>
-                    <span class="s2">&quot;default&quot;</span><span class="p">:</span>
-                    <span class="n">DataType</span><span class="o">.</span><span class="n">DAILYADJUSTED</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
-                    <span class="s2">&quot;oneOf&quot;</span><span class="p">:</span> <span class="p">[{</span>
-                        <span class="s2">&quot;enum&quot;</span><span class="p">:</span> <span class="p">[</span>
-                            <span class="n">DataType</span><span class="o">.</span><span class="n">DAILYADJUSTED</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
-                            <span class="n">DataType</span><span class="o">.</span><span class="n">DAILY</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
-                            <span class="n">DataType</span><span class="o">.</span><span class="n">BID</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
-                            <span class="n">DataType</span><span class="o">.</span><span class="n">ASK</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
-                        <span class="p">]</span>
-                    <span class="p">}]</span>
+                    <span class="s2">&quot;default&quot;</span><span class="p">:</span> <span class="n">DataType</span><span class="o">.</span><span class="n">DAILYADJUSTED</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
+                    <span class="s2">&quot;enum&quot;</span><span class="p">:</span> <span class="p">[</span>
+                        <span class="n">DataType</span><span class="o">.</span><span class="n">DAILYADJUSTED</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
+                        <span class="n">DataType</span><span class="o">.</span><span class="n">DAILY</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
+                        <span class="n">DataType</span><span class="o">.</span><span class="n">BID</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
+                        <span class="n">DataType</span><span class="o">.</span><span class="n">ASK</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
+                    <span class="p">]</span>
                 <span class="p">},</span>
             <span class="p">},</span>
         <span class="p">}</span>
@@ -286,7 +280,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_end</span> <span class="o">=</span> <span class="n">end</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_verify</span> <span class="o">=</span> <span class="n">verify</span>
 
-        <span class="c1">#self.validate(locals())</span>
+        <span class="c1"># self.validate(locals())</span>
 
 <div class="viewcode-block" id="DataOnDemandProvider.check_provider_valid"><a class="viewcode-back" href="../../../../../autodoc/qiskit.aqua.translators.data_providers.data_on_demand_provider.html#qiskit.aqua.translators.data_providers.DataOnDemandProvider.check_provider_valid">[ドキュメント]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">check_provider_valid</span><span class="p">():</span>
@@ -309,7 +303,7 @@
 
         <span class="n">params</span> <span class="o">=</span> <span class="n">section</span>
         <span class="n">kwargs</span> <span class="o">=</span> <span class="p">{}</span>
-        <span class="c1">#for k, v in params.items():</span>
+        <span class="c1"># for k, v in params.items():</span>
         <span class="c1">#    if k == ExchangeDataDriver. ...: v = UnitsType(v)</span>
         <span class="c1">#    kwargs[k] = v</span>
         <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;init_from_input: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">kwargs</span><span class="p">))</span>
@@ -351,9 +345,9 @@
                 <span class="k">for</span> <span class="n">q</span> <span class="ow">in</span> <span class="n">quotes</span><span class="p">:</span>
                     <span class="n">priceEvolution</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">q</span><span class="p">[</span><span class="s2">&quot;ask_price&quot;</span><span class="p">])</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">priceEvolution</span><span class="p">)</span>
-            <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">ex</span><span class="p">:</span>  <span class="c1"># pylint: disable=broad-except</span>
                 <span class="k">raise</span> <span class="n">QiskitFinanceError</span><span class="p">(</span>
-                    <span class="s1">&#39;Accessing NASDAQ Data on Demand failed.&#39;</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">e</span>
+                    <span class="s1">&#39;Accessing NASDAQ Data on Demand failed.&#39;</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">ex</span>
             <span class="n">http</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span></div></div>
 </pre></div>
 

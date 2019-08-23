@@ -185,8 +185,10 @@
 <span class="c1"># that they have been altered from the originals.</span>
 
 <span class="kn">import</span> <span class="nn">logging</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
 
 <span class="kn">from</span> <span class="nn">qiskit.aqua</span> <span class="k">import</span> <span class="n">AquaError</span><span class="p">,</span> <span class="n">Pluggable</span><span class="p">,</span> <span class="n">PluggableType</span><span class="p">,</span> <span class="n">get_pluggable_class</span>
+<span class="kn">from</span> <span class="nn">qiskit.aqua.operators</span> <span class="k">import</span> <span class="n">WeightedPauliOperator</span><span class="p">,</span> <span class="n">TPBGroupedWeightedPauliOperator</span><span class="p">,</span> <span class="n">MatrixOperator</span>
 <span class="kn">from</span> <span class="nn">qiskit.aqua.algorithms.adaptive</span> <span class="k">import</span> <span class="n">VQE</span>
 <span class="kn">from</span> <span class="nn">.var_form</span> <span class="k">import</span> <span class="n">QAOAVarForm</span>
 
@@ -209,11 +211,9 @@
             <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;object&#39;</span><span class="p">,</span>
             <span class="s1">&#39;properties&#39;</span><span class="p">:</span> <span class="p">{</span>
                 <span class="s1">&#39;operator_mode&#39;</span><span class="p">:</span> <span class="p">{</span>
-                    <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;string&#39;</span><span class="p">,</span>
-                    <span class="s1">&#39;default&#39;</span><span class="p">:</span> <span class="s1">&#39;matrix&#39;</span><span class="p">,</span>
-                    <span class="s1">&#39;oneOf&#39;</span><span class="p">:</span> <span class="p">[</span>
-                        <span class="p">{</span><span class="s1">&#39;enum&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;matrix&#39;</span><span class="p">,</span> <span class="s1">&#39;paulis&#39;</span><span class="p">,</span> <span class="s1">&#39;grouped_paulis&#39;</span><span class="p">]}</span>
-                    <span class="p">]</span>
+                    <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;string&#39;</span><span class="p">,</span> <span class="s1">&#39;null&#39;</span><span class="p">],</span>
+                    <span class="s1">&#39;default&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+                    <span class="s1">&#39;enum&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;matrix&#39;</span><span class="p">,</span> <span class="s1">&#39;paulis&#39;</span><span class="p">,</span> <span class="s1">&#39;grouped_paulis&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">]</span>
                 <span class="p">},</span>
                 <span class="s1">&#39;p&#39;</span><span class="p">:</span> <span class="p">{</span>
                     <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;integer&#39;</span><span class="p">,</span>
@@ -249,15 +249,15 @@
         <span class="p">],</span>
     <span class="p">}</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">operator</span><span class="p">,</span> <span class="n">optimizer</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">initial_state</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">mixer</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">operator_mode</span><span class="o">=</span><span class="s1">&#39;matrix&#39;</span><span class="p">,</span>
-                 <span class="n">initial_point</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">max_evals_grouped</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">aux_operators</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">callback</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">operator</span><span class="p">,</span> <span class="n">optimizer</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">initial_state</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">mixer</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">operator_mode</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                 <span class="n">initial_point</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">max_evals_grouped</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">aux_operators</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">callback</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">auto_conversion</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Args:</span>
-<span class="sd">            operator (Operator): Qubit operator</span>
+<span class="sd">            operator (BaseOperator): Qubit operator</span>
 <span class="sd">            operator_mode (str): operator mode, used for eval of operator</span>
 <span class="sd">            p (int): the integer parameter p as specified in https://arxiv.org/abs/1411.4028</span>
 <span class="sd">            initial_state (InitialState): the initial state to prepend the QAOA circuit with</span>
-<span class="sd">            mixer (Operator): the mixer Hamiltonian to evolve with. Allows support</span>
+<span class="sd">            mixer (BaseOperator): the mixer Hamiltonian to evolve with. Allows support</span>
 <span class="sd">                              of optimizations in constrained subspaces as</span>
 <span class="sd">                              specified in https://arxiv.org/abs/1709.03489</span>
 <span class="sd">            optimizer (Optimizer): the classical optimization algorithm.</span>
@@ -267,13 +267,18 @@
 <span class="sd">                                 Internally, four arguments are provided as follows</span>
 <span class="sd">                                 the index of evaluation, parameters of variational form,</span>
 <span class="sd">                                 evaluated mean, evaluated standard devation.</span>
+<span class="sd">            auto_conversion (bool): an automatic conversion for operator and aux_operators into the type which is</span>
+<span class="sd">                                    most suitable for the backend.</span>
+<span class="sd">                                    - non-aer statevector_simulator: MatrixOperator</span>
+<span class="sd">                                    - aer statevector_simulator: WeightedPauliOperator</span>
+<span class="sd">                                    - qasm simulator or real backend: TPBGroupedWeightedPauliOperator</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">validate</span><span class="p">(</span><span class="nb">locals</span><span class="p">())</span>
-        <span class="n">var_form</span> <span class="o">=</span> <span class="n">QAOAVarForm</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">initial_state</span><span class="o">=</span><span class="n">initial_state</span><span class="p">,</span> <span class="n">mixer_operator</span><span class="o">=</span><span class="n">mixer</span><span class="p">)</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="n">var_form</span><span class="p">,</span> <span class="n">optimizer</span><span class="p">,</span>
-                         <span class="n">operator_mode</span><span class="o">=</span><span class="n">operator_mode</span><span class="p">,</span> <span class="n">initial_point</span><span class="o">=</span><span class="n">initial_point</span><span class="p">,</span>
-                         <span class="n">max_evals_grouped</span><span class="o">=</span><span class="n">max_evals_grouped</span><span class="p">,</span> <span class="n">aux_operators</span><span class="o">=</span><span class="n">aux_operators</span><span class="p">,</span> <span class="n">callback</span><span class="o">=</span><span class="n">callback</span><span class="p">)</span>
+        <span class="n">var_form</span> <span class="o">=</span> <span class="n">QAOAVarForm</span><span class="p">(</span><span class="n">operator</span><span class="o">.</span><span class="n">copy</span><span class="p">(),</span> <span class="n">p</span><span class="p">,</span> <span class="n">initial_state</span><span class="o">=</span><span class="n">initial_state</span><span class="p">,</span> <span class="n">mixer_operator</span><span class="o">=</span><span class="n">mixer</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="n">var_form</span><span class="p">,</span> <span class="n">optimizer</span><span class="p">,</span> <span class="n">initial_point</span><span class="o">=</span><span class="n">initial_point</span><span class="p">,</span> <span class="n">operator_mode</span><span class="o">=</span><span class="n">operator_mode</span><span class="p">,</span>
+                         <span class="n">max_evals_grouped</span><span class="o">=</span><span class="n">max_evals_grouped</span><span class="p">,</span> <span class="n">aux_operators</span><span class="o">=</span><span class="n">aux_operators</span><span class="p">,</span> <span class="n">callback</span><span class="o">=</span><span class="n">callback</span><span class="p">,</span>
+                         <span class="n">auto_conversion</span><span class="o">=</span><span class="n">auto_conversion</span><span class="p">)</span>
 
 <div class="viewcode-block" id="QAOA.init_params"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.aqua.algorithms.adaptive.qaoa.qaoa.html#qiskit.aqua.algorithms.QAOA.init_params">[ドキュメント]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">init_params</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">algo_input</span><span class="p">):</span>
@@ -290,7 +295,6 @@
         <span class="n">operator</span> <span class="o">=</span> <span class="n">algo_input</span><span class="o">.</span><span class="n">qubit_op</span>
 
         <span class="n">qaoa_params</span> <span class="o">=</span> <span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">Pluggable</span><span class="o">.</span><span class="n">SECTION_KEY_ALGORITHM</span><span class="p">)</span>
-        <span class="n">operator_mode</span> <span class="o">=</span> <span class="n">qaoa_params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;operator_mode&#39;</span><span class="p">)</span>
         <span class="n">p</span> <span class="o">=</span> <span class="n">qaoa_params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;p&#39;</span><span class="p">)</span>
         <span class="n">initial_point</span> <span class="o">=</span> <span class="n">qaoa_params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;initial_point&#39;</span><span class="p">)</span>
         <span class="n">max_evals_grouped</span> <span class="o">=</span> <span class="n">qaoa_params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;max_evals_grouped&#39;</span><span class="p">)</span>
@@ -305,7 +309,7 @@
         <span class="n">optimizer</span> <span class="o">=</span> <span class="n">get_pluggable_class</span><span class="p">(</span><span class="n">PluggableType</span><span class="o">.</span><span class="n">OPTIMIZER</span><span class="p">,</span>
                                         <span class="n">opt_params</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">init_params</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
 
-        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="n">optimizer</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="n">p</span><span class="p">,</span> <span class="n">initial_state</span><span class="o">=</span><span class="n">init_state</span><span class="p">,</span> <span class="n">operator_mode</span><span class="o">=</span><span class="n">operator_mode</span><span class="p">,</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="n">optimizer</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="n">p</span><span class="p">,</span> <span class="n">initial_state</span><span class="o">=</span><span class="n">init_state</span><span class="p">,</span>
                    <span class="n">initial_point</span><span class="o">=</span><span class="n">initial_point</span><span class="p">,</span> <span class="n">max_evals_grouped</span><span class="o">=</span><span class="n">max_evals_grouped</span><span class="p">,</span>
                    <span class="n">aux_operators</span><span class="o">=</span><span class="n">algo_input</span><span class="o">.</span><span class="n">aux_ops</span><span class="p">)</span></div></div>
 </pre></div>

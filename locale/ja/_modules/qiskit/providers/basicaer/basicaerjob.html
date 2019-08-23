@@ -187,14 +187,11 @@
 <span class="sd">&quot;&quot;&quot;This module implements the job class used by Basic Aer Provider.&quot;&quot;&quot;</span>
 
 <span class="kn">from</span> <span class="nn">concurrent</span> <span class="k">import</span> <span class="n">futures</span>
-<span class="kn">import</span> <span class="nn">logging</span>
 <span class="kn">import</span> <span class="nn">sys</span>
 <span class="kn">import</span> <span class="nn">functools</span>
 
 <span class="kn">from</span> <span class="nn">qiskit.providers</span> <span class="k">import</span> <span class="n">BaseJob</span><span class="p">,</span> <span class="n">JobStatus</span><span class="p">,</span> <span class="n">JobError</span>
 <span class="kn">from</span> <span class="nn">qiskit.qobj</span> <span class="k">import</span> <span class="n">validate_qobj_against_schema</span>
-
-<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
 
 
 <div class="viewcode-block" id="requires_submit"><a class="viewcode-back" href="../../../../autodoc/qiskit.providers.basicaer.basicaerjob.html#qiskit.providers.basicaer.basicaerjob.requires_submit">[ドキュメント]</a><span class="k">def</span> <span class="nf">requires_submit</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>

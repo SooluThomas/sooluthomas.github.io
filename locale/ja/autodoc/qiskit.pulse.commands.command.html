@@ -1648,14 +1648,25 @@
 <p>Base command.</p>
 <dl class="class">
 <dt id="qiskit.pulse.commands.command.Command">
-<em class="property">class </em><code class="descname">Command</code><span class="sig-paren">(</span><em>duration: int = None</em>, <em>name: str = None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/pulse/commands/command.html#Command"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.pulse.commands.command.Command" title="この定義へのパーマリンク">¶</a></dt>
+<em class="property">class </em><code class="descname">Command</code><span class="sig-paren">(</span><em>duration: Union[int</em>, <em>numpy.integer] = None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/pulse/commands/command.html#Command"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.pulse.commands.command.Command" title="この定義へのパーマリンク">¶</a></dt>
 <dd><p>ベースクラス: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Super abstract class of command group.</p>
+<p>Abstract command class.</p>
+<dl class="classmethod">
+<dt id="qiskit.pulse.commands.command.Command.create_name">
+<em class="property">classmethod </em><code class="descname">create_name</code><span class="sig-paren">(</span><em>name: str = None</em><span class="sig-paren">)</span> &#x2192; str<a class="reference internal" href="../_modules/qiskit/pulse/commands/command.html#Command.create_name"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.pulse.commands.command.Command.create_name" title="この定義へのパーマリンク">¶</a></dt>
+<dd><p>Autogenerate names for pulse commands.</p>
+</dd></dl>
+
 <dl class="attribute">
 <dt id="qiskit.pulse.commands.command.Command.duration">
 <code class="descname">duration</code><a class="headerlink" href="#qiskit.pulse.commands.command.Command.duration" title="この定義へのパーマリンク">¶</a></dt>
 <dd><p>Duration of this command.</p>
 </dd></dl>
+
+<dl class="attribute">
+<dt id="qiskit.pulse.commands.command.Command.instances_counter">
+<code class="descname">instances_counter</code><em class="property"> = 0</em><a class="headerlink" href="#qiskit.pulse.commands.command.Command.instances_counter" title="この定義へのパーマリンク">¶</a></dt>
+<dd></dd></dl>
 
 <dl class="attribute">
 <dt id="qiskit.pulse.commands.command.Command.name">
@@ -1664,16 +1675,23 @@
 </dd></dl>
 
 <dl class="attribute">
-<dt id="qiskit.pulse.commands.command.Command.pulseIndex">
-<code class="descname">pulseIndex</code><em class="property"> = 0</em><a class="headerlink" href="#qiskit.pulse.commands.command.Command.pulseIndex" title="この定義へのパーマリンク">¶</a></dt>
+<dt id="qiskit.pulse.commands.command.Command.prefix">
+<code class="descname">prefix</code><em class="property"> = 'c'</em><a class="headerlink" href="#qiskit.pulse.commands.command.Command.prefix" title="この定義へのパーマリンク">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="qiskit.pulse.commands.command.Command.to_instruction">
-<code class="descname">to_instruction</code><span class="sig-paren">(</span><em>command</em>, <em>*channels</em>, <em>timeslots=None</em>, <em>name=None</em><span class="sig-paren">)</span> &#x2192; qiskit.pulse.commands.instruction.Instruction<a class="reference internal" href="../_modules/qiskit/pulse/commands/command.html#Command.to_instruction"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.pulse.commands.command.Command.to_instruction" title="この定義へのパーマリンク">¶</a></dt>
+<code class="descname">to_instruction</code><span class="sig-paren">(</span><em>command</em>, <em>*channels</em>, <em>timeslots: Optional[qiskit.pulse.timeslots.TimeslotCollection] = None</em>, <em>name: Optional[str] = None</em><span class="sig-paren">)</span> &#x2192; qiskit.pulse.commands.instruction.Instruction<a class="reference internal" href="../_modules/qiskit/pulse/commands/command.html#Command.to_instruction"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.pulse.commands.command.Command.to_instruction" title="この定義へのパーマリンク">¶</a></dt>
 <dd><p>Create an instruction from command.</p>
 </dd></dl>
 
+</dd></dl>
+
+<dl class="class">
+<dt id="qiskit.pulse.commands.command.MetaCount">
+<em class="property">class </em><code class="descname">MetaCount</code><a class="reference internal" href="../_modules/qiskit/pulse/commands/command.html#MetaCount"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.pulse.commands.command.MetaCount" title="この定義へのパーマリンク">¶</a></dt>
+<dd><p>ベースクラス: <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABCMeta</span></code></p>
+<p>Meta class to count class instances.</p>
 </dd></dl>
 
 </div>

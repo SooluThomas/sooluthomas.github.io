@@ -195,7 +195,7 @@
 <span class="kn">import</span> <span class="nn">numpy.random</span> <span class="k">as</span> <span class="nn">rand</span>
 
 <span class="kn">from</span> <span class="nn">qiskit.quantum_info</span> <span class="k">import</span> <span class="n">Pauli</span>
-<span class="kn">from</span> <span class="nn">qiskit.aqua</span> <span class="k">import</span> <span class="n">Operator</span>
+<span class="kn">from</span> <span class="nn">qiskit.aqua.operators</span> <span class="k">import</span> <span class="n">WeightedPauliOperator</span>
 
 <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
 
@@ -241,21 +241,22 @@
 <div class="viewcode-block" id="get_graph_partition_qubitops"><a class="viewcode-back" href="../../../../../autodoc/qiskit.aqua.translators.ising.graph_partition.html#qiskit.aqua.translators.ising.graph_partition.get_graph_partition_qubitops">[ドキュメント]</a><span class="k">def</span> <span class="nf">get_graph_partition_qubitops</span><span class="p">(</span><span class="n">weight_matrix</span><span class="p">):</span>
     <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Generate Hamiltonian for the graph partitioning</span>
 
+<span class="sd">    Notes:</span>
+<span class="sd">        Goals:</span>
+<span class="sd">            1 separate the vertices into two set of the same size</span>
+<span class="sd">            2 make sure the number of edges between the two set is minimized.</span>
+<span class="sd">        Hamiltonian:</span>
+<span class="sd">            H = H_A + H_B</span>
+<span class="sd">            H_A = sum\_{(i,j)\in E}{(1-ZiZj)/2}</span>
+<span class="sd">            H_B = (sum_{i}{Zi})^2 = sum_{i}{Zi^2}+sum_{i!=j}{ZiZj}</span>
+<span class="sd">            H_A is for achieving goal 2 and H_B is for achieving goal 1.</span>
+
 <span class="sd">    Args:</span>
 <span class="sd">        weight_matrix (numpy.ndarray) : adjacency matrix.</span>
 
 <span class="sd">    Returns:</span>
-<span class="sd">        operator.Operator, float: operator for the Hamiltonian and a</span>
-<span class="sd">        constant shift for the obj function.</span>
-
-<span class="sd">    Goals:</span>
-<span class="sd">        1 separate the vertices into two set of the same size</span>
-<span class="sd">        2 make sure the number of edges between the two set is minimized.</span>
-<span class="sd">    Hamiltonian:</span>
-<span class="sd">    H = H_A + H_B</span>
-<span class="sd">    H_A = sum\_{(i,j)\in E}{(1-ZiZj)/2}</span>
-<span class="sd">    H_B = (sum_{i}{Zi})^2 = sum_{i}{Zi^2}+sum_{i!=j}{ZiZj}</span>
-<span class="sd">    H_A is for achieving goal 2 and H_B is for achieving goal 1.</span>
+<span class="sd">        WeightedPauliOperator: operator for the Hamiltonian</span>
+<span class="sd">        float: a constant shift for the obj function.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">num_nodes</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">weight_matrix</span><span class="p">)</span>
     <span class="n">pauli_list</span> <span class="o">=</span> <span class="p">[]</span>
@@ -281,7 +282,7 @@
                 <span class="n">pauli_list</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="n">Pauli</span><span class="p">(</span><span class="n">zp</span><span class="p">,</span> <span class="n">xp</span><span class="p">)])</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">shift</span> <span class="o">+=</span> <span class="mi">1</span>
-    <span class="k">return</span> <span class="n">Operator</span><span class="p">(</span><span class="n">paulis</span><span class="o">=</span><span class="n">pauli_list</span><span class="p">),</span> <span class="n">shift</span></div>
+    <span class="k">return</span> <span class="n">WeightedPauliOperator</span><span class="p">(</span><span class="n">paulis</span><span class="o">=</span><span class="n">pauli_list</span><span class="p">),</span> <span class="n">shift</span></div>
 
 
 <div class="viewcode-block" id="parse_gset_format"><a class="viewcode-back" href="../../../../../autodoc/qiskit.aqua.translators.ising.graph_partition.html#qiskit.aqua.translators.ising.graph_partition.parse_gset_format">[ドキュメント]</a><span class="k">def</span> <span class="nf">parse_gset_format</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>

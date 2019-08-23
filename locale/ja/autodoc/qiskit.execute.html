@@ -1650,7 +1650,7 @@
 running quickly we have provided this wrapper module.</p>
 <dl class="function">
 <dt id="qiskit.execute.execute">
-<code class="descname">execute</code><span class="sig-paren">(</span><em>experiments</em>, <em>backend</em>, <em>basis_gates=None</em>, <em>coupling_map=None</em>, <em>backend_properties=None</em>, <em>initial_layout=None</em>, <em>seed_transpiler=None</em>, <em>optimization_level=None</em>, <em>pass_manager=None</em>, <em>qobj_id=None</em>, <em>qobj_header=None</em>, <em>shots=1024</em>, <em>memory=False</em>, <em>max_credits=10</em>, <em>seed_simulator=None</em>, <em>default_qubit_los=None</em>, <em>default_meas_los=None</em>, <em>schedule_los=None</em>, <em>meas_level=2</em>, <em>meas_return='avg'</em>, <em>memory_slots=None</em>, <em>memory_slot_size=100</em>, <em>rep_time=None</em>, <em>parameter_binds=None</em>, <em>seed=None</em>, <em>seed_mapper=None</em>, <em>config=None</em>, <em>circuits=None</em>, <em>**run_config</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/execute.html#execute"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.execute.execute" title="この定義へのパーマリンク">¶</a></dt>
+<code class="descname">execute</code><span class="sig-paren">(</span><em>experiments</em>, <em>backend</em>, <em>basis_gates=None</em>, <em>coupling_map=None</em>, <em>backend_properties=None</em>, <em>initial_layout=None</em>, <em>seed_transpiler=None</em>, <em>optimization_level=None</em>, <em>pass_manager=None</em>, <em>qobj_id=None</em>, <em>qobj_header=None</em>, <em>shots=1024</em>, <em>memory=False</em>, <em>max_credits=10</em>, <em>seed_simulator=None</em>, <em>default_qubit_los=None</em>, <em>default_meas_los=None</em>, <em>schedule_los=None</em>, <em>meas_level=2</em>, <em>meas_return='avg'</em>, <em>memory_slots=None</em>, <em>memory_slot_size=100</em>, <em>rep_time=None</em>, <em>parameter_binds=None</em>, <em>**run_config</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/execute.html#execute"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.execute.execute" title="この定義へのパーマリンク">¶</a></dt>
 <dd><p>Execute a list of circuits or pulse schedules on a backend.</p>
 <p>The execution is asynchronous, and a handle to a job instance is returned.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -1738,7 +1738,9 @@ at the expense of longer transpilation time.</p>
 <blockquote>
 <div>0: no optimization
 1: light optimization
-2: heavy optimization</div></blockquote>
+2: heavy optimization
+3: even heavier optimization</div></blockquote>
+<p>If None, level 1 will be chosen as default.</p>
 </li>
 <li><strong>pass_manager</strong> (<a class="reference internal" href="qiskit.transpiler.passmanager.html#qiskit.transpiler.passmanager.PassManager" title="qiskit.transpiler.passmanager.PassManager"><em>PassManager</em></a>) -- The pass manager to use during transpilation. If this arg is present,
 auto-selection of pass manager based on the transpile options will be
@@ -1746,7 +1748,7 @@ turned off and this pass manager will be used directly.</li>
 <li><strong>qobj_id</strong> (<em>str</em>) -- String identifier to annotate the Qobj</li>
 <li><strong>qobj_header</strong> (<a class="reference internal" href="qiskit.qobj.models.base.html#qiskit.qobj.models.base.QobjHeader" title="qiskit.qobj.models.base.QobjHeader"><em>QobjHeader</em></a><em> or </em><em>dict</em>) -- User input that will be inserted in Qobj header, and will also be
 copied to the corresponding Result header. Headers do not affect the run.</li>
-<li><strong>shots</strong> (<em>int</em>) -- Number of repetitions of each circuit, for sampling. Default: 2014</li>
+<li><strong>shots</strong> (<em>int</em>) -- Number of repetitions of each circuit, for sampling. Default: 1024</li>
 <li><strong>memory</strong> (<em>bool</em>) -- If True, per-shot measurement bitstrings are returned as well
 (provided the backend supports it). For OpenPulse jobs, only
 measurement level 2 supports this option. Default: False</li>
@@ -1775,10 +1777,6 @@ executed. Each list element (bind) should be of the form
 executed across all experiments, e.g. if parameter_binds is a
 length-n list, and there are m experiments, a total of m x n
 experiments will be run (one for each experiment/bind pair).</li>
-<li><strong>seed</strong> (<em>int</em>) -- DEPRECATED in 0.8: use <code class="docutils literal notranslate"><span class="pre">seed_simulator</span></code> kwarg instead</li>
-<li><strong>seed_mapper</strong> (<em>int</em>) -- DEPRECATED in 0.8: use <code class="docutils literal notranslate"><span class="pre">seed_transpiler</span></code> kwarg instead</li>
-<li><strong>config</strong> (<em>dict</em>) -- DEPRECATED in 0.8: use run_config instead</li>
-<li><strong>circuits</strong> (<a class="reference internal" href="qiskit.circuit.quantumcircuit.html#qiskit.circuit.quantumcircuit.QuantumCircuit" title="qiskit.circuit.quantumcircuit.QuantumCircuit"><em>QuantumCircuit</em></a><em> or </em><em>list</em><em>[</em><a class="reference internal" href="qiskit.circuit.quantumcircuit.html#qiskit.circuit.quantumcircuit.QuantumCircuit" title="qiskit.circuit.quantumcircuit.QuantumCircuit"><em>QuantumCircuit</em></a><em>]</em>) -- DEPRECATED in 0.8: use <code class="docutils literal notranslate"><span class="pre">experiments</span></code> kwarg instead.</li>
 <li><strong>run_config</strong> (<em>dict</em>) -- Extra arguments used to configure the run (e.g. for Aer configurable backends)
 Refer to the backend documentation for details on these arguments
 Note: for now, these keyword arguments will both be copied to the

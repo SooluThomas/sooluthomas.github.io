@@ -1649,29 +1649,30 @@
 <dt id="qiskit.aqua.translators.ising.graph_partition.get_graph_partition_qubitops">
 <code class="descname">get_graph_partition_qubitops</code><span class="sig-paren">(</span><em>weight_matrix</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/translators/ising/graph_partition.html#get_graph_partition_qubitops"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.aqua.translators.ising.graph_partition.get_graph_partition_qubitops" title="この定義へのパーマリンク">¶</a></dt>
 <dd><p>Generate Hamiltonian for the graph partitioning</p>
+<p class="rubric">メモ</p>
+<dl class="docutils">
+<dt>Goals:</dt>
+<dd>1 separate the vertices into two set of the same size
+2 make sure the number of edges between the two set is minimized.</dd>
+<dt>Hamiltonian:</dt>
+<dd>H = H_A + H_B
+H_A = sum_{(i,j)in E}{(1-ZiZj)/2}
+H_B = (sum_{i}{Zi})^2 = sum_{i}{Zi^2}+sum_{i!=j}{ZiZj}
+H_A is for achieving goal 2 and H_B is for achieving goal 1.</dd>
+</dl>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">パラメータ:</th><td class="field-body"><strong>weight_matrix</strong> (<em>numpy.ndarray</em>) -- adjacency matrix.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">戻り値:</th><td class="field-body">operator for the Hamiltonian and a
-constant shift for the obj function.</td>
+<tr class="field-even field"><th class="field-name">戻り値:</th><td class="field-body">operator for the Hamiltonian
+float: a constant shift for the obj function.</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">戻り値の型:</th><td class="field-body"><a class="reference internal" href="qiskit.aqua.operator.html#qiskit.aqua.operator.Operator" title="qiskit.aqua.operator.Operator">operator.Operator</a>, float</td>
+<tr class="field-odd field"><th class="field-name">戻り値の型:</th><td class="field-body">WeightedPauliOperator</td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Goals:</dt>
-<dd>1 separate the vertices into two set of the same size
-2 make sure the number of edges between the two set is minimized.</dd>
-</dl>
-<p>Hamiltonian:
-H = H_A + H_B
-H_A = sum_{(i,j)in E}{(1-ZiZj)/2}
-H_B = (sum_{i}{Zi})^2 = sum_{i}{Zi^2}+sum_{i!=j}{ZiZj}
-H_A is for achieving goal 2 and H_B is for achieving goal 1.</p>
 </dd></dl>
 
 <dl class="function">

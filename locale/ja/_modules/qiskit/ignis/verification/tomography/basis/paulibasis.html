@@ -213,7 +213,7 @@
 <span class="sd">        A QuantumCircuit object.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="n">circ</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="n">qubit</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">clbit</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">circ</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="n">qubit</span><span class="o">.</span><span class="n">register</span><span class="p">,</span> <span class="n">clbit</span><span class="o">.</span><span class="n">register</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">op</span> <span class="o">==</span> <span class="s1">&#39;X&#39;</span><span class="p">:</span>
         <span class="n">circ</span><span class="o">.</span><span class="n">h</span><span class="p">(</span><span class="n">qubit</span><span class="p">)</span>
         <span class="n">circ</span><span class="o">.</span><span class="n">measure</span><span class="p">(</span><span class="n">qubit</span><span class="p">,</span> <span class="n">clbit</span><span class="p">)</span>
@@ -240,7 +240,7 @@
 <span class="sd">        A QuantumCircuit object.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="n">circ</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="n">qubit</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">circ</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="n">qubit</span><span class="o">.</span><span class="n">register</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">op</span> <span class="o">==</span> <span class="s1">&#39;Xp&#39;</span><span class="p">:</span>
         <span class="n">circ</span><span class="o">.</span><span class="n">h</span><span class="p">(</span><span class="n">qubit</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">op</span> <span class="o">==</span> <span class="s1">&#39;Xm&#39;</span><span class="p">:</span>

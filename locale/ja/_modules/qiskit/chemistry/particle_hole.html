@@ -254,7 +254,7 @@
     <span class="n">adag_enum</span> <span class="o">=</span> <span class="p">[]</span>
 
     <span class="k">for</span> <span class="n">ind</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_qubits</span><span class="p">):</span>
-        <span class="k">if</span> <span class="n">ind</span> <span class="o">&lt;</span> <span class="n">n_occupied</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">ind</span> <span class="ow">in</span> <span class="n">n_occupied</span><span class="p">:</span>
             <span class="n">a_enum</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">ind</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
             <span class="n">adag_enum</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ind</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
@@ -2250,19 +2250,23 @@
     <span class="k">return</span> <span class="n">h1_new</span><span class="p">,</span> <span class="n">h2_new</span><span class="p">,</span> <span class="n">id_term</span></div>
 
 
-<div class="viewcode-block" id="particle_hole_transformation"><a class="viewcode-back" href="../../../autodoc/qiskit.chemistry.particle_hole.html#qiskit.chemistry.particle_hole.particle_hole_transformation">[ドキュメント]</a><span class="k">def</span> <span class="nf">particle_hole_transformation</span><span class="p">(</span><span class="n">n_qubits</span><span class="p">,</span> <span class="n">n_occupied</span><span class="p">,</span> <span class="n">h1_old_matrix</span><span class="p">,</span> <span class="n">h2_old_matrix</span><span class="p">):</span>
+<div class="viewcode-block" id="particle_hole_transformation"><a class="viewcode-back" href="../../../autodoc/qiskit.chemistry.particle_hole.html#qiskit.chemistry.particle_hole.particle_hole_transformation">[ドキュメント]</a><span class="k">def</span> <span class="nf">particle_hole_transformation</span><span class="p">(</span><span class="n">n_qubits</span><span class="p">,</span> <span class="n">num_particles</span><span class="p">,</span> <span class="n">h1_old_matrix</span><span class="p">,</span> <span class="n">h2_old_matrix</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    This function produces the necessary h1, h2, identity for work with Fermionic Operators script.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        n_qubits (int): number of qubits</span>
-<span class="sd">        n_occupied (int): number of electrons</span>
-<span class="sd">        h1_old_matrix (numpy.ndarray): rFs terms from Gaussian</span>
-<span class="sd">        h2_old_matrix (numpy.ndarray): rsgtu terms from Gaussian</span>
+<span class="sd">        num_particles (list): number of alphas, number of betas</span>
+<span class="sd">        h1_old_matrix (array): one body integrals matrix</span>
+<span class="sd">        h2_old_matrix (array): two body integral matrix</span>
 
 <span class="sd">    Returns:</span>
-<span class="sd">        numpy.ndarray, numpy.ndarray, float: h1_prime, h2_prime, identities</span>
+<span class="sd">        new one body integrals matrix, two body integrals matrix, identity coefficient terms</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">num_alpha</span> <span class="o">=</span> <span class="n">num_particles</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">num_beta</span> <span class="o">=</span> <span class="n">num_particles</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
     <span class="n">h1_new_sum</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="n">n_qubits</span><span class="p">,</span> <span class="n">n_qubits</span><span class="p">])</span>
     <span class="n">h2_new_sum</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="n">n_qubits</span><span class="p">,</span> <span class="n">n_qubits</span><span class="p">,</span> <span class="n">n_qubits</span><span class="p">,</span> <span class="n">n_qubits</span><span class="p">])</span>
 
@@ -2271,13 +2275,22 @@
 
     <span class="n">h1_old_matrix</span> <span class="o">=</span> <span class="n">h1_old_matrix</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
 
+    <span class="c1"># put labels of occupied orbitals in the list in interleaved spin convention</span>
+    <span class="n">n_occupied</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_alpha</span><span class="p">):</span>
+        <span class="n">n_occupied</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">a</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_beta</span><span class="p">):</span>
+        <span class="n">n_occupied</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">b</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+
     <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_qubits</span><span class="p">):</span>
         <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_qubits</span><span class="p">):</span>
-            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_occupied</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">n_occupied</span><span class="p">:</span>
 
                 <span class="n">h1_old_matrix</span><span class="p">[</span><span class="n">r</span><span class="p">][</span><span class="n">s</span><span class="p">]</span> <span class="o">+=</span> <span class="n">h2_old_matrix</span><span class="p">[</span><span class="n">r</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="n">s</span><span class="p">][</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span> <span class="o">-</span> <span class="n">h2_old_matrix</span><span class="p">[</span><span class="n">r</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="n">s</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
 
     <span class="n">identities_new_sum</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="n">n_el</span> <span class="o">=</span> <span class="n">num_alpha</span> <span class="o">+</span> <span class="n">num_beta</span>
 
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_qubits</span><span class="p">):</span>
         <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_qubits</span><span class="p">):</span>

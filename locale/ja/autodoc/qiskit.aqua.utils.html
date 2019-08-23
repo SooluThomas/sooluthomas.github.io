@@ -1668,19 +1668,6 @@ e.g. tensorproduct(a,(b,3),c) = tensorproduct(a,b,b,b,c).</p>
 </table>
 </dd></dl>
 
-<dl class="class">
-<dt id="qiskit.aqua.utils.PauliGraph">
-<em class="property">class </em><code class="descname">PauliGraph</code><span class="sig-paren">(</span><em>paulis</em>, <em>mode='largest-degree'</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/utils/pauli_graph.html#PauliGraph"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.aqua.utils.PauliGraph" title="この定義へのパーマリンク">¶</a></dt>
-<dd><p>ベースクラス: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Pauli Graph.</p>
-<dl class="attribute">
-<dt id="qiskit.aqua.utils.PauliGraph.grouped_paulis">
-<code class="descname">grouped_paulis</code><a class="headerlink" href="#qiskit.aqua.utils.PauliGraph.grouped_paulis" title="この定義へのパーマリンク">¶</a></dt>
-<dd><p>Getter of grouped Pauli list.</p>
-</dd></dl>
-
-</dd></dl>
-
 <dl class="function">
 <dt id="qiskit.aqua.utils.convert_dict_to_json">
 <code class="descname">convert_dict_to_json</code><span class="sig-paren">(</span><em>in_item</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/utils/json_utils.html#convert_dict_to_json"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.aqua.utils.convert_dict_to_json" title="この定義へのパーマリンク">¶</a></dt>
@@ -1855,14 +1842,27 @@ range, min &gt;= 0. (default=[0, 1]).</li>
 <dl class="function">
 <dt id="qiskit.aqua.utils.summarize_circuits">
 <code class="descname">summarize_circuits</code><span class="sig-paren">(</span><em>circuits</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/utils/circuit_utils.html#summarize_circuits"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.aqua.utils.summarize_circuits" title="この定義へのパーマリンク">¶</a></dt>
-<dd><p>Summarize circuits based on QuantumCircuit, and four metrics are summarized.</p>
-<p>Number of qubits and classical bits, and number of operations and depth of circuits.
-The average statistic is provided if multiple circuits are inputed.</p>
+<dd><dl class="docutils">
+<dt>Summarize circuits based on QuantumCircuit, and five metrics are summarized.</dt>
+<dd><ul class="first last simple">
+<li>Number of qubits</li>
+<li>Number of classical bits</li>
+<li>Number of operations</li>
+<li>Depth of circuits</li>
+<li>Counts of different gate operations</li>
+</ul>
+</dd>
+</dl>
+<p>The average statistic of the first four is provided if multiple circuits are provided.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">パラメータ:</th><td class="field-body"><strong>circuits</strong> (<a class="reference internal" href="qiskit.circuit.quantumcircuit.html#qiskit.circuit.quantumcircuit.QuantumCircuit" title="qiskit.circuit.quantumcircuit.QuantumCircuit"><em>QuantumCircuit</em></a><em> or </em><em>[</em><a class="reference internal" href="qiskit.circuit.quantumcircuit.html#qiskit.circuit.quantumcircuit.QuantumCircuit" title="qiskit.circuit.quantumcircuit.QuantumCircuit"><em>QuantumCircuit</em></a><em>]</em>) -- the to-be-summarized circuits</td>
+</tr>
+<tr class="field-even field"><th class="field-name">戻り値:</th><td class="field-body">a formatted string records the summary</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">戻り値の型:</th><td class="field-body">str</td>
 </tr>
 </tbody>
 </table>
@@ -1916,7 +1916,7 @@ keys have space delimiters.</td>
 
 <dl class="function">
 <dt id="qiskit.aqua.utils.get_entangler_map">
-<code class="descname">get_entangler_map</code><span class="sig-paren">(</span><em>map_type</em>, <em>num_qubits</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/utils/entangler_map.html#get_entangler_map"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.aqua.utils.get_entangler_map" title="この定義へのパーマリンク">¶</a></dt>
+<code class="descname">get_entangler_map</code><span class="sig-paren">(</span><em>map_type</em>, <em>num_qubits</em>, <em>offset=0</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/utils/entangler_map.html#get_entangler_map"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.aqua.utils.get_entangler_map" title="この定義へのパーマリンク">¶</a></dt>
 <dd><p>Utility method to get an entangler map among qubits.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1924,8 +1924,14 @@ keys have space delimiters.</td>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">パラメータ:</th><td class="field-body"><ul class="first simple">
 <li><strong>map_type</strong> (<em>str</em>) -- 'full' entangles each qubit with all the subsequent ones
-'linear' entangles each qubit with the next</li>
+'linear' entangles each qubit with the next
+'sca' (shifted circular alternating entanglement) is a
+circular entanglement where the 'long' entanglement is
+shifted by one position every block and every block the
+role or control/target qubits alternate</li>
 <li><strong>num_qubits</strong> (<em>int</em>) -- Number of qubits for which the map is needed</li>
+<li><strong>offset</strong> (<em>int</em>) -- Some map_types (e.g. 'sca') can shift the gates in
+the entangler map by the specified integer offset.</li>
 </ul>
 </td>
 </tr>
@@ -2262,136 +2268,6 @@ May be overridden if a more efficient implementation is possible</p>
 
 </dd></dl>
 
-<dl class="function">
-<dt id="qiskit.aqua.utils.compile_and_run_circuits">
-<code class="descname">compile_and_run_circuits</code><span class="sig-paren">(</span><em>circuits</em>, <em>backend</em>, <em>backend_config=None</em>, <em>compile_config=None</em>, <em>run_config=None</em>, <em>qjob_config=None</em>, <em>backend_options=None</em>, <em>noise_config=None</em>, <em>show_circuit_summary=False</em>, <em>circuit_cache=None</em>, <em>skip_qobj_validation=False</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/utils/run_circuits.html#compile_and_run_circuits"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.aqua.utils.compile_and_run_circuits" title="この定義へのパーマリンク">¶</a></dt>
-<dd><p>An execution wrapper with Qiskit-Terra, with job auto recover capability.</p>
-<p>The autorecovery feature is only applied for non-simulator backend.
-This wraper will try to get the result no matter how long it costs.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">パラメータ:</th><td class="field-body"><ul class="first simple">
-<li><strong>circuits</strong> (<a class="reference internal" href="qiskit.circuit.quantumcircuit.html#qiskit.circuit.quantumcircuit.QuantumCircuit" title="qiskit.circuit.quantumcircuit.QuantumCircuit"><em>QuantumCircuit</em></a><em> or </em><em>list</em><em>[</em><a class="reference internal" href="qiskit.circuit.quantumcircuit.html#qiskit.circuit.quantumcircuit.QuantumCircuit" title="qiskit.circuit.quantumcircuit.QuantumCircuit"><em>QuantumCircuit</em></a><em>]</em>) -- circuits to execute</li>
-<li><strong>backend</strong> (<a class="reference internal" href="qiskit.providers.basebackend.html#qiskit.providers.basebackend.BaseBackend" title="qiskit.providers.basebackend.BaseBackend"><em>BaseBackend</em></a>) -- backend instance</li>
-<li><strong>backend_config</strong> (<em>dict</em><em>, </em><em>optional</em>) -- configuration for backend</li>
-<li><strong>compile_config</strong> (<em>dict</em><em>, </em><em>optional</em>) -- configuration for compilation</li>
-<li><strong>run_config</strong> (<a class="reference internal" href="qiskit.assembler.run_config.html#qiskit.assembler.run_config.RunConfig" title="qiskit.assembler.run_config.RunConfig"><em>RunConfig</em></a><em>, </em><em>optional</em>) -- configuration for running a circuit</li>
-<li><strong>qjob_config</strong> (<em>dict</em><em>, </em><em>optional</em>) -- configuration for quantum job object</li>
-<li><strong>backend_options</strong> (<em>dict</em><em>, </em><em>optional</em>) -- configuration for simulator</li>
-<li><strong>noise_config</strong> (<em>dict</em><em>, </em><em>optional</em>) -- configuration for noise model</li>
-<li><strong>show_circuit_summary</strong> (<em>bool</em><em>, </em><em>optional</em>) -- showing the summary of submitted circuits.</li>
-<li><strong>circuit_cache</strong> (<a class="reference internal" href="#qiskit.aqua.utils.CircuitCache" title="qiskit.aqua.utils.CircuitCache"><em>CircuitCache</em></a><em>, </em><em>optional</em>) -- A CircuitCache to use when calling compile_and_run_circuits</li>
-<li><strong>skip_qobj_validation</strong> (<em>bool</em><em>, </em><em>optional</em>) -- Bypass Qobj validation to decrease submission time</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">戻り値:</th><td class="field-body"><p class="first">Result object</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">戻り値の型:</th><td class="field-body"><p class="first"><a class="reference internal" href="qiskit.result.result.html#qiskit.result.result.Result" title="qiskit.result.result.Result">Result</a></p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><code class="xref py py-exc docutils literal notranslate"><span class="pre">AquaError</span></code> -- Any error except for JobError raised by Qiskit Terra</p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="function">
-<dt id="qiskit.aqua.utils.compile_circuits">
-<code class="descname">compile_circuits</code><span class="sig-paren">(</span><em>circuits</em>, <em>backend</em>, <em>backend_config=None</em>, <em>compile_config=None</em>, <em>run_config=None</em>, <em>show_circuit_summary=False</em>, <em>circuit_cache=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/utils/run_circuits.html#compile_circuits"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.aqua.utils.compile_circuits" title="この定義へのパーマリンク">¶</a></dt>
-<dd><p>An execution wrapper with Qiskit-Terra, with job auto recover capability.</p>
-<p>The autorecovery feature is only applied for non-simulator backend.
-This wraper will try to get the result no matter how long it costs.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">パラメータ:</th><td class="field-body"><ul class="first simple">
-<li><strong>circuits</strong> (<a class="reference internal" href="qiskit.circuit.quantumcircuit.html#qiskit.circuit.quantumcircuit.QuantumCircuit" title="qiskit.circuit.quantumcircuit.QuantumCircuit"><em>QuantumCircuit</em></a><em> or </em><em>list</em><em>[</em><a class="reference internal" href="qiskit.circuit.quantumcircuit.html#qiskit.circuit.quantumcircuit.QuantumCircuit" title="qiskit.circuit.quantumcircuit.QuantumCircuit"><em>QuantumCircuit</em></a><em>]</em>) -- circuits to execute</li>
-<li><strong>backend</strong> (<a class="reference internal" href="qiskit.providers.basebackend.html#qiskit.providers.basebackend.BaseBackend" title="qiskit.providers.basebackend.BaseBackend"><em>BaseBackend</em></a>) -- backend instance</li>
-<li><strong>backend_config</strong> (<em>dict</em><em>, </em><em>optional</em>) -- configuration for backend</li>
-<li><strong>compile_config</strong> (<em>dict</em><em>, </em><em>optional</em>) -- configuration for compilation</li>
-<li><strong>run_config</strong> (<a class="reference internal" href="qiskit.assembler.run_config.html#qiskit.assembler.run_config.RunConfig" title="qiskit.assembler.run_config.RunConfig"><em>RunConfig</em></a><em>, </em><em>optional</em>) -- configuration for running a circuit</li>
-<li><strong>show_circuit_summary</strong> (<em>bool</em><em>, </em><em>optional</em>) -- showing the summary of submitted circuits.</li>
-<li><strong>circuit_cache</strong> (<a class="reference internal" href="#qiskit.aqua.utils.CircuitCache" title="qiskit.aqua.utils.CircuitCache"><em>CircuitCache</em></a><em>, </em><em>optional</em>) -- A CircuitCache to use when calling compile_and_run_circuits</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">戻り値:</th><td class="field-body"><p class="first">compiled qobj.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">戻り値の型:</th><td class="field-body"><p class="first">QasmObj</p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><code class="xref py py-exc docutils literal notranslate"><span class="pre">AquaError</span></code> -- Any error except for JobError raised by Qiskit Terra</p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="function">
-<dt id="qiskit.aqua.utils.run_qobjs">
-<code class="descname">run_qobjs</code><span class="sig-paren">(</span><em>qobjs</em>, <em>backend</em>, <em>qjob_config=None</em>, <em>backend_options=None</em>, <em>noise_config=None</em>, <em>skip_qobj_validation=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/utils/run_circuits.html#run_qobjs"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.aqua.utils.run_qobjs" title="この定義へのパーマリンク">¶</a></dt>
-<dd><p>An execution wrapper with Qiskit-Terra, with job auto recover capability.</p>
-<p>The autorecovery feature is only applied for non-simulator backend.
-This wraper will try to get the result no matter how long it costs.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">パラメータ:</th><td class="field-body"><ul class="first simple">
-<li><strong>qobjs</strong> (<em>list</em><em>[</em><em>QasmObj</em><em>]</em>) -- qobjs to execute</li>
-<li><strong>backend</strong> (<a class="reference internal" href="qiskit.providers.basebackend.html#qiskit.providers.basebackend.BaseBackend" title="qiskit.providers.basebackend.BaseBackend"><em>BaseBackend</em></a>) -- backend instance</li>
-<li><strong>qjob_config</strong> (<em>dict</em><em>, </em><em>optional</em>) -- configuration for quantum job object</li>
-<li><strong>backend_options</strong> (<em>dict</em><em>, </em><em>optional</em>) -- configuration for simulator</li>
-<li><strong>noise_config</strong> (<em>dict</em><em>, </em><em>optional</em>) -- configuration for noise model</li>
-<li><strong>skip_qobj_validation</strong> (<em>bool</em><em>, </em><em>optional</em>) -- Bypass Qobj validation to decrease submission time</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">戻り値:</th><td class="field-body"><p class="first">Result object</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">戻り値の型:</th><td class="field-body"><p class="first"><a class="reference internal" href="qiskit.result.result.html#qiskit.result.result.Result" title="qiskit.result.result.Result">Result</a></p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><code class="xref py py-exc docutils literal notranslate"><span class="pre">AquaError</span></code> -- Any error except for JobError raised by Qiskit Terra</p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="function">
-<dt id="qiskit.aqua.utils.find_regs_by_name">
-<code class="descname">find_regs_by_name</code><span class="sig-paren">(</span><em>circuit</em>, <em>name</em>, <em>qreg=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/utils/run_circuits.html#find_regs_by_name"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.aqua.utils.find_regs_by_name" title="この定義へのパーマリンク">¶</a></dt>
-<dd><p>Find the registers in the circuits.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">パラメータ:</th><td class="field-body"><ul class="first simple">
-<li><strong>circuit</strong> (<a class="reference internal" href="qiskit.circuit.quantumcircuit.html#qiskit.circuit.quantumcircuit.QuantumCircuit" title="qiskit.circuit.quantumcircuit.QuantumCircuit"><em>QuantumCircuit</em></a>) -- the quantum circuit.</li>
-<li><strong>name</strong> (<em>str</em>) -- name of register</li>
-<li><strong>qreg</strong> (<em>bool</em>) -- quantum or classical register</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">戻り値:</th><td class="field-body"><p class="first">if not found, return None.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">戻り値の型:</th><td class="field-body"><p class="first last"><a class="reference internal" href="qiskit.circuit.quantumregister.html#qiskit.circuit.quantumregister.QuantumRegister" title="qiskit.circuit.quantumregister.QuantumRegister">QuantumRegister</a> or <a class="reference internal" href="qiskit.circuit.classicalregister.html#qiskit.circuit.classicalregister.ClassicalRegister" title="qiskit.circuit.classicalregister.ClassicalRegister">ClassicalRegister</a> or None</p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
 <dl class="class">
 <dt id="qiskit.aqua.utils.CircuitCache">
 <em class="property">class </em><code class="descname">CircuitCache</code><span class="sig-paren">(</span><em>skip_qobj_deepcopy=False</em>, <em>cache_file=None</em>, <em>allowed_misses=3</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/utils/circuit_cache.html#CircuitCache"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.aqua.utils.CircuitCache" title="この定義へのパーマリンク">¶</a></dt>
@@ -2452,83 +2328,6 @@ dictionary section.</p>
 <dt id="qiskit.aqua.utils.has_aer">
 <code class="descname">has_aer</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/utils/backend_utils.html#has_aer"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.aqua.utils.has_aer" title="この定義へのパーマリンク">¶</a></dt>
 <dd></dd></dl>
-
-<dl class="function">
-<dt id="qiskit.aqua.utils.get_measured_qubits_from_qobj">
-<code class="descname">get_measured_qubits_from_qobj</code><span class="sig-paren">(</span><em>qobjs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/utils/measurement_error_mitigation.html#get_measured_qubits_from_qobj"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.aqua.utils.get_measured_qubits_from_qobj" title="この定義へのパーマリンク">¶</a></dt>
-<dd><p>Retrieve the measured qubits from transpiled circuits.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">パラメータ:</th><td class="field-body"><strong>qobjs</strong> (<em>list</em><em>[</em><em>QasmObj</em><em>]</em>) -- qobjs</td>
-</tr>
-<tr class="field-even field"><th class="field-name">戻り値:</th><td class="field-body">the qubit mapping to-be-used for measure error mitigation</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">戻り値の型:</th><td class="field-body">[int]</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="function">
-<dt id="qiskit.aqua.utils.mitigate_measurement_error">
-<code class="descname">mitigate_measurement_error</code><span class="sig-paren">(</span><em>results</em>, <em>meas_fitter</em>, <em>method='least_squares'</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/utils/measurement_error_mitigation.html#mitigate_measurement_error"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.aqua.utils.mitigate_measurement_error" title="この定義へのパーマリンク">¶</a></dt>
-<dd><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">パラメータ:</th><td class="field-body"><ul class="first simple">
-<li><strong>results</strong> (<a class="reference internal" href="qiskit.result.result.html#qiskit.result.result.Result" title="qiskit.result.result.Result"><em>Result</em></a>) -- the unmitigated Result object</li>
-<li><strong>meas_fitter</strong> (<a class="reference internal" href="qiskit.ignis.mitigation.measurement.fitters.html#qiskit.ignis.mitigation.measurement.fitters.CompleteMeasFitter" title="qiskit.ignis.mitigation.measurement.fitters.CompleteMeasFitter"><em>CompleteMeasFitter</em></a><em> or </em><a class="reference internal" href="qiskit.ignis.mitigation.measurement.fitters.html#qiskit.ignis.mitigation.measurement.fitters.TensoredMeasFitter" title="qiskit.ignis.mitigation.measurement.fitters.TensoredMeasFitter"><em>TensoredMeasFitter</em></a>) -- the measurement fitter</li>
-<li><strong>method</strong> (<em>str</em>) -- fitting method. If None, then least_squares is used.
-'pseudo_inverse': direct inversion of the A matrix
-'least_squares': constrained to have physical probabilities</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">戻り値:</th><td class="field-body"><p class="first">the mitigated Result</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">戻り値の型:</th><td class="field-body"><p class="first last"><a class="reference internal" href="qiskit.result.result.html#qiskit.result.result.Result" title="qiskit.result.result.Result">Result</a></p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="function">
-<dt id="qiskit.aqua.utils.build_measurement_error_mitigation_fitter">
-<code class="descname">build_measurement_error_mitigation_fitter</code><span class="sig-paren">(</span><em>qubits</em>, <em>fitter_cls</em>, <em>backend</em>, <em>backend_config=None</em>, <em>compile_config=None</em>, <em>run_config=None</em>, <em>qjob_config=None</em>, <em>backend_options=None</em>, <em>noise_config=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/utils/measurement_error_mitigation.html#build_measurement_error_mitigation_fitter"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.aqua.utils.build_measurement_error_mitigation_fitter" title="この定義へのパーマリンク">¶</a></dt>
-<dd><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">パラメータ:</th><td class="field-body"><ul class="first simple">
-<li><strong>qubits</strong> (<em>list</em><em>[</em><em>int</em><em>]</em>) -- the measured qubit index (in the order to classical bit 0...n-1)</li>
-<li><strong>fitter_cls</strong> (<em>callable</em>) -- CompleteMeasFitter or TensoredMeasFitter</li>
-<li><strong>backend</strong> (<a class="reference internal" href="qiskit.providers.basebackend.html#qiskit.providers.basebackend.BaseBackend" title="qiskit.providers.basebackend.BaseBackend"><em>BaseBackend</em></a>) -- backend instance</li>
-<li><strong>backend_config</strong> (<em>dict</em><em>, </em><em>optional</em>) -- configuration for backend</li>
-<li><strong>compile_config</strong> (<em>dict</em><em>, </em><em>optional</em>) -- configuration for compilation</li>
-<li><strong>run_config</strong> (<a class="reference internal" href="qiskit.assembler.run_config.html#qiskit.assembler.run_config.RunConfig" title="qiskit.assembler.run_config.RunConfig"><em>RunConfig</em></a><em>, </em><em>optional</em>) -- configuration for running a circuit</li>
-<li><strong>qjob_config</strong> (<em>dict</em><em>, </em><em>optional</em>) -- configuration for quantum job object</li>
-<li><strong>backend_options</strong> (<em>dict</em><em>, </em><em>optional</em>) -- configuration for simulator</li>
-<li><strong>noise_config</strong> (<em>dict</em><em>, </em><em>optional</em>) -- configuration for noise model</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">戻り値:</th><td class="field-body"><p class="first">the measurement fitter</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">戻り値の型:</th><td class="field-body"><p class="first"><a class="reference internal" href="qiskit.ignis.mitigation.measurement.fitters.html#qiskit.ignis.mitigation.measurement.fitters.CompleteMeasFitter" title="qiskit.ignis.mitigation.measurement.fitters.CompleteMeasFitter">CompleteMeasFitter</a> or <a class="reference internal" href="qiskit.ignis.mitigation.measurement.fitters.html#qiskit.ignis.mitigation.measurement.fitters.TensoredMeasFitter" title="qiskit.ignis.mitigation.measurement.fitters.TensoredMeasFitter">TensoredMeasFitter</a></p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><code class="xref py py-exc docutils literal notranslate"><span class="pre">AquaError</span></code> -- when the fitter_cls is not recognizable.</p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
 
 <div class="section" id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="このヘッドラインへのパーマリンク">¶</a></h2>

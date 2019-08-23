@@ -1648,7 +1648,7 @@
 <p>Schedule.</p>
 <dl class="class">
 <dt id="qiskit.pulse.schedule.ParameterizedSchedule">
-<em class="property">class </em><code class="descname">ParameterizedSchedule</code><span class="sig-paren">(</span><em>*schedules</em>, <em>parameters=None</em>, <em>name=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/pulse/schedule.html#ParameterizedSchedule"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.pulse.schedule.ParameterizedSchedule" title="この定義へのパーマリンク">¶</a></dt>
+<em class="property">class </em><code class="descname">ParameterizedSchedule</code><span class="sig-paren">(</span><em>*schedules</em>, <em>parameters: Optional[Dict[str</em>, <em>Union[float</em>, <em>complex]]] = None</em>, <em>name: Optional[str] = None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/pulse/schedule.html#ParameterizedSchedule"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.pulse.schedule.ParameterizedSchedule" title="この定義へのパーマリンク">¶</a></dt>
 <dd><p>ベースクラス: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Temporary parameterized schedule class.</p>
 <p>This should not be returned to users as it is currently only a helper class.</p>
@@ -1674,27 +1674,25 @@ a set of parameters. Calling <cite>bind</cite> on the class will return a <cite>
 
 <dl class="class">
 <dt id="qiskit.pulse.schedule.Schedule">
-<em class="property">class </em><code class="descname">Schedule</code><span class="sig-paren">(</span><em>*schedules</em>, <em>name: str = None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/pulse/schedule.html#Schedule"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.pulse.schedule.Schedule" title="この定義へのパーマリンク">¶</a></dt>
+<em class="property">class </em><code class="descname">Schedule</code><span class="sig-paren">(</span><em>*schedules</em>, <em>name: Optional[str] = None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/pulse/schedule.html#Schedule"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.pulse.schedule.Schedule" title="この定義へのパーマリンク">¶</a></dt>
 <dd><p>ベースクラス: <a class="reference internal" href="qiskit.pulse.interfaces.html#qiskit.pulse.interfaces.ScheduleComponent" title="qiskit.pulse.interfaces.ScheduleComponent"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.pulse.interfaces.ScheduleComponent</span></code></a></p>
 <p>Schedule of <a href="#id1"><span class="problematic" id="id2">`</span></a>ScheduleComponent`s. The composite node of a schedule tree.</p>
 <dl class="method">
 <dt id="qiskit.pulse.schedule.Schedule.append">
-<code class="descname">append</code><span class="sig-paren">(</span><em>schedule: qiskit.pulse.interfaces.ScheduleComponent</em>, <em>buffer: bool = True</em>, <em>name: str = None</em><span class="sig-paren">)</span> &#x2192; qiskit.pulse.schedule.Schedule<a class="reference internal" href="../_modules/qiskit/pulse/schedule.html#Schedule.append"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.pulse.schedule.Schedule.append" title="この定義へのパーマリンク">¶</a></dt>
-<dd><p>Return a new schedule with <cite>schedule</cite> inserted at the maximum time over
-all channels shared between <cite>self</cite> and <cite>schedule</cite>.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">パラメータ:</th><td class="field-body"><ul class="first last simple">
-<li><strong>schedule</strong> -- schedule to be appended</li>
-<li><strong>buffer</strong> -- Obey buffer when appending</li>
-<li><strong>name</strong> -- Name of the new schedule. Defaults to name of parent</li>
-</ul>
-</td>
-</tr>
-</tbody>
-</table>
+<code class="descname">append</code><span class="sig-paren">(</span><em>schedule: qiskit.pulse.interfaces.ScheduleComponent</em>, <em>buffer: bool = True</em>, <em>name: Optional[str] = None</em><span class="sig-paren">)</span> &#x2192; qiskit.pulse.schedule.Schedule<a class="reference internal" href="../_modules/qiskit/pulse/schedule.html#Schedule.append"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.pulse.schedule.Schedule.append" title="この定義へのパーマリンク">¶</a></dt>
+<dd><dl class="docutils">
+<dt>Return a new schedule with <cite>schedule</cite> inserted at the maximum time over</dt>
+<dd>all channels shared between <cite>self</cite> and <cite>schedule</cite>.</dd>
+</dl>
+<p>$t = textrm{max}({x.stop_time <a href="#id3"><span class="problematic" id="id4">|</span></a>x in self.channels cap schedule.channels})$</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>Args:</dt>
+<dd>schedule: schedule to be appended
+buffer: Whether to obey buffer when appending
+name: Name of the new schedule. Defaults to name of self</dd>
+</dl>
+</div></blockquote>
 </dd></dl>
 
 <dl class="attribute">
@@ -1753,7 +1751,7 @@ all channels shared between <cite>self</cite> and <cite>schedule</cite>.</p>
 
 <dl class="method">
 <dt id="qiskit.pulse.schedule.Schedule.draw">
-<code class="descname">draw</code><span class="sig-paren">(</span><em>dt: float = 1</em>, <em>style=None</em>, <em>filename: str = None</em>, <em>interp_method: Callable = None</em>, <em>scaling: float = 1</em>, <em>channels_to_plot: List[qiskit.pulse.channels.channels.Channel] = None</em>, <em>plot_all: bool = False</em>, <em>plot_range: Tuple[float] = None</em>, <em>interactive: bool = False</em>, <em>table: bool = True</em>, <em>label: bool = False</em>, <em>framechange: bool = True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/pulse/schedule.html#Schedule.draw"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.pulse.schedule.Schedule.draw" title="この定義へのパーマリンク">¶</a></dt>
+<code class="descname">draw</code><span class="sig-paren">(</span><em>dt: float = 1</em>, <em>style: Optional[SchedStyle] = None</em>, <em>filename: Optional[str] = None</em>, <em>interp_method: Optional[Callable] = None</em>, <em>scaling: float = 1</em>, <em>channels_to_plot: Optional[List[qiskit.pulse.channels.channels.Channel]] = None</em>, <em>plot_all: bool = False</em>, <em>plot_range: Optional[Tuple[float]] = None</em>, <em>interactive: bool = False</em>, <em>table: bool = True</em>, <em>label: bool = False</em>, <em>framechange: bool = True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/pulse/schedule.html#Schedule.draw"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.pulse.schedule.Schedule.draw" title="この定義へのパーマリンク">¶</a></dt>
 <dd><p>Plot the schedule.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1761,10 +1759,10 @@ all channels shared between <cite>self</cite> and <cite>schedule</cite>.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">パラメータ:</th><td class="field-body"><ul class="first simple">
 <li><strong>dt</strong> -- Time interval of samples</li>
-<li><strong>style</strong> (<a class="reference internal" href="qiskit.visualization.qcstyle.html#qiskit.visualization.qcstyle.OPStyleSched" title="qiskit.visualization.qcstyle.OPStyleSched"><em>OPStyleSched</em></a>) -- A style sheet to configure plot appearance</li>
+<li><strong>style</strong> -- A style sheet to configure plot appearance</li>
 <li><strong>filename</strong> -- Name required to save pulse image</li>
 <li><strong>interp_method</strong> -- A function for interpolation</li>
-<li><strong>scaling</strong> (<em>float</em>) -- Relative visual scaling of waveform amplitudes</li>
+<li><strong>scaling</strong> -- Relative visual scaling of waveform amplitudes</li>
 <li><strong>channels_to_plot</strong> -- A list of channel names to plot</li>
 <li><strong>plot_all</strong> -- Plot empty channels</li>
 <li><strong>plot_range</strong> -- A tuple of time range to plot</li>
@@ -1793,24 +1791,52 @@ all channels shared between <cite>self</cite> and <cite>schedule</cite>.</p>
 </dd></dl>
 
 <dl class="method">
+<dt id="qiskit.pulse.schedule.Schedule.filter">
+<code class="descname">filter</code><span class="sig-paren">(</span><em>*filter_funcs</em>, <em>channels: Optional[Iterable[qiskit.pulse.channels.channels.Channel]] = None</em>, <em>instruction_types: Optional[Iterable[Type[Instruction]]] = None</em>, <em>time_ranges: Optional[Iterable[Tuple[int</em>, <em>int]]] = None</em>, <em>intervals: Optional[Iterable[qiskit.pulse.timeslots.Interval]] = None</em><span class="sig-paren">)</span> &#x2192; Schedule<a class="reference internal" href="../_modules/qiskit/pulse/schedule.html#Schedule.filter"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.pulse.schedule.Schedule.filter" title="この定義へのパーマリンク">¶</a></dt>
+<dd><p>Return a new Schedule with only the instructions which pass though the provided filters.
+Custom filters may be provided. If a list of channel indices is provided, only the
+instructions that involve that channel (and maybe also others) will be included in the new
+schedule. Similarly for instruction_types, only the instructions which are instances of the
+provided types will be included. For intervals, instructions will be retained if their
+timeslots are all wholly contained within <em>any</em> of the given intervals.</p>
+<p>If no arguments are provided, this schedule is returned.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">パラメータ:</th><td class="field-body"><ul class="first last simple">
+<li><strong>filter_funcs</strong> -- A list of Callables which take a (int, ScheduleComponent) tuple and
+return a bool</li>
+<li><strong>channels</strong> -- For example, [DriveChannel(0), AcquireChannel(0)]</li>
+<li><strong>instruction_types</strong> -- For example, [PulseInstruction, AcquireInstruction]</li>
+<li><strong>time_ranges</strong> -- Time intervals to keep, e.g. [(0, 5), (6, 10)]</li>
+<li><strong>intervals</strong> -- Time intervals to keep, e.g. [Interval(0, 5), Interval(6, 10)]</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
 <dt id="qiskit.pulse.schedule.Schedule.flatten">
-<code class="descname">flatten</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; qiskit.pulse.interfaces.ScheduleComponent<a class="reference internal" href="../_modules/qiskit/pulse/schedule.html#Schedule.flatten"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.pulse.schedule.Schedule.flatten" title="この定義へのパーマリンク">¶</a></dt>
+<code class="descname">flatten</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; qiskit.pulse.schedule.Schedule<a class="reference internal" href="../_modules/qiskit/pulse/schedule.html#Schedule.flatten"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.pulse.schedule.Schedule.flatten" title="この定義へのパーマリンク">¶</a></dt>
 <dd><p>Return a new schedule which is the flattened schedule contained all <cite>instructions</cite>.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="qiskit.pulse.schedule.Schedule.insert">
-<code class="descname">insert</code><span class="sig-paren">(</span><em>start_time: int</em>, <em>schedule: qiskit.pulse.interfaces.ScheduleComponent</em>, <em>buffer: bool = False</em>, <em>name: str = None</em><span class="sig-paren">)</span> &#x2192; qiskit.pulse.schedule.Schedule<a class="reference internal" href="../_modules/qiskit/pulse/schedule.html#Schedule.insert"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.pulse.schedule.Schedule.insert" title="この定義へのパーマリンク">¶</a></dt>
+<code class="descname">insert</code><span class="sig-paren">(</span><em>start_time: int</em>, <em>schedule: qiskit.pulse.interfaces.ScheduleComponent</em>, <em>buffer: bool = False</em>, <em>name: Optional[str] = None</em><span class="sig-paren">)</span> &#x2192; qiskit.pulse.schedule.Schedule<a class="reference internal" href="../_modules/qiskit/pulse/schedule.html#Schedule.insert"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.pulse.schedule.Schedule.insert" title="この定義へのパーマリンク">¶</a></dt>
 <dd><p>Return a new schedule with <cite>schedule</cite> inserted within <cite>self</cite> at <cite>start_time</cite>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">パラメータ:</th><td class="field-body"><ul class="first last simple">
-<li><strong>start_time</strong> -- time to be inserted</li>
-<li><strong>schedule</strong> -- schedule to be inserted</li>
-<li><strong>buffer</strong> -- Obey buffer when inserting</li>
-<li><strong>name</strong> -- Name of the new schedule. Defaults to name of parent</li>
+<li><strong>start_time</strong> -- Time to insert the schedule</li>
+<li><strong>schedule</strong> -- Schedule to insert</li>
+<li><strong>buffer</strong> -- Whether to obey buffer when inserting</li>
+<li><strong>name</strong> -- Name of the new schedule. Defaults to name of self</li>
 </ul>
 </td>
 </tr>
@@ -1821,7 +1847,7 @@ all channels shared between <cite>self</cite> and <cite>schedule</cite>.</p>
 <dl class="attribute">
 <dt id="qiskit.pulse.schedule.Schedule.instructions">
 <code class="descname">instructions</code><a class="headerlink" href="#qiskit.pulse.schedule.Schedule.instructions" title="この定義へのパーマリンク">¶</a></dt>
-<dd><p>Iterable for getting instructions from Schedule tree.</p>
+<dd><p>Get time-ordered instructions from Schedule tree.</p>
 </dd></dl>
 
 <dl class="attribute">
@@ -1832,7 +1858,7 @@ all channels shared between <cite>self</cite> and <cite>schedule</cite>.</p>
 
 <dl class="method">
 <dt id="qiskit.pulse.schedule.Schedule.shift">
-<code class="descname">shift</code><span class="sig-paren">(</span><em>time: int</em>, <em>name: str = None</em><span class="sig-paren">)</span> &#x2192; qiskit.pulse.schedule.Schedule<a class="reference internal" href="../_modules/qiskit/pulse/schedule.html#Schedule.shift"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.pulse.schedule.Schedule.shift" title="この定義へのパーマリンク">¶</a></dt>
+<code class="descname">shift</code><span class="sig-paren">(</span><em>time: int</em>, <em>name: Optional[str] = None</em><span class="sig-paren">)</span> &#x2192; qiskit.pulse.schedule.Schedule<a class="reference internal" href="../_modules/qiskit/pulse/schedule.html#Schedule.shift"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.pulse.schedule.Schedule.shift" title="この定義へのパーマリンク">¶</a></dt>
 <dd><p>Return a new schedule shifted forward by <cite>time</cite>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1840,7 +1866,7 @@ all channels shared between <cite>self</cite> and <cite>schedule</cite>.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">パラメータ:</th><td class="field-body"><ul class="first last simple">
 <li><strong>time</strong> -- Time to shift by</li>
-<li><strong>name</strong> -- Name of the new schedule. Defaults to name of parent</li>
+<li><strong>name</strong> -- Name of the new schedule. Defaults to name of self</li>
 </ul>
 </td>
 </tr>
@@ -1868,15 +1894,15 @@ all channels shared between <cite>self</cite> and <cite>schedule</cite>.</p>
 
 <dl class="method">
 <dt id="qiskit.pulse.schedule.Schedule.union">
-<code class="descname">union</code><span class="sig-paren">(</span><em>*schedules</em>, <em>name: str = None</em><span class="sig-paren">)</span> &#x2192; qiskit.pulse.schedule.Schedule<a class="reference internal" href="../_modules/qiskit/pulse/schedule.html#Schedule.union"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.pulse.schedule.Schedule.union" title="この定義へのパーマリンク">¶</a></dt>
+<code class="descname">union</code><span class="sig-paren">(</span><em>*schedules</em>, <em>name: Optional[str] = None</em><span class="sig-paren">)</span> &#x2192; qiskit.pulse.schedule.Schedule<a class="reference internal" href="../_modules/qiskit/pulse/schedule.html#Schedule.union"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.pulse.schedule.Schedule.union" title="この定義へのパーマリンク">¶</a></dt>
 <dd><p>Return a new schedule which is the union of <cite>self</cite> and <cite>schedule</cite>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">パラメータ:</th><td class="field-body"><ul class="first last simple">
-<li><strong>*schedules</strong> -- Schedules to be take the union with the parent <cite>Schedule</cite>.</li>
-<li><strong>name</strong> -- Name of the new schedule. Defaults to name of parent</li>
+<li><strong>*schedules</strong> -- Schedules to be take the union with this <cite>Schedule</cite>.</li>
+<li><strong>name</strong> -- Name of the new schedule. Defaults to name of self</li>
 </ul>
 </td>
 </tr>

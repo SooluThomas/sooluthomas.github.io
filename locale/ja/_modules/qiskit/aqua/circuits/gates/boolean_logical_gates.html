@@ -190,7 +190,7 @@
 <span class="kn">import</span> <span class="nn">logging</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
-<span class="kn">from</span> <span class="nn">qiskit</span> <span class="k">import</span> <span class="n">QuantumCircuit</span><span class="p">,</span> <span class="n">QuantumRegister</span>
+<span class="kn">from</span> <span class="nn">qiskit.circuit</span> <span class="k">import</span> <span class="n">QuantumCircuit</span><span class="p">,</span> <span class="n">QuantumRegister</span><span class="p">,</span> <span class="n">Qubit</span>
 <span class="kn">from</span> <span class="nn">qiskit.qasm</span> <span class="k">import</span> <span class="n">pi</span>
 
 <span class="kn">from</span> <span class="nn">qiskit.aqua</span> <span class="k">import</span> <span class="n">AquaError</span>
@@ -238,7 +238,7 @@
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;A QuantumRegister or list of qubits is expected for variables.&#39;</span><span class="p">)</span>
 
     <span class="c1"># check target</span>
-    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">qb_target</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">qb_target</span><span class="p">,</span> <span class="n">Qubit</span><span class="p">):</span>
         <span class="n">target_qubit</span> <span class="o">=</span> <span class="n">qb_target</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;A single qubit is expected for the target.&#39;</span><span class="p">)</span>
@@ -268,8 +268,8 @@
 <span class="sd">    Args:</span>
 <span class="sd">        self (QuantumCircuit): The QuantumCircuit object to build the conjunction on.</span>
 <span class="sd">        variable_register (QuantumRegister): The QuantumRegister holding the variable qubits.</span>
-<span class="sd">        flags (list): A list of +1/-1/0 to mark negations or omissions of qubits.</span>
-<span class="sd">        target_qubit (tuple(QuantumRegister, int)): The target qubit to hold the conjunction result.</span>
+<span class="sd">        flags (list of int): A list of +1/-1/0 to mark negations or omissions of qubits.</span>
+<span class="sd">        target_qubit (Qubit): The target qubit to hold the conjunction result.</span>
 <span class="sd">        ancillary_register (QuantumRegister): The ancillary QuantumRegister for building the mct.</span>
 <span class="sd">        mct_mode (str): The mct building mode.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -284,8 +284,8 @@
 <span class="sd">    Args:</span>
 <span class="sd">        self (QuantumCircuit): The QuantumCircuit object to build the disjunction on.</span>
 <span class="sd">        qr_variables (QuantumRegister): The QuantumRegister holding the variable qubits.</span>
-<span class="sd">        flags (list): A list of +1/-1/0 to mark negations or omissions of qubits.</span>
-<span class="sd">        qb_target (tuple(QuantumRegister, int)): The target qubit to hold the disjunction result.</span>
+<span class="sd">        flags (list of int): A list of +1/-1/0 to mark negations or omissions of qubits.</span>
+<span class="sd">        qb_target (Qubit): The target qubit to hold the disjunction result.</span>
 <span class="sd">        qr_ancillae (QuantumRegister): The ancillary QuantumRegister for building the mct.</span>
 <span class="sd">        mct_mode (str): The mct building mode.</span>
 <span class="sd">    &quot;&quot;&quot;</span>

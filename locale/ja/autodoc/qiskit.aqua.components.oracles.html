@@ -1709,23 +1709,17 @@ available.</p>
 
 <dl class="class">
 <dt id="qiskit.aqua.components.oracles.TruthTableOracle">
-<em class="property">class </em><code class="descname">TruthTableOracle</code><span class="sig-paren">(</span><em>bitmaps</em>, <em>optimization='off'</em>, <em>mct_mode='basic'</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/components/oracles/truth_table_oracle.html#TruthTableOracle"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.aqua.components.oracles.TruthTableOracle" title="この定義へのパーマリンク">¶</a></dt>
+<em class="property">class </em><code class="descname">TruthTableOracle</code><span class="sig-paren">(</span><em>bitmaps</em>, <em>optimization=False</em>, <em>mct_mode='basic'</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/components/oracles/truth_table_oracle.html#TruthTableOracle"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.aqua.components.oracles.TruthTableOracle" title="この定義へのパーマリンク">¶</a></dt>
 <dd><p>ベースクラス: <a class="reference internal" href="qiskit.aqua.components.oracles.oracle.html#qiskit.aqua.components.oracles.oracle.Oracle" title="qiskit.aqua.components.oracles.oracle.Oracle"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.aqua.components.oracles.oracle.Oracle</span></code></a></p>
 <dl class="attribute">
 <dt id="qiskit.aqua.components.oracles.TruthTableOracle.CONFIGURATION">
-<code class="descname">CONFIGURATION</code><em class="property"> = {'description': 'Truth Table Oracle', 'input_schema': {'$schema': 'http://json-schema.org/schema#', 'additionalProperties': False, 'id': 'truth_table_oracle_schema', 'properties': {'bitmaps': {'default': [], 'items': {'type': 'string'}, 'type': 'array'}, 'mct_mode': {'default': 'basic', 'oneOf': [{'enum': ['basic', 'basic-dirty-ancilla', 'advanced', 'noancilla']}], 'type': 'string'}, 'optimization': {'default': 'off', 'oneOf': [{'enum': ['off', 'qm-dlx']}], 'type': 'string'}}, 'type': 'object'}, 'name': 'TruthTableOracle'}</em><a class="headerlink" href="#qiskit.aqua.components.oracles.TruthTableOracle.CONFIGURATION" title="この定義へのパーマリンク">¶</a></dt>
+<code class="descname">CONFIGURATION</code><em class="property"> = {'description': 'Truth Table Oracle', 'input_schema': {'$schema': 'http://json-schema.org/schema#', 'additionalProperties': False, 'id': 'truth_table_oracle_schema', 'properties': {'bitmaps': {'default': [], 'items': {'type': 'string'}, 'type': 'array'}, 'mct_mode': {'default': 'basic', 'enum': ['basic', 'basic-dirty-ancilla', 'advanced', 'noancilla'], 'type': 'string'}, 'optimization': {'default': False, 'type': 'boolean'}}, 'type': 'object'}, 'name': 'TruthTableOracle'}</em><a class="headerlink" href="#qiskit.aqua.components.oracles.TruthTableOracle.CONFIGURATION" title="この定義へのパーマリンク">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
 <dt id="qiskit.aqua.components.oracles.TruthTableOracle.ancillary_register">
 <code class="descname">ancillary_register</code><a class="headerlink" href="#qiskit.aqua.components.oracles.TruthTableOracle.ancillary_register" title="この定義へのパーマリンク">¶</a></dt>
 <dd></dd></dl>
-
-<dl class="staticmethod">
-<dt id="qiskit.aqua.components.oracles.TruthTableOracle.check_pluggable_valid">
-<em class="property">static </em><code class="descname">check_pluggable_valid</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/components/oracles/truth_table_oracle.html#TruthTableOracle.check_pluggable_valid"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.aqua.components.oracles.TruthTableOracle.check_pluggable_valid" title="この定義へのパーマリンク">¶</a></dt>
-<dd><p>Checks if pluggable is ready for use. Throws an exception if not</p>
-</dd></dl>
 
 <dl class="method">
 <dt id="qiskit.aqua.components.oracles.TruthTableOracle.construct_circuit">
@@ -1760,23 +1754,17 @@ available.</p>
 
 <dl class="class">
 <dt id="qiskit.aqua.components.oracles.LogicalExpressionOracle">
-<em class="property">class </em><code class="descname">LogicalExpressionOracle</code><span class="sig-paren">(</span><em>expression=None</em>, <em>optimization='off'</em>, <em>mct_mode='basic'</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/components/oracles/logical_expression_oracle.html#LogicalExpressionOracle"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.aqua.components.oracles.LogicalExpressionOracle" title="この定義へのパーマリンク">¶</a></dt>
+<em class="property">class </em><code class="descname">LogicalExpressionOracle</code><span class="sig-paren">(</span><em>expression=None</em>, <em>optimization=False</em>, <em>mct_mode='basic'</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/components/oracles/logical_expression_oracle.html#LogicalExpressionOracle"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.aqua.components.oracles.LogicalExpressionOracle" title="この定義へのパーマリンク">¶</a></dt>
 <dd><p>ベースクラス: <a class="reference internal" href="qiskit.aqua.components.oracles.oracle.html#qiskit.aqua.components.oracles.oracle.Oracle" title="qiskit.aqua.components.oracles.oracle.Oracle"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.aqua.components.oracles.oracle.Oracle</span></code></a></p>
 <dl class="attribute">
 <dt id="qiskit.aqua.components.oracles.LogicalExpressionOracle.CONFIGURATION">
-<code class="descname">CONFIGURATION</code><em class="property"> = {'description': 'Logical Expression Oracle', 'input_schema': {'$schema': 'http://json-schema.org/schema#', 'additionalProperties': False, 'id': 'logical_expression_oracle_schema', 'properties': {'expression': {'default': None, 'type': ['string', 'null']}, 'mct_mode': {'default': 'basic', 'oneOf': [{'enum': ['basic', 'basic-dirty-ancilla', 'advanced', 'noancilla']}], 'type': 'string'}, 'optimization': {'default': 'off', 'oneOf': [{'enum': ['off', 'espresso']}], 'type': 'string'}}, 'type': 'object'}, 'name': 'LogicalExpressionOracle'}</em><a class="headerlink" href="#qiskit.aqua.components.oracles.LogicalExpressionOracle.CONFIGURATION" title="この定義へのパーマリンク">¶</a></dt>
+<code class="descname">CONFIGURATION</code><em class="property"> = {'description': 'Logical Expression Oracle', 'input_schema': {'$schema': 'http://json-schema.org/schema#', 'additionalProperties': False, 'id': 'logical_expression_oracle_schema', 'properties': {'expression': {'default': None, 'type': ['string', 'null']}, 'mct_mode': {'default': 'basic', 'enum': ['basic', 'basic-dirty-ancilla', 'advanced', 'noancilla'], 'type': 'string'}, 'optimization': {'default': False, 'type': 'boolean'}}, 'type': 'object'}, 'name': 'LogicalExpressionOracle'}</em><a class="headerlink" href="#qiskit.aqua.components.oracles.LogicalExpressionOracle.CONFIGURATION" title="この定義へのパーマリンク">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
 <dt id="qiskit.aqua.components.oracles.LogicalExpressionOracle.ancillary_register">
 <code class="descname">ancillary_register</code><a class="headerlink" href="#qiskit.aqua.components.oracles.LogicalExpressionOracle.ancillary_register" title="この定義へのパーマリンク">¶</a></dt>
 <dd></dd></dl>
-
-<dl class="staticmethod">
-<dt id="qiskit.aqua.components.oracles.LogicalExpressionOracle.check_pluggable_valid">
-<em class="property">static </em><code class="descname">check_pluggable_valid</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/components/oracles/logical_expression_oracle.html#LogicalExpressionOracle.check_pluggable_valid"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.aqua.components.oracles.LogicalExpressionOracle.check_pluggable_valid" title="この定義へのパーマリンク">¶</a></dt>
-<dd><p>Checks if pluggable is ready for use. Throws an exception if not</p>
-</dd></dl>
 
 <dl class="method">
 <dt id="qiskit.aqua.components.oracles.LogicalExpressionOracle.construct_circuit">

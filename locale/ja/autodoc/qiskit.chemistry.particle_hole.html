@@ -1698,7 +1698,7 @@ loaded with QuTip function (qutip.fileio.qload) or numpy.array</li>
 
 <dl class="function">
 <dt id="qiskit.chemistry.particle_hole.particle_hole_transformation">
-<code class="descname">particle_hole_transformation</code><span class="sig-paren">(</span><em>n_qubits</em>, <em>n_occupied</em>, <em>h1_old_matrix</em>, <em>h2_old_matrix</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/chemistry/particle_hole.html#particle_hole_transformation"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.chemistry.particle_hole.particle_hole_transformation" title="この定義へのパーマリンク">¶</a></dt>
+<code class="descname">particle_hole_transformation</code><span class="sig-paren">(</span><em>n_qubits</em>, <em>num_particles</em>, <em>h1_old_matrix</em>, <em>h2_old_matrix</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/chemistry/particle_hole.html#particle_hole_transformation"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.chemistry.particle_hole.particle_hole_transformation" title="この定義へのパーマリンク">¶</a></dt>
 <dd><p>This function produces the necessary h1, h2, identity for work with Fermionic Operators script.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1706,16 +1706,13 @@ loaded with QuTip function (qutip.fileio.qload) or numpy.array</li>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">パラメータ:</th><td class="field-body"><ul class="first simple">
 <li><strong>n_qubits</strong> (<em>int</em>) -- number of qubits</li>
-<li><strong>n_occupied</strong> (<em>int</em>) -- number of electrons</li>
-<li><strong>h1_old_matrix</strong> (<em>numpy.ndarray</em>) -- rFs terms from Gaussian</li>
-<li><strong>h2_old_matrix</strong> (<em>numpy.ndarray</em>) -- rsgtu terms from Gaussian</li>
+<li><strong>num_particles</strong> (<em>list</em>) -- number of alphas, number of betas</li>
+<li><strong>h1_old_matrix</strong> (<em>array</em>) -- one body integrals matrix</li>
+<li><strong>h2_old_matrix</strong> (<em>array</em>) -- two body integral matrix</li>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">戻り値:</th><td class="field-body"><p class="first">h1_prime, h2_prime, identities</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">戻り値の型:</th><td class="field-body"><p class="first last">numpy.ndarray, numpy.ndarray, float</p>
+<tr class="field-even field"><th class="field-name">戻り値:</th><td class="field-body"><p class="first last">new one body integrals matrix, two body integrals matrix, identity coefficient terms</p>
 </td>
 </tr>
 </tbody>

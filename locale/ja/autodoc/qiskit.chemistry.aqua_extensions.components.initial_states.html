@@ -1652,7 +1652,7 @@
 <p>A Hartree-Fock initial state.</p>
 <dl class="attribute">
 <dt id="qiskit.chemistry.aqua_extensions.components.initial_states.HartreeFock.CONFIGURATION">
-<code class="descname">CONFIGURATION</code><em class="property"> = {'description': 'Hartree-Fock initial state', 'input_schema': {'$schema': 'http://json-schema.org/schema#', 'additionalProperties': False, 'id': 'hf_state_schema', 'properties': {'num_orbitals': {'default': 4, 'minimum': 1, 'type': 'integer'}, 'num_particles': {'default': 2, 'minimum': 1, 'type': 'integer'}, 'qubit_mapping': {'default': 'parity', 'oneOf': [{'enum': ['jordan_wigner', 'parity', 'bravyi_kitaev']}], 'type': 'string'}, 'two_qubit_reduction': {'default': True, 'type': 'boolean'}}, 'type': 'object'}, 'name': 'HartreeFock'}</em><a class="headerlink" href="#qiskit.chemistry.aqua_extensions.components.initial_states.HartreeFock.CONFIGURATION" title="この定義へのパーマリンク">¶</a></dt>
+<code class="descname">CONFIGURATION</code><em class="property"> = {'description': 'Hartree-Fock initial state', 'input_schema': {'$schema': 'http://json-schema.org/schema#', 'additionalProperties': False, 'id': 'hf_state_schema', 'properties': {'num_orbitals': {'default': 4, 'minimum': 1, 'type': 'integer'}, 'num_particles': {'contains': {'type': 'integer'}, 'default': [1, 1], 'maxItems': 2, 'minItems': 2, 'type': ['array', 'integer']}, 'qubit_mapping': {'default': 'parity', 'enum': ['jordan_wigner', 'parity', 'bravyi_kitaev'], 'type': 'string'}, 'two_qubit_reduction': {'default': True, 'type': 'boolean'}}, 'type': 'object'}, 'name': 'HartreeFock'}</em><a class="headerlink" href="#qiskit.chemistry.aqua_extensions.components.initial_states.HartreeFock.CONFIGURATION" title="この定義へのパーマリンク">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">

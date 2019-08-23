@@ -34,7 +34,7 @@
        </script>
         <script src="https://cloud.ibm.com/analytics/build/bluemix-analytics.min.js"></script>
     
-    <title>qiskit.mapper.exceptions &#8212; Qiskit 0.11.1 ドキュメント</title>
+    <title>qiskit.aqua.version &#8212; Qiskit 0.11.1 ドキュメント</title>
 
     <link rel="stylesheet" href="../../../_static/material-icons.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
@@ -169,12 +169,12 @@
     <div class="document">
         <div class="page-content">
         
-  <h1>qiskit.mapper.exceptions のソースコード</h1><div class="highlight"><pre>
+  <h1>qiskit.aqua.version のソースコード</h1><div class="highlight"><pre>
 <span></span><span class="c1"># -*- coding: utf-8 -*-</span>
 
 <span class="c1"># This code is part of Qiskit.</span>
 <span class="c1">#</span>
-<span class="c1"># (C) Copyright IBM 2017.</span>
+<span class="c1"># (C) Copyright IBM 2019.</span>
 <span class="c1">#</span>
 <span class="c1"># This code is licensed under the Apache License, Version 2.0. You may</span>
 <span class="c1"># obtain a copy of this license in the LICENSE.txt file in the root directory</span>
@@ -184,36 +184,73 @@
 <span class="c1"># copyright notice, and modified files need to carry a notice indicating</span>
 <span class="c1"># that they have been altered from the originals.</span>
 
-<span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">Exception for errors raised by mapper module.</span>
-<span class="sd">&quot;&quot;&quot;</span>
-<span class="kn">from</span> <span class="nn">qiskit.exceptions</span> <span class="k">import</span> <span class="n">QiskitError</span>
+<span class="sd">&quot;&quot;&quot;Contains the Aqua version.&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">subprocess</span>
+
+<span class="n">ROOT_DIR</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="vm">__file__</span><span class="p">))</span>
+<span class="n">QISKIT_DIR</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">ROOT_DIR</span><span class="p">)</span>
 
 
-<div class="viewcode-block" id="CouplingError"><a class="viewcode-back" href="../../../autodoc/qiskit.mapper.exceptions.html#qiskit.mapper.exceptions.CouplingError">[ドキュメント]</a><span class="k">class</span> <span class="nc">CouplingError</span><span class="p">(</span><span class="n">QiskitError</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Base class for errors raised by the coupling graph object.&quot;&quot;&quot;</span>
+<span class="k">def</span> <span class="nf">_minimal_ext_cmd</span><span class="p">(</span><span class="n">cmd</span><span class="p">):</span>
+    <span class="c1"># construct minimal environment</span>
+    <span class="n">env</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;SYSTEMROOT&#39;</span><span class="p">,</span> <span class="s1">&#39;PATH&#39;</span><span class="p">]:</span>
+        <span class="n">v</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">v</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">env</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span>
+    <span class="c1"># LANGUAGE is used on win32</span>
+    <span class="n">env</span><span class="p">[</span><span class="s1">&#39;LANGUAGE&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;C&#39;</span>
+    <span class="n">env</span><span class="p">[</span><span class="s1">&#39;LANG&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;C&#39;</span>
+    <span class="n">env</span><span class="p">[</span><span class="s1">&#39;LC_ALL&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;C&#39;</span>
+    <span class="n">proc</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">Popen</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span> <span class="n">stdout</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">PIPE</span><span class="p">,</span>
+                            <span class="n">stderr</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">PIPE</span><span class="p">,</span> <span class="n">env</span><span class="o">=</span><span class="n">env</span><span class="p">,</span>
+                            <span class="n">cwd</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">QISKIT_DIR</span><span class="p">)))</span>
+    <span class="n">stdout</span><span class="p">,</span> <span class="n">stderr</span> <span class="o">=</span> <span class="n">proc</span><span class="o">.</span><span class="n">communicate</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">proc</span><span class="o">.</span><span class="n">returncode</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">OSError</span><span class="p">(</span><span class="s1">&#39;Command </span><span class="si">{}</span><span class="s1"> exited with code </span><span class="si">{}</span><span class="s1">: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+            <span class="n">cmd</span><span class="p">,</span> <span class="n">proc</span><span class="o">.</span><span class="n">returncode</span><span class="p">,</span> <span class="n">stderr</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;ascii&#39;</span><span class="p">)))</span>
+    <span class="k">return</span> <span class="n">stdout</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">msg</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Set the error message.&quot;&quot;&quot;</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">msg</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">msg</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Return the message.&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="nb">repr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">msg</span><span class="p">)</span></div>
+<div class="viewcode-block" id="git_version"><a class="viewcode-back" href="../../../autodoc/qiskit.aqua.version.html#qiskit.aqua.version.git_version">[ドキュメント]</a><span class="k">def</span> <span class="nf">git_version</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Get the current git head sha1.&quot;&quot;&quot;</span>
+    <span class="c1"># Determine if we&#39;re at master</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="n">_minimal_ext_cmd</span><span class="p">([</span><span class="s1">&#39;git&#39;</span><span class="p">,</span> <span class="s1">&#39;rev-parse&#39;</span><span class="p">,</span> <span class="s1">&#39;HEAD&#39;</span><span class="p">])</span>
+        <span class="n">git_revision</span> <span class="o">=</span> <span class="n">out</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;ascii&#39;</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">OSError</span><span class="p">:</span>
+        <span class="n">git_revision</span> <span class="o">=</span> <span class="s2">&quot;Unknown&quot;</span>
+
+    <span class="k">return</span> <span class="n">git_revision</span></div>
 
 
-<div class="viewcode-block" id="LayoutError"><a class="viewcode-back" href="../../../autodoc/qiskit.mapper.exceptions.html#qiskit.mapper.exceptions.LayoutError">[ドキュメント]</a><span class="k">class</span> <span class="nc">LayoutError</span><span class="p">(</span><span class="n">QiskitError</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Errors raised by the layout object.&quot;&quot;&quot;</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">ROOT_DIR</span><span class="p">,</span> <span class="s2">&quot;VERSION.txt&quot;</span><span class="p">),</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">version_file</span><span class="p">:</span>
+    <span class="n">VERSION</span> <span class="o">=</span> <span class="n">version_file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">msg</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Set the error message.&quot;&quot;&quot;</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">msg</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">msg</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Return the message.&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="nb">repr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">msg</span><span class="p">)</span></div>
+<div class="viewcode-block" id="get_version_info"><a class="viewcode-back" href="../../../autodoc/qiskit.aqua.version.html#qiskit.aqua.version.get_version_info">[ドキュメント]</a><span class="k">def</span> <span class="nf">get_version_info</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Get the full version string.&quot;&quot;&quot;</span>
+    <span class="c1"># Adding the git rev number needs to be done inside</span>
+    <span class="c1"># write_version_py(), otherwise the import of scipy.version messes</span>
+    <span class="c1"># up the build under Python 3.</span>
+    <span class="n">full_version</span> <span class="o">=</span> <span class="n">VERSION</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">QISKIT_DIR</span><span class="p">),</span> <span class="s1">&#39;.git&#39;</span><span class="p">)):</span>
+        <span class="k">return</span> <span class="n">full_version</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">release</span> <span class="o">=</span> <span class="n">_minimal_ext_cmd</span><span class="p">([</span><span class="s1">&#39;git&#39;</span><span class="p">,</span> <span class="s1">&#39;tag&#39;</span><span class="p">,</span> <span class="s1">&#39;-l&#39;</span><span class="p">,</span> <span class="s1">&#39;--points-at&#39;</span><span class="p">,</span> <span class="s1">&#39;HEAD&#39;</span><span class="p">])</span>
+    <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>  <span class="c1"># pylint: disable=broad-except</span>
+        <span class="k">return</span> <span class="n">full_version</span>
+    <span class="n">git_revision</span> <span class="o">=</span> <span class="n">git_version</span><span class="p">()</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">release</span><span class="p">:</span>
+        <span class="n">full_version</span> <span class="o">+=</span> <span class="s1">&#39;.dev0+&#39;</span> <span class="o">+</span> <span class="n">git_revision</span><span class="p">[:</span><span class="mi">7</span><span class="p">]</span>
+
+    <span class="k">return</span> <span class="n">full_version</span></div>
+
+
+<span class="n">__version__</span> <span class="o">=</span> <span class="n">get_version_info</span><span class="p">()</span>
 </pre></div>
 
         </div>

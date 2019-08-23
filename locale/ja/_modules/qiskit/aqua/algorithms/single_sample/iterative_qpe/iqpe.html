@@ -194,8 +194,10 @@
 <span class="kn">from</span> <span class="nn">qiskit</span> <span class="k">import</span> <span class="n">QuantumRegister</span><span class="p">,</span> <span class="n">ClassicalRegister</span><span class="p">,</span> <span class="n">QuantumCircuit</span>
 <span class="kn">from</span> <span class="nn">qiskit.quantum_info</span> <span class="k">import</span> <span class="n">Pauli</span>
 
-<span class="kn">from</span> <span class="nn">qiskit.aqua</span> <span class="k">import</span> <span class="n">Operator</span><span class="p">,</span> <span class="n">AquaError</span>
+<span class="kn">from</span> <span class="nn">qiskit.aqua</span> <span class="k">import</span> <span class="n">AquaError</span>
 <span class="kn">from</span> <span class="nn">qiskit.aqua</span> <span class="k">import</span> <span class="n">Pluggable</span><span class="p">,</span> <span class="n">PluggableType</span><span class="p">,</span> <span class="n">get_pluggable_class</span>
+<span class="kn">from</span> <span class="nn">qiskit.aqua.operators</span> <span class="k">import</span> <span class="p">(</span><span class="n">WeightedPauliOperator</span><span class="p">,</span> <span class="n">suzuki_expansion_slice_pauli_list</span><span class="p">,</span>
+                                   <span class="n">evolution_instruction</span><span class="p">,</span> <span class="n">op_converter</span><span class="p">)</span>
 <span class="kn">from</span> <span class="nn">qiskit.aqua.utils</span> <span class="k">import</span> <span class="n">get_subsystem_density_matrix</span>
 <span class="kn">from</span> <span class="nn">qiskit.aqua.algorithms</span> <span class="k">import</span> <span class="n">QuantumAlgorithm</span>
 
@@ -231,11 +233,9 @@
                 <span class="n">PROP_EXPANSION_MODE</span><span class="p">:</span> <span class="p">{</span>
                     <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;string&#39;</span><span class="p">,</span>
                     <span class="s1">&#39;default&#39;</span><span class="p">:</span> <span class="s1">&#39;suzuki&#39;</span><span class="p">,</span>
-                    <span class="s1">&#39;oneOf&#39;</span><span class="p">:</span> <span class="p">[</span>
-                        <span class="p">{</span><span class="s1">&#39;enum&#39;</span><span class="p">:</span> <span class="p">[</span>
-                            <span class="s1">&#39;suzuki&#39;</span><span class="p">,</span>
-                            <span class="s1">&#39;trotter&#39;</span>
-                        <span class="p">]}</span>
+                    <span class="s1">&#39;enum&#39;</span><span class="p">:</span> <span class="p">[</span>
+                        <span class="s1">&#39;suzuki&#39;</span><span class="p">,</span>
+                        <span class="s1">&#39;trotter&#39;</span>
                     <span class="p">]</span>
                 <span class="p">},</span>
                 <span class="n">PROP_EXPANSION_ORDER</span><span class="p">:</span> <span class="p">{</span>
@@ -268,7 +268,7 @@
 <span class="sd">        Constructor.</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            operator (Operator): the hamiltonian Operator object</span>
+<span class="sd">            operator (BaseOperator): the hamiltonian Operator object</span>
 <span class="sd">            state_in (InitialState): the InitialState pluggable component representing the initial quantum state</span>
 <span class="sd">            num_time_slices (int): the number of time slices</span>
 <span class="sd">            num_iterations (int): the number of iterations</span>
@@ -278,7 +278,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">validate</span><span class="p">(</span><span class="nb">locals</span><span class="p">())</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_operator</span> <span class="o">=</span> <span class="n">operator</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_operator</span> <span class="o">=</span> <span class="n">op_converter</span><span class="o">.</span><span class="n">to_weighted_pauli_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_state_in</span> <span class="o">=</span> <span class="n">state_in</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_num_time_slices</span> <span class="o">=</span> <span class="n">num_time_slices</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_num_iterations</span> <span class="o">=</span> <span class="n">num_iterations</span>
@@ -322,13 +322,12 @@
                    <span class="n">expansion_order</span><span class="o">=</span><span class="n">expansion_order</span><span class="p">)</span></div>
 
     <span class="k">def</span> <span class="nf">_setup</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_pauli_list</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_operator</span><span class="o">.</span><span class="n">get_flat_pauli_list</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_ret</span><span class="p">[</span><span class="s1">&#39;translation&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">([</span><span class="nb">abs</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pauli_list</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ret</span><span class="p">[</span><span class="s1">&#39;translation&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">([</span><span class="nb">abs</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_operator</span><span class="o">.</span><span class="n">reorder_paulis</span><span class="p">()])</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_ret</span><span class="p">[</span><span class="s1">&#39;stretch&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ret</span><span class="p">[</span><span class="s1">&#39;translation&#39;</span><span class="p">]</span>
 
         <span class="c1"># translate the operator</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_operator</span><span class="o">.</span><span class="n">_simplify_paulis</span><span class="p">()</span>
-        <span class="n">translation_op</span> <span class="o">=</span> <span class="n">Operator</span><span class="p">([</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_operator</span><span class="o">.</span><span class="n">simplify</span><span class="p">()</span>
+        <span class="n">translation_op</span> <span class="o">=</span> <span class="n">WeightedPauliOperator</span><span class="p">([</span>
             <span class="p">[</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_ret</span><span class="p">[</span><span class="s1">&#39;translation&#39;</span><span class="p">],</span>
                 <span class="n">Pauli</span><span class="p">(</span>
@@ -337,8 +336,10 @@
                 <span class="p">)</span>
             <span class="p">]</span>
         <span class="p">])</span>
-        <span class="n">translation_op</span><span class="o">.</span><span class="n">_simplify_paulis</span><span class="p">()</span>
+        <span class="n">translation_op</span><span class="o">.</span><span class="n">simplify</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_operator</span> <span class="o">+=</span> <span class="n">translation_op</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_pauli_list</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_operator</span><span class="o">.</span><span class="n">reorder_paulis</span><span class="p">()</span>
 
         <span class="c1"># stretch the operator</span>
         <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pauli_list</span><span class="p">:</span>
@@ -350,7 +351,7 @@
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_expansion_mode</span> <span class="o">==</span> <span class="s1">&#39;trotter&#39;</span><span class="p">:</span>
                 <span class="n">slice_pauli_list</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pauli_list</span>
             <span class="k">else</span><span class="p">:</span>
-                <span class="n">slice_pauli_list</span> <span class="o">=</span> <span class="n">Operator</span><span class="o">.</span><span class="n">_suzuki_expansion_slice_pauli_list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_pauli_list</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_expansion_order</span><span class="p">)</span>
+                <span class="n">slice_pauli_list</span> <span class="o">=</span> <span class="n">suzuki_expansion_slice_pauli_list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_pauli_list</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_expansion_order</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_slice_pauli_list</span> <span class="o">=</span> <span class="n">slice_pauli_list</span>
 
 <div class="viewcode-block" id="IQPE.construct_circuit"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.aqua.algorithms.single_sample.iterative_qpe.iqpe.html#qiskit.aqua.algorithms.IQPE.construct_circuit">[ドキュメント]</a>    <span class="k">def</span> <span class="nf">construct_circuit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">omega</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">measurement</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
@@ -377,14 +378,15 @@
         <span class="n">qc</span><span class="o">.</span><span class="n">add_register</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
         <span class="n">qc</span><span class="o">.</span><span class="n">u2</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
         <span class="c1"># controlled-U</span>
-        <span class="n">qc_evolutions</span> <span class="o">=</span> <span class="n">Operator</span><span class="o">.</span><span class="n">construct_evolution_circuit</span><span class="p">(</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_slice_pauli_list</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_num_time_slices</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">unitary_power</span><span class="o">=</span><span class="mi">2</span> <span class="o">**</span> <span class="p">(</span><span class="n">k</span> <span class="o">-</span> <span class="mi">1</span><span class="p">),</span>
-            <span class="n">shallow_slicing</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_shallow_circuit_concat</span>
-        <span class="p">)</span>
+        <span class="n">qc_evolutions_inst</span> <span class="o">=</span> <span class="n">evolution_instruction</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_slice_pauli_list</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_num_time_slices</span><span class="p">,</span>
+                                                   <span class="n">controlled</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">power</span><span class="o">=</span><span class="mi">2</span> <span class="o">**</span> <span class="p">(</span><span class="n">k</span> <span class="o">-</span> <span class="mi">1</span><span class="p">),</span>
+                                                   <span class="n">shallow_slicing</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_shallow_circuit_concat</span><span class="p">)</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_shallow_circuit_concat</span><span class="p">:</span>
+            <span class="n">qc_evolutions</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+            <span class="n">qc_evolutions</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">qc_evolutions_inst</span><span class="p">,</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">q</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]])</span>
             <span class="n">qc</span><span class="o">.</span><span class="n">data</span> <span class="o">+=</span> <span class="n">qc_evolutions</span><span class="o">.</span><span class="n">data</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="n">qc</span> <span class="o">+=</span> <span class="n">qc_evolutions</span>
+            <span class="n">qc</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">qc_evolutions_inst</span><span class="p">,</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">q</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]])</span>
         <span class="c1"># global phase due to identity pauli</span>
         <span class="n">qc</span><span class="o">.</span><span class="n">u1</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ancilla_phase_coef</span> <span class="o">*</span> <span class="p">(</span><span class="mi">2</span> <span class="o">**</span> <span class="p">(</span><span class="n">k</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)),</span> <span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
         <span class="c1"># rz on a[0]</span>
@@ -439,7 +441,7 @@
     <span class="k">def</span> <span class="nf">_compute_energy</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="c1"># check for identify paulis to get its coef for applying global phase shift on ancilla later</span>
         <span class="n">num_identities</span> <span class="o">=</span> <span class="mi">0</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_pauli_list</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_operator</span><span class="o">.</span><span class="n">get_flat_pauli_list</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_pauli_list</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_operator</span><span class="o">.</span><span class="n">reorder_paulis</span><span class="p">()</span>
         <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pauli_list</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">logical_not</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">z</span><span class="p">))</span> <span class="ow">and</span> <span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">logical_not</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">x</span><span class="p">)):</span>
                 <span class="n">num_identities</span> <span class="o">+=</span> <span class="mi">1</span>

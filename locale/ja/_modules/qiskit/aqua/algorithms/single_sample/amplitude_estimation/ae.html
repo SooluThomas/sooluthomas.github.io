@@ -190,19 +190,21 @@
 <span class="kn">import</span> <span class="nn">logging</span>
 <span class="kn">from</span> <span class="nn">collections</span> <span class="k">import</span> <span class="n">OrderedDict</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="k">import</span> <span class="n">chi2</span><span class="p">,</span> <span class="n">norm</span>
+<span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="k">import</span> <span class="n">bisect</span>
 
-<span class="kn">from</span> <span class="nn">qiskit</span> <span class="k">import</span> <span class="n">ClassicalRegister</span>
 <span class="kn">from</span> <span class="nn">qiskit.aqua</span> <span class="k">import</span> <span class="n">AquaError</span>
 <span class="kn">from</span> <span class="nn">qiskit.aqua</span> <span class="k">import</span> <span class="n">Pluggable</span><span class="p">,</span> <span class="n">PluggableType</span><span class="p">,</span> <span class="n">get_pluggable_class</span>
-<span class="kn">from</span> <span class="nn">qiskit.aqua.algorithms</span> <span class="k">import</span> <span class="n">QuantumAlgorithm</span>
 <span class="kn">from</span> <span class="nn">qiskit.aqua.circuits</span> <span class="k">import</span> <span class="n">PhaseEstimationCircuit</span>
 <span class="kn">from</span> <span class="nn">qiskit.aqua.components.iqfts</span> <span class="k">import</span> <span class="n">Standard</span>
-<span class="kn">from</span> <span class="nn">.q_factory</span> <span class="k">import</span> <span class="n">QFactory</span>
+
+<span class="kn">from</span> <span class="nn">.ae_base</span> <span class="k">import</span> <span class="n">AmplitudeEstimationBase</span>
+<span class="kn">from</span> <span class="nn">.ae_utils</span> <span class="k">import</span> <span class="n">pdf_a</span><span class="p">,</span> <span class="n">derivative_log_pdf_a</span><span class="p">,</span> <span class="n">bisect_max</span>
 
 <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
 
 
-<div class="viewcode-block" id="AmplitudeEstimation"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.aqua.algorithms.single_sample.amplitude_estimation.ae.html#qiskit.aqua.algorithms.AmplitudeEstimation">[ドキュメント]</a><span class="k">class</span> <span class="nc">AmplitudeEstimation</span><span class="p">(</span><span class="n">QuantumAlgorithm</span><span class="p">):</span>
+<div class="viewcode-block" id="AmplitudeEstimation"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.aqua.algorithms.single_sample.amplitude_estimation.ae.html#qiskit.aqua.algorithms.AmplitudeEstimation">[ドキュメント]</a><span class="k">class</span> <span class="nc">AmplitudeEstimation</span><span class="p">(</span><span class="n">AmplitudeEstimationBase</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    The Amplitude Estimation algorithm.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -240,7 +242,7 @@
         <span class="p">],</span>
     <span class="p">}</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num_eval_qubits</span><span class="p">,</span> <span class="n">a_factory</span><span class="p">,</span> <span class="n">i_objective</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">q_factory</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">iqft</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num_eval_qubits</span><span class="p">,</span> <span class="n">a_factory</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">i_objective</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">q_factory</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">iqft</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Constructor.</span>
 
@@ -251,24 +253,11 @@
 <span class="sd">            iqft (IQFT): the Inverse Quantum Fourier Transform pluggable component, defaults to using a standard iqft when None</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">validate</span><span class="p">(</span><span class="nb">locals</span><span class="p">())</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
-
-        <span class="c1"># get/construct A/Q operator</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">a_factory</span> <span class="o">=</span> <span class="n">a_factory</span>
-        <span class="k">if</span> <span class="n">q_factory</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="k">if</span> <span class="n">i_objective</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-                <span class="n">i_objective</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">a_factory</span><span class="o">.</span><span class="n">num_target_qubits</span> <span class="o">-</span> <span class="mi">1</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">q_factory</span> <span class="o">=</span> <span class="n">QFactory</span><span class="p">(</span><span class="n">a_factory</span><span class="p">,</span> <span class="n">i_objective</span><span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">q_factory</span> <span class="o">=</span> <span class="n">q_factory</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">a_factory</span><span class="p">,</span> <span class="n">q_factory</span><span class="p">,</span> <span class="n">i_objective</span><span class="p">)</span>
 
         <span class="c1"># get parameters</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_m</span> <span class="o">=</span> <span class="n">num_eval_qubits</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_M</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">**</span> <span class="n">num_eval_qubits</span>
-
-        <span class="c1"># determine number of ancillas</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_num_ancillas</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">q_factory</span><span class="o">.</span><span class="n">required_ancillas_controlled</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_num_qubits</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">a_factory</span><span class="o">.</span><span class="n">num_target_qubits</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_m</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_num_ancillas</span>
 
         <span class="k">if</span> <span class="n">iqft</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">iqft</span> <span class="o">=</span> <span class="n">Standard</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_m</span><span class="p">)</span>
@@ -286,7 +275,7 @@
 <span class="sd">            algo_input: Input instance</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">algo_input</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="n">AquaError</span><span class="p">(</span><span class="s2">&quot;Input instance not supported.&quot;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="n">AquaError</span><span class="p">(</span><span class="s1">&#39;Input instance not supported.&#39;</span><span class="p">)</span>
 
         <span class="n">ae_params</span> <span class="o">=</span> <span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">Pluggable</span><span class="o">.</span><span class="n">SECTION_KEY_ALGORITHM</span><span class="p">)</span>
         <span class="n">num_eval_qubits</span> <span class="o">=</span> <span class="n">ae_params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;num_eval_qubits&#39;</span><span class="p">)</span>
@@ -294,7 +283,8 @@
         <span class="c1"># Set up uncertainty problem. The params can include an uncertainty model</span>
         <span class="c1"># type dependent on the uncertainty problem and is this its responsibility</span>
         <span class="c1"># to create for itself from the complete params set that is passed to it.</span>
-        <span class="n">uncertainty_problem_params</span> <span class="o">=</span> <span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">Pluggable</span><span class="o">.</span><span class="n">SECTION_KEY_UNCERTAINTY_PROBLEM</span><span class="p">)</span>
+        <span class="n">uncertainty_problem_params</span> <span class="o">=</span> <span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+            <span class="n">Pluggable</span><span class="o">.</span><span class="n">SECTION_KEY_UNCERTAINTY_PROBLEM</span><span class="p">)</span>
         <span class="n">uncertainty_problem</span> <span class="o">=</span> <span class="n">get_pluggable_class</span><span class="p">(</span>
             <span class="n">PluggableType</span><span class="o">.</span><span class="n">UNCERTAINTY_PROBLEM</span><span class="p">,</span>
             <span class="n">uncertainty_problem_params</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">init_params</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
@@ -302,9 +292,19 @@
         <span class="c1"># Set up iqft, we need to add num qubits to params which is our num_ancillae bits here</span>
         <span class="n">iqft_params</span> <span class="o">=</span> <span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">Pluggable</span><span class="o">.</span><span class="n">SECTION_KEY_IQFT</span><span class="p">)</span>
         <span class="n">iqft_params</span><span class="p">[</span><span class="s1">&#39;num_qubits&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">num_eval_qubits</span>
-        <span class="n">iqft</span> <span class="o">=</span> <span class="n">get_pluggable_class</span><span class="p">(</span><span class="n">PluggableType</span><span class="o">.</span><span class="n">IQFT</span><span class="p">,</span> <span class="n">iqft_params</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">init_params</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+        <span class="n">iqft</span> <span class="o">=</span> <span class="n">get_pluggable_class</span><span class="p">(</span>
+            <span class="n">PluggableType</span><span class="o">.</span><span class="n">IQFT</span><span class="p">,</span> <span class="n">iqft_params</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">init_params</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
 
         <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">num_eval_qubits</span><span class="p">,</span> <span class="n">uncertainty_problem</span><span class="p">,</span> <span class="n">q_factory</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">iqft</span><span class="o">=</span><span class="n">iqft</span><span class="p">)</span></div>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">_num_qubits</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">check_factories</span><span class="p">()</span>  <span class="c1"># ensure that A/Q factories are set</span>
+
+        <span class="n">num_ancillas</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">q_factory</span><span class="o">.</span><span class="n">required_ancillas_controlled</span><span class="p">()</span>
+        <span class="n">num_qubits</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">a_factory</span><span class="o">.</span><span class="n">num_target_qubits</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_m</span> <span class="o">+</span> <span class="n">num_ancillas</span>
+
+        <span class="k">return</span> <span class="n">num_qubits</span>
 
 <div class="viewcode-block" id="AmplitudeEstimation.construct_circuit"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.aqua.algorithms.single_sample.amplitude_estimation.ae.html#qiskit.aqua.algorithms.AmplitudeEstimation.construct_circuit">[ドキュメント]</a>    <span class="k">def</span> <span class="nf">construct_circuit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">measurement</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -329,7 +329,7 @@
         <span class="c1"># map measured results to estimates</span>
         <span class="n">y_probabilities</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">()</span>
         <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">probability</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">probabilities</span><span class="p">):</span>
-            <span class="n">b</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{0:b}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">.</span><span class="n">rjust</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_num_qubits</span><span class="p">,</span> <span class="s1">&#39;0&#39;</span><span class="p">)[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+            <span class="n">b</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{0:b}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">.</span><span class="n">rjust</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_num_qubits</span><span class="p">,</span> <span class="s1">&#39;0&#39;</span><span class="p">)[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
             <span class="n">y</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">b</span><span class="p">[:</span><span class="bp">self</span><span class="o">.</span><span class="n">_m</span><span class="p">],</span> <span class="mi">2</span><span class="p">)</span>
             <span class="n">y_probabilities</span><span class="p">[</span><span class="n">y</span><span class="p">]</span> <span class="o">=</span> <span class="n">y_probabilities</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="n">probability</span>
 
@@ -337,12 +337,173 @@
         <span class="k">for</span> <span class="n">y</span><span class="p">,</span> <span class="n">probability</span> <span class="ow">in</span> <span class="n">y_probabilities</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
             <span class="k">if</span> <span class="n">y</span> <span class="o">&gt;=</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_M</span> <span class="o">/</span> <span class="mi">2</span><span class="p">):</span>
                 <span class="n">y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_M</span> <span class="o">-</span> <span class="n">y</span>
-            <span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">y</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">**</span> <span class="bp">self</span><span class="o">.</span><span class="n">_m</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span>
+            <span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">y</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">**</span> <span class="bp">self</span><span class="o">.</span><span class="n">_m</span><span class="p">),</span> <span class="mi">2</span><span class="p">),</span>
+                         <span class="n">decimals</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span>
             <span class="n">a_probabilities</span><span class="p">[</span><span class="n">a</span><span class="p">]</span> <span class="o">=</span> <span class="n">a_probabilities</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="n">probability</span>
 
         <span class="k">return</span> <span class="n">a_probabilities</span><span class="p">,</span> <span class="n">y_probabilities</span>
 
+    <span class="k">def</span> <span class="nf">_compute_fisher_information</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">observed</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="n">fisher_information</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">mlv</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ret</span><span class="p">[</span><span class="s1">&#39;ml_value&#39;</span><span class="p">]</span>  <span class="c1"># MLE in [0,1]</span>
+        <span class="n">m</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_m</span>
+        <span class="k">if</span> <span class="n">observed</span><span class="p">:</span>
+            <span class="n">ai</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_ret</span><span class="p">[</span><span class="s1">&#39;values&#39;</span><span class="p">])</span>
+            <span class="n">pi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_ret</span><span class="p">[</span><span class="s1">&#39;probabilities&#39;</span><span class="p">])</span>
+
+            <span class="c1"># Calculate the observed Fisher information</span>
+            <span class="n">fisher_information</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">p</span> <span class="o">*</span> <span class="n">derivative_log_pdf_a</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">mlv</span><span class="p">,</span> <span class="n">m</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="k">for</span> <span class="n">p</span><span class="p">,</span> <span class="n">a</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">pi</span><span class="p">,</span> <span class="n">ai</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">def</span> <span class="nf">integrand</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+                <span class="k">return</span> <span class="p">(</span><span class="n">derivative_log_pdf_a</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">mlv</span><span class="p">,</span> <span class="n">m</span><span class="p">))</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">pdf_a</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">mlv</span><span class="p">,</span> <span class="n">m</span><span class="p">)</span>
+
+            <span class="n">M</span> <span class="o">=</span> <span class="mi">2</span><span class="o">**</span><span class="n">m</span>
+            <span class="n">grid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">M</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="n">M</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+            <span class="n">fisher_information</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">integrand</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">grid</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">fisher_information</span>
+
+    <span class="k">def</span> <span class="nf">_fisher_ci</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">observed</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="n">shots</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ret</span><span class="p">[</span><span class="s1">&#39;shots&#39;</span><span class="p">]</span>
+        <span class="n">mle</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ret</span><span class="p">[</span><span class="s1">&#39;ml_value&#39;</span><span class="p">]</span>
+
+        <span class="n">std</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">shots</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">_compute_fisher_information</span><span class="p">(</span><span class="n">observed</span><span class="p">))</span>
+        <span class="n">ci</span> <span class="o">=</span> <span class="n">mle</span> <span class="o">+</span> <span class="n">norm</span><span class="o">.</span><span class="n">ppf</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">alpha</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="n">std</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+
+        <span class="k">return</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">a_factory</span><span class="o">.</span><span class="n">value_to_estimation</span><span class="p">(</span><span class="n">bound</span><span class="p">)</span> <span class="k">for</span> <span class="n">bound</span> <span class="ow">in</span> <span class="n">ci</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">_likelihood_ratio_ci</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">alpha</span><span class="p">):</span>
+        <span class="c1"># Compute the two intervals in which we the look for values above</span>
+        <span class="c1"># the likelihood ratio: the two bubbles next to the QAE estimate</span>
+        <span class="n">M</span> <span class="o">=</span> <span class="mi">2</span><span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">_m</span>
+        <span class="n">qae</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ret</span><span class="p">[</span><span class="s1">&#39;value&#39;</span><span class="p">]</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">M</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">arcsin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">qae</span><span class="p">))</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span>
+        <span class="n">left_of_qae</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="p">(</span><span class="n">y</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="n">M</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+        <span class="n">right_of_qae</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="p">(</span><span class="n">y</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="n">M</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+
+        <span class="n">bubbles</span> <span class="o">=</span> <span class="p">[</span><span class="n">left_of_qae</span><span class="p">,</span> <span class="n">qae</span><span class="p">,</span> <span class="n">right_of_qae</span><span class="p">]</span>
+
+        <span class="c1"># likelihood function</span>
+        <span class="n">ai</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_ret</span><span class="p">[</span><span class="s1">&#39;values&#39;</span><span class="p">])</span>
+        <span class="n">pi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_ret</span><span class="p">[</span><span class="s1">&#39;probabilities&#39;</span><span class="p">])</span>
+        <span class="n">m</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_m</span>
+        <span class="n">shots</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ret</span><span class="p">[</span><span class="s1">&#39;shots&#39;</span><span class="p">]</span>
+
+        <span class="k">def</span> <span class="nf">loglikelihood</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">shots</span> <span class="o">*</span> <span class="n">pi</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">pdf_a</span><span class="p">(</span><span class="n">ai</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">m</span><span class="p">)))</span>
+
+        <span class="c1"># The threshold above which the likelihoods are in the</span>
+        <span class="c1"># confidence interval</span>
+        <span class="n">loglik_mle</span> <span class="o">=</span> <span class="n">loglikelihood</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_ret</span><span class="p">[</span><span class="s1">&#39;ml_value&#39;</span><span class="p">])</span>
+        <span class="n">thres</span> <span class="o">=</span> <span class="n">loglik_mle</span> <span class="o">-</span> <span class="n">chi2</span><span class="o">.</span><span class="n">ppf</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">df</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
+
+        <span class="k">def</span> <span class="nf">cut</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">loglikelihood</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">-</span> <span class="n">thres</span>
+
+        <span class="c1"># Store the boundaries of the confidence interval</span>
+        <span class="n">lower</span> <span class="o">=</span> <span class="n">upper</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ret</span><span class="p">[</span><span class="s1">&#39;ml_value&#39;</span><span class="p">]</span>
+
+        <span class="c1"># Check the two intervals/bubbles: check if they surpass the</span>
+        <span class="c1"># threshold and if yes add the part that does to the CI</span>
+        <span class="k">for</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">bubbles</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">bubbles</span><span class="p">[</span><span class="mi">1</span><span class="p">:]):</span>
+            <span class="c1"># Compute local maximum and perform a bisect search between</span>
+            <span class="c1"># the local maximum and the bubble boundaries</span>
+            <span class="n">locmax</span><span class="p">,</span> <span class="n">val</span> <span class="o">=</span> <span class="n">bisect_max</span><span class="p">(</span><span class="n">loglikelihood</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">retval</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">val</span> <span class="o">&gt;=</span> <span class="n">thres</span><span class="p">:</span>
+                <span class="c1"># Bisect pre-condition is that the function has different</span>
+                <span class="c1"># signs at the boundaries of the interval we search in</span>
+                <span class="k">if</span> <span class="n">cut</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">*</span> <span class="n">cut</span><span class="p">(</span><span class="n">locmax</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="n">left</span> <span class="o">=</span> <span class="n">bisect</span><span class="p">(</span><span class="n">cut</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">locmax</span><span class="p">)</span>
+                    <span class="n">lower</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">minimum</span><span class="p">(</span><span class="n">lower</span><span class="p">,</span> <span class="n">left</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">cut</span><span class="p">(</span><span class="n">locmax</span><span class="p">)</span> <span class="o">*</span> <span class="n">cut</span><span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="n">right</span> <span class="o">=</span> <span class="n">bisect</span><span class="p">(</span><span class="n">cut</span><span class="p">,</span> <span class="n">locmax</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+                    <span class="n">upper</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="n">upper</span><span class="p">,</span> <span class="n">right</span><span class="p">)</span>
+
+        <span class="c1"># Put together CI</span>
+        <span class="n">ci</span> <span class="o">=</span> <span class="p">[</span><span class="n">lower</span><span class="p">,</span> <span class="n">upper</span><span class="p">]</span>
+        <span class="k">return</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">a_factory</span><span class="o">.</span><span class="n">value_to_estimation</span><span class="p">(</span><span class="n">bound</span><span class="p">)</span> <span class="k">for</span> <span class="n">bound</span> <span class="ow">in</span> <span class="n">ci</span><span class="p">]</span>
+
+<div class="viewcode-block" id="AmplitudeEstimation.confidence_interval"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.aqua.algorithms.single_sample.amplitude_estimation.ae.html#qiskit.aqua.algorithms.AmplitudeEstimation.confidence_interval">[ドキュメント]</a>    <span class="k">def</span> <span class="nf">confidence_interval</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;likelihood_ratio&#39;</span><span class="p">):</span>
+        <span class="c1"># check if AE did run already</span>
+        <span class="k">if</span> <span class="s1">&#39;mle&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ret</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+            <span class="k">raise</span> <span class="n">AquaError</span><span class="p">(</span><span class="s1">&#39;Call run() first!&#39;</span><span class="p">)</span>
+
+        <span class="c1"># if statevector simulator the estimate is exact</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_quantum_instance</span><span class="o">.</span><span class="n">is_statevector</span><span class="p">:</span>
+            <span class="k">return</span> <span class="mi">2</span> <span class="o">*</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_ret</span><span class="p">[</span><span class="s1">&#39;estimation&#39;</span><span class="p">]]</span>
+
+        <span class="k">if</span> <span class="n">kind</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;likelihood_ratio&#39;</span><span class="p">,</span> <span class="s1">&#39;lr&#39;</span><span class="p">]:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_likelihood_ratio_ci</span><span class="p">(</span><span class="n">alpha</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">kind</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;fisher&#39;</span><span class="p">,</span> <span class="s1">&#39;fi&#39;</span><span class="p">]:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fisher_ci</span><span class="p">(</span><span class="n">alpha</span><span class="p">,</span> <span class="n">observed</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">kind</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;observed_fisher&#39;</span><span class="p">,</span> <span class="s1">&#39;observed_information&#39;</span><span class="p">,</span> <span class="s1">&#39;oi&#39;</span><span class="p">]:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fisher_ci</span><span class="p">(</span><span class="n">alpha</span><span class="p">,</span> <span class="n">observed</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s1">&#39;CI `</span><span class="si">{}</span><span class="s1">` is not implemented.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">kind</span><span class="p">))</span></div>
+
+    <span class="k">def</span> <span class="nf">_run_mle</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        @brief Compute the Maximum Likelihood Estimator (MLE)</span>
+<span class="sd">        @return The MLE for the previous AE run</span>
+<span class="sd">        @note Before calling this method, call the method `run` of the</span>
+<span class="sd">              AmplitudeEstimation instance</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">M</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_M</span>
+        <span class="n">qae</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ret</span><span class="p">[</span><span class="s1">&#39;value&#39;</span><span class="p">]</span>
+
+        <span class="c1"># likelihood function</span>
+        <span class="n">ai</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_ret</span><span class="p">[</span><span class="s1">&#39;values&#39;</span><span class="p">])</span>
+        <span class="n">pi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_ret</span><span class="p">[</span><span class="s1">&#39;probabilities&#39;</span><span class="p">])</span>
+        <span class="n">m</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_m</span>
+        <span class="n">shots</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ret</span><span class="p">[</span><span class="s1">&#39;shots&#39;</span><span class="p">]</span>
+
+        <span class="k">def</span> <span class="nf">loglikelihood</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">shots</span> <span class="o">*</span> <span class="n">pi</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">pdf_a</span><span class="p">(</span><span class="n">ai</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">m</span><span class="p">)))</span>
+
+        <span class="c1"># y is pretty much an integer, but to map 1.9999 to 2 we must first</span>
+        <span class="c1"># use round and then int conversion</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">M</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">arcsin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">qae</span><span class="p">))</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">))</span>
+
+        <span class="c1"># Compute the two intervals in which are candidates for containing</span>
+        <span class="c1"># the maximum of the log-likelihood function: the two bubbles next to</span>
+        <span class="c1"># the QAE estimate</span>
+        <span class="n">bubbles</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">if</span> <span class="n">y</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">right_of_qae</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="p">(</span><span class="n">y</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="n">M</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+            <span class="n">bubbles</span> <span class="o">=</span> <span class="p">[</span><span class="n">qae</span><span class="p">,</span> <span class="n">right_of_qae</span><span class="p">]</span>
+
+        <span class="k">elif</span> <span class="n">y</span> <span class="o">==</span> <span class="nb">int</span><span class="p">(</span><span class="n">M</span> <span class="o">/</span> <span class="mi">2</span><span class="p">):</span>
+            <span class="n">left_of_qae</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="p">(</span><span class="n">y</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="n">M</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+            <span class="n">bubbles</span> <span class="o">=</span> <span class="p">[</span><span class="n">left_of_qae</span><span class="p">,</span> <span class="n">qae</span><span class="p">]</span>
+
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">left_of_qae</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="p">(</span><span class="n">y</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="n">M</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+            <span class="n">right_of_qae</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="p">(</span><span class="n">y</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="n">M</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+            <span class="n">bubbles</span> <span class="o">=</span> <span class="p">[</span><span class="n">left_of_qae</span><span class="p">,</span> <span class="n">qae</span><span class="p">,</span> <span class="n">right_of_qae</span><span class="p">]</span>
+
+        <span class="c1"># Find global maximum amongst the two local maxima</span>
+        <span class="n">a_opt</span> <span class="o">=</span> <span class="n">qae</span>
+        <span class="n">loglik_opt</span> <span class="o">=</span> <span class="n">loglikelihood</span><span class="p">(</span><span class="n">a_opt</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">bubbles</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">bubbles</span><span class="p">[</span><span class="mi">1</span><span class="p">:]):</span>
+            <span class="n">locmax</span><span class="p">,</span> <span class="n">val</span> <span class="o">=</span> <span class="n">bisect_max</span><span class="p">(</span><span class="n">loglikelihood</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">retval</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">val</span> <span class="o">&gt;</span> <span class="n">loglik_opt</span><span class="p">:</span>
+                <span class="n">a_opt</span> <span class="o">=</span> <span class="n">locmax</span>
+                <span class="n">loglik_opt</span> <span class="o">=</span> <span class="n">val</span>
+
+        <span class="c1"># Convert the value to an estimation</span>
+        <span class="n">val_opt</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">a_factory</span><span class="o">.</span><span class="n">value_to_estimation</span><span class="p">(</span><span class="n">a_opt</span><span class="p">)</span>
+
+        <span class="c1"># Store MLE and the MLE mapped to an estimation</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ret</span><span class="p">[</span><span class="s1">&#39;ml_value&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">a_opt</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ret</span><span class="p">[</span><span class="s1">&#39;mle&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">val_opt</span>
+
     <span class="k">def</span> <span class="nf">_run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># check if A/Q operators have been set and set Q operator if</span>
+        <span class="c1"># it hasn&#39;t been set manually</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">check_factories</span><span class="p">()</span>
+
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_quantum_instance</span><span class="o">.</span><span class="n">is_statevector</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">construct_circuit</span><span class="p">(</span><span class="n">measurement</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
             <span class="c1"># run circuit on statevector simlator</span>
@@ -351,10 +512,16 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">_ret</span><span class="p">[</span><span class="s1">&#39;statevector&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">state_vector</span>
 
             <span class="c1"># get state probabilities</span>
-            <span class="n">state_probabilities</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">real</span><span class="p">(</span><span class="n">state_vector</span><span class="o">.</span><span class="n">conj</span><span class="p">()</span> <span class="o">*</span> <span class="n">state_vector</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">state_probabilities</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">real</span><span class="p">(</span>
+                <span class="n">state_vector</span><span class="o">.</span><span class="n">conj</span><span class="p">()</span> <span class="o">*</span> <span class="n">state_vector</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
 
             <span class="c1"># evaluate results</span>
-            <span class="n">a_probabilities</span><span class="p">,</span> <span class="n">y_probabilities</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_evaluate_statevector_results</span><span class="p">(</span><span class="n">state_probabilities</span><span class="p">)</span>
+            <span class="n">a_probabilities</span><span class="p">,</span> <span class="n">y_probabilities</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_evaluate_statevector_results</span><span class="p">(</span>
+                <span class="n">state_probabilities</span><span class="p">)</span>
+
+            <span class="c1"># store number of shots: convention is 1 shot for statevector,</span>
+            <span class="c1"># needed so that MLE works!</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_ret</span><span class="p">[</span><span class="s1">&#39;shots&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="c1"># run circuit on QASM simulator</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">construct_circuit</span><span class="p">(</span><span class="n">measurement</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -371,31 +538,50 @@
                 <span class="n">y</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">state</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)[:</span><span class="bp">self</span><span class="o">.</span><span class="n">_m</span><span class="p">][::</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="mi">2</span><span class="p">)</span>
                 <span class="n">p</span> <span class="o">=</span> <span class="n">counts</span> <span class="o">/</span> <span class="n">shots</span>
                 <span class="n">y_probabilities</span><span class="p">[</span><span class="n">y</span><span class="p">]</span> <span class="o">=</span> <span class="n">p</span>
-                <span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">y</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">**</span> <span class="bp">self</span><span class="o">.</span><span class="n">_m</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span>
+                <span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">y</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">**</span> <span class="bp">self</span><span class="o">.</span><span class="n">_m</span><span class="p">),</span> <span class="mi">2</span><span class="p">),</span>
+                             <span class="n">decimals</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span>
                 <span class="n">a_probabilities</span><span class="p">[</span><span class="n">a</span><span class="p">]</span> <span class="o">=</span> <span class="n">a_probabilities</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span> <span class="o">+</span> <span class="n">p</span>
+
+            <span class="c1"># store shots</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_ret</span><span class="p">[</span><span class="s1">&#39;shots&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">shots</span>
 
         <span class="c1"># construct a_items and y_items</span>
         <span class="n">a_items</span> <span class="o">=</span> <span class="p">[(</span><span class="n">a</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span> <span class="k">for</span> <span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span> <span class="ow">in</span> <span class="n">a_probabilities</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">p</span> <span class="o">&gt;</span> <span class="mf">1e-6</span><span class="p">]</span>
         <span class="n">y_items</span> <span class="o">=</span> <span class="p">[(</span><span class="n">y</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span> <span class="k">for</span> <span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span> <span class="ow">in</span> <span class="n">y_probabilities</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">p</span> <span class="o">&gt;</span> <span class="mf">1e-6</span><span class="p">]</span>
+        <span class="n">a_items</span> <span class="o">=</span> <span class="p">[(</span><span class="n">a</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span> <span class="k">for</span> <span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span> <span class="ow">in</span> <span class="n">a_probabilities</span><span class="o">.</span><span class="n">items</span><span class="p">()]</span>
+        <span class="n">y_items</span> <span class="o">=</span> <span class="p">[(</span><span class="n">y</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span> <span class="k">for</span> <span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span> <span class="ow">in</span> <span class="n">y_probabilities</span><span class="o">.</span><span class="n">items</span><span class="p">()]</span>
         <span class="n">a_items</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">a_items</span><span class="p">)</span>
         <span class="n">y_items</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">y_items</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_ret</span><span class="p">[</span><span class="s1">&#39;a_items&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">a_items</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_ret</span><span class="p">[</span><span class="s1">&#39;y_items&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">y_items</span>
 
         <span class="c1"># map estimated values to original range and extract probabilities</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_ret</span><span class="p">[</span><span class="s1">&#39;mapped_values&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">a_factory</span><span class="o">.</span><span class="n">value_to_estimation</span><span class="p">(</span><span class="n">a_item</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="k">for</span> <span class="n">a_item</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ret</span><span class="p">[</span><span class="s1">&#39;a_items&#39;</span><span class="p">]]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ret</span><span class="p">[</span><span class="s1">&#39;mapped_values&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">a_factory</span><span class="o">.</span><span class="n">value_to_estimation</span><span class="p">(</span>
+            <span class="n">a_item</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="k">for</span> <span class="n">a_item</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ret</span><span class="p">[</span><span class="s1">&#39;a_items&#39;</span><span class="p">]]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_ret</span><span class="p">[</span><span class="s1">&#39;values&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">a_item</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">a_item</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ret</span><span class="p">[</span><span class="s1">&#39;a_items&#39;</span><span class="p">]]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_ret</span><span class="p">[</span><span class="s1">&#39;y_values&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">y_item</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">y_item</span> <span class="ow">in</span> <span class="n">y_items</span><span class="p">]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_ret</span><span class="p">[</span><span class="s1">&#39;probabilities&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">a_item</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">a_item</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ret</span><span class="p">[</span><span class="s1">&#39;a_items&#39;</span><span class="p">]]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_ret</span><span class="p">[</span><span class="s1">&#39;mapped_items&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[(</span><span class="bp">self</span><span class="o">.</span><span class="n">_ret</span><span class="p">[</span><span class="s1">&#39;mapped_values&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ret</span><span class="p">[</span><span class="s1">&#39;probabilities&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">])</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_ret</span><span class="p">[</span><span class="s1">&#39;mapped_values&#39;</span><span class="p">]))]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ret</span><span class="p">[</span><span class="s1">&#39;probabilities&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">a_item</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+                                      <span class="k">for</span> <span class="n">a_item</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ret</span><span class="p">[</span><span class="s1">&#39;a_items&#39;</span><span class="p">]]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ret</span><span class="p">[</span><span class="s1">&#39;mapped_items&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[(</span><span class="bp">self</span><span class="o">.</span><span class="n">_ret</span><span class="p">[</span><span class="s1">&#39;mapped_values&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ret</span><span class="p">[</span><span class="s1">&#39;probabilities&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">])</span>
+                                     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_ret</span><span class="p">[</span><span class="s1">&#39;mapped_values&#39;</span><span class="p">]))]</span>
 
         <span class="c1"># determine most likely estimator</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_ret</span><span class="p">[</span><span class="s1">&#39;estimation&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ret</span><span class="p">[</span><span class="s1">&#39;value&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># estimate in [0,1]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ret</span><span class="p">[</span><span class="s1">&#39;estimation&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># estimate mapped to right interval</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_ret</span><span class="p">[</span><span class="s1">&#39;max_probability&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
-        <span class="k">for</span> <span class="n">val</span><span class="p">,</span> <span class="n">prob</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ret</span><span class="p">[</span><span class="s1">&#39;mapped_items&#39;</span><span class="p">]:</span>
+        <span class="k">for</span> <span class="n">val</span><span class="p">,</span> <span class="p">(</span><span class="n">est</span><span class="p">,</span> <span class="n">prob</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_ret</span><span class="p">[</span><span class="s1">&#39;values&#39;</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ret</span><span class="p">[</span><span class="s1">&#39;mapped_items&#39;</span><span class="p">]):</span>
             <span class="k">if</span> <span class="n">prob</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ret</span><span class="p">[</span><span class="s1">&#39;max_probability&#39;</span><span class="p">]:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_ret</span><span class="p">[</span><span class="s1">&#39;max_probability&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">prob</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">_ret</span><span class="p">[</span><span class="s1">&#39;estimation&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">val</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_ret</span><span class="p">[</span><span class="s1">&#39;estimation&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">est</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_ret</span><span class="p">[</span><span class="s1">&#39;value&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">val</span>
+
+        <span class="c1"># get MLE</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_run_mle</span><span class="p">()</span>
+
+        <span class="c1"># get 95% confidence interval</span>
+        <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.05</span>
+        <span class="n">kind</span> <span class="o">=</span> <span class="s2">&quot;likelihood_ratio&quot;</span>  <span class="c1"># empirically the most precise kind</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ret</span><span class="p">[</span><span class="s1">&#39;95%_confidence_interval&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">confidence_interval</span><span class="p">(</span><span class="n">alpha</span><span class="p">,</span> <span class="n">kind</span><span class="p">)</span>
 
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ret</span></div>
 </pre></div>

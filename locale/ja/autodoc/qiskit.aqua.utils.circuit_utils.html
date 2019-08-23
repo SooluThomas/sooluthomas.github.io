@@ -1651,26 +1651,29 @@
 <dd></dd></dl>
 
 <dl class="function">
-<dt id="qiskit.aqua.utils.circuit_utils.is_qubit">
-<code class="descname">is_qubit</code><span class="sig-paren">(</span><em>qb</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/utils/circuit_utils.html#is_qubit"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.aqua.utils.circuit_utils.is_qubit" title="この定義へのパーマリンク">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="function">
-<dt id="qiskit.aqua.utils.circuit_utils.is_qubit_list">
-<code class="descname">is_qubit_list</code><span class="sig-paren">(</span><em>qbs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/utils/circuit_utils.html#is_qubit_list"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.aqua.utils.circuit_utils.is_qubit_list" title="この定義へのパーマリンク">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="function">
 <dt id="qiskit.aqua.utils.circuit_utils.summarize_circuits">
 <code class="descname">summarize_circuits</code><span class="sig-paren">(</span><em>circuits</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/utils/circuit_utils.html#summarize_circuits"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.aqua.utils.circuit_utils.summarize_circuits" title="この定義へのパーマリンク">¶</a></dt>
-<dd><p>Summarize circuits based on QuantumCircuit, and four metrics are summarized.</p>
-<p>Number of qubits and classical bits, and number of operations and depth of circuits.
-The average statistic is provided if multiple circuits are inputed.</p>
+<dd><dl class="docutils">
+<dt>Summarize circuits based on QuantumCircuit, and five metrics are summarized.</dt>
+<dd><ul class="first last simple">
+<li>Number of qubits</li>
+<li>Number of classical bits</li>
+<li>Number of operations</li>
+<li>Depth of circuits</li>
+<li>Counts of different gate operations</li>
+</ul>
+</dd>
+</dl>
+<p>The average statistic of the first four is provided if multiple circuits are provided.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">パラメータ:</th><td class="field-body"><strong>circuits</strong> (<a class="reference internal" href="qiskit.circuit.quantumcircuit.html#qiskit.circuit.quantumcircuit.QuantumCircuit" title="qiskit.circuit.quantumcircuit.QuantumCircuit"><em>QuantumCircuit</em></a><em> or </em><em>[</em><a class="reference internal" href="qiskit.circuit.quantumcircuit.html#qiskit.circuit.quantumcircuit.QuantumCircuit" title="qiskit.circuit.quantumcircuit.QuantumCircuit"><em>QuantumCircuit</em></a><em>]</em>) -- the to-be-summarized circuits</td>
+</tr>
+<tr class="field-even field"><th class="field-name">戻り値:</th><td class="field-body">a formatted string records the summary</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">戻り値の型:</th><td class="field-body">str</td>
 </tr>
 </tbody>
 </table>

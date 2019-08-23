@@ -1648,12 +1648,17 @@
 <p>The Amplitude Estimation Algorithm.</p>
 <dl class="class">
 <dt id="qiskit.aqua.algorithms.single_sample.amplitude_estimation.ae.AmplitudeEstimation">
-<em class="property">class </em><code class="descname">AmplitudeEstimation</code><span class="sig-paren">(</span><em>num_eval_qubits</em>, <em>a_factory</em>, <em>i_objective=None</em>, <em>q_factory=None</em>, <em>iqft=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/algorithms/single_sample/amplitude_estimation/ae.html#AmplitudeEstimation"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.aqua.algorithms.single_sample.amplitude_estimation.ae.AmplitudeEstimation" title="この定義へのパーマリンク">¶</a></dt>
-<dd><p>ベースクラス: <a class="reference internal" href="qiskit.aqua.algorithms.quantum_algorithm.html#qiskit.aqua.algorithms.quantum_algorithm.QuantumAlgorithm" title="qiskit.aqua.algorithms.quantum_algorithm.QuantumAlgorithm"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.aqua.algorithms.quantum_algorithm.QuantumAlgorithm</span></code></a></p>
+<em class="property">class </em><code class="descname">AmplitudeEstimation</code><span class="sig-paren">(</span><em>num_eval_qubits</em>, <em>a_factory=None</em>, <em>i_objective=None</em>, <em>q_factory=None</em>, <em>iqft=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/algorithms/single_sample/amplitude_estimation/ae.html#AmplitudeEstimation"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.aqua.algorithms.single_sample.amplitude_estimation.ae.AmplitudeEstimation" title="この定義へのパーマリンク">¶</a></dt>
+<dd><p>ベースクラス: <code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.aqua.algorithms.single_sample.amplitude_estimation.ae_base.AmplitudeEstimationBase</span></code></p>
 <p>The Amplitude Estimation algorithm.</p>
 <dl class="attribute">
 <dt id="qiskit.aqua.algorithms.single_sample.amplitude_estimation.ae.AmplitudeEstimation.CONFIGURATION">
 <code class="descname">CONFIGURATION</code><em class="property"> = {'depends': [{'pluggable_type': 'uncertainty_problem', 'default': {'name': 'EuropeanCallDelta'}}, {'pluggable_type': 'iqft', 'default': {'name': 'STANDARD'}}], 'description': 'Amplitude Estimation Algorithm', 'input_schema': {'$schema': 'http://json-schema.org/schema#', 'additionalProperties': False, 'id': 'AmplitudeEstimation_schema', 'properties': {'num_eval_qubits': {'default': 5, 'minimum': 1, 'type': 'integer'}}, 'type': 'object'}, 'name': 'AmplitudeEstimation', 'problems': ['uncertainty']}</em><a class="headerlink" href="#qiskit.aqua.algorithms.single_sample.amplitude_estimation.ae.AmplitudeEstimation.CONFIGURATION" title="この定義へのパーマリンク">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="qiskit.aqua.algorithms.single_sample.amplitude_estimation.ae.AmplitudeEstimation.confidence_interval">
+<code class="descname">confidence_interval</code><span class="sig-paren">(</span><em>alpha</em>, <em>kind='likelihood_ratio'</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/algorithms/single_sample/amplitude_estimation/ae.html#AmplitudeEstimation.confidence_interval"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.aqua.algorithms.single_sample.amplitude_estimation.ae.AmplitudeEstimation.confidence_interval" title="この定義へのパーマリンク">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">

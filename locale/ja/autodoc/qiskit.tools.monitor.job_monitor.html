@@ -1648,25 +1648,18 @@
 <p>A module for monitoring various qiskit functionality</p>
 <dl class="function">
 <dt id="qiskit.tools.monitor.job_monitor.job_monitor">
-<code class="descname">job_monitor</code><span class="sig-paren">(</span><em>job</em>, <em>interval=None</em>, <em>monitor_async=False</em>, <em>quiet=False</em>, <em>output=&lt;_io.TextIOWrapper name='&lt;stdout&gt;' mode='w' encoding='UTF-8'&gt;</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/tools/monitor/job_monitor.html#job_monitor"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.tools.monitor.job_monitor.job_monitor" title="この定義へのパーマリンク">¶</a></dt>
+<code class="descname">job_monitor</code><span class="sig-paren">(</span><em>job</em>, <em>interval=None</em>, <em>quiet=False</em>, <em>output=&lt;_io.TextIOWrapper name='&lt;stdout&gt;' mode='w' encoding='UTF-8'&gt;</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/tools/monitor/job_monitor.html#job_monitor"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.tools.monitor.job_monitor.job_monitor" title="この定義へのパーマリンク">¶</a></dt>
 <dd><p>Monitor the status of a IBMQJob instance.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">パラメータ:</th><td class="field-body"><ul class="first simple">
+<tr class="field-odd field"><th class="field-name">パラメータ:</th><td class="field-body"><ul class="first last simple">
 <li><strong>job</strong> (<a class="reference internal" href="qiskit.providers.basejob.html#qiskit.providers.basejob.BaseJob" title="qiskit.providers.basejob.BaseJob"><em>BaseJob</em></a>) -- Job to monitor.</li>
 <li><strong>interval</strong> (<em>int</em>) -- Time interval between status queries.</li>
-<li><strong>monitor_async</strong> (<em>bool</em>) -- Monitor asyncronously (in Jupyter only).</li>
 <li><strong>quiet</strong> (<em>bool</em>) -- If True, do not print status messages.</li>
 <li><strong>output</strong> (<em>file</em>) -- The file like object to write status messages to.</li>
 <li><strong>default this is sys.stdout.</strong> (<em>By</em>) -- </li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><ul class="first last simple">
-<li><code class="xref py py-exc docutils literal notranslate"><span class="pre">QiskitError</span></code> -- When trying to run async outside of Jupyter</li>
-<li><code class="xref py py-exc docutils literal notranslate"><span class="pre">ImportError</span></code> -- ipywidgets not available for notebook.</li>
 </ul>
 </td>
 </tr>

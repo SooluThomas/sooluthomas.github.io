@@ -1647,15 +1647,17 @@
 <span id="qiskit-test-utils-module"></span><h1>qiskit.test.utils module<a class="headerlink" href="#module-qiskit.test.utils" title="このヘッドラインへのパーマリンク">¶</a></h1>
 <p>Utils for using with Qiskit unit tests.</p>
 <dl class="class">
+<dt id="qiskit.test.utils.Case">
+<em class="property">class </em><code class="descname">Case</code><a class="reference internal" href="../_modules/qiskit/test/utils.html#Case"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.test.utils.Case" title="この定義へのパーマリンク">¶</a></dt>
+<dd><p>ベースクラス: <code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></p>
+<p>A test case, see <a class="reference external" href="https://ddt.readthedocs.io/en/latest/example.html">https://ddt.readthedocs.io/en/latest/example.html</a> MyList.</p>
+</dd></dl>
+
+<dl class="class">
 <dt id="qiskit.test.utils.Path">
 <em class="property">class </em><code class="descname">Path</code><a class="reference internal" href="../_modules/qiskit/test/utils.html#Path"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.test.utils.Path" title="この定義へのパーマリンク">¶</a></dt>
 <dd><p>ベースクラス: <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
 <p>Helper with paths commonly used during the tests.</p>
-<dl class="attribute">
-<dt id="qiskit.test.utils.Path.CASSETTES">
-<code class="descname">CASSETTES</code><em class="property"> = '/home/travis/virtualenv/python3.7.1/lib/python3.7/site-packages/test/cassettes'</em><a class="headerlink" href="#qiskit.test.utils.Path.CASSETTES" title="この定義へのパーマリンク">¶</a></dt>
-<dd></dd></dl>
-
 <dl class="attribute">
 <dt id="qiskit.test.utils.Path.EXAMPLES">
 <code class="descname">EXAMPLES</code><em class="property"> = '/home/travis/virtualenv/python3.7.1/lib/python3.7/site-packages/examples'</em><a class="headerlink" href="#qiskit.test.utils.Path.EXAMPLES" title="この定義へのパーマリンク">¶</a></dt>
@@ -1681,6 +1683,12 @@
 <code class="descname">TEST</code><em class="property"> = '/home/travis/virtualenv/python3.7.1/lib/python3.7/site-packages/test/python'</em><a class="headerlink" href="#qiskit.test.utils.Path.TEST" title="この定義へのパーマリンク">¶</a></dt>
 <dd></dd></dl>
 
+</dd></dl>
+
+<dl class="function">
+<dt id="qiskit.test.utils.generate_cases">
+<code class="descname">generate_cases</code><span class="sig-paren">(</span><em>dsc=None</em>, <em>name=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/test/utils.html#generate_cases"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.test.utils.generate_cases" title="この定義へのパーマリンク">¶</a></dt>
+<dd><p>Combines kwargs in cartesian product and creates Case with them</p>
 </dd></dl>
 
 <dl class="function">

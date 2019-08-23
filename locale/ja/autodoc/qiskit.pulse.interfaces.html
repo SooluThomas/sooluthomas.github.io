@@ -1653,7 +1653,7 @@
 <p>Common interface for components of schedule.</p>
 <dl class="method">
 <dt id="qiskit.pulse.interfaces.ScheduleComponent.append">
-<code class="descname">append</code><span class="sig-paren">(</span><em>schedule: qiskit.pulse.interfaces.ScheduleComponent</em>, <em>buffer: bool = True</em>, <em>name: str = None</em><span class="sig-paren">)</span> &#x2192; qiskit.pulse.interfaces.ScheduleComponent<a class="reference internal" href="../_modules/qiskit/pulse/interfaces.html#ScheduleComponent.append"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.pulse.interfaces.ScheduleComponent.append" title="この定義へのパーマリンク">¶</a></dt>
+<code class="descname">append</code><span class="sig-paren">(</span><em>schedule: qiskit.pulse.interfaces.ScheduleComponent</em>, <em>buffer: bool = True</em>, <em>name: Optional[str] = None</em><span class="sig-paren">)</span> &#x2192; qiskit.pulse.interfaces.ScheduleComponent<a class="reference internal" href="../_modules/qiskit/pulse/interfaces.html#ScheduleComponent.append"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.pulse.interfaces.ScheduleComponent.append" title="この定義へのパーマリンク">¶</a></dt>
 <dd><p>Return a new schedule with <cite>schedule</cite> inserted at the maximum time over
 all channels shared between <cite>self</cite> and <cite>schedule</cite>.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -1715,7 +1715,7 @@ all channels shared between <cite>self</cite> and <cite>schedule</cite>.</p>
 
 <dl class="method">
 <dt id="qiskit.pulse.interfaces.ScheduleComponent.insert">
-<code class="descname">insert</code><span class="sig-paren">(</span><em>start_time: int</em>, <em>schedule: qiskit.pulse.interfaces.ScheduleComponent</em>, <em>buffer: bool = False</em>, <em>name: str = None</em><span class="sig-paren">)</span> &#x2192; qiskit.pulse.interfaces.ScheduleComponent<a class="reference internal" href="../_modules/qiskit/pulse/interfaces.html#ScheduleComponent.insert"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.pulse.interfaces.ScheduleComponent.insert" title="この定義へのパーマリンク">¶</a></dt>
+<code class="descname">insert</code><span class="sig-paren">(</span><em>start_time: int</em>, <em>schedule: qiskit.pulse.interfaces.ScheduleComponent</em>, <em>buffer: bool = False</em>, <em>name: Optional[str] = None</em><span class="sig-paren">)</span> &#x2192; qiskit.pulse.interfaces.ScheduleComponent<a class="reference internal" href="../_modules/qiskit/pulse/interfaces.html#ScheduleComponent.insert"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.pulse.interfaces.ScheduleComponent.insert" title="この定義へのパーマリンク">¶</a></dt>
 <dd><p>Return a new schedule with <cite>schedule</cite> inserted at <cite>start_time</cite> of <cite>self</cite>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1747,7 +1747,7 @@ all channels shared between <cite>self</cite> and <cite>schedule</cite>.</p>
 
 <dl class="method">
 <dt id="qiskit.pulse.interfaces.ScheduleComponent.shift">
-<code class="descname">shift</code><span class="sig-paren">(</span><em>time: int</em>, <em>name: str = None</em><span class="sig-paren">)</span> &#x2192; qiskit.pulse.interfaces.ScheduleComponent<a class="reference internal" href="../_modules/qiskit/pulse/interfaces.html#ScheduleComponent.shift"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.pulse.interfaces.ScheduleComponent.shift" title="この定義へのパーマリンク">¶</a></dt>
+<code class="descname">shift</code><span class="sig-paren">(</span><em>time: int</em>, <em>name: Optional[str] = None</em><span class="sig-paren">)</span> &#x2192; qiskit.pulse.interfaces.ScheduleComponent<a class="reference internal" href="../_modules/qiskit/pulse/interfaces.html#ScheduleComponent.shift"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.pulse.interfaces.ScheduleComponent.shift" title="この定義へのパーマリンク">¶</a></dt>
 <dd><p>Return a new schedule shifted forward by <cite>time</cite>.
 :param time: Time to shift by
 :param name: Name of the new schedule. Defaults to name of parent</p>
@@ -1773,7 +1773,7 @@ all channels shared between <cite>self</cite> and <cite>schedule</cite>.</p>
 
 <dl class="method">
 <dt id="qiskit.pulse.interfaces.ScheduleComponent.union">
-<code class="descname">union</code><span class="sig-paren">(</span><em>*schedules</em>, <em>name: str = None</em><span class="sig-paren">)</span> &#x2192; qiskit.pulse.interfaces.ScheduleComponent<a class="reference internal" href="../_modules/qiskit/pulse/interfaces.html#ScheduleComponent.union"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.pulse.interfaces.ScheduleComponent.union" title="この定義へのパーマリンク">¶</a></dt>
+<code class="descname">union</code><span class="sig-paren">(</span><em>*schedules</em>, <em>name: Optional[str] = None</em><span class="sig-paren">)</span> &#x2192; qiskit.pulse.interfaces.ScheduleComponent<a class="reference internal" href="../_modules/qiskit/pulse/interfaces.html#ScheduleComponent.union"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.pulse.interfaces.ScheduleComponent.union" title="この定義へのパーマリンク">¶</a></dt>
 <dd><p>Return a new schedule which is the union of the parent <cite>Schedule</cite> and <cite>schedule</cite>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />

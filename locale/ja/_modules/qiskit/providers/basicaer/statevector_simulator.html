@@ -184,8 +184,6 @@
 <span class="c1"># copyright notice, and modified files need to carry a notice indicating</span>
 <span class="c1"># that they have been altered from the originals.</span>
 
-<span class="c1"># pylint: disable=invalid-name</span>
-<span class="c1"># pylint: disable=arguments-differ</span>
 
 <span class="sd">&quot;&quot;&quot;Contains a (slow) python statevector simulator.</span>
 
@@ -227,7 +225,7 @@
         <span class="s1">&#39;max_shots&#39;</span><span class="p">:</span> <span class="mi">65536</span><span class="p">,</span>
         <span class="s1">&#39;coupling_map&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
         <span class="s1">&#39;description&#39;</span><span class="p">:</span> <span class="s1">&#39;A Python statevector simulator for qobj files&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;basis_gates&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;u1&#39;</span><span class="p">,</span> <span class="s1">&#39;u2&#39;</span><span class="p">,</span> <span class="s1">&#39;u3&#39;</span><span class="p">,</span> <span class="s1">&#39;cx&#39;</span><span class="p">,</span> <span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;snapshot&#39;</span><span class="p">],</span>
+        <span class="s1">&#39;basis_gates&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;u1&#39;</span><span class="p">,</span> <span class="s1">&#39;u2&#39;</span><span class="p">,</span> <span class="s1">&#39;u3&#39;</span><span class="p">,</span> <span class="s1">&#39;cx&#39;</span><span class="p">,</span> <span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;unitary&#39;</span><span class="p">],</span>
         <span class="s1">&#39;gates&#39;</span><span class="p">:</span> <span class="p">[</span>
             <span class="p">{</span>
                 <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;u1&#39;</span><span class="p">,</span>
@@ -255,9 +253,9 @@
                 <span class="s1">&#39;qasm_def&#39;</span><span class="p">:</span> <span class="s1">&#39;gate id a { U(0,0,0) a; }&#39;</span>
             <span class="p">},</span>
             <span class="p">{</span>
-                <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;snapshot&#39;</span><span class="p">,</span>
-                <span class="s1">&#39;parameters&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;slot&#39;</span><span class="p">],</span>
-                <span class="s1">&#39;qasm_def&#39;</span><span class="p">:</span> <span class="s1">&#39;gate snapshot(slot) q { TODO }&#39;</span>
+                <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;unitary&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;parameters&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;matrix&#39;</span><span class="p">],</span>
+                <span class="s1">&#39;qasm_def&#39;</span><span class="p">:</span> <span class="s1">&#39;unitary(matrix) q1, q2,...&#39;</span>
             <span class="p">}</span>
         <span class="p">]</span>
     <span class="p">}</span>
@@ -291,7 +289,7 @@
 <span class="sd">            zero state. This size of this vector must be correct for the number</span>
 <span class="sd">            of qubits in all experiments in the qobj.</span>
 
-<span class="sd">            The &quot;chop_threshold&quot; option specifies a trunctation value for</span>
+<span class="sd">            The &quot;chop_threshold&quot; option specifies a truncation value for</span>
 <span class="sd">            setting small values to zero in the output statevector. The default</span>
 <span class="sd">            value is 1e-15.</span>
 

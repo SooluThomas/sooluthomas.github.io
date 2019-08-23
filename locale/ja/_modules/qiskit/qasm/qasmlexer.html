@@ -209,7 +209,7 @@
 <span class="sd">    This is a wrapper around the PLY lexer to support the &quot;include&quot; statement</span>
 <span class="sd">    by creating a stack of lexers.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="c1"># pylint: disable=invalid-name,missing-docstring,unused-argument</span>
+    <span class="c1"># pylint: disable=invalid-name,missing-docstring</span>
     <span class="c1"># pylint: disable=attribute-defined-outside-init,bad-docstring-quotes</span>
 
     <span class="k">def</span> <span class="nf">__mklexer__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">):</span>
@@ -301,6 +301,7 @@
 
 <div class="viewcode-block" id="QasmLexer.t_INCLUDE"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.qasmlexer.html#qiskit.qasm.qasmlexer.QasmLexer.t_INCLUDE">[ドキュメント]</a>    <span class="k">def</span> <span class="nf">t_INCLUDE</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
         <span class="s1">&#39;include&#39;</span>
+        <span class="k">del</span> <span class="n">t</span>  <span class="c1"># unused</span>
         <span class="c1">#</span>
         <span class="c1"># Now eat up the next two tokens which must be</span>
         <span class="c1"># 1 - the name of the include file, and</span>
@@ -362,6 +363,7 @@
         <span class="n">t</span><span class="o">.</span><span class="n">lexer</span><span class="o">.</span><span class="n">lineno</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">lineno</span></div>
 
 <div class="viewcode-block" id="QasmLexer.t_eof"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.qasmlexer.html#qiskit.qasm.qasmlexer.QasmLexer.t_eof">[ドキュメント]</a>    <span class="k">def</span> <span class="nf">t_eof</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
+        <span class="k">del</span> <span class="n">t</span>  <span class="c1"># unused</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">stack</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">lexer</span><span class="o">.</span><span class="n">token</span><span class="p">()</span>

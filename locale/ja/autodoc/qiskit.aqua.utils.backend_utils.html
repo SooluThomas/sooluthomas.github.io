@@ -1646,18 +1646,6 @@
   <div class="section" id="module-qiskit.aqua.utils.backend_utils">
 <span id="qiskit-aqua-utils-backend-utils-module"></span><h1>qiskit.aqua.utils.backend_utils module<a class="headerlink" href="#module-qiskit.aqua.utils.backend_utils" title="このヘッドラインへのパーマリンク">¶</a></h1>
 <dl class="function">
-<dt id="qiskit.aqua.utils.backend_utils.disable_ibmq_account">
-<code class="descname">disable_ibmq_account</code><span class="sig-paren">(</span><em>url</em>, <em>token</em>, <em>proxies</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/utils/backend_utils.html#disable_ibmq_account"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.aqua.utils.backend_utils.disable_ibmq_account" title="この定義へのパーマリンク">¶</a></dt>
-<dd><p>Disable IBMQ account.</p>
-</dd></dl>
-
-<dl class="function">
-<dt id="qiskit.aqua.utils.backend_utils.enable_ibmq_account">
-<code class="descname">enable_ibmq_account</code><span class="sig-paren">(</span><em>url</em>, <em>token</em>, <em>proxies</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/utils/backend_utils.html#enable_ibmq_account"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.aqua.utils.backend_utils.enable_ibmq_account" title="この定義へのパーマリンク">¶</a></dt>
-<dd><p>Enable IBMQ account, if not alreay enabled.</p>
-</dd></dl>
-
-<dl class="function">
 <dt id="qiskit.aqua.utils.backend_utils.get_aer_backend">
 <code class="descname">get_aer_backend</code><span class="sig-paren">(</span><em>backend_name</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/utils/backend_utils.html#get_aer_backend"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.aqua.utils.backend_utils.get_aer_backend" title="この定義へのパーマリンク">¶</a></dt>
 <dd></dd></dl>
@@ -1757,6 +1745,24 @@
 <tr class="field-even field"><th class="field-name">戻り値:</th><td class="field-body">True is AerProvider</td>
 </tr>
 <tr class="field-odd field"><th class="field-name">戻り値の型:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="qiskit.aqua.utils.backend_utils.is_aer_qasm">
+<code class="descname">is_aer_qasm</code><span class="sig-paren">(</span><em>backend</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/utils/backend_utils.html#is_aer_qasm"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.aqua.utils.backend_utils.is_aer_qasm" title="この定義へのパーマリンク">¶</a></dt>
+<dd><p>Return True if backend is Aer Qasm simulator
+:param backend: backend instance
+:type backend: BaseBackend</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">戻り値:</th><td class="field-body">True is Aer Qasm simulator</td>
+</tr>
+<tr class="field-even field"><th class="field-name">戻り値の型:</th><td class="field-body">bool</td>
 </tr>
 </tbody>
 </table>
@@ -1874,6 +1880,24 @@
 <dt id="qiskit.aqua.utils.backend_utils.register_ibmq_and_get_known_providers">
 <code class="descname">register_ibmq_and_get_known_providers</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/utils/backend_utils.html#register_ibmq_and_get_known_providers"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.aqua.utils.backend_utils.register_ibmq_and_get_known_providers" title="この定義へのパーマリンク">¶</a></dt>
 <dd><p>Gets known local providers and registers IBMQ.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="qiskit.aqua.utils.backend_utils.support_backend_options">
+<code class="descname">support_backend_options</code><span class="sig-paren">(</span><em>backend</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/utils/backend_utils.html#support_backend_options"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.aqua.utils.backend_utils.support_backend_options" title="この定義へのパーマリンク">¶</a></dt>
+<dd><p>Return True if backend supports backend_options
+:param backend: backend instance
+:type backend: BaseBackend</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">戻り値:</th><td class="field-body">True is support backend_options</td>
+</tr>
+<tr class="field-even field"><th class="field-name">戻り値の型:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 </div>

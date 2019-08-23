@@ -1697,7 +1697,7 @@ order=1 (default) is standard lexicographic ordering.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">パラメータ:</th><td class="field-body"><ul class="first simple">
-<li><strong>array</strong> (<em>array_like</em>) -- array to truncte small values.</li>
+<li><strong>array</strong> (<em>array_like</em>) -- array to truncate small values.</li>
 <li><strong>epsilon</strong> (<em>float</em>) -- threshold.</li>
 </ul>
 </td>
@@ -1911,39 +1911,9 @@ If False system-0 is the left most system in tensor product.</li>
 </dd></dl>
 
 <dl class="function">
-<dt id="qiskit.tools.qi.qi.purity">
-<code class="descname">purity</code><span class="sig-paren">(</span><em>state</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/tools/qi/qi.html#purity"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.tools.qi.qi.purity" title="この定義へのパーマリンク">¶</a></dt>
-<dd><p>Calculate the purity of a quantum state.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">パラメータ:</th><td class="field-body"><strong>state</strong> (<em>np.array</em>) -- a quantum state</td>
-</tr>
-<tr class="field-even field"><th class="field-name">戻り値:</th><td class="field-body">purity.</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">戻り値の型:</th><td class="field-body">float</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="function">
 <dt id="qiskit.tools.qi.qi.qft">
 <code class="descname">qft</code><span class="sig-paren">(</span><em>circ</em>, <em>q</em>, <em>n</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/tools/qi/qi.html#qft"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.tools.qi.qi.qft" title="この定義へのパーマリンク">¶</a></dt>
 <dd><p>n-qubit QFT on q in circ.</p>
-</dd></dl>
-
-<dl class="function">
-<dt id="qiskit.tools.qi.qi.random_density_matrix">
-<code class="descname">random_density_matrix</code><span class="sig-paren">(</span><em>length</em>, <em>rank=None</em>, <em>method='Hilbert-Schmidt'</em>, <em>seed=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/tools/qi/qi.html#random_density_matrix"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.tools.qi.qi.random_density_matrix" title="この定義へのパーマリンク">¶</a></dt>
-<dd><p>Deprecated in 0.8+</p>
-</dd></dl>
-
-<dl class="function">
-<dt id="qiskit.tools.qi.qi.random_unitary_matrix">
-<code class="descname">random_unitary_matrix</code><span class="sig-paren">(</span><em>dim</em>, <em>seed=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/tools/qi/qi.html#random_unitary_matrix"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.tools.qi.qi.random_unitary_matrix" title="この定義へのパーマリンク">¶</a></dt>
-<dd><p>Deprecated in 0.8+</p>
 </dd></dl>
 
 <dl class="function">
@@ -1958,7 +1928,7 @@ $H(pv) = - sum_j pv[j] log_b (pv[j])$ where $0 log_b 0 = 0$.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">パラメータ:</th><td class="field-body"><ul class="first simple">
 <li><strong>pvec</strong> (<em>array_like</em>) -- a probability vector.</li>
-<li><strong>base</strong> (<em>int</em>) -- the base of the logarith</li>
+<li><strong>base</strong> (<em>int</em>) -- the base of the logarithm</li>
 </ul>
 </td>
 </tr>
@@ -1985,7 +1955,7 @@ $H(pv) = - sum_j pv[j] log_b (pv[j])$ where $0 log_b 0 = 0$.</p>
 <li><strong>method</strong> (<em>str</em>) -- <p>the method of vectorization. Allowed values are
 - 'col' (default) flattens to column-major vector.
 - 'row' flattens to row-major vector.
-- 'pauli'flattens in the n-qubit Pauli basis.
+- 'pauli' flattens in the n-qubit Pauli basis.
 - 'pauli-weights': flattens in the n-qubit Pauli basis ordered by</p>
 <blockquote>
 <div>weight.</div></blockquote>

@@ -236,51 +236,44 @@
 
     <span class="n">BATCH_SIZE</span> <span class="o">=</span> <span class="mi">1000</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">feature_map</span><span class="p">,</span> <span class="n">training_dataset</span><span class="p">,</span> <span class="n">test_dataset</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">datapoints</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">feature_map</span><span class="p">,</span> <span class="n">training_dataset</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">test_dataset</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">datapoints</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                  <span class="n">multiclass_extension</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Constructor.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            feature_map (FeatureMap): feature map module, used to transform data</span>
-<span class="sd">            training_dataset (dict): training dataset.</span>
-<span class="sd">            test_dataset (Optional[dict]): testing dataset.</span>
-<span class="sd">            datapoints (Optional[numpy.ndarray]): prediction dataset.</span>
-<span class="sd">            multiclass_extension (Optional[MultiExtension]): if number of classes &gt; 2 then</span>
+<span class="sd">            training_dataset (dict, optional): training dataset.</span>
+<span class="sd">            test_dataset (dict, optional): testing dataset.</span>
+<span class="sd">            datapoints (numpy.ndarray, optional): prediction dataset.</span>
+<span class="sd">            multiclass_extension (MultiExtension, optional): if number of classes &gt; 2 then</span>
 <span class="sd">                a multiclass scheme is needed.</span>
 
 <span class="sd">        Raises:</span>
-<span class="sd">            ValueError: if training_dataset is None</span>
 <span class="sd">            AquaError: use binary classifer for classes &gt; 3</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
-        <span class="k">if</span> <span class="n">training_dataset</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Training dataset must be provided&#39;</span><span class="p">)</span>
+        <span class="c1"># check the validity of provided arguments if possible</span>
+        <span class="k">if</span> <span class="n">training_dataset</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">is_multiclass</span> <span class="o">=</span> <span class="n">get_num_classes</span><span class="p">(</span><span class="n">training_dataset</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">2</span>
+            <span class="k">if</span> <span class="n">is_multiclass</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">multiclass_extension</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="n">AquaError</span><span class="p">(</span><span class="s1">&#39;Dataset has more than two classes. &#39;</span>
+                                    <span class="s1">&#39;A multiclass extension must be provided.&#39;</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">multiclass_extension</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Dataset has just two classes. &quot;</span>
+                                   <span class="s2">&quot;Supplied multiclass extension will be ignored&quot;</span><span class="p">)</span>
 
-        <span class="n">is_multiclass</span> <span class="o">=</span> <span class="n">get_num_classes</span><span class="p">(</span><span class="n">training_dataset</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">2</span>
-        <span class="k">if</span> <span class="n">is_multiclass</span><span class="p">:</span>
-            <span class="k">if</span> <span class="n">multiclass_extension</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-                <span class="k">raise</span> <span class="n">AquaError</span><span class="p">(</span><span class="s1">&#39;Dataset has more than two classes. &#39;</span>
-                                <span class="s1">&#39;A multiclass extension must be provided.&#39;</span><span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="k">if</span> <span class="n">multiclass_extension</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-                <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Dataset has just two classes. &quot;</span>
-                               <span class="s2">&quot;Supplied multiclass extension will be ignored&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">training_dataset</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">test_dataset</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">datapoints</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">class_to_label</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">label_to_class</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">num_classes</span> <span class="o">=</span> <span class="kc">None</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">training_dataset</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">class_to_label</span> <span class="o">=</span> <span class="n">split_dataset_to_data_and_labels</span><span class="p">(</span>
-            <span class="n">training_dataset</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">test_dataset</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">test_dataset</span> <span class="o">=</span> <span class="n">split_dataset_to_data_and_labels</span><span class="p">(</span><span class="n">test_dataset</span><span class="p">,</span>
-                                                                 <span class="bp">self</span><span class="o">.</span><span class="n">class_to_label</span><span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">test_dataset</span> <span class="o">=</span> <span class="kc">None</span>
-
-        <span class="bp">self</span><span class="o">.</span><span class="n">label_to_class</span> <span class="o">=</span> <span class="p">{</span><span class="n">label</span><span class="p">:</span> <span class="n">class_name</span> <span class="k">for</span> <span class="n">class_name</span><span class="p">,</span> <span class="n">label</span>
-                               <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">class_to_label</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">num_classes</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">class_to_label</span><span class="o">.</span><span class="n">keys</span><span class="p">()))</span>
-
-        <span class="k">if</span> <span class="n">datapoints</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">datapoints</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
-            <span class="n">datapoints</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">datapoints</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">datapoints</span> <span class="o">=</span> <span class="n">datapoints</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">setup_training_data</span><span class="p">(</span><span class="n">training_dataset</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">setup_test_data</span><span class="p">(</span><span class="n">test_dataset</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">setup_datapoint</span><span class="p">(</span><span class="n">datapoints</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">feature_map</span> <span class="o">=</span> <span class="n">feature_map</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">num_qubits</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">feature_map</span><span class="o">.</span><span class="n">num_qubits</span>
@@ -316,28 +309,38 @@
                    <span class="n">algo_input</span><span class="o">.</span><span class="n">datapoints</span><span class="p">,</span> <span class="n">multiclass_extension</span><span class="p">)</span></div>
 
     <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">_construct_circuit</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">num_qubits</span><span class="p">,</span> <span class="n">feature_map</span><span class="p">,</span> <span class="n">measurement</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">_construct_circuit</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">feature_map</span><span class="p">,</span> <span class="n">measurement</span><span class="p">,</span> <span class="n">is_statevector_sim</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        If `is_statevector_sim` is True, we only build the circuits for Psi(x1)|0&gt; rather than</span>
+<span class="sd">        Psi(x2)^dagger Psi(x1)|0&gt;.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">x1</span><span class="p">,</span> <span class="n">x2</span> <span class="o">=</span> <span class="n">x</span>
         <span class="k">if</span> <span class="n">x1</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="n">x2</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;x1 and x2 must be the same dimension.&quot;</span><span class="p">)</span>
 
-        <span class="n">q</span> <span class="o">=</span> <span class="n">QuantumRegister</span><span class="p">(</span><span class="n">num_qubits</span><span class="p">,</span> <span class="s1">&#39;q&#39;</span><span class="p">)</span>
-        <span class="n">c</span> <span class="o">=</span> <span class="n">ClassicalRegister</span><span class="p">(</span><span class="n">num_qubits</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">)</span>
+        <span class="n">q</span> <span class="o">=</span> <span class="n">QuantumRegister</span><span class="p">(</span><span class="n">feature_map</span><span class="o">.</span><span class="n">num_qubits</span><span class="p">,</span> <span class="s1">&#39;q&#39;</span><span class="p">)</span>
+        <span class="n">c</span> <span class="o">=</span> <span class="n">ClassicalRegister</span><span class="p">(</span><span class="n">feature_map</span><span class="o">.</span><span class="n">num_qubits</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">)</span>
         <span class="n">qc</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
+
         <span class="c1"># write input state from sample distribution</span>
         <span class="n">qc</span> <span class="o">+=</span> <span class="n">feature_map</span><span class="o">.</span><span class="n">construct_circuit</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">q</span><span class="p">)</span>
-        <span class="n">qc</span> <span class="o">+=</span> <span class="n">feature_map</span><span class="o">.</span><span class="n">construct_circuit</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">inverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">measurement</span><span class="p">:</span>
-            <span class="n">qc</span><span class="o">.</span><span class="n">barrier</span><span class="p">(</span><span class="n">q</span><span class="p">)</span>
-            <span class="n">qc</span><span class="o">.</span><span class="n">measure</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">is_statevector_sim</span><span class="p">:</span>
+            <span class="n">qc</span> <span class="o">+=</span> <span class="n">feature_map</span><span class="o">.</span><span class="n">construct_circuit</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span> <span class="n">q</span><span class="p">)</span><span class="o">.</span><span class="n">inverse</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">measurement</span><span class="p">:</span>
+                <span class="n">qc</span><span class="o">.</span><span class="n">barrier</span><span class="p">(</span><span class="n">q</span><span class="p">)</span>
+                <span class="n">qc</span><span class="o">.</span><span class="n">measure</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">qc</span>
 
     <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">_compute_overlap</span><span class="p">(</span><span class="n">idx</span><span class="p">,</span> <span class="n">results</span><span class="p">,</span> <span class="n">is_statevector_sim</span><span class="p">,</span> <span class="n">measurement_basis</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">is_statevector_sim</span><span class="p">:</span>
-            <span class="n">temp</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">get_statevector</span><span class="p">(</span><span class="n">idx</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
-            <span class="c1">#  |&lt;0|Psi^daggar(y) x Psi(x)|0&gt;|^2,</span>
-            <span class="n">kernel_value</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">temp</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">conj</span><span class="p">(),</span> <span class="n">temp</span><span class="p">)</span><span class="o">.</span><span class="n">real</span>
+            <span class="n">i</span><span class="p">,</span> <span class="n">j</span> <span class="o">=</span> <span class="n">idx</span>
+            <span class="c1"># TODO: qiskit-terra did not support np.int64 to lookup result</span>
+            <span class="n">v_a</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">get_statevector</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+            <span class="n">v_b</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">get_statevector</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">j</span><span class="p">))</span>
+            <span class="c1"># |&lt;0|Psi^daggar(y) x Psi(x)|0&gt;|^2, take the amplitude</span>
+            <span class="n">tmp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vdot</span><span class="p">(</span><span class="n">v_a</span><span class="p">,</span> <span class="n">v_b</span><span class="p">)</span>
+            <span class="n">kernel_value</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vdot</span><span class="p">(</span><span class="n">tmp</span><span class="p">,</span> <span class="n">tmp</span><span class="p">)</span><span class="o">.</span><span class="n">real</span>  <span class="c1"># pylint: disable=no-member</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">result</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">get_counts</span><span class="p">(</span><span class="n">idx</span><span class="p">)</span>
             <span class="n">kernel_value</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">measurement_basis</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">/</span> <span class="nb">sum</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
@@ -354,24 +357,29 @@
 <span class="sd">            x2 (numpy.ndarray): data points, 1-D array, dimension is D</span>
 <span class="sd">            measurement (bool): add measurement gates at the end</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="n">QSVM</span><span class="o">.</span><span class="n">_construct_circuit</span><span class="p">((</span><span class="n">x1</span><span class="p">,</span> <span class="n">x2</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_qubits</span><span class="p">,</span>
-                                       <span class="bp">self</span><span class="o">.</span><span class="n">feature_map</span><span class="p">,</span> <span class="n">measurement</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="n">QSVM</span><span class="o">.</span><span class="n">_construct_circuit</span><span class="p">((</span><span class="n">x1</span><span class="p">,</span> <span class="n">x2</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">feature_map</span><span class="p">,</span> <span class="n">measurement</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="QSVM.construct_kernel_matrix"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.aqua.algorithms.many_sample.qsvm.qsvm.html#qiskit.aqua.algorithms.QSVM.construct_kernel_matrix">[ドキュメント]</a>    <span class="k">def</span> <span class="nf">construct_kernel_matrix</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x1_vec</span><span class="p">,</span> <span class="n">x2_vec</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">quantum_instance</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="QSVM.get_kernel_matrix"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.aqua.algorithms.many_sample.qsvm.qsvm.html#qiskit.aqua.algorithms.QSVM.get_kernel_matrix">[ドキュメント]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">get_kernel_matrix</span><span class="p">(</span><span class="n">quantum_instance</span><span class="p">,</span> <span class="n">feature_map</span><span class="p">,</span> <span class="n">x1_vec</span><span class="p">,</span> <span class="n">x2_vec</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Construct kernel matrix, if x2_vec is None, self-innerproduct is conducted.</span>
 
+<span class="sd">        Notes:</span>
+<span class="sd">            When using `statevector_simulator`, we only build the circuits for Psi(x1)|0&gt; rather than</span>
+<span class="sd">            Psi(x2)^dagger Psi(x1)|0&gt;, and then we perform the inner product classically.</span>
+<span class="sd">            That is, for `statevector_simulator`, the total number of circuits will be O(N) rather than</span>
+<span class="sd">            O(N^2) for `qasm_simulator`.</span>
+
 <span class="sd">        Args:</span>
+<span class="sd">            quantum_instance (QuantumInstance): quantum backend with all settings</span>
+<span class="sd">            feature_map (FeatureMap): a feature map that maps data to feature space</span>
 <span class="sd">            x1_vec (numpy.ndarray): data points, 2-D array, N1xD, where N1 is the number of data,</span>
 <span class="sd">                                    D is the feature dimension</span>
 <span class="sd">            x2_vec (numpy.ndarray): data points, 2-D array, N2xD, where N2 is the number of data,</span>
 <span class="sd">                                    D is the feature dimension</span>
-<span class="sd">            quantum_instance (QuantumInstance): quantum backend with all setting</span>
 <span class="sd">        Returns:</span>
 <span class="sd">            numpy.ndarray: 2-D matrix, N1xN2</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_quantum_instance</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_quantum_instance</span> \
-            <span class="k">if</span> <span class="n">quantum_instance</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">quantum_instance</span>
         <span class="kn">from</span> <span class="nn">.qsvm</span> <span class="k">import</span> <span class="n">QSVM</span>
 
         <span class="k">if</span> <span class="n">x2_vec</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
@@ -380,9 +388,10 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="n">is_symmetric</span> <span class="o">=</span> <span class="kc">False</span>
 
-        <span class="n">is_statevector_sim</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">quantum_instance</span><span class="o">.</span><span class="n">is_statevector</span>
+        <span class="n">is_statevector_sim</span> <span class="o">=</span> <span class="n">quantum_instance</span><span class="o">.</span><span class="n">is_statevector</span>
+
         <span class="n">measurement</span> <span class="o">=</span> <span class="ow">not</span> <span class="n">is_statevector_sim</span>
-        <span class="n">measurement_basis</span> <span class="o">=</span> <span class="s1">&#39;0&#39;</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_qubits</span>
+        <span class="n">measurement_basis</span> <span class="o">=</span> <span class="s1">&#39;0&#39;</span> <span class="o">*</span> <span class="n">feature_map</span><span class="o">.</span><span class="n">num_qubits</span>
         <span class="n">mat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">x1_vec</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">x2_vec</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
 
         <span class="c1"># get all indices</span>
@@ -393,43 +402,104 @@
             <span class="n">mus</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">mus</span><span class="o">.</span><span class="n">flat</span><span class="p">)</span>
             <span class="n">nus</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">nus</span><span class="o">.</span><span class="n">flat</span><span class="p">)</span>
 
-        <span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">mus</span><span class="p">),</span> <span class="n">QSVM</span><span class="o">.</span><span class="n">BATCH_SIZE</span><span class="p">):</span>
-            <span class="n">to_be_computed_list</span> <span class="o">=</span> <span class="p">[]</span>
-            <span class="n">to_be_computed_index</span> <span class="o">=</span> <span class="p">[]</span>
-            <span class="k">for</span> <span class="n">sub_idx</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">idx</span><span class="p">,</span> <span class="nb">min</span><span class="p">(</span><span class="n">idx</span> <span class="o">+</span> <span class="n">QSVM</span><span class="o">.</span><span class="n">BATCH_SIZE</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">mus</span><span class="p">))):</span>
-                <span class="n">i</span> <span class="o">=</span> <span class="n">mus</span><span class="p">[</span><span class="n">sub_idx</span><span class="p">]</span>
-                <span class="n">j</span> <span class="o">=</span> <span class="n">nus</span><span class="p">[</span><span class="n">sub_idx</span><span class="p">]</span>
-                <span class="n">x1</span> <span class="o">=</span> <span class="n">x1_vec</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
-                <span class="n">x2</span> <span class="o">=</span> <span class="n">x2_vec</span><span class="p">[</span><span class="n">j</span><span class="p">]</span>
-                <span class="k">if</span> <span class="ow">not</span> <span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">x1</span> <span class="o">==</span> <span class="n">x2</span><span class="p">):</span>
-                    <span class="n">to_be_computed_list</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">x1</span><span class="p">,</span> <span class="n">x2</span><span class="p">))</span>
-                    <span class="n">to_be_computed_index</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">is_statevector_sim</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">is_symmetric</span><span class="p">:</span>
+                <span class="n">to_be_computed_data</span> <span class="o">=</span> <span class="n">x1_vec</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">to_be_computed_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">x1_vec</span><span class="p">,</span> <span class="n">x2_vec</span><span class="p">))</span>
+
+            <span class="c1">#  the second x is redundant</span>
+            <span class="n">to_be_computed_data_pair</span> <span class="o">=</span> <span class="p">[(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">to_be_computed_data</span><span class="p">]</span>
 
             <span class="k">if</span> <span class="n">logger</span><span class="o">.</span><span class="n">isEnabledFor</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">):</span>
                 <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Building circuits:&quot;</span><span class="p">)</span>
                 <span class="n">TextProgressBar</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="p">)</span>
             <span class="n">circuits</span> <span class="o">=</span> <span class="n">parallel_map</span><span class="p">(</span><span class="n">QSVM</span><span class="o">.</span><span class="n">_construct_circuit</span><span class="p">,</span>
-                                    <span class="n">to_be_computed_list</span><span class="p">,</span>
-                                    <span class="n">task_args</span><span class="o">=</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">num_qubits</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">feature_map</span><span class="p">,</span>
-                                               <span class="n">measurement</span><span class="p">),</span>
+                                    <span class="n">to_be_computed_data_pair</span><span class="p">,</span>
+                                    <span class="n">task_args</span><span class="o">=</span><span class="p">(</span><span class="n">feature_map</span><span class="p">,</span> <span class="n">measurement</span><span class="p">,</span> <span class="n">is_statevector_sim</span><span class="p">),</span>
                                     <span class="n">num_processes</span><span class="o">=</span><span class="n">aqua_globals</span><span class="o">.</span><span class="n">num_processes</span><span class="p">)</span>
 
-            <span class="n">results</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">quantum_instance</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">circuits</span><span class="p">)</span>
+            <span class="n">results</span> <span class="o">=</span> <span class="n">quantum_instance</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">circuits</span><span class="p">)</span>
 
             <span class="k">if</span> <span class="n">logger</span><span class="o">.</span><span class="n">isEnabledFor</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">):</span>
                 <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Calculating overlap:&quot;</span><span class="p">)</span>
                 <span class="n">TextProgressBar</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="p">)</span>
-            <span class="n">matrix_elements</span> <span class="o">=</span> <span class="n">parallel_map</span><span class="p">(</span><span class="n">QSVM</span><span class="o">.</span><span class="n">_compute_overlap</span><span class="p">,</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">circuits</span><span class="p">)),</span>
+
+            <span class="n">offset</span> <span class="o">=</span> <span class="mi">0</span> <span class="k">if</span> <span class="n">is_symmetric</span> <span class="k">else</span> <span class="nb">len</span><span class="p">(</span><span class="n">x1_vec</span><span class="p">)</span>
+            <span class="n">matrix_elements</span> <span class="o">=</span> <span class="n">parallel_map</span><span class="p">(</span><span class="n">QSVM</span><span class="o">.</span><span class="n">_compute_overlap</span><span class="p">,</span> <span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">mus</span><span class="p">,</span> <span class="n">nus</span> <span class="o">+</span> <span class="n">offset</span><span class="p">)),</span>
                                            <span class="n">task_args</span><span class="o">=</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">is_statevector_sim</span><span class="p">,</span> <span class="n">measurement_basis</span><span class="p">),</span>
                                            <span class="n">num_processes</span><span class="o">=</span><span class="n">aqua_globals</span><span class="o">.</span><span class="n">num_processes</span><span class="p">)</span>
 
-            <span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">to_be_computed_index</span><span class="p">)):</span>
-                <span class="n">i</span><span class="p">,</span> <span class="n">j</span> <span class="o">=</span> <span class="n">to_be_computed_index</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
-                <span class="n">mat</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">matrix_elements</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
+            <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">mus</span><span class="p">,</span> <span class="n">nus</span><span class="p">,</span> <span class="n">matrix_elements</span><span class="p">):</span>
+                <span class="n">mat</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
                 <span class="k">if</span> <span class="n">is_symmetric</span><span class="p">:</span>
                     <span class="n">mat</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">mat</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">mus</span><span class="p">),</span> <span class="n">QSVM</span><span class="o">.</span><span class="n">BATCH_SIZE</span><span class="p">):</span>
+                <span class="n">to_be_computed_data_pair</span> <span class="o">=</span> <span class="p">[]</span>
+                <span class="n">to_be_computed_index</span> <span class="o">=</span> <span class="p">[]</span>
+                <span class="k">for</span> <span class="n">sub_idx</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">idx</span><span class="p">,</span> <span class="nb">min</span><span class="p">(</span><span class="n">idx</span> <span class="o">+</span> <span class="n">QSVM</span><span class="o">.</span><span class="n">BATCH_SIZE</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">mus</span><span class="p">))):</span>
+                    <span class="n">i</span> <span class="o">=</span> <span class="n">mus</span><span class="p">[</span><span class="n">sub_idx</span><span class="p">]</span>
+                    <span class="n">j</span> <span class="o">=</span> <span class="n">nus</span><span class="p">[</span><span class="n">sub_idx</span><span class="p">]</span>
+                    <span class="n">x1</span> <span class="o">=</span> <span class="n">x1_vec</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+                    <span class="n">x2</span> <span class="o">=</span> <span class="n">x2_vec</span><span class="p">[</span><span class="n">j</span><span class="p">]</span>
+                    <span class="k">if</span> <span class="ow">not</span> <span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">x1</span> <span class="o">==</span> <span class="n">x2</span><span class="p">):</span>
+                        <span class="n">to_be_computed_data_pair</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">x1</span><span class="p">,</span> <span class="n">x2</span><span class="p">))</span>
+                        <span class="n">to_be_computed_index</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">))</span>
+
+                <span class="k">if</span> <span class="n">logger</span><span class="o">.</span><span class="n">isEnabledFor</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">):</span>
+                    <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Building circuits:&quot;</span><span class="p">)</span>
+                    <span class="n">TextProgressBar</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="p">)</span>
+                <span class="n">circuits</span> <span class="o">=</span> <span class="n">parallel_map</span><span class="p">(</span><span class="n">QSVM</span><span class="o">.</span><span class="n">_construct_circuit</span><span class="p">,</span>
+                                        <span class="n">to_be_computed_data_pair</span><span class="p">,</span>
+                                        <span class="n">task_args</span><span class="o">=</span><span class="p">(</span><span class="n">feature_map</span><span class="p">,</span> <span class="n">measurement</span><span class="p">),</span>
+                                        <span class="n">num_processes</span><span class="o">=</span><span class="n">aqua_globals</span><span class="o">.</span><span class="n">num_processes</span><span class="p">)</span>
+
+                <span class="n">results</span> <span class="o">=</span> <span class="n">quantum_instance</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">circuits</span><span class="p">)</span>
+
+                <span class="k">if</span> <span class="n">logger</span><span class="o">.</span><span class="n">isEnabledFor</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">):</span>
+                    <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Calculating overlap:&quot;</span><span class="p">)</span>
+                    <span class="n">TextProgressBar</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="p">)</span>
+                <span class="n">matrix_elements</span> <span class="o">=</span> <span class="n">parallel_map</span><span class="p">(</span><span class="n">QSVM</span><span class="o">.</span><span class="n">_compute_overlap</span><span class="p">,</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">circuits</span><span class="p">)),</span>
+                                               <span class="n">task_args</span><span class="o">=</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">is_statevector_sim</span><span class="p">,</span> <span class="n">measurement_basis</span><span class="p">),</span>
+                                               <span class="n">num_processes</span><span class="o">=</span><span class="n">aqua_globals</span><span class="o">.</span><span class="n">num_processes</span><span class="p">)</span>
+
+                <span class="k">for</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">),</span> <span class="n">value</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">to_be_computed_index</span><span class="p">,</span> <span class="n">matrix_elements</span><span class="p">):</span>
+                    <span class="n">mat</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
+                    <span class="k">if</span> <span class="n">is_symmetric</span><span class="p">:</span>
+                        <span class="n">mat</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">mat</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span>
 
         <span class="k">return</span> <span class="n">mat</span></div>
+
+<div class="viewcode-block" id="QSVM.construct_kernel_matrix"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.aqua.algorithms.many_sample.qsvm.qsvm.html#qiskit.aqua.algorithms.QSVM.construct_kernel_matrix">[ドキュメント]</a>    <span class="k">def</span> <span class="nf">construct_kernel_matrix</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x1_vec</span><span class="p">,</span> <span class="n">x2_vec</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">quantum_instance</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Construct kernel matrix, if x2_vec is None, self-innerproduct is conducted.</span>
+
+<span class="sd">        Notes:</span>
+<span class="sd">            When using `statevector_simulator`, we only build the circuits for Psi(x1)|0&gt; rather than</span>
+<span class="sd">            Psi(x2)^dagger Psi(x1)|0&gt;, and then we perform the inner product classically.</span>
+<span class="sd">            That is, for `statevector_simulator`, the total number of circuits will be O(N) rather than</span>
+<span class="sd">            O(N^2) for `qasm_simulator`.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            x1_vec (numpy.ndarray): data points, 2-D array, N1xD, where N1 is the number of data,</span>
+<span class="sd">                                    D is the feature dimension</span>
+<span class="sd">            x2_vec (numpy.ndarray): data points, 2-D array, N2xD, where N2 is the number of data,</span>
+<span class="sd">                                    D is the feature dimension</span>
+<span class="sd">            quantum_instance (QuantumInstance): quantum backend with all settings</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            numpy.ndarray: 2-D matrix, N1xN2</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            AquaError: Quantum instance is not present.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_quantum_instance</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_quantum_instance</span> \
+            <span class="k">if</span> <span class="n">quantum_instance</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">quantum_instance</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_quantum_instance</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">AquaError</span><span class="p">(</span><span class="s2">&quot;Either setup quantum instance or provide it in the parameter.&quot;</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">QSVM</span><span class="o">.</span><span class="n">get_kernel_matrix</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_quantum_instance</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">feature_map</span><span class="p">,</span> <span class="n">x1_vec</span><span class="p">,</span> <span class="n">x2_vec</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="QSVM.train"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.aqua.algorithms.many_sample.qsvm.qsvm.html#qiskit.aqua.algorithms.QSVM.train">[ドキュメント]</a>    <span class="k">def</span> <span class="nf">train</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="n">quantum_instance</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -440,9 +510,14 @@
 <span class="sd">                                  D is the feature dimension.</span>
 <span class="sd">            labels (numpy.ndarray): Nx1 array, where N is the number of data</span>
 <span class="sd">            quantum_instance (QuantumInstance): quantum backend with all setting</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            AquaError: Quantum instance is not present.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_quantum_instance</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_quantum_instance</span> \
             <span class="k">if</span> <span class="n">quantum_instance</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">quantum_instance</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_quantum_instance</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">AquaError</span><span class="p">(</span><span class="s2">&quot;Either setup quantum instance or provide it in the parameter.&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">instance</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="QSVM.test"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.aqua.algorithms.many_sample.qsvm.qsvm.html#qiskit.aqua.algorithms.QSVM.test">[ドキュメント]</a>    <span class="k">def</span> <span class="nf">test</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="n">quantum_instance</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
@@ -454,11 +529,18 @@
 <span class="sd">                                  D is the feature dimension.</span>
 <span class="sd">            labels (numpy.ndarray): Nx1 array, where N is the number of data</span>
 <span class="sd">            quantum_instance (QuantumInstance): quantum backend with all setting</span>
+
 <span class="sd">        Returns:</span>
 <span class="sd">            float: accuracy</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            AquaError: Quantum instance is not present.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+
         <span class="bp">self</span><span class="o">.</span><span class="n">_quantum_instance</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_quantum_instance</span> \
             <span class="k">if</span> <span class="n">quantum_instance</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">quantum_instance</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_quantum_instance</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">AquaError</span><span class="p">(</span><span class="s2">&quot;Either setup quantum instance or provide it in the parameter.&quot;</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">instance</span><span class="o">.</span><span class="n">test</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="QSVM.predict"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.aqua.algorithms.many_sample.qsvm.qsvm.html#qiskit.aqua.algorithms.QSVM.predict">[ドキュメント]</a>    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">quantum_instance</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
@@ -469,11 +551,17 @@
 <span class="sd">            data (numpy.ndarray): NxD array, where N is the number of data,</span>
 <span class="sd">                                  D is the feature dimension.</span>
 <span class="sd">            quantum_instance (QuantumInstance): quantum backend with all setting</span>
+
 <span class="sd">        Returns:</span>
 <span class="sd">            numpy.ndarray: predicted labels, Nx1 array</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            AquaError: Quantum instance is not present.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_quantum_instance</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_quantum_instance</span> \
             <span class="k">if</span> <span class="n">quantum_instance</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">quantum_instance</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_quantum_instance</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">AquaError</span><span class="p">(</span><span class="s2">&quot;Either setup quantum instance or provide it in the parameter.&quot;</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">instance</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">data</span><span class="p">)</span></div>
 
     <span class="k">def</span> <span class="nf">_run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -501,7 +589,44 @@
 <span class="sd">        Args:</span>
 <span class="sd">            file_path (str): a path to save the model.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">instance</span><span class="o">.</span><span class="n">save_model</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span></div></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">instance</span><span class="o">.</span><span class="n">save_model</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="QSVM.setup_training_data"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.aqua.algorithms.many_sample.qsvm.qsvm.html#qiskit.aqua.algorithms.QSVM.setup_training_data">[ドキュメント]</a>    <span class="k">def</span> <span class="nf">setup_training_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">training_dataset</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Setup training data, if the data were there, they would be overwritten.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            training_dataset (dict): training dataset.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">training_dataset</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">training_dataset</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">class_to_label</span> <span class="o">=</span> <span class="n">split_dataset_to_data_and_labels</span><span class="p">(</span><span class="n">training_dataset</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">label_to_class</span> <span class="o">=</span> <span class="p">{</span><span class="n">label</span><span class="p">:</span> <span class="n">class_name</span> <span class="k">for</span> <span class="n">class_name</span><span class="p">,</span> <span class="n">label</span>
+                                   <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">class_to_label</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">num_classes</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">class_to_label</span><span class="o">.</span><span class="n">keys</span><span class="p">()))</span></div>
+
+<div class="viewcode-block" id="QSVM.setup_test_data"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.aqua.algorithms.many_sample.qsvm.qsvm.html#qiskit.aqua.algorithms.QSVM.setup_test_data">[ドキュメント]</a>    <span class="k">def</span> <span class="nf">setup_test_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">test_dataset</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Setup test data, if the data were there, they would be overwritten.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            test_dataset (dict): test dataset.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">test_dataset</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">class_to_label</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;The mapping from the class name to the label is missed, &quot;</span>
+                               <span class="s2">&quot;regenerate it but it might be mismatched to previous mapping.&quot;</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">test_dataset</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">class_to_label</span> <span class="o">=</span> <span class="n">split_dataset_to_data_and_labels</span><span class="p">(</span><span class="n">test_dataset</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">test_dataset</span> <span class="o">=</span> <span class="n">split_dataset_to_data_and_labels</span><span class="p">(</span><span class="n">test_dataset</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">class_to_label</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="QSVM.setup_datapoint"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.aqua.algorithms.many_sample.qsvm.qsvm.html#qiskit.aqua.algorithms.QSVM.setup_datapoint">[ドキュメント]</a>    <span class="k">def</span> <span class="nf">setup_datapoint</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">datapoints</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Setup data points, if the data were there, they would be overwritten.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            datapoints (numpy.ndarray): prediction dataset.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">datapoints</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">datapoints</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
+                <span class="n">datapoints</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">datapoints</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">datapoints</span> <span class="o">=</span> <span class="n">datapoints</span></div></div>
 </pre></div>
 
         </div>

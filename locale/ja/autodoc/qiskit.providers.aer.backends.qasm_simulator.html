@@ -1661,13 +1661,14 @@
 <dt>&quot;method&quot; (str): Set the simulation method. Allowed values are:</dt>
 <dd><ul class="first simple">
 <li>&quot;statevector&quot;: Uses a dense statevector simulation.</li>
-<li>&quot;stabilizer&quot;: uses a Clifford stabilizer state simulator that</li>
+<li>&quot;stabilizer&quot;: Uses a Clifford stabilizer state simulator that</li>
 </ul>
 <p class="last">is only valid for Clifford circuits and noise models.
 * &quot;extended_stabilizer&quot;: Uses an approximate simulator that
 decomposes circuits into stabilizer state terms, the number of
 which grows with the number of non-Clifford gates.
-* &quot;automatic&quot;: automatically run on stabilizer simulator if
+* &quot;matrix_product_state&quot;: Uses a Matrix Product State (MPS) simulator.
+* &quot;automatic&quot;: Automatically run on stabilizer simulator if
 the circuit and noise model supports it. If there is enough
 available memory, uses the statevector method. Otherwise, uses
 the extended_stabilizer method (Default: &quot;automatic&quot;).</p>
@@ -1679,6 +1680,11 @@ the extended_stabilizer method (Default: &quot;automatic&quot;).</p>
 <li><dl class="first docutils">
 <dt>&quot;zero_threshold&quot; (double): Sets the threshold for truncating</dt>
 <dd>small values to zero in the result data (Default: 1e-10).</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>&quot;validation_threshold&quot; (double): Sets the threshold for checking</dt>
+<dd>if initial states are valid (Default: 1e-8).</dd>
 </dl>
 </li>
 <li><dl class="first docutils">
@@ -1793,7 +1799,7 @@ max_parallel_threads. (Default: 100)</dd>
 </div></blockquote>
 <dl class="attribute">
 <dt id="qiskit.providers.aer.backends.qasm_simulator.QasmSimulator.DEFAULT_CONFIGURATION">
-<code class="descname">DEFAULT_CONFIGURATION</code><em class="property"> = {'backend_name': 'qasm_simulator', 'backend_version': '0.2.3', 'basis_gates': ['u1', 'u2', 'u3', 'cx', 'cz', 'cu1', 'id', 'x', 'y', 'z', 'h', 's', 'sdg', 't', 'tdg', 'ccx', 'swap', 'multiplexer', 'snapshot', 'unitary', 'reset', 'initialize', 'kraus', 'roerror'], 'conditional': True, 'coupling_map': None, 'description': 'A C++ simulator with realistic noise for qobj files', 'gates': [{'name': 'TODO', 'parameters': [], 'qasm_def': 'TODO'}], 'library_dir': '/home/travis/virtualenv/python3.7.1/lib/python3.7/site-packages/qiskit/providers/aer/backends', 'local': True, 'max_shots': 100000, 'memory': True, 'n_qubits': 28, 'open_pulse': False, 'simulator': True, 'url': 'https://github.com/Qiskit/qiskit-aer'}</em><a class="headerlink" href="#qiskit.providers.aer.backends.qasm_simulator.QasmSimulator.DEFAULT_CONFIGURATION" title="この定義へのパーマリンク">¶</a></dt>
+<code class="descname">DEFAULT_CONFIGURATION</code><em class="property"> = {'backend_name': 'qasm_simulator', 'backend_version': '0.3.0', 'basis_gates': ['u1', 'u2', 'u3', 'cx', 'cz', 'cu1', 'id', 'x', 'y', 'z', 'h', 's', 'sdg', 't', 'tdg', 'ccx', 'swap', 'multiplexer', 'snapshot', 'unitary', 'reset', 'initialize', 'kraus', 'roerror'], 'conditional': True, 'coupling_map': None, 'description': 'A C++ simulator with realistic noise for qobj files', 'gates': [{'name': 'TODO', 'parameters': [], 'qasm_def': 'TODO'}], 'local': True, 'max_shots': 100000, 'memory': True, 'n_qubits': 28, 'open_pulse': False, 'simulator': True, 'url': 'https://github.com/Qiskit/qiskit-aer'}</em><a class="headerlink" href="#qiskit.providers.aer.backends.qasm_simulator.QasmSimulator.DEFAULT_CONFIGURATION" title="この定義へのパーマリンク">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">

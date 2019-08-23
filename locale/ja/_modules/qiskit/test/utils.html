@@ -190,6 +190,7 @@
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">unittest</span>
 <span class="kn">from</span> <span class="nn">enum</span> <span class="k">import</span> <span class="n">Enum</span>
+<span class="kn">from</span> <span class="nn">itertools</span> <span class="k">import</span> <span class="n">product</span>
 
 <span class="kn">from</span> <span class="nn">qiskit</span> <span class="k">import</span> <span class="n">__path__</span> <span class="k">as</span> <span class="n">qiskit_path</span>
 
@@ -205,8 +206,6 @@
     <span class="n">EXAMPLES</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">normpath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">SDK</span><span class="p">,</span> <span class="s1">&#39;..&#39;</span><span class="p">,</span> <span class="s1">&#39;examples&#39;</span><span class="p">))</span>
     <span class="c1"># Schemas path:     qiskit/schemas</span>
     <span class="n">SCHEMAS</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">normpath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">SDK</span><span class="p">,</span> <span class="s1">&#39;schemas&#39;</span><span class="p">))</span>
-    <span class="c1"># VCR cassettes path: qiskit/test/cassettes/</span>
-    <span class="n">CASSETTES</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">normpath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">TEST</span><span class="p">,</span> <span class="s1">&#39;..&#39;</span><span class="p">,</span> <span class="s1">&#39;cassettes&#39;</span><span class="p">))</span>
     <span class="c1"># Sample QASMs path: qiskit/test/python/qasm</span>
     <span class="n">QASMS</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">normpath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">TEST</span><span class="p">,</span> <span class="s1">&#39;qasm&#39;</span><span class="p">))</span></div>
 
@@ -259,6 +258,26 @@
                                                   <span class="n">record</span><span class="o">.</span><span class="n">getMessage</span><span class="p">())</span>
 
             <span class="bp">self</span><span class="o">.</span><span class="n">_raiseFailure</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="Case"><a class="viewcode-back" href="../../../autodoc/qiskit.test.utils.html#qiskit.test.utils.Case">[ドキュメント]</a><span class="k">class</span> <span class="nc">Case</span><span class="p">(</span><span class="nb">dict</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; A test case, see https://ddt.readthedocs.io/en/latest/example.html MyList.&quot;&quot;&quot;</span>
+    <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="generate_cases"><a class="viewcode-back" href="../../../autodoc/qiskit.test.utils.html#qiskit.test.utils.generate_cases">[ドキュメント]</a><span class="k">def</span> <span class="nf">generate_cases</span><span class="p">(</span><span class="n">dsc</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Combines kwargs in cartesian product and creates Case with them&quot;&quot;&quot;</span>
+    <span class="n">ret</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">keys</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+    <span class="n">vals</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">values</span> <span class="ow">in</span> <span class="n">product</span><span class="p">(</span><span class="o">*</span><span class="n">vals</span><span class="p">):</span>
+        <span class="n">case</span> <span class="o">=</span> <span class="n">Case</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">keys</span><span class="p">,</span> <span class="n">values</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">dsc</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="nb">setattr</span><span class="p">(</span><span class="n">case</span><span class="p">,</span> <span class="s2">&quot;__doc__&quot;</span><span class="p">,</span> <span class="n">dsc</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">**</span><span class="n">case</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">name</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="nb">setattr</span><span class="p">(</span><span class="n">case</span><span class="p">,</span> <span class="s2">&quot;__name__&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">**</span><span class="n">case</span><span class="p">))</span>
+        <span class="n">ret</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">case</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">ret</span></div>
 </pre></div>
 
         </div>

@@ -1650,13 +1650,24 @@
 <dt id="qiskit.aqua.circuits.gates.multi_control_multi_target_gate.mcmt">
 <code class="descname">mcmt</code><span class="sig-paren">(</span><em>self</em>, <em>q_controls</em>, <em>q_ancillae</em>, <em>single_control_gate_fun</em>, <em>q_targets</em>, <em>mode='basic'</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/circuits/gates/multi_control_multi_target_gate.html#mcmt"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.aqua.circuits.gates.multi_control_multi_target_gate.mcmt" title="この定義へのパーマリンク">¶</a></dt>
 <dd><p>Apply a Multi-Control, Multi-Target using a generic gate.
-It can also be used to implement a generic Multi-Control gate, as the target could also be of length 1.
-:param q_controls: The list of control qubits
-:param q_ancillae: The list of ancillary qubits
-:param single_control_gate_fun: The single control gate function (e.g QuantumCircuit.cz or QuantumCircuit.ch)
-:param q_targets: A list of qubits or a QuantumRegister to which the gate function should be applied.
-:param mode: The implementation mode to use (at the moment, only the basic mode is supported)
-:type mode: string</p>
+It can also be used to implement a generic Multi-Control gate, as the target could also be of length 1.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">パラメータ:</th><td class="field-body"><ul class="first last simple">
+<li><strong>self</strong> (<a class="reference internal" href="qiskit.circuit.quantumcircuit.html#qiskit.circuit.quantumcircuit.QuantumCircuit" title="qiskit.circuit.quantumcircuit.QuantumCircuit"><em>QuantumCircuit</em></a>) -- The QuantumCircuit object to apply the mcmt gate on.</li>
+<li><strong>q_controls</strong> (<em>QuantumRegister | list of Qubit</em>) -- The list of control qubits</li>
+<li><strong>q_ancillae</strong> (<em>QuantumRegister | list of Qubit</em>) -- The list of ancillary qubits</li>
+<li><strong>single_control_gate_fun</strong> (<a class="reference internal" href="qiskit.circuit.gate.html#qiskit.circuit.gate.Gate" title="qiskit.circuit.gate.Gate"><em>Gate</em></a>) -- The single control gate function (e.g QuantumCircuit.cz or QuantumCircuit.ch)</li>
+<li><strong>q_targets</strong> (<em>QuantumRegister | list of Qubit</em>) -- A list of qubits or a QuantumRegister
+to which the gate function should be applied.</li>
+<li><strong>mode</strong> (<em>str</em>) -- The implementation mode to use (at the moment, only the basic mode is supported)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 </div>

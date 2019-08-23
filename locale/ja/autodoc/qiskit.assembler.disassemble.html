@@ -1649,18 +1649,25 @@
 <dl class="function">
 <dt id="qiskit.assembler.disassemble.disassemble">
 <code class="descname">disassemble</code><span class="sig-paren">(</span><em>qobj</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/assembler/disassemble.html#disassemble"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.assembler.disassemble.disassemble" title="この定義へのパーマリンク">¶</a></dt>
-<dd><p>Dissasemble a qobj and return the circuits, run_config, and user header</p>
+<dd><p>Disassemble a qobj and return the circuits, run_config, and user header</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">パラメータ:</th><td class="field-body"><strong>qobj</strong> (<a class="reference internal" href="qiskit.qobj.qobj.html#qiskit.qobj.qobj.Qobj" title="qiskit.qobj.qobj.Qobj"><em>Qobj</em></a>) -- The input qobj object to dissasemble</td>
+<tr class="field-odd field"><th class="field-name">パラメータ:</th><td class="field-body"><strong>qobj</strong> (<a class="reference internal" href="qiskit.qobj.qobj.html#qiskit.qobj.qobj.Qobj" title="qiskit.qobj.qobj.Qobj"><em>Qobj</em></a>) -- The input qobj object to disassemble</td>
 </tr>
-<tr class="field-even field"><th class="field-name">戻り値:</th><td class="field-body">A list of quantum circuits
-run_config (dict): The dist of the run config
-user_qobj_header (dict): The dict of any user headers in the qobj</td>
+<tr class="field-even field"><th class="field-name">戻り値:</th><td class="field-body"><dl class="docutils">
+<dt>(circuits, run_config, user_qobj_header):</dt>
+<dd><ul class="first last simple">
+<li>circuits (list): A list of quantum circuits</li>
+<li>run_config (dict): The dist of the run config</li>
+<li>user_qobj_header (dict): The dict of any user headers in the qobj</li>
+</ul>
+</dd>
+</dl>
+</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">戻り値の型:</th><td class="field-body">circuits (list)</td>
+<tr class="field-odd field"><th class="field-name">戻り値の型:</th><td class="field-body">tuple</td>
 </tr>
 </tbody>
 </table>

@@ -192,8 +192,9 @@
 <span class="kn">from</span> <span class="nn">qiskit.aqua</span> <span class="k">import</span> <span class="p">(</span><span class="n">local_pluggables_types</span><span class="p">,</span>
                          <span class="n">PluggableType</span><span class="p">,</span>
                          <span class="n">get_pluggable_configuration</span><span class="p">,</span>
-                         <span class="n">local_pluggables</span><span class="p">,</span>
-                         <span class="n">get_backends_from_provider</span><span class="p">)</span>
+                         <span class="n">local_pluggables</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">qiskit.aqua.utils.backend_utils</span> <span class="k">import</span> <span class="p">(</span><span class="n">get_backends_from_provider</span><span class="p">,</span>
+                                             <span class="n">get_provider_from_backend</span><span class="p">)</span>
 <span class="kn">from</span> <span class="nn">qiskit.aqua.aqua_error</span> <span class="k">import</span> <span class="n">AquaError</span>
 <span class="kn">from</span> <span class="nn">.json_schema</span> <span class="k">import</span> <span class="n">JSONSchema</span>
 <span class="kn">import</span> <span class="nn">traceback</span>
@@ -217,6 +218,7 @@
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">jsonSchema</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Create InputParser object.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_section_order</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_original_sections</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_filename</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_sections</span> <span class="o">=</span> <span class="kc">None</span>
@@ -238,6 +240,15 @@
                                                               <span class="k">else</span> <span class="n">_property_order</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">BaseParser</span><span class="o">.</span><span class="n">_UNKNOWN</span><span class="p">)))</span>
 
         <span class="k">return</span> <span class="n">sections_sorted</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">backend</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Getter of backend.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">json_schema</span><span class="o">.</span><span class="n">backend</span>
+
+    <span class="nd">@backend</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">backend</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">new_value</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">json_schema</span><span class="o">.</span><span class="n">backend</span> <span class="o">=</span> <span class="n">new_value</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">json_schema</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -643,24 +654,34 @@
             <span class="k">return</span> <span class="kc">False</span>
 
         <span class="c1"># check if the provider/backend is loadable and valid</span>
-        <span class="n">backend_names</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="c1"># set values from self.backend if exists</span>
         <span class="k">if</span> <span class="n">JSONSchema</span><span class="o">.</span><span class="n">BACKEND</span> <span class="o">==</span> <span class="n">section_name</span> <span class="ow">and</span> <span class="n">property_name</span> <span class="ow">in</span> <span class="p">[</span><span class="n">JSONSchema</span><span class="o">.</span><span class="n">PROVIDER</span><span class="p">,</span> <span class="n">JSONSchema</span><span class="o">.</span><span class="n">NAME</span><span class="p">]:</span>
-            <span class="n">provider_name</span> <span class="o">=</span> <span class="n">value</span> <span class="k">if</span> <span class="n">property_name</span> <span class="o">==</span> <span class="n">JSONSchema</span><span class="o">.</span><span class="n">PROVIDER</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_section_property</span><span class="p">(</span><span class="n">section_name</span><span class="p">,</span> <span class="n">JSONSchema</span><span class="o">.</span><span class="n">PROVIDER</span><span class="p">)</span>
-            <span class="n">backend_names</span> <span class="o">=</span> <span class="n">get_backends_from_provider</span><span class="p">(</span><span class="n">provider_name</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">property_name</span> <span class="o">==</span> <span class="n">JSONSchema</span><span class="o">.</span><span class="n">NAME</span> <span class="ow">and</span> <span class="n">value</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">backend_names</span><span class="p">:</span>
-                <span class="k">raise</span> <span class="n">AquaError</span><span class="p">(</span><span class="s2">&quot;Backend &#39;</span><span class="si">{}</span><span class="s2">&#39; not valid for provider: &#39;</span><span class="si">{}</span><span class="s2">&#39; backends: &#39;</span><span class="si">{}</span><span class="s2">&#39;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">provider_name</span><span class="p">,</span> <span class="n">backend_names</span><span class="p">))</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">backend</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">backend</span><span class="o">.</span><span class="n">name</span><span class="p">()</span> <span class="k">if</span> <span class="n">property_name</span> <span class="o">==</span> <span class="n">JSONSchema</span><span class="o">.</span><span class="n">NAME</span> <span class="k">else</span> <span class="n">get_provider_from_backend</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">backend</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">property_name</span> <span class="o">==</span> <span class="n">JSONSchema</span><span class="o">.</span><span class="n">NAME</span><span class="p">:</span>
+                <span class="n">provider_name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_section_property</span><span class="p">(</span><span class="n">section_name</span><span class="p">,</span> <span class="n">JSONSchema</span><span class="o">.</span><span class="n">PROVIDER</span><span class="p">)</span>
+                <span class="n">backend_names</span> <span class="o">=</span> <span class="n">get_backends_from_provider</span><span class="p">(</span><span class="n">provider_name</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">value</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">backend_names</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="n">AquaError</span><span class="p">(</span><span class="s2">&quot;Backend &#39;</span><span class="si">{}</span><span class="s2">&#39; not valid for provider: &#39;</span><span class="si">{}</span><span class="s2">&#39; backends: &#39;</span><span class="si">{}</span><span class="s2">&#39;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">provider_name</span><span class="p">,</span> <span class="n">backend_names</span><span class="p">))</span>
 
         <span class="c1"># update value internally</span>
         <span class="n">BaseParser</span><span class="o">.</span><span class="n">_set_section_property</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_sections</span><span class="p">,</span> <span class="n">section_name</span><span class="p">,</span> <span class="n">property_name</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">types</span><span class="p">)</span>
 
-        <span class="k">if</span> <span class="n">JSONSchema</span><span class="o">.</span><span class="n">BACKEND</span> <span class="o">==</span> <span class="n">section_name</span> <span class="ow">and</span> <span class="n">property_name</span> <span class="ow">in</span> <span class="p">[</span><span class="n">JSONSchema</span><span class="o">.</span><span class="n">PROVIDER</span><span class="p">,</span> <span class="n">JSONSchema</span><span class="o">.</span><span class="n">NAME</span><span class="p">]:</span>
-            <span class="k">if</span> <span class="n">property_name</span> <span class="o">==</span> <span class="n">JSONSchema</span><span class="o">.</span><span class="n">PROVIDER</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">JSONSchema</span><span class="o">.</span><span class="n">BACKEND</span> <span class="o">==</span> <span class="n">section_name</span> <span class="ow">and</span> <span class="n">property_name</span> <span class="o">==</span> <span class="n">JSONSchema</span><span class="o">.</span><span class="n">PROVIDER</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">backend</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="c1"># set value from self.backend if exists</span>
+                <span class="n">BaseParser</span><span class="o">.</span><span class="n">_set_section_property</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_sections</span><span class="p">,</span> <span class="n">section_name</span><span class="p">,</span> <span class="n">JSONSchema</span><span class="o">.</span><span class="n">NAME</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">backend</span><span class="o">.</span><span class="n">name</span><span class="p">(),</span> <span class="p">[</span><span class="s1">&#39;string&#39;</span><span class="p">])</span>
+            <span class="k">else</span><span class="p">:</span>
                 <span class="n">backend_name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_section_property</span><span class="p">(</span><span class="n">section_name</span><span class="p">,</span> <span class="n">JSONSchema</span><span class="o">.</span><span class="n">NAME</span><span class="p">)</span>
+                <span class="n">backend_names</span> <span class="o">=</span> <span class="n">get_backends_from_provider</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
                 <span class="k">if</span> <span class="n">backend_name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">backend_names</span><span class="p">:</span>
                     <span class="c1"># use first backend available in provider</span>
                     <span class="n">backend_name</span> <span class="o">=</span> <span class="n">backend_names</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">backend_names</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="s1">&#39;&#39;</span>
                     <span class="n">BaseParser</span><span class="o">.</span><span class="n">_set_section_property</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_sections</span><span class="p">,</span> <span class="n">section_name</span><span class="p">,</span> <span class="n">JSONSchema</span><span class="o">.</span><span class="n">NAME</span><span class="p">,</span> <span class="n">backend_name</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;string&#39;</span><span class="p">])</span>
 
+        <span class="c1"># update backend schema</span>
+        <span class="k">if</span> <span class="n">JSONSchema</span><span class="o">.</span><span class="n">BACKEND</span> <span class="o">==</span> <span class="n">section_name</span> <span class="ow">and</span> <span class="n">property_name</span> <span class="ow">in</span> <span class="p">[</span><span class="n">JSONSchema</span><span class="o">.</span><span class="n">PROVIDER</span><span class="p">,</span> <span class="n">JSONSchema</span><span class="o">.</span><span class="n">NAME</span><span class="p">]:</span>
+            <span class="c1"># update backend schema</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_json_schema</span><span class="o">.</span><span class="n">update_backend_schema</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
             <span class="k">return</span> <span class="kc">True</span>
 

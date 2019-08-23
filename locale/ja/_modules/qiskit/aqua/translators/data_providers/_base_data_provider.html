@@ -225,7 +225,7 @@
 <div class="viewcode-block" id="BaseDataProvider"><a class="viewcode-back" href="../../../../../autodoc/qiskit.aqua.translators.data_providers._base_data_provider.html#qiskit.aqua.translators.data_providers.BaseDataProvider">[ドキュメント]</a><span class="k">class</span> <span class="nc">BaseDataProvider</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    This module implements the abstract base class for data_provider modules</span>
-<span class="sd">    within Qiskit Finance. </span>
+<span class="sd">    within Qiskit Finance.</span>
 
 <span class="sd">    To create add-on data_provider module subclass the BaseDataProvider class in this module.</span>
 <span class="sd">    Doing so requires that the required driver interface is implemented.</span>
@@ -235,10 +235,14 @@
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
+    <span class="n">CONFIGURATION</span> <span class="o">=</span> <span class="kc">None</span>
+
     <span class="nd">@abstractmethod</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">check_driver_valid</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_configuration</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">CONFIGURATION</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_data</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_n</span> <span class="o">=</span> <span class="mi">0</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">configuration</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -286,10 +290,10 @@
 
     <span class="c1"># it does not have to be overridden in non-abstract derived classes.</span>
 <div class="viewcode-block" id="BaseDataProvider.get_mean_vector"><a class="viewcode-back" href="../../../../../autodoc/qiskit.aqua.translators.data_providers._base_data_provider.html#qiskit.aqua.translators.data_providers.BaseDataProvider.get_mean_vector">[ドキュメント]</a>    <span class="k">def</span> <span class="nf">get_mean_vector</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot; Returns a vector containing the mean value of each asset. </span>
-<span class="sd">        </span>
-<span class="sd">    Returns:</span>
-<span class="sd">        mean (numpy.ndarray) : a per-asset mean vector.        </span>
+        <span class="sd">&quot;&quot;&quot; Returns a vector containing the mean value of each asset.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            mean (numpy.ndarray) : a per-asset mean vector.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">:</span>
@@ -327,10 +331,10 @@
 
     <span class="c1"># it does not have to be overridden in non-abstract derived classes.</span>
 <div class="viewcode-block" id="BaseDataProvider.get_covariance_matrix"><a class="viewcode-back" href="../../../../../autodoc/qiskit.aqua.translators.data_providers._base_data_provider.html#qiskit.aqua.translators.data_providers.BaseDataProvider.get_covariance_matrix">[ドキュメント]</a>    <span class="k">def</span> <span class="nf">get_covariance_matrix</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot; Returns the covariance matrix. </span>
-<span class="sd">        </span>
-<span class="sd">    Returns:</span>
-<span class="sd">        rho (numpy.ndarray) : an asset-to-asset covariance matrix.        </span>
+        <span class="sd">&quot;&quot;&quot; Returns the covariance matrix.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            rho (numpy.ndarray) : an asset-to-asset covariance matrix.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">:</span>
@@ -368,10 +372,10 @@
 
     <span class="c1"># it does not have to be overridden in non-abstract derived classes.</span>
 <div class="viewcode-block" id="BaseDataProvider.get_similarity_matrix"><a class="viewcode-back" href="../../../../../autodoc/qiskit.aqua.translators.data_providers._base_data_provider.html#qiskit.aqua.translators.data_providers.BaseDataProvider.get_similarity_matrix">[ドキュメント]</a>    <span class="k">def</span> <span class="nf">get_similarity_matrix</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot; Returns time-series similarity matrix computed using dynamic time warping. </span>
+        <span class="sd">&quot;&quot;&quot; Returns time-series similarity matrix computed using dynamic time warping.</span>
 
-<span class="sd">    Returns:</span>
-<span class="sd">        rho (numpy.ndarray) : an asset-to-asset similarity matrix.</span>
+<span class="sd">        Returns:</span>
+<span class="sd">            rho (numpy.ndarray) : an asset-to-asset similarity matrix.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">:</span>
@@ -402,8 +406,8 @@
         <span class="n">yc</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">_n</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
         <span class="n">xc</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_n</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.5</span><span class="p">)</span> <span class="o">*</span> <span class="mi">1</span>
         <span class="n">yc</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_n</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.5</span><span class="p">)</span> <span class="o">*</span> <span class="mi">1</span>
-        <span class="c1">#for (cnt, s) in enumerate(self.tickers):</span>
-        <span class="c1">#xc[cnt, 1] = self.data[cnt][0]</span>
+        <span class="c1"># for (cnt, s) in enumerate(self.tickers):</span>
+        <span class="c1"># xc[cnt, 1] = self.data[cnt][0]</span>
         <span class="c1"># yc[cnt, 0] = self.data[cnt][-1]</span>
         <span class="k">return</span> <span class="n">xc</span><span class="p">,</span> <span class="n">yc</span></div></div>
 </pre></div>

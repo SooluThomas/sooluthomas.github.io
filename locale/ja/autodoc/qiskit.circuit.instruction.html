@@ -1656,7 +1656,7 @@
 <dd>Used to request a specific instruction on the backend, or in visualizing circuits.</dd>
 </dl>
 <p>num_qubits, num_clbits: dimensions of the instruction</p>
-<p>params: List of parameters to specialize a specific intruction instance.</p>
+<p>params: List of parameters to specialize a specific instruction instance.</p>
 </div></blockquote>
 <p>Instructions do not have any context about where they are in a circuit (which qubits/clbits).
 The circuit itself keeps this context.</p>
@@ -1669,6 +1669,31 @@ The circuit itself keeps this context.</p>
 <dt id="qiskit.circuit.instruction.Instruction.assemble">
 <code class="descname">assemble</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/circuit/instruction.html#Instruction.assemble"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.circuit.instruction.Instruction.assemble" title="この定義へのパーマリンク">¶</a></dt>
 <dd><p>Assemble a QasmQobjInstruction</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="qiskit.circuit.instruction.Instruction.broadcast_arguments">
+<code class="descname">broadcast_arguments</code><span class="sig-paren">(</span><em>qargs</em>, <em>cargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/circuit/instruction.html#Instruction.broadcast_arguments"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.circuit.instruction.Instruction.broadcast_arguments" title="この定義へのパーマリンク">¶</a></dt>
+<dd><p>Validation of the arguments.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">パラメータ:</th><td class="field-body"><ul class="first simple">
+<li><strong>qargs</strong> (<a class="reference internal" href="qiskit.validation.fields.containers.html#qiskit.validation.fields.containers.List" title="qiskit.validation.fields.containers.List"><em>List</em></a>) -- List of quantum bit arguments.</li>
+<li><strong>cargs</strong> (<a class="reference internal" href="qiskit.validation.fields.containers.html#qiskit.validation.fields.containers.List" title="qiskit.validation.fields.containers.List"><em>List</em></a>) -- List of classical bit arguments.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Yields:</th><td class="field-body"><p class="first"><em>Tuple(List, List)</em> -- A tuple with single arguments.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><code class="xref py py-exc docutils literal notranslate"><span class="pre">QiskitError</span></code> -- If the input is not valid. For example, the number of
+arguments does not match the gate expectation.</p>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
@@ -1759,6 +1784,26 @@ It does not invert any gate.</p>
 <dd><p>Return a default OpenQASM string for the instruction.</p>
 <p>Derived instructions may override this to print in a
 different format (e.g. measure q[0] -&gt; c[0];).</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="qiskit.circuit.instruction.Instruction.repeat">
+<code class="descname">repeat</code><span class="sig-paren">(</span><em>n</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/circuit/instruction.html#Instruction.repeat"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.circuit.instruction.Instruction.repeat" title="この定義へのパーマリンク">¶</a></dt>
+<dd><p>Creates an instruction with <cite>gate</cite> repeated <cite>n</cite> amount of times.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">パラメータ:</th><td class="field-body"><strong>n</strong> (<em>int</em>) -- Number of times to repeat the instruction</td>
+</tr>
+<tr class="field-even field"><th class="field-name">戻り値:</th><td class="field-body">Containing the definition.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">戻り値の型:</th><td class="field-body"><a class="reference internal" href="#qiskit.circuit.instruction.Instruction" title="qiskit.circuit.instruction.Instruction">Instruction</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><code class="xref py py-exc docutils literal notranslate"><span class="pre">QiskitError</span></code> -- If n &lt; 1.</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 </dd></dl>

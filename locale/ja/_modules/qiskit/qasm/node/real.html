@@ -217,17 +217,17 @@
 
 <div class="viewcode-block" id="Real.latex"><a class="viewcode-back" href="../../../../autodoc/qiskit.qasm.node.real.html#qiskit.qasm.node.real.Real.latex">[ドキュメント]</a>    <span class="k">def</span> <span class="nf">latex</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">prec</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">nested_scope</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return the corresponding math mode latex string.&quot;&quot;&quot;</span>
-        <span class="c1"># pylint: disable=unused-argument</span>
+        <span class="k">del</span> <span class="n">prec</span><span class="p">,</span> <span class="n">nested_scope</span>  <span class="c1"># unused</span>
         <span class="k">return</span> <span class="n">latex</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Real.sym"><a class="viewcode-back" href="../../../../autodoc/qiskit.qasm.node.real.html#qiskit.qasm.node.real.Real.sym">[ドキュメント]</a>    <span class="k">def</span> <span class="nf">sym</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nested_scope</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return the correspond symbolic number.&quot;&quot;&quot;</span>
-        <span class="c1"># pylint: disable=unused-argument</span>
+        <span class="k">del</span> <span class="n">nested_scope</span>  <span class="c1"># unused</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span></div>
 
 <div class="viewcode-block" id="Real.real"><a class="viewcode-back" href="../../../../autodoc/qiskit.qasm.node.real.html#qiskit.qasm.node.real.Real.real">[ドキュメント]</a>    <span class="k">def</span> <span class="nf">real</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nested_scope</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return the correspond floating point number.&quot;&quot;&quot;</span>
-        <span class="c1"># pylint: disable=unused-argument</span>
+        <span class="k">del</span> <span class="n">nested_scope</span>  <span class="c1"># unused</span>
         <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">evalf</span><span class="p">())</span></div></div>
 </pre></div>
 

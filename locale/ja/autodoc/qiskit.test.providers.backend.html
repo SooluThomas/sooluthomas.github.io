@@ -1643,8 +1643,75 @@
     <div class="document">
         <div class="page-content">
         
-  <div class="section" id="qiskit-test-providers-backend-module">
-<h1>qiskit.test.providers.backend module<a class="headerlink" href="#qiskit-test-providers-backend-module" title="このヘッドラインへのパーマリンク">¶</a></h1>
+  <div class="section" id="module-qiskit.test.providers.backend">
+<span id="qiskit-test-providers-backend-module"></span><h1>qiskit.test.providers.backend module<a class="headerlink" href="#module-qiskit.test.providers.backend" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<p>Base TestCase for testing backends.</p>
+<dl class="class">
+<dt id="qiskit.test.providers.backend.BackendTestCase">
+<em class="property">class </em><code class="descname">BackendTestCase</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/test/providers/backend.html#BackendTestCase"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.test.providers.backend.BackendTestCase" title="この定義へのパーマリンク">¶</a></dt>
+<dd><p>ベースクラス: <a class="reference internal" href="qiskit.test.base.html#qiskit.test.base.QiskitTestCase" title="qiskit.test.base.QiskitTestCase"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.test.base.QiskitTestCase</span></code></a></p>
+<p>Test case for backends.</p>
+<p>Implementers of backends are encouraged to subclass and customize this
+TestCase, as it contains a &quot;canonical&quot; series of tests in order to ensure
+the backend functionality matches the specifications.</p>
+<dl class="docutils">
+<dt>Members:</dt>
+<dd><dl class="first docutils">
+<dt>backend_cls (BaseBackend): backend to be used in this test case. Its</dt>
+<dd>instantiation can be further customized by overriding the
+<code class="docutils literal notranslate"><span class="pre">_get_backend</span></code> function.</dd>
+</dl>
+<p class="last">circuit (QuantumCircuit): circuit to be used for the tests.</p>
+</dd>
+</dl>
+<dl class="attribute">
+<dt id="qiskit.test.providers.backend.BackendTestCase.backend_cls">
+<code class="descname">backend_cls</code><em class="property"> = None</em><a class="headerlink" href="#qiskit.test.providers.backend.BackendTestCase.backend_cls" title="この定義へのパーマリンク">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="qiskit.test.providers.backend.BackendTestCase.circuit">
+<code class="descname">circuit</code><em class="property"> = &lt;qiskit.circuit.quantumcircuit.QuantumCircuit object&gt;</em><a class="headerlink" href="#qiskit.test.providers.backend.BackendTestCase.circuit" title="この定義へのパーマリンク">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="qiskit.test.providers.backend.BackendTestCase.setUp">
+<code class="descname">setUp</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/test/providers/backend.html#BackendTestCase.setUp"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.test.providers.backend.BackendTestCase.setUp" title="この定義へのパーマリンク">¶</a></dt>
+<dd><p>Hook method for setting up the test fixture before exercising it.</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="qiskit.test.providers.backend.BackendTestCase.setUpClass">
+<em class="property">classmethod </em><code class="descname">setUpClass</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/test/providers/backend.html#BackendTestCase.setUpClass"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.test.providers.backend.BackendTestCase.setUpClass" title="この定義へのパーマリンク">¶</a></dt>
+<dd><p>Hook method for setting up class fixture before running tests in the class.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="qiskit.test.providers.backend.BackendTestCase.test_configuration">
+<code class="descname">test_configuration</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/test/providers/backend.html#BackendTestCase.test_configuration"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.test.providers.backend.BackendTestCase.test_configuration" title="この定義へのパーマリンク">¶</a></dt>
+<dd><p>Test backend.configuration().</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="qiskit.test.providers.backend.BackendTestCase.test_properties">
+<code class="descname">test_properties</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/test/providers/backend.html#BackendTestCase.test_properties"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.test.providers.backend.BackendTestCase.test_properties" title="この定義へのパーマリンク">¶</a></dt>
+<dd><p>Test backend.properties().</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="qiskit.test.providers.backend.BackendTestCase.test_run_circuit">
+<code class="descname">test_run_circuit</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/test/providers/backend.html#BackendTestCase.test_run_circuit"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.test.providers.backend.BackendTestCase.test_run_circuit" title="この定義へのパーマリンク">¶</a></dt>
+<dd><p>Test running a single circuit.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="qiskit.test.providers.backend.BackendTestCase.test_status">
+<code class="descname">test_status</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/test/providers/backend.html#BackendTestCase.test_status"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.test.providers.backend.BackendTestCase.test_status" title="この定義へのパーマリンク">¶</a></dt>
+<dd><p>Test backend.status().</p>
+</dd></dl>
+
+</dd></dl>
+
 </div>
 
 

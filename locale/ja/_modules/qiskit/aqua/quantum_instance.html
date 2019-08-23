@@ -184,22 +184,21 @@
 <span class="c1"># copyright notice, and modified files need to carry a notice indicating</span>
 <span class="c1"># that they have been altered from the originals.</span>
 
+<span class="kn">import</span> <span class="nn">copy</span>
 <span class="kn">import</span> <span class="nn">logging</span>
 <span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">os</span>
 
-<span class="kn">from</span> <span class="nn">qiskit</span> <span class="k">import</span> <span class="n">__version__</span> <span class="k">as</span> <span class="n">terra_version</span>
 <span class="kn">from</span> <span class="nn">qiskit.assembler.run_config</span> <span class="k">import</span> <span class="n">RunConfig</span>
-<span class="kn">from</span> <span class="nn">qiskit.transpiler</span> <span class="k">import</span> <span class="n">Layout</span>
 
-<span class="kn">from</span> <span class="nn">.utils</span> <span class="k">import</span> <span class="p">(</span><span class="n">run_qobjs</span><span class="p">,</span> <span class="n">compile_circuits</span><span class="p">,</span> <span class="n">CircuitCache</span><span class="p">,</span>
-                    <span class="n">get_measured_qubits_from_qobj</span><span class="p">,</span>
-                    <span class="n">build_measurement_error_mitigation_fitter</span><span class="p">,</span>
-                    <span class="n">mitigate_measurement_error</span><span class="p">)</span>
-<span class="kn">from</span> <span class="nn">.utils.backend_utils</span> <span class="k">import</span> <span class="p">(</span><span class="n">is_aer_provider</span><span class="p">,</span>
-                                  <span class="n">is_ibmq_provider</span><span class="p">,</span>
+<span class="kn">from</span> <span class="nn">.aqua_error</span> <span class="k">import</span> <span class="n">AquaError</span>
+<span class="kn">from</span> <span class="nn">.utils</span> <span class="k">import</span> <span class="n">CircuitCache</span>
+<span class="kn">from</span> <span class="nn">.utils.backend_utils</span> <span class="k">import</span> <span class="p">(</span><span class="n">is_ibmq_provider</span><span class="p">,</span>
                                   <span class="n">is_statevector_backend</span><span class="p">,</span>
                                   <span class="n">is_simulator_backend</span><span class="p">,</span>
-                                  <span class="n">is_local_backend</span><span class="p">)</span>
+                                  <span class="n">is_local_backend</span><span class="p">,</span>
+                                  <span class="n">is_aer_qasm</span><span class="p">,</span>
+                                  <span class="n">support_backend_options</span><span class="p">)</span>
 
 <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
 
@@ -208,8 +207,8 @@
     <span class="sd">&quot;&quot;&quot;Quantum Backend including execution setting.&quot;&quot;&quot;</span>
 
     <span class="n">BACKEND_CONFIG</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;basis_gates&#39;</span><span class="p">,</span> <span class="s1">&#39;coupling_map&#39;</span><span class="p">]</span>
-    <span class="n">COMPILE_CONFIG</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;pass_manager&#39;</span><span class="p">,</span> <span class="s1">&#39;initial_layout&#39;</span><span class="p">,</span> <span class="s1">&#39;seed_transpiler&#39;</span><span class="p">]</span>
-    <span class="n">RUN_CONFIG</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;shots&#39;</span><span class="p">,</span> <span class="s1">&#39;max_credits&#39;</span><span class="p">,</span> <span class="s1">&#39;memory&#39;</span><span class="p">,</span> <span class="s1">&#39;seed&#39;</span><span class="p">]</span>
+    <span class="n">COMPILE_CONFIG</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;pass_manager&#39;</span><span class="p">,</span> <span class="s1">&#39;initial_layout&#39;</span><span class="p">,</span> <span class="s1">&#39;seed_transpiler&#39;</span><span class="p">,</span> <span class="s1">&#39;optimization_level&#39;</span><span class="p">]</span>
+    <span class="n">RUN_CONFIG</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;shots&#39;</span><span class="p">,</span> <span class="s1">&#39;max_credits&#39;</span><span class="p">,</span> <span class="s1">&#39;memory&#39;</span><span class="p">,</span> <span class="s1">&#39;seed_simulator&#39;</span><span class="p">]</span>
     <span class="n">QJOB_CONFIG</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;timeout&#39;</span><span class="p">,</span> <span class="s1">&#39;wait&#39;</span><span class="p">]</span>
     <span class="n">NOISE_CONFIG</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;noise_model&#39;</span><span class="p">]</span>
 
@@ -219,113 +218,137 @@
                        <span class="s2">&quot;max_parallel_experiments&quot;</span><span class="p">,</span> <span class="s2">&quot;statevector_parallel_threshold&quot;</span><span class="p">,</span>
                        <span class="s2">&quot;statevector_hpc_gate_opt&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="n">BACKEND_OPTIONS_QASM_ONLY</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">backend</span><span class="p">,</span> <span class="n">shots</span><span class="o">=</span><span class="mi">1024</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">max_credits</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">backend</span><span class="p">,</span>
+                 <span class="c1"># run config</span>
+                 <span class="n">shots</span><span class="o">=</span><span class="mi">1024</span><span class="p">,</span> <span class="n">seed_simulator</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">max_credits</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+                 <span class="c1"># backend properties</span>
                  <span class="n">basis_gates</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">coupling_map</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-                 <span class="n">initial_layout</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">pass_manager</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">seed_transpiler</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-                 <span class="n">backend_options</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">noise_model</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">wait</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
-                 <span class="n">circuit_caching</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cache_file</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">skip_qobj_deepcopy</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-                 <span class="n">skip_qobj_validation</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">measurement_error_mitigation_cls</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-                 <span class="n">cals_matrix_refresh_period</span><span class="o">=</span><span class="mi">30</span><span class="p">):</span>
+                 <span class="c1"># transpile</span>
+                 <span class="n">initial_layout</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">pass_manager</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">seed_transpiler</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">optimization_level</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                 <span class="c1"># simulation</span>
+                 <span class="n">backend_options</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">noise_model</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                 <span class="c1"># job</span>
+                 <span class="n">timeout</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">wait</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+                 <span class="c1"># others</span>
+                 <span class="n">circuit_caching</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">cache_file</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">skip_qobj_deepcopy</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                 <span class="n">skip_qobj_validation</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                 <span class="n">measurement_error_mitigation_cls</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cals_matrix_refresh_period</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span>
+                 <span class="n">measurement_error_mitigation_shots</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                 <span class="n">job_callback</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Constructor.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            backend (BaseBackend): instance of selected backend</span>
 <span class="sd">            shots (int, optional): number of repetitions of each circuit, for sampling</span>
-<span class="sd">            seed (int, optional): random seed for simulators</span>
+<span class="sd">            seed_simulator (int, optional): random seed for simulators</span>
 <span class="sd">            max_credits (int, optional): maximum credits to use</span>
 <span class="sd">            basis_gates (list[str], optional): list of basis gate names supported by the</span>
-<span class="sd">                                                target. Default: [&#39;u1&#39;,&#39;u2&#39;,&#39;u3&#39;,&#39;cx&#39;,&#39;id&#39;]</span>
-<span class="sd">            coupling_map (list[list]): coupling map (perhaps custom) to target in mapping</span>
-<span class="sd">            initial_layout (dict, optional): initial layout of qubits in mapping</span>
+<span class="sd">                                               target. Default: [&#39;u1&#39;,&#39;u2&#39;,&#39;u3&#39;,&#39;cx&#39;,&#39;id&#39;]</span>
+<span class="sd">            coupling_map (CouplingMap or list[list]): coupling map (perhaps custom) to target in mapping</span>
+<span class="sd">            initial_layout (Layout or dict or list, optional): initial layout of qubits in mapping</span>
 <span class="sd">            pass_manager (PassManager, optional): pass manager to handle how to compile the circuits</span>
 <span class="sd">            seed_transpiler (int, optional): the random seed for circuit mapper</span>
+<span class="sd">            optimization_level (int, optional): How much optimization to perform on the circuits. Higher levels generate more optimized circuits,</span>
+<span class="sd">                                                at the expense of longer transpilation time.</span>
 <span class="sd">            backend_options (dict, optional): all running options for backend, please refer to the provider.</span>
 <span class="sd">            noise_model (qiskit.provider.aer.noise.noise_model.NoiseModel, optional): noise model for simulator</span>
 <span class="sd">            timeout (float, optional): seconds to wait for job. If None, wait indefinitely.</span>
 <span class="sd">            wait (float, optional): seconds between queries to result</span>
-<span class="sd">            circuit_caching (bool, optional): USe CircuitCache when calling compile_and_run_circuits</span>
+<span class="sd">            circuit_caching (bool, optional): Use CircuitCache when calling compile_and_run_circuits</span>
 <span class="sd">            cache_file(str, optional): filename into which to store the cache as a pickle file</span>
-<span class="sd">            skip_qobj_deepcopy (bool, optional): Reuses the same qobj object over and over to avoid deepcopying</span>
+<span class="sd">            skip_qobj_deepcopy (bool, optional): Reuses the same Qobj object over and over to avoid deepcopying</span>
 <span class="sd">            skip_qobj_validation (bool, optional): Bypass Qobj validation to decrease submission time</span>
-<span class="sd">            measurement_error_mitigation_cls (callable, optional): the approach to mitigate measurement error,</span>
-<span class="sd">                                                                CompleteMeasFitter or TensoredMeasFitter</span>
-<span class="sd">            cals_matrix_refresh_period (int): how long to refresh the calibration matrix in measurement mitigation,</span>
+<span class="sd">            measurement_error_mitigation_cls (Callable, optional): the approach to mitigate measurement error,</span>
+<span class="sd">                                                                   CompleteMeasFitter or TensoredMeasFitter</span>
+<span class="sd">            cals_matrix_refresh_period (int, optional): how long to refresh the calibration matrix in measurement mitigation,</span>
 <span class="sd">                                                  unit in minutes</span>
+<span class="sd">            measurement_error_mitigation_shots (int, optional): the shot number for building calibration matrix,</span>
+<span class="sd">                                                                if None, use the shot number in quantum instance</span>
+<span class="sd">            job_callback (Callable, optional): callback used in querying info of the submitted job, and</span>
+<span class="sd">                                               providing the following arguments: job_id, job_status,</span>
+<span class="sd">                                               queue_position, job</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            AquaError: the shots exceeds the maximum number of shots</span>
+<span class="sd">            AquaError: set noise model but the backend does not support that</span>
+<span class="sd">            AquaError: set backend_options but the backend does not support that</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_backend</span> <span class="o">=</span> <span class="n">backend</span>
-        <span class="c1"># setup run config</span>
-        <span class="n">run_config</span> <span class="o">=</span> <span class="n">RunConfig</span><span class="p">(</span><span class="n">shots</span><span class="o">=</span><span class="n">shots</span><span class="p">,</span> <span class="n">max_credits</span><span class="o">=</span><span class="n">max_credits</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">seed</span><span class="p">:</span>
-            <span class="n">run_config</span><span class="o">.</span><span class="n">seed</span> <span class="o">=</span> <span class="n">seed</span>
 
-        <span class="k">if</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">run_config</span><span class="p">,</span> <span class="s1">&#39;shots&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_statevector</span> <span class="ow">and</span> <span class="n">run_config</span><span class="o">.</span><span class="n">shots</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="c1"># setup run config</span>
+        <span class="k">if</span> <span class="n">shots</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_statevector</span> <span class="ow">and</span> <span class="n">shots</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
                 <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;statevector backend only works with shot=1, change &quot;</span>
-                            <span class="s2">&quot;shots from </span><span class="si">{}</span><span class="s2"> to 1.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">run_config</span><span class="o">.</span><span class="n">shots</span><span class="p">))</span>
-                <span class="n">run_config</span><span class="o">.</span><span class="n">shots</span> <span class="o">=</span> <span class="mi">1</span>
+                            <span class="s2">&quot;shots from </span><span class="si">{}</span><span class="s2"> to 1.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">shots</span><span class="p">))</span>
+                <span class="n">shots</span> <span class="o">=</span> <span class="mi">1</span>
+            <span class="n">max_shots</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_backend</span><span class="o">.</span><span class="n">configuration</span><span class="p">()</span><span class="o">.</span><span class="n">max_shots</span>
+            <span class="k">if</span> <span class="n">max_shots</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">shots</span> <span class="o">&gt;</span> <span class="n">max_shots</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="n">AquaError</span><span class="p">(</span><span class="s1">&#39;the maximum shots supported by the selected backend is </span><span class="si">{}</span><span class="s1"> but you specifiy </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">max_shots</span><span class="p">,</span> <span class="n">shots</span><span class="p">))</span>
+
+        <span class="n">run_config</span> <span class="o">=</span> <span class="n">RunConfig</span><span class="p">(</span><span class="n">shots</span><span class="o">=</span><span class="n">shots</span><span class="p">,</span> <span class="n">max_credits</span><span class="o">=</span><span class="n">max_credits</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">seed_simulator</span><span class="p">:</span>
+            <span class="n">run_config</span><span class="o">.</span><span class="n">seed_simulator</span> <span class="o">=</span> <span class="n">seed_simulator</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_run_config</span> <span class="o">=</span> <span class="n">run_config</span>
 
         <span class="c1"># setup backend config</span>
         <span class="n">basis_gates</span> <span class="o">=</span> <span class="n">basis_gates</span> <span class="ow">or</span> <span class="n">backend</span><span class="o">.</span><span class="n">configuration</span><span class="p">()</span><span class="o">.</span><span class="n">basis_gates</span>
-        <span class="n">coupling_map</span> <span class="o">=</span> <span class="n">coupling_map</span> <span class="ow">or</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">backend</span><span class="o">.</span><span class="n">configuration</span><span class="p">(),</span>
-                                               <span class="s1">&#39;coupling_map&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="n">coupling_map</span> <span class="o">=</span> <span class="n">coupling_map</span> <span class="ow">or</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">backend</span><span class="o">.</span><span class="n">configuration</span><span class="p">(),</span> <span class="s1">&#39;coupling_map&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_backend_config</span> <span class="o">=</span> <span class="p">{</span>
             <span class="s1">&#39;basis_gates&#39;</span><span class="p">:</span> <span class="n">basis_gates</span><span class="p">,</span>
             <span class="s1">&#39;coupling_map&#39;</span><span class="p">:</span> <span class="n">coupling_map</span>
         <span class="p">}</span>
 
-        <span class="c1"># setup noise config</span>
-        <span class="n">noise_config</span> <span class="o">=</span> <span class="kc">None</span>
-        <span class="k">if</span> <span class="n">noise_model</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="k">if</span> <span class="n">is_aer_provider</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_backend</span><span class="p">):</span>
-                <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_statevector</span><span class="p">:</span>
-                    <span class="n">noise_config</span> <span class="o">=</span> <span class="n">noise_model</span>
-                <span class="k">else</span><span class="p">:</span>
-                    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;The noise model can be only used with Aer qasm simulator. &quot;</span>
-                                <span class="s2">&quot;Change it to None.&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">circuit_caching</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">optimization_level</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">optimization_level</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">optimization_level</span> <span class="o">=</span> <span class="mi">0</span>
             <span class="k">else</span><span class="p">:</span>
-                <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;The noise model can be only used with Qiskit Aer. &quot;</span>
-                            <span class="s2">&quot;Please install it.&quot;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_noise_config</span> <span class="o">=</span> <span class="p">{}</span> <span class="k">if</span> <span class="n">noise_config</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="p">{</span><span class="s1">&#39;noise_model&#39;</span><span class="p">:</span> <span class="n">noise_config</span><span class="p">}</span>
-
+                <span class="n">circuit_caching</span> <span class="o">=</span> <span class="kc">False</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s1">&#39;CircuitCache cannot be used with optimization_level </span><span class="si">{}</span><span class="s1">. &#39;</span>
+                               <span class="s1">&#39;Caching has been disabled. To re-enable, please set &#39;</span>
+                               <span class="s1">&#39;optimization_level = 0 or None.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">optimization_level</span><span class="p">))</span>
         <span class="c1"># setup compile config</span>
-        <span class="k">if</span> <span class="n">initial_layout</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">initial_layout</span><span class="p">,</span> <span class="n">Layout</span><span class="p">):</span>
-            <span class="n">initial_layout</span> <span class="o">=</span> <span class="n">Layout</span><span class="p">(</span><span class="n">initial_layout</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_compile_config</span> <span class="o">=</span> <span class="p">{</span>
             <span class="s1">&#39;pass_manager&#39;</span><span class="p">:</span> <span class="n">pass_manager</span><span class="p">,</span>
             <span class="s1">&#39;initial_layout&#39;</span><span class="p">:</span> <span class="n">initial_layout</span><span class="p">,</span>
-            <span class="s1">&#39;seed_transpiler&#39;</span><span class="p">:</span> <span class="n">seed_transpiler</span>
+            <span class="s1">&#39;seed_transpiler&#39;</span><span class="p">:</span> <span class="n">seed_transpiler</span><span class="p">,</span>
+            <span class="s1">&#39;optimization_level&#39;</span><span class="p">:</span> <span class="n">optimization_level</span>
         <span class="p">}</span>
 
         <span class="c1"># setup job config</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_qjob_config</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;timeout&#39;</span><span class="p">:</span> <span class="n">timeout</span><span class="p">}</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_local</span> \
             <span class="k">else</span> <span class="p">{</span><span class="s1">&#39;timeout&#39;</span><span class="p">:</span> <span class="n">timeout</span><span class="p">,</span> <span class="s1">&#39;wait&#39;</span><span class="p">:</span> <span class="n">wait</span><span class="p">}</span>
 
+        <span class="c1"># setup noise config</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_noise_config</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">if</span> <span class="n">noise_model</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">is_aer_qasm</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_backend</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_noise_config</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;noise_model&#39;</span><span class="p">:</span> <span class="n">noise_model</span><span class="p">}</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="n">AquaError</span><span class="p">(</span><span class="s2">&quot;The noise model is not supported on the selected backend </span><span class="si">{}</span><span class="s2"> (</span><span class="si">{}</span><span class="s2">) only certain &quot;</span>
+                                <span class="s2">&quot;backends, such as Aer qasm support noise.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">backend_name</span><span class="p">,</span>
+                                                                                   <span class="bp">self</span><span class="o">.</span><span class="n">_backend</span><span class="o">.</span><span class="n">provider</span><span class="p">()))</span>
+
         <span class="c1"># setup backend options for run</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_backend_options</span> <span class="o">=</span> <span class="p">{}</span>
-        <span class="k">if</span> <span class="n">is_ibmq_provider</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_backend</span><span class="p">):</span>
-            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;backend_options can not used with the backends in IBMQ provider.&quot;</span><span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_backend_options</span> <span class="o">=</span> <span class="p">{}</span> <span class="k">if</span> <span class="n">backend_options</span> <span class="ow">is</span> <span class="kc">None</span> \
-                <span class="k">else</span> <span class="p">{</span><span class="s1">&#39;backend_options&#39;</span><span class="p">:</span> <span class="n">backend_options</span><span class="p">}</span>
+        <span class="k">if</span> <span class="n">backend_options</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">support_backend_options</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_backend</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_backend_options</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;backend_options&#39;</span><span class="p">:</span> <span class="n">backend_options</span><span class="p">}</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="n">AquaError</span><span class="p">(</span><span class="s2">&quot;backend_options can not used with the backends in IBMQ provider.&quot;</span><span class="p">)</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">_shared_circuits</span> <span class="o">=</span> <span class="kc">False</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_circuit_summary</span> <span class="o">=</span> <span class="kc">False</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_circuit_cache</span> <span class="o">=</span> <span class="n">CircuitCache</span><span class="p">(</span><span class="n">skip_qobj_deepcopy</span><span class="o">=</span><span class="n">skip_qobj_deepcopy</span><span class="p">,</span>
-                                           <span class="n">cache_file</span><span class="o">=</span><span class="n">cache_file</span><span class="p">)</span> <span class="k">if</span> <span class="n">circuit_caching</span> <span class="k">else</span> <span class="kc">None</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_skip_qobj_validation</span> <span class="o">=</span> <span class="n">skip_qobj_validation</span>
-
+        <span class="c1"># setup measurement error mitigation</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_measurement_error_mitigation_cls</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_statevector</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">measurement_error_mitigation_cls</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-                <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Measurement error mitigation does not work with statevector simulation, disable it.&quot;</span><span class="p">)</span>
+                <span class="k">raise</span> <span class="n">AquaError</span><span class="p">(</span><span class="s2">&quot;Measurement error mitigation does not work with the statevector simulation.&quot;</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_measurement_error_mitigation_cls</span> <span class="o">=</span> <span class="n">measurement_error_mitigation_cls</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_measurement_error_mitigation_fitter</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_measurement_error_mitigation_fitters</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="c1"># TODO: support different fitting method in error mitigation?</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_measurement_error_mitigation_method</span> <span class="o">=</span> <span class="s1">&#39;least_squares&#39;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_cals_matrix_refresh_period</span> <span class="o">=</span> <span class="n">cals_matrix_refresh_period</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_prev_timestamp</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_measurement_error_mitigation_shots</span> <span class="o">=</span> <span class="n">measurement_error_mitigation_shots</span>
 
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_measurement_error_mitigation_cls</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;The measurement error mitigation is enable. &quot;</span>
@@ -335,6 +358,26 @@
                         <span class="s2">&quot;Furthermore, Aqua will re-use the calibration matrix for </span><span class="si">{}</span><span class="s2"> minutes &quot;</span>
                         <span class="s2">&quot;and re-build it after that.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cals_matrix_refresh_period</span><span class="p">))</span>
 
+        <span class="c1"># setup others</span>
+        <span class="c1"># TODO: allow an external way to overwrite the setting circuit cache temporally</span>
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;QISKIT_AQUA_CIRCUIT_CACHE&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">):</span>
+            <span class="n">skip_qobj_deepcopy</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_circuit_cache</span> <span class="o">=</span> <span class="n">CircuitCache</span><span class="p">(</span><span class="n">skip_qobj_deepcopy</span><span class="o">=</span><span class="n">skip_qobj_deepcopy</span><span class="p">,</span>
+                                               <span class="n">cache_file</span><span class="o">=</span><span class="n">cache_file</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">circuit_caching</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_circuit_cache</span> <span class="o">=</span> <span class="n">CircuitCache</span><span class="p">(</span><span class="n">skip_qobj_deepcopy</span><span class="o">=</span><span class="n">skip_qobj_deepcopy</span><span class="p">,</span>
+                                                   <span class="n">cache_file</span><span class="o">=</span><span class="n">cache_file</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_circuit_cache</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="k">if</span> <span class="n">is_ibmq_provider</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_backend</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">skip_qobj_validation</span><span class="p">:</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;The skip Qobj validation does not work for IBMQ provider. Disable it.&quot;</span><span class="p">)</span>
+                <span class="n">skip_qobj_validation</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_skip_qobj_validation</span> <span class="o">=</span> <span class="n">skip_qobj_validation</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_circuit_summary</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_job_callback</span> <span class="o">=</span> <span class="n">job_callback</span>
         <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -343,6 +386,8 @@
 <span class="sd">        Returns:</span>
 <span class="sd">            str: the info of the object.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="kn">from</span> <span class="nn">qiskit</span> <span class="k">import</span> <span class="n">__version__</span> <span class="k">as</span> <span class="n">terra_version</span>
+
         <span class="n">info</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Qiskit Terra version: </span><span class="si">{}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">terra_version</span><span class="p">)</span>
         <span class="n">info</span> <span class="o">+=</span> <span class="s2">&quot;Backend: &#39;</span><span class="si">{}</span><span class="s2"> (</span><span class="si">{}</span><span class="s2">)&#39;, with following setting:</span><span class="se">\n</span><span class="si">{}</span><span class="se">\n</span><span class="si">{}</span><span class="se">\n</span><span class="si">{}</span><span class="se">\n</span><span class="si">{}</span><span class="se">\n</span><span class="si">{}</span><span class="se">\n</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">backend_name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_backend</span><span class="o">.</span><span class="n">provider</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">_backend_config</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_compile_config</span><span class="p">,</span>
@@ -361,30 +406,82 @@
 <span class="sd">        Returns:</span>
 <span class="sd">            Result: Result object</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">qobjs</span> <span class="o">=</span> <span class="n">compile_circuits</span><span class="p">(</span><span class="n">circuits</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_backend</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_backend_config</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_compile_config</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_run_config</span><span class="p">,</span>
-                                 <span class="n">show_circuit_summary</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_circuit_summary</span><span class="p">,</span> <span class="n">circuit_cache</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_circuit_cache</span><span class="p">,</span>
-                                 <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="kn">from</span> <span class="nn">.utils.run_circuits</span> <span class="k">import</span> <span class="p">(</span><span class="n">run_qobj</span><span class="p">,</span>
+                                         <span class="n">compile_circuits</span><span class="p">)</span>
+
+        <span class="kn">from</span> <span class="nn">.utils.measurement_error_mitigation</span> <span class="k">import</span> <span class="p">(</span><span class="n">get_measured_qubits_from_qobj</span><span class="p">,</span>
+                                                         <span class="n">build_measurement_error_mitigation_qobj</span><span class="p">)</span>
+
+        <span class="n">qobj</span> <span class="o">=</span> <span class="n">compile_circuits</span><span class="p">(</span><span class="n">circuits</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_backend</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_backend_config</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_compile_config</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_run_config</span><span class="p">,</span>
+                                <span class="n">show_circuit_summary</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_circuit_summary</span><span class="p">,</span> <span class="n">circuit_cache</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_circuit_cache</span><span class="p">,</span>
+                                <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_measurement_error_mitigation_cls</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">maybe_refresh_cals_matrix</span><span class="p">():</span>
+            <span class="n">qubit_index</span> <span class="o">=</span> <span class="n">get_measured_qubits_from_qobj</span><span class="p">(</span><span class="n">qobj</span><span class="p">)</span>
+            <span class="n">qubit_index_str</span> <span class="o">=</span> <span class="s1">&#39;_&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">qubit_index</span><span class="p">])</span> <span class="o">+</span> <span class="s2">&quot;_</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_measurement_error_mitigation_shots</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">_run_config</span><span class="o">.</span><span class="n">shots</span><span class="p">)</span>
+            <span class="n">measurement_error_mitigation_fitter</span><span class="p">,</span> <span class="n">timestamp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_measurement_error_mitigation_fitters</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">qubit_index_str</span><span class="p">,</span> <span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+
+            <span class="k">if</span> <span class="n">measurement_error_mitigation_fitter</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="c1"># check the asked qubit_index are the subset of build matrices</span>
+                <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_measurement_error_mitigation_fitters</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+                    <span class="n">stored_qubit_index</span> <span class="o">=</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">key</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">)[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span>
+                    <span class="n">stored_shots</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">key</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+                    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">qubit_index</span><span class="p">)</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">stored_qubit_index</span><span class="p">):</span>
+                        <span class="n">tmp</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">qubit_index</span> <span class="o">+</span> <span class="n">stored_qubit_index</span><span class="p">))</span>
+                        <span class="k">if</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">tmp</span><span class="p">)</span> <span class="o">==</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">stored_qubit_index</span><span class="p">)</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_run_config</span><span class="o">.</span><span class="n">shots</span> <span class="o">==</span> <span class="n">stored_shots</span><span class="p">:</span>
+                            <span class="c1"># the qubit used in current job is the subset and shots are the same</span>
+                            <span class="n">measurement_error_mitigation_fitter</span><span class="p">,</span> <span class="n">timestamp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_measurement_error_mitigation_fitters</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+                            <span class="n">measurement_error_mitigation_fitter</span> <span class="o">=</span> \
+                                <span class="n">measurement_error_mitigation_fitter</span><span class="o">.</span><span class="n">subset_fitter</span><span class="p">(</span><span class="n">qubit_sublist</span><span class="o">=</span><span class="n">qubit_index</span><span class="p">)</span>
+                            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;The qubits used in the current job is the subset of previous jobs, &quot;</span>
+                                        <span class="s2">&quot;reusing the calibration matrix if it is not out-of-date.&quot;</span><span class="p">)</span>
+
+            <span class="n">build_cals_matrix</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">maybe_refresh_cals_matrix</span><span class="p">(</span><span class="n">timestamp</span><span class="p">)</span> <span class="ow">or</span> <span class="n">measurement_error_mitigation_fitter</span> <span class="ow">is</span> <span class="kc">None</span>
+
+            <span class="k">if</span> <span class="n">build_cals_matrix</span><span class="p">:</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Updating qobj with the circuits for measurement error mitigation.&quot;</span><span class="p">)</span>
+                <span class="n">use_different_shots</span> <span class="o">=</span> <span class="ow">not</span> <span class="p">(</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">_measurement_error_mitigation_shots</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">_measurement_error_mitigation_shots</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">_run_config</span><span class="o">.</span><span class="n">shots</span><span class="p">)</span>
+                <span class="n">temp_run_config</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_run_config</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">use_different_shots</span><span class="p">:</span>
+                    <span class="n">temp_run_config</span><span class="o">.</span><span class="n">shots</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_measurement_error_mitigation_shots</span>
+
+                <span class="n">cals_qobj</span><span class="p">,</span> <span class="n">state_labels</span><span class="p">,</span> <span class="n">circuit_labels</span> <span class="o">=</span> \
+                    <span class="n">build_measurement_error_mitigation_qobj</span><span class="p">(</span><span class="n">qubit_index</span><span class="p">,</span>
+                                                            <span class="bp">self</span><span class="o">.</span><span class="n">_measurement_error_mitigation_cls</span><span class="p">,</span>
+                                                            <span class="bp">self</span><span class="o">.</span><span class="n">_backend</span><span class="p">,</span>
+                                                            <span class="bp">self</span><span class="o">.</span><span class="n">_backend_config</span><span class="p">,</span>
+                                                            <span class="bp">self</span><span class="o">.</span><span class="n">_compile_config</span><span class="p">,</span>
+                                                            <span class="n">temp_run_config</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">use_different_shots</span><span class="p">:</span>
+                    <span class="n">cals_result</span> <span class="o">=</span> <span class="n">run_qobj</span><span class="p">(</span><span class="n">cals_qobj</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_backend</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_qjob_config</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_backend_options</span><span class="p">,</span>
+                                           <span class="bp">self</span><span class="o">.</span><span class="n">_noise_config</span><span class="p">,</span>
+                                           <span class="bp">self</span><span class="o">.</span><span class="n">_skip_qobj_validation</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_job_callback</span><span class="p">)</span>
+                    <span class="n">result</span> <span class="o">=</span> <span class="n">run_qobj</span><span class="p">(</span><span class="n">qobj</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_backend</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_qjob_config</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_backend_options</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_noise_config</span><span class="p">,</span>
+                                      <span class="bp">self</span><span class="o">.</span><span class="n">_skip_qobj_validation</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_job_callback</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">qobj</span><span class="o">.</span><span class="n">experiments</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">cals_qobj</span><span class="o">.</span><span class="n">experiments</span>
+                    <span class="n">result</span> <span class="o">=</span> <span class="n">run_qobj</span><span class="p">(</span><span class="n">qobj</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_backend</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_qjob_config</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_backend_options</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_noise_config</span><span class="p">,</span>
+                                      <span class="bp">self</span><span class="o">.</span><span class="n">_skip_qobj_validation</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_job_callback</span><span class="p">)</span>
+                    <span class="n">cals_result</span> <span class="o">=</span> <span class="n">result</span>
+
                 <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Building calibration matrix for measurement error mitigation.&quot;</span><span class="p">)</span>
-                <span class="n">qubit_list</span> <span class="o">=</span> <span class="n">get_measured_qubits_from_qobj</span><span class="p">(</span><span class="n">qobjs</span><span class="p">)</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">_measurement_error_mitigation_fitter</span> <span class="o">=</span> <span class="n">build_measurement_error_mitigation_fitter</span><span class="p">(</span><span class="n">qubit_list</span><span class="p">,</span>
-                                                                                          <span class="bp">self</span><span class="o">.</span><span class="n">_measurement_error_mitigation_cls</span><span class="p">,</span>
-                                                                                          <span class="bp">self</span><span class="o">.</span><span class="n">_backend</span><span class="p">,</span>
-                                                                                          <span class="bp">self</span><span class="o">.</span><span class="n">_backend_config</span><span class="p">,</span>
-                                                                                          <span class="bp">self</span><span class="o">.</span><span class="n">_compile_config</span><span class="p">,</span>
-                                                                                          <span class="bp">self</span><span class="o">.</span><span class="n">_run_config</span><span class="p">,</span>
-                                                                                          <span class="bp">self</span><span class="o">.</span><span class="n">_qjob_config</span><span class="p">,</span>
-                                                                                          <span class="bp">self</span><span class="o">.</span><span class="n">_backend_options</span><span class="p">,</span>
-                                                                                          <span class="bp">self</span><span class="o">.</span><span class="n">_noise_config</span><span class="p">)</span>
+                <span class="n">measurement_error_mitigation_fitter</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_measurement_error_mitigation_cls</span><span class="p">(</span><span class="n">cals_result</span><span class="p">,</span>
+                                                                                             <span class="n">state_labels</span><span class="p">,</span>
+                                                                                             <span class="n">qubit_list</span><span class="o">=</span><span class="n">qubit_index</span><span class="p">,</span>
+                                                                                             <span class="n">circlabel</span><span class="o">=</span><span class="n">circuit_labels</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_measurement_error_mitigation_fitters</span><span class="p">[</span><span class="n">qubit_index_str</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">measurement_error_mitigation_fitter</span><span class="p">,</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">())</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">result</span> <span class="o">=</span> <span class="n">run_qobj</span><span class="p">(</span><span class="n">qobj</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_backend</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_qjob_config</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_backend_options</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_noise_config</span><span class="p">,</span>
+                                  <span class="bp">self</span><span class="o">.</span><span class="n">_skip_qobj_validation</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_job_callback</span><span class="p">)</span>
 
-        <span class="n">result</span> <span class="o">=</span> <span class="n">run_qobjs</span><span class="p">(</span><span class="n">qobjs</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_backend</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_qjob_config</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_backend_options</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_noise_config</span><span class="p">,</span>
-                           <span class="bp">self</span><span class="o">.</span><span class="n">_skip_qobj_validation</span><span class="p">)</span>
-
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_measurement_error_mitigation_fitter</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">result</span> <span class="o">=</span> <span class="n">mitigate_measurement_error</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_measurement_error_mitigation_fitter</span><span class="p">,</span>
-                                                <span class="bp">self</span><span class="o">.</span><span class="n">_measurement_error_mitigation_method</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">measurement_error_mitigation_fitter</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Performing measurement error mitigation.&quot;</span><span class="p">)</span>
+                <span class="n">result</span> <span class="o">=</span> <span class="n">measurement_error_mitigation_fitter</span><span class="o">.</span><span class="n">filter</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">result</span><span class="p">,</span>
+                                                                          <span class="bp">self</span><span class="o">.</span><span class="n">_measurement_error_mitigation_method</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="n">run_qobj</span><span class="p">(</span><span class="n">qobj</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_backend</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_qjob_config</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_backend_options</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_noise_config</span><span class="p">,</span>
+                              <span class="bp">self</span><span class="o">.</span><span class="n">_skip_qobj_validation</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_job_callback</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_circuit_summary</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_circuit_summary</span> <span class="o">=</span> <span class="kc">False</span>
@@ -403,18 +500,25 @@
             <span class="k">elif</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">QuantumInstance</span><span class="o">.</span><span class="n">BACKEND_CONFIG</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_backend_config</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span>
             <span class="k">elif</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">QuantumInstance</span><span class="o">.</span><span class="n">BACKEND_OPTIONS</span><span class="p">:</span>
-                <span class="k">if</span> <span class="n">is_ibmq_provider</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_backend</span><span class="p">):</span>
-                    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;backend_options can not used with the backends in IBMQ provider.&quot;</span><span class="p">)</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">support_backend_options</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_backend</span><span class="p">):</span>
+                    <span class="k">raise</span> <span class="n">AquaError</span><span class="p">(</span><span class="s2">&quot;backend_options can not be used with this backends &quot;</span>
+                                    <span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> (</span><span class="si">{}</span><span class="s2">).&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">backend_name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_backend</span><span class="o">.</span><span class="n">provider</span><span class="p">()))</span>
                 <span class="k">else</span><span class="p">:</span>
                     <span class="k">if</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">QuantumInstance</span><span class="o">.</span><span class="n">BACKEND_OPTIONS_QASM_ONLY</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_statevector</span><span class="p">:</span>
-                        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;&#39;</span><span class="si">{}</span><span class="s2">&#39; is only applicable for qasm simulator but &quot;</span>
-                                    <span class="s2">&quot;statevector simulator is used. Skip the setting.&quot;</span><span class="p">)</span>
+                        <span class="k">raise</span> <span class="n">AquaError</span><span class="p">(</span><span class="s2">&quot;&#39;</span><span class="si">{}</span><span class="s2">&#39; is only applicable for qasm simulator but &quot;</span>
+                                        <span class="s2">&quot;statevector simulator is used as the backend.&quot;</span><span class="p">)</span>
                     <span class="k">else</span><span class="p">:</span>
                         <span class="k">if</span> <span class="s1">&#39;backend_options&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_backend_options</span><span class="p">:</span>
                             <span class="bp">self</span><span class="o">.</span><span class="n">_backend_options</span><span class="p">[</span><span class="s1">&#39;backend_options&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
                         <span class="bp">self</span><span class="o">.</span><span class="n">_backend_options</span><span class="p">[</span><span class="s1">&#39;backend_options&#39;</span><span class="p">][</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span>
             <span class="k">elif</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">QuantumInstance</span><span class="o">.</span><span class="n">NOISE_CONFIG</span><span class="p">:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">_noise_config</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">is_aer_qasm</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_backend</span><span class="p">):</span>
+                    <span class="k">raise</span> <span class="n">AquaError</span><span class="p">(</span><span class="s2">&quot;The noise model is not supported on the selected backend </span><span class="si">{}</span><span class="s2"> (</span><span class="si">{}</span><span class="s2">) only certain &quot;</span>
+                                    <span class="s2">&quot;backends, such as Aer qasm support noise.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">backend_name</span><span class="p">,</span>
+                                                                                       <span class="bp">self</span><span class="o">.</span><span class="n">_backend</span><span class="o">.</span><span class="n">provider</span><span class="p">()))</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_noise_config</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span>
+
             <span class="k">else</span><span class="p">:</span>
                 <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;unknown setting for the key (</span><span class="si">{}</span><span class="s2">).&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">k</span><span class="p">))</span></div>
 
@@ -449,15 +553,6 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_backend_options</span>
 
     <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">shared_circuits</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Getter of shared_circuits.&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_shared_circuits</span>
-
-    <span class="nd">@shared_circuits</span><span class="o">.</span><span class="n">setter</span>
-    <span class="k">def</span> <span class="nf">shared_circuits</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">new_value</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_shared_circuits</span> <span class="o">=</span> <span class="n">new_value</span>
-
-    <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">circuit_summary</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Getter of circuit summary.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_circuit_summary</span>
@@ -465,6 +560,30 @@
     <span class="nd">@circuit_summary</span><span class="o">.</span><span class="n">setter</span>
     <span class="k">def</span> <span class="nf">circuit_summary</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">new_value</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_circuit_summary</span> <span class="o">=</span> <span class="n">new_value</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">measurement_error_mitigation_cls</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_measurement_error_mitigation_cls</span>
+
+    <span class="nd">@measurement_error_mitigation_cls</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">measurement_error_mitigation_cls</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">new_value</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_measurement_error_mitigation_cls</span> <span class="o">=</span> <span class="n">new_value</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">cals_matrix_refresh_period</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cals_matrix_refresh_period</span>
+
+    <span class="nd">@cals_matrix_refresh_period</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">cals_matrix_refresh_period</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">new_value</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cals_matrix_refresh_period</span> <span class="o">=</span> <span class="n">new_value</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">measurement_error_mitigation_shots</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_measurement_error_mitigation_shots</span>
+
+    <span class="nd">@measurement_error_mitigation_shots</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">measurement_error_mitigation_shots</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">new_value</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_measurement_error_mitigation_shots</span> <span class="o">=</span> <span class="n">new_value</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">backend</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -507,28 +626,44 @@
     <span class="k">def</span> <span class="nf">skip_qobj_validation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">new_value</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_skip_qobj_validation</span> <span class="o">=</span> <span class="n">new_value</span>
 
-<div class="viewcode-block" id="QuantumInstance.maybe_refresh_cals_matrix"><a class="viewcode-back" href="../../../autodoc/qiskit.aqua.quantum_instance.html#qiskit.aqua.QuantumInstance.maybe_refresh_cals_matrix">[ドキュメント]</a>    <span class="k">def</span> <span class="nf">maybe_refresh_cals_matrix</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="QuantumInstance.maybe_refresh_cals_matrix"><a class="viewcode-back" href="../../../autodoc/qiskit.aqua.quantum_instance.html#qiskit.aqua.QuantumInstance.maybe_refresh_cals_matrix">[ドキュメント]</a>    <span class="k">def</span> <span class="nf">maybe_refresh_cals_matrix</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">timestamp</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Calculate the time difference from the query of last time.</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            bool: whether or not refresh the cals_matrix</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">timestamp</span> <span class="o">=</span> <span class="n">timestamp</span> <span class="ow">or</span> <span class="mi">0</span>
         <span class="n">ret</span> <span class="o">=</span> <span class="kc">False</span>
         <span class="n">curr_timestamp</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
-        <span class="n">difference</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">curr_timestamp</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_prev_timestamp</span><span class="p">)</span> <span class="o">/</span> <span class="mf">60.0</span>
+        <span class="n">difference</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">curr_timestamp</span> <span class="o">-</span> <span class="n">timestamp</span><span class="p">)</span> <span class="o">/</span> <span class="mf">60.0</span>
         <span class="k">if</span> <span class="n">difference</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cals_matrix_refresh_period</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_prev_timestamp</span> <span class="o">=</span> <span class="n">curr_timestamp</span>
             <span class="n">ret</span> <span class="o">=</span> <span class="kc">True</span>
 
         <span class="k">return</span> <span class="n">ret</span></div>
 
-    <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">cals_matrix</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="n">cals_matrix</span> <span class="o">=</span> <span class="kc">None</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_measurement_error_mitigation_fitter</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">cals_matrix</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_measurement_error_mitigation_fitter</span><span class="o">.</span><span class="n">cal_matrix</span>
-        <span class="k">return</span> <span class="n">cals_matrix</span></div>
+<div class="viewcode-block" id="QuantumInstance.cals_matrix"><a class="viewcode-back" href="../../../autodoc/qiskit.aqua.quantum_instance.html#qiskit.aqua.QuantumInstance.cals_matrix">[ドキュメント]</a>    <span class="k">def</span> <span class="nf">cals_matrix</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">qubit_index</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Get the stored calibration matrices and its timestamp.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            qubit_index: the qubit index of corresponding calibration matrix.</span>
+<span class="sd">            If None, return all stored calibration matrices.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            tuple(np.ndarray, int): the calibration matrix and the creation timestamp if qubit_index is not None.</span>
+<span class="sd">                                    otherwise, return all matrices and their timestamp in a dictionary.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">ret</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">shots</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_measurement_error_mitigation_shots</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">_run_config</span><span class="o">.</span><span class="n">shots</span>
+        <span class="k">if</span> <span class="n">qubit_index</span><span class="p">:</span>
+            <span class="n">qubit_index_str</span> <span class="o">=</span> <span class="s1">&#39;_&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">qubit_index</span><span class="p">])</span> <span class="o">+</span> <span class="s2">&quot;_</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">shots</span><span class="p">)</span>
+            <span class="n">fitter</span><span class="p">,</span> <span class="n">timestamp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_measurement_error_mitigation_fitters</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">qubit_index_str</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">fitter</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">ret</span> <span class="o">=</span> <span class="p">(</span><span class="n">fitter</span><span class="o">.</span><span class="n">cal_matrix</span><span class="p">,</span> <span class="n">timestamp</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">ret</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="p">(</span><span class="n">v</span><span class="o">.</span><span class="n">cal_matrix</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_measurement_error_mitigation_fitters</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
+        <span class="k">return</span> <span class="n">ret</span></div></div>
 </pre></div>
 
         </div>

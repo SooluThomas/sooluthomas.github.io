@@ -335,13 +335,12 @@
     <span class="n">terms</span> <span class="o">=</span> <span class="p">{}</span>
     <span class="n">mp2_delta</span> <span class="o">=</span> <span class="mi">0</span>
 
-    <span class="n">num_particles</span> <span class="o">=</span> <span class="n">qmolecule</span><span class="o">.</span><span class="n">num_alpha</span> <span class="o">+</span> <span class="n">qmolecule</span><span class="o">.</span><span class="n">num_beta</span>
     <span class="n">num_orbitals</span> <span class="o">=</span> <span class="n">qmolecule</span><span class="o">.</span><span class="n">num_orbitals</span>
     <span class="n">ints</span> <span class="o">=</span> <span class="n">qmolecule</span><span class="o">.</span><span class="n">mo_eri_ints</span>
     <span class="n">oe</span> <span class="o">=</span> <span class="n">qmolecule</span><span class="o">.</span><span class="n">orbital_energies</span>
 
     <span class="c1"># Orbital indexes given by this method are numbered according to the blocked spin ordering</span>
-    <span class="n">singles</span><span class="p">,</span> <span class="n">doubles</span> <span class="o">=</span> <span class="n">UCCSD</span><span class="o">.</span><span class="n">compute_excitation_lists</span><span class="p">(</span><span class="n">num_particles</span><span class="p">,</span> <span class="n">num_orbitals</span> <span class="o">*</span> <span class="mi">2</span><span class="p">,</span> <span class="n">same_spin_doubles</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">singles</span><span class="p">,</span> <span class="n">doubles</span> <span class="o">=</span> <span class="n">UCCSD</span><span class="o">.</span><span class="n">compute_excitation_lists</span><span class="p">([</span><span class="n">qmolecule</span><span class="o">.</span><span class="n">num_alpha</span><span class="p">,</span> <span class="n">qmolecule</span><span class="o">.</span><span class="n">num_beta</span><span class="p">],</span> <span class="n">num_orbitals</span> <span class="o">*</span> <span class="mi">2</span><span class="p">,</span> <span class="n">same_spin_doubles</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
     <span class="c1"># doubles is list of [from, to, from, to] in spin orbital indexing where alpha runs</span>
     <span class="c1"># from 0 to num_orbitals-1, and beta from num_orbitals to num_orbitals*2-1</span>

@@ -1653,27 +1653,26 @@
 <dl class="function">
 <dt id="qiskit.aqua.translators.ising.exact_cover.get_exact_cover_qubitops">
 <code class="descname">get_exact_cover_qubitops</code><span class="sig-paren">(</span><em>list_of_subsets</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/translators/ising/exact_cover.html#get_exact_cover_qubitops"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.aqua.translators.ising.exact_cover.get_exact_cover_qubitops" title="この定義へのパーマリンク">¶</a></dt>
-<dd><p>Construct the Hamiltonian for the exact solver problem</p>
+<dd><p>Construct the Hamiltonian for the exact solver problem.</p>
+<p class="rubric">メモ</p>
+<p>Assumption: the union of the subsets contains all the elements to cover.
+The Hamiltonian is:</p>
+<blockquote>
+<div>sum_{each element e}{(1-sum_{every subset_i that contains e}{Xi})^2},
+where Xi (Xi=1 or 0) means whether should include the subset i.</div></blockquote>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">パラメータ:</th><td class="field-body"><strong>list_of_subsets</strong> -- list of lists (i.e., subsets)</td>
 </tr>
-<tr class="field-even field"><th class="field-name">戻り値:</th><td class="field-body">operator for the Hamiltonian and a
-constant shift for the obj function.</td>
+<tr class="field-even field"><th class="field-name">戻り値:</th><td class="field-body">operator for the Hamiltonian
+float: a constant shift for the obj function.</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">戻り値の型:</th><td class="field-body"><a class="reference internal" href="qiskit.aqua.operator.html#qiskit.aqua.operator.Operator" title="qiskit.aqua.operator.Operator">operator.Operator</a>, float</td>
+<tr class="field-odd field"><th class="field-name">戻り値の型:</th><td class="field-body">WeightedPauliOperator</td>
 </tr>
 </tbody>
 </table>
-<dl class="docutils">
-<dt>Assumption:</dt>
-<dd>the union of the subsets contains all the elements to cover</dd>
-<dt>The Hamiltonian is:</dt>
-<dd>sum_{each element e}{(1-sum_{every subset_i that contains e}{Xi})^2},
-where Xi (Xi=1 or 0) means whether should include the subset i.</dd>
-</dl>
 </dd></dl>
 
 <dl class="function">

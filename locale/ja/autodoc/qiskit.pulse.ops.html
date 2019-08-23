@@ -1648,7 +1648,7 @@
 <p>Schedule operations.</p>
 <dl class="function">
 <dt id="qiskit.pulse.ops.append">
-<code class="descname">append</code><span class="sig-paren">(</span><em>parent: qiskit.pulse.interfaces.ScheduleComponent</em>, <em>child: qiskit.pulse.interfaces.ScheduleComponent</em>, <em>buffer: bool = True</em>, <em>name: str = None</em><span class="sig-paren">)</span> &#x2192; qiskit.pulse.schedule.Schedule<a class="reference internal" href="../_modules/qiskit/pulse/ops.html#append"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.pulse.ops.append" title="この定義へのパーマリンク">¶</a></dt>
+<code class="descname">append</code><span class="sig-paren">(</span><em>parent: qiskit.pulse.interfaces.ScheduleComponent</em>, <em>child: qiskit.pulse.interfaces.ScheduleComponent</em>, <em>buffer: bool = True</em>, <em>name: Optional[str] = None</em><span class="sig-paren">)</span> &#x2192; qiskit.pulse.schedule.Schedule<a class="reference internal" href="../_modules/qiskit/pulse/ops.html#append"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.pulse.ops.append" title="この定義へのパーマリンク">¶</a></dt>
 <dd><dl class="docutils">
 <dt>Return a new schedule with by appending <cite>child</cite> to <cite>parent</cite> at</dt>
 <dd><p class="first">the last time of the <cite>parent</cite> schedule's channels
@@ -1674,7 +1674,7 @@ over the intersection of the parent and child schedule's channels.</p>
 
 <dl class="function">
 <dt id="qiskit.pulse.ops.flatten">
-<code class="descname">flatten</code><span class="sig-paren">(</span><em>schedule: qiskit.pulse.interfaces.ScheduleComponent</em>, <em>name: str = None</em><span class="sig-paren">)</span> &#x2192; qiskit.pulse.schedule.Schedule<a class="reference internal" href="../_modules/qiskit/pulse/ops.html#flatten"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.pulse.ops.flatten" title="この定義へのパーマリンク">¶</a></dt>
+<code class="descname">flatten</code><span class="sig-paren">(</span><em>schedule: qiskit.pulse.interfaces.ScheduleComponent</em>, <em>name: Optional[str] = None</em><span class="sig-paren">)</span> &#x2192; qiskit.pulse.schedule.Schedule<a class="reference internal" href="../_modules/qiskit/pulse/ops.html#flatten"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.pulse.ops.flatten" title="この定義へのパーマリンク">¶</a></dt>
 <dd><p>Create a flattened schedule.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1692,7 +1692,7 @@ over the intersection of the parent and child schedule's channels.</p>
 
 <dl class="function">
 <dt id="qiskit.pulse.ops.insert">
-<code class="descname">insert</code><span class="sig-paren">(</span><em>parent: qiskit.pulse.interfaces.ScheduleComponent</em>, <em>time: int</em>, <em>child: qiskit.pulse.interfaces.ScheduleComponent</em>, <em>buffer: bool = False</em>, <em>name: str = None</em><span class="sig-paren">)</span> &#x2192; qiskit.pulse.schedule.Schedule<a class="reference internal" href="../_modules/qiskit/pulse/ops.html#insert"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.pulse.ops.insert" title="この定義へのパーマリンク">¶</a></dt>
+<code class="descname">insert</code><span class="sig-paren">(</span><em>parent: qiskit.pulse.interfaces.ScheduleComponent</em>, <em>time: int</em>, <em>child: qiskit.pulse.interfaces.ScheduleComponent</em>, <em>buffer: bool = False</em>, <em>name: Optional[str] = None</em><span class="sig-paren">)</span> &#x2192; qiskit.pulse.schedule.Schedule<a class="reference internal" href="../_modules/qiskit/pulse/ops.html#insert"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.pulse.ops.insert" title="この定義へのパーマリンク">¶</a></dt>
 <dd><p>Return a new schedule with the <cite>child</cite> schedule inserted into the <cite>parent</cite> at <cite>start_time</cite>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1713,7 +1713,7 @@ over the intersection of the parent and child schedule's channels.</p>
 
 <dl class="function">
 <dt id="qiskit.pulse.ops.shift">
-<code class="descname">shift</code><span class="sig-paren">(</span><em>schedule: qiskit.pulse.interfaces.ScheduleComponent</em>, <em>time: int</em>, <em>name: str = None</em><span class="sig-paren">)</span> &#x2192; qiskit.pulse.schedule.Schedule<a class="reference internal" href="../_modules/qiskit/pulse/ops.html#shift"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.pulse.ops.shift" title="この定義へのパーマリンク">¶</a></dt>
+<code class="descname">shift</code><span class="sig-paren">(</span><em>schedule: qiskit.pulse.interfaces.ScheduleComponent</em>, <em>time: int</em>, <em>name: Optional[str] = None</em><span class="sig-paren">)</span> &#x2192; qiskit.pulse.schedule.Schedule<a class="reference internal" href="../_modules/qiskit/pulse/ops.html#shift"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.pulse.ops.shift" title="この定義へのパーマリンク">¶</a></dt>
 <dd><p>Return schedule shifted by <cite>time</cite>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1732,7 +1732,7 @@ over the intersection of the parent and child schedule's channels.</p>
 
 <dl class="function">
 <dt id="qiskit.pulse.ops.union">
-<code class="descname">union</code><span class="sig-paren">(</span><em>*schedules</em>, <em>name: str = None</em><span class="sig-paren">)</span> &#x2192; qiskit.pulse.schedule.Schedule<a class="reference internal" href="../_modules/qiskit/pulse/ops.html#union"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.pulse.ops.union" title="この定義へのパーマリンク">¶</a></dt>
+<code class="descname">union</code><span class="sig-paren">(</span><em>*schedules</em>, <em>name: Optional[str] = None</em><span class="sig-paren">)</span> &#x2192; qiskit.pulse.schedule.Schedule<a class="reference internal" href="../_modules/qiskit/pulse/ops.html#union"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.pulse.ops.union" title="この定義へのパーマリンク">¶</a></dt>
 <dd><p>Create a union (and also shift if desired) of all input <a href="#id3"><span class="problematic" id="id4">`</span></a>Schedule`s.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />

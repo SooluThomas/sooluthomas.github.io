@@ -198,7 +198,7 @@
 <span class="kn">import</span> <span class="nn">numpy.random</span> <span class="k">as</span> <span class="nn">rand</span>
 <span class="kn">from</span> <span class="nn">qiskit.quantum_info</span> <span class="k">import</span> <span class="n">Pauli</span>
 
-<span class="kn">from</span> <span class="nn">qiskit.aqua</span> <span class="k">import</span> <span class="n">Operator</span>
+<span class="kn">from</span> <span class="nn">qiskit.aqua.operators</span> <span class="k">import</span> <span class="n">WeightedPauliOperator</span>
 
 <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
 
@@ -240,7 +240,7 @@
 <span class="sd">        w (numpy.ndarray) : adjacency matrix.</span>
 
 <span class="sd">    Returns:</span>
-<span class="sd">        operator.Operator, float: operator for the Hamiltonian and a</span>
+<span class="sd">        WeightedPauliOperatorOperator, float: operator for the Hamiltonian and a</span>
 <span class="sd">        constant shift for the obj function.</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -262,7 +262,7 @@
         <span class="n">zp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">num_nodes</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">bool</span><span class="p">)</span>
         <span class="n">zp</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
         <span class="n">pauli_list</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">degree</span> <span class="o">-</span> <span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">Pauli</span><span class="p">(</span><span class="n">zp</span><span class="p">,</span> <span class="n">xp</span><span class="p">)])</span>
-    <span class="k">return</span> <span class="n">Operator</span><span class="p">(</span><span class="n">paulis</span><span class="o">=</span><span class="n">pauli_list</span><span class="p">),</span> <span class="n">shift</span> <span class="o">-</span> <span class="n">num_nodes</span><span class="o">/</span><span class="mi">2</span></div>
+    <span class="k">return</span> <span class="n">WeightedPauliOperator</span><span class="p">(</span><span class="n">paulis</span><span class="o">=</span><span class="n">pauli_list</span><span class="p">),</span> <span class="n">shift</span> <span class="o">-</span> <span class="n">num_nodes</span><span class="o">/</span><span class="mi">2</span></div>
 
 
 <div class="viewcode-block" id="parse_gset_format"><a class="viewcode-back" href="../../../../../autodoc/qiskit.aqua.translators.ising.stable_set.html#qiskit.aqua.translators.ising.stable_set.parse_gset_format">[ドキュメント]</a><span class="k">def</span> <span class="nf">parse_gset_format</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
@@ -295,6 +295,7 @@
     <span class="n">w</span> <span class="o">+=</span> <span class="n">w</span><span class="o">.</span><span class="n">T</span>
     <span class="k">return</span> <span class="n">w</span></div>
 
+
 <div class="viewcode-block" id="stable_set_value"><a class="viewcode-back" href="../../../../../autodoc/qiskit.aqua.translators.ising.stable_set.html#qiskit.aqua.translators.ising.stable_set.stable_set_value">[ドキュメント]</a><span class="k">def</span> <span class="nf">stable_set_value</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">w</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Compute the value of a stable set, and its feasibility.</span>
 
@@ -317,6 +318,7 @@
                 <span class="k">break</span>
     <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">feasible</span></div>
 
+
 <div class="viewcode-block" id="get_graph_solution"><a class="viewcode-back" href="../../../../../autodoc/qiskit.aqua.translators.ising.stable_set.html#qiskit.aqua.translators.ising.stable_set.get_graph_solution">[ドキュメント]</a><span class="k">def</span> <span class="nf">get_graph_solution</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Get graph solution from binary string.</span>
 
@@ -327,6 +329,7 @@
 <span class="sd">        numpy.ndarray: graph solution as binary numpy array.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">x</span></div>
+
 
 <div class="viewcode-block" id="sample_most_likely"><a class="viewcode-back" href="../../../../../autodoc/qiskit.aqua.translators.ising.stable_set.html#qiskit.aqua.translators.ising.stable_set.sample_most_likely">[ドキュメント]</a><span class="k">def</span> <span class="nf">sample_most_likely</span><span class="p">(</span><span class="n">state_vector</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Compute the most likely binary string from state vector.</span>

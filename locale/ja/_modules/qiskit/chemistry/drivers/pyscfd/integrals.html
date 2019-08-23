@@ -185,6 +185,8 @@
 <span class="c1"># that they have been altered from the originals.</span>
 
 <span class="kn">import</span> <span class="nn">logging</span>
+<span class="kn">import</span> <span class="nn">tempfile</span>
+<span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">from</span> <span class="nn">qiskit.chemistry</span> <span class="k">import</span> <span class="n">QiskitChemistryError</span>
 <span class="kn">from</span> <span class="nn">qiskit.chemistry</span> <span class="k">import</span> <span class="n">QMolecule</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -193,10 +195,12 @@
 
 <span class="k">try</span><span class="p">:</span>
     <span class="kn">from</span> <span class="nn">pyscf</span> <span class="k">import</span> <span class="n">gto</span><span class="p">,</span> <span class="n">scf</span><span class="p">,</span> <span class="n">ao2mo</span>
+    <span class="kn">from</span> <span class="nn">pyscf</span> <span class="k">import</span> <span class="n">__version__</span> <span class="k">as</span> <span class="n">pyscf_version</span>
     <span class="kn">from</span> <span class="nn">pyscf.lib</span> <span class="k">import</span> <span class="n">param</span>
     <span class="kn">from</span> <span class="nn">pyscf.lib</span> <span class="k">import</span> <span class="n">logger</span> <span class="k">as</span> <span class="n">pylogger</span>
+    <span class="kn">from</span> <span class="nn">pyscf.tools</span> <span class="k">import</span> <span class="n">dump_mat</span>
 <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
-    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;PySCF is not installed. Use &#39;pip install pyscf&#39;&quot;</span><span class="p">)</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;PySCF is not installed. See https://sunqm.github.io/pyscf/install.html&quot;</span><span class="p">)</span>
 
 
 <div class="viewcode-block" id="compute_integrals"><a class="viewcode-back" href="../../../../../autodoc/qiskit.chemistry.drivers.pyscfd.integrals.html#qiskit.chemistry.drivers.pyscfd.integrals.compute_integrals">[ドキュメント]</a><span class="k">def</span> <span class="nf">compute_integrals</span><span class="p">(</span><span class="n">atom</span><span class="p">,</span>
@@ -204,63 +208,46 @@
                       <span class="n">charge</span><span class="p">,</span>
                       <span class="n">spin</span><span class="p">,</span>
                       <span class="n">basis</span><span class="p">,</span>
-                      <span class="n">max_memory</span><span class="p">,</span>
-                      <span class="n">calc_type</span><span class="o">=</span><span class="s1">&#39;rhf&#39;</span><span class="p">):</span>
+                      <span class="n">hf_method</span><span class="o">=</span><span class="s1">&#39;rhf&#39;</span><span class="p">,</span>
+                      <span class="n">conv_tol</span><span class="o">=</span><span class="mf">1e-9</span><span class="p">,</span>
+                      <span class="n">max_cycle</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
+                      <span class="n">init_guess</span><span class="o">=</span><span class="s1">&#39;minao&#39;</span><span class="p">,</span>
+                      <span class="n">max_memory</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="c1"># Get config from input parameters</span>
     <span class="c1"># molecule is in PySCF atom string format e.g. &quot;H .0 .0 .0; H .0 .0 0.2&quot;</span>
     <span class="c1">#          or in Z-Matrix format e.g. &quot;H; O 1 1.08; H 2 1.08 1 107.5&quot;</span>
     <span class="c1"># other parameters are as per PySCF got.Mole format</span>
 
     <span class="n">atom</span> <span class="o">=</span> <span class="n">_check_molecule_format</span><span class="p">(</span><span class="n">atom</span><span class="p">)</span>
+    <span class="n">hf_method</span> <span class="o">=</span> <span class="n">hf_method</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
     <span class="k">if</span> <span class="n">max_memory</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">max_memory</span> <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">MAX_MEMORY</span>
-    <span class="n">calc_type</span> <span class="o">=</span> <span class="n">calc_type</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
 
     <span class="k">try</span><span class="p">:</span>
-        <span class="n">mol</span> <span class="o">=</span> <span class="n">gto</span><span class="o">.</span><span class="n">Mole</span><span class="p">(</span><span class="n">atom</span><span class="o">=</span><span class="n">atom</span><span class="p">,</span> <span class="n">unit</span><span class="o">=</span><span class="n">unit</span><span class="p">,</span> <span class="n">basis</span><span class="o">=</span><span class="n">basis</span><span class="p">,</span> <span class="n">max_memory</span><span class="o">=</span><span class="n">max_memory</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="n">pylogger</span><span class="o">.</span><span class="n">QUIET</span><span class="p">)</span>
+        <span class="n">verbose</span> <span class="o">=</span> <span class="n">pylogger</span><span class="o">.</span><span class="n">QUIET</span>
+        <span class="n">output</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">if</span> <span class="n">logger</span><span class="o">.</span><span class="n">isEnabledFor</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">):</span>
+            <span class="n">verbose</span> <span class="o">=</span> <span class="n">pylogger</span><span class="o">.</span><span class="n">INFO</span>
+            <span class="n">fd</span><span class="p">,</span> <span class="n">output</span> <span class="o">=</span> <span class="n">tempfile</span><span class="o">.</span><span class="n">mkstemp</span><span class="p">(</span><span class="n">suffix</span><span class="o">=</span><span class="s1">&#39;.log&#39;</span><span class="p">)</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="n">fd</span><span class="p">)</span>
+
+        <span class="n">mol</span> <span class="o">=</span> <span class="n">gto</span><span class="o">.</span><span class="n">Mole</span><span class="p">(</span><span class="n">atom</span><span class="o">=</span><span class="n">atom</span><span class="p">,</span> <span class="n">unit</span><span class="o">=</span><span class="n">unit</span><span class="p">,</span> <span class="n">basis</span><span class="o">=</span><span class="n">basis</span><span class="p">,</span> <span class="n">max_memory</span><span class="o">=</span><span class="n">max_memory</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">,</span> <span class="n">output</span><span class="o">=</span><span class="n">output</span><span class="p">)</span>
         <span class="n">mol</span><span class="o">.</span><span class="n">symmetry</span> <span class="o">=</span> <span class="kc">False</span>
         <span class="n">mol</span><span class="o">.</span><span class="n">charge</span> <span class="o">=</span> <span class="n">charge</span>
         <span class="n">mol</span><span class="o">.</span><span class="n">spin</span> <span class="o">=</span> <span class="n">spin</span>
         <span class="n">mol</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="n">parse_arg</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-        <span class="n">ehf</span><span class="p">,</span> <span class="n">enuke</span><span class="p">,</span> <span class="n">norbs</span><span class="p">,</span> <span class="n">mohij</span><span class="p">,</span> <span class="n">mohijkl</span><span class="p">,</span> <span class="n">mo_coeff</span><span class="p">,</span> <span class="n">orbs_energy</span><span class="p">,</span> <span class="n">x_dip</span><span class="p">,</span> <span class="n">y_dip</span><span class="p">,</span> <span class="n">z_dip</span><span class="p">,</span> <span class="n">nucl_dip</span> <span class="o">=</span> <span class="n">_calculate_integrals</span><span class="p">(</span><span class="n">mol</span><span class="p">,</span> <span class="n">calc_type</span><span class="p">)</span>
+        <span class="n">q_mol</span> <span class="o">=</span> <span class="n">_calculate_integrals</span><span class="p">(</span><span class="n">mol</span><span class="p">,</span> <span class="n">hf_method</span><span class="p">,</span> <span class="n">conv_tol</span><span class="p">,</span> <span class="n">max_cycle</span><span class="p">,</span> <span class="n">init_guess</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">output</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">_process_pyscf_log</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+                <span class="k">pass</span>
+
     <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
         <span class="k">raise</span> <span class="n">QiskitChemistryError</span><span class="p">(</span><span class="s1">&#39;Failed electronic structure computation&#39;</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">exc</span>
 
-    <span class="c1"># Create driver level molecule object and populate</span>
-    <span class="n">_q_</span> <span class="o">=</span> <span class="n">QMolecule</span><span class="p">()</span>
-    <span class="c1"># Energies and orbits</span>
-    <span class="n">_q_</span><span class="o">.</span><span class="n">hf_energy</span> <span class="o">=</span> <span class="n">ehf</span>
-    <span class="n">_q_</span><span class="o">.</span><span class="n">nuclear_repulsion_energy</span> <span class="o">=</span> <span class="n">enuke</span>
-    <span class="n">_q_</span><span class="o">.</span><span class="n">num_orbitals</span> <span class="o">=</span> <span class="n">norbs</span>
-    <span class="n">_q_</span><span class="o">.</span><span class="n">num_alpha</span> <span class="o">=</span> <span class="n">mol</span><span class="o">.</span><span class="n">nelec</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-    <span class="n">_q_</span><span class="o">.</span><span class="n">num_beta</span> <span class="o">=</span> <span class="n">mol</span><span class="o">.</span><span class="n">nelec</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-    <span class="n">_q_</span><span class="o">.</span><span class="n">mo_coeff</span> <span class="o">=</span> <span class="n">mo_coeff</span>
-    <span class="n">_q_</span><span class="o">.</span><span class="n">orbital_energies</span> <span class="o">=</span> <span class="n">orbs_energy</span>
-    <span class="c1"># Molecule geometry</span>
-    <span class="n">_q_</span><span class="o">.</span><span class="n">molecular_charge</span> <span class="o">=</span> <span class="n">mol</span><span class="o">.</span><span class="n">charge</span>
-    <span class="n">_q_</span><span class="o">.</span><span class="n">multiplicity</span> <span class="o">=</span> <span class="n">mol</span><span class="o">.</span><span class="n">spin</span> <span class="o">+</span> <span class="mi">1</span>
-    <span class="n">_q_</span><span class="o">.</span><span class="n">num_atoms</span> <span class="o">=</span> <span class="n">mol</span><span class="o">.</span><span class="n">natm</span>
-    <span class="n">_q_</span><span class="o">.</span><span class="n">atom_symbol</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="n">_q_</span><span class="o">.</span><span class="n">atom_xyz</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">([</span><span class="n">mol</span><span class="o">.</span><span class="n">natm</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
-    <span class="n">atoms</span> <span class="o">=</span> <span class="n">mol</span><span class="o">.</span><span class="n">atom_coords</span><span class="p">()</span>
-    <span class="k">for</span> <span class="n">_n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">_q_</span><span class="o">.</span><span class="n">num_atoms</span><span class="p">):</span>
-        <span class="n">xyz</span> <span class="o">=</span> <span class="n">mol</span><span class="o">.</span><span class="n">atom_coord</span><span class="p">(</span><span class="n">_n</span><span class="p">)</span>
-        <span class="n">_q_</span><span class="o">.</span><span class="n">atom_symbol</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mol</span><span class="o">.</span><span class="n">atom_pure_symbol</span><span class="p">(</span><span class="n">_n</span><span class="p">))</span>
-        <span class="n">_q_</span><span class="o">.</span><span class="n">atom_xyz</span><span class="p">[</span><span class="n">_n</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">xyz</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-        <span class="n">_q_</span><span class="o">.</span><span class="n">atom_xyz</span><span class="p">[</span><span class="n">_n</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">xyz</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-        <span class="n">_q_</span><span class="o">.</span><span class="n">atom_xyz</span><span class="p">[</span><span class="n">_n</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">xyz</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
-    <span class="c1"># 1 and 2 electron integrals. h1 &amp; h2 are ready to pass to FermionicOperator</span>
-    <span class="n">_q_</span><span class="o">.</span><span class="n">mo_onee_ints</span> <span class="o">=</span> <span class="n">mohij</span>
-    <span class="n">_q_</span><span class="o">.</span><span class="n">mo_eri_ints</span> <span class="o">=</span> <span class="n">mohijkl</span>
-    <span class="c1"># dipole integrals</span>
-    <span class="n">_q_</span><span class="o">.</span><span class="n">x_dip_mo_ints</span> <span class="o">=</span> <span class="n">x_dip</span>
-    <span class="n">_q_</span><span class="o">.</span><span class="n">y_dip_mo_ints</span> <span class="o">=</span> <span class="n">y_dip</span>
-    <span class="n">_q_</span><span class="o">.</span><span class="n">z_dip_mo_ints</span> <span class="o">=</span> <span class="n">z_dip</span>
-    <span class="c1"># dipole moment</span>
-    <span class="n">_q_</span><span class="o">.</span><span class="n">nuclear_dipole_moment</span> <span class="o">=</span> <span class="n">nucl_dip</span>
-    <span class="n">_q_</span><span class="o">.</span><span class="n">reverse_dipole_sign</span> <span class="o">=</span> <span class="kc">True</span>
-
-    <span class="k">return</span> <span class="n">_q_</span></div>
+    <span class="k">return</span> <span class="n">q_mol</span></div>
 
 
 <span class="k">def</span> <span class="nf">_check_molecule_format</span><span class="p">(</span><span class="n">val</span><span class="p">):</span>
@@ -285,63 +272,105 @@
     <span class="k">return</span> <span class="n">val</span>
 
 
-<span class="k">def</span> <span class="nf">_calculate_integrals</span><span class="p">(</span><span class="n">mol</span><span class="p">,</span> <span class="n">calc_type</span><span class="o">=</span><span class="s1">&#39;rhf&#39;</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">_calculate_integrals</span><span class="p">(</span><span class="n">mol</span><span class="p">,</span> <span class="n">hf_method</span><span class="o">=</span><span class="s1">&#39;rhf&#39;</span><span class="p">,</span> <span class="n">conv_tol</span><span class="o">=</span><span class="mf">1e-9</span><span class="p">,</span> <span class="n">max_cycle</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">init_guess</span><span class="o">=</span><span class="s1">&#39;minao&#39;</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Function to calculate the one and two electron terms. Perform a Hartree-Fock calculation in</span>
 <span class="sd">        the given basis.</span>
 <span class="sd">    Args:</span>
-<span class="sd">        mol : A PySCF gto.Mole object.</span>
-<span class="sd">        calc_type: rhf, uhf, rohf</span>
+<span class="sd">        mol (gto.Mole) : A PySCF gto.Mole object.</span>
+<span class="sd">        hf_method (str): rhf, uhf, rohf</span>
+<span class="sd">        conv_tol (float): Convergence tolerance</span>
+<span class="sd">        max_cycle (int): Max convergence cycles</span>
+<span class="sd">        init_guess (str): Initial guess for SCF</span>
 <span class="sd">    Returns:</span>
-<span class="sd">        ehf : Hartree-Fock energy</span>
-<span class="sd">        enuke : Nuclear repulsion energy</span>
-<span class="sd">        norbs : Number of orbitals</span>
-<span class="sd">        mohij : One electron terms of the Hamiltonian.</span>
-<span class="sd">        mohijkl : Two electron terms of the Hamiltonian.</span>
-<span class="sd">        mo_coeff: Orbital coefficients</span>
-<span class="sd">        orbs_energy: Orbitals energies</span>
-<span class="sd">        x_dip_ints: x dipole moment integrals</span>
-<span class="sd">        y_dip_ints: y dipole moment integrals</span>
-<span class="sd">        z_dip_ints: z dipole moment integrals</span>
-<span class="sd">        nucl_dipl : Nuclear dipole moment</span>
+<span class="sd">        QMolecule: QMolecule populated with driver integrals etc</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">enuke</span> <span class="o">=</span> <span class="n">gto</span><span class="o">.</span><span class="n">mole</span><span class="o">.</span><span class="n">energy_nuc</span><span class="p">(</span><span class="n">mol</span><span class="p">)</span>
 
-    <span class="k">if</span> <span class="n">calc_type</span> <span class="o">==</span> <span class="s1">&#39;rhf&#39;</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">hf_method</span> <span class="o">==</span> <span class="s1">&#39;rhf&#39;</span><span class="p">:</span>
         <span class="n">mf</span> <span class="o">=</span> <span class="n">scf</span><span class="o">.</span><span class="n">RHF</span><span class="p">(</span><span class="n">mol</span><span class="p">)</span>
-    <span class="k">elif</span> <span class="n">calc_type</span> <span class="o">==</span> <span class="s1">&#39;rohf&#39;</span><span class="p">:</span>
+    <span class="k">elif</span> <span class="n">hf_method</span> <span class="o">==</span> <span class="s1">&#39;rohf&#39;</span><span class="p">:</span>
         <span class="n">mf</span> <span class="o">=</span> <span class="n">scf</span><span class="o">.</span><span class="n">ROHF</span><span class="p">(</span><span class="n">mol</span><span class="p">)</span>
-    <span class="k">elif</span> <span class="n">calc_type</span> <span class="o">==</span> <span class="s1">&#39;uhf&#39;</span><span class="p">:</span>
+    <span class="k">elif</span> <span class="n">hf_method</span> <span class="o">==</span> <span class="s1">&#39;uhf&#39;</span><span class="p">:</span>
         <span class="n">mf</span> <span class="o">=</span> <span class="n">scf</span><span class="o">.</span><span class="n">UHF</span><span class="p">(</span><span class="n">mol</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="n">QiskitChemistryError</span><span class="p">(</span><span class="s1">&#39;Invalid calc_type: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">calc_type</span><span class="p">))</span>
+        <span class="k">raise</span> <span class="n">QiskitChemistryError</span><span class="p">(</span><span class="s1">&#39;Invalid hf_method type: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">hf_method</span><span class="p">))</span>
 
+    <span class="n">mf</span><span class="o">.</span><span class="n">conv_tol</span> <span class="o">=</span> <span class="n">conv_tol</span>
+    <span class="n">mf</span><span class="o">.</span><span class="n">max_cycle</span> <span class="o">=</span> <span class="n">max_cycle</span>
+    <span class="n">mf</span><span class="o">.</span><span class="n">init_guess</span> <span class="o">=</span> <span class="n">init_guess</span>
     <span class="n">ehf</span> <span class="o">=</span> <span class="n">mf</span><span class="o">.</span><span class="n">kernel</span><span class="p">()</span>
-
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;PySCF kernel() converged: </span><span class="si">{}</span><span class="s1">, e(hf): </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">mf</span><span class="o">.</span><span class="n">converged</span><span class="p">,</span> <span class="n">mf</span><span class="o">.</span><span class="n">e_tot</span><span class="p">))</span>
     <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">mf</span><span class="o">.</span><span class="n">mo_coeff</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">tuple</span><span class="p">:</span>
         <span class="n">mo_coeff</span> <span class="o">=</span> <span class="n">mf</span><span class="o">.</span><span class="n">mo_coeff</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-        <span class="n">mo_occ</span>   <span class="o">=</span> <span class="n">mf</span><span class="o">.</span><span class="n">mo_occ</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">mo_coeff_B</span> <span class="o">=</span> <span class="n">mf</span><span class="o">.</span><span class="n">mo_coeff</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="c1"># mo_occ   = mf.mo_occ[0]</span>
+        <span class="c1"># mo_occ_B = mf.mo_occ[1]</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="n">mo_coeff</span> <span class="o">=</span> <span class="n">mf</span><span class="o">.</span><span class="n">mo_coeff</span>
-        <span class="n">mo_occ</span>   <span class="o">=</span> <span class="n">mf</span><span class="o">.</span><span class="n">mo_occ</span>
-
+        <span class="c1"># With PySCF 1.6.2, instead of a tuple of 2 dimensional arrays, its a 3 dimensional</span>
+        <span class="c1"># array with the first dimension indexing to the coeff arrays for alpha and beta</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">mf</span><span class="o">.</span><span class="n">mo_coeff</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="n">mo_coeff</span> <span class="o">=</span> <span class="n">mf</span><span class="o">.</span><span class="n">mo_coeff</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">mo_coeff_B</span> <span class="o">=</span> <span class="n">mf</span><span class="o">.</span><span class="n">mo_coeff</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+            <span class="c1"># mo_occ   = mf.mo_occ[0]</span>
+            <span class="c1"># mo_occ_B = mf.mo_occ[1]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">mo_coeff</span> <span class="o">=</span> <span class="n">mf</span><span class="o">.</span><span class="n">mo_coeff</span>
+            <span class="n">mo_coeff_B</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="c1"># mo_occ   = mf.mo_occ</span>
+            <span class="c1"># mo_occ_B = None</span>
     <span class="n">norbs</span> <span class="o">=</span> <span class="n">mo_coeff</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-    <span class="n">orbs_energy</span> <span class="o">=</span> <span class="n">mf</span><span class="o">.</span><span class="n">mo_energy</span>
+
+    <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">mf</span><span class="o">.</span><span class="n">mo_energy</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">tuple</span><span class="p">:</span>
+        <span class="n">orbs_energy</span> <span class="o">=</span> <span class="n">mf</span><span class="o">.</span><span class="n">mo_energy</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">orbs_energy_B</span> <span class="o">=</span> <span class="n">mf</span><span class="o">.</span><span class="n">mo_energy</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># See PYSCF 1.6.2 comment above - this was similarly changed</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">mf</span><span class="o">.</span><span class="n">mo_energy</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">orbs_energy</span> <span class="o">=</span> <span class="n">mf</span><span class="o">.</span><span class="n">mo_energy</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">orbs_energy_B</span> <span class="o">=</span> <span class="n">mf</span><span class="o">.</span><span class="n">mo_energy</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">orbs_energy</span> <span class="o">=</span> <span class="n">mf</span><span class="o">.</span><span class="n">mo_energy</span>
+            <span class="n">orbs_energy_B</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">if</span> <span class="n">logger</span><span class="o">.</span><span class="n">isEnabledFor</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">):</span>
+        <span class="c1"># Add some more to PySCF output...</span>
+        <span class="c1"># First analyze() which prints extra information about MO energy and occupation</span>
+        <span class="n">mol</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">mf</span><span class="o">.</span><span class="n">analyze</span><span class="p">()</span>
+        <span class="c1"># Now labelled orbitals for contributions to the MOs for s,p,d etc of each atom</span>
+        <span class="n">mol</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n\n</span><span class="s1">--- Alpha Molecular Orbitals ---</span><span class="se">\n\n</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">dump_mat</span><span class="o">.</span><span class="n">dump_mo</span><span class="p">(</span><span class="n">mol</span><span class="p">,</span> <span class="n">mo_coeff</span><span class="p">,</span> <span class="n">digits</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">mo_coeff_B</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">mol</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">--- Beta Molecular Orbitals ---</span><span class="se">\n\n</span><span class="s1">&#39;</span><span class="p">)</span>
+            <span class="n">dump_mat</span><span class="o">.</span><span class="n">dump_mo</span><span class="p">(</span><span class="n">mol</span><span class="p">,</span> <span class="n">mo_coeff_B</span><span class="p">,</span> <span class="n">digits</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">mol</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span>
 
     <span class="n">hij</span> <span class="o">=</span> <span class="n">mf</span><span class="o">.</span><span class="n">get_hcore</span><span class="p">()</span>
     <span class="n">mohij</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">mo_coeff</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">hij</span><span class="p">),</span> <span class="n">mo_coeff</span><span class="p">)</span>
+    <span class="n">mohij_B</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="k">if</span> <span class="n">mo_coeff_B</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">mohij_B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">mo_coeff_B</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">hij</span><span class="p">),</span> <span class="n">mo_coeff_B</span><span class="p">)</span>
 
-    <span class="n">eri</span> <span class="o">=</span> <span class="n">ao2mo</span><span class="o">.</span><span class="n">incore</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="n">mf</span><span class="o">.</span><span class="n">_eri</span><span class="p">,</span> <span class="n">mo_coeff</span><span class="p">,</span> <span class="n">compact</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-    <span class="n">mohijkl</span> <span class="o">=</span> <span class="n">eri</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">norbs</span><span class="p">,</span> <span class="n">norbs</span><span class="p">,</span> <span class="n">norbs</span><span class="p">,</span> <span class="n">norbs</span><span class="p">)</span>
+    <span class="n">eri</span> <span class="o">=</span> <span class="n">mol</span><span class="o">.</span><span class="n">intor</span><span class="p">(</span><span class="s1">&#39;int2e&#39;</span><span class="p">,</span> <span class="n">aosym</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">mo_eri</span> <span class="o">=</span> <span class="n">ao2mo</span><span class="o">.</span><span class="n">incore</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="n">mf</span><span class="o">.</span><span class="n">_eri</span><span class="p">,</span> <span class="n">mo_coeff</span><span class="p">,</span> <span class="n">compact</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">mohijkl</span> <span class="o">=</span> <span class="n">mo_eri</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">norbs</span><span class="p">,</span> <span class="n">norbs</span><span class="p">,</span> <span class="n">norbs</span><span class="p">,</span> <span class="n">norbs</span><span class="p">)</span>
+    <span class="n">mohijkl_BB</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">mohijkl_BA</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="k">if</span> <span class="n">mo_coeff_B</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">mo_eri_B</span> <span class="o">=</span> <span class="n">ao2mo</span><span class="o">.</span><span class="n">incore</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="n">mf</span><span class="o">.</span><span class="n">_eri</span><span class="p">,</span> <span class="n">mo_coeff_B</span><span class="p">,</span> <span class="n">compact</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="n">mohijkl_BB</span> <span class="o">=</span> <span class="n">mo_eri_B</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">norbs</span><span class="p">,</span> <span class="n">norbs</span><span class="p">,</span> <span class="n">norbs</span><span class="p">,</span> <span class="n">norbs</span><span class="p">)</span>
+        <span class="n">mo_eri_BA</span> <span class="o">=</span> <span class="n">ao2mo</span><span class="o">.</span><span class="n">incore</span><span class="o">.</span><span class="n">general</span><span class="p">(</span><span class="n">mf</span><span class="o">.</span><span class="n">_eri</span><span class="p">,</span> <span class="p">(</span><span class="n">mo_coeff_B</span><span class="p">,</span> <span class="n">mo_coeff_B</span><span class="p">,</span> <span class="n">mo_coeff</span><span class="p">,</span> <span class="n">mo_coeff</span><span class="p">),</span> <span class="n">compact</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="n">mohijkl_BA</span> <span class="o">=</span> <span class="n">mo_eri_BA</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">norbs</span><span class="p">,</span> <span class="n">norbs</span><span class="p">,</span> <span class="n">norbs</span><span class="p">,</span> <span class="n">norbs</span><span class="p">)</span>
 
     <span class="c1"># dipole integrals</span>
     <span class="n">mol</span><span class="o">.</span><span class="n">set_common_orig</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
     <span class="n">ao_dip</span> <span class="o">=</span> <span class="n">mol</span><span class="o">.</span><span class="n">intor_symmetric</span><span class="p">(</span><span class="s1">&#39;int1e_r&#39;</span><span class="p">,</span> <span class="n">comp</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-    <span class="n">x_dip_ints</span> <span class="o">=</span> <span class="n">QMolecule</span><span class="o">.</span><span class="n">oneeints2mo</span><span class="p">(</span><span class="n">ao_dip</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">mo_coeff</span><span class="p">)</span>
-    <span class="n">y_dip_ints</span> <span class="o">=</span> <span class="n">QMolecule</span><span class="o">.</span><span class="n">oneeints2mo</span><span class="p">(</span><span class="n">ao_dip</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">mo_coeff</span><span class="p">)</span>
-    <span class="n">z_dip_ints</span> <span class="o">=</span> <span class="n">QMolecule</span><span class="o">.</span><span class="n">oneeints2mo</span><span class="p">(</span><span class="n">ao_dip</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">mo_coeff</span><span class="p">)</span>
+    <span class="n">x_dip_ints</span> <span class="o">=</span> <span class="n">ao_dip</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">y_dip_ints</span> <span class="o">=</span> <span class="n">ao_dip</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">z_dip_ints</span> <span class="o">=</span> <span class="n">ao_dip</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
 
     <span class="n">dm</span> <span class="o">=</span> <span class="n">mf</span><span class="o">.</span><span class="n">make_rdm1</span><span class="p">(</span><span class="n">mf</span><span class="o">.</span><span class="n">mo_coeff</span><span class="p">,</span> <span class="n">mf</span><span class="o">.</span><span class="n">mo_occ</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">calc_type</span> <span class="o">==</span> <span class="s1">&#39;rohf&#39;</span> <span class="ow">or</span> <span class="n">calc_type</span> <span class="o">==</span> <span class="s1">&#39;uhf&#39;</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">hf_method</span> <span class="o">==</span> <span class="s1">&#39;rohf&#39;</span> <span class="ow">or</span> <span class="n">hf_method</span> <span class="o">==</span> <span class="s1">&#39;uhf&#39;</span><span class="p">:</span>
         <span class="n">dm</span> <span class="o">=</span> <span class="n">dm</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
     <span class="n">elec_dip</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">negative</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">einsum</span><span class="p">(</span><span class="s1">&#39;xij,ji-&gt;x&#39;</span><span class="p">,</span> <span class="n">ao_dip</span><span class="p">,</span> <span class="n">dm</span><span class="p">)</span><span class="o">.</span><span class="n">real</span><span class="p">)</span>
     <span class="n">elec_dip</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">elec_dip</span><span class="p">,</span> <span class="n">decimals</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
@@ -351,7 +380,74 @@
     <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Nuclear dipole moment: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">nucl_dip</span><span class="p">))</span>
     <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Total dipole moment: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">nucl_dip</span><span class="o">+</span><span class="n">elec_dip</span><span class="p">))</span>
 
-    <span class="k">return</span> <span class="n">ehf</span><span class="p">,</span> <span class="n">enuke</span><span class="p">,</span> <span class="n">norbs</span><span class="p">,</span> <span class="n">mohij</span><span class="p">,</span> <span class="n">mohijkl</span><span class="p">,</span> <span class="n">mo_coeff</span><span class="p">,</span> <span class="n">orbs_energy</span><span class="p">,</span> <span class="n">x_dip_ints</span><span class="p">,</span> <span class="n">y_dip_ints</span><span class="p">,</span> <span class="n">z_dip_ints</span><span class="p">,</span> <span class="n">nucl_dip</span>
+    <span class="c1"># Create driver level molecule object and populate</span>
+    <span class="n">_q_</span> <span class="o">=</span> <span class="n">QMolecule</span><span class="p">()</span>
+    <span class="n">_q_</span><span class="o">.</span><span class="n">origin_driver_version</span> <span class="o">=</span> <span class="n">pyscf_version</span>
+    <span class="c1"># Energies and orbits</span>
+    <span class="n">_q_</span><span class="o">.</span><span class="n">hf_energy</span> <span class="o">=</span> <span class="n">ehf</span>
+    <span class="n">_q_</span><span class="o">.</span><span class="n">nuclear_repulsion_energy</span> <span class="o">=</span> <span class="n">enuke</span>
+    <span class="n">_q_</span><span class="o">.</span><span class="n">num_orbitals</span> <span class="o">=</span> <span class="n">norbs</span>
+    <span class="n">_q_</span><span class="o">.</span><span class="n">num_alpha</span> <span class="o">=</span> <span class="n">mol</span><span class="o">.</span><span class="n">nelec</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">_q_</span><span class="o">.</span><span class="n">num_beta</span> <span class="o">=</span> <span class="n">mol</span><span class="o">.</span><span class="n">nelec</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">_q_</span><span class="o">.</span><span class="n">mo_coeff</span> <span class="o">=</span> <span class="n">mo_coeff</span>
+    <span class="n">_q_</span><span class="o">.</span><span class="n">mo_coeff_B</span> <span class="o">=</span> <span class="n">mo_coeff_B</span>
+    <span class="n">_q_</span><span class="o">.</span><span class="n">orbital_energies</span> <span class="o">=</span> <span class="n">orbs_energy</span>
+    <span class="n">_q_</span><span class="o">.</span><span class="n">orbital_energies_B</span> <span class="o">=</span> <span class="n">orbs_energy_B</span>
+    <span class="c1"># Molecule geometry</span>
+    <span class="n">_q_</span><span class="o">.</span><span class="n">molecular_charge</span> <span class="o">=</span> <span class="n">mol</span><span class="o">.</span><span class="n">charge</span>
+    <span class="n">_q_</span><span class="o">.</span><span class="n">multiplicity</span> <span class="o">=</span> <span class="n">mol</span><span class="o">.</span><span class="n">spin</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="n">_q_</span><span class="o">.</span><span class="n">num_atoms</span> <span class="o">=</span> <span class="n">mol</span><span class="o">.</span><span class="n">natm</span>
+    <span class="n">_q_</span><span class="o">.</span><span class="n">atom_symbol</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">_q_</span><span class="o">.</span><span class="n">atom_xyz</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">([</span><span class="n">mol</span><span class="o">.</span><span class="n">natm</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+    <span class="n">atoms</span> <span class="o">=</span> <span class="n">mol</span><span class="o">.</span><span class="n">atom_coords</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">_n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">_q_</span><span class="o">.</span><span class="n">num_atoms</span><span class="p">):</span>
+        <span class="n">xyz</span> <span class="o">=</span> <span class="n">mol</span><span class="o">.</span><span class="n">atom_coord</span><span class="p">(</span><span class="n">_n</span><span class="p">)</span>
+        <span class="n">_q_</span><span class="o">.</span><span class="n">atom_symbol</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mol</span><span class="o">.</span><span class="n">atom_pure_symbol</span><span class="p">(</span><span class="n">_n</span><span class="p">))</span>
+        <span class="n">_q_</span><span class="o">.</span><span class="n">atom_xyz</span><span class="p">[</span><span class="n">_n</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">xyz</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">_q_</span><span class="o">.</span><span class="n">atom_xyz</span><span class="p">[</span><span class="n">_n</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">xyz</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">_q_</span><span class="o">.</span><span class="n">atom_xyz</span><span class="p">[</span><span class="n">_n</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">xyz</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+    <span class="c1"># 1 and 2 electron integrals AO and MO</span>
+    <span class="n">_q_</span><span class="o">.</span><span class="n">hcore</span> <span class="o">=</span> <span class="n">hij</span>
+    <span class="n">_q_</span><span class="o">.</span><span class="n">hcore_B</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">_q_</span><span class="o">.</span><span class="n">kinetic</span> <span class="o">=</span> <span class="n">mol</span><span class="o">.</span><span class="n">intor_symmetric</span><span class="p">(</span><span class="s1">&#39;int1e_kin&#39;</span><span class="p">)</span>
+    <span class="n">_q_</span><span class="o">.</span><span class="n">overlap</span> <span class="o">=</span> <span class="n">mf</span><span class="o">.</span><span class="n">get_ovlp</span><span class="p">()</span>
+    <span class="n">_q_</span><span class="o">.</span><span class="n">eri</span> <span class="o">=</span> <span class="n">eri</span>
+    <span class="n">_q_</span><span class="o">.</span><span class="n">mo_onee_ints</span> <span class="o">=</span> <span class="n">mohij</span>
+    <span class="n">_q_</span><span class="o">.</span><span class="n">mo_onee_ints_B</span> <span class="o">=</span> <span class="n">mohij_B</span>
+    <span class="n">_q_</span><span class="o">.</span><span class="n">mo_eri_ints</span> <span class="o">=</span> <span class="n">mohijkl</span>
+    <span class="n">_q_</span><span class="o">.</span><span class="n">mo_eri_ints_BB</span> <span class="o">=</span> <span class="n">mohijkl_BB</span>
+    <span class="n">_q_</span><span class="o">.</span><span class="n">mo_eri_ints_BA</span> <span class="o">=</span> <span class="n">mohijkl_BA</span>
+    <span class="c1"># dipole integrals AO and MO</span>
+    <span class="n">_q_</span><span class="o">.</span><span class="n">x_dip_ints</span> <span class="o">=</span> <span class="n">x_dip_ints</span>
+    <span class="n">_q_</span><span class="o">.</span><span class="n">y_dip_ints</span> <span class="o">=</span> <span class="n">y_dip_ints</span>
+    <span class="n">_q_</span><span class="o">.</span><span class="n">z_dip_ints</span> <span class="o">=</span> <span class="n">z_dip_ints</span>
+    <span class="n">_q_</span><span class="o">.</span><span class="n">x_dip_mo_ints</span> <span class="o">=</span> <span class="n">QMolecule</span><span class="o">.</span><span class="n">oneeints2mo</span><span class="p">(</span><span class="n">x_dip_ints</span><span class="p">,</span> <span class="n">mo_coeff</span><span class="p">)</span>
+    <span class="n">_q_</span><span class="o">.</span><span class="n">x_dip_mo_ints_B</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">_q_</span><span class="o">.</span><span class="n">y_dip_mo_ints</span> <span class="o">=</span> <span class="n">QMolecule</span><span class="o">.</span><span class="n">oneeints2mo</span><span class="p">(</span><span class="n">y_dip_ints</span><span class="p">,</span> <span class="n">mo_coeff</span><span class="p">)</span>
+    <span class="n">_q_</span><span class="o">.</span><span class="n">y_dip_mo_ints_B</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">_q_</span><span class="o">.</span><span class="n">z_dip_mo_ints</span> <span class="o">=</span> <span class="n">QMolecule</span><span class="o">.</span><span class="n">oneeints2mo</span><span class="p">(</span><span class="n">z_dip_ints</span><span class="p">,</span> <span class="n">mo_coeff</span><span class="p">)</span>
+    <span class="n">_q_</span><span class="o">.</span><span class="n">z_dip_mo_ints_B</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="k">if</span> <span class="n">mo_coeff_B</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">_q_</span><span class="o">.</span><span class="n">x_dip_mo_ints_B</span> <span class="o">=</span> <span class="n">QMolecule</span><span class="o">.</span><span class="n">oneeints2mo</span><span class="p">(</span><span class="n">x_dip_ints</span><span class="p">,</span> <span class="n">mo_coeff_B</span><span class="p">)</span>
+        <span class="n">_q_</span><span class="o">.</span><span class="n">y_dip_mo_ints_B</span> <span class="o">=</span> <span class="n">QMolecule</span><span class="o">.</span><span class="n">oneeints2mo</span><span class="p">(</span><span class="n">y_dip_ints</span><span class="p">,</span> <span class="n">mo_coeff_B</span><span class="p">)</span>
+        <span class="n">_q_</span><span class="o">.</span><span class="n">z_dip_mo_ints_B</span> <span class="o">=</span> <span class="n">QMolecule</span><span class="o">.</span><span class="n">oneeints2mo</span><span class="p">(</span><span class="n">z_dip_ints</span><span class="p">,</span> <span class="n">mo_coeff_B</span><span class="p">)</span>
+    <span class="c1"># dipole moment</span>
+    <span class="n">_q_</span><span class="o">.</span><span class="n">nuclear_dipole_moment</span> <span class="o">=</span> <span class="n">nucl_dip</span>
+    <span class="n">_q_</span><span class="o">.</span><span class="n">reverse_dipole_sign</span> <span class="o">=</span> <span class="kc">True</span>
+
+    <span class="k">return</span> <span class="n">_q_</span>
+
+
+<span class="k">def</span> <span class="nf">_process_pyscf_log</span><span class="p">(</span><span class="n">logfile</span><span class="p">):</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">logfile</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">content</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">content</span><span class="p">)):</span>
+        <span class="k">if</span> <span class="n">content</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;System:&#39;</span><span class="p">):</span>
+            <span class="n">content</span> <span class="o">=</span> <span class="n">content</span><span class="p">[</span><span class="n">i</span><span class="p">:]</span>
+            <span class="k">break</span>
+
+    <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;PySCF processing messages log:</span><span class="se">\n</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">content</span><span class="p">)))</span>
 </pre></div>
 
         </div>

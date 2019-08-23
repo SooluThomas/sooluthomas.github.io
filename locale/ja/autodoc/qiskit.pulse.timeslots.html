@@ -1648,25 +1648,13 @@
 <p>Timeslots for channels.</p>
 <dl class="class">
 <dt id="qiskit.pulse.timeslots.Interval">
-<em class="property">class </em><code class="descname">Interval</code><span class="sig-paren">(</span><em>begin: int</em>, <em>end: int</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/pulse/timeslots.html#Interval"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.pulse.timeslots.Interval" title="この定義へのパーマリンク">¶</a></dt>
+<em class="property">class </em><code class="descname">Interval</code><span class="sig-paren">(</span><em>start: int</em>, <em>stop: int</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/pulse/timeslots.html#Interval"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.pulse.timeslots.Interval" title="この定義へのパーマリンク">¶</a></dt>
 <dd><p>ベースクラス: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Time interval.</p>
-<dl class="attribute">
-<dt id="qiskit.pulse.timeslots.Interval.begin">
-<code class="descname">begin</code><a class="headerlink" href="#qiskit.pulse.timeslots.Interval.begin" title="この定義へのパーマリンク">¶</a></dt>
-<dd><p>Begin time of this interval.</p>
-</dd></dl>
-
 <dl class="attribute">
 <dt id="qiskit.pulse.timeslots.Interval.duration">
 <code class="descname">duration</code><a class="headerlink" href="#qiskit.pulse.timeslots.Interval.duration" title="この定義へのパーマリンク">¶</a></dt>
 <dd><p>Duration of this interval.</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="qiskit.pulse.timeslots.Interval.end">
-<code class="descname">end</code><a class="headerlink" href="#qiskit.pulse.timeslots.Interval.end" title="この定義へのパーマリンク">¶</a></dt>
-<dd><p>End time of this interval.</p>
 </dd></dl>
 
 <dl class="method">
@@ -1705,6 +1693,18 @@
 </table>
 </dd></dl>
 
+<dl class="attribute">
+<dt id="qiskit.pulse.timeslots.Interval.start">
+<code class="descname">start</code><a class="headerlink" href="#qiskit.pulse.timeslots.Interval.start" title="この定義へのパーマリンク">¶</a></dt>
+<dd><p>Start of interval.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="qiskit.pulse.timeslots.Interval.stop">
+<code class="descname">stop</code><a class="headerlink" href="#qiskit.pulse.timeslots.Interval.stop" title="この定義へのパーマリンク">¶</a></dt>
+<dd><p>Stop of interval.</p>
+</dd></dl>
+
 </dd></dl>
 
 <dl class="class">
@@ -1716,6 +1716,30 @@
 <dt id="qiskit.pulse.timeslots.Timeslot.channel">
 <code class="descname">channel</code><a class="headerlink" href="#qiskit.pulse.timeslots.Timeslot.channel" title="この定義へのパーマリンク">¶</a></dt>
 <dd><p>Channel of this time slot.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="qiskit.pulse.timeslots.Timeslot.duration">
+<code class="descname">duration</code><a class="headerlink" href="#qiskit.pulse.timeslots.Timeslot.duration" title="この定義へのパーマリンク">¶</a></dt>
+<dd><p>Duration of this timeslot.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="qiskit.pulse.timeslots.Timeslot.has_overlap">
+<code class="descname">has_overlap</code><span class="sig-paren">(</span><em>other: qiskit.pulse.timeslots.Timeslot</em><span class="sig-paren">)</span> &#x2192; bool<a class="reference internal" href="../_modules/qiskit/pulse/timeslots.html#Timeslot.has_overlap"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.pulse.timeslots.Timeslot.has_overlap" title="この定義へのパーマリンク">¶</a></dt>
+<dd><p>Check if self has overlap with <cite>interval</cite>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">パラメータ:</th><td class="field-body"><strong>other</strong> -- Other Timeslot to check for overlap with</td>
+</tr>
+<tr class="field-even field"><th class="field-name">戻り値:</th><td class="field-body">True if intervals overlap and are on the same channel</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">戻り値の型:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="attribute">
@@ -1736,6 +1760,18 @@
 </tr>
 </tbody>
 </table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="qiskit.pulse.timeslots.Timeslot.start">
+<code class="descname">start</code><a class="headerlink" href="#qiskit.pulse.timeslots.Timeslot.start" title="この定義へのパーマリンク">¶</a></dt>
+<dd><p>Start of timeslot.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="qiskit.pulse.timeslots.Timeslot.stop">
+<code class="descname">stop</code><a class="headerlink" href="#qiskit.pulse.timeslots.Timeslot.stop" title="この定義へのパーマリンク">¶</a></dt>
+<dd><p>Stop of timeslot.</p>
 </dd></dl>
 
 </dd></dl>
@@ -1787,6 +1823,12 @@
 </table>
 </dd></dl>
 
+<dl class="method">
+<dt id="qiskit.pulse.timeslots.TimeslotCollection.ch_timeslots">
+<code class="descname">ch_timeslots</code><span class="sig-paren">(</span><em>channel: qiskit.pulse.channels.channels.Channel</em><span class="sig-paren">)</span> &#x2192; Tuple[qiskit.pulse.timeslots.Timeslot]<a class="reference internal" href="../_modules/qiskit/pulse/timeslots.html#TimeslotCollection.ch_timeslots"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.pulse.timeslots.TimeslotCollection.ch_timeslots" title="この定義へのパーマリンク">¶</a></dt>
+<dd><p>Sorted tuple of <a href="#id3"><span class="problematic" id="id4">`</span></a>Timeslot`s for channel in this TimeslotCollection.</p>
+</dd></dl>
+
 <dl class="attribute">
 <dt id="qiskit.pulse.timeslots.TimeslotCollection.channels">
 <code class="descname">channels</code><a class="headerlink" href="#qiskit.pulse.timeslots.TimeslotCollection.channels" title="この定義へのパーマリンク">¶</a></dt>
@@ -1801,22 +1843,22 @@
 
 <dl class="method">
 <dt id="qiskit.pulse.timeslots.TimeslotCollection.is_mergeable_with">
-<code class="descname">is_mergeable_with</code><span class="sig-paren">(</span><em>timeslots: qiskit.pulse.timeslots.TimeslotCollection</em><span class="sig-paren">)</span> &#x2192; bool<a class="reference internal" href="../_modules/qiskit/pulse/timeslots.html#TimeslotCollection.is_mergeable_with"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.pulse.timeslots.TimeslotCollection.is_mergeable_with" title="この定義へのパーマリンク">¶</a></dt>
+<code class="descname">is_mergeable_with</code><span class="sig-paren">(</span><em>other: qiskit.pulse.timeslots.TimeslotCollection</em><span class="sig-paren">)</span> &#x2192; bool<a class="reference internal" href="../_modules/qiskit/pulse/timeslots.html#TimeslotCollection.is_mergeable_with"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.pulse.timeslots.TimeslotCollection.is_mergeable_with" title="この定義へのパーマリンク">¶</a></dt>
 <dd><p>Return if self is mergeable with <cite>timeslots</cite>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">パラメータ:</th><td class="field-body"><strong>timeslots</strong> -- TimeslotCollection to be checked</td>
+<tr class="field-odd field"><th class="field-name">パラメータ:</th><td class="field-body"><strong>other</strong> -- TimeslotCollection to be checked for mergeability</td>
 </tr>
 </tbody>
 </table>
 </dd></dl>
 
 <dl class="method">
-<dt id="qiskit.pulse.timeslots.TimeslotCollection.merged">
-<code class="descname">merged</code><span class="sig-paren">(</span><em>timeslots: qiskit.pulse.timeslots.TimeslotCollection</em><span class="sig-paren">)</span> &#x2192; qiskit.pulse.timeslots.TimeslotCollection<a class="reference internal" href="../_modules/qiskit/pulse/timeslots.html#TimeslotCollection.merged"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.pulse.timeslots.TimeslotCollection.merged" title="この定義へのパーマリンク">¶</a></dt>
-<dd><p>Return a new TimeslotCollection merged with a specified <cite>timeslots</cite></p>
+<dt id="qiskit.pulse.timeslots.TimeslotCollection.merge">
+<code class="descname">merge</code><span class="sig-paren">(</span><em>timeslots: qiskit.pulse.timeslots.TimeslotCollection</em><span class="sig-paren">)</span> &#x2192; qiskit.pulse.timeslots.TimeslotCollection<a class="reference internal" href="../_modules/qiskit/pulse/timeslots.html#TimeslotCollection.merge"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.pulse.timeslots.TimeslotCollection.merge" title="この定義へのパーマリンク">¶</a></dt>
+<dd><p>Return a new TimeslotCollection with <cite>timeslots</cite> merged into it.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -1856,7 +1898,7 @@
 <dl class="attribute">
 <dt id="qiskit.pulse.timeslots.TimeslotCollection.timeslots">
 <code class="descname">timeslots</code><a class="headerlink" href="#qiskit.pulse.timeslots.TimeslotCollection.timeslots" title="この定義へのパーマリンク">¶</a></dt>
-<dd><p><a href="#id3"><span class="problematic" id="id4">`</span></a>Timeslot`s in collection.</p>
+<dd><p>Sorted tuple of <a href="#id5"><span class="problematic" id="id6">`</span></a>Timeslot`s in collection.</p>
 </dd></dl>
 
 </dd></dl>

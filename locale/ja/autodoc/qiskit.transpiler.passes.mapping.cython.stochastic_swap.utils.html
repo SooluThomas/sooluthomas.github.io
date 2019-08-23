@@ -1719,8 +1719,7 @@ Here all qubit layouts are stored as int arrays.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">パラメータ:</th><td class="field-body"><strong>qregs</strong> (<em>OrderedDict</em>) -- An ordered dict of (QuantumRegister, int)
-tuples.</td>
+<tr class="field-odd field"><th class="field-name">パラメータ:</th><td class="field-body"><strong>qregs</strong> (<em>OrderedDict</em>) -- An ordered dict of Qubit instances.</td>
 </tr>
 <tr class="field-even field"><th class="field-name">戻り値:</th><td class="field-body">The corresponding Qiskit Layout object.</td>
 </tr>
@@ -1742,8 +1741,7 @@ tuples.</td>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">パラメータ:</th><td class="field-body"><ul class="first simple">
 <li><strong>layout</strong> (<a class="reference internal" href="qiskit.transpiler.layout.html#qiskit.transpiler.layout.Layout" title="qiskit.transpiler.layout.Layout"><em>Layout</em></a>) -- A Qiskit Layout instance.</li>
-<li><strong>qregs</strong> (<em>OrderedDict</em>) -- An ordered dict of (QuantumRegister, int)
-tuples.</li>
+<li><strong>qregs</strong> (<em>OrderedDict</em>) -- An ordered dict of Qubit instances.</li>
 <li><strong>physical_qubits</strong> (<em>int</em>) -- Number of physical qubits.</li>
 </ul>
 </td>

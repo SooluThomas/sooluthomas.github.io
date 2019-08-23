@@ -1647,7 +1647,7 @@
 <span id="qiskit-aqua-quantum-instance-module"></span><h1>qiskit.aqua.quantum_instance module<a class="headerlink" href="#module-qiskit.aqua.quantum_instance" title="このヘッドラインへのパーマリンク">¶</a></h1>
 <dl class="class">
 <dt id="qiskit.aqua.quantum_instance.QuantumInstance">
-<em class="property">class </em><code class="descname">QuantumInstance</code><span class="sig-paren">(</span><em>backend</em>, <em>shots=1024</em>, <em>seed=None</em>, <em>max_credits=10</em>, <em>basis_gates=None</em>, <em>coupling_map=None</em>, <em>initial_layout=None</em>, <em>pass_manager=None</em>, <em>seed_transpiler=None</em>, <em>backend_options=None</em>, <em>noise_model=None</em>, <em>timeout=None</em>, <em>wait=5</em>, <em>circuit_caching=True</em>, <em>cache_file=None</em>, <em>skip_qobj_deepcopy=True</em>, <em>skip_qobj_validation=True</em>, <em>measurement_error_mitigation_cls=None</em>, <em>cals_matrix_refresh_period=30</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/quantum_instance.html#QuantumInstance"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.aqua.quantum_instance.QuantumInstance" title="この定義へのパーマリンク">¶</a></dt>
+<em class="property">class </em><code class="descname">QuantumInstance</code><span class="sig-paren">(</span><em>backend</em>, <em>shots=1024</em>, <em>seed_simulator=None</em>, <em>max_credits=10</em>, <em>basis_gates=None</em>, <em>coupling_map=None</em>, <em>initial_layout=None</em>, <em>pass_manager=None</em>, <em>seed_transpiler=None</em>, <em>optimization_level=None</em>, <em>backend_options=None</em>, <em>noise_model=None</em>, <em>timeout=None</em>, <em>wait=5</em>, <em>circuit_caching=False</em>, <em>cache_file=None</em>, <em>skip_qobj_deepcopy=False</em>, <em>skip_qobj_validation=True</em>, <em>measurement_error_mitigation_cls=None</em>, <em>cals_matrix_refresh_period=30</em>, <em>measurement_error_mitigation_shots=None</em>, <em>job_callback=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/quantum_instance.html#QuantumInstance"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.aqua.quantum_instance.QuantumInstance" title="この定義へのパーマリンク">¶</a></dt>
 <dd><p>ベースクラス: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Quantum Backend including execution setting.</p>
 <dl class="attribute">
@@ -1667,7 +1667,7 @@
 
 <dl class="attribute">
 <dt id="qiskit.aqua.quantum_instance.QuantumInstance.COMPILE_CONFIG">
-<code class="descname">COMPILE_CONFIG</code><em class="property"> = ['pass_manager', 'initial_layout', 'seed_transpiler']</em><a class="headerlink" href="#qiskit.aqua.quantum_instance.QuantumInstance.COMPILE_CONFIG" title="この定義へのパーマリンク">¶</a></dt>
+<code class="descname">COMPILE_CONFIG</code><em class="property"> = ['pass_manager', 'initial_layout', 'seed_transpiler', 'optimization_level']</em><a class="headerlink" href="#qiskit.aqua.quantum_instance.QuantumInstance.COMPILE_CONFIG" title="この定義へのパーマリンク">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -1682,7 +1682,7 @@
 
 <dl class="attribute">
 <dt id="qiskit.aqua.quantum_instance.QuantumInstance.RUN_CONFIG">
-<code class="descname">RUN_CONFIG</code><em class="property"> = ['shots', 'max_credits', 'memory', 'seed']</em><a class="headerlink" href="#qiskit.aqua.quantum_instance.QuantumInstance.RUN_CONFIG" title="この定義へのパーマリンク">¶</a></dt>
+<code class="descname">RUN_CONFIG</code><em class="property"> = ['shots', 'max_credits', 'memory', 'seed_simulator']</em><a class="headerlink" href="#qiskit.aqua.quantum_instance.QuantumInstance.RUN_CONFIG" title="この定義へのパーマリンク">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -1709,9 +1709,38 @@
 <dd><p>Getter of backend_options.</p>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="method">
 <dt id="qiskit.aqua.quantum_instance.QuantumInstance.cals_matrix">
-<code class="descname">cals_matrix</code><a class="headerlink" href="#qiskit.aqua.quantum_instance.QuantumInstance.cals_matrix" title="この定義へのパーマリンク">¶</a></dt>
+<code class="descname">cals_matrix</code><span class="sig-paren">(</span><em>qubit_index=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/quantum_instance.html#QuantumInstance.cals_matrix"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.aqua.quantum_instance.QuantumInstance.cals_matrix" title="この定義へのパーマリンク">¶</a></dt>
+<dd><p>Get the stored calibration matrices and its timestamp.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">パラメータ:</th><td class="field-body"><ul class="first simple">
+<li><strong>qubit_index</strong> -- the qubit index of corresponding calibration matrix.</li>
+<li><strong>None</strong><strong>, </strong><strong>return all stored calibration matrices.</strong> (<a class="reference internal" href="qiskit.qasm.node.if_.html#qiskit.qasm.node.if_.If" title="qiskit.qasm.node.if_.If"><em>If</em></a>) -- </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">戻り値:</th><td class="field-body"><p class="first"><dl class="docutils">
+<dt>the calibration matrix and the creation timestamp if qubit_index is not None.</dt>
+<dd><p class="first last">otherwise, return all matrices and their timestamp in a dictionary.</p>
+</dd>
+</dl>
+</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">戻り値の型:</th><td class="field-body"><p class="first last">tuple(np.ndarray, int)</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="qiskit.aqua.quantum_instance.QuantumInstance.cals_matrix_refresh_period">
+<code class="descname">cals_matrix_refresh_period</code><a class="headerlink" href="#qiskit.aqua.quantum_instance.QuantumInstance.cals_matrix_refresh_period" title="この定義へのパーマリンク">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -1774,7 +1803,7 @@
 
 <dl class="method">
 <dt id="qiskit.aqua.quantum_instance.QuantumInstance.maybe_refresh_cals_matrix">
-<code class="descname">maybe_refresh_cals_matrix</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/quantum_instance.html#QuantumInstance.maybe_refresh_cals_matrix"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.aqua.quantum_instance.QuantumInstance.maybe_refresh_cals_matrix" title="この定義へのパーマリンク">¶</a></dt>
+<code class="descname">maybe_refresh_cals_matrix</code><span class="sig-paren">(</span><em>timestamp=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/quantum_instance.html#QuantumInstance.maybe_refresh_cals_matrix"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.aqua.quantum_instance.QuantumInstance.maybe_refresh_cals_matrix" title="この定義へのパーマリンク">¶</a></dt>
 <dd><p>Calculate the time difference from the query of last time.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1787,6 +1816,16 @@
 </tbody>
 </table>
 </dd></dl>
+
+<dl class="attribute">
+<dt id="qiskit.aqua.quantum_instance.QuantumInstance.measurement_error_mitigation_cls">
+<code class="descname">measurement_error_mitigation_cls</code><a class="headerlink" href="#qiskit.aqua.quantum_instance.QuantumInstance.measurement_error_mitigation_cls" title="この定義へのパーマリンク">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="qiskit.aqua.quantum_instance.QuantumInstance.measurement_error_mitigation_shots">
+<code class="descname">measurement_error_mitigation_shots</code><a class="headerlink" href="#qiskit.aqua.quantum_instance.QuantumInstance.measurement_error_mitigation_shots" title="この定義へのパーマリンク">¶</a></dt>
+<dd></dd></dl>
 
 <dl class="attribute">
 <dt id="qiskit.aqua.quantum_instance.QuantumInstance.noise_config">
@@ -1810,12 +1849,6 @@
 <dt id="qiskit.aqua.quantum_instance.QuantumInstance.set_config">
 <code class="descname">set_config</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/quantum_instance.html#QuantumInstance.set_config"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.aqua.quantum_instance.QuantumInstance.set_config" title="この定義へのパーマリンク">¶</a></dt>
 <dd><p>Set configurations for the quantum instance.</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="qiskit.aqua.quantum_instance.QuantumInstance.shared_circuits">
-<code class="descname">shared_circuits</code><a class="headerlink" href="#qiskit.aqua.quantum_instance.QuantumInstance.shared_circuits" title="この定義へのパーマリンク">¶</a></dt>
-<dd><p>Getter of shared_circuits.</p>
 </dd></dl>
 
 <dl class="attribute">

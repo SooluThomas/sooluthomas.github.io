@@ -187,9 +187,9 @@
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">Quantum measurement in the computational basis.</span>
 <span class="sd">&quot;&quot;&quot;</span>
-<span class="kn">from</span> <span class="nn">qiskit.circuit.decorators</span> <span class="k">import</span> <span class="n">_op_expand</span><span class="p">,</span> <span class="n">_to_bits</span>
 <span class="kn">from</span> <span class="nn">qiskit.circuit.instruction</span> <span class="k">import</span> <span class="n">Instruction</span>
 <span class="kn">from</span> <span class="nn">qiskit.circuit.quantumcircuit</span> <span class="k">import</span> <span class="n">QuantumCircuit</span>
+<span class="kn">from</span> <span class="nn">qiskit.exceptions</span> <span class="k">import</span> <span class="n">QiskitError</span>
 
 
 <div class="viewcode-block" id="Measure"><a class="viewcode-back" href="../../../autodoc/qiskit.circuit.measure.html#qiskit.circuit.measure.Measure">[ドキュメント]</a><span class="k">class</span> <span class="nc">Measure</span><span class="p">(</span><span class="n">Instruction</span><span class="p">):</span>
@@ -197,12 +197,23 @@
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Create new measurement instruction.&quot;&quot;&quot;</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="s2">&quot;measure&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="p">[])</span></div>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="s2">&quot;measure&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="p">[])</span>
+
+<div class="viewcode-block" id="Measure.broadcast_arguments"><a class="viewcode-back" href="../../../autodoc/qiskit.circuit.measure.html#qiskit.circuit.measure.Measure.broadcast_arguments">[ドキュメント]</a>    <span class="k">def</span> <span class="nf">broadcast_arguments</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">qargs</span><span class="p">,</span> <span class="n">cargs</span><span class="p">):</span>
+        <span class="n">qarg</span> <span class="o">=</span> <span class="n">qargs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">carg</span> <span class="o">=</span> <span class="n">cargs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">carg</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">qarg</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">qarg</span><span class="p">,</span> <span class="n">carg</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">qarg</span><span class="p">,</span> <span class="n">carg</span><span class="p">):</span>
+                <span class="k">yield</span> <span class="p">[</span><span class="n">qarg</span><span class="p">],</span> <span class="p">[</span><span class="n">carg</span><span class="p">]</span>
+        <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">qarg</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">carg</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">each_carg</span> <span class="ow">in</span> <span class="n">carg</span><span class="p">:</span>
+                <span class="k">yield</span> <span class="n">qarg</span><span class="p">,</span> <span class="p">[</span><span class="n">each_carg</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">QiskitError</span><span class="p">(</span><span class="s1">&#39;register size error&#39;</span><span class="p">)</span></div></div>
 
 
-<div class="viewcode-block" id="measure"><a class="viewcode-back" href="../../../autodoc/qiskit.circuit.measure.html#qiskit.circuit.measure.measure">[ドキュメント]</a><span class="nd">@_to_bits</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-<span class="nd">@_op_expand</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">broadcastable</span><span class="o">=</span><span class="p">[</span><span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">])</span>
-<span class="k">def</span> <span class="nf">measure</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">qubit</span><span class="p">,</span> <span class="n">cbit</span><span class="p">):</span>
+<div class="viewcode-block" id="measure"><a class="viewcode-back" href="../../../autodoc/qiskit.circuit.measure.html#qiskit.circuit.measure.measure">[ドキュメント]</a><span class="k">def</span> <span class="nf">measure</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">qubit</span><span class="p">,</span> <span class="n">cbit</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Measure quantum bit into classical bit (tuples).</span>
 
 <span class="sd">    Args:</span>

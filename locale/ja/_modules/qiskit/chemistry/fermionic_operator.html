@@ -193,7 +193,8 @@
 <span class="kn">from</span> <span class="nn">qiskit.tools</span> <span class="k">import</span> <span class="n">parallel_map</span>
 <span class="kn">from</span> <span class="nn">qiskit.tools.events</span> <span class="k">import</span> <span class="n">TextProgressBar</span>
 
-<span class="kn">from</span> <span class="nn">qiskit.aqua</span> <span class="k">import</span> <span class="n">Operator</span><span class="p">,</span> <span class="n">aqua_globals</span>
+<span class="kn">from</span> <span class="nn">qiskit.aqua</span> <span class="k">import</span> <span class="n">aqua_globals</span>
+<span class="kn">from</span> <span class="nn">qiskit.aqua.operators</span> <span class="k">import</span> <span class="n">WeightedPauliOperator</span>
 <span class="kn">from</span> <span class="nn">.qiskit_chemistry_error</span> <span class="k">import</span> <span class="n">QiskitChemistryError</span>
 <span class="kn">from</span> <span class="nn">.bksf</span> <span class="k">import</span> <span class="n">bksf_mapping</span>
 <span class="kn">from</span> <span class="nn">.particle_hole</span> <span class="k">import</span> <span class="n">particle_hole_transformation</span>
@@ -223,7 +224,7 @@
         <span class="sd">&quot;&quot;&quot;Constructor.</span>
 
 <span class="sd">        This class requires the integrals stored in the &#39;chemist&#39; notation</span>
-<span class="sd">            h2(i,j,k,l) --&gt; adag_i adag_k a_m a_j</span>
+<span class="sd">            h2(i,j,k,l) --&gt; adag_i adag_k a_l a_j</span>
 <span class="sd">        There is another popular notation is the &#39;physicist&#39; notation</span>
 <span class="sd">            h2(i,j,k,l) --&gt; adag_i adag_j a_k a_l</span>
 <span class="sd">        If you are using the &#39;physicist&#39; notation, you need to convert it to</span>
@@ -320,6 +321,16 @@
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Jordan_Wigner mode.</span>
 
+<span class="sd">        Each Fermionic Operator is mapped to 2 Pauli Operators, added together with the</span>
+<span class="sd">        appropriate phase, i.e.:</span>
+
+<span class="sd">        a_i^\\dagger = Z^i (X + iY) I^(n-i-1) = (Z^i X I^(n-i-1)) + i (Z^i Y I^(n-i-1))</span>
+<span class="sd">        a_i = Z^i (X - iY) I^(n-i-1)</span>
+
+<span class="sd">        This is implemented by creating an array of tuples, each including two operators.</span>
+<span class="sd">        The phase between two elements in a tuple is implicitly assumed, and added calculated at the</span>
+<span class="sd">        appropriate time (see for example _one_body_mapping).</span>
+
 <span class="sd">        Args:</span>
 <span class="sd">            n (int): number of modes</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -359,6 +370,7 @@
 <span class="sd">        Args:</span>
 <span class="sd">            n (int): number of modes</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+
         <span class="k">def</span> <span class="nf">parity_set</span><span class="p">(</span><span class="n">j</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
             <span class="sd">&quot;&quot;&quot;Computes the parity set of the j-th orbital in n modes.</span>
 
@@ -483,7 +495,7 @@
 <span class="sd">            threshold (float): threshold for Pauli simplification</span>
 
 <span class="sd">        Returns:</span>
-<span class="sd">            Operator: create an Operator object in Paulis form.</span>
+<span class="sd">            WeightedPauliOperator: create an Operator object in Paulis form.</span>
 
 <span class="sd">        Raises:</span>
 <span class="sd">            QiskitChemistryError: if the `map_type` can not be recognized.</span>
@@ -513,7 +525,7 @@
 <span class="sd">        ############    BUILDING THE MAPPED HAMILTONIAN     ################</span>
 <span class="sd">        ####################################################################</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">pauli_list</span> <span class="o">=</span> <span class="n">Operator</span><span class="p">(</span><span class="n">paulis</span><span class="o">=</span><span class="p">[])</span>
+        <span class="n">pauli_list</span> <span class="o">=</span> <span class="n">WeightedPauliOperator</span><span class="p">(</span><span class="n">paulis</span><span class="o">=</span><span class="p">[])</span>
         <span class="k">if</span> <span class="n">logger</span><span class="o">.</span><span class="n">isEnabledFor</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">):</span>
             <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Mapping one-body terms to Qubit Hamiltonian:&quot;</span><span class="p">)</span>
             <span class="n">TextProgressBar</span><span class="p">(</span><span class="n">output_handler</span><span class="o">=</span><span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="p">)</span>
@@ -538,7 +550,7 @@
 
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ph_trans_shift</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">pauli_term</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_ph_trans_shift</span><span class="p">,</span> <span class="n">Pauli</span><span class="o">.</span><span class="n">from_label</span><span class="p">(</span><span class="s1">&#39;I&#39;</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">_modes</span><span class="p">)]</span>
-            <span class="n">pauli_list</span> <span class="o">+=</span> <span class="n">Operator</span><span class="p">(</span><span class="n">paulis</span><span class="o">=</span><span class="p">[</span><span class="n">pauli_term</span><span class="p">])</span>
+            <span class="n">pauli_list</span> <span class="o">+=</span> <span class="n">WeightedPauliOperator</span><span class="p">(</span><span class="n">paulis</span><span class="o">=</span><span class="p">[</span><span class="n">pauli_term</span><span class="p">])</span>
 
         <span class="k">return</span> <span class="n">pauli_list</span></div>
 
@@ -552,7 +564,7 @@
 <span class="sd">            threshold: (float): threshold to remove a pauli</span>
 
 <span class="sd">        Returns:</span>
-<span class="sd">            Operator: Operator for those paulis</span>
+<span class="sd">            WeightedPauliOperator: Operator for those paulis</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">h1_ij</span><span class="p">,</span> <span class="n">a_i</span><span class="p">,</span> <span class="n">a_j</span> <span class="o">=</span> <span class="n">h1_ij_aij</span>
         <span class="n">pauli_list</span> <span class="o">=</span> <span class="p">[]</span>
@@ -563,7 +575,7 @@
                 <span class="n">pauli_term</span> <span class="o">=</span> <span class="p">[</span><span class="n">coeff</span><span class="p">,</span> <span class="n">pauli_prod</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
                 <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">absolute</span><span class="p">(</span><span class="n">pauli_term</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">&gt;</span> <span class="n">threshold</span><span class="p">:</span>
                     <span class="n">pauli_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pauli_term</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">Operator</span><span class="p">(</span><span class="n">paulis</span><span class="o">=</span><span class="n">pauli_list</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">WeightedPauliOperator</span><span class="p">(</span><span class="n">paulis</span><span class="o">=</span><span class="n">pauli_list</span><span class="p">)</span>
 
     <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">_two_body_mapping</span><span class="p">(</span><span class="n">h2_ijkm_a_ijkm</span><span class="p">,</span> <span class="n">threshold</span><span class="p">):</span>
@@ -578,7 +590,7 @@
 <span class="sd">            threshold: (float): threshold to remove a pauli</span>
 
 <span class="sd">        Returns:</span>
-<span class="sd">            Operator: Operator for those paulis</span>
+<span class="sd">            WeightedPauliOperator: Operator for those paulis</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">h2_ijkm</span><span class="p">,</span> <span class="n">a_i</span><span class="p">,</span> <span class="n">a_j</span><span class="p">,</span> <span class="n">a_k</span><span class="p">,</span> <span class="n">a_m</span> <span class="o">=</span> <span class="n">h2_ijkm_a_ijkm</span>
         <span class="n">pauli_list</span> <span class="o">=</span> <span class="p">[]</span>
@@ -595,7 +607,7 @@
                         <span class="n">pauli_term</span> <span class="o">=</span> <span class="p">[</span><span class="n">h2_ijkm</span> <span class="o">/</span> <span class="mi">16</span> <span class="o">*</span> <span class="n">phase1</span> <span class="o">*</span> <span class="n">phase2</span><span class="p">,</span> <span class="n">pauli_prod_3</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
                         <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">absolute</span><span class="p">(</span><span class="n">pauli_term</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">&gt;</span> <span class="n">threshold</span><span class="p">:</span>
                             <span class="n">pauli_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pauli_term</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">Operator</span><span class="p">(</span><span class="n">paulis</span><span class="o">=</span><span class="n">pauli_list</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">WeightedPauliOperator</span><span class="p">(</span><span class="n">paulis</span><span class="o">=</span><span class="n">pauli_list</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">_convert_to_interleaved_spins</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Converting the spin order.</span>
@@ -623,6 +635,7 @@
         <span class="n">matrix</span><span class="p">[</span><span class="mi">2</span> <span class="o">*</span> <span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n</span> <span class="o">//</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.0</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span>
 
+    <span class="c1"># Modified for Open-Shell : 17.07.2019 by iso and bpa</span>
 <div class="viewcode-block" id="FermionicOperator.particle_hole_transformation"><a class="viewcode-back" href="../../../autodoc/qiskit.chemistry.fermionic_operator.html#qiskit.chemistry.FermionicOperator.particle_hole_transformation">[ドキュメント]</a>    <span class="k">def</span> <span class="nf">particle_hole_transformation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num_particles</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        The &#39;standard&#39; second quantized Hamiltonian can be transformed in the</span>
@@ -635,8 +648,10 @@
 <span class="sd">        P. Barkoutsos, arXiv:1805.04340(https://arxiv.org/abs/1805.04340).</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            num_particles (int): number of particles</span>
+<span class="sd">            num_particles (list, int): number of particles, if it is a list, the first number is alpha</span>
+<span class="sd">                                       and the second number is beta.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+
         <span class="bp">self</span><span class="o">.</span><span class="n">_convert_to_interleaved_spins</span><span class="p">()</span>
         <span class="n">h1</span><span class="p">,</span> <span class="n">h2</span><span class="p">,</span> <span class="n">energy_shift</span> <span class="o">=</span> <span class="n">particle_hole_transformation</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_modes</span><span class="p">,</span> <span class="n">num_particles</span><span class="p">,</span>
                                                             <span class="bp">self</span><span class="o">.</span><span class="n">_h1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_h2</span><span class="p">)</span>
@@ -693,34 +708,34 @@
         <span class="n">energy_shift</span> <span class="o">=</span> <span class="mf">0.0</span>
         <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_h2</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
             <span class="c1"># First simplify h2 and renormalize original h1</span>
-            <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">itertools</span><span class="o">.</span><span class="n">product</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">n_modes_old</span><span class="p">),</span> <span class="n">repeat</span><span class="o">=</span><span class="mi">4</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">_i</span><span class="p">,</span> <span class="n">_j</span><span class="p">,</span> <span class="n">_l</span><span class="p">,</span> <span class="n">_k</span> <span class="ow">in</span> <span class="n">itertools</span><span class="o">.</span><span class="n">product</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">n_modes_old</span><span class="p">),</span> <span class="n">repeat</span><span class="o">=</span><span class="mi">4</span><span class="p">):</span>
                 <span class="c1"># Untouched terms</span>
-                <span class="n">h2_ijlk</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_h2</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">k</span><span class="p">]</span>
+                <span class="n">h2_ijlk</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_h2</span><span class="p">[</span><span class="n">_i</span><span class="p">,</span> <span class="n">_j</span><span class="p">,</span> <span class="n">_l</span><span class="p">,</span> <span class="n">_k</span><span class="p">]</span>
                 <span class="k">if</span> <span class="n">h2_ijlk</span> <span class="o">==</span> <span class="mf">0.0</span><span class="p">:</span>
                     <span class="k">continue</span>
-                <span class="k">if</span> <span class="p">(</span><span class="n">i</span> <span class="ow">in</span> <span class="n">mode_set_diff</span> <span class="ow">and</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">mode_set_diff</span> <span class="ow">and</span>
-                        <span class="n">l</span> <span class="ow">in</span> <span class="n">mode_set_diff</span> <span class="ow">and</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">mode_set_diff</span><span class="p">):</span>
-                    <span class="n">h2_new</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">fermion_mode_array</span> <span class="o">&lt;</span> <span class="n">i</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">size</span><span class="p">,</span>
-                           <span class="n">j</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">fermion_mode_array</span> <span class="o">&lt;</span> <span class="n">j</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">size</span><span class="p">,</span>
-                           <span class="n">l</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">fermion_mode_array</span> <span class="o">&lt;</span> <span class="n">l</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">size</span><span class="p">,</span>
-                           <span class="n">k</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">fermion_mode_array</span> <span class="o">&lt;</span> <span class="n">k</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">size</span><span class="p">]</span> <span class="o">=</span> <span class="n">h2_ijlk</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">_i</span> <span class="ow">in</span> <span class="n">mode_set_diff</span> <span class="ow">and</span> <span class="n">_j</span> <span class="ow">in</span> <span class="n">mode_set_diff</span> <span class="ow">and</span>
+                        <span class="n">_l</span> <span class="ow">in</span> <span class="n">mode_set_diff</span> <span class="ow">and</span> <span class="n">_k</span> <span class="ow">in</span> <span class="n">mode_set_diff</span><span class="p">):</span>
+                    <span class="n">h2_new</span><span class="p">[</span><span class="n">_i</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">fermion_mode_array</span> <span class="o">&lt;</span> <span class="n">_i</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">size</span><span class="p">,</span>
+                           <span class="n">_j</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">fermion_mode_array</span> <span class="o">&lt;</span> <span class="n">_j</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">size</span><span class="p">,</span>
+                           <span class="n">_l</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">fermion_mode_array</span> <span class="o">&lt;</span> <span class="n">_l</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">size</span><span class="p">,</span>
+                           <span class="n">_k</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">fermion_mode_array</span> <span class="o">&lt;</span> <span class="n">_k</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">size</span><span class="p">]</span> <span class="o">=</span> <span class="n">h2_ijlk</span>
                 <span class="k">else</span><span class="p">:</span>
-                    <span class="k">if</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">fermion_mode_array</span><span class="p">:</span>
-                        <span class="k">if</span> <span class="n">l</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">fermion_mode_array</span><span class="p">:</span>
-                            <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="n">k</span> <span class="ow">and</span> <span class="n">j</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">fermion_mode_array</span><span class="p">:</span>
-                                <span class="n">h1</span><span class="p">[</span><span class="n">l</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">-=</span> <span class="n">h2_ijlk</span>
-                            <span class="k">elif</span> <span class="n">i</span> <span class="o">==</span> <span class="n">j</span> <span class="ow">and</span> <span class="n">k</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">fermion_mode_array</span><span class="p">:</span>
-                                <span class="n">h1</span><span class="p">[</span><span class="n">l</span><span class="p">,</span> <span class="n">k</span><span class="p">]</span> <span class="o">+=</span> <span class="n">h2_ijlk</span>
-                        <span class="k">elif</span> <span class="n">i</span> <span class="o">!=</span> <span class="n">l</span><span class="p">:</span>
-                            <span class="k">if</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">fermion_mode_array</span> <span class="ow">and</span> <span class="n">i</span> <span class="o">==</span> <span class="n">k</span> <span class="ow">and</span> <span class="n">l</span> <span class="o">==</span> <span class="n">j</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">_i</span> <span class="ow">in</span> <span class="n">fermion_mode_array</span><span class="p">:</span>
+                        <span class="k">if</span> <span class="n">_l</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">fermion_mode_array</span><span class="p">:</span>
+                            <span class="k">if</span> <span class="n">_i</span> <span class="o">==</span> <span class="n">_k</span> <span class="ow">and</span> <span class="n">_j</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">fermion_mode_array</span><span class="p">:</span>
+                                <span class="n">h1</span><span class="p">[</span><span class="n">_l</span><span class="p">,</span> <span class="n">_j</span><span class="p">]</span> <span class="o">-=</span> <span class="n">h2_ijlk</span>
+                            <span class="k">elif</span> <span class="n">_i</span> <span class="o">==</span> <span class="n">_j</span> <span class="ow">and</span> <span class="n">_k</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">fermion_mode_array</span><span class="p">:</span>
+                                <span class="n">h1</span><span class="p">[</span><span class="n">_l</span><span class="p">,</span> <span class="n">_k</span><span class="p">]</span> <span class="o">+=</span> <span class="n">h2_ijlk</span>
+                        <span class="k">elif</span> <span class="n">_i</span> <span class="o">!=</span> <span class="n">_l</span><span class="p">:</span>
+                            <span class="k">if</span> <span class="n">_j</span> <span class="ow">in</span> <span class="n">fermion_mode_array</span> <span class="ow">and</span> <span class="n">_i</span> <span class="o">==</span> <span class="n">_k</span> <span class="ow">and</span> <span class="n">_l</span> <span class="o">==</span> <span class="n">_j</span><span class="p">:</span>
                                 <span class="n">energy_shift</span> <span class="o">-=</span> <span class="n">h2_ijlk</span>
-                            <span class="k">elif</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">fermion_mode_array</span> <span class="ow">and</span> <span class="n">i</span> <span class="o">==</span> <span class="n">j</span> <span class="ow">and</span> <span class="n">l</span> <span class="o">==</span> <span class="n">k</span><span class="p">:</span>
+                            <span class="k">elif</span> <span class="n">_l</span> <span class="ow">in</span> <span class="n">fermion_mode_array</span> <span class="ow">and</span> <span class="n">_i</span> <span class="o">==</span> <span class="n">_j</span> <span class="ow">and</span> <span class="n">_l</span> <span class="o">==</span> <span class="n">_k</span><span class="p">:</span>
                                 <span class="n">energy_shift</span> <span class="o">+=</span> <span class="n">h2_ijlk</span>
-                    <span class="k">elif</span> <span class="n">i</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">fermion_mode_array</span> <span class="ow">and</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">fermion_mode_array</span><span class="p">:</span>
-                        <span class="k">if</span> <span class="n">l</span> <span class="o">==</span> <span class="n">k</span> <span class="ow">and</span> <span class="n">j</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">fermion_mode_array</span><span class="p">:</span>
-                            <span class="n">h1</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">+=</span> <span class="n">h2_ijlk</span>
-                        <span class="k">elif</span> <span class="n">l</span> <span class="o">==</span> <span class="n">j</span> <span class="ow">and</span> <span class="n">k</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">fermion_mode_array</span><span class="p">:</span>
-                            <span class="n">h1</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">k</span><span class="p">]</span> <span class="o">-=</span> <span class="n">h2_ijlk</span>
+                    <span class="k">elif</span> <span class="n">_i</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">fermion_mode_array</span> <span class="ow">and</span> <span class="n">_l</span> <span class="ow">in</span> <span class="n">fermion_mode_array</span><span class="p">:</span>
+                        <span class="k">if</span> <span class="n">_l</span> <span class="o">==</span> <span class="n">_k</span> <span class="ow">and</span> <span class="n">_j</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">fermion_mode_array</span><span class="p">:</span>
+                            <span class="n">h1</span><span class="p">[</span><span class="n">_i</span><span class="p">,</span> <span class="n">_j</span><span class="p">]</span> <span class="o">+=</span> <span class="n">h2_ijlk</span>
+                        <span class="k">elif</span> <span class="n">_l</span> <span class="o">==</span> <span class="n">_j</span> <span class="ow">and</span> <span class="n">_k</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">fermion_mode_array</span><span class="p">:</span>
+                            <span class="n">h1</span><span class="p">[</span><span class="n">_i</span><span class="p">,</span> <span class="n">_k</span><span class="p">]</span> <span class="o">-=</span> <span class="n">h2_ijlk</span>
 
         <span class="c1"># now simplify h1</span>
         <span class="n">energy_shift</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diagonal</span><span class="p">(</span><span class="n">h1</span><span class="p">)[</span><span class="n">fermion_mode_array</span><span class="p">])</span>

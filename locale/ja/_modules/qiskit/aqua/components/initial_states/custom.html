@@ -187,9 +187,8 @@
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">logging</span>
 
-<span class="kn">from</span> <span class="nn">qiskit</span> <span class="k">import</span> <span class="n">QuantumRegister</span><span class="p">,</span> <span class="n">QuantumCircuit</span>
+<span class="kn">from</span> <span class="nn">qiskit.circuit</span> <span class="k">import</span> <span class="n">QuantumRegister</span><span class="p">,</span> <span class="n">QuantumCircuit</span><span class="p">,</span> <span class="n">Qubit</span>
 <span class="kn">from</span> <span class="nn">qiskit</span> <span class="k">import</span> <span class="n">execute</span> <span class="k">as</span> <span class="n">q_execute</span>
-<span class="kn">from</span> <span class="nn">qiskit</span> <span class="k">import</span> <span class="n">BasicAer</span>
 
 <span class="kn">from</span> <span class="nn">qiskit.aqua</span> <span class="k">import</span> <span class="n">AquaError</span><span class="p">,</span> <span class="n">aqua_globals</span>
 <span class="kn">from</span> <span class="nn">qiskit.aqua.components.initial_states</span> <span class="k">import</span> <span class="n">InitialState</span>
@@ -214,9 +213,7 @@
                 <span class="s1">&#39;state&#39;</span><span class="p">:</span> <span class="p">{</span>
                     <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;string&#39;</span><span class="p">,</span>
                     <span class="s1">&#39;default&#39;</span><span class="p">:</span> <span class="s1">&#39;zero&#39;</span><span class="p">,</span>
-                    <span class="s1">&#39;oneOf&#39;</span><span class="p">:</span> <span class="p">[</span>
-                        <span class="p">{</span><span class="s1">&#39;enum&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;zero&#39;</span><span class="p">,</span> <span class="s1">&#39;uniform&#39;</span><span class="p">,</span> <span class="s1">&#39;random&#39;</span><span class="p">]}</span>
-                    <span class="p">]</span>
+                    <span class="s1">&#39;enum&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;zero&#39;</span><span class="p">,</span> <span class="s1">&#39;uniform&#39;</span><span class="p">,</span> <span class="s1">&#39;random&#39;</span><span class="p">]</span>
                 <span class="p">},</span>
                 <span class="s1">&#39;state_vector&#39;</span><span class="p">:</span> <span class="p">{</span>
                     <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;array&#39;</span><span class="p">,</span> <span class="s1">&#39;null&#39;</span><span class="p">],</span>
@@ -275,22 +272,9 @@
                 <span class="bp">self</span><span class="o">.</span><span class="n">_state_vector</span> <span class="o">=</span> <span class="n">normalize_vector</span><span class="p">(</span><span class="n">state_vector</span><span class="p">)</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_state</span> <span class="o">=</span> <span class="kc">None</span>
 
-<div class="viewcode-block" id="Custom.construct_circuit"><a class="viewcode-back" href="../../../../../autodoc/qiskit.aqua.components.initial_states.custom.html#qiskit.aqua.components.initial_states.Custom.construct_circuit">[ドキュメント]</a>    <span class="k">def</span> <span class="nf">construct_circuit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mode</span><span class="p">,</span> <span class="n">register</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Construct the statevector of desired initial state.</span>
+<div class="viewcode-block" id="Custom.construct_circuit"><a class="viewcode-back" href="../../../../../autodoc/qiskit.aqua.components.initial_states.custom.html#qiskit.aqua.components.initial_states.Custom.construct_circuit">[ドキュメント]</a>    <span class="k">def</span> <span class="nf">construct_circuit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;circuit&#39;</span><span class="p">,</span> <span class="n">register</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="kn">from</span> <span class="nn">qiskit</span> <span class="k">import</span> <span class="n">BasicAer</span>
 
-<span class="sd">        Args:</span>
-<span class="sd">            mode (string): `vector` or `circuit`. The `vector` mode produces the vector.</span>
-<span class="sd">                            While the `circuit` constructs the quantum circuit corresponding that</span>
-<span class="sd">                            vector.</span>
-<span class="sd">            register (QuantumRegister): register for circuit construction.</span>
-
-<span class="sd">        Returns:</span>
-<span class="sd">            QuantumCircuit or numpy.ndarray: statevector.</span>
-
-<span class="sd">        Raises:</span>
-<span class="sd">            AquaError: when mode is not &#39;vector&#39; or &#39;circuit&#39;.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">mode</span> <span class="o">==</span> <span class="s1">&#39;vector&#39;</span><span class="p">:</span>
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_state_vector</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
                 <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_circuit</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
@@ -299,33 +283,34 @@
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_state_vector</span>
         <span class="k">elif</span> <span class="n">mode</span> <span class="o">==</span> <span class="s1">&#39;circuit&#39;</span><span class="p">:</span>
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_circuit</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-                <span class="k">if</span> <span class="n">register</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-                    <span class="n">register</span> <span class="o">=</span> <span class="n">QuantumRegister</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_num_qubits</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;q&#39;</span><span class="p">)</span>
-
                 <span class="c1"># create emtpy quantum circuit</span>
                 <span class="n">circuit</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">()</span>
 
-                <span class="c1"># if register is actually a list of qubits</span>
-                <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">register</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">list</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">register</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="n">register</span> <span class="o">=</span> <span class="n">QuantumRegister</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_num_qubits</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;q&#39;</span><span class="p">)</span>
 
-                    <span class="c1"># loop over all qubits and add the required registers</span>
-                    <span class="k">for</span> <span class="n">q</span> <span class="ow">in</span> <span class="n">register</span><span class="p">:</span>
-                        <span class="k">if</span> <span class="ow">not</span> <span class="n">circuit</span><span class="o">.</span><span class="n">has_register</span><span class="p">(</span><span class="n">q</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
-                            <span class="n">circuit</span><span class="o">.</span><span class="n">add_register</span><span class="p">(</span><span class="n">q</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-                <span class="k">else</span><span class="p">:</span>
-                    <span class="c1"># if an actual register is given, add it</span>
+                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">register</span><span class="p">,</span> <span class="n">QuantumRegister</span><span class="p">):</span>
                     <span class="n">circuit</span><span class="o">.</span><span class="n">add_register</span><span class="p">(</span><span class="n">register</span><span class="p">)</span>
+                <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">register</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+                    <span class="k">for</span> <span class="n">q</span> <span class="ow">in</span> <span class="n">register</span><span class="p">:</span>
+                        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">Qubit</span><span class="p">):</span>
+                            <span class="k">if</span> <span class="ow">not</span> <span class="n">circuit</span><span class="o">.</span><span class="n">has_register</span><span class="p">(</span><span class="n">q</span><span class="o">.</span><span class="n">register</span><span class="p">):</span>
+                                <span class="n">circuit</span><span class="o">.</span><span class="n">add_register</span><span class="p">(</span><span class="n">q</span><span class="o">.</span><span class="n">register</span><span class="p">)</span>
+                        <span class="k">else</span><span class="p">:</span>
+                            <span class="k">raise</span> <span class="n">AquaError</span><span class="p">(</span><span class="s1">&#39;Unexpected qubit type </span><span class="si">{}</span><span class="s1">.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">q</span><span class="p">)))</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="n">AquaError</span><span class="p">(</span><span class="s1">&#39;Unexpected register type </span><span class="si">{}</span><span class="s1">.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">register</span><span class="p">)))</span>
 
                 <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_state</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">_state</span> <span class="o">==</span> <span class="s1">&#39;random&#39;</span><span class="p">:</span>
                     <span class="n">svc</span> <span class="o">=</span> <span class="n">StateVectorCircuit</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_state_vector</span><span class="p">)</span>
-                    <span class="n">svc</span><span class="o">.</span><span class="n">construct_circuit</span><span class="p">(</span><span class="n">circuit</span><span class="p">,</span> <span class="n">register</span><span class="p">)</span>
-                <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">_state</span> <span class="o">==</span> <span class="s1">&#39;zero&#39;</span><span class="p">:</span>
-                    <span class="k">pass</span>
+                    <span class="n">svc</span><span class="o">.</span><span class="n">construct_circuit</span><span class="p">(</span><span class="n">circuit</span><span class="o">=</span><span class="n">circuit</span><span class="p">,</span> <span class="n">register</span><span class="o">=</span><span class="n">register</span><span class="p">)</span>
                 <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">_state</span> <span class="o">==</span> <span class="s1">&#39;uniform&#39;</span><span class="p">:</span>
                     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_num_qubits</span><span class="p">):</span>
                         <span class="n">circuit</span><span class="o">.</span><span class="n">u2</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="n">register</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
-                <span class="k">else</span><span class="p">:</span>
+                <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">_state</span> <span class="o">==</span> <span class="s1">&#39;zero&#39;</span><span class="p">:</span>
                     <span class="k">pass</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">AquaError</span><span class="p">(</span><span class="s1">&#39;Unexpected state mode </span><span class="si">{}</span><span class="s1">.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_state</span><span class="p">))</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_circuit</span> <span class="o">=</span> <span class="n">circuit</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_circuit</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
         <span class="k">else</span><span class="p">:</span>

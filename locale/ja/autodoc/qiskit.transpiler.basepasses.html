@@ -1645,7 +1645,7 @@
         
   <div class="section" id="module-qiskit.transpiler.basepasses">
 <span id="qiskit-transpiler-basepasses-module"></span><h1>qiskit.transpiler.basepasses module<a class="headerlink" href="#module-qiskit.transpiler.basepasses" title="このヘッドラインへのパーマリンク">¶</a></h1>
-<p>This module implements the base pass.</p>
+<p>Base transpiler passes.</p>
 <dl class="class">
 <dt id="qiskit.transpiler.basepasses.AnalysisPass">
 <em class="property">class </em><code class="descname">AnalysisPass</code><a class="reference internal" href="../_modules/qiskit/transpiler/basepasses.html#AnalysisPass"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.transpiler.basepasses.AnalysisPass" title="この定義へのパーマリンク">¶</a></dt>
@@ -1661,7 +1661,8 @@
 <dl class="attribute">
 <dt id="qiskit.transpiler.basepasses.BasePass.is_analysis_pass">
 <code class="descname">is_analysis_pass</code><a class="headerlink" href="#qiskit.transpiler.basepasses.BasePass.is_analysis_pass" title="この定義へのパーマリンク">¶</a></dt>
-<dd><p>If the pass is an AnalysisPass, that means that the pass can analyze the DAG and write
+<dd><p>Check if the pass is an analysis pass.</p>
+<p>If the pass is an AnalysisPass, that means that the pass can analyze the DAG and write
 the results of that analysis in the property set. Modifications on the DAG are not allowed
 by this kind of pass.</p>
 </dd></dl>
@@ -1669,27 +1670,28 @@ by this kind of pass.</p>
 <dl class="attribute">
 <dt id="qiskit.transpiler.basepasses.BasePass.is_transformation_pass">
 <code class="descname">is_transformation_pass</code><a class="headerlink" href="#qiskit.transpiler.basepasses.BasePass.is_transformation_pass" title="この定義へのパーマリンク">¶</a></dt>
-<dd><p>If the pass is a TransformationPass, that means that the pass can manipulate the DAG,
+<dd><p>Check if the pass is a transformation pass.</p>
+<p>If the pass is a TransformationPass, that means that the pass can manipulate the DAG,
 but cannot modify the property set (but it can be read).</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="qiskit.transpiler.basepasses.BasePass.name">
 <code class="descname">name</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/transpiler/basepasses.html#BasePass.name"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.transpiler.basepasses.BasePass.name" title="この定義へのパーマリンク">¶</a></dt>
-<dd><p>The name of the pass.</p>
+<dd><p>Return the name of the pass.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="qiskit.transpiler.basepasses.BasePass.run">
 <code class="descname">run</code><span class="sig-paren">(</span><em>dag</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/transpiler/basepasses.html#BasePass.run"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.transpiler.basepasses.BasePass.run" title="この定義へのパーマリンク">¶</a></dt>
-<dd><p>Run a pass on the DAGCircuit. This is implemented by the pass developer.
-:param dag: the dag on which the pass is run.
-:type dag: DAGCircuit</p>
+<dd><p>Run a pass on the DAGCircuit. This is implemented by the pass developer.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><code class="xref py py-exc docutils literal notranslate"><span class="pre">NotImplementedError</span></code> -- when this is left unimplemented for a pass.</td>
+<tr class="field-odd field"><th class="field-name">パラメータ:</th><td class="field-body"><strong>dag</strong> (<a class="reference internal" href="qiskit.dagcircuit.dagcircuit.html#qiskit.dagcircuit.dagcircuit.DAGCircuit" title="qiskit.dagcircuit.dagcircuit.DAGCircuit"><em>DAGCircuit</em></a>) -- the dag on which the pass is run.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><code class="xref py py-exc docutils literal notranslate"><span class="pre">NotImplementedError</span></code> -- when this is left unimplemented for a pass.</td>
 </tr>
 </tbody>
 </table>
@@ -1701,8 +1703,9 @@ but cannot modify the property set (but it can be read).</p>
 <dt id="qiskit.transpiler.basepasses.MetaPass">
 <em class="property">class </em><code class="descname">MetaPass</code><a class="reference internal" href="../_modules/qiskit/transpiler/basepasses.html#MetaPass"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.transpiler.basepasses.MetaPass" title="この定義へのパーマリンク">¶</a></dt>
 <dd><p>ベースクラス: <code class="xref py py-class docutils literal notranslate"><span class="pre">type</span></code></p>
-<p>Enforces the creation of some fields in the pass
-while allowing passes to override __init__</p>
+<p>Metaclass for transpiler passes.</p>
+<p>Enforces the creation of some fields in the pass while allowing passes to
+override <code class="docutils literal notranslate"><span class="pre">__init__</span></code>.</p>
 </dd></dl>
 
 <dl class="class">

@@ -1645,11 +1645,11 @@
         
   <div class="section" id="module-qiskit.transpiler.passes.mapping.lookahead_swap">
 <span id="qiskit-transpiler-passes-mapping-lookahead-swap-module"></span><h1>qiskit.transpiler.passes.mapping.lookahead_swap module<a class="headerlink" href="#module-qiskit.transpiler.passes.mapping.lookahead_swap" title="このヘッドラインへのパーマリンク">¶</a></h1>
-<p>Implementation of Sven Jandura's swap mapper submission for the 2018 QISKit
+<p>Implementation of Sven Jandura's swap mapper submission for the 2018 Qiskit
 Developer Challenge, adapted to integrate into the transpiler architecture.</p>
-<p>The role of the mapper pass is to modify the starting circuit to be compatible
+<p>The role of the swapper pass is to modify the starting circuit to be compatible
 with the target device's topology (the set of two-qubit gates available on the
-hardware.) To do this, the mapper will insert SWAP gates to relocate the virtual
+hardware.) To do this, the pass will insert SWAP gates to relocate the virtual
 qubits for each upcoming gate onto a set of coupled physical qubits. However, as
 SWAP gates are particularly lossy, the goal is to accomplish this remapping while
 introducing the fewest possible additional SWAPs.</p>
@@ -1676,7 +1676,7 @@ output circuit.</li>
 <a class="reference external" href="https://medium.com/qiskit/improving-a-quantum-compiler-48410d7a7084">https://medium.com/qiskit/improving-a-quantum-compiler-48410d7a7084</a></p>
 <dl class="class">
 <dt id="qiskit.transpiler.passes.mapping.lookahead_swap.LookaheadSwap">
-<em class="property">class </em><code class="descname">LookaheadSwap</code><span class="sig-paren">(</span><em>coupling_map</em>, <em>initial_layout=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/transpiler/passes/mapping/lookahead_swap.html#LookaheadSwap"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.transpiler.passes.mapping.lookahead_swap.LookaheadSwap" title="この定義へのパーマリンク">¶</a></dt>
+<em class="property">class </em><code class="descname">LookaheadSwap</code><span class="sig-paren">(</span><em>coupling_map</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/transpiler/passes/mapping/lookahead_swap.html#LookaheadSwap"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.transpiler.passes.mapping.lookahead_swap.LookaheadSwap" title="この定義へのパーマリンク">¶</a></dt>
 <dd><p>ベースクラス: <a class="reference internal" href="qiskit.transpiler.basepasses.html#qiskit.transpiler.basepasses.TransformationPass" title="qiskit.transpiler.basepasses.TransformationPass"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.transpiler.basepasses.TransformationPass</span></code></a></p>
 <p>Map input circuit onto a backend topology via insertion of SWAPs.</p>
 <dl class="method">

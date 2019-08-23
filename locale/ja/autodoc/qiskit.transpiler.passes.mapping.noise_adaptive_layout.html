@@ -1647,7 +1647,7 @@
 <span id="qiskit-transpiler-passes-mapping-noise-adaptive-layout-module"></span><h1>qiskit.transpiler.passes.mapping.noise_adaptive_layout module<a class="headerlink" href="#module-qiskit.transpiler.passes.mapping.noise_adaptive_layout" title="このヘッドラインへのパーマリンク">¶</a></h1>
 <p>A pass for choosing a Layout of a circuit onto a Backend</p>
 <p>This pass associates a physical qubit (int) to each virtual qubit
-of the circuit (tuple(QuantumRegister, int)), using calibration data.</p>
+of the circuit (Qubit), using calibration data.</p>
 <p>The pass implements the qubit mapping method from:
 Noise-Adaptive Compiler Mappings for Noisy Intermediate-Scale Quantum Computers
 Prakash Murali, Jonathan M. Baker, Ali Javadi-Abhari, Frederic T. Chong, Margaret R. Martonosi
@@ -1655,7 +1655,7 @@ ASPLOS 2019 (arXiv:1901.11054).</p>
 <div class="section" id="greedy-mapping-heuristic">
 <h2>Greedy mapping heuristic<a class="headerlink" href="#greedy-mapping-heuristic" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p>Ordering of edges:
-Map qubits edge-by-edge in the order of decreasing frequency of occurence in the program dag.</p>
+Map qubits edge-by-edge in the order of decreasing frequency of occurrence in the program dag.</p>
 <p>Initialization:
 If an edge exists with both endpoints unmapped,
 pick the best available hardware cx to execute this edge.

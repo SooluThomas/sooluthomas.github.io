@@ -172,10 +172,18 @@
   <h1>qiskit.quantum_info.operators.base_operator のソースコード</h1><div class="highlight"><pre>
 <span></span><span class="c1"># -*- coding: utf-8 -*-</span>
 
-<span class="c1"># Copyright 2019, IBM.</span>
+<span class="c1"># This code is part of Qiskit.</span>
 <span class="c1">#</span>
-<span class="c1"># This source code is licensed under the Apache License, Version 2.0 found in</span>
-<span class="c1"># the LICENSE.txt file in the root directory of this source tree.</span>
+<span class="c1"># (C) Copyright IBM 2017, 2019.</span>
+<span class="c1">#</span>
+<span class="c1"># This code is licensed under the Apache License, Version 2.0. You may</span>
+<span class="c1"># obtain a copy of this license in the LICENSE.txt file in the root directory</span>
+<span class="c1"># of this source tree or at http://www.apache.org/licenses/LICENSE-2.0.</span>
+<span class="c1">#</span>
+<span class="c1"># Any modifications or derivative works of this code must retain this</span>
+<span class="c1"># copyright notice, and modified files need to carry a notice indicating</span>
+<span class="c1"># that they have been altered from the originals.</span>
+
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">Abstract BaseOperator class.</span>
 <span class="sd">&quot;&quot;&quot;</span>
@@ -184,7 +192,7 @@
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
-<span class="kn">from</span> <span class="nn">qiskit.qiskiterror</span> <span class="k">import</span> <span class="n">QiskitError</span>
+<span class="kn">from</span> <span class="nn">qiskit.exceptions</span> <span class="k">import</span> <span class="n">QiskitError</span>
 <span class="kn">from</span> <span class="nn">qiskit.quantum_info.operators.predicates</span> <span class="k">import</span> <span class="n">ATOL_DEFAULT</span><span class="p">,</span> <span class="n">RTOL_DEFAULT</span>
 
 
@@ -240,12 +248,12 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">_atol</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;The absolute tolerence parameter for float comparisons.&quot;&quot;&quot;</span>
+        <span class="sd">&quot;&quot;&quot;The absolute tolerance parameter for float comparisons.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="n">ATOL</span>
 
     <span class="nd">@_atol</span><span class="o">.</span><span class="n">setter</span>
     <span class="k">def</span> <span class="nf">_atol</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">atol</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Set the absolute tolerence parameter for float comparisons.&quot;&quot;&quot;</span>
+        <span class="sd">&quot;&quot;&quot;Set the absolute tolerance parameter for float comparisons.&quot;&quot;&quot;</span>
         <span class="c1"># NOTE: that this overrides the class value so applies to all</span>
         <span class="c1"># instances of the class.</span>
         <span class="n">max_tol</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="n">MAX_TOL</span>
@@ -258,12 +266,12 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">_rtol</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;The relative tolerence parameter for float comparisons.&quot;&quot;&quot;</span>
+        <span class="sd">&quot;&quot;&quot;The relative tolerance parameter for float comparisons.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="n">RTOL</span>
 
     <span class="nd">@_rtol</span><span class="o">.</span><span class="n">setter</span>
     <span class="k">def</span> <span class="nf">_rtol</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rtol</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Set the relative tolerence parameter for float comparisons.&quot;&quot;&quot;</span>
+        <span class="sd">&quot;&quot;&quot;Set the relative tolerance parameter for float comparisons.&quot;&quot;&quot;</span>
         <span class="c1"># NOTE: that this overrides the class value so applies to all</span>
         <span class="c1"># instances of the class.</span>
         <span class="n">max_tol</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="n">MAX_TOL</span>
@@ -465,24 +473,6 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">pass</span></div>
 
-    <span class="nd">@abstractmethod</span>
-    <span class="k">def</span> <span class="nf">_evolve</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">,</span> <span class="n">qargs</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Evolve a quantum state by the operator.</span>
-
-<span class="sd">        Args:</span>
-<span class="sd">            state (QuantumState): The input statevector or density matrix.</span>
-<span class="sd">            qargs (list): a list of QuantumState subsystem positions to apply</span>
-<span class="sd">                           the operator on.</span>
-
-<span class="sd">        Returns:</span>
-<span class="sd">            QuantumState: the output quantum state.</span>
-
-<span class="sd">        Raises:</span>
-<span class="sd">            QiskitError: if the operator dimension does not match the</span>
-<span class="sd">            specified QuantumState subsystem dimensions.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">pass</span>
-
     <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">_automatic_dims</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">dims</span><span class="p">,</span> <span class="n">size</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Check if input dimension corresponds to qubit subsystems.&quot;&quot;&quot;</span>
@@ -505,7 +495,7 @@
 <span class="sd">            tensor (np.array): a vector or matrix reshaped to a rank-N tensor.</span>
 <span class="sd">            mat (np.array): a matrix reshaped to a rank-2M tensor.</span>
 <span class="sd">            indices (list): tensor indices to contract with mat.</span>
-<span class="sd">            shift (int): shift for indicies of tensor to contract [Default: 0].</span>
+<span class="sd">            shift (int): shift for indices of tensor to contract [Default: 0].</span>
 <span class="sd">            right_mul (bool): if True right multiply tensor by mat</span>
 <span class="sd">                              (else left multiply) [Default: False].</span>
 
@@ -524,7 +514,7 @@
         <span class="n">indices_tensor</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">rank</span><span class="p">))</span>
         <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">index</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">indices</span><span class="p">):</span>
             <span class="n">indices_tensor</span><span class="p">[</span><span class="n">index</span> <span class="o">+</span> <span class="n">shift</span><span class="p">]</span> <span class="o">=</span> <span class="n">rank</span> <span class="o">+</span> <span class="n">j</span>
-        <span class="c1"># Get einsum indces for mat</span>
+        <span class="c1"># Get einsum indices for mat</span>
         <span class="n">mat_contract</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">reversed</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">rank</span><span class="p">,</span> <span class="n">rank</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="n">indices</span><span class="p">))))</span>
         <span class="n">mat_free</span> <span class="o">=</span> <span class="p">[</span><span class="n">index</span> <span class="o">+</span> <span class="n">shift</span> <span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="nb">reversed</span><span class="p">(</span><span class="n">indices</span><span class="p">)]</span>
         <span class="k">if</span> <span class="n">right_mul</span><span class="p">:</span>

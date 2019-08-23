@@ -1643,8 +1643,214 @@
     <div class="document">
         <div class="page-content">
         
-  <div class="section" id="qiskit-test-mock-module">
-<h1>qiskit.test.mock module<a class="headerlink" href="#qiskit-test-mock-module" title="このヘッドラインへのパーマリンク">¶</a></h1>
+  <div class="section" id="module-qiskit.test.mock">
+<span id="qiskit-test-mock-module"></span><h1>qiskit.test.mock module<a class="headerlink" href="#module-qiskit.test.mock" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<p>Utilities for mocking the IBMQ provider, including job responses and backends.</p>
+<p>The module includes dummy provider, backends, and jobs. The purpose of
+these classes is to trick backends for testing purposes:
+testing local timeouts, arbitrary responses or behavior, etc.</p>
+<p>The mock devices are mainly for testing the compiler.</p>
+<dl class="class">
+<dt id="qiskit.test.mock.FakeBackend">
+<em class="property">class </em><code class="descname">FakeBackend</code><span class="sig-paren">(</span><em>configuration</em>, <em>time_alive=10</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/test/mock.html#FakeBackend"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.test.mock.FakeBackend" title="この定義へのパーマリンク">¶</a></dt>
+<dd><p>ベースクラス: <a class="reference internal" href="qiskit.providers.basebackend.html#qiskit.providers.basebackend.BaseBackend" title="qiskit.providers.basebackend.BaseBackend"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.providers.basebackend.BaseBackend</span></code></a></p>
+<p>This is a dummy backend just for testing purposes.</p>
+<dl class="method">
+<dt id="qiskit.test.mock.FakeBackend.properties">
+<code class="descname">properties</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/test/mock.html#FakeBackend.properties"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.test.mock.FakeBackend.properties" title="この定義へのパーマリンク">¶</a></dt>
+<dd><p>Return backend properties</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="qiskit.test.mock.FakeBackend.run">
+<code class="descname">run</code><span class="sig-paren">(</span><em>qobj</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/test/mock.html#FakeBackend.run"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.test.mock.FakeBackend.run" title="この定義へのパーマリンク">¶</a></dt>
+<dd><p>Run a Qobj on the the backend.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">パラメータ:</th><td class="field-body"><strong>qobj</strong> (<a class="reference internal" href="qiskit.qobj.qobj.html#qiskit.qobj.qobj.Qobj" title="qiskit.qobj.qobj.Qobj"><em>Qobj</em></a>) -- the Qobj to be executed.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="qiskit.test.mock.FakeBackend.run_job">
+<code class="descname">run_job</code><span class="sig-paren">(</span><em>job_id</em>, <em>qobj</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/test/mock.html#FakeBackend.run_job"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.test.mock.FakeBackend.run_job" title="この定義へのパーマリンク">¶</a></dt>
+<dd><p>Main dummy run loop</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="qiskit.test.mock.FakeJob">
+<em class="property">class </em><code class="descname">FakeJob</code><span class="sig-paren">(</span><em>backend</em>, <em>job_id</em>, <em>fn</em>, <em>qobj</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/test/mock.html#FakeJob"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.test.mock.FakeJob" title="この定義へのパーマリンク">¶</a></dt>
+<dd><p>ベースクラス: <a class="reference internal" href="qiskit.providers.basejob.html#qiskit.providers.basejob.BaseJob" title="qiskit.providers.basejob.BaseJob"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.providers.basejob.BaseJob</span></code></a></p>
+<p>Fake simulator job</p>
+<dl class="method">
+<dt id="qiskit.test.mock.FakeJob.backend">
+<code class="descname">backend</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/test/mock.html#FakeJob.backend"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.test.mock.FakeJob.backend" title="この定義へのパーマリンク">¶</a></dt>
+<dd><p>Return the backend where this job was executed.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="qiskit.test.mock.FakeJob.cancel">
+<code class="descname">cancel</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/test/mock.html#FakeJob.cancel"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.test.mock.FakeJob.cancel" title="この定義へのパーマリンク">¶</a></dt>
+<dd><p>Attempt to cancel the job.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="qiskit.test.mock.FakeJob.job_id">
+<code class="descname">job_id</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/test/mock.html#FakeJob.job_id"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.test.mock.FakeJob.job_id" title="この定義へのパーマリンク">¶</a></dt>
+<dd><p>Return a unique id identifying the job.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="qiskit.test.mock.FakeJob.result">
+<code class="descname">result</code><span class="sig-paren">(</span><em>timeout=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/test/mock.html#FakeJob.result"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.test.mock.FakeJob.result" title="この定義へのパーマリンク">¶</a></dt>
+<dd><p>Return the results of the job.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="qiskit.test.mock.FakeJob.status">
+<code class="descname">status</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/test/mock.html#FakeJob.status"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.test.mock.FakeJob.status" title="この定義へのパーマリンク">¶</a></dt>
+<dd><p>Return the status of the job, among the values of <code class="docutils literal notranslate"><span class="pre">JobStatus</span></code>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="qiskit.test.mock.FakeJob.submit">
+<code class="descname">submit</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/test/mock.html#FakeJob.submit"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.test.mock.FakeJob.submit" title="この定義へのパーマリンク">¶</a></dt>
+<dd><p>Submit the job to the backend for execution.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="qiskit.test.mock.FakeMelbourne">
+<em class="property">class </em><code class="descname">FakeMelbourne</code><a class="reference internal" href="../_modules/qiskit/test/mock.html#FakeMelbourne"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.test.mock.FakeMelbourne" title="この定義へのパーマリンク">¶</a></dt>
+<dd><p>ベースクラス: <a class="reference internal" href="#qiskit.test.mock.FakeBackend" title="qiskit.test.mock.FakeBackend"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.test.mock.FakeBackend</span></code></a></p>
+<p>A fake 14 qubit backend.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="qiskit.test.mock.FakeOpenPulse2Q">
+<em class="property">class </em><code class="descname">FakeOpenPulse2Q</code><a class="reference internal" href="../_modules/qiskit/test/mock.html#FakeOpenPulse2Q"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.test.mock.FakeOpenPulse2Q" title="この定義へのパーマリンク">¶</a></dt>
+<dd><p>ベースクラス: <a class="reference internal" href="#qiskit.test.mock.FakeBackend" title="qiskit.test.mock.FakeBackend"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.test.mock.FakeBackend</span></code></a></p>
+<p>A fake 2 qubit backend for pulse test.</p>
+<dl class="method">
+<dt id="qiskit.test.mock.FakeOpenPulse2Q.defaults">
+<code class="descname">defaults</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/test/mock.html#FakeOpenPulse2Q.defaults"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.test.mock.FakeOpenPulse2Q.defaults" title="この定義へのパーマリンク">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="qiskit.test.mock.FakePoughkeepsie">
+<em class="property">class </em><code class="descname">FakePoughkeepsie</code><a class="reference internal" href="../_modules/qiskit/test/mock.html#FakePoughkeepsie"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.test.mock.FakePoughkeepsie" title="この定義へのパーマリンク">¶</a></dt>
+<dd><p>ベースクラス: <a class="reference internal" href="#qiskit.test.mock.FakeBackend" title="qiskit.test.mock.FakeBackend"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.test.mock.FakeBackend</span></code></a></p>
+<p>A fake Poughkeepsie backend.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="qiskit.test.mock.FakeProvider">
+<em class="property">class </em><code class="descname">FakeProvider</code><a class="reference internal" href="../_modules/qiskit/test/mock.html#FakeProvider"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.test.mock.FakeProvider" title="この定義へのパーマリンク">¶</a></dt>
+<dd><p>ベースクラス: <a class="reference internal" href="qiskit.providers.baseprovider.html#qiskit.providers.baseprovider.BaseProvider" title="qiskit.providers.baseprovider.BaseProvider"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.providers.baseprovider.BaseProvider</span></code></a></p>
+<p>Dummy provider just for testing purposes.</p>
+<p>Only filtering backends by name is implemented.</p>
+<dl class="method">
+<dt id="qiskit.test.mock.FakeProvider.backends">
+<code class="descname">backends</code><span class="sig-paren">(</span><em>name=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/test/mock.html#FakeProvider.backends"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.test.mock.FakeProvider.backends" title="この定義へのパーマリンク">¶</a></dt>
+<dd><p>Return a list of backends matching the specified filtering.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">パラメータ:</th><td class="field-body"><ul class="first simple">
+<li><strong>name</strong> (<em>str</em>) -- name of the backend.</li>
+<li><strong>**kwargs</strong> -- dict used for filtering.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">戻り値:</th><td class="field-body"><p class="first"><dl class="docutils">
+<dt>a list of Backends that match the filtering</dt>
+<dd><p class="first last">criteria.</p>
+</dd>
+</dl>
+</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">戻り値の型:</th><td class="field-body"><p class="first last">list[<a class="reference internal" href="qiskit.providers.basebackend.html#qiskit.providers.basebackend.BaseBackend" title="qiskit.providers.basebackend.BaseBackend">BaseBackend</a>]</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="qiskit.test.mock.FakeProvider.get_backend">
+<code class="descname">get_backend</code><span class="sig-paren">(</span><em>name=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/test/mock.html#FakeProvider.get_backend"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.test.mock.FakeProvider.get_backend" title="この定義へのパーマリンク">¶</a></dt>
+<dd><p>Return a single backend matching the specified filtering.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">パラメータ:</th><td class="field-body"><ul class="first simple">
+<li><strong>name</strong> (<em>str</em>) -- name of the backend.</li>
+<li><strong>**kwargs</strong> -- dict used for filtering.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">戻り値:</th><td class="field-body"><p class="first">a backend matching the filtering.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">戻り値の型:</th><td class="field-body"><p class="first"><a class="reference internal" href="qiskit.providers.basebackend.html#qiskit.providers.basebackend.BaseBackend" title="qiskit.providers.basebackend.BaseBackend">BaseBackend</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><code class="xref py py-exc docutils literal notranslate"><span class="pre">QiskitBackendNotFoundError</span></code> -- if no backend could be found or
+more than one backend matches the filtering criteria.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="qiskit.test.mock.FakeQasmSimulator">
+<em class="property">class </em><code class="descname">FakeQasmSimulator</code><a class="reference internal" href="../_modules/qiskit/test/mock.html#FakeQasmSimulator"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.test.mock.FakeQasmSimulator" title="この定義へのパーマリンク">¶</a></dt>
+<dd><p>ベースクラス: <a class="reference internal" href="#qiskit.test.mock.FakeBackend" title="qiskit.test.mock.FakeBackend"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.test.mock.FakeBackend</span></code></a></p>
+<p>A fake simulator backend.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="qiskit.test.mock.FakeRueschlikon">
+<em class="property">class </em><code class="descname">FakeRueschlikon</code><a class="reference internal" href="../_modules/qiskit/test/mock.html#FakeRueschlikon"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.test.mock.FakeRueschlikon" title="この定義へのパーマリンク">¶</a></dt>
+<dd><p>ベースクラス: <a class="reference internal" href="#qiskit.test.mock.FakeBackend" title="qiskit.test.mock.FakeBackend"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.test.mock.FakeBackend</span></code></a></p>
+<p>A fake 16 qubit backend.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="qiskit.test.mock.FakeTenerife">
+<em class="property">class </em><code class="descname">FakeTenerife</code><a class="reference internal" href="../_modules/qiskit/test/mock.html#FakeTenerife"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.test.mock.FakeTenerife" title="この定義へのパーマリンク">¶</a></dt>
+<dd><p>ベースクラス: <a class="reference internal" href="#qiskit.test.mock.FakeBackend" title="qiskit.test.mock.FakeBackend"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.test.mock.FakeBackend</span></code></a></p>
+<p>A fake 5 qubit backend.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="qiskit.test.mock.FakeTokyo">
+<em class="property">class </em><code class="descname">FakeTokyo</code><a class="reference internal" href="../_modules/qiskit/test/mock.html#FakeTokyo"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.test.mock.FakeTokyo" title="この定義へのパーマリンク">¶</a></dt>
+<dd><p>ベースクラス: <a class="reference internal" href="#qiskit.test.mock.FakeBackend" title="qiskit.test.mock.FakeBackend"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.test.mock.FakeBackend</span></code></a></p>
+<p>A fake 20 qubit backend.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="qiskit.test.mock.new_fake_qobj">
+<code class="descname">new_fake_qobj</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/test/mock.html#new_fake_qobj"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.test.mock.new_fake_qobj" title="この定義へのパーマリンク">¶</a></dt>
+<dd><p>Create fake <cite>Qobj</cite> and backend instances.</p>
+</dd></dl>
+
 </div>
 
 

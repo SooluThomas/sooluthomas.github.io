@@ -1740,12 +1740,12 @@ generate new registers with name q.</li>
 Refer to <a class="reference external" href="https://arxiv.org/pdf/1804.11326.pdf">https://arxiv.org/pdf/1804.11326.pdf</a> for details.</p>
 <dl class="attribute">
 <dt id="qiskit.aqua.components.feature_maps.PauliExpansion.CONFIGURATION">
-<code class="descname">CONFIGURATION</code><em class="property"> = {'description': 'Pauli expansion for feature map (any order)', 'input_schema': {'$schema': 'http://json-schema.org/schema#', 'additionalProperties': False, 'id': 'Pauli_Expansion_schema', 'properties': {'depth': {'default': 2, 'minimum': 1, 'type': 'integer'}, 'entanglement': {'default': 'full', 'oneOf': [{'enum': ['full', 'linear']}], 'type': 'string'}, 'entangler_map': {'default': None, 'type': ['array', 'null']}, 'paulis': {'default': ['Z', 'ZZ'], 'items': {'type': 'string'}, 'type': ['array']}}, 'type': 'object'}, 'name': 'PauliExpansion'}</em><a class="headerlink" href="#qiskit.aqua.components.feature_maps.PauliExpansion.CONFIGURATION" title="この定義へのパーマリンク">¶</a></dt>
+<code class="descname">CONFIGURATION</code><em class="property"> = {'description': 'Pauli expansion for feature map (any order)', 'input_schema': {'$schema': 'http://json-schema.org/schema#', 'additionalProperties': False, 'id': 'Pauli_Expansion_schema', 'properties': {'depth': {'default': 2, 'minimum': 1, 'type': 'integer'}, 'entanglement': {'default': 'full', 'enum': ['full', 'linear'], 'type': 'string'}, 'entangler_map': {'default': None, 'type': ['array', 'null']}, 'paulis': {'default': ['Z', 'ZZ'], 'items': {'type': 'string'}, 'type': ['array']}}, 'type': 'object'}, 'name': 'PauliExpansion'}</em><a class="headerlink" href="#qiskit.aqua.components.feature_maps.PauliExpansion.CONFIGURATION" title="この定義へのパーマリンク">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="qiskit.aqua.components.feature_maps.PauliExpansion.construct_circuit">
-<code class="descname">construct_circuit</code><span class="sig-paren">(</span><em>x</em>, <em>qr=None</em>, <em>inverse=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/components/feature_maps/pauli_expansion.html#PauliExpansion.construct_circuit"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.aqua.components.feature_maps.PauliExpansion.construct_circuit" title="この定義へのパーマリンク">¶</a></dt>
+<code class="descname">construct_circuit</code><span class="sig-paren">(</span><em>x</em>, <em>qr=None</em>, <em>inverse=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/components/feature_maps/pauli_expansion.html#PauliExpansion.construct_circuit"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.aqua.components.feature_maps.PauliExpansion.construct_circuit" title="この定義へのパーマリンク">¶</a></dt>
 <dd><p>Construct the second order expansion based on given data.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1753,9 +1753,9 @@ Refer to <a class="reference external" href="https://arxiv.org/pdf/1804.11326.pd
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">パラメータ:</th><td class="field-body"><ul class="first simple">
 <li><strong>x</strong> (<em>numpy.ndarray</em>) -- 1-D to-be-transformed data.</li>
-<li><strong>qr</strong> (<em>QauntumRegister</em>) -- the QuantumRegister object for the circuit, if None,
+<li><strong>qr</strong> (<em>QauntumRegister</em><em>, </em><em>optional</em>) -- the QuantumRegister object for the circuit, if None,
 generate new registers with name q.</li>
-<li><strong>inverse</strong> (<em>bool</em>) -- whether or not inverse the circuit</li>
+<li><strong>inverse</strong> (<em>bool</em><em>, </em><em>optional</em>) -- whether or not inverse the circuit</li>
 </ul>
 </td>
 </tr>
@@ -1779,7 +1779,7 @@ generate new registers with name q.</li>
 <p>Refer to <a class="reference external" href="https://arxiv.org/pdf/1804.11326.pdf">https://arxiv.org/pdf/1804.11326.pdf</a> for details.</p>
 <dl class="attribute">
 <dt id="qiskit.aqua.components.feature_maps.PauliZExpansion.CONFIGURATION">
-<code class="descname">CONFIGURATION</code><em class="property"> = {'description': 'Pauli Z expansion for feature map (any order)', 'input_schema': {'$schema': 'http://json-schema.org/schema#', 'additionalProperties': False, 'id': 'Pauli_Z_Expansion_schema', 'properties': {'depth': {'default': 2, 'minimum': 1, 'type': 'integer'}, 'entanglement': {'default': 'full', 'oneOf': [{'enum': ['full', 'linear']}], 'type': 'string'}, 'entangler_map': {'default': None, 'type': ['array', 'null']}, 'z_order': {'default': 2, 'minimum': 1, 'type': 'integer'}}, 'type': 'object'}, 'name': 'PauliZExpansion'}</em><a class="headerlink" href="#qiskit.aqua.components.feature_maps.PauliZExpansion.CONFIGURATION" title="この定義へのパーマリンク">¶</a></dt>
+<code class="descname">CONFIGURATION</code><em class="property"> = {'description': 'Pauli Z expansion for feature map (any order)', 'input_schema': {'$schema': 'http://json-schema.org/schema#', 'additionalProperties': False, 'id': 'Pauli_Z_Expansion_schema', 'properties': {'depth': {'default': 2, 'minimum': 1, 'type': 'integer'}, 'entanglement': {'default': 'full', 'enum': ['full', 'linear'], 'type': 'string'}, 'entangler_map': {'default': None, 'type': ['array', 'null']}, 'z_order': {'default': 2, 'minimum': 1, 'type': 'integer'}}, 'type': 'object'}, 'name': 'PauliZExpansion'}</em><a class="headerlink" href="#qiskit.aqua.components.feature_maps.PauliZExpansion.CONFIGURATION" title="この定義へのパーマリンク">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -1805,7 +1805,7 @@ generate new registers with name q.</li>
 <p>Refer to <a class="reference external" href="https://arxiv.org/pdf/1804.11326.pdf">https://arxiv.org/pdf/1804.11326.pdf</a> for details.</p>
 <dl class="attribute">
 <dt id="qiskit.aqua.components.feature_maps.SecondOrderExpansion.CONFIGURATION">
-<code class="descname">CONFIGURATION</code><em class="property"> = {'description': 'Second order expansion for feature map', 'input_schema': {'$schema': 'http://json-schema.org/schema#', 'additionalProperties': False, 'id': 'Second_Order_Expansion_schema', 'properties': {'depth': {'default': 2, 'minimum': 1, 'type': 'integer'}, 'entanglement': {'default': 'full', 'oneOf': [{'enum': ['full', 'linear']}], 'type': 'string'}, 'entangler_map': {'default': None, 'type': ['array', 'null']}}, 'type': 'object'}, 'name': 'SecondOrderExpansion'}</em><a class="headerlink" href="#qiskit.aqua.components.feature_maps.SecondOrderExpansion.CONFIGURATION" title="この定義へのパーマリンク">¶</a></dt>
+<code class="descname">CONFIGURATION</code><em class="property"> = {'description': 'Second order expansion for feature map', 'input_schema': {'$schema': 'http://json-schema.org/schema#', 'additionalProperties': False, 'id': 'Second_Order_Expansion_schema', 'properties': {'depth': {'default': 2, 'minimum': 1, 'type': 'integer'}, 'entanglement': {'default': 'full', 'enum': ['full', 'linear'], 'type': 'string'}, 'entangler_map': {'default': None, 'type': ['array', 'null']}}, 'type': 'object'}, 'name': 'SecondOrderExpansion'}</em><a class="headerlink" href="#qiskit.aqua.components.feature_maps.SecondOrderExpansion.CONFIGURATION" title="この定義へのパーマリンク">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>

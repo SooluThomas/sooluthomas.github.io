@@ -208,8 +208,7 @@
 
 <div class="viewcode-block" id="Prefix.latex"><a class="viewcode-back" href="../../../../autodoc/qiskit.qasm.node.prefix.html#qiskit.qasm.node.prefix.Prefix.latex">[ドキュメント]</a>    <span class="k">def</span> <span class="nf">latex</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">prec</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">nested_scope</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return the corresponding math mode latex string.&quot;&quot;&quot;</span>
-        <span class="c1"># pylint: disable=unused-argument</span>
-        <span class="c1"># TODO prec ignored</span>
+        <span class="k">del</span> <span class="n">prec</span>  <span class="c1"># TODO prec ignored</span>
         <span class="k">return</span> <span class="n">sympy</span><span class="o">.</span><span class="n">latex</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sym</span><span class="p">(</span><span class="n">nested_scope</span><span class="p">))</span></div>
 
 <div class="viewcode-block" id="Prefix.real"><a class="viewcode-back" href="../../../../autodoc/qiskit.qasm.node.prefix.html#qiskit.qasm.node.prefix.Prefix.real">[ドキュメント]</a>    <span class="k">def</span> <span class="nf">real</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nested_scope</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>

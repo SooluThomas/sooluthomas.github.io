@@ -189,6 +189,7 @@
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">shutil</span>
 <span class="kn">import</span> <span class="nn">tempfile</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
 
 <span class="kn">import</span> <span class="nn">ply.yacc</span> <span class="k">as</span> <span class="nn">yacc</span>
 <span class="kn">import</span> <span class="nn">sympy</span>
@@ -201,7 +202,7 @@
 <div class="viewcode-block" id="QasmParser"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.qasmparser.html#qiskit.qasm.qasmparser.QasmParser">[ドキュメント]</a><span class="k">class</span> <span class="nc">QasmParser</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;OPENQASM Parser.&quot;&quot;&quot;</span>
 
-    <span class="c1"># pylint: disable=unused-argument,missing-docstring,invalid-name</span>
+    <span class="c1"># pylint: disable=missing-docstring,invalid-name</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Create the parser.&quot;&quot;&quot;</span>
@@ -725,6 +726,7 @@
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">           gate_scope :</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">del</span> <span class="n">program</span>  <span class="c1"># unused</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">push_scope</span><span class="p">()</span></div>
 
     <span class="c1"># ----------------------------------------</span>
@@ -959,7 +961,7 @@
     <span class="c1">#        | OPAQUE id gate_scope &#39;(&#39; &#39;)&#39;              bit_list</span>
     <span class="c1">#        | OPAQUE id gate_scope &#39;(&#39; gate_id_list &#39;)&#39; bit_list</span>
     <span class="c1">#</span>
-    <span class="c1"># These are like gate declarations only wihtout a body.</span>
+    <span class="c1"># These are like gate declarations only without a body.</span>
     <span class="c1"># ----------------------------------------</span>
 <div class="viewcode-block" id="QasmParser.p_opaque_0"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.qasmparser.html#qiskit.qasm.qasmparser.QasmParser.p_opaque_0">[ドキュメント]</a>    <span class="k">def</span> <span class="nf">p_opaque_0</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -1217,7 +1219,22 @@
         <span class="k">return</span> <span class="n">column</span></div>
 
 <div class="viewcode-block" id="QasmParser.get_tokens"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.qasmparser.html#qiskit.qasm.qasmparser.QasmParser.get_tokens">[ドキュメント]</a>    <span class="k">def</span> <span class="nf">get_tokens</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Returns a generator of the tokens.&quot;&quot;&quot;</span>
+        <span class="sd">&quot;&quot;&quot;Deprecated. Use read_tokens().&quot;&quot;&quot;</span>
+        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s1">&#39;The method get_tokens() is being replaced by read_tokens()&#39;</span><span class="p">,</span>
+                      <span class="ne">DeprecationWarning</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+                <span class="n">token</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">lexer</span><span class="o">.</span><span class="n">token</span><span class="p">()</span>
+
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">token</span><span class="p">:</span>
+                    <span class="k">break</span>
+
+                <span class="k">yield</span> <span class="n">token</span>
+        <span class="k">except</span> <span class="n">QasmError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Exception tokenizing qasm file:&#39;</span><span class="p">,</span> <span class="n">e</span><span class="o">.</span><span class="n">msg</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="QasmParser.read_tokens"><a class="viewcode-back" href="../../../autodoc/qiskit.qasm.qasmparser.html#qiskit.qasm.qasmparser.QasmParser.read_tokens">[ドキュメント]</a>    <span class="k">def</span> <span class="nf">read_tokens</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;finds and reads the tokens.&quot;&quot;&quot;</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
                 <span class="n">token</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">lexer</span><span class="o">.</span><span class="n">token</span><span class="p">()</span>

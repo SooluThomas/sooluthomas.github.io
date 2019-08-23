@@ -398,13 +398,17 @@
         <span class="k">return</span> <span class="n">circuit</span>
 
     <span class="k">def</span> <span class="nf">_construct_circuit_for_tiny_expr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">circuit</span><span class="p">,</span> <span class="n">output_idx</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ast</span> <span class="o">==</span> <span class="p">(</span><span class="s1">&#39;const&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ast</span> <span class="o">==</span> <span class="p">(</span><span class="s1">&#39;const&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">):</span>
+            <span class="k">pass</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ast</span> <span class="o">==</span> <span class="p">(</span><span class="s1">&#39;const&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span>
             <span class="n">circuit</span><span class="o">.</span><span class="n">u3</span><span class="p">(</span><span class="n">pi</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">pi</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_output_register</span><span class="p">[</span><span class="n">output_idx</span><span class="p">])</span>
         <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ast</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;lit&#39;</span><span class="p">:</span>
             <span class="n">idx</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_ast</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">-</span> <span class="mi">1</span>
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ast</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
                 <span class="n">circuit</span><span class="o">.</span><span class="n">u3</span><span class="p">(</span><span class="n">pi</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">pi</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_variable_register</span><span class="p">[</span><span class="n">idx</span><span class="p">])</span>
             <span class="n">circuit</span><span class="o">.</span><span class="n">cx</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_variable_register</span><span class="p">[</span><span class="n">idx</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">_output_register</span><span class="p">[</span><span class="n">output_idx</span><span class="p">])</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">AquaError</span><span class="p">(</span><span class="s1">&#39;Unexpected tiny expression </span><span class="si">{}</span><span class="s1">.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_ast</span><span class="p">))</span>
 
 <div class="viewcode-block" id="BooleanLogicNormalForm.construct_circuit"><a class="viewcode-back" href="../../../../autodoc/qiskit.aqua.circuits.boolean_logical_circuits.html#qiskit.aqua.circuits.BooleanLogicNormalForm.construct_circuit">[ドキュメント]</a>    <span class="nd">@abstractmethod</span>
     <span class="k">def</span> <span class="nf">construct_circuit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
@@ -644,23 +648,34 @@
             <span class="n">mct_mode</span><span class="o">=</span><span class="n">mct_mode</span>
         <span class="p">)</span>
 
+        <span class="k">def</span> <span class="nf">build_clause</span><span class="p">(</span><span class="n">clause_expr</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">clause_expr</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;and&#39;</span><span class="p">:</span>
+                <span class="n">lits</span> <span class="o">=</span> <span class="p">[</span><span class="n">l</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">clause_expr</span><span class="p">[</span><span class="mi">1</span><span class="p">:]]</span>
+            <span class="k">elif</span> <span class="n">clause_expr</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;lit&#39;</span><span class="p">:</span>
+                <span class="n">lits</span> <span class="o">=</span> <span class="p">[</span><span class="n">clause_expr</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="n">AquaError</span><span class="p">(</span><span class="s1">&#39;Unexpected clause expression </span><span class="si">{}</span><span class="s1">.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">clause_expr</span><span class="p">))</span>
+            <span class="n">flags</span> <span class="o">=</span> <span class="n">BooleanLogicNormalForm</span><span class="o">.</span><span class="n">_lits_to_flags</span><span class="p">(</span><span class="n">lits</span><span class="p">)</span>
+            <span class="n">circuit</span><span class="o">.</span><span class="n">AND</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_variable_register</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_output_register</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_output_idx</span><span class="p">],</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_ancillary_register</span><span class="p">,</span>
+                <span class="n">flags</span><span class="o">=</span><span class="n">flags</span><span class="p">,</span>
+                <span class="n">mct_mode</span><span class="o">=</span><span class="n">mct_mode</span>
+            <span class="p">)</span>
+
         <span class="c1"># compute all clauses</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_depth</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_construct_circuit_for_tiny_expr</span><span class="p">(</span><span class="n">circuit</span><span class="p">,</span> <span class="n">output_idx</span><span class="o">=</span><span class="n">output_idx</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">_depth</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">build_clause</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_ast</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">_depth</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ast</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;xor&#39;</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="n">AquaError</span><span class="p">(</span><span class="s1">&#39;Unexpected root logical operation </span><span class="si">{}</span><span class="s1"> for ESOP.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_ast</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+            <span class="k">for</span> <span class="n">cur_clause_expr</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ast</span><span class="p">[</span><span class="mi">1</span><span class="p">:]:</span>
+                <span class="n">build_clause</span><span class="p">(</span><span class="n">cur_clause_expr</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">for</span> <span class="n">clause_index</span><span class="p">,</span> <span class="n">clause_expr</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_ast</span><span class="p">[</span><span class="mi">1</span><span class="p">:]):</span>
-                <span class="k">if</span> <span class="n">clause_expr</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;and&#39;</span><span class="p">:</span>
-                    <span class="n">lits</span> <span class="o">=</span> <span class="p">[</span><span class="n">l</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">clause_expr</span><span class="p">[</span><span class="mi">1</span><span class="p">:]]</span>
-                <span class="k">else</span><span class="p">:</span>  <span class="c1"># clause_expr[0] == &#39;lit&#39;:</span>
-                    <span class="n">lits</span> <span class="o">=</span> <span class="p">[</span><span class="n">clause_expr</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span>
-                <span class="n">flags</span> <span class="o">=</span> <span class="n">BooleanLogicNormalForm</span><span class="o">.</span><span class="n">_lits_to_flags</span><span class="p">(</span><span class="n">lits</span><span class="p">)</span>
-                <span class="n">circuit</span><span class="o">.</span><span class="n">AND</span><span class="p">(</span>
-                    <span class="bp">self</span><span class="o">.</span><span class="n">_variable_register</span><span class="p">,</span>
-                    <span class="bp">self</span><span class="o">.</span><span class="n">_output_register</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_output_idx</span><span class="p">],</span>
-                    <span class="bp">self</span><span class="o">.</span><span class="n">_ancillary_register</span><span class="p">,</span>
-                    <span class="n">flags</span><span class="o">=</span><span class="n">flags</span><span class="p">,</span>
-                    <span class="n">mct_mode</span><span class="o">=</span><span class="n">mct_mode</span>
-                <span class="p">)</span>
+            <span class="k">raise</span> <span class="n">AquaError</span><span class="p">(</span><span class="s1">&#39;Unexpected ESOP expression </span><span class="si">{}</span><span class="s1">.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_ast</span><span class="p">))</span>
 
         <span class="k">return</span> <span class="n">circuit</span></div></div>
 </pre></div>

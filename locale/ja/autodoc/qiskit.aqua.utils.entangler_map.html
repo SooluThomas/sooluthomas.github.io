@@ -1649,7 +1649,7 @@
 based on the number of qubits.</p>
 <dl class="function">
 <dt id="qiskit.aqua.utils.entangler_map.get_entangler_map">
-<code class="descname">get_entangler_map</code><span class="sig-paren">(</span><em>map_type</em>, <em>num_qubits</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/utils/entangler_map.html#get_entangler_map"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.aqua.utils.entangler_map.get_entangler_map" title="この定義へのパーマリンク">¶</a></dt>
+<code class="descname">get_entangler_map</code><span class="sig-paren">(</span><em>map_type</em>, <em>num_qubits</em>, <em>offset=0</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/utils/entangler_map.html#get_entangler_map"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.aqua.utils.entangler_map.get_entangler_map" title="この定義へのパーマリンク">¶</a></dt>
 <dd><p>Utility method to get an entangler map among qubits.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1657,8 +1657,14 @@ based on the number of qubits.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">パラメータ:</th><td class="field-body"><ul class="first simple">
 <li><strong>map_type</strong> (<em>str</em>) -- 'full' entangles each qubit with all the subsequent ones
-'linear' entangles each qubit with the next</li>
+'linear' entangles each qubit with the next
+'sca' (shifted circular alternating entanglement) is a
+circular entanglement where the 'long' entanglement is
+shifted by one position every block and every block the
+role or control/target qubits alternate</li>
 <li><strong>num_qubits</strong> (<em>int</em>) -- Number of qubits for which the map is needed</li>
+<li><strong>offset</strong> (<em>int</em>) -- Some map_types (e.g. 'sca') can shift the gates in
+the entangler map by the specified integer offset.</li>
 </ul>
 </td>
 </tr>

@@ -1711,35 +1711,33 @@ layout by one.)
 <dl class="method">
 <dt id="qiskit.transpiler.layout.Layout.from_dict">
 <code class="descname">from_dict</code><span class="sig-paren">(</span><em>input_dict</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/transpiler/layout.html#Layout.from_dict"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.transpiler.layout.Layout.from_dict" title="この定義へのパーマリンク">¶</a></dt>
-<dd><p>Populates a Layout from a dictionary.
-The dictionary must be a bijective mapping between
+<dd><p>Populates a Layout from a dictionary.</p>
+<p>The dictionary must be a bijective mapping between
 virtual qubits (tuple) and physical qubits (int).</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">パラメータ:</th><td class="field-body"><strong>input_dict</strong> (<em>dict</em>) -- <p>e.g.:
-{(QuantumRegister(3, 'qr'), 0): 0,</p>
-<blockquote>
-<div>(QuantumRegister(3, 'qr'), 1): 1,
-(QuantumRegister(3, 'qr'), 2): 2}</div></blockquote>
-<p>Can be written more concisely as follows:</p>
-<dl class="docutils">
-<dt>virtual to physical:</dt>
-<dd><dl class="first last docutils">
-<dt>{qr[0]: 0,</dt>
-<dd>qr[1]: 1,
-qr[2]: 2}</dd>
-</dl>
-</dd>
-<dt>physical to virtual:</dt>
-<dd><dl class="first last docutils">
-<dt>{0: qr[0],</dt>
-<dd>1: qr[1],
-2: qr[2]}</dd>
-</dl>
-</dd>
-</dl>
+<tr class="field-odd field"><th class="field-name">パラメータ:</th><td class="field-body"><strong>input_dict</strong> (<em>dict</em>) -- <p>e.g.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{(</span><span class="n">QuantumRegister</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;qr&#39;</span><span class="p">),</span> <span class="mi">0</span><span class="p">):</span> <span class="mi">0</span><span class="p">,</span>
+ <span class="p">(</span><span class="n">QuantumRegister</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;qr&#39;</span><span class="p">),</span> <span class="mi">1</span><span class="p">):</span> <span class="mi">1</span><span class="p">,</span>
+ <span class="p">(</span><span class="n">QuantumRegister</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;qr&#39;</span><span class="p">),</span> <span class="mi">2</span><span class="p">):</span> <span class="mi">2</span><span class="p">}</span>
+
+<span class="n">Can</span> <span class="n">be</span> <span class="n">written</span> <span class="n">more</span> <span class="n">concisely</span> <span class="k">as</span> <span class="n">follows</span><span class="p">:</span>
+
+<span class="o">*</span> <span class="n">virtual</span> <span class="n">to</span> <span class="n">physical</span><span class="p">::</span>
+
+    <span class="p">{</span><span class="n">qr</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span> <span class="mi">0</span><span class="p">,</span>
+     <span class="n">qr</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="mi">1</span><span class="p">,</span>
+     <span class="n">qr</span><span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="mi">2</span><span class="p">}</span>
+
+<span class="o">*</span> <span class="n">physical</span> <span class="n">to</span> <span class="n">virtual</span><span class="p">::</span>
+
+    <span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="n">qr</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+     <span class="mi">1</span><span class="p">:</span> <span class="n">qr</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+     <span class="mi">2</span><span class="p">:</span> <span class="n">qr</span><span class="p">[</span><span class="mi">2</span><span class="p">]}</span>
+</pre></div>
+</div>
 </td>
 </tr>
 </tbody>
@@ -1777,21 +1775,42 @@ the layout to.</li>
 </dd></dl>
 
 <dl class="staticmethod">
-<dt id="qiskit.transpiler.layout.Layout.from_tuplelist">
-<em class="property">static </em><code class="descname">from_tuplelist</code><span class="sig-paren">(</span><em>tuple_list</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/transpiler/layout.html#Layout.from_tuplelist"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.transpiler.layout.Layout.from_tuplelist" title="この定義へのパーマリンク">¶</a></dt>
+<dt id="qiskit.transpiler.layout.Layout.from_qubit_list">
+<em class="property">static </em><code class="descname">from_qubit_list</code><span class="sig-paren">(</span><em>qubit_list</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/transpiler/layout.html#Layout.from_qubit_list"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.transpiler.layout.Layout.from_qubit_list" title="この定義へのパーマリンク">¶</a></dt>
 <dd><p>Populates a Layout from a list containing virtual
-qubits---(QuantumRegister, int) tuples---, or None.</p>
+qubits, Qubit or None.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">パラメータ:</th><td class="field-body"><strong>tuple_list</strong> (<em>list</em>) -- e.g.: [qr[0], None, qr[2], qr[3]]</td>
+<tr class="field-odd field"><th class="field-name">パラメータ:</th><td class="field-body"><strong>qubit_list</strong> (<em>list</em>) -- e.g.: [qr[0], None, qr[2], qr[3]]</td>
 </tr>
 <tr class="field-even field"><th class="field-name">戻り値:</th><td class="field-body">the corresponding Layout object</td>
 </tr>
 <tr class="field-odd field"><th class="field-name">戻り値の型:</th><td class="field-body"><a class="reference internal" href="#qiskit.transpiler.layout.Layout" title="qiskit.transpiler.layout.Layout">Layout</a></td>
 </tr>
-<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><code class="xref py py-exc docutils literal notranslate"><span class="pre">LayoutError</span></code> -- If the elements are not (Register, integer) or None</td>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><code class="xref py py-exc docutils literal notranslate"><span class="pre">LayoutError</span></code> -- If the elements are not Qubit or None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="qiskit.transpiler.layout.Layout.from_tuplelist">
+<em class="property">static </em><code class="descname">from_tuplelist</code><span class="sig-paren">(</span><em>tuple_list</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/transpiler/layout.html#Layout.from_tuplelist"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.transpiler.layout.Layout.from_tuplelist" title="この定義へのパーマリンク">¶</a></dt>
+<dd><p>Populates a Layout from a list containing virtual
+qubits---(QuantumRegister, int) tuples---, or None.
+:param tuple_list: e.g.: [(qr,0), None, (qr,2), (qr,3)]
+:type tuple_list: list</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">戻り値:</th><td class="field-body">the corresponding Layout object</td>
+</tr>
+<tr class="field-even field"><th class="field-name">戻り値の型:</th><td class="field-body"><a class="reference internal" href="#qiskit.transpiler.layout.Layout" title="qiskit.transpiler.layout.Layout">Layout</a></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><code class="xref py py-exc docutils literal notranslate"><span class="pre">LayoutError</span></code> -- If the elements are not (Register, integer) or None</td>
 </tr>
 </tbody>
 </table>
@@ -1835,12 +1854,6 @@ values are virtual (qu)bits.</p>
 <code class="descname">get_virtual_bits</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/transpiler/layout.html#Layout.get_virtual_bits"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.transpiler.layout.Layout.get_virtual_bits" title="この定義へのパーマリンク">¶</a></dt>
 <dd><p>Returns the dictionary where the keys are virtual (qu)bits and the
 values are physical (qu)bits.</p>
-</dd></dl>
-
-<dl class="staticmethod">
-<dt id="qiskit.transpiler.layout.Layout.is_virtual">
-<em class="property">static </em><code class="descname">is_virtual</code><span class="sig-paren">(</span><em>value</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/transpiler/layout.html#Layout.is_virtual"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.transpiler.layout.Layout.is_virtual" title="この定義へのパーマリンク">¶</a></dt>
-<dd><p>Checks if value has the format of a virtual qubit</p>
 </dd></dl>
 
 <dl class="staticmethod">

@@ -1647,8 +1647,68 @@
 <span id="qiskit-visualization-gate-map-module"></span><h1>qiskit.visualization.gate_map module<a class="headerlink" href="#module-qiskit.visualization.gate_map" title="このヘッドラインへのパーマリンク">¶</a></h1>
 <p>A module for visualizing device coupling maps</p>
 <dl class="function">
+<dt id="qiskit.visualization.gate_map.plot_circuit_layout">
+<code class="descname">plot_circuit_layout</code><span class="sig-paren">(</span><em>circuit</em>, <em>backend</em>, <em>view='virtual'</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/visualization/gate_map.html#plot_circuit_layout"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.visualization.gate_map.plot_circuit_layout" title="この定義へのパーマリンク">¶</a></dt>
+<dd><p>Plot the layout of a circuit transpiled for a given
+target backend.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">パラメータ:</th><td class="field-body"><ul class="first simple">
+<li><strong>circuit</strong> (<a class="reference internal" href="qiskit.circuit.quantumcircuit.html#qiskit.circuit.quantumcircuit.QuantumCircuit" title="qiskit.circuit.quantumcircuit.QuantumCircuit"><em>QuantumCircuit</em></a>) -- Input quantum circuit.</li>
+<li><strong>backend</strong> (<a class="reference internal" href="qiskit.providers.basebackend.html#qiskit.providers.basebackend.BaseBackend" title="qiskit.providers.basebackend.BaseBackend"><em>BaseBackend</em></a>) -- Target backend.</li>
+<li><strong>view</strong> (<em>str</em>) -- Layout view: either 'virtual' or 'physical'.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">戻り値:</th><td class="field-body"><p class="first">A matplotlib figure showing layout.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">戻り値の型:</th><td class="field-body"><p class="first">Figure</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><ul class="first last simple">
+<li><code class="xref py py-exc docutils literal notranslate"><span class="pre">QiskitError</span></code> -- Invalid view type given.</li>
+<li><code class="xref py py-exc docutils literal notranslate"><span class="pre">VisualizationError</span></code> -- Circuit has no layout attribute.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="qiskit.visualization.gate_map.plot_error_map">
+<code class="descname">plot_error_map</code><span class="sig-paren">(</span><em>backend</em>, <em>figsize=(12</em>, <em>9)</em>, <em>show_title=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/visualization/gate_map.html#plot_error_map"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.visualization.gate_map.plot_error_map" title="この定義へのパーマリンク">¶</a></dt>
+<dd><p>Plots the error map of a given backend.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">パラメータ:</th><td class="field-body"><ul class="first simple">
+<li><strong>backend</strong> (<a class="reference internal" href="qiskit.providers.ibmq.ibmqbackend.html#qiskit.providers.ibmq.ibmqbackend.IBMQBackend" title="qiskit.providers.ibmq.ibmqbackend.IBMQBackend"><em>IBMQBackend</em></a>) -- Given backend.</li>
+<li><strong>figsize</strong> (<em>tuple</em>) -- Figure size in inches.</li>
+<li><strong>show_title</strong> (<em>bool</em>) -- Show the title or not.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">戻り値:</th><td class="field-body"><p class="first">A matplotlib figure showing error map.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">戻り値の型:</th><td class="field-body"><p class="first">Figure</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><code class="xref py py-exc docutils literal notranslate"><span class="pre">VisualizationError</span></code> -- Input is not IBMQ backend.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
 <dt id="qiskit.visualization.gate_map.plot_gate_map">
-<code class="descname">plot_gate_map</code><span class="sig-paren">(</span><em>backend</em>, <em>figsize=None</em>, <em>plot_directed=False</em>, <em>label_qubits=True</em>, <em>qubit_size=24</em>, <em>line_width=4</em>, <em>font_size=12</em>, <em>qubit_color=None</em>, <em>line_color=None</em>, <em>font_color='w'</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/visualization/gate_map.html#plot_gate_map"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.visualization.gate_map.plot_gate_map" title="この定義へのパーマリンク">¶</a></dt>
+<code class="descname">plot_gate_map</code><span class="sig-paren">(</span><em>backend</em>, <em>figsize=None</em>, <em>plot_directed=False</em>, <em>label_qubits=True</em>, <em>qubit_size=24</em>, <em>line_width=4</em>, <em>font_size=12</em>, <em>qubit_color=None</em>, <em>qubit_labels=None</em>, <em>line_color=None</em>, <em>font_color='w'</em>, <em>ax=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/visualization/gate_map.html#plot_gate_map"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.visualization.gate_map.plot_gate_map" title="この定義へのパーマリンク">¶</a></dt>
 <dd><p>Plots the gate map of a device.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1663,8 +1723,10 @@
 <li><strong>line_width</strong> (<em>float</em>) -- Width of lines.</li>
 <li><strong>font_size</strong> (<em>int</em>) -- Font size of qubit labels.</li>
 <li><strong>qubit_color</strong> (<em>list</em>) -- A list of colors for the qubits</li>
+<li><strong>qubit_labels</strong> (<em>list</em>) -- A list of qubit labels</li>
 <li><strong>line_color</strong> (<em>list</em>) -- A list of colors for each line from coupling_map.</li>
 <li><strong>font_color</strong> (<em>str</em>) -- The font color for the qubit labels.</li>
+<li><strong>ax</strong> (<em>Axes</em>) -- A Matplotlib axes instance.</li>
 </ul>
 </td>
 </tr>

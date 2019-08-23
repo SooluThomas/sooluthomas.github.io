@@ -1647,12 +1647,12 @@
 <span id="qiskit-chemistry-drivers-pyscfd-package"></span><h1>qiskit.chemistry.drivers.pyscfd package<a class="headerlink" href="#module-qiskit.chemistry.drivers.pyscfd" title="このヘッドラインへのパーマリンク">¶</a></h1>
 <dl class="class">
 <dt id="qiskit.chemistry.drivers.pyscfd.PySCFDriver">
-<em class="property">class </em><code class="descname">PySCFDriver</code><span class="sig-paren">(</span><em>atom</em>, <em>unit=&lt;UnitsType.ANGSTROM: 'Angstrom'&gt;</em>, <em>charge=0</em>, <em>spin=0</em>, <em>basis='sto3g'</em>, <em>max_memory=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/chemistry/drivers/pyscfd/pyscfdriver.html#PySCFDriver"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.chemistry.drivers.pyscfd.PySCFDriver" title="この定義へのパーマリンク">¶</a></dt>
+<em class="property">class </em><code class="descname">PySCFDriver</code><span class="sig-paren">(</span><em>atom</em>, <em>unit=&lt;UnitsType.ANGSTROM: 'Angstrom'&gt;</em>, <em>charge=0</em>, <em>spin=0</em>, <em>basis='sto3g'</em>, <em>hf_method=&lt;HFMethodType.RHF: 'rhf'&gt;</em>, <em>conv_tol=1e-09</em>, <em>max_cycle=50</em>, <em>init_guess=&lt;InitialGuess.MINAO: 'minao'&gt;</em>, <em>max_memory=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/chemistry/drivers/pyscfd/pyscfdriver.html#PySCFDriver"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.chemistry.drivers.pyscfd.PySCFDriver" title="この定義へのパーマリンク">¶</a></dt>
 <dd><p>ベースクラス: <a class="reference internal" href="qiskit.chemistry.drivers._basedriver.html#qiskit.chemistry.drivers._basedriver.BaseDriver" title="qiskit.chemistry.drivers._basedriver.BaseDriver"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.chemistry.drivers._basedriver.BaseDriver</span></code></a></p>
 <p>Python implementation of a PySCF driver.</p>
 <dl class="attribute">
 <dt id="qiskit.chemistry.drivers.pyscfd.PySCFDriver.CONFIGURATION">
-<code class="descname">CONFIGURATION</code><em class="property"> = {'description': 'PYSCF Driver', 'input_schema': {'$schema': 'http://json-schema.org/schema#', 'additionalProperties': False, 'id': 'pyscf_schema', 'properties': {'atom': {'default': 'H 0.0 0.0 0.0; H 0.0 0.0 0.735', 'type': 'string'}, 'basis': {'default': 'sto3g', 'type': 'string'}, 'charge': {'default': 0, 'type': 'integer'}, 'max_memory': {'default': None, 'type': ['integer', 'null']}, 'spin': {'default': 0, 'type': 'integer'}, 'unit': {'default': 'Angstrom', 'oneOf': [{'enum': ['Angstrom', 'Bohr']}], 'type': 'string'}}, 'type': 'object'}, 'name': 'PYSCF'}</em><a class="headerlink" href="#qiskit.chemistry.drivers.pyscfd.PySCFDriver.CONFIGURATION" title="この定義へのパーマリンク">¶</a></dt>
+<code class="descname">CONFIGURATION</code><em class="property"> = {'description': 'PYSCF Driver', 'input_schema': {'$schema': 'http://json-schema.org/schema#', 'additionalProperties': False, 'id': 'pyscf_schema', 'properties': {'atom': {'default': 'H 0.0 0.0 0.0; H 0.0 0.0 0.735', 'type': 'string'}, 'basis': {'default': 'sto3g', 'type': 'string'}, 'charge': {'default': 0, 'type': 'integer'}, 'conv_tol': {'default': 1e-09, 'type': 'number'}, 'hf_method': {'default': 'rhf', 'enum': ['rhf', 'rohf', 'uhf'], 'type': 'string'}, 'init_guess': {'default': 'minao', 'enum': ['minao', '1e', 'atom'], 'type': 'string'}, 'max_cycle': {'default': 50, 'minimum': 1, 'type': 'integer'}, 'max_memory': {'default': None, 'type': ['integer', 'null']}, 'spin': {'default': 0, 'type': 'integer'}, 'unit': {'default': 'Angstrom', 'enum': ['Angstrom', 'Bohr'], 'type': 'string'}}, 'type': 'object'}, 'name': 'PYSCF'}</em><a class="headerlink" href="#qiskit.chemistry.drivers.pyscfd.PySCFDriver.CONFIGURATION" title="この定義へのパーマリンク">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="staticmethod">
@@ -1669,7 +1669,7 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">パラメータ:</th><td class="field-body"><strong>params</strong> (<em>dict</em>) -- section dictionary</td>
+<tr class="field-odd field"><th class="field-name">パラメータ:</th><td class="field-body"><strong>section</strong> (<em>dict</em>) -- section dictionary</td>
 </tr>
 <tr class="field-even field"><th class="field-name">戻り値:</th><td class="field-body">Driver object</td>
 </tr>
@@ -1682,6 +1682,33 @@
 <dl class="method">
 <dt id="qiskit.chemistry.drivers.pyscfd.PySCFDriver.run">
 <code class="descname">run</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/chemistry/drivers/pyscfd/pyscfdriver.html#PySCFDriver.run"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.chemistry.drivers.pyscfd.PySCFDriver.run" title="この定義へのパーマリンク">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="qiskit.chemistry.drivers.pyscfd.InitialGuess">
+<em class="property">class </em><code class="descname">InitialGuess</code><a class="reference internal" href="../_modules/qiskit/chemistry/drivers/pyscfd/pyscfdriver.html#InitialGuess"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.chemistry.drivers.pyscfd.InitialGuess" title="この定義へのパーマリンク">¶</a></dt>
+<dd><p>ベースクラス: <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
+<p>An enumeration.</p>
+<dl class="attribute">
+<dt id="qiskit.chemistry.drivers.pyscfd.InitialGuess.ATOM">
+<code class="descname">ATOM</code><em class="property"> = 'atom'</em><a class="headerlink" href="#qiskit.chemistry.drivers.pyscfd.InitialGuess.ATOM" title="この定義へのパーマリンク">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="qiskit.chemistry.drivers.pyscfd.InitialGuess.HCORE">
+<code class="descname">HCORE</code><em class="property"> = '1e'</em><a class="headerlink" href="#qiskit.chemistry.drivers.pyscfd.InitialGuess.HCORE" title="この定義へのパーマリンク">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="qiskit.chemistry.drivers.pyscfd.InitialGuess.MINAO">
+<code class="descname">MINAO</code><em class="property"> = 'minao'</em><a class="headerlink" href="#qiskit.chemistry.drivers.pyscfd.InitialGuess.MINAO" title="この定義へのパーマリンク">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="qiskit.chemistry.drivers.pyscfd.InitialGuess.ONE_E">
+<code class="descname">ONE_E</code><em class="property"> = '1e'</em><a class="headerlink" href="#qiskit.chemistry.drivers.pyscfd.InitialGuess.ONE_E" title="この定義へのパーマリンク">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>

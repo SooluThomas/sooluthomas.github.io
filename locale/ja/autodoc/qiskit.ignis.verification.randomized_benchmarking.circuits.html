@@ -1667,9 +1667,13 @@
 
 <dl class="function">
 <dt id="qiskit.ignis.verification.randomized_benchmarking.circuits.check_pattern">
-<code class="descname">check_pattern</code><span class="sig-paren">(</span><em>pattern</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/ignis/verification/randomized_benchmarking/circuits.html#check_pattern"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.ignis.verification.randomized_benchmarking.circuits.check_pattern" title="この定義へのパーマリンク">¶</a></dt>
+<code class="descname">check_pattern</code><span class="sig-paren">(</span><em>pattern</em>, <em>is_purity=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/ignis/verification/randomized_benchmarking/circuits.html#check_pattern"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.ignis.verification.randomized_benchmarking.circuits.check_pattern" title="この定義へのパーマリンク">¶</a></dt>
 <dd><p>Verifies that the input pattern is valid
 i.e., that each qubit appears at most once</p>
+<p>In case of purity rb, checkes that all
+simultaneous sequences have the same dimension
+(e.g. only 1-qubit squences, or only 2-qubits
+sequences etc.)</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -1677,6 +1681,7 @@ i.e., that each qubit appears at most once</p>
 <tr class="field-odd field"><th class="field-name">パラメータ:</th><td class="field-body"><ul class="first simple">
 <li><strong>pattern</strong> -- RB pattern</li>
 <li><strong>n_qubits</strong> -- number of qubits</li>
+<li><strong>is_purity</strong> -- True only for purity rb (default is False)</li>
 </ul>
 </td>
 </tr>
@@ -1684,7 +1689,9 @@ i.e., that each qubit appears at most once</p>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">戻り値:</th><td class="field-body"><p class="first">flat list of all the qubits in the pattern
-maxqubit: the maximum qubit number</p>
+maxqubit: the maximum qubit number
+maxdim: the maximal dimension (maximal number of qubits
+in all sequences)</p>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">戻り値の型:</th><td class="field-body"><p class="first last">qlist</p>
@@ -1696,9 +1703,10 @@ maxqubit: the maximum qubit number</p>
 
 <dl class="function">
 <dt id="qiskit.ignis.verification.randomized_benchmarking.circuits.handle_length_multiplier">
-<code class="descname">handle_length_multiplier</code><span class="sig-paren">(</span><em>length_multiplier</em>, <em>len_pattern</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/ignis/verification/randomized_benchmarking/circuits.html#handle_length_multiplier"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.ignis.verification.randomized_benchmarking.circuits.handle_length_multiplier" title="この定義へのパーマリンク">¶</a></dt>
+<code class="descname">handle_length_multiplier</code><span class="sig-paren">(</span><em>length_multiplier</em>, <em>len_pattern</em>, <em>is_purity=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/ignis/verification/randomized_benchmarking/circuits.html#handle_length_multiplier"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.ignis.verification.randomized_benchmarking.circuits.handle_length_multiplier" title="この定義へのパーマリンク">¶</a></dt>
 <dd><p>Check validity of length_multiplier.
-In addition, transform it into a vector if it is a constant.</p>
+In addition, transform it into a vector if it is a constant.
+In case of purity rb the length multiplier should be None.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -1706,6 +1714,7 @@ In addition, transform it into a vector if it is a constant.</p>
 <tr class="field-odd field"><th class="field-name">パラメータ:</th><td class="field-body"><ul class="first simple">
 <li><strong>length_multiplier</strong> -- length of the multiplier</li>
 <li><strong>len_pattern</strong> -- length of the RB pattern</li>
+<li><strong>is_purity</strong> -- True only for purity rb (default is False)</li>
 </ul>
 </td>
 </tr>
@@ -1734,7 +1743,7 @@ In addition, transform it into a vector if it is a constant.</p>
 
 <dl class="function">
 <dt id="qiskit.ignis.verification.randomized_benchmarking.circuits.randomized_benchmarking_seq">
-<code class="descname">randomized_benchmarking_seq</code><span class="sig-paren">(</span><em>nseeds=1</em>, <em>length_vector=None</em>, <em>rb_pattern=None</em>, <em>length_multiplier=1</em>, <em>seed_offset=0</em>, <em>align_cliffs=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/ignis/verification/randomized_benchmarking/circuits.html#randomized_benchmarking_seq"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.ignis.verification.randomized_benchmarking.circuits.randomized_benchmarking_seq" title="この定義へのパーマリンク">¶</a></dt>
+<code class="descname">randomized_benchmarking_seq</code><span class="sig-paren">(</span><em>nseeds=1</em>, <em>length_vector=None</em>, <em>rb_pattern=None</em>, <em>length_multiplier=1</em>, <em>seed_offset=0</em>, <em>align_cliffs=False</em>, <em>interleaved_gates=None</em>, <em>is_purity=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/ignis/verification/randomized_benchmarking/circuits.html#randomized_benchmarking_seq"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.ignis.verification.randomized_benchmarking.circuits.randomized_benchmarking_seq" title="この定義へのパーマリンク">¶</a></dt>
 <dd><p>Get a generic randomized benchmarking sequence</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1761,16 +1770,26 @@ In addition, transform it into a vector if it is a constant.</p>
 <li><strong>cliffords including the length multiplier so if the multiplier</strong> (<em>of</em>) -- </li>
 <li><strong>[</strong><strong>1</strong><strong>,</strong><strong>3</strong><strong>] </strong><strong>it will barrier after 1 clifford for the first pattern</strong> (<em>is</em>) -- </li>
 <li><strong>3 for the second</strong><strong>)</strong> (<em>and</em>) -- </li>
+<li><strong>interleaved_gates</strong> -- A list of gates of Clifford elements that</li>
+<li><strong>be interleaved</strong> (<em>will</em>) -- </li>
+<li><strong>length of the list would equal the length of the rb_pattern.</strong> (<em>The</em>) -- </li>
+<li><strong>is_purity</strong> -- True only for purity rb (default is False)</li>
 </ul>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">戻り値:</th><td class="field-body"><p class="first">list of lists of circuits for the rb sequences (separate list
 for each seed)
 xdata: the Clifford lengths (with multiplier if applicable)
-rb_opts_dict: option dictionary back out with default options appended</p>
+rb_opts_dict: option dictionary back out with default options appended
+circuits_interleaved: list of lists of circuits for the interleaved
+rb sequences (separate list for each seed)
+circuits_purity: list of lists of lists of circuits for purity rb
+(separate list for each seed and each of the 3^n circuits)
+npurity: the number of purity rb circuits (per seed)
+which equals to 3^n, where n is the dimension</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">戻り値の型:</th><td class="field-body"><p class="first last">rb_circs</p>
+<tr class="field-odd field"><th class="field-name">戻り値の型:</th><td class="field-body"><p class="first last">circuits</p>
 </td>
 </tr>
 </tbody>

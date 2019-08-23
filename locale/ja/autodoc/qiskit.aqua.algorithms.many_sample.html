@@ -1647,12 +1647,12 @@
 <span id="qiskit-aqua-algorithms-many-sample-package"></span><h1>qiskit.aqua.algorithms.many_sample package<a class="headerlink" href="#module-qiskit.aqua.algorithms.many_sample" title="このヘッドラインへのパーマリンク">¶</a></h1>
 <dl class="class">
 <dt id="qiskit.aqua.algorithms.many_sample.EOH">
-<em class="property">class </em><code class="descname">EOH</code><span class="sig-paren">(</span><em>operator</em>, <em>initial_state</em>, <em>evo_operator</em>, <em>operator_mode='paulis'</em>, <em>evo_time=1</em>, <em>num_time_slices=1</em>, <em>expansion_mode='trotter'</em>, <em>expansion_order=1</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/algorithms/many_sample/eoh/eoh.html#EOH"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.aqua.algorithms.many_sample.EOH" title="この定義へのパーマリンク">¶</a></dt>
+<em class="property">class </em><code class="descname">EOH</code><span class="sig-paren">(</span><em>operator</em>, <em>initial_state</em>, <em>evo_operator</em>, <em>operator_mode=None</em>, <em>evo_time=1</em>, <em>num_time_slices=1</em>, <em>expansion_mode='trotter'</em>, <em>expansion_order=1</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/algorithms/many_sample/eoh/eoh.html#EOH"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.aqua.algorithms.many_sample.EOH" title="この定義へのパーマリンク">¶</a></dt>
 <dd><p>ベースクラス: <a class="reference internal" href="qiskit.aqua.algorithms.quantum_algorithm.html#qiskit.aqua.algorithms.quantum_algorithm.QuantumAlgorithm" title="qiskit.aqua.algorithms.quantum_algorithm.QuantumAlgorithm"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.aqua.algorithms.quantum_algorithm.QuantumAlgorithm</span></code></a></p>
 <p>The Quantum EOH (Evolution of Hamiltonian) algorithm.</p>
 <dl class="attribute">
 <dt id="qiskit.aqua.algorithms.many_sample.EOH.CONFIGURATION">
-<code class="descname">CONFIGURATION</code><em class="property"> = {'depends': [{'pluggable_type': 'initial_state', 'default': {'name': 'ZERO'}}], 'description': 'Evolution of Hamiltonian for Quantum Systems', 'input_schema': {'$schema': 'http://json-schema.org/schema#', 'additionalProperties': False, 'id': 'EOH_schema', 'properties': {'evo_time': {'default': 1, 'minimum': 0, 'type': 'number'}, 'expansion_mode': {'default': 'trotter', 'oneOf': [{'enum': ['trotter', 'suzuki']}], 'type': 'string'}, 'expansion_order': {'default': 1, 'minimum': 1, 'type': 'integer'}, 'num_time_slices': {'default': 1, 'minimum': 0, 'type': 'integer'}, 'operator_mode': {'default': 'paulis', 'oneOf': [{'enum': ['paulis', 'grouped_paulis', 'matrix']}], 'type': 'string'}}, 'type': 'object'}, 'name': 'EOH', 'problems': ['eoh']}</em><a class="headerlink" href="#qiskit.aqua.algorithms.many_sample.EOH.CONFIGURATION" title="この定義へのパーマリンク">¶</a></dt>
+<code class="descname">CONFIGURATION</code><em class="property"> = {'depends': [{'pluggable_type': 'initial_state', 'default': {'name': 'ZERO'}}], 'description': 'Evolution of Hamiltonian for Quantum Systems', 'input_schema': {'$schema': 'http://json-schema.org/schema#', 'additionalProperties': False, 'id': 'EOH_schema', 'properties': {'evo_time': {'default': 1, 'minimum': 0, 'type': 'number'}, 'expansion_mode': {'default': 'trotter', 'enum': ['trotter', 'suzuki'], 'type': 'string'}, 'expansion_order': {'default': 1, 'minimum': 1, 'type': 'integer'}, 'num_time_slices': {'default': 1, 'minimum': 0, 'type': 'integer'}, 'operator_mode': {'default': None, 'enum': ['paulis', 'grouped_paulis', 'matrix', None], 'type': ['string', 'null']}}, 'type': 'object'}, 'name': 'EOH', 'problems': ['eoh']}</em><a class="headerlink" href="#qiskit.aqua.algorithms.many_sample.EOH.CONFIGURATION" title="この定義へのパーマリンク">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -1708,7 +1708,7 @@
 
 <dl class="class">
 <dt id="qiskit.aqua.algorithms.many_sample.QSVM">
-<em class="property">class </em><code class="descname">QSVM</code><span class="sig-paren">(</span><em>feature_map</em>, <em>training_dataset</em>, <em>test_dataset=None</em>, <em>datapoints=None</em>, <em>multiclass_extension=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/algorithms/many_sample/qsvm/qsvm.html#QSVM"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.aqua.algorithms.many_sample.QSVM" title="この定義へのパーマリンク">¶</a></dt>
+<em class="property">class </em><code class="descname">QSVM</code><span class="sig-paren">(</span><em>feature_map</em>, <em>training_dataset=None</em>, <em>test_dataset=None</em>, <em>datapoints=None</em>, <em>multiclass_extension=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/algorithms/many_sample/qsvm/qsvm.html#QSVM"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.aqua.algorithms.many_sample.QSVM" title="この定義へのパーマリンク">¶</a></dt>
 <dd><p>ベースクラス: <a class="reference internal" href="qiskit.aqua.algorithms.quantum_algorithm.html#qiskit.aqua.algorithms.quantum_algorithm.QuantumAlgorithm" title="qiskit.aqua.algorithms.quantum_algorithm.QuantumAlgorithm"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.aqua.algorithms.quantum_algorithm.QuantumAlgorithm</span></code></a></p>
 <p>Quantum SVM method.</p>
 <p>Internally, it will run the binary classification or multiclass classification
@@ -1747,6 +1747,11 @@ based on how many classes the data have.</p>
 <dt id="qiskit.aqua.algorithms.many_sample.QSVM.construct_kernel_matrix">
 <code class="descname">construct_kernel_matrix</code><span class="sig-paren">(</span><em>x1_vec</em>, <em>x2_vec=None</em>, <em>quantum_instance=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/algorithms/many_sample/qsvm/qsvm.html#QSVM.construct_kernel_matrix"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.aqua.algorithms.many_sample.QSVM.construct_kernel_matrix" title="この定義へのパーマリンク">¶</a></dt>
 <dd><p>Construct kernel matrix, if x2_vec is None, self-innerproduct is conducted.</p>
+<p class="rubric">メモ</p>
+<p>When using <cite>statevector_simulator</cite>, we only build the circuits for Psi(x1)|0&gt; rather than
+Psi(x2)^dagger Psi(x1)|0&gt;, and then we perform the inner product classically.
+That is, for <cite>statevector_simulator</cite>, the total number of circuits will be O(N) rather than
+O(N^2) for <cite>qasm_simulator</cite>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -1756,7 +1761,43 @@ based on how many classes the data have.</p>
 D is the feature dimension</li>
 <li><strong>x2_vec</strong> (<em>numpy.ndarray</em>) -- data points, 2-D array, N2xD, where N2 is the number of data,
 D is the feature dimension</li>
-<li><strong>quantum_instance</strong> (<a class="reference internal" href="qiskit.aqua.html#qiskit.aqua.QuantumInstance" title="qiskit.aqua.QuantumInstance"><em>QuantumInstance</em></a>) -- quantum backend with all setting</li>
+<li><strong>quantum_instance</strong> (<a class="reference internal" href="qiskit.aqua.html#qiskit.aqua.QuantumInstance" title="qiskit.aqua.QuantumInstance"><em>QuantumInstance</em></a>) -- quantum backend with all settings</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">戻り値:</th><td class="field-body"><p class="first">2-D matrix, N1xN2</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">戻り値の型:</th><td class="field-body"><p class="first">numpy.ndarray</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><code class="xref py py-exc docutils literal notranslate"><span class="pre">AquaError</span></code> -- Quantum instance is not present.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="qiskit.aqua.algorithms.many_sample.QSVM.get_kernel_matrix">
+<em class="property">static </em><code class="descname">get_kernel_matrix</code><span class="sig-paren">(</span><em>quantum_instance</em>, <em>feature_map</em>, <em>x1_vec</em>, <em>x2_vec=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/algorithms/many_sample/qsvm/qsvm.html#QSVM.get_kernel_matrix"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.aqua.algorithms.many_sample.QSVM.get_kernel_matrix" title="この定義へのパーマリンク">¶</a></dt>
+<dd><p>Construct kernel matrix, if x2_vec is None, self-innerproduct is conducted.</p>
+<p class="rubric">メモ</p>
+<p>When using <cite>statevector_simulator</cite>, we only build the circuits for Psi(x1)|0&gt; rather than
+Psi(x2)^dagger Psi(x1)|0&gt;, and then we perform the inner product classically.
+That is, for <cite>statevector_simulator</cite>, the total number of circuits will be O(N) rather than
+O(N^2) for <cite>qasm_simulator</cite>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">パラメータ:</th><td class="field-body"><ul class="first simple">
+<li><strong>quantum_instance</strong> (<a class="reference internal" href="qiskit.aqua.html#qiskit.aqua.QuantumInstance" title="qiskit.aqua.QuantumInstance"><em>QuantumInstance</em></a>) -- quantum backend with all settings</li>
+<li><strong>feature_map</strong> (<a class="reference internal" href="qiskit.aqua.components.feature_maps.html#qiskit.aqua.components.feature_maps.FeatureMap" title="qiskit.aqua.components.feature_maps.FeatureMap"><em>FeatureMap</em></a>) -- a feature map that maps data to feature space</li>
+<li><strong>x1_vec</strong> (<em>numpy.ndarray</em>) -- data points, 2-D array, N1xD, where N1 is the number of data,
+D is the feature dimension</li>
+<li><strong>x2_vec</strong> (<em>numpy.ndarray</em>) -- data points, 2-D array, N2xD, where N2 is the number of data,
+D is the feature dimension</li>
 </ul>
 </td>
 </tr>
@@ -1808,7 +1849,10 @@ D is the feature dimension.</li>
 <tr class="field-even field"><th class="field-name">戻り値:</th><td class="field-body"><p class="first">predicted labels, Nx1 array</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">戻り値の型:</th><td class="field-body"><p class="first last">numpy.ndarray</p>
+<tr class="field-odd field"><th class="field-name">戻り値の型:</th><td class="field-body"><p class="first">numpy.ndarray</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><code class="xref py py-exc docutils literal notranslate"><span class="pre">AquaError</span></code> -- Quantum instance is not present.</p>
 </td>
 </tr>
 </tbody>
@@ -1835,6 +1879,48 @@ D is the feature dimension.</li>
 </dd></dl>
 
 <dl class="method">
+<dt id="qiskit.aqua.algorithms.many_sample.QSVM.setup_datapoint">
+<code class="descname">setup_datapoint</code><span class="sig-paren">(</span><em>datapoints</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/algorithms/many_sample/qsvm/qsvm.html#QSVM.setup_datapoint"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.aqua.algorithms.many_sample.QSVM.setup_datapoint" title="この定義へのパーマリンク">¶</a></dt>
+<dd><p>Setup data points, if the data were there, they would be overwritten.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">パラメータ:</th><td class="field-body"><strong>datapoints</strong> (<em>numpy.ndarray</em>) -- prediction dataset.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="qiskit.aqua.algorithms.many_sample.QSVM.setup_test_data">
+<code class="descname">setup_test_data</code><span class="sig-paren">(</span><em>test_dataset</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/algorithms/many_sample/qsvm/qsvm.html#QSVM.setup_test_data"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.aqua.algorithms.many_sample.QSVM.setup_test_data" title="この定義へのパーマリンク">¶</a></dt>
+<dd><p>Setup test data, if the data were there, they would be overwritten.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">パラメータ:</th><td class="field-body"><strong>test_dataset</strong> (<em>dict</em>) -- test dataset.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="qiskit.aqua.algorithms.many_sample.QSVM.setup_training_data">
+<code class="descname">setup_training_data</code><span class="sig-paren">(</span><em>training_dataset</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/algorithms/many_sample/qsvm/qsvm.html#QSVM.setup_training_data"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.aqua.algorithms.many_sample.QSVM.setup_training_data" title="この定義へのパーマリンク">¶</a></dt>
+<dd><p>Setup training data, if the data were there, they would be overwritten.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">パラメータ:</th><td class="field-body"><strong>training_dataset</strong> (<em>dict</em>) -- training dataset.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
 <dt id="qiskit.aqua.algorithms.many_sample.QSVM.test">
 <code class="descname">test</code><span class="sig-paren">(</span><em>data</em>, <em>labels</em>, <em>quantum_instance=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/algorithms/many_sample/qsvm/qsvm.html#QSVM.test"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.aqua.algorithms.many_sample.QSVM.test" title="この定義へのパーマリンク">¶</a></dt>
 <dd><p>Test the svm.</p>
@@ -1853,7 +1939,10 @@ D is the feature dimension.</li>
 <tr class="field-even field"><th class="field-name">戻り値:</th><td class="field-body"><p class="first">accuracy</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">戻り値の型:</th><td class="field-body"><p class="first last">float</p>
+<tr class="field-odd field"><th class="field-name">戻り値の型:</th><td class="field-body"><p class="first">float</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><code class="xref py py-exc docutils literal notranslate"><span class="pre">AquaError</span></code> -- Quantum instance is not present.</p>
 </td>
 </tr>
 </tbody>
@@ -1868,12 +1957,15 @@ D is the feature dimension.</li>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">パラメータ:</th><td class="field-body"><ul class="first last simple">
+<tr class="field-odd field"><th class="field-name">パラメータ:</th><td class="field-body"><ul class="first simple">
 <li><strong>data</strong> (<em>numpy.ndarray</em>) -- NxD array, where N is the number of data,
 D is the feature dimension.</li>
 <li><strong>labels</strong> (<em>numpy.ndarray</em>) -- Nx1 array, where N is the number of data</li>
 <li><strong>quantum_instance</strong> (<a class="reference internal" href="qiskit.aqua.html#qiskit.aqua.QuantumInstance" title="qiskit.aqua.QuantumInstance"><em>QuantumInstance</em></a>) -- quantum backend with all setting</li>
 </ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><code class="xref py py-exc docutils literal notranslate"><span class="pre">AquaError</span></code> -- Quantum instance is not present.</p>
 </td>
 </tr>
 </tbody>

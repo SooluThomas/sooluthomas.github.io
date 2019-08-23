@@ -189,13 +189,19 @@
 <span class="sd">&quot;&quot;&quot;</span>
 
 
-<div class="viewcode-block" id="get_entangler_map"><a class="viewcode-back" href="../../../../autodoc/qiskit.aqua.utils.entangler_map.html#qiskit.aqua.utils.get_entangler_map">[ドキュメント]</a><span class="k">def</span> <span class="nf">get_entangler_map</span><span class="p">(</span><span class="n">map_type</span><span class="p">,</span> <span class="n">num_qubits</span><span class="p">):</span>
+<div class="viewcode-block" id="get_entangler_map"><a class="viewcode-back" href="../../../../autodoc/qiskit.aqua.utils.entangler_map.html#qiskit.aqua.utils.get_entangler_map">[ドキュメント]</a><span class="k">def</span> <span class="nf">get_entangler_map</span><span class="p">(</span><span class="n">map_type</span><span class="p">,</span> <span class="n">num_qubits</span><span class="p">,</span> <span class="n">offset</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Utility method to get an entangler map among qubits.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        map_type (str): &#39;full&#39; entangles each qubit with all the subsequent ones</span>
-<span class="sd">                       &#39;linear&#39; entangles each qubit with the next</span>
+<span class="sd">                        &#39;linear&#39; entangles each qubit with the next</span>
+<span class="sd">                        &#39;sca&#39; (shifted circular alternating entanglement) is a</span>
+<span class="sd">                        circular entanglement where the &#39;long&#39; entanglement is</span>
+<span class="sd">                        shifted by one position every block and every block the</span>
+<span class="sd">                        role or control/target qubits alternate</span>
 <span class="sd">        num_qubits (int): Number of qubits for which the map is needed</span>
+<span class="sd">        offset (int): Some map_types (e.g. &#39;sca&#39;) can shift the gates in</span>
+<span class="sd">                      the entangler map by the specified integer offset.</span>
 
 <span class="sd">    Returns:</span>
 <span class="sd">        A map of qubit index to an array of indexes to which this should be entangled</span>
@@ -204,13 +210,33 @@
 <span class="sd">        ValueError: if map_type is not valid.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">ret</span> <span class="o">=</span> <span class="p">[]</span>
+
     <span class="k">if</span> <span class="n">num_qubits</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">map_type</span> <span class="o">==</span> <span class="s1">&#39;full&#39;</span><span class="p">:</span>
             <span class="n">ret</span> <span class="o">=</span> <span class="p">[[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_qubits</span><span class="p">)</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">num_qubits</span><span class="p">)]</span>
         <span class="k">elif</span> <span class="n">map_type</span> <span class="o">==</span> <span class="s1">&#39;linear&#39;</span><span class="p">:</span>
             <span class="n">ret</span> <span class="o">=</span> <span class="p">[[</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_qubits</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)]</span>
+        <span class="k">elif</span> <span class="n">map_type</span> <span class="o">==</span> <span class="s1">&#39;sca&#39;</span><span class="p">:</span>
+            <span class="n">offset_idx</span> <span class="o">=</span> <span class="n">offset</span> <span class="o">%</span> <span class="n">num_qubits</span>
+            <span class="k">if</span> <span class="n">offset_idx</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>  <span class="c1"># even block numbers</span>
+                <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">reversed</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">offset_idx</span><span class="p">)):</span>
+                    <span class="n">ret</span> <span class="o">+=</span> <span class="p">[[</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]]</span>
+
+                <span class="n">ret</span> <span class="o">+=</span> <span class="p">[[</span><span class="n">num_qubits</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]]</span>
+
+                <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">reversed</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">offset_idx</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">num_qubits</span><span class="p">)):</span>
+                    <span class="n">ret</span> <span class="o">+=</span> <span class="p">[[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">i</span><span class="p">]]</span>
+
+            <span class="k">else</span><span class="p">:</span>  <span class="c1"># odd block numbers</span>
+                <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_qubits</span> <span class="o">-</span> <span class="n">offset_idx</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">num_qubits</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+                    <span class="n">ret</span> <span class="o">+=</span> <span class="p">[[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">i</span><span class="p">]]</span>
+
+                <span class="n">ret</span> <span class="o">+=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="n">num_qubits</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]]</span>
+
+                <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_qubits</span> <span class="o">-</span> <span class="n">offset_idx</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+                    <span class="n">ret</span> <span class="o">+=</span> <span class="p">[[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">i</span><span class="p">]]</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;map_type only supports &#39;full&#39; or &#39;linear&#39; type.&quot;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;map_type only supports &#39;full&#39;, &#39;linear&#39; or &#39;sca&#39; type.&quot;</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">ret</span></div>
 
 

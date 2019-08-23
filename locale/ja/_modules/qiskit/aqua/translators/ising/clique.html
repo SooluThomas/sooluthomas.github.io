@@ -195,7 +195,7 @@
 <span class="kn">import</span> <span class="nn">numpy.random</span> <span class="k">as</span> <span class="nn">rand</span>
 
 <span class="kn">from</span> <span class="nn">qiskit.quantum_info</span> <span class="k">import</span> <span class="n">Pauli</span>
-<span class="kn">from</span> <span class="nn">qiskit.aqua</span> <span class="k">import</span> <span class="n">Operator</span>
+<span class="kn">from</span> <span class="nn">qiskit.aqua.operators</span> <span class="k">import</span> <span class="n">WeightedPauliOperator</span>
 
 <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
 
@@ -246,7 +246,7 @@
 <span class="sd">        weight_matrix (numpy.ndarray) : adjacency matrix.</span>
 
 <span class="sd">    Returns:</span>
-<span class="sd">        operator.Operator, float: operator for the Hamiltonian and a</span>
+<span class="sd">        WeightedPauliOperator, float: operator for the Hamiltonian and a</span>
 <span class="sd">        constant shift for the obj function.</span>
 
 <span class="sd">    Goals:</span>
@@ -319,7 +319,7 @@
 
                 <span class="n">shift</span> <span class="o">+=</span> <span class="o">-</span><span class="mf">0.25</span>
 
-    <span class="k">return</span> <span class="n">Operator</span><span class="p">(</span><span class="n">paulis</span><span class="o">=</span><span class="n">pauli_list</span><span class="p">),</span> <span class="n">shift</span></div>
+    <span class="k">return</span> <span class="n">WeightedPauliOperator</span><span class="p">(</span><span class="n">paulis</span><span class="o">=</span><span class="n">pauli_list</span><span class="p">),</span> <span class="n">shift</span></div>
 
 
 <div class="viewcode-block" id="parse_gset_format"><a class="viewcode-back" href="../../../../../autodoc/qiskit.aqua.translators.ising.clique.html#qiskit.aqua.translators.ising.clique.parse_gset_format">[ドキュメント]</a><span class="k">def</span> <span class="nf">parse_gset_format</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>

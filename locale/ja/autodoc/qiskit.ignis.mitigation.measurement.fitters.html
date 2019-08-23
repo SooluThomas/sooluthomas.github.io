@@ -1649,6 +1649,24 @@
 <em class="property">class </em><code class="descname">CompleteMeasFitter</code><span class="sig-paren">(</span><em>results</em>, <em>state_labels</em>, <em>qubit_list=None</em>, <em>circlabel=''</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/ignis/mitigation/measurement/fitters.html#CompleteMeasFitter"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.ignis.mitigation.measurement.fitters.CompleteMeasFitter" title="この定義へのパーマリンク">¶</a></dt>
 <dd><p>ベースクラス: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Measurement correction fitter for a full calibration</p>
+<dl class="method">
+<dt id="qiskit.ignis.mitigation.measurement.fitters.CompleteMeasFitter.add_data">
+<code class="descname">add_data</code><span class="sig-paren">(</span><em>new_results</em>, <em>rebuild_cal_matrix=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/ignis/mitigation/measurement/fitters.html#CompleteMeasFitter.add_data"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.ignis.mitigation.measurement.fitters.CompleteMeasFitter.add_data" title="この定義へのパーマリンク">¶</a></dt>
+<dd><p>Add measurement calibration data</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">パラメータ:</th><td class="field-body"><ul class="first last simple">
+<li><strong>new_results</strong> -- a single result or list of results</li>
+<li><strong>rebuild_cal_matrix</strong> -- rebuild the calibration matrix</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
 <dl class="attribute">
 <dt id="qiskit.ignis.mitigation.measurement.fitters.CompleteMeasFitter.cal_matrix">
 <code class="descname">cal_matrix</code><a class="headerlink" href="#qiskit.ignis.mitigation.measurement.fitters.CompleteMeasFitter.cal_matrix" title="この定義へのパーマリンク">¶</a></dt>
@@ -1740,6 +1758,24 @@ list.</p>
 <em class="property">class </em><code class="descname">TensoredMeasFitter</code><span class="sig-paren">(</span><em>results</em>, <em>mit_pattern</em>, <em>substate_labels_list=None</em>, <em>circlabel=''</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/ignis/mitigation/measurement/fitters.html#TensoredMeasFitter"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.ignis.mitigation.measurement.fitters.TensoredMeasFitter" title="この定義へのパーマリンク">¶</a></dt>
 <dd><p>ベースクラス: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Measurement correction fitter for a tensored calibration</p>
+<dl class="method">
+<dt id="qiskit.ignis.mitigation.measurement.fitters.TensoredMeasFitter.add_data">
+<code class="descname">add_data</code><span class="sig-paren">(</span><em>new_results</em>, <em>rebuild_cal_matrix=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/ignis/mitigation/measurement/fitters.html#TensoredMeasFitter.add_data"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.ignis.mitigation.measurement.fitters.TensoredMeasFitter.add_data" title="この定義へのパーマリンク">¶</a></dt>
+<dd><p>Add measurement calibration data</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">パラメータ:</th><td class="field-body"><ul class="first last simple">
+<li><strong>new_results</strong> -- a single result or list of results</li>
+<li><strong>rebuild_cal_matrix</strong> -- rebuild the calibration matrix</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
 <dl class="attribute">
 <dt id="qiskit.ignis.mitigation.measurement.fitters.TensoredMeasFitter.cal_matrices">
 <code class="descname">cal_matrices</code><a class="headerlink" href="#qiskit.ignis.mitigation.measurement.fitters.TensoredMeasFitter.cal_matrices" title="この定義へのパーマリンク">¶</a></dt>

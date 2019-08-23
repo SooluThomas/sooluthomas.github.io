@@ -1643,60 +1643,8 @@
     <div class="document">
         <div class="page-content">
         
-  <div class="section" id="module-qiskit.aqua.circuits.piecewise_linear_y_rotation">
-<span id="qiskit-aqua-circuits-piecewise-linear-y-rotation-module"></span><h1>qiskit.aqua.circuits.piecewise_linear_y_rotation module<a class="headerlink" href="#module-qiskit.aqua.circuits.piecewise_linear_y_rotation" title="このヘッドラインへのパーマリンク">¶</a></h1>
-<dl class="class">
-<dt id="qiskit.aqua.circuits.piecewise_linear_y_rotation.PiecewiseLinearYRotation">
-<em class="property">class </em><code class="descname">PiecewiseLinearYRotation</code><span class="sig-paren">(</span><em>breakpoints</em>, <em>slopes</em>, <em>offsets</em>, <em>num_state_qubits</em>, <em>i_state=None</em>, <em>i_target=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/circuits/piecewise_linear_y_rotation.html#PiecewiseLinearYRotation"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.aqua.circuits.piecewise_linear_y_rotation.PiecewiseLinearYRotation" title="この定義へのパーマリンク">¶</a></dt>
-<dd><p>ベースクラス: <a class="reference internal" href="qiskit.aqua.utils.circuit_factory.html#qiskit.aqua.utils.circuit_factory.CircuitFactory" title="qiskit.aqua.utils.circuit_factory.CircuitFactory"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.aqua.utils.circuit_factory.CircuitFactory</span></code></a></p>
-<p>Piecewise-linearly-controlled Y rotation.
-For a piecewise linear (not necessarily continuous) function f(x), a state qubit register <a href="#id1"><span class="problematic" id="id2">|</span></a>x&gt; and a target qubit <a href="#id3"><span class="problematic" id="id4">|</span></a>0&gt;, this operator acts as</p>
-<blockquote>
-<div><a href="#id5"><span class="problematic" id="id6">|</span></a>x&gt;|0&gt; --&gt; <a href="#id7"><span class="problematic" id="id8">|</span></a>x&gt; ( cos( f(x) )|0&gt; + sin( f(x) )|1&gt; )</div></blockquote>
-<p>The function f(x) is defined through breakpoints, slopes and offsets as follows.
-Suppose the breakpoints { x_0, ..., x_J } are a subset of [0,  2^n-1], where n is the number of state qubits.
-Further on, denote the corresponding slopes and offsets by a_j, b_j respectively.
-Then f(x) is defined as:</p>
-<blockquote>
-<div>x &lt; x_0            --&gt; f(x) = 0
-x_j &lt;= x &lt; x_{j+1} --&gt; f(x) = a_j * (x - x_j) + b_j</div></blockquote>
-<p>where we implicitly assume x_{J+1} = 2^n.</p>
-<dl class="method">
-<dt id="qiskit.aqua.circuits.piecewise_linear_y_rotation.PiecewiseLinearYRotation.build">
-<code class="descname">build</code><span class="sig-paren">(</span><em>qc</em>, <em>q</em>, <em>q_ancillas=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/circuits/piecewise_linear_y_rotation.html#PiecewiseLinearYRotation.build"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.aqua.circuits.piecewise_linear_y_rotation.PiecewiseLinearYRotation.build" title="この定義へのパーマリンク">¶</a></dt>
-<dd><p>Adds corresponding sub-circuit to given circuit</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">パラメータ:</th><td class="field-body"><ul class="first last simple">
-<li><strong>qc</strong> -- quantum circuit</li>
-<li><strong>q</strong> -- list of qubits (has to be same length as self._num_qubits)</li>
-<li><strong>q_ancillas</strong> -- list of ancilla qubits (or None if none needed)</li>
-<li><strong>params</strong> -- parameters for circuit</li>
-</ul>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="qiskit.aqua.circuits.piecewise_linear_y_rotation.PiecewiseLinearYRotation.evaluate">
-<code class="descname">evaluate</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/circuits/piecewise_linear_y_rotation.html#PiecewiseLinearYRotation.evaluate"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.aqua.circuits.piecewise_linear_y_rotation.PiecewiseLinearYRotation.evaluate" title="この定義へのパーマリンク">¶</a></dt>
-<dd><p>Classically evaluate the piecewise linear rotation
-:param x: value to be evaluated at
-:type x: float</p>
-<p>Returns: value of piecewise linear function at x</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="qiskit.aqua.circuits.piecewise_linear_y_rotation.PiecewiseLinearYRotation.required_ancillas">
-<code class="descname">required_ancillas</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/circuits/piecewise_linear_y_rotation.html#PiecewiseLinearYRotation.required_ancillas"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.aqua.circuits.piecewise_linear_y_rotation.PiecewiseLinearYRotation.required_ancillas" title="この定義へのパーマリンク">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
+  <div class="section" id="qiskit-aqua-circuits-piecewise-linear-y-rotation-module">
+<h1>qiskit.aqua.circuits.piecewise_linear_y_rotation module<a class="headerlink" href="#qiskit-aqua-circuits-piecewise-linear-y-rotation-module" title="このヘッドラインへのパーマリンク">¶</a></h1>
 </div>
 
 

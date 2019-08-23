@@ -1701,6 +1701,7 @@ This wraper will try to get the result no matter how long it costs.</p>
 <li><strong>run_config</strong> (<a class="reference internal" href="qiskit.assembler.run_config.html#qiskit.assembler.run_config.RunConfig" title="qiskit.assembler.run_config.RunConfig"><em>RunConfig</em></a><em>, </em><em>optional</em>) -- configuration for running a circuit</li>
 <li><strong>show_circuit_summary</strong> (<em>bool</em><em>, </em><em>optional</em>) -- showing the summary of submitted circuits.</li>
 <li><strong>circuit_cache</strong> (<a class="reference internal" href="qiskit.aqua.utils.html#qiskit.aqua.utils.CircuitCache" title="qiskit.aqua.utils.CircuitCache"><em>CircuitCache</em></a><em>, </em><em>optional</em>) -- A CircuitCache to use when calling compile_and_run_circuits</li>
+<li><strong>kwargs</strong> (<em>optional</em>) -- special aer instructions to evaluation the expectation of a hamiltonian</li>
 </ul>
 </td>
 </tr>
@@ -1710,7 +1711,10 @@ This wraper will try to get the result no matter how long it costs.</p>
 <tr class="field-odd field"><th class="field-name">戻り値の型:</th><td class="field-body"><p class="first">QasmObj</p>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><code class="xref py py-exc docutils literal notranslate"><span class="pre">AquaError</span></code> -- Any error except for JobError raised by Qiskit Terra</p>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><ul class="first last simple">
+<li><code class="xref py py-exc docutils literal notranslate"><span class="pre">ValueError</span></code> -- backend type is wrong or not given</li>
+<li><code class="xref py py-exc docutils literal notranslate"><span class="pre">ValueError</span></code> -- no circuit in the circuits</li>
+</ul>
 </td>
 </tr>
 </tbody>
@@ -1748,22 +1752,25 @@ This wraper will try to get the result no matter how long it costs.</p>
 <dd></dd></dl>
 
 <dl class="function">
-<dt id="qiskit.aqua.utils.run_circuits.run_qobjs">
-<code class="descname">run_qobjs</code><span class="sig-paren">(</span><em>qobjs</em>, <em>backend</em>, <em>qjob_config=None</em>, <em>backend_options=None</em>, <em>noise_config=None</em>, <em>skip_qobj_validation=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/utils/run_circuits.html#run_qobjs"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.aqua.utils.run_circuits.run_qobjs" title="この定義へのパーマリンク">¶</a></dt>
+<dt id="qiskit.aqua.utils.run_circuits.run_qobj">
+<code class="descname">run_qobj</code><span class="sig-paren">(</span><em>qobj</em>, <em>backend</em>, <em>qjob_config=None</em>, <em>backend_options=None</em>, <em>noise_config=None</em>, <em>skip_qobj_validation=False</em>, <em>job_callback=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/utils/run_circuits.html#run_qobj"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.aqua.utils.run_circuits.run_qobj" title="この定義へのパーマリンク">¶</a></dt>
 <dd><p>An execution wrapper with Qiskit-Terra, with job auto recover capability.</p>
-<p>The autorecovery feature is only applied for non-simulator backend.
-This wraper will try to get the result no matter how long it costs.</p>
+<p>The auto-recovery feature is only applied for non-simulator backend.
+This wrapper will try to get the result no matter how long it takes.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">パラメータ:</th><td class="field-body"><ul class="first simple">
-<li><strong>qobjs</strong> (<em>list</em><em>[</em><em>QasmObj</em><em>]</em>) -- qobjs to execute</li>
+<li><strong>qobj</strong> (<a class="reference internal" href="qiskit.qobj.qobj.html#qiskit.qobj.qobj.QasmQobj" title="qiskit.qobj.qobj.QasmQobj"><em>QasmQobj</em></a>) -- qobj to execute</li>
 <li><strong>backend</strong> (<a class="reference internal" href="qiskit.providers.basebackend.html#qiskit.providers.basebackend.BaseBackend" title="qiskit.providers.basebackend.BaseBackend"><em>BaseBackend</em></a>) -- backend instance</li>
 <li><strong>qjob_config</strong> (<em>dict</em><em>, </em><em>optional</em>) -- configuration for quantum job object</li>
 <li><strong>backend_options</strong> (<em>dict</em><em>, </em><em>optional</em>) -- configuration for simulator</li>
 <li><strong>noise_config</strong> (<em>dict</em><em>, </em><em>optional</em>) -- configuration for noise model</li>
-<li><strong>skip_qobj_validation</strong> (<em>bool</em><em>, </em><em>optional</em>) -- Bypass Qobj validation to decrease submission time</li>
+<li><strong>skip_qobj_validation</strong> (<em>bool</em><em>, </em><em>optional</em>) -- Bypass Qobj validation to decrease submission time,
+only works for Aer and BasicAer providers</li>
+<li><strong>job_callback</strong> (<em>Callable</em><em>, </em><em>optional</em>) -- callback used in querying info of the submitted job, and
+providing the following arguments: job_id, job_status, queue_position, job</li>
 </ul>
 </td>
 </tr>

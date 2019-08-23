@@ -1645,32 +1645,32 @@
         
   <div class="section" id="module-qiskit.aqua.algorithms.adaptive.vqe.vqe">
 <span id="qiskit-aqua-algorithms-adaptive-vqe-vqe-module"></span><h1>qiskit.aqua.algorithms.adaptive.vqe.vqe module<a class="headerlink" href="#module-qiskit.aqua.algorithms.adaptive.vqe.vqe" title="このヘッドラインへのパーマリンク">¶</a></h1>
-<p>The Variational Quantum Eigensolver algorithm.
-See <a class="reference external" href="https://arxiv.org/abs/1304.3061">https://arxiv.org/abs/1304.3061</a></p>
 <dl class="class">
 <dt id="qiskit.aqua.algorithms.adaptive.vqe.vqe.VQE">
-<em class="property">class </em><code class="descname">VQE</code><span class="sig-paren">(</span><em>operator</em>, <em>var_form</em>, <em>optimizer</em>, <em>operator_mode='matrix'</em>, <em>initial_point=None</em>, <em>max_evals_grouped=1</em>, <em>aux_operators=None</em>, <em>callback=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/algorithms/adaptive/vqe/vqe.html#VQE"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.aqua.algorithms.adaptive.vqe.vqe.VQE" title="この定義へのパーマリンク">¶</a></dt>
+<em class="property">class </em><code class="descname">VQE</code><span class="sig-paren">(</span><em>operator</em>, <em>var_form</em>, <em>optimizer</em>, <em>operator_mode=None</em>, <em>initial_point=None</em>, <em>max_evals_grouped=1</em>, <em>aux_operators=None</em>, <em>callback=None</em>, <em>auto_conversion=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/algorithms/adaptive/vqe/vqe.html#VQE"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.aqua.algorithms.adaptive.vqe.vqe.VQE" title="この定義へのパーマリンク">¶</a></dt>
 <dd><p>ベースクラス: <a class="reference internal" href="qiskit.aqua.algorithms.adaptive.vq_algorithm.html#qiskit.aqua.algorithms.adaptive.vq_algorithm.VQAlgorithm" title="qiskit.aqua.algorithms.adaptive.vq_algorithm.VQAlgorithm"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.aqua.algorithms.adaptive.vq_algorithm.VQAlgorithm</span></code></a></p>
 <p>The Variational Quantum Eigensolver algorithm.</p>
 <p>See <a class="reference external" href="https://arxiv.org/abs/1304.3061">https://arxiv.org/abs/1304.3061</a></p>
 <dl class="attribute">
 <dt id="qiskit.aqua.algorithms.adaptive.vqe.vqe.VQE.CONFIGURATION">
-<code class="descname">CONFIGURATION</code><em class="property"> = {'depends': [{'pluggable_type': 'optimizer', 'default': {'name': 'L_BFGS_B'}}, {'pluggable_type': 'variational_form', 'default': {'name': 'RYRZ'}}], 'description': 'VQE Algorithm', 'input_schema': {'$schema': 'http://json-schema.org/schema#', 'additionalProperties': False, 'id': 'vqe_schema', 'properties': {'initial_point': {'default': None, 'items': {'type': 'number'}, 'type': ['array', 'null']}, 'max_evals_grouped': {'default': 1, 'type': 'integer'}, 'operator_mode': {'default': 'matrix', 'oneOf': [{'enum': ['matrix', 'paulis', 'grouped_paulis']}], 'type': 'string'}}, 'type': 'object'}, 'name': 'VQE', 'problems': ['energy', 'ising']}</em><a class="headerlink" href="#qiskit.aqua.algorithms.adaptive.vqe.vqe.VQE.CONFIGURATION" title="この定義へのパーマリンク">¶</a></dt>
+<code class="descname">CONFIGURATION</code><em class="property"> = {'depends': [{'pluggable_type': 'optimizer', 'default': {'name': 'L_BFGS_B'}}, {'pluggable_type': 'variational_form', 'default': {'name': 'RYRZ'}}], 'description': 'VQE Algorithm', 'input_schema': {'$schema': 'http://json-schema.org/schema#', 'additionalProperties': False, 'id': 'vqe_schema', 'properties': {'initial_point': {'default': None, 'items': {'type': 'number'}, 'type': ['array', 'null']}, 'max_evals_grouped': {'default': 1, 'type': 'integer'}, 'operator_mode': {'default': None, 'enum': ['matrix', 'paulis', 'grouped_paulis', None], 'type': ['string', 'null']}}, 'type': 'object'}, 'name': 'VQE', 'problems': ['energy', 'ising']}</em><a class="headerlink" href="#qiskit.aqua.algorithms.adaptive.vqe.vqe.VQE.CONFIGURATION" title="この定義へのパーマリンク">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="qiskit.aqua.algorithms.adaptive.vqe.vqe.VQE.construct_circuit">
-<code class="descname">construct_circuit</code><span class="sig-paren">(</span><em>parameter</em>, <em>backend=None</em>, <em>use_simulator_operator_mode=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/algorithms/adaptive/vqe/vqe.html#VQE.construct_circuit"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.aqua.algorithms.adaptive.vqe.vqe.VQE.construct_circuit" title="この定義へのパーマリンク">¶</a></dt>
+<code class="descname">construct_circuit</code><span class="sig-paren">(</span><em>parameter</em>, <em>backend=None</em>, <em>use_simulator_operator_mode=False</em>, <em>statevector_mode=None</em>, <em>circuit_name_prefix=''</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/algorithms/adaptive/vqe/vqe.html#VQE.construct_circuit"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.aqua.algorithms.adaptive.vqe.vqe.VQE.construct_circuit" title="この定義へのパーマリンク">¶</a></dt>
 <dd><p>Generate the circuits.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">パラメータ:</th><td class="field-body"><ul class="first simple">
-<li><strong>parameters</strong> (<em>numpy.ndarray</em>) -- parameters for variational form.</li>
-<li><strong>backend</strong> (<em>qiskit.BaseBackend</em>) -- backend object.</li>
-<li><strong>use_simulator_operator_mode</strong> (<em>bool</em>) -- is backend from AerProvider, if True and mode is paulis,
+<li><strong>parameter</strong> (<em>numpy.ndarray</em>) -- parameters for variational form.</li>
+<li><strong>backend</strong> (<em>qiskit.BaseBackend</em><em>, </em><em>optional</em>) -- backend object.</li>
+<li><strong>use_simulator_operator_mode</strong> (<em>bool</em><em>, </em><em>optional</em>) -- is backend from AerProvider, if True and mode is paulis,
 single circuit is generated.</li>
+<li><strong>statevector_mode</strong> (<em>bool</em><em>, </em><em>optional</em>) -- indicate which type of simulator are going to use.</li>
+<li><strong>circuit_name_prefix</strong> (<em>str</em><em>, </em><em>optional</em>) -- a prefix of circuit name</li>
 </ul>
 </td>
 </tr>

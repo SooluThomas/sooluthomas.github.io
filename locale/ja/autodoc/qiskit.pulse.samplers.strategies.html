@@ -1643,57 +1643,8 @@
     <div class="document">
         <div class="page-content">
         
-  <div class="section" id="module-qiskit.pulse.samplers.strategies">
-<span id="qiskit-pulse-samplers-strategies-module"></span><h1>qiskit.pulse.samplers.strategies module<a class="headerlink" href="#module-qiskit.pulse.samplers.strategies" title="このヘッドラインへのパーマリンク">¶</a></h1>
-<p>Sampler strategy module for sampler functions.</p>
-<dl class="docutils">
-<dt>Sampler functions have signature.</dt>
-<dd><p class="first"><a href="#id1"><span class="problematic" id="id2">``</span></a><a href="#id3"><span class="problematic" id="id4">`</span></a>python
-def sampler_function(continuous_pulse: Callable, duration: int, <a href="#id5"><span class="problematic" id="id6">*</span></a>args, <a href="#id7"><span class="problematic" id="id8">**</span></a>kwargs) -&gt; np.ndarray:</p>
-<blockquote>
-<div>...</div></blockquote>
-<p class="last"><a href="#id9"><span class="problematic" id="id10">``</span></a><a href="#id11"><span class="problematic" id="id12">`</span></a></p>
-</dd>
-<dt>where the supplied <cite>continuous_pulse</cite> is a function with signature:</dt>
-<dd><p class="first"><a href="#id13"><span class="problematic" id="id14">``</span></a><a href="#id15"><span class="problematic" id="id16">`</span></a>python
-def f(times: np.ndarray, <a href="#id17"><span class="problematic" id="id18">*</span></a>args, <a href="#id19"><span class="problematic" id="id20">**</span></a>kwargs) -&gt; np.ndarray:</p>
-<blockquote>
-<div>...</div></blockquote>
-<p class="last"><a href="#id21"><span class="problematic" id="id22">``</span></a><a href="#id23"><span class="problematic" id="id24">`</span></a></p>
-</dd>
-</dl>
-<p>The sampler will call the <cite>continuous_pulse</cite> function with a set of times it will decide
-according to the sampling strategy it implments along with the passed <cite>args</cite> and <cite>kwargs</cite>.</p>
-<dl class="function">
-<dt id="qiskit.pulse.samplers.strategies.left_sample">
-<code class="descname">left_sample</code><span class="sig-paren">(</span><em>continuous_pulse: Callable</em>, <em>duration: int</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span> &#x2192; numpy.ndarray<a class="reference internal" href="../_modules/qiskit/pulse/samplers/strategies.html#left_sample"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.pulse.samplers.strategies.left_sample" title="この定義へのパーマリンク">¶</a></dt>
-<dd><p>Left sample a continuous function.
-:param continuous_pulse: Continuous pulse function to sample.
-:param duration: Duration to sample for.
-:param *args: Continuous pulse function args.
-:param **kwargs: Continuous pulse function kwargs.</p>
-</dd></dl>
-
-<dl class="function">
-<dt id="qiskit.pulse.samplers.strategies.midpoint_sample">
-<code class="descname">midpoint_sample</code><span class="sig-paren">(</span><em>continuous_pulse: Callable</em>, <em>duration: int</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span> &#x2192; numpy.ndarray<a class="reference internal" href="../_modules/qiskit/pulse/samplers/strategies.html#midpoint_sample"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.pulse.samplers.strategies.midpoint_sample" title="この定義へのパーマリンク">¶</a></dt>
-<dd><p>Sampling strategy for decorator.
-:param continuous_pulse: Continuous pulse function to sample.
-:param duration: Duration to sample for.
-:param *args: Continuous pulse function args.
-:param **kwargs: Continuous pulse function kwargs.</p>
-</dd></dl>
-
-<dl class="function">
-<dt id="qiskit.pulse.samplers.strategies.right_sample">
-<code class="descname">right_sample</code><span class="sig-paren">(</span><em>continuous_pulse: Callable</em>, <em>duration: int</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span> &#x2192; numpy.ndarray<a class="reference internal" href="../_modules/qiskit/pulse/samplers/strategies.html#right_sample"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.pulse.samplers.strategies.right_sample" title="この定義へのパーマリンク">¶</a></dt>
-<dd><p>Sampling strategy for decorator.
-:param continuous_pulse: Continuous pulse function to sample.
-:param duration: Duration to sample for.
-:param *args: Continuous pulse function args.
-:param **kwargs: Continuous pulse function kwargs.</p>
-</dd></dl>
-
+  <div class="section" id="qiskit-pulse-samplers-strategies-module">
+<h1>qiskit.pulse.samplers.strategies module<a class="headerlink" href="#qiskit-pulse-samplers-strategies-module" title="このヘッドラインへのパーマリンク">¶</a></h1>
 </div>
 
 

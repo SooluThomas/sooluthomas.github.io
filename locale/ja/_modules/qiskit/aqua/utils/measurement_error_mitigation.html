@@ -189,13 +189,13 @@
 <span class="kn">from</span> <span class="nn">qiskit.ignis.mitigation.measurement</span> <span class="k">import</span> <span class="p">(</span><span class="n">complete_meas_cal</span><span class="p">,</span> <span class="n">tensored_meas_cal</span><span class="p">,</span>
                                                  <span class="n">CompleteMeasFitter</span><span class="p">,</span> <span class="n">TensoredMeasFitter</span><span class="p">)</span>
 
-<span class="kn">from</span> <span class="nn">.run_circuits</span> <span class="k">import</span> <span class="n">run_qobjs</span><span class="p">,</span> <span class="n">compile_circuits</span>
+<span class="kn">from</span> <span class="nn">.run_circuits</span> <span class="k">import</span> <span class="n">compile_circuits</span>
 <span class="kn">from</span> <span class="nn">..aqua_error</span> <span class="k">import</span> <span class="n">AquaError</span>
 
 <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
 
 
-<div class="viewcode-block" id="get_measured_qubits"><a class="viewcode-back" href="../../../../autodoc/qiskit.aqua.utils.measurement_error_mitigation.html#qiskit.aqua.utils.get_measured_qubits">[ドキュメント]</a><span class="k">def</span> <span class="nf">get_measured_qubits</span><span class="p">(</span><span class="n">transpiled_circuits</span><span class="p">):</span>
+<div class="viewcode-block" id="get_measured_qubits"><a class="viewcode-back" href="../../../../autodoc/qiskit.aqua.utils.measurement_error_mitigation.html#qiskit.aqua.utils.measurement_error_mitigation.get_measured_qubits">[ドキュメント]</a><span class="k">def</span> <span class="nf">get_measured_qubits</span><span class="p">(</span><span class="n">transpiled_circuits</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Retrieve the measured qubits from transpiled circuits.</span>
 
@@ -222,106 +222,72 @@
     <span class="k">return</span> <span class="n">qubit_mapping</span></div>
 
 
-<div class="viewcode-block" id="get_measured_qubits_from_qobj"><a class="viewcode-back" href="../../../../autodoc/qiskit.aqua.utils.measurement_error_mitigation.html#qiskit.aqua.utils.get_measured_qubits_from_qobj">[ドキュメント]</a><span class="k">def</span> <span class="nf">get_measured_qubits_from_qobj</span><span class="p">(</span><span class="n">qobjs</span><span class="p">):</span>
+<div class="viewcode-block" id="get_measured_qubits_from_qobj"><a class="viewcode-back" href="../../../../autodoc/qiskit.aqua.utils.measurement_error_mitigation.html#qiskit.aqua.utils.measurement_error_mitigation.get_measured_qubits_from_qobj">[ドキュメント]</a><span class="k">def</span> <span class="nf">get_measured_qubits_from_qobj</span><span class="p">(</span><span class="n">qobj</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Retrieve the measured qubits from transpiled circuits.</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">        qobjs (list[QasmObj]): qobjs</span>
+<span class="sd">        qobj (QasmObj): qobj</span>
 
 <span class="sd">    Returns:</span>
 <span class="sd">        [int]: the qubit mapping to-be-used for measure error mitigation</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">qubit_mapping</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="k">for</span> <span class="n">qobj</span> <span class="ow">in</span> <span class="n">qobjs</span><span class="p">:</span>
-        <span class="k">for</span> <span class="n">exp</span> <span class="ow">in</span> <span class="n">qobj</span><span class="o">.</span><span class="n">experiments</span><span class="p">:</span>
-            <span class="n">measured_qubits</span> <span class="o">=</span> <span class="p">[]</span>
-            <span class="k">for</span> <span class="n">instr</span> <span class="ow">in</span> <span class="n">exp</span><span class="o">.</span><span class="n">instructions</span><span class="p">:</span>
-                <span class="k">if</span> <span class="n">instr</span><span class="o">.</span><span class="n">name</span> <span class="o">!=</span> <span class="s1">&#39;measure&#39;</span><span class="p">:</span>
-                    <span class="k">continue</span>
-                <span class="n">measured_qubits</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">instr</span><span class="o">.</span><span class="n">qubits</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-            <span class="k">if</span> <span class="n">qubit_mapping</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-                <span class="n">qubit_mapping</span> <span class="o">=</span> <span class="n">measured_qubits</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="k">if</span> <span class="n">qubit_mapping</span> <span class="o">!=</span> <span class="n">measured_qubits</span><span class="p">:</span>
-                    <span class="k">raise</span> <span class="n">AquaError</span><span class="p">(</span><span class="s2">&quot;The qubit mapping of circuits are different.&quot;</span>
-                                    <span class="s2">&quot;Currently, we only support single mapping.&quot;</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">exp</span> <span class="ow">in</span> <span class="n">qobj</span><span class="o">.</span><span class="n">experiments</span><span class="p">:</span>
+        <span class="n">measured_qubits</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">instr</span> <span class="ow">in</span> <span class="n">exp</span><span class="o">.</span><span class="n">instructions</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">instr</span><span class="o">.</span><span class="n">name</span> <span class="o">!=</span> <span class="s1">&#39;measure&#39;</span><span class="p">:</span>
+                <span class="k">continue</span>
+            <span class="n">measured_qubits</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">instr</span><span class="o">.</span><span class="n">qubits</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="k">if</span> <span class="n">qubit_mapping</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">qubit_mapping</span> <span class="o">=</span> <span class="n">measured_qubits</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">qubit_mapping</span> <span class="o">!=</span> <span class="n">measured_qubits</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="n">AquaError</span><span class="p">(</span><span class="s2">&quot;The qubit mapping of circuits are different.&quot;</span>
+                                <span class="s2">&quot;Currently, we only support single mapping.&quot;</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="n">qubit_mapping</span></div>
 
 
-<div class="viewcode-block" id="build_measurement_error_mitigation_fitter"><a class="viewcode-back" href="../../../../autodoc/qiskit.aqua.utils.measurement_error_mitigation.html#qiskit.aqua.utils.build_measurement_error_mitigation_fitter">[ドキュメント]</a><span class="k">def</span> <span class="nf">build_measurement_error_mitigation_fitter</span><span class="p">(</span><span class="n">qubits</span><span class="p">,</span> <span class="n">fitter_cls</span><span class="p">,</span> <span class="n">backend</span><span class="p">,</span>
-                                              <span class="n">backend_config</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">compile_config</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-                                              <span class="n">run_config</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">qjob_config</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">backend_options</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-                                              <span class="n">noise_config</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="build_measurement_error_mitigation_qobj"><a class="viewcode-back" href="../../../../autodoc/qiskit.aqua.utils.measurement_error_mitigation.html#qiskit.aqua.utils.measurement_error_mitigation.build_measurement_error_mitigation_qobj">[ドキュメント]</a><span class="k">def</span> <span class="nf">build_measurement_error_mitigation_qobj</span><span class="p">(</span><span class="n">qubit_list</span><span class="p">,</span> <span class="n">fitter_cls</span><span class="p">,</span> <span class="n">backend</span><span class="p">,</span>
+                                            <span class="n">backend_config</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">compile_config</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                                            <span class="n">run_config</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Args:</span>
+<span class="sd">            qubit_list (list[int]): list of qubits used in the algorithm</span>
+<span class="sd">            fitter_cls (callable): CompleteMeasFitter or TensoredMeasFitter</span>
+<span class="sd">            backend (BaseBackend): backend instance</span>
+<span class="sd">            backend_config (dict, optional): configuration for backend</span>
+<span class="sd">            compile_config (dict, optional): configuration for compilation</span>
+<span class="sd">            run_config (RunConfig, optional): configuration for running a circuit</span>
 
-<span class="sd">    Args:</span>
-<span class="sd">        qubits (list[int]): the measured qubit index (in the order to classical bit 0...n-1)</span>
-<span class="sd">        fitter_cls (callable): CompleteMeasFitter or TensoredMeasFitter</span>
-<span class="sd">        backend (BaseBackend): backend instance</span>
-<span class="sd">        backend_config (dict, optional): configuration for backend</span>
-<span class="sd">        compile_config (dict, optional): configuration for compilation</span>
-<span class="sd">        run_config (RunConfig, optional): configuration for running a circuit</span>
-<span class="sd">        qjob_config (dict, optional): configuration for quantum job object</span>
-<span class="sd">        backend_options (dict, optional): configuration for simulator</span>
-<span class="sd">        noise_config (dict, optional): configuration for noise model</span>
+<span class="sd">        Returns:</span>
+<span class="sd">            QasmQobj: the Qobj with calibration circuits at the beginning</span>
+<span class="sd">            list[str]: the state labels for build MeasFitter</span>
+<span class="sd">            list[str]: the labels of the calibration circuits</span>
 
-<span class="sd">    Returns:</span>
-<span class="sd">        CompleteMeasFitter or TensoredMeasFitter: the measurement fitter</span>
-
-<span class="sd">    Raises:</span>
-<span class="sd">        AquaError: when the fitter_cls is not recognizable.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-
-    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">qubits</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="n">AquaError</span><span class="p">(</span><span class="s2">&quot;The measured qubits can not be [].&quot;</span><span class="p">)</span>
+<span class="sd">        Raises:</span>
+<span class="sd">            AquaError: when the fitter_cls is not recognizable.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
 
     <span class="n">circlabel</span> <span class="o">=</span> <span class="s1">&#39;mcal&#39;</span>
 
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">qubit_list</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">AquaError</span><span class="p">(</span><span class="s2">&quot;The measured qubit list can not be [].&quot;</span><span class="p">)</span>
+
     <span class="k">if</span> <span class="n">fitter_cls</span> <span class="o">==</span> <span class="n">CompleteMeasFitter</span><span class="p">:</span>
-        <span class="n">meas_calibs_circuits</span><span class="p">,</span> <span class="n">state_labels</span> <span class="o">=</span> <span class="n">complete_meas_cal</span><span class="p">(</span><span class="n">qubit_list</span><span class="o">=</span><span class="n">qubits</span><span class="p">,</span> <span class="n">circlabel</span><span class="o">=</span><span class="n">circlabel</span><span class="p">)</span>
+        <span class="n">meas_calibs_circuits</span><span class="p">,</span> <span class="n">state_labels</span> <span class="o">=</span> <span class="n">complete_meas_cal</span><span class="p">(</span><span class="n">qubit_list</span><span class="o">=</span><span class="n">qubit_list</span><span class="p">,</span> <span class="n">circlabel</span><span class="o">=</span><span class="n">circlabel</span><span class="p">)</span>
     <span class="k">elif</span> <span class="n">fitter_cls</span> <span class="o">==</span> <span class="n">TensoredMeasFitter</span><span class="p">:</span>
         <span class="c1"># TODO support different calibration</span>
         <span class="k">raise</span> <span class="n">AquaError</span><span class="p">(</span><span class="s2">&quot;Does not support TensoredMeasFitter yet.&quot;</span><span class="p">)</span>
-        <span class="c1"># meas_calibs_circuits, state_labels = tensored_meas_cal()</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="k">raise</span> <span class="n">AquaError</span><span class="p">(</span><span class="s2">&quot;Unknown fitter </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">fitter_cls</span><span class="p">))</span>
 
-    <span class="c1"># compile</span>
-    <span class="n">qobjs</span> <span class="o">=</span> <span class="n">compile_circuits</span><span class="p">(</span><span class="n">meas_calibs_circuits</span><span class="p">,</span> <span class="n">backend</span><span class="p">,</span> <span class="n">backend_config</span><span class="p">,</span> <span class="n">compile_config</span><span class="p">,</span> <span class="n">run_config</span><span class="p">)</span>
-    <span class="n">cal_results</span> <span class="o">=</span> <span class="n">run_qobjs</span><span class="p">(</span><span class="n">qobjs</span><span class="p">,</span> <span class="n">backend</span><span class="p">,</span> <span class="n">qjob_config</span><span class="p">,</span> <span class="n">backend_options</span><span class="p">,</span> <span class="n">noise_config</span><span class="p">,</span>
-                            <span class="n">skip_qobj_validation</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-    <span class="n">meas_fitter</span> <span class="o">=</span> <span class="n">fitter_cls</span><span class="p">(</span><span class="n">cal_results</span><span class="p">,</span> <span class="n">state_labels</span><span class="p">,</span> <span class="n">circlabel</span><span class="o">=</span><span class="n">circlabel</span><span class="p">)</span>
+    <span class="n">cals_qobj</span> <span class="o">=</span> <span class="n">compile_circuits</span><span class="p">(</span><span class="n">meas_calibs_circuits</span><span class="p">,</span> <span class="n">backend</span><span class="p">,</span> <span class="n">backend_config</span><span class="p">,</span> <span class="n">compile_config</span><span class="p">,</span> <span class="n">run_config</span><span class="p">)</span>
 
-    <span class="k">if</span> <span class="n">fitter_cls</span> <span class="o">==</span> <span class="n">CompleteMeasFitter</span><span class="p">:</span>
-        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Calibration matrix:</span><span class="se">\n</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">meas_fitter</span><span class="o">.</span><span class="n">cal_matrix</span><span class="p">))</span>
-    <span class="k">elif</span> <span class="n">fitter_cls</span> <span class="o">==</span> <span class="n">TensoredMeasFitter</span><span class="p">:</span>
-        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Calibration matrices:</span><span class="se">\n</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">meas_fitter</span><span class="o">.</span><span class="n">cal_matrices</span><span class="p">))</span>
-
-    <span class="k">return</span> <span class="n">meas_fitter</span></div>
-
-
-<div class="viewcode-block" id="mitigate_measurement_error"><a class="viewcode-back" href="../../../../autodoc/qiskit.aqua.utils.measurement_error_mitigation.html#qiskit.aqua.utils.mitigate_measurement_error">[ドキュメント]</a><span class="k">def</span> <span class="nf">mitigate_measurement_error</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">meas_fitter</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;least_squares&#39;</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-
-<span class="sd">    Args:</span>
-<span class="sd">        results (Result): the unmitigated Result object</span>
-<span class="sd">        meas_fitter (CompleteMeasFitter or TensoredMeasFitter): the measurement fitter</span>
-<span class="sd">        method (str): fitting method. If None, then least_squares is used.</span>
-<span class="sd">                &#39;pseudo_inverse&#39;: direct inversion of the A matrix</span>
-<span class="sd">                &#39;least_squares&#39;: constrained to have physical probabilities</span>
-<span class="sd">    Returns:</span>
-<span class="sd">        Result: the mitigated Result</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="c1"># Get the filter object</span>
-    <span class="n">meas_filter</span> <span class="o">=</span> <span class="n">meas_fitter</span><span class="o">.</span><span class="n">filter</span>
-
-    <span class="c1"># Results without mitigation</span>
-    <span class="n">mitigated_results</span> <span class="o">=</span> <span class="n">meas_filter</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">)</span>
-
-    <span class="k">return</span> <span class="n">mitigated_results</span></div>
+    <span class="k">return</span> <span class="n">cals_qobj</span><span class="p">,</span> <span class="n">state_labels</span><span class="p">,</span> <span class="n">circlabel</span></div>
 </pre></div>
 
         </div>

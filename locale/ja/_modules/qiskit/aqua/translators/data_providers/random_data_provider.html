@@ -215,9 +215,7 @@
                 <span class="s2">&quot;datatype&quot;</span><span class="p">:</span> <span class="p">{</span>
                     <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
                     <span class="s2">&quot;default&quot;</span><span class="p">:</span> <span class="n">DataType</span><span class="o">.</span><span class="n">DAILYADJUSTED</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
-                    <span class="s2">&quot;oneOf&quot;</span><span class="p">:</span> <span class="p">[{</span>
-                        <span class="s2">&quot;enum&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">DataType</span><span class="o">.</span><span class="n">DAILYADJUSTED</span><span class="o">.</span><span class="n">value</span><span class="p">]</span>
-                    <span class="p">}]</span>
+                    <span class="s2">&quot;enum&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">DataType</span><span class="o">.</span><span class="n">DAILYADJUSTED</span><span class="o">.</span><span class="n">value</span><span class="p">]</span>
                 <span class="p">},</span>
             <span class="p">},</span>
         <span class="p">}</span>
@@ -236,11 +234,11 @@
 <span class="sd">            stockmarket (StockMarket): RANDOM</span>
 <span class="sd">            start (datetime): first data point</span>
 <span class="sd">            end (datetime): last data point precedes this date</span>
-<span class="sd">            seed (None or int): shall a seed be used?                 </span>
+<span class="sd">            seed (None or int): shall a seed be used?</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
 
-        <span class="c1">#if not isinstance(atoms, list) and not isinstance(atoms, str):</span>
+        <span class="c1"># if not isinstance(atoms, list) and not isinstance(atoms, str):</span>
         <span class="c1">#    raise QiskitFinanceError(&quot;Invalid atom input for RANDOM data provider &#39;{}&#39;&quot;.format(atoms))</span>
 
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">tickers</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
@@ -262,7 +260,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_end</span> <span class="o">=</span> <span class="n">end</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_seed</span> <span class="o">=</span> <span class="n">seed</span>
 
-        <span class="c1">#self.validate(locals())</span>
+        <span class="c1"># self.validate(locals())</span>
 
 <div class="viewcode-block" id="RandomDataProvider.check_provider_valid"><a class="viewcode-back" href="../../../../../autodoc/qiskit.aqua.translators.data_providers.random_data_provider.html#qiskit.aqua.translators.data_providers.RandomDataProvider.check_provider_valid">[ドキュメント]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">check_provider_valid</span><span class="p">():</span>
@@ -285,7 +283,7 @@
 
         <span class="n">params</span> <span class="o">=</span> <span class="n">section</span>
         <span class="n">kwargs</span> <span class="o">=</span> <span class="p">{}</span>
-        <span class="c1">#for k, v in params.items():</span>
+        <span class="c1"># for k, v in params.items():</span>
         <span class="c1">#    if k == ExchangeDataDriver. ...: v = UnitsType(v)</span>
         <span class="c1">#    kwargs[k] = v</span>
         <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;init_from_input: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">kwargs</span><span class="p">))</span>

@@ -34,7 +34,7 @@
        </script>
         <script src="https://cloud.ibm.com/analytics/build/bluemix-analytics.min.js"></script>
     
-    <title>qiskit.pulse.samplers.strategies &#8212; Qiskit 0.11.1 ドキュメント</title>
+    <title>qiskit.test.providers.backend &#8212; Qiskit 0.11.1 ドキュメント</title>
 
     <link rel="stylesheet" href="../../../../_static/material-icons.css" type="text/css" />
     <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
@@ -169,71 +169,83 @@
     <div class="document">
         <div class="page-content">
         
-  <h1>qiskit.pulse.samplers.strategies のソースコード</h1><div class="highlight"><pre>
+  <h1>qiskit.test.providers.backend のソースコード</h1><div class="highlight"><pre>
 <span></span><span class="c1"># -*- coding: utf-8 -*-</span>
 
-<span class="c1"># Copyright 2019, IBM.</span>
+<span class="c1"># This code is part of Qiskit.</span>
 <span class="c1">#</span>
-<span class="c1"># This source code is licensed under the Apache License, Version 2.0 found in</span>
-<span class="c1"># the LICENSE.txt file in the root directory of this source tree.</span>
+<span class="c1"># (C) Copyright IBM 2017, 2019.</span>
+<span class="c1">#</span>
+<span class="c1"># This code is licensed under the Apache License, Version 2.0. You may</span>
+<span class="c1"># obtain a copy of this license in the LICENSE.txt file in the root directory</span>
+<span class="c1"># of this source tree or at http://www.apache.org/licenses/LICENSE-2.0.</span>
+<span class="c1">#</span>
+<span class="c1"># Any modifications or derivative works of this code must retain this</span>
+<span class="c1"># copyright notice, and modified files need to carry a notice indicating</span>
+<span class="c1"># that they have been altered from the originals.</span>
 
-<span class="c1"># pylint: disable=missing-return-doc</span>
+<span class="sd">&quot;&quot;&quot;Base TestCase for testing backends.&quot;&quot;&quot;</span>
 
-<span class="sd">&quot;&quot;&quot;Sampler strategy module for sampler functions.</span>
+<span class="kn">from</span> <span class="nn">unittest</span> <span class="k">import</span> <span class="n">SkipTest</span>
 
-<span class="sd">Sampler functions have signature.</span>
-<span class="sd">    ```python</span>
-<span class="sd">    def sampler_function(continuous_pulse: Callable, duration: int, *args, **kwargs) -&gt; np.ndarray:</span>
-<span class="sd">        ...</span>
-<span class="sd">    ```</span>
-<span class="sd">where the supplied `continuous_pulse` is a function with signature:</span>
-<span class="sd">    ```python</span>
-<span class="sd">    def f(times: np.ndarray, *args, **kwargs) -&gt; np.ndarray:</span>
-<span class="sd">        ...</span>
-<span class="sd">    ```</span>
-<span class="sd">The sampler will call the `continuous_pulse` function with a set of times it will decide</span>
-<span class="sd">according to the sampling strategy it implments along with the passed `args` and `kwargs`.</span>
-<span class="sd">&quot;&quot;&quot;</span>
-
-<span class="kn">from</span> <span class="nn">typing</span> <span class="k">import</span> <span class="n">Callable</span>
-
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">qiskit</span> <span class="k">import</span> <span class="n">execute</span>
+<span class="kn">from</span> <span class="nn">..base</span> <span class="k">import</span> <span class="n">QiskitTestCase</span>
+<span class="kn">from</span> <span class="nn">..reference_circuits</span> <span class="k">import</span> <span class="n">ReferenceCircuits</span>
 
 
-<div class="viewcode-block" id="left_sample"><a class="viewcode-back" href="../../../../autodoc/qiskit.pulse.samplers.strategies.html#qiskit.pulse.samplers.strategies.left_sample">[ドキュメント]</a><span class="k">def</span> <span class="nf">left_sample</span><span class="p">(</span><span class="n">continuous_pulse</span><span class="p">:</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">duration</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Left sample a continuous function.</span>
-<span class="sd">    Args:</span>
-<span class="sd">        continuous_pulse: Continuous pulse function to sample.</span>
-<span class="sd">        duration: Duration to sample for.</span>
-<span class="sd">        *args: Continuous pulse function args.</span>
-<span class="sd">        **kwargs: Continuous pulse function kwargs.</span>
+<div class="viewcode-block" id="BackendTestCase"><a class="viewcode-back" href="../../../../autodoc/qiskit.test.providers.backend.html#qiskit.test.providers.backend.BackendTestCase">[ドキュメント]</a><span class="k">class</span> <span class="nc">BackendTestCase</span><span class="p">(</span><span class="n">QiskitTestCase</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Test case for backends.</span>
+
+<span class="sd">    Implementers of backends are encouraged to subclass and customize this</span>
+<span class="sd">    TestCase, as it contains a &quot;canonical&quot; series of tests in order to ensure</span>
+<span class="sd">    the backend functionality matches the specifications.</span>
+
+<span class="sd">    Members:</span>
+<span class="sd">        backend_cls (BaseBackend): backend to be used in this test case. Its</span>
+<span class="sd">            instantiation can be further customized by overriding the</span>
+<span class="sd">            ``_get_backend`` function.</span>
+<span class="sd">        circuit (QuantumCircuit): circuit to be used for the tests.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">times</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">duration</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">continuous_pulse</span><span class="p">(</span><span class="n">times</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+    <span class="n">backend_cls</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">circuit</span> <span class="o">=</span> <span class="n">ReferenceCircuits</span><span class="o">.</span><span class="n">bell</span><span class="p">()</span>
 
+<div class="viewcode-block" id="BackendTestCase.setUp"><a class="viewcode-back" href="../../../../autodoc/qiskit.test.providers.backend.html#qiskit.test.providers.backend.BackendTestCase.setUp">[ドキュメント]</a>    <span class="k">def</span> <span class="nf">setUp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">setUp</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">backend</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_backend</span><span class="p">()</span></div>
 
-<div class="viewcode-block" id="right_sample"><a class="viewcode-back" href="../../../../autodoc/qiskit.pulse.samplers.strategies.html#qiskit.pulse.samplers.strategies.right_sample">[ドキュメント]</a><span class="k">def</span> <span class="nf">right_sample</span><span class="p">(</span><span class="n">continuous_pulse</span><span class="p">:</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">duration</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Sampling strategy for decorator.</span>
-<span class="sd">    Args:</span>
-<span class="sd">        continuous_pulse: Continuous pulse function to sample.</span>
-<span class="sd">        duration: Duration to sample for.</span>
-<span class="sd">        *args: Continuous pulse function args.</span>
-<span class="sd">        **kwargs: Continuous pulse function kwargs.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">times</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">duration</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">continuous_pulse</span><span class="p">(</span><span class="n">times</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+<div class="viewcode-block" id="BackendTestCase.setUpClass"><a class="viewcode-back" href="../../../../autodoc/qiskit.test.providers.backend.html#qiskit.test.providers.backend.BackendTestCase.setUpClass">[ドキュメント]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">setUpClass</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">cls</span> <span class="ow">is</span> <span class="n">BackendTestCase</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">SkipTest</span><span class="p">(</span><span class="s1">&#39;Skipping base class tests&#39;</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">setUpClass</span><span class="p">()</span></div>
 
+    <span class="k">def</span> <span class="nf">_get_backend</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return an instance of a Provider.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">backend_cls</span><span class="p">()</span>  <span class="c1"># pylint: disable=not-callable</span>
 
-<div class="viewcode-block" id="midpoint_sample"><a class="viewcode-back" href="../../../../autodoc/qiskit.pulse.samplers.strategies.html#qiskit.pulse.samplers.strategies.midpoint_sample">[ドキュメント]</a><span class="k">def</span> <span class="nf">midpoint_sample</span><span class="p">(</span><span class="n">continuous_pulse</span><span class="p">:</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">duration</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Sampling strategy for decorator.</span>
-<span class="sd">    Args:</span>
-<span class="sd">        continuous_pulse: Continuous pulse function to sample.</span>
-<span class="sd">        duration: Duration to sample for.</span>
-<span class="sd">        *args: Continuous pulse function args.</span>
-<span class="sd">        **kwargs: Continuous pulse function kwargs.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">times</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">duration</span> <span class="o">+</span> <span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">continuous_pulse</span><span class="p">(</span><span class="n">times</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+<div class="viewcode-block" id="BackendTestCase.test_configuration"><a class="viewcode-back" href="../../../../autodoc/qiskit.test.providers.backend.html#qiskit.test.providers.backend.BackendTestCase.test_configuration">[ドキュメント]</a>    <span class="k">def</span> <span class="nf">test_configuration</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Test backend.configuration().&quot;&quot;&quot;</span>
+        <span class="n">configuration</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">backend</span><span class="o">.</span><span class="n">configuration</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">configuration</span></div>
+
+<div class="viewcode-block" id="BackendTestCase.test_properties"><a class="viewcode-back" href="../../../../autodoc/qiskit.test.providers.backend.html#qiskit.test.providers.backend.BackendTestCase.test_properties">[ドキュメント]</a>    <span class="k">def</span> <span class="nf">test_properties</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Test backend.properties().&quot;&quot;&quot;</span>
+        <span class="n">properties</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">backend</span><span class="o">.</span><span class="n">properties</span><span class="p">()</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">backend</span><span class="o">.</span><span class="n">configuration</span><span class="p">()</span><span class="o">.</span><span class="n">simulator</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">properties</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">properties</span></div>
+
+<div class="viewcode-block" id="BackendTestCase.test_status"><a class="viewcode-back" href="../../../../autodoc/qiskit.test.providers.backend.html#qiskit.test.providers.backend.BackendTestCase.test_status">[ドキュメント]</a>    <span class="k">def</span> <span class="nf">test_status</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Test backend.status().&quot;&quot;&quot;</span>
+        <span class="n">status</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">backend</span><span class="o">.</span><span class="n">status</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">status</span></div>
+
+<div class="viewcode-block" id="BackendTestCase.test_run_circuit"><a class="viewcode-back" href="../../../../autodoc/qiskit.test.providers.backend.html#qiskit.test.providers.backend.BackendTestCase.test_run_circuit">[ドキュメント]</a>    <span class="k">def</span> <span class="nf">test_run_circuit</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Test running a single circuit.&quot;&quot;&quot;</span>
+        <span class="n">job</span> <span class="o">=</span> <span class="n">execute</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">circuit</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">backend</span><span class="p">)</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">job</span><span class="o">.</span><span class="n">result</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">success</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">result</span></div></div>
 </pre></div>
 
         </div>

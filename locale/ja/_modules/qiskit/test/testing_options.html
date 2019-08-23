@@ -34,7 +34,7 @@
        </script>
         <script src="https://cloud.ibm.com/analytics/build/bluemix-analytics.min.js"></script>
     
-    <title>qiskit.visualization.interpolation &#8212; Qiskit 0.11.1 ドキュメント</title>
+    <title>qiskit.test.testing_options &#8212; Qiskit 0.11.1 ドキュメント</title>
 
     <link rel="stylesheet" href="../../../_static/material-icons.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
@@ -169,12 +169,12 @@
     <div class="document">
         <div class="page-content">
         
-  <h1>qiskit.visualization.interpolation のソースコード</h1><div class="highlight"><pre>
+  <h1>qiskit.test.testing_options のソースコード</h1><div class="highlight"><pre>
 <span></span><span class="c1"># -*- coding: utf-8 -*-</span>
 
 <span class="c1"># This code is part of Qiskit.</span>
 <span class="c1">#</span>
-<span class="c1"># (C) Copyright IBM 2019.</span>
+<span class="c1"># (C) Copyright IBM 2017, 2018.</span>
 <span class="c1">#</span>
 <span class="c1"># This code is licensed under the Apache License, Version 2.0. You may</span>
 <span class="c1"># obtain a copy of this license in the LICENSE.txt file in the root directory</span>
@@ -184,48 +184,92 @@
 <span class="c1"># copyright notice, and modified files need to carry a notice indicating</span>
 <span class="c1"># that they have been altered from the originals.</span>
 
-<span class="c1"># pylint: disable=invalid-name</span>
+<span class="sd">&quot;&quot;&quot;Obtain and set the options in QISKIT_TESTS, used for running the tests.&quot;&quot;&quot;</span>
 
-<span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">interpolation module for pulse visualization.</span>
-<span class="sd">&quot;&quot;&quot;</span>
-<span class="kn">from</span> <span class="nn">functools</span> <span class="k">import</span> <span class="n">partial</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">logging</span>
 
-<span class="kn">from</span> <span class="nn">scipy</span> <span class="k">import</span> <span class="n">interpolate</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
 
 
-<div class="viewcode-block" id="interp1d"><a class="viewcode-back" href="../../../autodoc/qiskit.visualization.interpolation.html#qiskit.visualization.interpolation.interp1d">[ドキュメント]</a><span class="k">def</span> <span class="nf">interp1d</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">samples</span><span class="p">,</span> <span class="n">nop</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;linear&#39;</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Scipy interpolation wrapper.</span>
+<div class="viewcode-block" id="get_test_options"><a class="viewcode-back" href="../../../autodoc/qiskit.test.testing_options.html#qiskit.test.testing_options.get_test_options">[ドキュメント]</a><span class="k">def</span> <span class="nf">get_test_options</span><span class="p">(</span><span class="n">option_var</span><span class="o">=</span><span class="s1">&#39;QISKIT_TESTS&#39;</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Read option_var from env and returns a dict in which the test options are set.</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">        time (ndarray): time.</span>
-<span class="sd">        samples (ndarray): complex pulse envelope.</span>
-<span class="sd">        nop (int): data points for interpolation.</span>
-<span class="sd">        kind (str): Scipy interpolation type. See `scipy.interpolate.interp1d` documentation</span>
-<span class="sd">            for more information.</span>
+<span class="sd">        option_var (str): The env var to read. Default: &#39;QISKIT_TESTS&#39;</span>
+
 <span class="sd">    Returns:</span>
-<span class="sd">        ndarray: interpolated waveform.</span>
+<span class="sd">        dict: A dictionary with the format {&lt;option&gt;: (bool)&lt;activated&gt;}.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">re_y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">real</span><span class="p">(</span><span class="n">samples</span><span class="p">)</span>
-    <span class="n">im_y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">imag</span><span class="p">(</span><span class="n">samples</span><span class="p">)</span>
+    <span class="n">tests_options</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;skip_online&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="s1">&#39;mock_online&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="s1">&#39;run_slow&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="s1">&#39;rec&#39;</span><span class="p">:</span> <span class="kc">False</span>
+    <span class="p">}</span>
 
-    <span class="n">dt</span> <span class="o">=</span> <span class="n">time</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">time</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">def</span> <span class="nf">turn_false</span><span class="p">(</span><span class="n">option</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Turn an option to False.</span>
 
-    <span class="n">time</span> <span class="o">+=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">dt</span>
-    <span class="n">cs_ry</span> <span class="o">=</span> <span class="n">interpolate</span><span class="o">.</span><span class="n">interp1d</span><span class="p">(</span><span class="n">time</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">re_y</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="n">kind</span><span class="p">,</span> <span class="n">bounds_error</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-    <span class="n">cs_iy</span> <span class="o">=</span> <span class="n">interpolate</span><span class="o">.</span><span class="n">interp1d</span><span class="p">(</span><span class="n">time</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">im_y</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="n">kind</span><span class="p">,</span> <span class="n">bounds_error</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="sd">        Args:</span>
+<span class="sd">            option (str): Turns defaults[option] to False</span>
 
-    <span class="n">time_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">time</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">time</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">dt</span><span class="p">,</span> <span class="n">nop</span><span class="p">)</span>
+<span class="sd">        Returns:</span>
+<span class="sd">            bool: True, returns always True.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
 
-    <span class="k">return</span> <span class="n">time_</span><span class="p">,</span> <span class="n">cs_ry</span><span class="p">(</span><span class="n">time_</span><span class="p">),</span> <span class="n">cs_iy</span><span class="p">(</span><span class="n">time_</span><span class="p">)</span></div>
+        <span class="n">tests_options</span><span class="p">[</span><span class="n">option</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">return</span> <span class="kc">True</span>
+
+    <span class="n">dependency_solvers</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;skip_online&#39;</span><span class="p">:</span> <span class="k">lambda</span><span class="p">:</span> <span class="n">turn_false</span><span class="p">(</span><span class="s1">&#39;rec&#39;</span><span class="p">),</span>
+        <span class="s1">&#39;mock_online&#39;</span><span class="p">:</span> <span class="k">lambda</span><span class="p">:</span> <span class="n">turn_false</span><span class="p">(</span><span class="s1">&#39;skip_online&#39;</span><span class="p">),</span>
+        <span class="s1">&#39;rec&#39;</span><span class="p">:</span> <span class="k">lambda</span><span class="p">:</span> <span class="n">turn_false</span><span class="p">(</span><span class="s1">&#39;skip_online&#39;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">turn_false</span><span class="p">(</span><span class="s1">&#39;run_slow&#39;</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="k">def</span> <span class="nf">set_flag</span><span class="p">(</span><span class="n">flag_</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Set the flag to True and flip all the flags that need to be rewritten.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            flag_ (str): Option to be True</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">tests_options</span><span class="p">[</span><span class="n">flag_</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">if</span> <span class="n">flag_</span> <span class="ow">in</span> <span class="n">dependency_solvers</span><span class="p">:</span>
+            <span class="n">dependency_solvers</span><span class="p">[</span><span class="n">flag_</span><span class="p">]()</span>
+
+    <span class="n">flag_string</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="n">option_var</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+    <span class="n">flags</span> <span class="o">=</span> <span class="n">flag_string</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)</span> <span class="k">if</span> <span class="n">flag_string</span> <span class="k">else</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">flag</span> <span class="ow">in</span> <span class="n">flags</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">flag</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">tests_options</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s1">&#39;Testing option &quot;</span><span class="si">%s</span><span class="s1">&quot; unknown.&#39;</span><span class="p">,</span> <span class="n">flag</span><span class="p">)</span>
+        <span class="n">set_flag</span><span class="p">(</span><span class="n">flag</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">_is_ci_fork_pull_request</span><span class="p">():</span>
+        <span class="n">set_flag</span><span class="p">(</span><span class="s1">&#39;skip_online&#39;</span><span class="p">)</span>
+
+    <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="n">tests_options</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">tests_options</span></div>
 
 
-<span class="n">linear</span> <span class="o">=</span> <span class="n">partial</span><span class="p">(</span><span class="n">interp1d</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;linear&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">_is_ci_fork_pull_request</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Check if the tests are being run in a CI environment from a PR.</span>
 
-<span class="n">cubic_spline</span> <span class="o">=</span> <span class="n">partial</span><span class="p">(</span><span class="n">interp1d</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;cubic&#39;</span><span class="p">)</span>
+<span class="sd">    Check if the tests are being run in a CI environment and if it is a pull</span>
+<span class="sd">    request.</span>
 
-<span class="n">step_wise</span> <span class="o">=</span> <span class="n">partial</span><span class="p">(</span><span class="n">interp1d</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;nearest&#39;</span><span class="p">)</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        bool: True if the tests are executed inside a CI tool, and the changes</span>
+<span class="sd">            are not against the &quot;master&quot; branch.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s1">&#39;TRAVIS&#39;</span><span class="p">):</span>
+        <span class="c1"># Using Travis CI.</span>
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s1">&#39;TRAVIS_PULL_REQUEST_BRANCH&#39;</span><span class="p">):</span>
+            <span class="k">return</span> <span class="kc">True</span>
+    <span class="k">elif</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s1">&#39;APPVEYOR&#39;</span><span class="p">):</span>
+        <span class="c1"># Using AppVeyor CI.</span>
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s1">&#39;APPVEYOR_PULL_REQUEST_NUMBER&#39;</span><span class="p">):</span>
+            <span class="k">return</span> <span class="kc">True</span>
+    <span class="k">return</span> <span class="kc">False</span>
 </pre></div>
 
         </div>

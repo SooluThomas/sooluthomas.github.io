@@ -34,7 +34,7 @@
        </script>
         <script src="https://cloud.ibm.com/analytics/build/bluemix-analytics.min.js"></script>
     
-    <title>qiskit.aqua.circuits.linear_y_rotation &#8212; Qiskit 0.11.1 ドキュメント</title>
+    <title>qiskit.aqua.circuits.linear_rotation &#8212; Qiskit 0.11.1 ドキュメント</title>
 
     <link rel="stylesheet" href="../../../../_static/material-icons.css" type="text/css" />
     <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
@@ -169,7 +169,7 @@
     <div class="document">
         <div class="page-content">
         
-  <h1>qiskit.aqua.circuits.linear_y_rotation のソースコード</h1><div class="highlight"><pre>
+  <h1>qiskit.aqua.circuits.linear_rotation のソースコード</h1><div class="highlight"><pre>
 <span></span><span class="c1"># -*- coding: utf-8 -*-</span>
 
 <span class="c1"># This code is part of Qiskit.</span>
@@ -188,24 +188,25 @@
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
 
-<div class="viewcode-block" id="LinearYRotation"><a class="viewcode-back" href="../../../../autodoc/qiskit.aqua.circuits.linear_y_rotation.html#qiskit.aqua.circuits.LinearYRotation">[ドキュメント]</a><span class="k">class</span> <span class="nc">LinearYRotation</span><span class="p">(</span><span class="n">CircuitFactory</span><span class="p">):</span>
+<div class="viewcode-block" id="LinearRotation"><a class="viewcode-back" href="../../../../autodoc/qiskit.aqua.circuits.html#qiskit.aqua.circuits.LinearRotation">[ドキュメント]</a><span class="k">class</span> <span class="nc">LinearRotation</span><span class="p">(</span><span class="n">CircuitFactory</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Linearly-controlled Y rotation.</span>
+<span class="sd">    Linearly-controlled X, Y or Z rotation.</span>
 <span class="sd">    For a register of state qubits |x&gt; and a target qubit |0&gt; this operator acts as:</span>
 
 <span class="sd">        |x&gt;|0&gt; --&gt; |x&gt;( cos(slope * x + offset)|0&gt; + sin(slope * x + offset)|1&gt; )</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">slope</span><span class="p">,</span> <span class="n">offset</span><span class="p">,</span> <span class="n">num_state_qubits</span><span class="p">,</span> <span class="n">i_state</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">i_target</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">slope</span><span class="p">,</span> <span class="n">offset</span><span class="p">,</span> <span class="n">num_state_qubits</span><span class="p">,</span> <span class="n">basis</span><span class="o">=</span><span class="s1">&#39;Y&#39;</span><span class="p">,</span> <span class="n">i_state</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">i_target</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Constructor.</span>
 
-<span class="sd">        Construct linear Y rotation circuit factory</span>
+<span class="sd">        Construct linear rotation circuit factory</span>
 <span class="sd">        Args:</span>
 <span class="sd">            slope (float): slope of the controlled rotation</span>
 <span class="sd">            offset (float): offset of the controlled rotation</span>
 <span class="sd">            num_state_qubits (int): number of qubits representing the state</span>
+<span class="sd">            basis (str): type of Pauli rotation (&#39;X&#39;, &#39;Y&#39;, &#39;Z&#39;)</span>
 <span class="sd">            i_state (array or list): indices of the state qubits (least significant to most significant)</span>
 <span class="sd">            i_target (int): index of target qubit</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -216,6 +217,10 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">num_control_qubits</span> <span class="o">=</span> <span class="n">num_state_qubits</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">slope</span> <span class="o">=</span> <span class="n">slope</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">offset</span> <span class="o">=</span> <span class="n">offset</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">basis</span> <span class="o">=</span> <span class="n">basis</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">basis</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">,</span> <span class="s1">&#39;Y&#39;</span><span class="p">,</span> <span class="s1">&#39;Z&#39;</span><span class="p">]:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Basis must be X, Y or Z&#39;</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">i_state</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="k">if</span> <span class="n">i_state</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
@@ -229,7 +234,7 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">i_target</span> <span class="o">=</span> <span class="n">num_state_qubits</span>
 
-<div class="viewcode-block" id="LinearYRotation.build"><a class="viewcode-back" href="../../../../autodoc/qiskit.aqua.circuits.linear_y_rotation.html#qiskit.aqua.circuits.LinearYRotation.build">[ドキュメント]</a>    <span class="k">def</span> <span class="nf">build</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">qc</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">q_ancillas</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="LinearRotation.build"><a class="viewcode-back" href="../../../../autodoc/qiskit.aqua.circuits.html#qiskit.aqua.circuits.LinearRotation.build">[ドキュメント]</a>    <span class="k">def</span> <span class="nf">build</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">qc</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">q_ancillas</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 
         <span class="c1"># get indices</span>
         <span class="n">i_state</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">i_state</span>
@@ -237,11 +242,21 @@
 
         <span class="c1"># apply linear rotation</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">np</span><span class="o">.</span><span class="n">isclose</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">offset</span> <span class="o">/</span> <span class="mi">4</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">%</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">):</span>
-            <span class="n">qc</span><span class="o">.</span><span class="n">ry</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">offset</span><span class="p">,</span> <span class="n">q</span><span class="p">[</span><span class="n">i_target</span><span class="p">])</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">basis</span> <span class="o">==</span> <span class="s1">&#39;X&#39;</span><span class="p">:</span>
+                <span class="n">qc</span><span class="o">.</span><span class="n">rx</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">offset</span><span class="p">,</span> <span class="n">q</span><span class="p">[</span><span class="n">i_target</span><span class="p">])</span>
+            <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">basis</span> <span class="o">==</span> <span class="s1">&#39;Y&#39;</span><span class="p">:</span>
+                <span class="n">qc</span><span class="o">.</span><span class="n">ry</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">offset</span><span class="p">,</span> <span class="n">q</span><span class="p">[</span><span class="n">i_target</span><span class="p">])</span>
+            <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">basis</span> <span class="o">==</span> <span class="s1">&#39;Z&#39;</span><span class="p">:</span>
+                <span class="n">qc</span><span class="o">.</span><span class="n">rz</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">offset</span><span class="p">,</span> <span class="n">q</span><span class="p">[</span><span class="n">i_target</span><span class="p">])</span>
         <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">i_state</span><span class="p">):</span>
             <span class="n">theta</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">slope</span> <span class="o">*</span> <span class="nb">pow</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
             <span class="k">if</span> <span class="ow">not</span> <span class="n">np</span><span class="o">.</span><span class="n">isclose</span><span class="p">(</span><span class="n">theta</span> <span class="o">/</span> <span class="mi">4</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">%</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">):</span>
-                <span class="n">qc</span><span class="o">.</span><span class="n">cry</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">slope</span> <span class="o">*</span> <span class="nb">pow</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">i</span><span class="p">),</span> <span class="n">q</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">q</span><span class="p">[</span><span class="n">i_target</span><span class="p">])</span></div></div>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">basis</span> <span class="o">==</span> <span class="s1">&#39;X&#39;</span><span class="p">:</span>
+                    <span class="n">qc</span><span class="o">.</span><span class="n">crx</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">slope</span> <span class="o">*</span> <span class="nb">pow</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">i</span><span class="p">),</span> <span class="n">q</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">q</span><span class="p">[</span><span class="n">i_target</span><span class="p">])</span>
+                <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">basis</span> <span class="o">==</span> <span class="s1">&#39;Y&#39;</span><span class="p">:</span>
+                    <span class="n">qc</span><span class="o">.</span><span class="n">cry</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">slope</span> <span class="o">*</span> <span class="nb">pow</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">i</span><span class="p">),</span> <span class="n">q</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">q</span><span class="p">[</span><span class="n">i_target</span><span class="p">])</span>
+                <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">basis</span> <span class="o">==</span> <span class="s1">&#39;Z&#39;</span><span class="p">:</span>
+                    <span class="n">qc</span><span class="o">.</span><span class="n">crz</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">slope</span> <span class="o">*</span> <span class="nb">pow</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">i</span><span class="p">),</span> <span class="n">q</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">q</span><span class="p">[</span><span class="n">i_target</span><span class="p">])</span></div></div>
 </pre></div>
 
         </div>

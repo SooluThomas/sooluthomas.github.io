@@ -191,13 +191,15 @@
 
 <span class="kn">import</span> <span class="nn">logging</span>
 <span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">qiskit</span> <span class="k">import</span> <span class="n">QuantumRegister</span><span class="p">,</span> <span class="n">QuantumCircuit</span>
 <span class="kn">from</span> <span class="nn">qiskit.tools</span> <span class="k">import</span> <span class="n">parallel_map</span>
 <span class="kn">from</span> <span class="nn">qiskit.tools.events</span> <span class="k">import</span> <span class="n">TextProgressBar</span>
 
-<span class="kn">from</span> <span class="nn">qiskit.aqua</span> <span class="k">import</span> <span class="n">Operator</span><span class="p">,</span> <span class="n">aqua_globals</span>
+<span class="kn">from</span> <span class="nn">qiskit.aqua</span> <span class="k">import</span> <span class="n">aqua_globals</span>
+<span class="kn">from</span> <span class="nn">qiskit.aqua.operators</span> <span class="k">import</span> <span class="n">WeightedPauliOperator</span><span class="p">,</span> <span class="n">Z2Symmetries</span>
 <span class="kn">from</span> <span class="nn">qiskit.aqua.components.variational_forms</span> <span class="k">import</span> <span class="n">VariationalForm</span>
 <span class="kn">from</span> <span class="nn">qiskit.chemistry.fermionic_operator</span> <span class="k">import</span> <span class="n">FermionicOperator</span>
 
@@ -230,9 +232,13 @@
                     <span class="s1">&#39;minimum&#39;</span><span class="p">:</span> <span class="mi">1</span>
                 <span class="p">},</span>
                 <span class="s1">&#39;num_particles&#39;</span><span class="p">:</span> <span class="p">{</span>
-                    <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;integer&#39;</span><span class="p">,</span>
-                    <span class="s1">&#39;default&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
-                    <span class="s1">&#39;minimum&#39;</span><span class="p">:</span> <span class="mi">1</span>
+                    <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;array&#39;</span><span class="p">,</span> <span class="s1">&#39;integer&#39;</span><span class="p">],</span>
+                    <span class="s1">&#39;default&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+                    <span class="s1">&#39;contains&#39;</span><span class="p">:</span> <span class="p">{</span>
+                        <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;integer&#39;</span>
+                    <span class="p">},</span>
+                    <span class="s1">&#39;minItems&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+                    <span class="s1">&#39;maxItems&#39;</span><span class="p">:</span> <span class="mi">2</span>
                 <span class="p">},</span>
                 <span class="s1">&#39;active_occupied&#39;</span><span class="p">:</span> <span class="p">{</span>
                     <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;array&#39;</span><span class="p">,</span> <span class="s1">&#39;null&#39;</span><span class="p">],</span>
@@ -245,9 +251,7 @@
                 <span class="s1">&#39;qubit_mapping&#39;</span><span class="p">:</span> <span class="p">{</span>
                     <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;string&#39;</span><span class="p">,</span>
                     <span class="s1">&#39;default&#39;</span><span class="p">:</span> <span class="s1">&#39;parity&#39;</span><span class="p">,</span>
-                    <span class="s1">&#39;oneOf&#39;</span><span class="p">:</span> <span class="p">[</span>
-                        <span class="p">{</span><span class="s1">&#39;enum&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;jordan_wigner&#39;</span><span class="p">,</span> <span class="s1">&#39;parity&#39;</span><span class="p">,</span> <span class="s1">&#39;bravyi_kitaev&#39;</span><span class="p">]}</span>
-                    <span class="p">]</span>
+                    <span class="s1">&#39;enum&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;jordan_wigner&#39;</span><span class="p">,</span> <span class="s1">&#39;parity&#39;</span><span class="p">,</span> <span class="s1">&#39;bravyi_kitaev&#39;</span><span class="p">]</span>
                 <span class="p">},</span>
                 <span class="s1">&#39;two_qubit_reduction&#39;</span><span class="p">:</span> <span class="p">{</span>
                     <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;boolean&#39;</span><span class="p">,</span>
@@ -275,20 +279,21 @@
                  <span class="n">active_occupied</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">active_unoccupied</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">initial_state</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                  <span class="n">qubit_mapping</span><span class="o">=</span><span class="s1">&#39;parity&#39;</span><span class="p">,</span> <span class="n">two_qubit_reduction</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">num_time_slices</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
                  <span class="n">cliffords</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">sq_list</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">tapering_values</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">symmetries</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-                 <span class="n">shallow_circuit_concat</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+                 <span class="n">shallow_circuit_concat</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">z2_symmetries</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Constructor.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            num_orbitals (int): number of spin orbitals</span>
 <span class="sd">            depth (int): number of replica of basic module</span>
-<span class="sd">            num_particles (int): number of particles</span>
+<span class="sd">            num_particles (list, int): number of particles, if it is a list, the first number is alpha</span>
+<span class="sd">                                        and the second number if beta.</span>
 <span class="sd">            active_occupied (list): list of occupied orbitals to consider as active space</span>
 <span class="sd">            active_unoccupied (list): list of unoccupied orbitals to consider as active space</span>
 <span class="sd">            initial_state (InitialState): An initial state object.</span>
 <span class="sd">            qubit_mapping (str): qubit mapping type.</span>
 <span class="sd">            two_qubit_reduction (bool): two qubit reduction is applied or not.</span>
 <span class="sd">            num_time_slices (int): parameters for dynamics.</span>
-<span class="sd">            cliffords ([Operator]): list of unitary Clifford transformation</span>
+<span class="sd">            cliffords ([WeightedPauliOperator]): list of unitary Clifford transformation</span>
 <span class="sd">            sq_list ([int]): position of the single-qubit operators that anticommute</span>
 <span class="sd">                            with the cliffords</span>
 <span class="sd">            tapering_values ([int]): array of +/- 1 used to select the subspace. Length</span>
@@ -298,27 +303,38 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">validate</span><span class="p">(</span><span class="nb">locals</span><span class="p">())</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_cliffords</span> <span class="o">=</span> <span class="n">cliffords</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_sq_list</span> <span class="o">=</span> <span class="n">sq_list</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_tapering_values</span> <span class="o">=</span> <span class="n">tapering_values</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_symmetries</span> <span class="o">=</span> <span class="n">symmetries</span>
 
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cliffords</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sq_list</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> \
-                <span class="bp">self</span><span class="o">.</span><span class="n">_tapering_values</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_symmetries</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_qubit_tapering</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">if</span> <span class="n">cliffords</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">cliffords</span> <span class="o">!=</span> <span class="p">[]</span> <span class="ow">and</span> \
+                <span class="n">sq_list</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">sq_list</span> <span class="o">!=</span> <span class="p">[]</span> <span class="ow">and</span> \
+                <span class="n">tapering_values</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">tapering_values</span> <span class="o">!=</span> <span class="p">[]</span> <span class="ow">and</span> \
+                <span class="n">symmetries</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">symmetries</span> <span class="o">!=</span> <span class="p">[]:</span>
+            <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;symmetries, cliffords, sq_list, tapering_values options is deprecated &quot;</span>
+                          <span class="s2">&quot;and it will be removed after 0.6, Please encapsulate all tapering info &quot;</span>
+                          <span class="s2">&quot;into the Z2Symmetries class.&quot;</span><span class="p">,</span> <span class="ne">DeprecationWarning</span><span class="p">)</span>
+            <span class="n">sq_paulis</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">paulis</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">cliffords</span><span class="p">]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_z2_symmetries</span> <span class="o">=</span> <span class="n">Z2Symmetries</span><span class="p">(</span><span class="n">symmetries</span><span class="p">,</span> <span class="n">sq_paulis</span><span class="p">,</span> <span class="n">sq_list</span><span class="p">,</span> <span class="n">tapering_values</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_qubit_tapering</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_z2_symmetries</span> <span class="o">=</span> <span class="n">Z2Symmetries</span><span class="p">([],</span> <span class="p">[],</span> <span class="p">[],</span> <span class="p">[])</span> <span class="k">if</span> <span class="n">z2_symmetries</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">z2_symmetries</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_num_qubits</span> <span class="o">=</span> <span class="n">num_orbitals</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">two_qubit_reduction</span> <span class="k">else</span> <span class="n">num_orbitals</span> <span class="o">-</span> <span class="mi">2</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_num_qubits</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_num_qubits</span> <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_qubit_tapering</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">_num_qubits</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">sq_list</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_num_qubits</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_num_qubits</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_z2_symmetries</span><span class="o">.</span><span class="n">is_empty</span><span class="p">()</span> \
+            <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">_num_qubits</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_z2_symmetries</span><span class="o">.</span><span class="n">sq_list</span><span class="p">)</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_num_qubits</span> <span class="o">!=</span> <span class="n">num_qubits</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Computed num qubits </span><span class="si">{}</span><span class="s1"> does not match actual </span><span class="si">{}</span><span class="s1">&#39;</span>
                              <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_num_qubits</span><span class="p">,</span> <span class="n">num_qubits</span><span class="p">))</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_depth</span> <span class="o">=</span> <span class="n">depth</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_num_orbitals</span> <span class="o">=</span> <span class="n">num_orbitals</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_num_particles</span> <span class="o">=</span> <span class="n">num_particles</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">num_particles</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_num_alpha</span> <span class="o">=</span> <span class="n">num_particles</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_num_beta</span> <span class="o">=</span> <span class="n">num_particles</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;We assume that the number of alphas and betas are the same.&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_num_alpha</span> <span class="o">=</span> <span class="n">num_particles</span> <span class="o">//</span> <span class="mi">2</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_num_beta</span> <span class="o">=</span> <span class="n">num_particles</span> <span class="o">//</span> <span class="mi">2</span>
 
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_num_particles</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">_num_orbitals</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_num_particles</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_num_alpha</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_num_beta</span><span class="p">]</span>
+
+        <span class="k">if</span> <span class="nb">sum</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_num_particles</span><span class="p">)</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">_num_orbitals</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;# of particles must be less than or equal to # of orbitals.&#39;</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_initial_state</span> <span class="o">=</span> <span class="n">initial_state</span>
@@ -328,7 +344,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_shallow_circuit_concat</span> <span class="o">=</span> <span class="n">shallow_circuit_concat</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_single_excitations</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_double_excitations</span> <span class="o">=</span> \
-            <span class="n">UCCSD</span><span class="o">.</span><span class="n">compute_excitation_lists</span><span class="p">(</span><span class="n">num_particles</span><span class="p">,</span> <span class="n">num_orbitals</span><span class="p">,</span>
+            <span class="n">UCCSD</span><span class="o">.</span><span class="n">compute_excitation_lists</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">_num_alpha</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_num_beta</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">_num_orbitals</span><span class="p">,</span>
                                            <span class="n">active_occupied</span><span class="p">,</span> <span class="n">active_unoccupied</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_hopping_ops</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_num_parameters</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_build_hopping_operators</span><span class="p">()</span>
@@ -338,15 +354,13 @@
 
     <span class="k">def</span> <span class="nf">_build_hopping_operators</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="kn">from</span> <span class="nn">.uccsd</span> <span class="k">import</span> <span class="n">UCCSD</span>
-        <span class="n">hopping_ops</span> <span class="o">=</span> <span class="p">[]</span>
 
         <span class="k">if</span> <span class="n">logger</span><span class="o">.</span><span class="n">isEnabledFor</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">):</span>
             <span class="n">TextProgressBar</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="p">)</span>
 
         <span class="n">results</span> <span class="o">=</span> <span class="n">parallel_map</span><span class="p">(</span><span class="n">UCCSD</span><span class="o">.</span><span class="n">_build_hopping_operator</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_single_excitations</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_double_excitations</span><span class="p">,</span>
-                               <span class="n">task_args</span><span class="o">=</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_num_orbitals</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_num_particles</span><span class="p">,</span>
-                                          <span class="bp">self</span><span class="o">.</span><span class="n">_qubit_mapping</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_two_qubit_reduction</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_qubit_tapering</span><span class="p">,</span>
-                                          <span class="bp">self</span><span class="o">.</span><span class="n">_symmetries</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cliffords</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sq_list</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tapering_values</span><span class="p">),</span>
+                               <span class="n">task_args</span><span class="o">=</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_num_orbitals</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_num_particles</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_qubit_mapping</span><span class="p">,</span>
+                                          <span class="bp">self</span><span class="o">.</span><span class="n">_two_qubit_reduction</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_z2_symmetries</span><span class="p">),</span>
                                <span class="n">num_processes</span><span class="o">=</span><span class="n">aqua_globals</span><span class="o">.</span><span class="n">num_processes</span><span class="p">)</span>
         <span class="n">hopping_ops</span> <span class="o">=</span> <span class="p">[</span><span class="n">qubit_op</span> <span class="k">for</span> <span class="n">qubit_op</span> <span class="ow">in</span> <span class="n">results</span> <span class="k">if</span> <span class="n">qubit_op</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">]</span>
         <span class="n">num_parameters</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">hopping_ops</span><span class="p">)</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">_depth</span>
@@ -354,13 +368,7 @@
 
     <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">_build_hopping_operator</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">num_orbitals</span><span class="p">,</span> <span class="n">num_particles</span><span class="p">,</span> <span class="n">qubit_mapping</span><span class="p">,</span>
-                                <span class="n">two_qubit_reduction</span><span class="p">,</span> <span class="n">qubit_tapering</span><span class="p">,</span> <span class="n">symmetries</span><span class="p">,</span>
-                                <span class="n">cliffords</span><span class="p">,</span> <span class="n">sq_list</span><span class="p">,</span> <span class="n">tapering_values</span><span class="p">):</span>
-
-        <span class="k">def</span> <span class="nf">check_commutativity</span><span class="p">(</span><span class="n">op_1</span><span class="p">,</span> <span class="n">op_2</span><span class="p">):</span>
-            <span class="n">com</span> <span class="o">=</span> <span class="n">op_1</span> <span class="o">*</span> <span class="n">op_2</span> <span class="o">-</span> <span class="n">op_2</span> <span class="o">*</span> <span class="n">op_1</span>
-            <span class="n">com</span><span class="o">.</span><span class="n">zeros_coeff_elimination</span><span class="p">()</span>
-            <span class="k">return</span> <span class="kc">True</span> <span class="k">if</span> <span class="n">com</span><span class="o">.</span><span class="n">is_empty</span><span class="p">()</span> <span class="k">else</span> <span class="kc">False</span>
+                                <span class="n">two_qubit_reduction</span><span class="p">,</span> <span class="n">z2_symmetries</span><span class="p">):</span>
 
         <span class="n">h1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">num_orbitals</span><span class="p">,</span> <span class="n">num_orbitals</span><span class="p">))</span>
         <span class="n">h2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">num_orbitals</span><span class="p">,</span> <span class="n">num_orbitals</span><span class="p">,</span> <span class="n">num_orbitals</span><span class="p">,</span> <span class="n">num_orbitals</span><span class="p">))</span>
@@ -375,22 +383,17 @@
 
         <span class="n">dummpy_fer_op</span> <span class="o">=</span> <span class="n">FermionicOperator</span><span class="p">(</span><span class="n">h1</span><span class="o">=</span><span class="n">h1</span><span class="p">,</span> <span class="n">h2</span><span class="o">=</span><span class="n">h2</span><span class="p">)</span>
         <span class="n">qubit_op</span> <span class="o">=</span> <span class="n">dummpy_fer_op</span><span class="o">.</span><span class="n">mapping</span><span class="p">(</span><span class="n">qubit_mapping</span><span class="p">)</span>
-        <span class="n">qubit_op</span> <span class="o">=</span> <span class="n">qubit_op</span><span class="o">.</span><span class="n">two_qubit_reduced_operator</span><span class="p">(</span><span class="n">num_particles</span><span class="p">)</span> \
-            <span class="k">if</span> <span class="n">two_qubit_reduction</span> <span class="k">else</span> <span class="n">qubit_op</span>
+        <span class="k">if</span> <span class="n">two_qubit_reduction</span><span class="p">:</span>
+            <span class="n">qubit_op</span> <span class="o">=</span> <span class="n">Z2Symmetries</span><span class="o">.</span><span class="n">two_qubit_reduction</span><span class="p">(</span><span class="n">qubit_op</span><span class="p">,</span> <span class="n">num_particles</span><span class="p">)</span>
 
-        <span class="k">if</span> <span class="n">qubit_tapering</span><span class="p">:</span>
-            <span class="k">for</span> <span class="n">symmetry</span> <span class="ow">in</span> <span class="n">symmetries</span><span class="p">:</span>
-                <span class="n">symmetry_op</span> <span class="o">=</span> <span class="n">Operator</span><span class="p">(</span><span class="n">paulis</span><span class="o">=</span><span class="p">[[</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">symmetry</span><span class="p">]])</span>
-                <span class="n">symm_commuting</span> <span class="o">=</span> <span class="n">check_commutativity</span><span class="p">(</span><span class="n">symmetry_op</span><span class="p">,</span> <span class="n">qubit_op</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">z2_symmetries</span><span class="o">.</span><span class="n">is_empty</span><span class="p">():</span>
+            <span class="n">symm_commuting</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="k">for</span> <span class="n">symmetry</span> <span class="ow">in</span> <span class="n">z2_symmetries</span><span class="o">.</span><span class="n">symmetries</span><span class="p">:</span>
+                <span class="n">symmetry_op</span> <span class="o">=</span> <span class="n">WeightedPauliOperator</span><span class="p">(</span><span class="n">paulis</span><span class="o">=</span><span class="p">[[</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">symmetry</span><span class="p">]])</span>
+                <span class="n">symm_commuting</span> <span class="o">=</span> <span class="n">qubit_op</span><span class="o">.</span><span class="n">commute_with</span><span class="p">(</span><span class="n">symmetry_op</span><span class="p">)</span>
                 <span class="k">if</span> <span class="ow">not</span> <span class="n">symm_commuting</span><span class="p">:</span>
                     <span class="k">break</span>
-
-        <span class="k">if</span> <span class="n">qubit_tapering</span><span class="p">:</span>
-            <span class="k">if</span> <span class="n">symm_commuting</span><span class="p">:</span>
-                <span class="n">qubit_op</span> <span class="o">=</span> <span class="n">Operator</span><span class="o">.</span><span class="n">qubit_tapering</span><span class="p">(</span><span class="n">qubit_op</span><span class="p">,</span> <span class="n">cliffords</span><span class="p">,</span>
-                                                   <span class="n">sq_list</span><span class="p">,</span> <span class="n">tapering_values</span><span class="p">)</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="n">qubit_op</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="n">qubit_op</span> <span class="o">=</span> <span class="n">z2_symmetries</span><span class="o">.</span><span class="n">taper</span><span class="p">(</span><span class="n">qubit_op</span><span class="p">)</span> <span class="k">if</span> <span class="n">symm_commuting</span> <span class="k">else</span> <span class="kc">None</span>
 
         <span class="k">if</span> <span class="n">qubit_op</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;Excitation (</span><span class="si">{}</span><span class="s1">) is skipped since it is not commuted &#39;</span>
@@ -444,7 +447,7 @@
     <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">_construct_circuit_for_one_excited_operator</span><span class="p">(</span><span class="n">qubit_op_and_param</span><span class="p">,</span> <span class="n">qr</span><span class="p">,</span> <span class="n">num_time_slices</span><span class="p">):</span>
         <span class="n">qubit_op</span><span class="p">,</span> <span class="n">param</span> <span class="o">=</span> <span class="n">qubit_op_and_param</span>
-        <span class="n">qc</span> <span class="o">=</span> <span class="n">qubit_op</span><span class="o">.</span><span class="n">evolve</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">param</span> <span class="o">*</span> <span class="o">-</span><span class="mi">1</span><span class="n">j</span><span class="p">,</span> <span class="s1">&#39;circuit&#39;</span><span class="p">,</span> <span class="n">num_time_slices</span><span class="p">,</span> <span class="n">qr</span><span class="p">)</span>
+        <span class="n">qc</span> <span class="o">=</span> <span class="n">qubit_op</span><span class="o">.</span><span class="n">evolve</span><span class="p">(</span><span class="n">state_in</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">evo_time</span><span class="o">=</span><span class="n">param</span> <span class="o">*</span> <span class="o">-</span><span class="mi">1</span><span class="n">j</span><span class="p">,</span> <span class="n">num_time_slices</span><span class="o">=</span><span class="n">num_time_slices</span><span class="p">,</span> <span class="n">quantum_registers</span><span class="o">=</span><span class="n">qr</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">qc</span>
 
     <span class="nd">@property</span>
@@ -466,75 +469,115 @@
 <span class="sd">        Computes single and double excitation lists</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            num_particles: Total number of particles</span>
-<span class="sd">            num_orbitals:  Total number of spin orbitals</span>
-<span class="sd">            active_occ_list: List of occupied orbitals to include, indices are</span>
-<span class="sd">                             0 to n where n is num particles // 2</span>
-<span class="sd">            active_unocc_list: List of unoccupied orbitals to include, indices are</span>
-<span class="sd">                               0 to m where m is (num_orbitals - num particles) // 2</span>
-<span class="sd">            same_spin_doubles: True to include alpha,alpha and beta,beta double excitations</span>
+<span class="sd">            num_particles (list, int): number of particles, if it is a tuple, the first number is alpha</span>
+<span class="sd">                                        and the second number if beta.</span>
+<span class="sd">            num_orbitals (int): Total number of spin orbitals</span>
+<span class="sd">            active_occ_list (list): List of occupied orbitals to include, indices are</span>
+<span class="sd">                             0 to n where n is max(num_alpha, num_beta)</span>
+<span class="sd">            active_unocc_list (list): List of unoccupied orbitals to include, indices are</span>
+<span class="sd">                               0 to m where m is num_orbitals // 2 - min(num_alpha, num_beta)</span>
+<span class="sd">            same_spin_doubles (bool): True to include alpha,alpha and beta,beta double excitations</span>
 <span class="sd">                               as well as alpha,beta pairings. False includes only alpha,beta</span>
 
 <span class="sd">        Returns:</span>
-<span class="sd">            Single and double excitation lists</span>
+<span class="sd">            list: Single excitation list</span>
+<span class="sd">            list: Double excitation list</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            ValueError: invalid setting of number of particles</span>
+<span class="sd">            ValueError: invalid setting of number of orbitals</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="n">num_particles</span> <span class="o">&lt;</span> <span class="mi">2</span> <span class="ow">or</span> <span class="n">num_particles</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">num_particles</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+            <span class="n">num_alpha</span> <span class="o">=</span> <span class="n">num_particles</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">num_beta</span> <span class="o">=</span> <span class="n">num_particles</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;We assume that the number of alphas and betas are the same.&quot;</span><span class="p">)</span>
+            <span class="n">num_alpha</span> <span class="o">=</span> <span class="n">num_particles</span> <span class="o">//</span> <span class="mi">2</span>
+            <span class="n">num_beta</span> <span class="o">=</span> <span class="n">num_particles</span> <span class="o">//</span> <span class="mi">2</span>
+
+        <span class="n">num_particles</span> <span class="o">=</span> <span class="n">num_alpha</span> <span class="o">+</span> <span class="n">num_beta</span>
+
+        <span class="k">if</span> <span class="n">num_particles</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Invalid number of particles </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">num_particles</span><span class="p">))</span>
         <span class="k">if</span> <span class="n">num_orbitals</span> <span class="o">&lt;</span> <span class="mi">4</span> <span class="ow">or</span> <span class="n">num_orbitals</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Invalid number of orbitals </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">num_orbitals</span><span class="p">))</span>
         <span class="k">if</span> <span class="n">num_orbitals</span> <span class="o">&lt;=</span> <span class="n">num_particles</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;No unoccupied orbitals&#39;</span><span class="p">)</span>
+
+        <span class="c1"># convert the user-defined active space for alpha and beta respectively</span>
+        <span class="n">active_occ_list_alpha</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">active_occ_list_beta</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">active_unocc_list_alpha</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">active_unocc_list_beta</span> <span class="o">=</span> <span class="p">[]</span>
+
         <span class="k">if</span> <span class="n">active_occ_list</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">active_occ_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="k">else</span> <span class="n">i</span> <span class="o">+</span> <span class="n">num_particles</span> <span class="o">//</span> <span class="mi">2</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">active_occ_list</span><span class="p">]</span>
+            <span class="n">active_occ_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="k">else</span> <span class="n">i</span> <span class="o">+</span> <span class="nb">max</span><span class="p">(</span><span class="n">num_alpha</span><span class="p">,</span> <span class="n">num_beta</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">active_occ_list</span><span class="p">]</span>
             <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">active_occ_list</span><span class="p">:</span>
-                <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="n">num_particles</span> <span class="o">//</span> <span class="mi">2</span><span class="p">:</span>
-                    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Invalid index </span><span class="si">{}</span><span class="s1"> in active active_occ_list </span><span class="si">{}</span><span class="s1">&#39;</span>
-                                     <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">active_occ_list</span><span class="p">))</span>
+                <span class="k">if</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">num_alpha</span><span class="p">:</span>
+                    <span class="n">active_occ_list_alpha</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Invalid index </span><span class="si">{}</span><span class="s1"> in active active_occ_list </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">active_occ_list</span><span class="p">))</span>
+                <span class="k">if</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">num_beta</span><span class="p">:</span>
+                    <span class="n">active_occ_list_beta</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Invalid index </span><span class="si">{}</span><span class="s1"> in active active_occ_list </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">active_occ_list</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">active_occ_list_alpha</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">num_alpha</span><span class="p">)]</span>
+            <span class="n">active_occ_list_beta</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">num_beta</span><span class="p">)]</span>
+
         <span class="k">if</span> <span class="n">active_unocc_list</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">active_unocc_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="n">num_particles</span> <span class="o">//</span> <span class="mi">2</span> <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;=</span>
+            <span class="n">active_unocc_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="nb">min</span><span class="p">(</span><span class="n">num_alpha</span><span class="p">,</span> <span class="n">num_beta</span><span class="p">)</span> <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;=</span>
                                  <span class="mi">0</span> <span class="k">else</span> <span class="n">i</span> <span class="o">+</span> <span class="n">num_orbitals</span> <span class="o">//</span> <span class="mi">2</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">active_unocc_list</span><span class="p">]</span>
             <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">active_unocc_list</span><span class="p">:</span>
-                <span class="k">if</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="n">num_orbitals</span> <span class="o">//</span> <span class="mi">2</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="n">num_alpha</span><span class="p">:</span>
+                    <span class="n">active_unocc_list_alpha</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
                     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Invalid index </span><span class="si">{}</span><span class="s1"> in active active_unocc_list </span><span class="si">{}</span><span class="s1">&#39;</span>
                                      <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">active_unocc_list</span><span class="p">))</span>
+                <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="n">num_beta</span><span class="p">:</span>
+                    <span class="n">active_unocc_list_beta</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Invalid index </span><span class="si">{}</span><span class="s1"> in active active_unocc_list </span><span class="si">{}</span><span class="s1">&#39;</span>
+                                     <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">active_unocc_list</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">active_unocc_list_alpha</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_alpha</span><span class="p">,</span> <span class="n">num_orbitals</span> <span class="o">//</span> <span class="mi">2</span><span class="p">)]</span>
+            <span class="n">active_unocc_list_beta</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_beta</span><span class="p">,</span> <span class="n">num_orbitals</span> <span class="o">//</span> <span class="mi">2</span><span class="p">)]</span>
 
-        <span class="k">if</span> <span class="n">active_occ_list</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="n">active_occ_list</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="n">active_occ_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">num_particles</span> <span class="o">//</span> <span class="mi">2</span><span class="p">)]</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;active_occ_list_alpha </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">active_occ_list_alpha</span><span class="p">))</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;active_unocc_list_alpha </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">active_unocc_list_alpha</span><span class="p">))</span>
 
-        <span class="k">if</span> <span class="n">active_unocc_list</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="n">active_unocc_list</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="n">active_unocc_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_particles</span> <span class="o">//</span> <span class="mi">2</span><span class="p">,</span> <span class="n">num_orbitals</span> <span class="o">//</span> <span class="mi">2</span><span class="p">)]</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;active_occ_list_beta </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">active_occ_list_beta</span><span class="p">))</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;active_unocc_list_beta </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">active_unocc_list_beta</span><span class="p">))</span>
 
         <span class="n">single_excitations</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="n">double_excitations</span> <span class="o">=</span> <span class="p">[]</span>
 
-        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;active_occ_list </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">active_occ_list</span><span class="p">))</span>
-        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;active_unocc_list </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">active_unocc_list</span><span class="p">))</span>
-
         <span class="n">beta_idx</span> <span class="o">=</span> <span class="n">num_orbitals</span> <span class="o">//</span> <span class="mi">2</span>
-        <span class="k">for</span> <span class="n">occ_alpha</span> <span class="ow">in</span> <span class="n">active_occ_list</span><span class="p">:</span>
-            <span class="k">for</span> <span class="n">unocc_alpha</span> <span class="ow">in</span> <span class="n">active_unocc_list</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">occ_alpha</span> <span class="ow">in</span> <span class="n">active_occ_list_alpha</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">unocc_alpha</span> <span class="ow">in</span> <span class="n">active_unocc_list_alpha</span><span class="p">:</span>
                 <span class="n">single_excitations</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">occ_alpha</span><span class="p">,</span> <span class="n">unocc_alpha</span><span class="p">])</span>
 
-        <span class="k">for</span> <span class="n">occ_beta</span> <span class="ow">in</span> <span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="n">beta_idx</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">active_occ_list</span><span class="p">]:</span>
-            <span class="k">for</span> <span class="n">unocc_beta</span> <span class="ow">in</span> <span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="n">beta_idx</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">active_unocc_list</span><span class="p">]:</span>
+        <span class="k">for</span> <span class="n">occ_beta</span> <span class="ow">in</span> <span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="n">beta_idx</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">active_occ_list_beta</span><span class="p">]:</span>
+            <span class="k">for</span> <span class="n">unocc_beta</span> <span class="ow">in</span> <span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="n">beta_idx</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">active_unocc_list_beta</span><span class="p">]:</span>
                 <span class="n">single_excitations</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">occ_beta</span><span class="p">,</span> <span class="n">unocc_beta</span><span class="p">])</span>
 
-        <span class="k">for</span> <span class="n">occ_alpha</span> <span class="ow">in</span> <span class="n">active_occ_list</span><span class="p">:</span>
-            <span class="k">for</span> <span class="n">unocc_alpha</span> <span class="ow">in</span> <span class="n">active_unocc_list</span><span class="p">:</span>
-                <span class="k">for</span> <span class="n">occ_beta</span> <span class="ow">in</span> <span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="n">beta_idx</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">active_occ_list</span><span class="p">]:</span>
-                    <span class="k">for</span> <span class="n">unocc_beta</span> <span class="ow">in</span> <span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="n">beta_idx</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">active_unocc_list</span><span class="p">]:</span>
+        <span class="k">for</span> <span class="n">occ_alpha</span> <span class="ow">in</span> <span class="n">active_occ_list_alpha</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">unocc_alpha</span> <span class="ow">in</span> <span class="n">active_unocc_list_alpha</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">occ_beta</span> <span class="ow">in</span> <span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="n">beta_idx</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">active_occ_list_beta</span><span class="p">]:</span>
+                    <span class="k">for</span> <span class="n">unocc_beta</span> <span class="ow">in</span> <span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="n">beta_idx</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">active_unocc_list_beta</span><span class="p">]:</span>
                         <span class="n">double_excitations</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">occ_alpha</span><span class="p">,</span> <span class="n">unocc_alpha</span><span class="p">,</span> <span class="n">occ_beta</span><span class="p">,</span> <span class="n">unocc_beta</span><span class="p">])</span>
 
-        <span class="k">if</span> <span class="n">same_spin_doubles</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">active_occ_list</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">active_unocc_list</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
-            <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">occ_alpha</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">active_occ_list</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]):</span>
-                <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">unocc_alpha</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">active_unocc_list</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]):</span>
-                    <span class="k">for</span> <span class="n">occ_alpha_1</span> <span class="ow">in</span> <span class="n">active_occ_list</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">:]:</span>
-                        <span class="k">for</span> <span class="n">unocc_alpha_1</span> <span class="ow">in</span> <span class="n">active_unocc_list</span><span class="p">[</span><span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">:]:</span>
+        <span class="k">if</span> <span class="n">same_spin_doubles</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">active_occ_list_alpha</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">active_unocc_list_alpha</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">occ_alpha</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">active_occ_list_alpha</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]):</span>
+                <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">unocc_alpha</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">active_unocc_list_alpha</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]):</span>
+                    <span class="k">for</span> <span class="n">occ_alpha_1</span> <span class="ow">in</span> <span class="n">active_occ_list_alpha</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">:]:</span>
+                        <span class="k">for</span> <span class="n">unocc_alpha_1</span> <span class="ow">in</span> <span class="n">active_unocc_list_alpha</span><span class="p">[</span><span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">:]:</span>
                             <span class="n">double_excitations</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">occ_alpha</span><span class="p">,</span> <span class="n">unocc_alpha</span><span class="p">,</span>
                                                        <span class="n">occ_alpha_1</span><span class="p">,</span> <span class="n">unocc_alpha_1</span><span class="p">])</span>
 
-            <span class="n">up_active_occ_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="n">beta_idx</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">active_occ_list</span><span class="p">]</span>
-            <span class="n">up_active_unocc_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="n">beta_idx</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">active_unocc_list</span><span class="p">]</span>
+            <span class="n">up_active_occ_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="n">beta_idx</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">active_occ_list_beta</span><span class="p">]</span>
+            <span class="n">up_active_unocc_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="n">beta_idx</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">active_unocc_list_beta</span><span class="p">]</span>
             <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">occ_beta</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">up_active_occ_list</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]):</span>
                 <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">unocc_beta</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">up_active_unocc_list</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]):</span>
                     <span class="k">for</span> <span class="n">occ_beta_1</span> <span class="ow">in</span> <span class="n">up_active_occ_list</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">:]:</span>

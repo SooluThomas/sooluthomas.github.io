@@ -1649,7 +1649,7 @@
 <p>Note the sampling strategy use for all discrete pulses is <cite>left</cite>.</p>
 <dl class="function">
 <dt id="qiskit.pulse.pulse_lib.discrete.constant">
-<code class="descname">constant</code><span class="sig-paren">(</span><em>duration: int</em>, <em>amp: complex</em>, <em>name: str = None</em><span class="sig-paren">)</span> &#x2192; qiskit.pulse.commands.sample_pulse.SamplePulse<a class="reference internal" href="../_modules/qiskit/pulse/pulse_lib/discrete.html#constant"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.pulse.pulse_lib.discrete.constant" title="この定義へのパーマリンク">¶</a></dt>
+<code class="descname">constant</code><span class="sig-paren">(</span><em>duration: int</em>, <em>amp: complex</em>, <em>name: Optional[str] = None</em><span class="sig-paren">)</span> &#x2192; qiskit.pulse.commands.sample_pulse.SamplePulse<a class="reference internal" href="../_modules/qiskit/pulse/pulse_lib/discrete.html#constant"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.pulse.pulse_lib.discrete.constant" title="この定義へのパーマリンク">¶</a></dt>
 <dd><p>Generates constant-sampled <cite>SamplePulse</cite>.</p>
 <p>Applies <cite>left</cite> sampling strategy to generate discrete pulse from continuous function.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -1669,7 +1669,7 @@
 
 <dl class="function">
 <dt id="qiskit.pulse.pulse_lib.discrete.cos">
-<code class="descname">cos</code><span class="sig-paren">(</span><em>duration: int</em>, <em>amp: complex</em>, <em>freq: float = None</em>, <em>phase: float = 0</em>, <em>name: str = None</em><span class="sig-paren">)</span> &#x2192; qiskit.pulse.commands.sample_pulse.SamplePulse<a class="reference internal" href="../_modules/qiskit/pulse/pulse_lib/discrete.html#cos"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.pulse.pulse_lib.discrete.cos" title="この定義へのパーマリンク">¶</a></dt>
+<code class="descname">cos</code><span class="sig-paren">(</span><em>duration: int</em>, <em>amp: complex</em>, <em>freq: float = None</em>, <em>phase: float = 0</em>, <em>name: Optional[str] = None</em><span class="sig-paren">)</span> &#x2192; qiskit.pulse.commands.sample_pulse.SamplePulse<a class="reference internal" href="../_modules/qiskit/pulse/pulse_lib/discrete.html#cos"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.pulse.pulse_lib.discrete.cos" title="この定義へのパーマリンク">¶</a></dt>
 <dd><p>Generates cosine wave <cite>SamplePulse</cite>.</p>
 <p>Applies <cite>left</cite> sampling strategy to generate discrete pulse from continuous function.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -1691,7 +1691,7 @@
 
 <dl class="function">
 <dt id="qiskit.pulse.pulse_lib.discrete.drag">
-<code class="descname">drag</code><span class="sig-paren">(</span><em>duration: int</em>, <em>amp: complex</em>, <em>sigma: float</em>, <em>beta: float</em>, <em>name: str = None</em><span class="sig-paren">)</span> &#x2192; qiskit.pulse.commands.sample_pulse.SamplePulse<a class="reference internal" href="../_modules/qiskit/pulse/pulse_lib/discrete.html#drag"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.pulse.pulse_lib.discrete.drag" title="この定義へのパーマリンク">¶</a></dt>
+<code class="descname">drag</code><span class="sig-paren">(</span><em>duration: int</em>, <em>amp: complex</em>, <em>sigma: float</em>, <em>beta: float</em>, <em>name: Optional[str] = None</em><span class="sig-paren">)</span> &#x2192; qiskit.pulse.commands.sample_pulse.SamplePulse<a class="reference internal" href="../_modules/qiskit/pulse/pulse_lib/discrete.html#drag"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.pulse.pulse_lib.discrete.drag" title="この定義へのパーマリンク">¶</a></dt>
 <dd><p>Generates Y-only correction DRAG <cite>SamplePulse</cite> for standard nonlinear oscillator (SNO) [1].</p>
 <p>Centered at <cite>duration/2</cite> and zeroed at <cite>t=-1</cite> to prevent large initial discontinuity.</p>
 <p>Applies <cite>left</cite> sampling strategy to generate discrete pulse from continuous function.</p>
@@ -1710,7 +1710,7 @@ in a weakly nonlinear oscillator. Phys. Rev. A 83, 012308 (2011).</dd>
 <li><strong>sigma</strong> -- Width (standard deviation) of pulse.</li>
 <li><strong>beta</strong> -- Y correction amplitude. For the SNO this is $beta=-frac{lambda_1^2}{4Delta_2}$.
 Where $lambds_1$ is the relative coupling strength between the first excited and second
-excited states and $Delta_2$ is the detuning between the resepective excited states.</li>
+excited states and $Delta_2$ is the detuning between the respective excited states.</li>
 <li><strong>name</strong> -- Name of pulse.</li>
 </ul>
 </td>
@@ -1721,7 +1721,7 @@ excited states and $Delta_2$ is the detuning between the resepective excited sta
 
 <dl class="function">
 <dt id="qiskit.pulse.pulse_lib.discrete.gaussian">
-<code class="descname">gaussian</code><span class="sig-paren">(</span><em>duration: int</em>, <em>amp: complex</em>, <em>sigma: float</em>, <em>name: str = None</em><span class="sig-paren">)</span> &#x2192; qiskit.pulse.commands.sample_pulse.SamplePulse<a class="reference internal" href="../_modules/qiskit/pulse/pulse_lib/discrete.html#gaussian"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.pulse.pulse_lib.discrete.gaussian" title="この定義へのパーマリンク">¶</a></dt>
+<code class="descname">gaussian</code><span class="sig-paren">(</span><em>duration: int</em>, <em>amp: complex</em>, <em>sigma: float</em>, <em>name: Optional[str] = None</em><span class="sig-paren">)</span> &#x2192; qiskit.pulse.commands.sample_pulse.SamplePulse<a class="reference internal" href="../_modules/qiskit/pulse/pulse_lib/discrete.html#gaussian"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.pulse.pulse_lib.discrete.gaussian" title="この定義へのパーマリンク">¶</a></dt>
 <dd><p>Generates unnormalized gaussian <cite>SamplePulse</cite>.</p>
 <p>Centered at <cite>duration/2</cite> and zeroed at <cite>t=-1</cite> to prevent large initial discontinuity.</p>
 <p>Applies <cite>left</cite> sampling strategy to generate discrete pulse from continuous function.</p>
@@ -1744,7 +1744,7 @@ excited states and $Delta_2$ is the detuning between the resepective excited sta
 
 <dl class="function">
 <dt id="qiskit.pulse.pulse_lib.discrete.gaussian_deriv">
-<code class="descname">gaussian_deriv</code><span class="sig-paren">(</span><em>duration: int</em>, <em>amp: complex</em>, <em>sigma: float</em>, <em>name: str = None</em><span class="sig-paren">)</span> &#x2192; qiskit.pulse.commands.sample_pulse.SamplePulse<a class="reference internal" href="../_modules/qiskit/pulse/pulse_lib/discrete.html#gaussian_deriv"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.pulse.pulse_lib.discrete.gaussian_deriv" title="この定義へのパーマリンク">¶</a></dt>
+<code class="descname">gaussian_deriv</code><span class="sig-paren">(</span><em>duration: int</em>, <em>amp: complex</em>, <em>sigma: float</em>, <em>name: Optional[str] = None</em><span class="sig-paren">)</span> &#x2192; qiskit.pulse.commands.sample_pulse.SamplePulse<a class="reference internal" href="../_modules/qiskit/pulse/pulse_lib/discrete.html#gaussian_deriv"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.pulse.pulse_lib.discrete.gaussian_deriv" title="この定義へのパーマリンク">¶</a></dt>
 <dd><p>Generates unnormalized gaussian derivative <cite>SamplePulse</cite>.</p>
 <p>Applies <cite>left</cite> sampling strategy to generate discrete pulse from continuous function.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -1765,7 +1765,7 @@ excited states and $Delta_2$ is the detuning between the resepective excited sta
 
 <dl class="function">
 <dt id="qiskit.pulse.pulse_lib.discrete.gaussian_square">
-<code class="descname">gaussian_square</code><span class="sig-paren">(</span><em>duration: int</em>, <em>amp: complex</em>, <em>sigma: float</em>, <em>risefall: int</em>, <em>name: str = None</em><span class="sig-paren">)</span> &#x2192; qiskit.pulse.commands.sample_pulse.SamplePulse<a class="reference internal" href="../_modules/qiskit/pulse/pulse_lib/discrete.html#gaussian_square"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.pulse.pulse_lib.discrete.gaussian_square" title="この定義へのパーマリンク">¶</a></dt>
+<code class="descname">gaussian_square</code><span class="sig-paren">(</span><em>duration: int</em>, <em>amp: complex</em>, <em>sigma: float</em>, <em>risefall: int</em>, <em>name: Optional[str] = None</em><span class="sig-paren">)</span> &#x2192; qiskit.pulse.commands.sample_pulse.SamplePulse<a class="reference internal" href="../_modules/qiskit/pulse/pulse_lib/discrete.html#gaussian_square"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.pulse.pulse_lib.discrete.gaussian_square" title="この定義へのパーマリンク">¶</a></dt>
 <dd><p>Generates gaussian square <cite>SamplePulse</cite>.</p>
 <p>Centered at <cite>duration/2</cite> and zeroed at <cite>t=-1</cite> and <cite>t=duration+1</cite> to prevent
 large initial/final discontinuities.</p>
@@ -1790,7 +1790,7 @@ square portion of pulse will be <cite>duration-2*risefall</cite>.</li>
 
 <dl class="function">
 <dt id="qiskit.pulse.pulse_lib.discrete.sawtooth">
-<code class="descname">sawtooth</code><span class="sig-paren">(</span><em>duration: int</em>, <em>amp: complex</em>, <em>period: float = None</em>, <em>phase: float = 0</em>, <em>name: str = None</em><span class="sig-paren">)</span> &#x2192; qiskit.pulse.commands.sample_pulse.SamplePulse<a class="reference internal" href="../_modules/qiskit/pulse/pulse_lib/discrete.html#sawtooth"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.pulse.pulse_lib.discrete.sawtooth" title="この定義へのパーマリンク">¶</a></dt>
+<code class="descname">sawtooth</code><span class="sig-paren">(</span><em>duration: int</em>, <em>amp: complex</em>, <em>period: float = None</em>, <em>phase: float = 0</em>, <em>name: Optional[str] = None</em><span class="sig-paren">)</span> &#x2192; qiskit.pulse.commands.sample_pulse.SamplePulse<a class="reference internal" href="../_modules/qiskit/pulse/pulse_lib/discrete.html#sawtooth"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.pulse.pulse_lib.discrete.sawtooth" title="この定義へのパーマリンク">¶</a></dt>
 <dd><p>Generates sawtooth wave <cite>SamplePulse</cite>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1810,8 +1810,51 @@ square portion of pulse will be <cite>duration-2*risefall</cite>.</li>
 </dd></dl>
 
 <dl class="function">
+<dt id="qiskit.pulse.pulse_lib.discrete.sech">
+<code class="descname">sech</code><span class="sig-paren">(</span><em>duration: int</em>, <em>amp: complex</em>, <em>sigma: float</em>, <em>name: str = None</em><span class="sig-paren">)</span> &#x2192; qiskit.pulse.commands.sample_pulse.SamplePulse<a class="reference internal" href="../_modules/qiskit/pulse/pulse_lib/discrete.html#sech"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.pulse.pulse_lib.discrete.sech" title="この定義へのパーマリンク">¶</a></dt>
+<dd><p>Generates unnormalized sech <cite>SamplePulse</cite>.</p>
+<p>Centered at <cite>duration/2</cite> and zeroed at <cite>t=-1</cite> to prevent large initial discontinuity.</p>
+<p>Applies <cite>left</cite> sampling strategy to generate discrete pulse from continuous function.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">パラメータ:</th><td class="field-body"><ul class="first last simple">
+<li><strong>duration</strong> -- Duration of pulse. Must be greater than zero.</li>
+<li><strong>amp</strong> -- Pulse amplitude at <cite>duration/2</cite>.</li>
+<li><strong>sigma</strong> -- Width (standard deviation) of pulse.</li>
+<li><strong>name</strong> -- Name of pulse.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="qiskit.pulse.pulse_lib.discrete.sech_deriv">
+<code class="descname">sech_deriv</code><span class="sig-paren">(</span><em>duration: int</em>, <em>amp: complex</em>, <em>sigma: float</em>, <em>name: str = None</em><span class="sig-paren">)</span> &#x2192; qiskit.pulse.commands.sample_pulse.SamplePulse<a class="reference internal" href="../_modules/qiskit/pulse/pulse_lib/discrete.html#sech_deriv"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.pulse.pulse_lib.discrete.sech_deriv" title="この定義へのパーマリンク">¶</a></dt>
+<dd><p>Generates unnormalized sech derivative <cite>SamplePulse</cite>.</p>
+<p>Applies <cite>left</cite> sampling strategy to generate discrete pulse from continuous function.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">パラメータ:</th><td class="field-body"><ul class="first last simple">
+<li><strong>duration</strong> -- Duration of pulse. Must be greater than zero.</li>
+<li><strong>amp</strong> -- Pulse amplitude at <cite>center</cite>.</li>
+<li><strong>sigma</strong> -- Width (standard deviation) of pulse.</li>
+<li><strong>name</strong> -- Name of pulse.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
 <dt id="qiskit.pulse.pulse_lib.discrete.sin">
-<code class="descname">sin</code><span class="sig-paren">(</span><em>duration: int</em>, <em>amp: complex</em>, <em>freq: float = None</em>, <em>phase: float = 0</em>, <em>name: str = None</em><span class="sig-paren">)</span> &#x2192; qiskit.pulse.commands.sample_pulse.SamplePulse<a class="reference internal" href="../_modules/qiskit/pulse/pulse_lib/discrete.html#sin"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.pulse.pulse_lib.discrete.sin" title="この定義へのパーマリンク">¶</a></dt>
+<code class="descname">sin</code><span class="sig-paren">(</span><em>duration: int</em>, <em>amp: complex</em>, <em>freq: float = None</em>, <em>phase: float = 0</em>, <em>name: Optional[str] = None</em><span class="sig-paren">)</span> &#x2192; qiskit.pulse.commands.sample_pulse.SamplePulse<a class="reference internal" href="../_modules/qiskit/pulse/pulse_lib/discrete.html#sin"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.pulse.pulse_lib.discrete.sin" title="この定義へのパーマリンク">¶</a></dt>
 <dd><p>Generates sine wave <cite>SamplePulse</cite>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1832,7 +1875,7 @@ square portion of pulse will be <cite>duration-2*risefall</cite>.</li>
 
 <dl class="function">
 <dt id="qiskit.pulse.pulse_lib.discrete.square">
-<code class="descname">square</code><span class="sig-paren">(</span><em>duration: int</em>, <em>amp: complex</em>, <em>period: float = None</em>, <em>phase: float = 0</em>, <em>name: str = None</em><span class="sig-paren">)</span> &#x2192; qiskit.pulse.commands.sample_pulse.SamplePulse<a class="reference internal" href="../_modules/qiskit/pulse/pulse_lib/discrete.html#square"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.pulse.pulse_lib.discrete.square" title="この定義へのパーマリンク">¶</a></dt>
+<code class="descname">square</code><span class="sig-paren">(</span><em>duration: int</em>, <em>amp: complex</em>, <em>period: float = None</em>, <em>phase: float = 0</em>, <em>name: Optional[str] = None</em><span class="sig-paren">)</span> &#x2192; qiskit.pulse.commands.sample_pulse.SamplePulse<a class="reference internal" href="../_modules/qiskit/pulse/pulse_lib/discrete.html#square"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.pulse.pulse_lib.discrete.square" title="この定義へのパーマリンク">¶</a></dt>
 <dd><p>Generates square wave <cite>SamplePulse</cite>.</p>
 <p>Applies <cite>left</cite> sampling strategy to generate discrete pulse from continuous function.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -1854,7 +1897,7 @@ square portion of pulse will be <cite>duration-2*risefall</cite>.</li>
 
 <dl class="function">
 <dt id="qiskit.pulse.pulse_lib.discrete.triangle">
-<code class="descname">triangle</code><span class="sig-paren">(</span><em>duration: int</em>, <em>amp: complex</em>, <em>period: float = None</em>, <em>phase: float = 0</em>, <em>name: str = None</em><span class="sig-paren">)</span> &#x2192; qiskit.pulse.commands.sample_pulse.SamplePulse<a class="reference internal" href="../_modules/qiskit/pulse/pulse_lib/discrete.html#triangle"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.pulse.pulse_lib.discrete.triangle" title="この定義へのパーマリンク">¶</a></dt>
+<code class="descname">triangle</code><span class="sig-paren">(</span><em>duration: int</em>, <em>amp: complex</em>, <em>period: float = None</em>, <em>phase: float = 0</em>, <em>name: Optional[str] = None</em><span class="sig-paren">)</span> &#x2192; qiskit.pulse.commands.sample_pulse.SamplePulse<a class="reference internal" href="../_modules/qiskit/pulse/pulse_lib/discrete.html#triangle"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.pulse.pulse_lib.discrete.triangle" title="この定義へのパーマリンク">¶</a></dt>
 <dd><p>Generates triangle wave <cite>SamplePulse</cite>.</p>
 <p>Applies <cite>left</cite> sampling strategy to generate discrete pulse from continuous function.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -1876,7 +1919,7 @@ square portion of pulse will be <cite>duration-2*risefall</cite>.</li>
 
 <dl class="function">
 <dt id="qiskit.pulse.pulse_lib.discrete.zero">
-<code class="descname">zero</code><span class="sig-paren">(</span><em>duration: int</em>, <em>name: str = None</em><span class="sig-paren">)</span> &#x2192; qiskit.pulse.commands.sample_pulse.SamplePulse<a class="reference internal" href="../_modules/qiskit/pulse/pulse_lib/discrete.html#zero"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.pulse.pulse_lib.discrete.zero" title="この定義へのパーマリンク">¶</a></dt>
+<code class="descname">zero</code><span class="sig-paren">(</span><em>duration: int</em>, <em>name: Optional[str] = None</em><span class="sig-paren">)</span> &#x2192; qiskit.pulse.commands.sample_pulse.SamplePulse<a class="reference internal" href="../_modules/qiskit/pulse/pulse_lib/discrete.html#zero"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.pulse.pulse_lib.discrete.zero" title="この定義へのパーマリンク">¶</a></dt>
 <dd><p>Generates zero-sampled <cite>SamplePulse</cite>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />

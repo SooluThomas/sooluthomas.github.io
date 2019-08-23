@@ -1648,15 +1648,13 @@
 <p>Traverse the DAG and find blocks of gates that act consecutively on
 pairs of qubits. Write the blocks to propert_set as a dictionary
 of the form:</p>
-<blockquote>
-<div><dl class="docutils">
-<dt>{(q0, q1): [[g0, g1, g2], [g5]],</dt>
-<dd>(q0, q2): [[g3, g4]]
-..
-.</dd>
-</dl>
-<p>}</p>
-</div></blockquote>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{(</span><span class="n">q0</span><span class="p">,</span> <span class="n">q1</span><span class="p">):</span> <span class="p">[[</span><span class="n">g0</span><span class="p">,</span> <span class="n">g1</span><span class="p">,</span> <span class="n">g2</span><span class="p">],</span> <span class="p">[</span><span class="n">g5</span><span class="p">]],</span>
+ <span class="p">(</span><span class="n">q0</span><span class="p">,</span> <span class="n">q2</span><span class="p">):</span> <span class="p">[[</span><span class="n">g3</span><span class="p">,</span> <span class="n">g4</span><span class="p">]]</span>
+ <span class="o">..</span>
+ <span class="o">.</span>
+<span class="p">}</span>
+</pre></div>
+</div>
 <p>Based on implementation by Andrew Cross.</p>
 <dl class="class">
 <dt id="qiskit.transpiler.passes.collect_2q_blocks.Collect2qBlocks">

@@ -1643,48 +1643,8 @@
     <div class="document">
         <div class="page-content">
         
-  <div class="section" id="module-qiskit.tools.compiler">
-<span id="qiskit-tools-compiler-module"></span><h1>qiskit.tools.compiler module<a class="headerlink" href="#module-qiskit.tools.compiler" title="このヘッドラインへのパーマリンク">¶</a></h1>
-<p>DEPRECATED: WILL BE REMOVED AFTER 0.8.</p>
-<dl class="function">
-<dt id="qiskit.tools.compiler.compile">
-<code class="descname">compile</code><span class="sig-paren">(</span><em>circuits</em>, <em>backend</em>, <em>config=None</em>, <em>basis_gates=None</em>, <em>coupling_map=None</em>, <em>initial_layout=None</em>, <em>shots=1024</em>, <em>max_credits=10</em>, <em>seed=None</em>, <em>qobj_id=None</em>, <em>seed_mapper=None</em>, <em>pass_manager=None</em>, <em>memory=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/tools/compiler.html#compile"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.tools.compiler.compile" title="この定義へのパーマリンク">¶</a></dt>
-<dd><p>Compile a list of circuits into a qobj.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">パラメータ:</th><td class="field-body"><ul class="first simple">
-<li><strong>circuits</strong> (<a class="reference internal" href="qiskit.circuit.quantumcircuit.html#qiskit.circuit.quantumcircuit.QuantumCircuit" title="qiskit.circuit.quantumcircuit.QuantumCircuit"><em>QuantumCircuit</em></a><em> or </em><em>list</em><em>[</em><a class="reference internal" href="qiskit.circuit.quantumcircuit.html#qiskit.circuit.quantumcircuit.QuantumCircuit" title="qiskit.circuit.quantumcircuit.QuantumCircuit"><em>QuantumCircuit</em></a><em>]</em>) -- circuits to compile</li>
-<li><strong>backend</strong> (<a class="reference internal" href="qiskit.providers.basebackend.html#qiskit.providers.basebackend.BaseBackend" title="qiskit.providers.basebackend.BaseBackend"><em>BaseBackend</em></a>) -- a backend to compile for</li>
-<li><strong>config</strong> (<em>dict</em>) -- dictionary of parameters (e.g. noise) used by runner</li>
-<li><strong>basis_gates</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) -- list of basis gates names supported by the
-target. Default: ['u1','u2','u3','cx','id']</li>
-<li><strong>coupling_map</strong> (<em>list</em>) -- coupling map (perhaps custom) to target in mapping</li>
-<li><strong>initial_layout</strong> (<em>list</em>) -- initial layout of qubits in mapping</li>
-<li><strong>shots</strong> (<em>int</em>) -- number of repetitions of each circuit, for sampling</li>
-<li><strong>max_credits</strong> (<em>int</em>) -- maximum credits to use</li>
-<li><strong>seed</strong> (<em>int</em>) -- random seed for simulators</li>
-<li><strong>seed_mapper</strong> (<em>int</em>) -- random seed for swapper mapper</li>
-<li><strong>qobj_id</strong> (<em>int</em>) -- identifier for the generated qobj</li>
-<li><strong>pass_manager</strong> (<a class="reference internal" href="qiskit.transpiler.passmanager.html#qiskit.transpiler.passmanager.PassManager" title="qiskit.transpiler.passmanager.PassManager"><em>PassManager</em></a>) -- a pass manger for the transpiler pipeline</li>
-<li><strong>memory</strong> (<em>bool</em>) -- if True, per-shot measurement bitstrings are returned as well</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">戻り値:</th><td class="field-body"><p class="first">the qobj to be run on the backends</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">戻り値の型:</th><td class="field-body"><p class="first"><a class="reference internal" href="qiskit.qobj.qobj.html#qiskit.qobj.qobj.Qobj" title="qiskit.qobj.qobj.Qobj">Qobj</a></p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><code class="xref py py-exc docutils literal notranslate"><span class="pre">QiskitError</span></code> -- if the desired options are not supported by backend</p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
+  <div class="section" id="qiskit-tools-compiler-module">
+<h1>qiskit.tools.compiler module<a class="headerlink" href="#qiskit-tools-compiler-module" title="このヘッドラインへのパーマリンク">¶</a></h1>
 </div>
 
 

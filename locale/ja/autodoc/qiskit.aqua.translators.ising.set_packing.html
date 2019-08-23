@@ -1653,19 +1653,8 @@
 <dl class="function">
 <dt id="qiskit.aqua.translators.ising.set_packing.get_set_packing_qubitops">
 <code class="descname">get_set_packing_qubitops</code><span class="sig-paren">(</span><em>list_of_subsets</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/translators/ising/set_packing.html#get_set_packing_qubitops"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.aqua.translators.ising.set_packing.get_set_packing_qubitops" title="この定義へのパーマリンク">¶</a></dt>
-<dd><p>Construct the Hamiltonian for the set packing
-:param list_of_subsets: list of lists (i.e., subsets)</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">戻り値:</th><td class="field-body">operator for the Hamiltonian and a
-constant shift for the obj function.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">戻り値の型:</th><td class="field-body"><a class="reference internal" href="qiskit.aqua.operator.html#qiskit.aqua.operator.Operator" title="qiskit.aqua.operator.Operator">operator.Operator</a>, float</td>
-</tr>
-</tbody>
-</table>
+<dd><p>Construct the Hamiltonian for the set packing.</p>
+<p class="rubric">メモ</p>
 <p>find the maximal number of subsets which are disjoint pairwise.</p>
 <p>Hamiltonian:
 H = A Ha + B Hb
@@ -1674,7 +1663,20 @@ Hb = -sum_{i}{Xi}</p>
 <p>Ha is to ensure the disjoint condition, while Hb is to achieve the maximal number.
 Ha is hard constraint that must be satisified. Therefore A &gt;&gt; B.
 In the following, we set A=10 and B = 1</p>
-<p>Note Xi = (Zi + 1)/2</p>
+<p>where Xi = (Zi + 1)/2</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">パラメータ:</th><td class="field-body"><strong>list_of_subsets</strong> -- list of lists (i.e., subsets)</td>
+</tr>
+<tr class="field-even field"><th class="field-name">戻り値:</th><td class="field-body">operator for the Hamiltonian
+float: a constant shift for the obj function.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">戻り値の型:</th><td class="field-body">WeightedPauliOperatorOperator</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="function">

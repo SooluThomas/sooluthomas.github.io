@@ -202,6 +202,8 @@
 
 <span class="sd">    [default]</span>
 <span class="sd">    circuit_drawer = mpl</span>
+<span class="sd">    circuit_mpl_style = default</span>
+
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Create a UserConfig</span>
@@ -223,16 +225,41 @@
             <span class="k">return</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">config_parser</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">filename</span><span class="p">)</span>
         <span class="k">if</span> <span class="s1">&#39;default&#39;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">config_parser</span><span class="o">.</span><span class="n">sections</span><span class="p">():</span>
+            <span class="c1"># Parse circuit_drawer</span>
             <span class="n">circuit_drawer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">config_parser</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;default&#39;</span><span class="p">,</span>
-                                                    <span class="s1">&#39;circuit_drawer&#39;</span><span class="p">)</span>
+                                                    <span class="s1">&#39;circuit_drawer&#39;</span><span class="p">,</span>
+                                                    <span class="n">fallback</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">circuit_drawer</span><span class="p">:</span>
                 <span class="k">if</span> <span class="n">circuit_drawer</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;text&#39;</span><span class="p">,</span> <span class="s1">&#39;mpl&#39;</span><span class="p">,</span> <span class="s1">&#39;latex&#39;</span><span class="p">,</span>
-                                          <span class="s1">&#39;latex_source&#39;</span><span class="p">]:</span>
+                                          <span class="s1">&#39;latex_source&#39;</span><span class="p">,</span> <span class="s1">&#39;auto&#39;</span><span class="p">]:</span>
                     <span class="k">raise</span> <span class="n">exceptions</span><span class="o">.</span><span class="n">QiskitUserConfigError</span><span class="p">(</span>
                         <span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> is not a valid circuit drawer backend. Must be &quot;</span>
-                        <span class="s2">&quot;either &#39;text&#39;, &#39;mpl&#39;, &#39;latex&#39;, or &#39;latex_source&#39;&quot;</span>
+                        <span class="s2">&quot;either &#39;text&#39;, &#39;mpl&#39;, &#39;latex&#39;, &#39;auto&#39;, or &quot;</span>
+                        <span class="s2">&quot;&#39;latex_source&#39;&quot;</span>
                         <span class="o">%</span> <span class="n">circuit_drawer</span><span class="p">)</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">settings</span><span class="p">[</span><span class="s1">&#39;circuit_drawer&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">circuit_drawer</span></div></div>
+                <span class="bp">self</span><span class="o">.</span><span class="n">settings</span><span class="p">[</span><span class="s1">&#39;circuit_drawer&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">circuit_drawer</span>
+            <span class="c1"># Parse circuit_mpl_style</span>
+            <span class="n">circuit_mpl_style</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">config_parser</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;default&#39;</span><span class="p">,</span>
+                                                       <span class="s1">&#39;circuit_mpl_style&#39;</span><span class="p">,</span>
+                                                       <span class="n">fallback</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">circuit_mpl_style</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">circuit_mpl_style</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;default&#39;</span><span class="p">,</span> <span class="s1">&#39;bw&#39;</span><span class="p">]:</span>
+                    <span class="k">raise</span> <span class="n">exceptions</span><span class="o">.</span><span class="n">QiskitUserConfigError</span><span class="p">(</span>
+                        <span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> is not a valid mpl circuit style. Must be &quot;</span>
+                        <span class="s2">&quot;either &#39;default&#39; or &#39;bw&#39;&quot;</span>
+                        <span class="o">%</span> <span class="n">circuit_mpl_style</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">settings</span><span class="p">[</span><span class="s1">&#39;circuit_mpl_style&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">circuit_mpl_style</span>
+            <span class="c1"># Parse transpile_optimization_level</span>
+            <span class="n">transpile_optimization_level</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">config_parser</span><span class="o">.</span><span class="n">getint</span><span class="p">(</span>
+                <span class="s1">&#39;default&#39;</span><span class="p">,</span> <span class="s1">&#39;transpile_optimization_level&#39;</span><span class="p">,</span> <span class="n">fallback</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">transpile_optimization_level</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">transpile_optimization_level</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">or</span>
+                        <span class="n">transpile_optimization_level</span> <span class="o">&gt;</span> <span class="mi">3</span><span class="p">):</span>
+                    <span class="k">raise</span> <span class="n">exceptions</span><span class="o">.</span><span class="n">QiskitUserConfigError</span><span class="p">(</span>
+                        <span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> is not a valid optimization level. Must be &quot;</span>
+                        <span class="s2">&quot;0, 1, 2, or 3.&quot;</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">settings</span><span class="p">[</span><span class="s1">&#39;transpile_optimization_level&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+                    <span class="n">transpile_optimization_level</span><span class="p">)</span></div></div>
 
 
 <div class="viewcode-block" id="get_config"><a class="viewcode-back" href="../../autodoc/qiskit.user_config.html#qiskit.user_config.get_config">[ドキュメント]</a><span class="k">def</span> <span class="nf">get_config</span><span class="p">():</span>

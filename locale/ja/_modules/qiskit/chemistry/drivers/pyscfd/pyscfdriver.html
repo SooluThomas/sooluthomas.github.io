@@ -184,13 +184,21 @@
 <span class="c1"># copyright notice, and modified files need to carry a notice indicating</span>
 <span class="c1"># that they have been altered from the originals.</span>
 
-<span class="kn">from</span> <span class="nn">qiskit.chemistry.drivers</span> <span class="k">import</span> <span class="n">BaseDriver</span><span class="p">,</span> <span class="n">UnitsType</span>
+<span class="kn">from</span> <span class="nn">qiskit.chemistry.drivers</span> <span class="k">import</span> <span class="n">BaseDriver</span><span class="p">,</span> <span class="n">UnitsType</span><span class="p">,</span> <span class="n">HFMethodType</span>
 <span class="kn">from</span> <span class="nn">qiskit.chemistry</span> <span class="k">import</span> <span class="n">QiskitChemistryError</span>
 <span class="kn">from</span> <span class="nn">qiskit.chemistry.drivers.pyscfd.integrals</span> <span class="k">import</span> <span class="n">compute_integrals</span>
 <span class="kn">import</span> <span class="nn">importlib</span>
+<span class="kn">from</span> <span class="nn">enum</span> <span class="k">import</span> <span class="n">Enum</span>
 <span class="kn">import</span> <span class="nn">logging</span>
 
 <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="InitialGuess"><a class="viewcode-back" href="../../../../../autodoc/qiskit.chemistry.drivers.pyscfd.pyscfdriver.html#qiskit.chemistry.drivers.InitialGuess">[ドキュメント]</a><span class="k">class</span> <span class="nc">InitialGuess</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+    <span class="n">MINAO</span> <span class="o">=</span> <span class="s1">&#39;minao&#39;</span>
+    <span class="n">HCORE</span> <span class="o">=</span> <span class="s1">&#39;1e&#39;</span>
+    <span class="n">ONE_E</span> <span class="o">=</span> <span class="s1">&#39;1e&#39;</span>
+    <span class="n">ATOM</span> <span class="o">=</span> <span class="s1">&#39;atom&#39;</span></div>
 
 
 <div class="viewcode-block" id="PySCFDriver"><a class="viewcode-back" href="../../../../../autodoc/qiskit.chemistry.drivers.pyscfd.pyscfdriver.html#qiskit.chemistry.drivers.PySCFDriver">[ドキュメント]</a><span class="k">class</span> <span class="nc">PySCFDriver</span><span class="p">(</span><span class="n">BaseDriver</span><span class="p">):</span>
@@ -211,11 +219,9 @@
                 <span class="s2">&quot;unit&quot;</span><span class="p">:</span> <span class="p">{</span>
                     <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
                     <span class="s2">&quot;default&quot;</span><span class="p">:</span> <span class="n">UnitsType</span><span class="o">.</span><span class="n">ANGSTROM</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
-                    <span class="s2">&quot;oneOf&quot;</span><span class="p">:</span> <span class="p">[</span>
-                        <span class="p">{</span><span class="s2">&quot;enum&quot;</span><span class="p">:</span> <span class="p">[</span>
-                            <span class="n">UnitsType</span><span class="o">.</span><span class="n">ANGSTROM</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
-                            <span class="n">UnitsType</span><span class="o">.</span><span class="n">BOHR</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
-                        <span class="p">]}</span>
+                    <span class="s2">&quot;enum&quot;</span><span class="p">:</span> <span class="p">[</span>
+                        <span class="n">UnitsType</span><span class="o">.</span><span class="n">ANGSTROM</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
+                        <span class="n">UnitsType</span><span class="o">.</span><span class="n">BOHR</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
                     <span class="p">]</span>
                 <span class="p">},</span>
                 <span class="s2">&quot;charge&quot;</span><span class="p">:</span> <span class="p">{</span>
@@ -229,6 +235,33 @@
                 <span class="s2">&quot;basis&quot;</span><span class="p">:</span> <span class="p">{</span>
                     <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
                     <span class="s2">&quot;default&quot;</span><span class="p">:</span> <span class="s2">&quot;sto3g&quot;</span>
+                <span class="p">},</span>
+                <span class="s2">&quot;hf_method&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;default&quot;</span><span class="p">:</span> <span class="n">HFMethodType</span><span class="o">.</span><span class="n">RHF</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
+                    <span class="s2">&quot;enum&quot;</span><span class="p">:</span> <span class="p">[</span>
+                        <span class="n">HFMethodType</span><span class="o">.</span><span class="n">RHF</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
+                        <span class="n">HFMethodType</span><span class="o">.</span><span class="n">ROHF</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
+                        <span class="n">HFMethodType</span><span class="o">.</span><span class="n">UHF</span><span class="o">.</span><span class="n">value</span>
+                    <span class="p">]</span>
+                <span class="p">},</span>
+                <span class="s2">&quot;conv_tol&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;number&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;default&quot;</span><span class="p">:</span> <span class="mf">1e-09</span>
+                <span class="p">},</span>
+                <span class="s2">&quot;max_cycle&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;integer&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;default&quot;</span><span class="p">:</span> <span class="mi">50</span><span class="p">,</span>
+                    <span class="s2">&quot;minimum&quot;</span><span class="p">:</span> <span class="mi">1</span>
+                <span class="p">},</span>
+                <span class="s2">&quot;init_guess&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;default&quot;</span><span class="p">:</span> <span class="n">InitialGuess</span><span class="o">.</span><span class="n">MINAO</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
+                    <span class="s2">&quot;enum&quot;</span><span class="p">:</span> <span class="p">[</span>
+                        <span class="n">InitialGuess</span><span class="o">.</span><span class="n">MINAO</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
+                        <span class="n">InitialGuess</span><span class="o">.</span><span class="n">HCORE</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
+                        <span class="n">InitialGuess</span><span class="o">.</span><span class="n">ATOM</span><span class="o">.</span><span class="n">value</span>
+                    <span class="p">]</span>
                 <span class="p">},</span>
                 <span class="s2">&quot;max_memory&quot;</span><span class="p">:</span> <span class="p">{</span>
                     <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;integer&quot;</span><span class="p">,</span> <span class="s2">&quot;null&quot;</span><span class="p">],</span>
@@ -245,6 +278,10 @@
                  <span class="n">charge</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
                  <span class="n">spin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
                  <span class="n">basis</span><span class="o">=</span><span class="s1">&#39;sto3g&#39;</span><span class="p">,</span>
+                 <span class="n">hf_method</span><span class="o">=</span><span class="n">HFMethodType</span><span class="o">.</span><span class="n">RHF</span><span class="p">,</span>
+                 <span class="n">conv_tol</span><span class="o">=</span><span class="mf">1e-9</span><span class="p">,</span>
+                 <span class="n">max_cycle</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
+                 <span class="n">init_guess</span><span class="o">=</span><span class="n">InitialGuess</span><span class="o">.</span><span class="n">MINAO</span><span class="p">,</span>
                  <span class="n">max_memory</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Initializer</span>
@@ -254,6 +291,10 @@
 <span class="sd">            charge (int): charge</span>
 <span class="sd">            spin (int): spin</span>
 <span class="sd">            basis (str): basis set</span>
+<span class="sd">            hf_method (HFMethodType): Hartree-Fock Method type</span>
+<span class="sd">            conv_tol (float): Convergence tolerance see PySCF docs and pyscf/scf/hf.py</span>
+<span class="sd">            max_cycle (int): Max convergence cycles see PySCF docs and pyscf/scf/hf.py</span>
+<span class="sd">            init_guess (InitialGuess): See PySCF pyscf/scf/hf.py init_guess_by_minao/1e/atom methods</span>
 <span class="sd">            max_memory (int): maximum memory</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">atom</span><span class="p">,</span> <span class="nb">list</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">atom</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
@@ -265,6 +306,8 @@
             <span class="n">atom</span> <span class="o">=</span> <span class="n">atom</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;;&#39;</span><span class="p">)</span>
 
         <span class="n">unit</span> <span class="o">=</span> <span class="n">unit</span><span class="o">.</span><span class="n">value</span>
+        <span class="n">hf_method</span> <span class="o">=</span> <span class="n">hf_method</span><span class="o">.</span><span class="n">value</span>
+        <span class="n">init_guess</span> <span class="o">=</span> <span class="n">init_guess</span><span class="o">.</span><span class="n">value</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">validate</span><span class="p">(</span><span class="nb">locals</span><span class="p">())</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_atom</span> <span class="o">=</span> <span class="n">atom</span>
@@ -272,18 +315,22 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_charge</span> <span class="o">=</span> <span class="n">charge</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_spin</span> <span class="o">=</span> <span class="n">spin</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_basis</span> <span class="o">=</span> <span class="n">basis</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_hf_method</span> <span class="o">=</span> <span class="n">hf_method</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_conv_tol</span> <span class="o">=</span> <span class="n">conv_tol</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_max_cycle</span> <span class="o">=</span> <span class="n">max_cycle</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_init_guess</span> <span class="o">=</span> <span class="n">init_guess</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_max_memory</span> <span class="o">=</span> <span class="n">max_memory</span>
 
 <div class="viewcode-block" id="PySCFDriver.check_driver_valid"><a class="viewcode-back" href="../../../../../autodoc/qiskit.chemistry.drivers.pyscfd.pyscfdriver.html#qiskit.chemistry.drivers.PySCFDriver.check_driver_valid">[ドキュメント]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">check_driver_valid</span><span class="p">():</span>
-        <span class="n">err_msg</span> <span class="o">=</span> <span class="s2">&quot;PySCF is not installed. Use &#39;pip install pyscf&#39;&quot;</span>
+        <span class="n">err_msg</span> <span class="o">=</span> <span class="s2">&quot;PySCF is not installed. See https://sunqm.github.io/pyscf/install.html&quot;</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">spec</span> <span class="o">=</span> <span class="n">importlib</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">find_spec</span><span class="p">(</span><span class="s1">&#39;pyscf&#39;</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">spec</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
                 <span class="k">return</span>
-        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-            <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;PySCF check error </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)))</span>
-            <span class="k">raise</span> <span class="n">QiskitChemistryError</span><span class="p">(</span><span class="n">err_msg</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">e</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">ex</span><span class="p">:</span>  <span class="c1"># pylint: disable=broad-except</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;PySCF check error </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">ex</span><span class="p">)))</span>
+            <span class="k">raise</span> <span class="n">QiskitChemistryError</span><span class="p">(</span><span class="n">err_msg</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">ex</span>
 
         <span class="k">raise</span> <span class="n">QiskitChemistryError</span><span class="p">(</span><span class="n">err_msg</span><span class="p">)</span></div>
 
@@ -293,7 +340,7 @@
 <span class="sd">        Initialize via section dictionary.</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            params (dict): section dictionary</span>
+<span class="sd">            section (dict): section dictionary</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            Driver: Driver object</span>
@@ -306,6 +353,10 @@
         <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">params</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
             <span class="k">if</span> <span class="n">k</span> <span class="o">==</span> <span class="s1">&#39;unit&#39;</span><span class="p">:</span>
                 <span class="n">v</span> <span class="o">=</span> <span class="n">UnitsType</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">k</span> <span class="o">==</span> <span class="s1">&#39;hf_method&#39;</span><span class="p">:</span>
+                <span class="n">v</span> <span class="o">=</span> <span class="n">HFMethodType</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">k</span> <span class="o">==</span> <span class="s1">&#39;init_guess&#39;</span><span class="p">:</span>
+                <span class="n">v</span> <span class="o">=</span> <span class="n">InitialGuess</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
 
             <span class="n">kwargs</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span>
 
@@ -313,12 +364,32 @@
         <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="PySCFDriver.run"><a class="viewcode-back" href="../../../../../autodoc/qiskit.chemistry.drivers.pyscfd.pyscfdriver.html#qiskit.chemistry.drivers.PySCFDriver.run">[ドキュメント]</a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">compute_integrals</span><span class="p">(</span><span class="n">atom</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_atom</span><span class="p">,</span>
-                                 <span class="n">unit</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_unit</span><span class="p">,</span>
-                                 <span class="n">charge</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_charge</span><span class="p">,</span>
-                                 <span class="n">spin</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_spin</span><span class="p">,</span>
-                                 <span class="n">basis</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_basis</span><span class="p">,</span>
-                                 <span class="n">max_memory</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_max_memory</span><span class="p">)</span></div></div>
+        <span class="n">q_mol</span> <span class="o">=</span> <span class="n">compute_integrals</span><span class="p">(</span><span class="n">atom</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_atom</span><span class="p">,</span>
+                                  <span class="n">unit</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_unit</span><span class="p">,</span>
+                                  <span class="n">charge</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_charge</span><span class="p">,</span>
+                                  <span class="n">spin</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_spin</span><span class="p">,</span>
+                                  <span class="n">basis</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_basis</span><span class="p">,</span>
+                                  <span class="n">hf_method</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_hf_method</span><span class="p">,</span>
+                                  <span class="n">conv_tol</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_conv_tol</span><span class="p">,</span>
+                                  <span class="n">max_cycle</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_max_cycle</span><span class="p">,</span>
+                                  <span class="n">init_guess</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_init_guess</span><span class="p">,</span>
+                                  <span class="n">max_memory</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_max_memory</span><span class="p">)</span>
+
+        <span class="n">q_mol</span><span class="o">.</span><span class="n">origin_driver_name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">configuration</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span>
+        <span class="n">cfg</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;atom=</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_atom</span><span class="p">),</span>
+               <span class="s1">&#39;unit=</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_unit</span><span class="p">),</span>
+               <span class="s1">&#39;charge=</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_charge</span><span class="p">),</span>
+               <span class="s1">&#39;spin=</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_spin</span><span class="p">),</span>
+               <span class="s1">&#39;basis=</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_basis</span><span class="p">),</span>
+               <span class="s1">&#39;hf_method=</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_hf_method</span><span class="p">),</span>
+               <span class="s1">&#39;conv_tol=</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_conv_tol</span><span class="p">),</span>
+               <span class="s1">&#39;max_cycle=</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_max_cycle</span><span class="p">),</span>
+               <span class="s1">&#39;init_guess=</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_init_guess</span><span class="p">),</span>
+               <span class="s1">&#39;max_memory=</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_max_memory</span><span class="p">),</span>
+               <span class="s1">&#39;&#39;</span><span class="p">]</span>
+        <span class="n">q_mol</span><span class="o">.</span><span class="n">origin_driver_config</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">cfg</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">q_mol</span></div></div>
 </pre></div>
 
         </div>

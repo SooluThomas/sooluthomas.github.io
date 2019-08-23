@@ -1648,9 +1648,8 @@
 <p>Circuit transpile function</p>
 <dl class="function">
 <dt id="qiskit.compiler.transpile.transpile">
-<code class="descname">transpile</code><span class="sig-paren">(</span><em>circuits</em>, <em>backend=None</em>, <em>basis_gates=None</em>, <em>coupling_map=None</em>, <em>backend_properties=None</em>, <em>initial_layout=None</em>, <em>seed_transpiler=None</em>, <em>optimization_level=None</em>, <em>pass_manager=None</em>, <em>seed_mapper=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/compiler/transpile.html#transpile"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.compiler.transpile.transpile" title="この定義へのパーマリンク">¶</a></dt>
-<dd><p>transpile one or more circuits, according to some desired
-transpilation targets.</p>
+<code class="descname">transpile</code><span class="sig-paren">(</span><em>circuits</em>, <em>backend=None</em>, <em>basis_gates=None</em>, <em>coupling_map=None</em>, <em>backend_properties=None</em>, <em>initial_layout=None</em>, <em>seed_transpiler=None</em>, <em>optimization_level=None</em>, <em>pass_manager=None</em>, <em>callback=None</em>, <em>output_name=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/compiler/transpile.html#transpile"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#qiskit.compiler.transpile.transpile" title="この定義へのパーマリンク">¶</a></dt>
+<dd><p>Transpile one or more circuits, according to some desired transpilation targets.</p>
 <p>All arguments may be given as either singleton or list. In case of list,
 the length must be equal to the number of circuits being transpiled.</p>
 <p>Transpilation is done in parallel using multiprocessing.</p>
@@ -1663,27 +1662,28 @@ the length must be equal to the number of circuits being transpiled.</p>
 <li><strong>backend</strong> (<a class="reference internal" href="qiskit.providers.basebackend.html#qiskit.providers.basebackend.BaseBackend" title="qiskit.providers.basebackend.BaseBackend"><em>BaseBackend</em></a>) -- <p>If set, transpiler options are automatically grabbed from
 backend.configuration() and backend.properties().
 If any other option is explicitly set (e.g. coupling_map), it
-will override the backend's.
-Note: the backend arg is purely for convenience. The resulting</p>
-<blockquote>
-<div>circuit may be run on any backend as long as it is compatible.</div></blockquote>
+will override the backend's.</p>
+<p>Note: the backend arg is purely for convenience. The resulting
+circuit may be run on any backend as long as it is compatible.</p>
 </li>
 <li><strong>basis_gates</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) -- <p>List of basis gate names to unroll to.
 e.g:</p>
-<blockquote>
-<div>['u1', 'u2', 'u3', 'cx']</div></blockquote>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="s1">&#39;u1&#39;</span><span class="p">,</span> <span class="s1">&#39;u2&#39;</span><span class="p">,</span> <span class="s1">&#39;u3&#39;</span><span class="p">,</span> <span class="s1">&#39;cx&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
 <p>If None, do not unroll.</p>
 </li>
 <li><strong>coupling_map</strong> (<a class="reference internal" href="qiskit.transpiler.coupling.html#qiskit.transpiler.coupling.CouplingMap" title="qiskit.transpiler.coupling.CouplingMap"><em>CouplingMap</em></a><em> or </em><em>list</em>) -- <p>Coupling map (perhaps custom) to target in mapping.
-Multiple formats are supported:
-a. CouplingMap instance</p>
-<ol class="loweralpha" start="2">
+Multiple formats are supported:</p>
+<ol class="arabic">
+<li>CouplingMap instance</li>
 <li><dl class="first docutils">
 <dt>list</dt>
 <dd>Must be given as an adjacency matrix, where each entry
 specifies all two-qubit interactions supported by backend
-e.g:<blockquote class="last">
-<div>[[0, 1], [0, 3], [1, 2], [1, 5], [2, 5], [4, 1], [5, 3]]</div></blockquote>
+e.g:<div class="last highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">]]</span>
+</pre></div>
+</div>
 </dd>
 </dl>
 </li>
@@ -1698,38 +1698,40 @@ If this layout makes the circuit compatible with the coupling_map
 constraints, it will be used.
 The final layout is not guaranteed to be the same, as the transpiler
 may permute qubits through swaps or other means.</p>
-<p>Multiple formats are supported:
-a. Layout instance</p>
-<ol class="loweralpha" start="2">
+<p>Multiple formats are supported:</p>
+<ol class="arabic">
+<li>Layout instance</li>
 <li><dl class="first docutils">
 <dt>dict</dt>
-<dd><dl class="first last docutils">
-<dt>virtual to physical:</dt>
-<dd><dl class="first last docutils">
-<dt>{qr[0]: 0,</dt>
-<dd>qr[1]: 3,
-qr[2]: 5}</dd>
-</dl>
-</dd>
-<dt>physical to virtual:</dt>
-<dd><dl class="first last docutils">
-<dt>{0: qr[0],</dt>
-<dd>3: qr[1],
-5: qr[2]}</dd>
-</dl>
-</dd>
-</dl>
+<dd><ul class="first last">
+<li>virtual to physical:<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="n">qr</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span> <span class="mi">0</span><span class="p">,</span>
+ <span class="n">qr</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="mi">3</span><span class="p">,</span>
+ <span class="n">qr</span><span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="mi">5</span><span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li>physical to virtual:<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="n">qr</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+ <span class="mi">3</span><span class="p">:</span> <span class="n">qr</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+ <span class="mi">5</span><span class="p">:</span> <span class="n">qr</span><span class="p">[</span><span class="mi">2</span><span class="p">]}</span>
+</pre></div>
+</div>
+</li>
+</ul>
 </dd>
 </dl>
 </li>
 <li><dl class="first docutils">
 <dt>list</dt>
-<dd><dl class="first last docutils">
-<dt>virtual to physical:</dt>
-<dd>[0, 3, 5]  # virtual qubits are ordered (in addition to named)</dd>
-<dt>physical to virtual:</dt>
-<dd>[qr[0], None, None, qr[1], None, qr[2]]</dd>
-</dl>
+<dd><ul class="first last">
+<li>virtual to physical:<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>  <span class="c1"># virtual qubits are ordered (in addition to named)</span>
+</pre></div>
+</div>
+</li>
+<li>physical to virtual:<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">qr</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">qr</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="kc">None</span><span class="p">,</span> <span class="n">qr</span><span class="p">[</span><span class="mi">2</span><span class="p">]]</span>
+</pre></div>
+</div>
+</li>
+</ul>
 </dd>
 </dl>
 </li>
@@ -1740,16 +1742,51 @@ qr[2]: 5}</dd>
 Higher levels generate more optimized circuits,
 at the expense of longer transpilation time.</p>
 <blockquote>
-<div>0: no optimization
-1: light optimization
-2: heavy optimization
-3: even heavier optimization</div></blockquote>
+<div><ul>
+<li>0: no optimization</li>
+<li>1: light optimization</li>
+<li>2: heavy optimization</li>
+<li>3: even heavier optimization</li>
+</ul>
+</div></blockquote>
+<p>If None, level 1 will be chosen as default.</p>
 </li>
 <li><strong>pass_manager</strong> (<a class="reference internal" href="qiskit.transpiler.passmanager.html#qiskit.transpiler.passmanager.PassManager" title="qiskit.transpiler.passmanager.PassManager"><em>PassManager</em></a>) -- The pass manager to use for a custom pipeline of transpiler passes.
 If this arg is present, all other args will be ignored and the
 pass manager will be used directly (Qiskit will not attempt to
 auto-select a pass manager based on transpile options).</li>
-<li><strong>seed_mapper</strong> (<em>int</em>) -- DEPRECATED in 0.8: use <code class="docutils literal notranslate"><span class="pre">seed_transpiler</span></code> kwarg instead</li>
+<li><strong>callback</strong> (<em>func</em>) -- <p>A callback function that will be called after each
+pass execution. The function will be called with 5 keyword
+:param <a href="#id1"><span class="problematic" id="id2">pass_</span></a>: the pass being run
+:type <a href="#id3"><span class="problematic" id="id4">pass_</span></a>: Pass
+:param dag: the dag output of the pass
+:type dag: DAGCircuit
+:param time: the time to execute the pass
+:type time: float
+:param property_set: the property set
+:type property_set: PropertySet
+:param count: the index for the pass execution
+:type count: int</p>
+<p>The exact arguments pass expose the internals of the pass manager
+and are subject to change as the pass manager internals change. If
+you intend to reuse a callback function over multiple releases be
+sure to check that the arguments being passed are the same.</p>
+<p>To use the callback feature you define a function that will
+take in kwargs dict and access the variables. For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">callback_func</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="n">pass_</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;pass_&#39;</span><span class="p">]</span>
+    <span class="n">dag</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;dag&#39;</span><span class="p">]</span>
+    <span class="n">time</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">]</span>
+    <span class="n">property_set</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;property_set&#39;</span><span class="p">]</span>
+    <span class="n">count</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;count&#39;</span><span class="p">]</span>
+    <span class="o">...</span>
+
+<span class="n">transpile</span><span class="p">(</span><span class="n">circ</span><span class="p">,</span> <span class="n">callback</span><span class="o">=</span><span class="n">callback_func</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><strong>output_name</strong> (<em>str</em><em> or </em><em>list</em><em>[</em><em>str</em><em>]</em>) -- A list with strings to identify the output circuits. The length of
+<cite>list[str]</cite> should be exactly the length of <cite>circuits</cite> parameter.</li>
 </ul>
 </td>
 </tr>

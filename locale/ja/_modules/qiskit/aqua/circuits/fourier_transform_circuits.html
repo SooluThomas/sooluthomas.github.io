@@ -189,10 +189,9 @@
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
-<span class="kn">from</span> <span class="nn">qiskit</span> <span class="k">import</span> <span class="n">QuantumRegister</span><span class="p">,</span> <span class="n">QuantumCircuit</span>
+<span class="kn">from</span> <span class="nn">qiskit.circuit</span> <span class="k">import</span> <span class="n">QuantumRegister</span><span class="p">,</span> <span class="n">QuantumCircuit</span><span class="p">,</span> <span class="n">Qubit</span>
 
 <span class="kn">from</span> <span class="nn">qiskit.aqua</span> <span class="k">import</span> <span class="n">AquaError</span>
-<span class="kn">from</span> <span class="nn">qiskit.aqua.utils.circuit_utils</span> <span class="k">import</span> <span class="n">is_qubit_list</span>
 
 
 <div class="viewcode-block" id="FourierTransformCircuits"><a class="viewcode-back" href="../../../../autodoc/qiskit.aqua.circuits.fourier_transform_circuits.html#qiskit.aqua.circuits.FourierTransformCircuits">[ドキュメント]</a><span class="k">class</span> <span class="nc">FourierTransformCircuits</span><span class="p">:</span>
@@ -218,7 +217,7 @@
 
 <span class="sd">        Args:</span>
 <span class="sd">            circuit (QuantumCircuit): The optional circuit to extend from.</span>
-<span class="sd">            qubits (QuantumRegister | list of qubits): The optional qubits to construct the circuit with.</span>
+<span class="sd">            qubits (QuantumRegister | list of Qubit): The optional qubits to construct the circuit with.</span>
 <span class="sd">            approximation_degree (int): degree of approximation for the desired circuit</span>
 <span class="sd">            inverse (bool): Boolean flag to indicate Inverse Quantum Fourier Transform</span>
 <span class="sd">            do_swaps (bool): Boolean flag to specify if swaps should be included to align the qubit order of</span>
@@ -237,10 +236,13 @@
             <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">qubits</span><span class="p">,</span> <span class="n">QuantumRegister</span><span class="p">):</span>
                 <span class="k">if</span> <span class="ow">not</span> <span class="n">circuit</span><span class="o">.</span><span class="n">has_register</span><span class="p">(</span><span class="n">qubits</span><span class="p">):</span>
                     <span class="n">circuit</span><span class="o">.</span><span class="n">add_register</span><span class="p">(</span><span class="n">qubits</span><span class="p">)</span>
-            <span class="k">elif</span> <span class="n">is_qubit_list</span><span class="p">(</span><span class="n">qubits</span><span class="p">):</span>
+            <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">qubits</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
                 <span class="k">for</span> <span class="n">qubit</span> <span class="ow">in</span> <span class="n">qubits</span><span class="p">:</span>
-                    <span class="k">if</span> <span class="ow">not</span> <span class="n">circuit</span><span class="o">.</span><span class="n">has_register</span><span class="p">(</span><span class="n">qubit</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
-                        <span class="n">circuit</span><span class="o">.</span><span class="n">add_register</span><span class="p">(</span><span class="n">qubit</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+                    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">qubit</span><span class="p">,</span> <span class="n">Qubit</span><span class="p">):</span>
+                        <span class="k">if</span> <span class="ow">not</span> <span class="n">circuit</span><span class="o">.</span><span class="n">has_register</span><span class="p">(</span><span class="n">qubit</span><span class="o">.</span><span class="n">register</span><span class="p">):</span>
+                            <span class="n">circuit</span><span class="o">.</span><span class="n">add_register</span><span class="p">(</span><span class="n">qubit</span><span class="o">.</span><span class="n">register</span><span class="p">)</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="k">raise</span> <span class="n">AquaError</span><span class="p">(</span><span class="s1">&#39;A QuantumRegister or a list of qubits is expected for the input qubits.&#39;</span><span class="p">)</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="k">raise</span> <span class="n">AquaError</span><span class="p">(</span><span class="s1">&#39;A QuantumRegister or a list of qubits is expected for the input qubits.&#39;</span><span class="p">)</span>
 
