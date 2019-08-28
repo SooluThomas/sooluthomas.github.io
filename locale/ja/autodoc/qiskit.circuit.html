@@ -52,8 +52,8 @@
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="検索" href="../search.html" />
-    <link rel="next" title="qiskit.circuit.classicalregister module" href="qiskit.circuit.classicalregister.html" />
-    <link rel="prev" title="qiskit.chemistry.version module" href="qiskit.chemistry.version.html" /> 
+    <link rel="next" title="qiskit.circuit.random package" href="qiskit.circuit.random.html" />
+    <link rel="prev" title="qiskit.chemistry.qmolecule module" href="qiskit.chemistry.qmolecule.html" /> 
   </head>
 <body>
   <header>
@@ -757,6 +757,7 @@
 </ul>
 </li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">qiskit.circuit package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#subpackages">Subpackages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#submodules">Submodules</a></li>
 </ul>
 </li>
@@ -777,8 +778,9 @@
 <li class="toctree-l4"><a class="reference internal" href="qiskit.extensions.html#submodules">Submodules</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.mapper.html">qiskit.mapper package</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="qiskit.mapper.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qiskit.ignis.html">qiskit.ignis package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.ignis.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.ignis.html#submodules">Submodules</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.providers.html">qiskit.providers package</a><ul>
@@ -837,10 +839,8 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="qiskit.html#submodules">Submodules</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="qiskit._util.html">qiskit._util module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.exceptions.html">qiskit.exceptions module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.execute.html">qiskit.execute module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.qiskiterror.html">qiskit.qiskiterror module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.user_config.html">qiskit.user_config module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.util.html">qiskit.util module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.version.html">qiskit.version module</a></li>
@@ -1541,6 +1541,7 @@
 </ul>
 </li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">qiskit.circuit package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#subpackages">Subpackages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#submodules">Submodules</a></li>
 </ul>
 </li>
@@ -1561,8 +1562,9 @@
 <li class="toctree-l4"><a class="reference internal" href="qiskit.extensions.html#submodules">Submodules</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.mapper.html">qiskit.mapper package</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="qiskit.mapper.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qiskit.ignis.html">qiskit.ignis package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.ignis.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.ignis.html#submodules">Submodules</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.providers.html">qiskit.providers package</a><ul>
@@ -1621,10 +1623,8 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="qiskit.html#submodules">Submodules</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="qiskit._util.html">qiskit._util module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.exceptions.html">qiskit.exceptions module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.execute.html">qiskit.execute module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.qiskiterror.html">qiskit.qiskiterror module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.user_config.html">qiskit.user_config module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.util.html">qiskit.util module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.version.html">qiskit.version module</a></li>
@@ -1646,19 +1646,34 @@
   <div class="section" id="module-qiskit.circuit">
 <span id="qiskit-circuit-package"></span><h1>qiskit.circuit package<a class="headerlink" href="#module-qiskit.circuit" title="このヘッドラインへのパーマリンク">¶</a></h1>
 <p>Module for Circuits.</p>
+<div class="section" id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="qiskit.circuit.random.html">qiskit.circuit.random package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="qiskit.circuit.random.html#submodules">Submodules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="qiskit.circuit.random.utils.html">qiskit.circuit.random.utils module</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
 <div class="section" id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <div class="toctree-wrapper compound">
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="qiskit.circuit.bit.html">qiskit.circuit.bit module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="qiskit.circuit.classicalregister.html">qiskit.circuit.classicalregister module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="qiskit.circuit.compositegate.html">qiskit.circuit.compositegate module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="qiskit.circuit.decorators.html">qiskit.circuit.decorators module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="qiskit.circuit.gate.html">qiskit.circuit.gate module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="qiskit.circuit.instruction.html">qiskit.circuit.instruction module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="qiskit.circuit.instructionset.html">qiskit.circuit.instructionset module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="qiskit.circuit.measure.html">qiskit.circuit.measure module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="qiskit.circuit.parameter.html">qiskit.circuit.parameter module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="qiskit.circuit.parameterexpression.html">qiskit.circuit.parameterexpression module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="qiskit.circuit.parametertable.html">qiskit.circuit.parametertable module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="qiskit.circuit.parametervector.html">qiskit.circuit.parametervector module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="qiskit.circuit.quantumcircuit.html">qiskit.circuit.quantumcircuit module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="qiskit.circuit.quantumregister.html">qiskit.circuit.quantumregister module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="qiskit.circuit.register.html">qiskit.circuit.register module</a></li>
@@ -1673,16 +1688,16 @@
 
       <div class="clearer"></div>
     </div><div class="pagenation">
-     <a id="button-prev" href="qiskit.chemistry.version.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
+     <a id="button-prev" href="qiskit.chemistry.qmolecule.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
          <div class="pagenation-text">
             <span class="pagenation-direction">Previous</span>
-            <div>qiskit.chemistry.version module</div>
+            <div>qiskit.chemistry.qmolecule module</div>
          </div>
      </a>
-     <a id="button-next" href="qiskit.circuit.classicalregister.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
+     <a id="button-next" href="qiskit.circuit.random.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
         <div class="pagenation-text">
             <span class="pagenation-direction">Next</span>
-            <div>qiskit.circuit.classicalregister module</div>
+            <div>qiskit.circuit.random package</div>
         </div>
      </a>
         
