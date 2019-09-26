@@ -51,8 +51,8 @@
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="qiskit.result package" href="qiskit.result.html" />
-    <link rel="prev" title="qiskit.quantum_info.synthesis package" href="qiskit.quantum_info.synthesis.html" /> 
+    <link rel="next" title="qiskit.quantum_info.synthesis.weyl module" href="qiskit.quantum_info.synthesis.weyl.html" />
+    <link rel="prev" title="qiskit.quantum_info.synthesis.local_invariance module" href="qiskit.quantum_info.synthesis.local_invariance.html" /> 
   </head>
 <body>
   <header>
@@ -756,6 +756,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.circuit.html">qiskit.circuit package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#subpackages">Subpackages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#submodules">Submodules</a></li>
 </ul>
 </li>
@@ -776,8 +777,9 @@
 <li class="toctree-l4"><a class="reference internal" href="qiskit.extensions.html#submodules">Submodules</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.mapper.html">qiskit.mapper package</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="qiskit.mapper.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qiskit.ignis.html">qiskit.ignis package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.ignis.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.ignis.html#submodules">Submodules</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.providers.html">qiskit.providers package</a><ul>
@@ -836,10 +838,8 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="qiskit.html#submodules">Submodules</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="qiskit._util.html">qiskit._util module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.exceptions.html">qiskit.exceptions module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.execute.html">qiskit.execute module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.qiskiterror.html">qiskit.qiskiterror module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.user_config.html">qiskit.user_config module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.util.html">qiskit.util module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.version.html">qiskit.version module</a></li>
@@ -1540,6 +1540,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.circuit.html">qiskit.circuit package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#subpackages">Subpackages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#submodules">Submodules</a></li>
 </ul>
 </li>
@@ -1560,8 +1561,9 @@
 <li class="toctree-l4"><a class="reference internal" href="qiskit.extensions.html#submodules">Submodules</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.mapper.html">qiskit.mapper package</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="qiskit.mapper.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qiskit.ignis.html">qiskit.ignis package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.ignis.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.ignis.html#submodules">Submodules</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.providers.html">qiskit.providers package</a><ul>
@@ -1620,10 +1622,8 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="qiskit.html#submodules">Submodules</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="qiskit._util.html">qiskit._util module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.exceptions.html">qiskit.exceptions module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.execute.html">qiskit.execute module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.qiskiterror.html">qiskit.qiskiterror module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.user_config.html">qiskit.user_config module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.util.html">qiskit.util module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.version.html">qiskit.version module</a></li>
@@ -1683,7 +1683,7 @@ For supercontrolled basis ~Ud(pi/4, b, 0), all b, result Ur has trace:
 <a href="#id7"><span class="problematic" id="id8">|Tr(Ur.Utarget^dag)|</span></a> = 4cos(z)
 which is the optimal approximation for basis of CNOT-class ~Ud(pi/4, 0, 0)
 or DCNOT-class ~Ud(pi/4, pi/4, 0) and any target.
-May be sub-optimal for b!=0 (eg there exists exact decomposition for any target using B</p>
+May be sub-optimal for b!=0 (e.g. there exists exact decomposition for any target using B</p>
 <blockquote>
 <div>B~Ud(pi/4, pi/8, 0), but not this decomposition.)</div></blockquote>
 <p>This is an exact decomposition for supercontrolled basis and target ~Ud(x, y, 0).
@@ -1696,6 +1696,13 @@ No guarantees for non-supercontrolled basis.</p>
 <dd><p>Decompose target with 3 uses of the basis.
 This is an exact decomposition for supercontrolled basis ~Ud(pi/4, b, 0), all b,
 and any target. No guarantees for non-supercontrolled basis.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="qiskit.quantum_info.synthesis.two_qubit_decompose.TwoQubitBasisDecomposer.num_basis_gates">
+<code class="descname">num_basis_gates</code><span class="sig-paren">(</span><em>unitary</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/quantum_info/synthesis/two_qubit_decompose.html#TwoQubitBasisDecomposer.num_basis_gates"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.quantum_info.synthesis.two_qubit_decompose.TwoQubitBasisDecomposer.num_basis_gates" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the number of basis gates needed in
+a decomposition of input unitary</p>
 </dd></dl>
 
 <dl class="method">
@@ -1771,16 +1778,16 @@ M. Horodecki, P. Horodecki and R. Horodecki, PRA 60, 1888 (1999)</p>
 
       <div class="clearer"></div>
     </div><div class="pagenation">
-     <a id="button-prev" href="qiskit.quantum_info.synthesis.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
+     <a id="button-prev" href="qiskit.quantum_info.synthesis.local_invariance.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
          <div class="pagenation-text">
             <span class="pagenation-direction">Previous</span>
-            <div>qiskit.quantum_info.synthesis package</div>
+            <div>qiskit.quantum_info.synthesis.local_invariance module</div>
          </div>
      </a>
-     <a id="button-next" href="qiskit.result.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
+     <a id="button-next" href="qiskit.quantum_info.synthesis.weyl.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
         <div class="pagenation-text">
             <span class="pagenation-direction">Next</span>
-            <div>qiskit.result package</div>
+            <div>qiskit.quantum_info.synthesis.weyl module</div>
         </div>
      </a>
         

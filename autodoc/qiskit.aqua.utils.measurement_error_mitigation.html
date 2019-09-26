@@ -51,7 +51,7 @@
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="qiskit.aqua.utils.pauli_graph module" href="qiskit.aqua.utils.pauli_graph.html" />
+    <link rel="next" title="qiskit.aqua.utils.qp_solver module" href="qiskit.aqua.utils.qp_solver.html" />
     <link rel="prev" title="qiskit.aqua.utils.json_utils module" href="qiskit.aqua.utils.json_utils.html" /> 
   </head>
 <body>
@@ -756,6 +756,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.circuit.html">qiskit.circuit package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#subpackages">Subpackages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#submodules">Submodules</a></li>
 </ul>
 </li>
@@ -776,8 +777,9 @@
 <li class="toctree-l4"><a class="reference internal" href="qiskit.extensions.html#submodules">Submodules</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.mapper.html">qiskit.mapper package</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="qiskit.mapper.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qiskit.ignis.html">qiskit.ignis package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.ignis.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.ignis.html#submodules">Submodules</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.providers.html">qiskit.providers package</a><ul>
@@ -836,10 +838,8 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="qiskit.html#submodules">Submodules</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="qiskit._util.html">qiskit._util module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.exceptions.html">qiskit.exceptions module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.execute.html">qiskit.execute module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.qiskiterror.html">qiskit.qiskiterror module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.user_config.html">qiskit.user_config module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.util.html">qiskit.util module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.version.html">qiskit.version module</a></li>
@@ -1540,6 +1540,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.circuit.html">qiskit.circuit package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#subpackages">Subpackages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#submodules">Submodules</a></li>
 </ul>
 </li>
@@ -1560,8 +1561,9 @@
 <li class="toctree-l4"><a class="reference internal" href="qiskit.extensions.html#submodules">Submodules</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.mapper.html">qiskit.mapper package</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="qiskit.mapper.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qiskit.ignis.html">qiskit.ignis package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.ignis.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.ignis.html#submodules">Submodules</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.providers.html">qiskit.providers package</a><ul>
@@ -1620,10 +1622,8 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="qiskit.html#submodules">Submodules</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="qiskit._util.html">qiskit._util module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.exceptions.html">qiskit.exceptions module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.execute.html">qiskit.execute module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.qiskiterror.html">qiskit.qiskiterror module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.user_config.html">qiskit.user_config module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.util.html">qiskit.util module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.version.html">qiskit.version module</a></li>
@@ -1645,29 +1645,28 @@
   <div class="section" id="module-qiskit.aqua.utils.measurement_error_mitigation">
 <span id="qiskit-aqua-utils-measurement-error-mitigation-module"></span><h1>qiskit.aqua.utils.measurement_error_mitigation module<a class="headerlink" href="#module-qiskit.aqua.utils.measurement_error_mitigation" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
-<dt id="qiskit.aqua.utils.measurement_error_mitigation.build_measurement_error_mitigation_fitter">
-<code class="descname">build_measurement_error_mitigation_fitter</code><span class="sig-paren">(</span><em>qubits</em>, <em>fitter_cls</em>, <em>backend</em>, <em>backend_config=None</em>, <em>compile_config=None</em>, <em>run_config=None</em>, <em>qjob_config=None</em>, <em>backend_options=None</em>, <em>noise_config=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/utils/measurement_error_mitigation.html#build_measurement_error_mitigation_fitter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.aqua.utils.measurement_error_mitigation.build_measurement_error_mitigation_fitter" title="Permalink to this definition">¶</a></dt>
+<dt id="qiskit.aqua.utils.measurement_error_mitigation.build_measurement_error_mitigation_qobj">
+<code class="descname">build_measurement_error_mitigation_qobj</code><span class="sig-paren">(</span><em>qubit_list</em>, <em>fitter_cls</em>, <em>backend</em>, <em>backend_config=None</em>, <em>compile_config=None</em>, <em>run_config=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/utils/measurement_error_mitigation.html#build_measurement_error_mitigation_qobj"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.aqua.utils.measurement_error_mitigation.build_measurement_error_mitigation_qobj" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>qubits</strong> (<em>list</em><em>[</em><em>int</em><em>]</em>) – the measured qubit index (in the order to classical bit 0…n-1)</li>
+<li><strong>qubit_list</strong> (<em>list</em><em>[</em><em>int</em><em>]</em>) – list of qubits used in the algorithm</li>
 <li><strong>fitter_cls</strong> (<em>callable</em>) – CompleteMeasFitter or TensoredMeasFitter</li>
 <li><strong>backend</strong> (<a class="reference internal" href="qiskit.providers.basebackend.html#qiskit.providers.basebackend.BaseBackend" title="qiskit.providers.basebackend.BaseBackend"><em>BaseBackend</em></a>) – backend instance</li>
 <li><strong>backend_config</strong> (<em>dict</em><em>, </em><em>optional</em>) – configuration for backend</li>
 <li><strong>compile_config</strong> (<em>dict</em><em>, </em><em>optional</em>) – configuration for compilation</li>
 <li><strong>run_config</strong> (<a class="reference internal" href="qiskit.assembler.run_config.html#qiskit.assembler.run_config.RunConfig" title="qiskit.assembler.run_config.RunConfig"><em>RunConfig</em></a><em>, </em><em>optional</em>) – configuration for running a circuit</li>
-<li><strong>qjob_config</strong> (<em>dict</em><em>, </em><em>optional</em>) – configuration for quantum job object</li>
-<li><strong>backend_options</strong> (<em>dict</em><em>, </em><em>optional</em>) – configuration for simulator</li>
-<li><strong>noise_config</strong> (<em>dict</em><em>, </em><em>optional</em>) – configuration for noise model</li>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">the measurement fitter</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">the Qobj with calibration circuits at the beginning
+list[str]: the state labels for build MeasFitter
+list[str]: the labels of the calibration circuits</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first"><a class="reference internal" href="qiskit.ignis.mitigation.measurement.fitters.html#qiskit.ignis.mitigation.measurement.fitters.CompleteMeasFitter" title="qiskit.ignis.mitigation.measurement.fitters.CompleteMeasFitter">CompleteMeasFitter</a> or <a class="reference internal" href="qiskit.ignis.mitigation.measurement.fitters.html#qiskit.ignis.mitigation.measurement.fitters.TensoredMeasFitter" title="qiskit.ignis.mitigation.measurement.fitters.TensoredMeasFitter">TensoredMeasFitter</a></p>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first"><a class="reference internal" href="qiskit.qobj.qobj.html#qiskit.qobj.qobj.QasmQobj" title="qiskit.qobj.qobj.QasmQobj">QasmQobj</a></p>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><code class="xref py py-exc docutils literal notranslate"><span class="pre">AquaError</span></code> – when the fitter_cls is not recognizable.</p>
@@ -1697,43 +1696,17 @@
 
 <dl class="function">
 <dt id="qiskit.aqua.utils.measurement_error_mitigation.get_measured_qubits_from_qobj">
-<code class="descname">get_measured_qubits_from_qobj</code><span class="sig-paren">(</span><em>qobjs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/utils/measurement_error_mitigation.html#get_measured_qubits_from_qobj"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.aqua.utils.measurement_error_mitigation.get_measured_qubits_from_qobj" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_measured_qubits_from_qobj</code><span class="sig-paren">(</span><em>qobj</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/utils/measurement_error_mitigation.html#get_measured_qubits_from_qobj"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.aqua.utils.measurement_error_mitigation.get_measured_qubits_from_qobj" title="Permalink to this definition">¶</a></dt>
 <dd><p>Retrieve the measured qubits from transpiled circuits.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>qobjs</strong> (<em>list</em><em>[</em><em>QasmObj</em><em>]</em>) – qobjs</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>qobj</strong> (<em>QasmObj</em>) – qobj</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">the qubit mapping to-be-used for measure error mitigation</td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">[int]</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="function">
-<dt id="qiskit.aqua.utils.measurement_error_mitigation.mitigate_measurement_error">
-<code class="descname">mitigate_measurement_error</code><span class="sig-paren">(</span><em>results</em>, <em>meas_fitter</em>, <em>method='least_squares'</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/utils/measurement_error_mitigation.html#mitigate_measurement_error"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.aqua.utils.measurement_error_mitigation.mitigate_measurement_error" title="Permalink to this definition">¶</a></dt>
-<dd><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>results</strong> (<a class="reference internal" href="qiskit.result.result.html#qiskit.result.result.Result" title="qiskit.result.result.Result"><em>Result</em></a>) – the unmitigated Result object</li>
-<li><strong>meas_fitter</strong> (<a class="reference internal" href="qiskit.ignis.mitigation.measurement.fitters.html#qiskit.ignis.mitigation.measurement.fitters.CompleteMeasFitter" title="qiskit.ignis.mitigation.measurement.fitters.CompleteMeasFitter"><em>CompleteMeasFitter</em></a><em> or </em><a class="reference internal" href="qiskit.ignis.mitigation.measurement.fitters.html#qiskit.ignis.mitigation.measurement.fitters.TensoredMeasFitter" title="qiskit.ignis.mitigation.measurement.fitters.TensoredMeasFitter"><em>TensoredMeasFitter</em></a>) – the measurement fitter</li>
-<li><strong>method</strong> (<em>str</em>) – fitting method. If None, then least_squares is used.
-‘pseudo_inverse’: direct inversion of the A matrix
-‘least_squares’: constrained to have physical probabilities</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">the mitigated Result</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="qiskit.result.result.html#qiskit.result.result.Result" title="qiskit.result.result.Result">Result</a></p>
-</td>
 </tr>
 </tbody>
 </table>
@@ -1752,10 +1725,10 @@
             <div>qiskit.aqua.utils.json_utils module</div>
          </div>
      </a>
-     <a id="button-next" href="qiskit.aqua.utils.pauli_graph.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
+     <a id="button-next" href="qiskit.aqua.utils.qp_solver.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
         <div class="pagenation-text">
             <span class="pagenation-direction">Next</span>
-            <div>qiskit.aqua.utils.pauli_graph module</div>
+            <div>qiskit.aqua.utils.qp_solver module</div>
         </div>
      </a>
         

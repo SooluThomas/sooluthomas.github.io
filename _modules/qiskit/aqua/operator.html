@@ -190,6 +190,7 @@
 <span class="kn">import</span> <span class="nn">json</span>
 <span class="kn">from</span> <span class="nn">operator</span> <span class="k">import</span> <span class="n">iadd</span> <span class="k">as</span> <span class="n">op_iadd</span><span class="p">,</span> <span class="n">isub</span> <span class="k">as</span> <span class="n">op_isub</span>
 <span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">scipy</span> <span class="k">import</span> <span class="n">sparse</span> <span class="k">as</span> <span class="n">scisparse</span>
@@ -202,7 +203,7 @@
 <span class="kn">from</span> <span class="nn">qiskit.tools.events</span> <span class="k">import</span> <span class="n">TextProgressBar</span>
 
 <span class="kn">from</span> <span class="nn">qiskit.aqua</span> <span class="k">import</span> <span class="n">AquaError</span><span class="p">,</span> <span class="n">aqua_globals</span>
-<span class="kn">from</span> <span class="nn">qiskit.aqua.utils</span> <span class="k">import</span> <span class="n">PauliGraph</span><span class="p">,</span> <span class="n">compile_and_run_circuits</span><span class="p">,</span> <span class="n">find_regs_by_name</span>
+<span class="kn">from</span> <span class="nn">qiskit.aqua.operators</span> <span class="k">import</span> <span class="n">PauliGraph</span>
 <span class="kn">from</span> <span class="nn">qiskit.aqua.utils.backend_utils</span> <span class="k">import</span> <span class="n">is_statevector_backend</span>
 
 <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
@@ -226,6 +227,10 @@
 <span class="sd">            matrix (numpy.ndarray or scipy.sparse.csr_matrix) : a 2-D sparse matrix represents operator (using CSR format internally)</span>
 <span class="sd">            coloring (bool): method to group paulis.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;The `Operator` class is deprecated and will be removed after 0.6. &quot;</span>
+                      <span class="s2">&quot;Use the class for each representation instead, including `MatrixOperator`, &quot;</span>
+                      <span class="s2">&quot;`WeightedPauliOperator` and `TPBGroupedWeightedPauliOperator`&quot;</span><span class="p">,</span>
+                      <span class="ne">DeprecationWarning</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_paulis</span> <span class="o">=</span> <span class="n">paulis</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_coloring</span> <span class="o">=</span> <span class="n">coloring</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_grouped_paulis</span> <span class="o">=</span> <span class="n">grouped_paulis</span>
@@ -268,8 +273,9 @@
                     <span class="n">lhs</span><span class="o">.</span><span class="n">_paulis</span><span class="p">[</span><span class="n">idx</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">operation</span><span class="p">(</span><span class="n">lhs</span><span class="o">.</span><span class="n">_paulis</span><span class="p">[</span><span class="n">idx</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">pauli</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
                 <span class="k">else</span><span class="p">:</span>
                     <span class="n">lhs</span><span class="o">.</span><span class="n">_paulis_table</span><span class="p">[</span><span class="n">pauli_label</span><span class="p">]</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">lhs</span><span class="o">.</span><span class="n">_paulis</span><span class="p">)</span>
-                    <span class="n">pauli</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">operation</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">pauli</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-                    <span class="n">lhs</span><span class="o">.</span><span class="n">_paulis</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pauli</span><span class="p">)</span>
+                    <span class="n">new_pauli</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">pauli</span><span class="p">)</span>
+                    <span class="n">new_pauli</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">operation</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">pauli</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+                    <span class="n">lhs</span><span class="o">.</span><span class="n">_paulis</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">new_pauli</span><span class="p">)</span>
         <span class="k">elif</span> <span class="n">lhs</span><span class="o">.</span><span class="n">_grouped_paulis</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">rhs</span><span class="o">.</span><span class="n">_grouped_paulis</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">lhs</span><span class="o">.</span><span class="n">_grouped_paulis_to_paulis</span><span class="p">()</span>
             <span class="n">rhs</span><span class="o">.</span><span class="n">_grouped_paulis_to_paulis</span><span class="p">()</span>
@@ -277,6 +283,7 @@
             <span class="n">lhs</span><span class="o">.</span><span class="n">_paulis_to_grouped_paulis</span><span class="p">()</span>
         <span class="k">elif</span> <span class="n">lhs</span><span class="o">.</span><span class="n">_matrix</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">rhs</span><span class="o">.</span><span class="n">_matrix</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">lhs</span><span class="o">.</span><span class="n">_matrix</span> <span class="o">=</span> <span class="n">operation</span><span class="p">(</span><span class="n">lhs</span><span class="o">.</span><span class="n">_matrix</span><span class="p">,</span> <span class="n">rhs</span><span class="o">.</span><span class="n">_matrix</span><span class="p">)</span>
+            <span class="n">lhs</span><span class="o">.</span><span class="n">_to_dia_matrix</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="s1">&#39;matrix&#39;</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;the representations of two Operators should be the same. (</span><span class="si">{}</span><span class="s2">, </span><span class="si">{}</span><span class="s2">)&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
                 <span class="n">lhs</span><span class="o">.</span><span class="n">representations</span><span class="p">,</span> <span class="n">rhs</span><span class="o">.</span><span class="n">representations</span><span class="p">))</span>
@@ -358,6 +365,10 @@
 
 <div class="viewcode-block" id="Operator.copy"><a class="viewcode-back" href="../../../autodoc/qiskit.aqua.operator.html#qiskit.aqua.Operator.copy">[docs]</a>    <span class="k">def</span> <span class="nf">copy</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Get a copy of self.&quot;&quot;&quot;</span>
+        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;The `Operator` class is deprecated and will be removed after 0.6. &quot;</span>
+                      <span class="s2">&quot;Use the class for each representation instead, including `MatrixOperator`, &quot;</span>
+                      <span class="s2">&quot;`WeightedPauliOperator` and `TPBGroupedWeightedPauliOperator`&quot;</span><span class="p">,</span>
+                      <span class="ne">DeprecationWarning</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Operator.chop"><a class="viewcode-back" href="../../../autodoc/qiskit.aqua.operator.html#qiskit.aqua.Operator.chop">[docs]</a>    <span class="k">def</span> <span class="nf">chop</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mf">1e-15</span><span class="p">):</span>
@@ -371,6 +382,11 @@
 <span class="sd">        Args:</span>
 <span class="sd">            threshold (float): threshold chops the paulis</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;The `Operator` class is deprecated and will be removed after 0.6. &quot;</span>
+                      <span class="s2">&quot;Use the class for each representation instead, including `MatrixOperator`, &quot;</span>
+                      <span class="s2">&quot;`WeightedPauliOperator` and `TPBGroupedWeightedPauliOperator`&quot;</span><span class="p">,</span>
+                      <span class="ne">DeprecationWarning</span><span class="p">)</span>
+
         <span class="k">def</span> <span class="nf">chop_real_imag</span><span class="p">(</span><span class="n">coeff</span><span class="p">,</span> <span class="n">threshold</span><span class="p">):</span>
             <span class="n">temp_real</span> <span class="o">=</span> <span class="n">coeff</span><span class="o">.</span><span class="n">real</span> <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">absolute</span><span class="p">(</span><span class="n">coeff</span><span class="o">.</span><span class="n">real</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="n">threshold</span> <span class="k">else</span> <span class="mf">0.0</span>
             <span class="n">temp_imag</span> <span class="o">=</span> <span class="n">coeff</span><span class="o">.</span><span class="n">imag</span> <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">absolute</span><span class="p">(</span><span class="n">coeff</span><span class="o">.</span><span class="n">imag</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="n">threshold</span> <span class="k">else</span> <span class="mf">0.0</span>
@@ -416,6 +432,10 @@
 
 <span class="sd">        Usually used in construction.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;The `Operator` class is deprecated and will be removed after 0.6. &quot;</span>
+                      <span class="s2">&quot;Use the class for each representation instead, including `MatrixOperator`, &quot;</span>
+                      <span class="s2">&quot;`WeightedPauliOperator` and `TPBGroupedWeightedPauliOperator`&quot;</span><span class="p">,</span>
+                      <span class="ne">DeprecationWarning</span><span class="p">)</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_paulis</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">new_paulis</span> <span class="o">=</span> <span class="p">[]</span>
             <span class="n">new_paulis_table</span> <span class="o">=</span> <span class="p">{}</span>
@@ -475,15 +495,27 @@
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">coloring</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Getter of method of grouping paulis&quot;&quot;&quot;</span>
+        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;The `Operator` class is deprecated and will be removed after 0.6. &quot;</span>
+                      <span class="s2">&quot;Use the class for each representation instead, including `MatrixOperator`, &quot;</span>
+                      <span class="s2">&quot;`WeightedPauliOperator` and `TPBGroupedWeightedPauliOperator`&quot;</span><span class="p">,</span>
+                      <span class="ne">DeprecationWarning</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_coloring</span>
 
     <span class="nd">@coloring</span><span class="o">.</span><span class="n">setter</span>
     <span class="k">def</span> <span class="nf">coloring</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">new_coloring</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Setter of method of grouping paulis&quot;&quot;&quot;</span>
+        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;The `Operator` class is deprecated and will be removed after 0.6. &quot;</span>
+                      <span class="s2">&quot;Use the class for each representation instead, including `MatrixOperator`, &quot;</span>
+                      <span class="s2">&quot;`WeightedPauliOperator` and `TPBGroupedWeightedPauliOperator`&quot;</span><span class="p">,</span>
+                      <span class="ne">DeprecationWarning</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_coloring</span> <span class="o">=</span> <span class="n">new_coloring</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">aer_paulis</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;The `Operator` class is deprecated and will be removed after 0.6. &quot;</span>
+                      <span class="s2">&quot;Use the class for each representation instead, including `MatrixOperator`, &quot;</span>
+                      <span class="s2">&quot;`WeightedPauliOperator` and `TPBGroupedWeightedPauliOperator`&quot;</span><span class="p">,</span>
+                      <span class="ne">DeprecationWarning</span><span class="p">)</span>
         <span class="k">if</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_aer_paulis&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">to_paulis</span><span class="p">()</span>
             <span class="n">aer_paulis</span> <span class="o">=</span> <span class="p">[]</span>
@@ -502,6 +534,10 @@
 <span class="sd">        Args:</span>
 <span class="sd">            mode (str): &quot;matrix&quot;, &quot;paulis&quot; or &quot;grouped_paulis&quot;.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;The `Operator` class is deprecated and will be removed after 0.6. &quot;</span>
+                      <span class="s2">&quot;Use the class for each representation instead, including `MatrixOperator`, &quot;</span>
+                      <span class="s2">&quot;`WeightedPauliOperator` and `TPBGroupedWeightedPauliOperator`&quot;</span><span class="p">,</span>
+                      <span class="ne">DeprecationWarning</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">mode</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;matrix&#39;</span><span class="p">,</span> <span class="s1">&#39;paulis&#39;</span><span class="p">,</span> <span class="s1">&#39;grouped_paulis&#39;</span><span class="p">]:</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
                 <span class="s1">&#39;Mode should be one of &quot;matrix&quot;, &quot;paulis&quot;, &quot;grouped_paulis&quot;&#39;</span><span class="p">)</span>
@@ -529,23 +565,35 @@
         <span class="k">elif</span> <span class="n">mode</span> <span class="o">==</span> <span class="s1">&#39;grouped_paulis&#39;</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_grouped_paulis</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_grouped_paulis_to_paulis</span><span class="p">()</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_to_dia_matrix</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="s1">&#39;paulis&#39;</span><span class="p">)</span>
-
+            <span class="bp">self</span><span class="o">.</span><span class="n">_paulis_to_grouped_paulis</span><span class="p">()</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_dia_matrix</span> <span class="o">=</span> <span class="kc">None</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">paulis</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Getter of Pauli list.&quot;&quot;&quot;</span>
+        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;The `Operator` class is deprecated and will be removed after 0.6. &quot;</span>
+                      <span class="s2">&quot;Use the class for each representation instead, including `MatrixOperator`, &quot;</span>
+                      <span class="s2">&quot;`WeightedPauliOperator` and `TPBGroupedWeightedPauliOperator`&quot;</span><span class="p">,</span>
+                      <span class="ne">DeprecationWarning</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_paulis</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">grouped_paulis</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Getter of grouped Pauli list.&quot;&quot;&quot;</span>
+        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;The `Operator` class is deprecated and will be removed after 0.6. &quot;</span>
+                      <span class="s2">&quot;Use the class for each representation instead, including `MatrixOperator`, &quot;</span>
+                      <span class="s2">&quot;`WeightedPauliOperator` and `TPBGroupedWeightedPauliOperator`&quot;</span><span class="p">,</span>
+                      <span class="ne">DeprecationWarning</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_grouped_paulis</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">matrix</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Getter of matrix; if matrix is diagonal, diagonal matrix is returned instead.&quot;&quot;&quot;</span>
+        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;The `Operator` class is deprecated and will be removed after 0.6. &quot;</span>
+                      <span class="s2">&quot;Use the class for each representation instead, including `MatrixOperator`, &quot;</span>
+                      <span class="s2">&quot;`WeightedPauliOperator` and `TPBGroupedWeightedPauliOperator`&quot;</span><span class="p">,</span>
+                      <span class="ne">DeprecationWarning</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dia_matrix</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dia_matrix</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">_matrix</span>
 
 <div class="viewcode-block" id="Operator.enable_summarize_circuits"><a class="viewcode-back" href="../../../autodoc/qiskit.aqua.operator.html#qiskit.aqua.Operator.enable_summarize_circuits">[docs]</a>    <span class="k">def</span> <span class="nf">enable_summarize_circuits</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -562,6 +610,10 @@
 <span class="sd">        Returns:</span>
 <span class="sd">            list: available representations ([str])</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;The `Operator` class is deprecated and will be removed after 0.6. &quot;</span>
+                      <span class="s2">&quot;Use the class for each representation instead, including `MatrixOperator`, &quot;</span>
+                      <span class="s2">&quot;`WeightedPauliOperator` and `TPBGroupedWeightedPauliOperator`&quot;</span><span class="p">,</span>
+                      <span class="ne">DeprecationWarning</span><span class="p">)</span>
         <span class="n">ret</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_paulis</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">ret</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;paulis&quot;</span><span class="p">)</span>
@@ -580,6 +632,10 @@
 <span class="sd">            int: number of qubits</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;The `Operator` class is deprecated and will be removed after 0.6. &quot;</span>
+                      <span class="s2">&quot;Use the class for each representation instead, including `MatrixOperator`, &quot;</span>
+                      <span class="s2">&quot;`WeightedPauliOperator` and `TPBGroupedWeightedPauliOperator`&quot;</span><span class="p">,</span>
+                      <span class="ne">DeprecationWarning</span><span class="p">)</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_paulis</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_paulis</span> <span class="o">!=</span> <span class="p">[]:</span>
                 <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_paulis</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
@@ -602,6 +658,9 @@
 <span class="sd">        Returns:</span>
 <span class="sd">            Operator class: the loaded operator.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;The `Operator` class is deprecated and will be removed after 0.6. &quot;</span>
+                      <span class="s2">&quot;Use the `WeightedPauliOperator` class to load the operator&quot;</span><span class="p">,</span>
+                      <span class="ne">DeprecationWarning</span><span class="p">)</span>
         <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">Operator</span><span class="o">.</span><span class="n">load_from_dict</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">file</span><span class="p">),</span> <span class="n">before_04</span><span class="o">=</span><span class="n">before_04</span><span class="p">)</span></div>
 
@@ -613,6 +672,10 @@
 <span class="sd">            file_name (str): path to the file</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;The `Operator` class is deprecated and will be removed after 0.6. &quot;</span>
+                      <span class="s2">&quot;Use the class for each representation instead, including `MatrixOperator`, &quot;</span>
+                      <span class="s2">&quot;`WeightedPauliOperator` and `TPBGroupedWeightedPauliOperator`&quot;</span><span class="p">,</span>
+                      <span class="ne">DeprecationWarning</span><span class="p">)</span>
         <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
             <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">save_to_dict</span><span class="p">(),</span> <span class="n">f</span><span class="p">)</span></div>
 
@@ -639,6 +702,10 @@
 <span class="sd">        Returns:</span>
 <span class="sd">            Operator: the loaded operator.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;The `Operator` class is deprecated and will be removed after 0.6. &quot;</span>
+                      <span class="s2">&quot;Use the class for each representation instead, including `MatrixOperator`, &quot;</span>
+                      <span class="s2">&quot;`WeightedPauliOperator` and `TPBGroupedWeightedPauliOperator`&quot;</span><span class="p">,</span>
+                      <span class="ne">DeprecationWarning</span><span class="p">)</span>
         <span class="k">if</span> <span class="s1">&#39;paulis&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">dictionary</span><span class="p">:</span>
             <span class="k">raise</span> <span class="n">AquaError</span><span class="p">(</span><span class="s1">&#39;Dictionary missing &quot;paulis&quot; key&#39;</span><span class="p">)</span>
 
@@ -671,6 +738,10 @@
 <span class="sd">        Returns:</span>
 <span class="sd">            dict: a dictionary contains an operator with pauli representation.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;The `Operator` class is deprecated and will be removed after 0.6. &quot;</span>
+                      <span class="s2">&quot;Use the class for each representation instead, including `MatrixOperator`, &quot;</span>
+                      <span class="s2">&quot;`WeightedPauliOperator` and `TPBGroupedWeightedPauliOperator`&quot;</span><span class="p">,</span>
+                      <span class="ne">DeprecationWarning</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_check_representation</span><span class="p">(</span><span class="s2">&quot;paulis&quot;</span><span class="p">)</span>
         <span class="n">ret_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;paulis&quot;</span><span class="p">:</span> <span class="p">[]}</span>
         <span class="k">for</span> <span class="n">pauli</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_paulis</span><span class="p">:</span>
@@ -686,6 +757,36 @@
 
         <span class="k">return</span> <span class="n">ret_dict</span></div>
 
+<div class="viewcode-block" id="Operator.from_file"><a class="viewcode-back" href="../../../autodoc/qiskit.aqua.operator.html#qiskit.aqua.Operator.from_file">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">from_file</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="n">before_04</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;The `Operator` class is deprecated and will be removed after 0.6. &quot;</span>
+                      <span class="s2">&quot;Use the class for each representation instead, including `MatrixOperator`, &quot;</span>
+                      <span class="s2">&quot;`WeightedPauliOperator` and `TPBGroupedWeightedPauliOperator`&quot;</span><span class="p">,</span>
+                      <span class="ne">DeprecationWarning</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">Operator</span><span class="o">.</span><span class="n">load_from_file</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="n">before_04</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Operator.to_file"><a class="viewcode-back" href="../../../autodoc/qiskit.aqua.operator.html#qiskit.aqua.Operator.to_file">[docs]</a>    <span class="k">def</span> <span class="nf">to_file</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">file_name</span><span class="p">):</span>
+        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;The `Operator` class is deprecated and will be removed after 0.6. &quot;</span>
+                      <span class="s2">&quot;Use the class for each representation instead, including `MatrixOperator`, &quot;</span>
+                      <span class="s2">&quot;`WeightedPauliOperator` and `TPBGroupedWeightedPauliOperator`&quot;</span><span class="p">,</span>
+                      <span class="ne">DeprecationWarning</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">save_to_file</span><span class="p">(</span><span class="n">file_name</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Operator.from_dict"><a class="viewcode-back" href="../../../autodoc/qiskit.aqua.operator.html#qiskit.aqua.Operator.from_dict">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">from_dict</span><span class="p">(</span><span class="n">dictionary</span><span class="p">,</span> <span class="n">before_04</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;The `Operator` class is deprecated and will be removed after 0.6. &quot;</span>
+                      <span class="s2">&quot;Use the class for each representation instead, including `MatrixOperator`, &quot;</span>
+                      <span class="s2">&quot;`WeightedPauliOperator` and `TPBGroupedWeightedPauliOperator`&quot;</span><span class="p">,</span>
+                      <span class="ne">DeprecationWarning</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">Operator</span><span class="o">.</span><span class="n">load_from_dict</span><span class="p">(</span><span class="n">dictionary</span><span class="p">,</span> <span class="n">before_04</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Operator.to_dict"><a class="viewcode-back" href="../../../autodoc/qiskit.aqua.operator.html#qiskit.aqua.Operator.to_dict">[docs]</a>    <span class="k">def</span> <span class="nf">to_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;The `Operator` class is deprecated and will be removed after 0.6. &quot;</span>
+                      <span class="s2">&quot;Use the class for each representation instead, including `MatrixOperator`, &quot;</span>
+                      <span class="s2">&quot;`WeightedPauliOperator` and `TPBGroupedWeightedPauliOperator`&quot;</span><span class="p">,</span>
+                      <span class="ne">DeprecationWarning</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">save_to_dict</span><span class="p">()</span></div>
+
 <div class="viewcode-block" id="Operator.print_operators"><a class="viewcode-back" href="../../../autodoc/qiskit.aqua.operator.html#qiskit.aqua.Operator.print_operators">[docs]</a>    <span class="k">def</span> <span class="nf">print_operators</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">print_format</span><span class="o">=</span><span class="s1">&#39;paulis&#39;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Print out the paulis in the selected representation.</span>
@@ -699,6 +800,10 @@
 <span class="sd">        Raises:</span>
 <span class="sd">            ValueError: if `print_format` is not supported.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;The `Operator` class is deprecated and will be removed after 0.6. &quot;</span>
+                      <span class="s2">&quot;Use the class for each representation instead, including `MatrixOperator`, &quot;</span>
+                      <span class="s2">&quot;`WeightedPauliOperator` and `TPBGroupedWeightedPauliOperator`&quot;</span><span class="p">,</span>
+                      <span class="ne">DeprecationWarning</span><span class="p">)</span>
         <span class="n">ret</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
         <span class="k">if</span> <span class="n">print_format</span> <span class="o">==</span> <span class="s1">&#39;paulis&#39;</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_check_representation</span><span class="p">(</span><span class="s2">&quot;paulis&quot;</span><span class="p">)</span>
@@ -725,7 +830,8 @@
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Mode should be one of &quot;matrix&quot;, &quot;paulis&quot;, &quot;grouped_paulis&quot;&#39;</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">ret</span></div>
 
-<div class="viewcode-block" id="Operator.construct_evaluation_circuit"><a class="viewcode-back" href="../../../autodoc/qiskit.aqua.operator.html#qiskit.aqua.Operator.construct_evaluation_circuit">[docs]</a>    <span class="k">def</span> <span class="nf">construct_evaluation_circuit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">operator_mode</span><span class="p">,</span> <span class="n">input_circuit</span><span class="p">,</span> <span class="n">backend</span><span class="p">,</span> <span class="n">use_simulator_operator_mode</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<div class="viewcode-block" id="Operator.construct_evaluation_circuit"><a class="viewcode-back" href="../../../autodoc/qiskit.aqua.operator.html#qiskit.aqua.Operator.construct_evaluation_circuit">[docs]</a>    <span class="k">def</span> <span class="nf">construct_evaluation_circuit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">operator_mode</span><span class="p">,</span> <span class="n">input_circuit</span><span class="p">,</span> <span class="n">backend</span><span class="p">,</span> <span class="n">qr</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cr</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                                     <span class="n">use_simulator_operator_mode</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Construct the circuits for evaluation.</span>
 
@@ -733,12 +839,34 @@
 <span class="sd">            operator_mode (str): representation of operator, including paulis, grouped_paulis and matrix</span>
 <span class="sd">            input_circuit (QuantumCircuit): the quantum circuit.</span>
 <span class="sd">            backend (BaseBackend): backend selection for quantum machine.</span>
+<span class="sd">            qr (QuantumRegister, optional): the quantum register associated with the input_circuit</span>
+<span class="sd">            cr (ClassicalRegister, optional): the classical register associated with the input_circuit</span>
 <span class="sd">            use_simulator_operator_mode (bool): if aer_provider is used, we can do faster</span>
 <span class="sd">                           evaluation for pauli mode on statevector simualtion</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            [QuantumCircuit]: the circuits for evaluation.</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            AquaError: Can not find quantum register with `q` as the name and do not provide</span>
+<span class="sd">                       quantum register explicitly</span>
+<span class="sd">            AquaError: The provided qr is not in the input_circuit</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="kn">from</span> <span class="nn">qiskit.aqua.utils.run_circuits</span> <span class="k">import</span> <span class="n">find_regs_by_name</span>
+
+        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;The `Operator` class is deprecated and will be removed after 0.6. &quot;</span>
+                      <span class="s2">&quot;Use the class for each representation instead, including `MatrixOperator`, &quot;</span>
+                      <span class="s2">&quot;`WeightedPauliOperator` and `TPBGroupedWeightedPauliOperator`&quot;</span><span class="p">,</span>
+                      <span class="ne">DeprecationWarning</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">qr</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">qr</span> <span class="o">=</span> <span class="n">find_regs_by_name</span><span class="p">(</span><span class="n">input_circuit</span><span class="p">,</span> <span class="s1">&#39;q&#39;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">qr</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="n">AquaError</span><span class="p">(</span><span class="s2">&quot;Either providing the quantum register (qr) explicitly&quot;</span>
+                                <span class="s2">&quot;or used `q` as the name in the input circuit.&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">input_circuit</span><span class="o">.</span><span class="n">has_register</span><span class="p">(</span><span class="n">qr</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="n">AquaError</span><span class="p">(</span><span class="s2">&quot;The provided QuantumRegister (qr) is not in the circuit.&quot;</span><span class="p">)</span>
+
         <span class="k">if</span> <span class="n">is_statevector_backend</span><span class="p">(</span><span class="n">backend</span><span class="p">):</span>
             <span class="k">if</span> <span class="n">operator_mode</span> <span class="o">==</span> <span class="s1">&#39;matrix&#39;</span><span class="p">:</span>
                 <span class="n">circuits</span> <span class="o">=</span> <span class="p">[</span><span class="n">input_circuit</span><span class="p">]</span>
@@ -748,7 +876,6 @@
                     <span class="n">circuits</span> <span class="o">=</span> <span class="p">[</span><span class="n">input_circuit</span><span class="p">]</span>
                 <span class="k">else</span><span class="p">:</span>
                     <span class="n">n_qubits</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_qubits</span>
-                    <span class="n">q</span> <span class="o">=</span> <span class="n">find_regs_by_name</span><span class="p">(</span><span class="n">input_circuit</span><span class="p">,</span> <span class="s1">&#39;q&#39;</span><span class="p">)</span>
                     <span class="n">circuits</span> <span class="o">=</span> <span class="p">[</span><span class="n">input_circuit</span><span class="p">]</span>
                     <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">pauli</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_paulis</span><span class="p">):</span>
                         <span class="n">circuit</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">()</span> <span class="o">+</span> <span class="n">input_circuit</span>
@@ -756,11 +883,11 @@
                             <span class="k">continue</span>
                         <span class="k">for</span> <span class="n">qubit_idx</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_qubits</span><span class="p">):</span>
                             <span class="k">if</span> <span class="ow">not</span> <span class="n">pauli</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">z</span><span class="p">[</span><span class="n">qubit_idx</span><span class="p">]</span> <span class="ow">and</span> <span class="n">pauli</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="n">qubit_idx</span><span class="p">]:</span>
-                                <span class="n">circuit</span><span class="o">.</span><span class="n">u3</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="n">q</span><span class="p">[</span><span class="n">qubit_idx</span><span class="p">])</span>  <span class="c1"># x</span>
+                                <span class="n">circuit</span><span class="o">.</span><span class="n">u3</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="n">qr</span><span class="p">[</span><span class="n">qubit_idx</span><span class="p">])</span>  <span class="c1"># x</span>
                             <span class="k">elif</span> <span class="n">pauli</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">z</span><span class="p">[</span><span class="n">qubit_idx</span><span class="p">]</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">pauli</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="n">qubit_idx</span><span class="p">]:</span>
-                                <span class="n">circuit</span><span class="o">.</span><span class="n">u1</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="n">q</span><span class="p">[</span><span class="n">qubit_idx</span><span class="p">])</span>  <span class="c1"># z</span>
+                                <span class="n">circuit</span><span class="o">.</span><span class="n">u1</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="n">qr</span><span class="p">[</span><span class="n">qubit_idx</span><span class="p">])</span>  <span class="c1"># z</span>
                             <span class="k">elif</span> <span class="n">pauli</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">z</span><span class="p">[</span><span class="n">qubit_idx</span><span class="p">]</span> <span class="ow">and</span> <span class="n">pauli</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="n">qubit_idx</span><span class="p">]:</span>
-                                <span class="n">circuit</span><span class="o">.</span><span class="n">u3</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">q</span><span class="p">[</span><span class="n">qubit_idx</span><span class="p">])</span>  <span class="c1"># y</span>
+                                <span class="n">circuit</span><span class="o">.</span><span class="n">u3</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">qr</span><span class="p">[</span><span class="n">qubit_idx</span><span class="p">])</span>  <span class="c1"># y</span>
                         <span class="n">circuits</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">circuit</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">operator_mode</span> <span class="o">==</span> <span class="s1">&#39;matrix&#39;</span><span class="p">:</span>
@@ -770,48 +897,49 @@
             <span class="n">circuits</span> <span class="o">=</span> <span class="p">[]</span>
 
             <span class="n">base_circuit</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">()</span> <span class="o">+</span> <span class="n">input_circuit</span>
-            <span class="n">c</span> <span class="o">=</span> <span class="n">find_regs_by_name</span><span class="p">(</span><span class="n">base_circuit</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="n">qreg</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">c</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-                <span class="n">c</span> <span class="o">=</span> <span class="n">ClassicalRegister</span><span class="p">(</span><span class="n">n_qubits</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;c&#39;</span><span class="p">)</span>
-            <span class="n">base_circuit</span><span class="o">.</span><span class="n">add_register</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">cr</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">base_circuit</span><span class="o">.</span><span class="n">has_register</span><span class="p">(</span><span class="n">cr</span><span class="p">):</span>
+                    <span class="n">base_circuit</span><span class="o">.</span><span class="n">add_register</span><span class="p">(</span><span class="n">cr</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">cr</span> <span class="o">=</span> <span class="n">find_regs_by_name</span><span class="p">(</span><span class="n">base_circuit</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="n">qreg</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">cr</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="n">cr</span> <span class="o">=</span> <span class="n">ClassicalRegister</span><span class="p">(</span><span class="n">n_qubits</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;c&#39;</span><span class="p">)</span>
+                    <span class="n">base_circuit</span><span class="o">.</span><span class="n">add_register</span><span class="p">(</span><span class="n">cr</span><span class="p">)</span>
 
             <span class="k">if</span> <span class="n">operator_mode</span> <span class="o">==</span> <span class="s2">&quot;paulis&quot;</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_check_representation</span><span class="p">(</span><span class="s2">&quot;paulis&quot;</span><span class="p">)</span>
 
                 <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">pauli</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_paulis</span><span class="p">):</span>
                     <span class="n">circuit</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">()</span> <span class="o">+</span> <span class="n">base_circuit</span>
-                    <span class="n">q</span> <span class="o">=</span> <span class="n">find_regs_by_name</span><span class="p">(</span><span class="n">circuit</span><span class="p">,</span> <span class="s1">&#39;q&#39;</span><span class="p">)</span>
-                    <span class="n">c</span> <span class="o">=</span> <span class="n">find_regs_by_name</span><span class="p">(</span><span class="n">circuit</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="n">qreg</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
                     <span class="k">for</span> <span class="n">qubit_idx</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_qubits</span><span class="p">):</span>
                         <span class="k">if</span> <span class="n">pauli</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="n">qubit_idx</span><span class="p">]:</span>
                             <span class="k">if</span> <span class="n">pauli</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">z</span><span class="p">[</span><span class="n">qubit_idx</span><span class="p">]:</span>
                                 <span class="c1"># Measure Y</span>
-                                <span class="n">circuit</span><span class="o">.</span><span class="n">u1</span><span class="p">(</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">q</span><span class="p">[</span><span class="n">qubit_idx</span><span class="p">])</span>  <span class="c1"># sdg</span>
-                                <span class="n">circuit</span><span class="o">.</span><span class="n">u2</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="n">q</span><span class="p">[</span><span class="n">qubit_idx</span><span class="p">])</span>  <span class="c1"># h</span>
+                                <span class="n">circuit</span><span class="o">.</span><span class="n">u1</span><span class="p">(</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">qr</span><span class="p">[</span><span class="n">qubit_idx</span><span class="p">])</span>  <span class="c1"># sdg</span>
+                                <span class="n">circuit</span><span class="o">.</span><span class="n">u2</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="n">qr</span><span class="p">[</span><span class="n">qubit_idx</span><span class="p">])</span>  <span class="c1"># h</span>
                             <span class="k">else</span><span class="p">:</span>
                                 <span class="c1"># Measure X</span>
-                                <span class="n">circuit</span><span class="o">.</span><span class="n">u2</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="n">q</span><span class="p">[</span><span class="n">qubit_idx</span><span class="p">])</span>  <span class="c1"># h</span>
-                    <span class="n">circuit</span><span class="o">.</span><span class="n">barrier</span><span class="p">(</span><span class="n">q</span><span class="p">)</span>
-                    <span class="n">circuit</span><span class="o">.</span><span class="n">measure</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
+                                <span class="n">circuit</span><span class="o">.</span><span class="n">u2</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="n">qr</span><span class="p">[</span><span class="n">qubit_idx</span><span class="p">])</span>  <span class="c1"># h</span>
+                    <span class="n">circuit</span><span class="o">.</span><span class="n">barrier</span><span class="p">(</span><span class="n">qr</span><span class="p">)</span>
+                    <span class="n">circuit</span><span class="o">.</span><span class="n">measure</span><span class="p">(</span><span class="n">qr</span><span class="p">,</span> <span class="n">cr</span><span class="p">)</span>
                     <span class="n">circuits</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">circuit</span><span class="p">)</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_check_representation</span><span class="p">(</span><span class="s2">&quot;grouped_paulis&quot;</span><span class="p">)</span>
 
                 <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">tpb_set</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_grouped_paulis</span><span class="p">):</span>
                     <span class="n">circuit</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">()</span> <span class="o">+</span> <span class="n">base_circuit</span>
-                    <span class="n">q</span> <span class="o">=</span> <span class="n">find_regs_by_name</span><span class="p">(</span><span class="n">circuit</span><span class="p">,</span> <span class="s1">&#39;q&#39;</span><span class="p">)</span>
-                    <span class="n">c</span> <span class="o">=</span> <span class="n">find_regs_by_name</span><span class="p">(</span><span class="n">circuit</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="n">qreg</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
                     <span class="k">for</span> <span class="n">qubit_idx</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_qubits</span><span class="p">):</span>
                         <span class="k">if</span> <span class="n">tpb_set</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="n">qubit_idx</span><span class="p">]:</span>
                             <span class="k">if</span> <span class="n">tpb_set</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">z</span><span class="p">[</span><span class="n">qubit_idx</span><span class="p">]:</span>
                                 <span class="c1"># Measure Y</span>
-                                <span class="n">circuit</span><span class="o">.</span><span class="n">u1</span><span class="p">(</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">q</span><span class="p">[</span><span class="n">qubit_idx</span><span class="p">])</span>  <span class="c1"># sdg</span>
-                                <span class="n">circuit</span><span class="o">.</span><span class="n">u2</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="n">q</span><span class="p">[</span><span class="n">qubit_idx</span><span class="p">])</span>  <span class="c1"># h</span>
+                                <span class="n">circuit</span><span class="o">.</span><span class="n">u1</span><span class="p">(</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">qr</span><span class="p">[</span><span class="n">qubit_idx</span><span class="p">])</span>  <span class="c1"># sdg</span>
+                                <span class="n">circuit</span><span class="o">.</span><span class="n">u2</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="n">qr</span><span class="p">[</span><span class="n">qubit_idx</span><span class="p">])</span>  <span class="c1"># h</span>
                             <span class="k">else</span><span class="p">:</span>
                                 <span class="c1"># Measure X</span>
-                                <span class="n">circuit</span><span class="o">.</span><span class="n">u2</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="n">q</span><span class="p">[</span><span class="n">qubit_idx</span><span class="p">])</span>  <span class="c1"># h</span>
-                    <span class="n">circuit</span><span class="o">.</span><span class="n">barrier</span><span class="p">(</span><span class="n">q</span><span class="p">)</span>
-                    <span class="n">circuit</span><span class="o">.</span><span class="n">measure</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
+                                <span class="n">circuit</span><span class="o">.</span><span class="n">u2</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="n">qr</span><span class="p">[</span><span class="n">qubit_idx</span><span class="p">])</span>  <span class="c1"># h</span>
+                    <span class="n">circuit</span><span class="o">.</span><span class="n">barrier</span><span class="p">(</span><span class="n">qr</span><span class="p">)</span>
+                    <span class="n">circuit</span><span class="o">.</span><span class="n">measure</span><span class="p">(</span><span class="n">qr</span><span class="p">,</span> <span class="n">cr</span><span class="p">)</span>
                     <span class="n">circuits</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">circuit</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">circuits</span></div>
 
@@ -830,6 +958,10 @@
 <span class="sd">            float: the mean value</span>
 <span class="sd">            float: the standard deviation</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;The `Operator` class is deprecated and will be removed after 0.6. &quot;</span>
+                      <span class="s2">&quot;Use the class for each representation instead, including `MatrixOperator`, &quot;</span>
+                      <span class="s2">&quot;`WeightedPauliOperator` and `TPBGroupedWeightedPauliOperator`&quot;</span><span class="p">,</span>
+                      <span class="ne">DeprecationWarning</span><span class="p">)</span>
         <span class="n">avg</span><span class="p">,</span> <span class="n">std_dev</span><span class="p">,</span> <span class="n">variance</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span>
         <span class="k">if</span> <span class="n">is_statevector_backend</span><span class="p">(</span><span class="n">backend</span><span class="p">):</span>
             <span class="k">if</span> <span class="n">operator_mode</span> <span class="o">==</span> <span class="s2">&quot;matrix&quot;</span><span class="p">:</span>
@@ -951,6 +1083,12 @@
 <span class="sd">        Returns:</span>
 <span class="sd">            float, float: mean and standard deviation of avg</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="kn">from</span> <span class="nn">qiskit.aqua.utils.run_circuits</span> <span class="k">import</span> <span class="n">compile_and_run_circuits</span>
+
+        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;The `Operator` class is deprecated and will be removed after 0.6. &quot;</span>
+                      <span class="s2">&quot;Use the class for each representation instead, including `MatrixOperator`, &quot;</span>
+                      <span class="s2">&quot;`WeightedPauliOperator` and `TPBGroupedWeightedPauliOperator`&quot;</span><span class="p">,</span>
+                      <span class="ne">DeprecationWarning</span><span class="p">)</span>
         <span class="n">backend_config</span> <span class="o">=</span> <span class="n">backend_config</span> <span class="ow">or</span> <span class="p">{}</span>
         <span class="n">compile_config</span> <span class="o">=</span> <span class="n">compile_config</span> <span class="ow">or</span> <span class="p">{}</span>
         <span class="k">if</span> <span class="n">run_config</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
@@ -978,12 +1116,24 @@
         <span class="k">return</span> <span class="n">avg</span><span class="p">,</span> <span class="n">std_dev</span></div>
 
 <div class="viewcode-block" id="Operator.to_paulis"><a class="viewcode-back" href="../../../autodoc/qiskit.aqua.operator.html#qiskit.aqua.Operator.to_paulis">[docs]</a>    <span class="k">def</span> <span class="nf">to_paulis</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;The `Operator` class is deprecated and will be removed after 0.6. &quot;</span>
+                      <span class="s2">&quot;Use the class for each representation instead, including `MatrixOperator`, &quot;</span>
+                      <span class="s2">&quot;`WeightedPauliOperator` and `TPBGroupedWeightedPauliOperator`&quot;</span><span class="p">,</span>
+                      <span class="ne">DeprecationWarning</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_check_representation</span><span class="p">(</span><span class="s1">&#39;paulis&#39;</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Operator.to_grouped_paulis"><a class="viewcode-back" href="../../../autodoc/qiskit.aqua.operator.html#qiskit.aqua.Operator.to_grouped_paulis">[docs]</a>    <span class="k">def</span> <span class="nf">to_grouped_paulis</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;The `Operator` class is deprecated and will be removed after 0.6. &quot;</span>
+                      <span class="s2">&quot;Use the class for each representation instead, including `MatrixOperator`, &quot;</span>
+                      <span class="s2">&quot;`WeightedPauliOperator` and `TPBGroupedWeightedPauliOperator`&quot;</span><span class="p">,</span>
+                      <span class="ne">DeprecationWarning</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_check_representation</span><span class="p">(</span><span class="s1">&#39;grouped_paulis&#39;</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Operator.to_matrix"><a class="viewcode-back" href="../../../autodoc/qiskit.aqua.operator.html#qiskit.aqua.Operator.to_matrix">[docs]</a>    <span class="k">def</span> <span class="nf">to_matrix</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;The `Operator` class is deprecated and will be removed after 0.6. &quot;</span>
+                      <span class="s2">&quot;Use the class for each representation instead, including `MatrixOperator`, &quot;</span>
+                      <span class="s2">&quot;`WeightedPauliOperator` and `TPBGroupedWeightedPauliOperator`&quot;</span><span class="p">,</span>
+                      <span class="ne">DeprecationWarning</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_check_representation</span><span class="p">(</span><span class="s1">&#39;matrix&#39;</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Operator.convert"><a class="viewcode-back" href="../../../autodoc/qiskit.aqua.operator.html#qiskit.aqua.Operator.convert">[docs]</a>    <span class="k">def</span> <span class="nf">convert</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_format</span><span class="p">,</span> <span class="n">output_format</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
@@ -1002,6 +1152,11 @@
 <span class="sd">        Raises:</span>
 <span class="sd">            ValueError: if the unsupported output_format is specified.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;The `Operator` class is deprecated and will be removed after 0.6. &quot;</span>
+                      <span class="s2">&quot;Use the class for each representation instead, including `MatrixOperator`, &quot;</span>
+                      <span class="s2">&quot;`WeightedPauliOperator` and `TPBGroupedWeightedPauliOperator`&quot;</span><span class="p">,</span>
+                      <span class="ne">DeprecationWarning</span><span class="p">)</span>
+
         <span class="n">input_format</span> <span class="o">=</span> <span class="n">input_format</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
         <span class="n">output_format</span> <span class="o">=</span> <span class="n">output_format</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
 
@@ -1201,6 +1356,7 @@
         <span class="n">p_z_or_x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logical_or</span><span class="p">(</span><span class="n">pauli</span><span class="o">.</span><span class="n">z</span><span class="p">,</span> <span class="n">pauli</span><span class="o">.</span><span class="n">x</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
             <span class="n">bitstr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">key</span><span class="p">))[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">bool</span><span class="p">)</span>
+            <span class="c1"># pylint: disable=no-member</span>
             <span class="n">sign</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.0</span> <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">logical_xor</span><span class="o">.</span><span class="n">reduce</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">logical_and</span><span class="p">(</span><span class="n">bitstr</span><span class="p">,</span> <span class="n">p_z_or_x</span><span class="p">))</span> <span class="k">else</span> <span class="mf">1.0</span>
             <span class="n">observable</span> <span class="o">+=</span> <span class="n">sign</span> <span class="o">*</span> <span class="n">value</span>
         <span class="n">observable</span> <span class="o">/=</span> <span class="n">num_shots</span>
@@ -1233,6 +1389,7 @@
         <span class="n">p2_z_or_x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logical_or</span><span class="p">(</span><span class="n">pauli_2</span><span class="o">.</span><span class="n">z</span><span class="p">,</span> <span class="n">pauli_2</span><span class="o">.</span><span class="n">x</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
             <span class="n">bitstr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">key</span><span class="p">))[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">bool</span><span class="p">)</span>
+            <span class="c1"># pylint: disable=no-member</span>
             <span class="n">sign_1</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.0</span> <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">logical_xor</span><span class="o">.</span><span class="n">reduce</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">logical_and</span><span class="p">(</span><span class="n">bitstr</span><span class="p">,</span> <span class="n">p1_z_or_x</span><span class="p">))</span> <span class="k">else</span> <span class="mf">1.0</span>
             <span class="n">sign_2</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.0</span> <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">logical_xor</span><span class="o">.</span><span class="n">reduce</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">logical_and</span><span class="p">(</span><span class="n">bitstr</span><span class="p">,</span> <span class="n">p2_z_or_x</span><span class="p">))</span> <span class="k">else</span> <span class="mf">1.0</span>
             <span class="n">cov</span> <span class="o">+=</span> <span class="p">(</span><span class="n">sign_1</span> <span class="o">-</span> <span class="n">avg_1</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">sign_2</span> <span class="o">-</span> <span class="n">avg_2</span><span class="p">)</span> <span class="o">*</span> <span class="n">value</span>
@@ -1250,19 +1407,33 @@
 <span class="sd">        sectors, (block spin order) according to the number of particles in the system.</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            m (int): number of fermionic particles</span>
+<span class="sd">            m (list, int): number of particles, if it is a list, the first number is alpha</span>
+<span class="sd">                            and the second number if beta.</span>
 <span class="sd">            threshold (float): threshold for Pauli simplification</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            Operator: a new operator whose qubit number is reduced by 2.</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;The `Operator` class is deprecated and will be removed after 0.6. &quot;</span>
+                      <span class="s2">&quot;Use the class for each representation instead, including `MatrixOperator`, &quot;</span>
+                      <span class="s2">&quot;`WeightedPauliOperator` and `TPBGroupedWeightedPauliOperator`&quot;</span><span class="p">,</span>
+                      <span class="ne">DeprecationWarning</span><span class="p">)</span>
+
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_paulis</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">_paulis</span> <span class="o">==</span> <span class="p">[]:</span>
             <span class="k">return</span> <span class="bp">self</span>
 
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+            <span class="n">num_alpha</span> <span class="o">=</span> <span class="n">m</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">num_beta</span> <span class="o">=</span> <span class="n">m</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">num_alpha</span> <span class="o">=</span> <span class="n">m</span> <span class="o">//</span> <span class="mi">2</span>
+            <span class="n">num_beta</span> <span class="o">=</span> <span class="n">m</span> <span class="o">//</span> <span class="mi">2</span>
+
         <span class="n">operator_out</span> <span class="o">=</span> <span class="n">Operator</span><span class="p">(</span><span class="n">paulis</span><span class="o">=</span><span class="p">[])</span>
-        <span class="n">par_1</span> <span class="o">=</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">m</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="o">-</span><span class="mi">1</span>
-        <span class="n">par_2</span> <span class="o">=</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">m</span> <span class="o">%</span> <span class="mi">4</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="o">-</span><span class="mi">1</span>
+
+        <span class="n">par_1</span> <span class="o">=</span> <span class="mi">1</span> <span class="k">if</span> <span class="p">(</span><span class="n">num_alpha</span> <span class="o">+</span> <span class="n">num_beta</span><span class="p">)</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="o">-</span><span class="mi">1</span>
+        <span class="n">par_2</span> <span class="o">=</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">num_alpha</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="o">-</span><span class="mi">1</span>
 
         <span class="n">n</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_qubits</span>
         <span class="n">last_idx</span> <span class="o">=</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span>
@@ -1297,6 +1468,11 @@
 <span class="sd">        Returns:</span>
 <span class="sd">            list: The list of pauli terms</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;The `Operator` class is deprecated and will be removed after 0.6. &quot;</span>
+                      <span class="s2">&quot;Use the class for each representation instead, including `MatrixOperator`, &quot;</span>
+                      <span class="s2">&quot;`WeightedPauliOperator` and `TPBGroupedWeightedPauliOperator`&quot;</span><span class="p">,</span>
+                      <span class="ne">DeprecationWarning</span><span class="p">)</span>
+
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_paulis</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">return</span> <span class="p">[]</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_paulis</span>
         <span class="k">else</span><span class="p">:</span>
@@ -1328,6 +1504,11 @@
 <span class="sd">        Returns:</span>
 <span class="sd">            QuantumCircuit: The Qiskit QuantumCircuit corresponding to specified evolution.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;The `Operator` class is deprecated and will be removed after 0.6. &quot;</span>
+                      <span class="s2">&quot;Use the class for each representation instead, including `MatrixOperator`, &quot;</span>
+                      <span class="s2">&quot;`WeightedPauliOperator` and `TPBGroupedWeightedPauliOperator`&quot;</span><span class="p">,</span>
+                      <span class="ne">DeprecationWarning</span><span class="p">)</span>
+
         <span class="k">if</span> <span class="n">state_registers</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Quantum state registers are required.&#39;</span><span class="p">)</span>
 
@@ -1451,6 +1632,7 @@
 <span class="sd">        Returns:</span>
 <span class="sd">            numpy array: The matrix representation corresponding to the specified suzuki expansion</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># pylint: disable=no-member</span>
         <span class="k">if</span> <span class="n">expansion_order</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
             <span class="n">left</span> <span class="o">=</span> <span class="n">reduce</span><span class="p">(</span>
                 <span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">x</span> <span class="o">@</span> <span class="n">y</span><span class="p">,</span>
@@ -1533,6 +1715,12 @@
 <span class="sd">            or the constructed QuantumCircuit.</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;The `Operator` class is deprecated and will be removed after 0.6. &quot;</span>
+                      <span class="s2">&quot;Use the class for each representation instead, including `MatrixOperator`, &quot;</span>
+                      <span class="s2">&quot;`WeightedPauliOperator` and `TPBGroupedWeightedPauliOperator`&quot;</span><span class="p">,</span>
+                      <span class="ne">DeprecationWarning</span><span class="p">)</span>
+
+        <span class="c1"># pylint: disable=no-member</span>
         <span class="k">if</span> <span class="n">num_time_slices</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">or</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">num_time_slices</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Number of time slices should be a non-negative integer.&#39;</span><span class="p">)</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">expansion_mode</span> <span class="o">==</span> <span class="s1">&#39;trotter&#39;</span> <span class="ow">or</span> <span class="n">expansion_mode</span> <span class="o">==</span> <span class="s1">&#39;suzuki&#39;</span><span class="p">):</span>
@@ -1601,6 +1789,11 @@
 <span class="sd">        Returns:</span>
 <span class="sd">            bool: is empty?</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;The `Operator` class is deprecated and will be removed after 0.6. &quot;</span>
+                      <span class="s2">&quot;Use the class for each representation instead, including `MatrixOperator`, &quot;</span>
+                      <span class="s2">&quot;`WeightedPauliOperator` and `TPBGroupedWeightedPauliOperator`&quot;</span><span class="p">,</span>
+                      <span class="ne">DeprecationWarning</span><span class="p">)</span>
+
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_matrix</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dia_matrix</span> <span class="ow">is</span> <span class="kc">None</span> \
                 <span class="ow">and</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_paulis</span> <span class="o">==</span> <span class="p">[]</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">_paulis</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">)</span> \
                 <span class="ow">and</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_grouped_paulis</span> <span class="o">==</span> <span class="p">[]</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">_grouped_paulis</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">):</span>
@@ -1666,6 +1859,10 @@
 <span class="sd">        Returns:</span>
 <span class="sd">            numpy.ndarray : matrix_in in Echelon row form</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;The `Operator` class is deprecated and will be removed after 0.6. &quot;</span>
+                      <span class="s2">&quot;Use the class for each representation instead, including `MatrixOperator`, &quot;</span>
+                      <span class="s2">&quot;`WeightedPauliOperator` and `TPBGroupedWeightedPauliOperator`&quot;</span><span class="p">,</span>
+                      <span class="ne">DeprecationWarning</span><span class="p">)</span>
 
         <span class="n">size</span> <span class="o">=</span> <span class="n">matrix_in</span><span class="o">.</span><span class="n">shape</span>
 
@@ -1705,6 +1902,9 @@
 <span class="sd">        Returns:</span>
 <span class="sd">            [numpy.ndarray]: the list of kernel vectors</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;The `Operator` class is deprecated and will be removed after 0.6. &quot;</span>
+                      <span class="s2">&quot;Use the class for each representation instead, including `MatrixOperator`, &quot;</span>
+                      <span class="s2">&quot;`WeightedPauliOperator` and `TPBGroupedWeightedPauliOperator`&quot;</span><span class="p">,</span> <span class="ne">DeprecationWarning</span><span class="p">)</span>
 
         <span class="n">size</span> <span class="o">=</span> <span class="n">matrix_in</span><span class="o">.</span><span class="n">shape</span>
         <span class="n">kernel</span> <span class="o">=</span> <span class="p">[]</span>
@@ -1728,6 +1928,9 @@
 <span class="sd">            [Operators]: the list of Clifford unitaries to block diagonalize Operator</span>
 <span class="sd">            [int]: the list of support of the single-qubit Pauli objects used to build the clifford operators</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;The `Operator` class is deprecated and will be removed after 0.6. &quot;</span>
+                      <span class="s2">&quot;Use the class for each representation instead, including `MatrixOperator`, &quot;</span>
+                      <span class="s2">&quot;`WeightedPauliOperator` and `TPBGroupedWeightedPauliOperator`&quot;</span><span class="p">,</span> <span class="ne">DeprecationWarning</span><span class="p">)</span>
 
         <span class="n">Pauli_symmetries</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="n">sq_paulis</span> <span class="o">=</span> <span class="p">[]</span>
@@ -1840,6 +2043,9 @@
 <span class="sd">        Returns:</span>
 <span class="sd">            Operator : the tapered operator, or empty operator if the `operator` is empty.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;The `Operator` class is deprecated and will be removed after 0.6. &quot;</span>
+                      <span class="s2">&quot;Use the class for each representation instead, including `MatrixOperator`, &quot;</span>
+                      <span class="s2">&quot;`WeightedPauliOperator` and `TPBGroupedWeightedPauliOperator`&quot;</span><span class="p">,</span> <span class="ne">DeprecationWarning</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">cliffords</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="n">sq_list</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="n">tapering_values</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
             <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Cliffords, single qubit list and tapering values cannot be empty.</span><span class="se">\n</span><span class="s2">&quot;</span>
@@ -1887,6 +2093,10 @@
 <span class="sd">        The difference from `_simplify_paulis` method is that, this method will not remove duplicated</span>
 <span class="sd">        paulis.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;The `Operator` class is deprecated and will be removed after 0.6. &quot;</span>
+                      <span class="s2">&quot;Use the class for each representation instead, including `MatrixOperator`, &quot;</span>
+                      <span class="s2">&quot;`WeightedPauliOperator` and `TPBGroupedWeightedPauliOperator`&quot;</span><span class="p">,</span> <span class="ne">DeprecationWarning</span><span class="p">)</span>
+
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_paulis</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">new_paulis</span> <span class="o">=</span> <span class="p">[</span><span class="n">pauli</span> <span class="k">for</span> <span class="n">pauli</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_paulis</span> <span class="k">if</span> <span class="n">pauli</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">]</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_paulis</span> <span class="o">=</span> <span class="n">new_paulis</span>
@@ -1907,17 +2117,43 @@
 <span class="sd">        Args:</span>
 <span class="sd">            scaling_factor (float): the sacling factor</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;The `Operator` class is deprecated and will be removed after 0.6. &quot;</span>
+                      <span class="s2">&quot;Use the class for each representation instead, including `MatrixOperator`, &quot;</span>
+                      <span class="s2">&quot;`WeightedPauliOperator` and `TPBGroupedWeightedPauliOperator`&quot;</span><span class="p">,</span> <span class="ne">DeprecationWarning</span><span class="p">)</span>
+
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_paulis</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_paulis</span><span class="p">)):</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_paulis</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_paulis</span><span class="p">[</span><span class="n">idx</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">scaling_factor</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_paulis</span><span class="p">[</span><span class="n">idx</span><span class="p">][</span><span class="mi">1</span><span class="p">]]</span>
         <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">_grouped_paulis</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_grouped_paulis_to_paulis</span><span class="p">()</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_scale_paulis</span><span class="p">(</span><span class="n">scaling_factor</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">scaling_coeff</span><span class="p">(</span><span class="n">scaling_factor</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_paulis_to_grouped_paulis</span><span class="p">()</span>
         <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">_matrix</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_matrix</span> <span class="o">*=</span> <span class="n">scaling_factor</span>
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dia_matrix</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">_dia_matrix</span> <span class="o">*=</span> <span class="n">scaling_factor</span></div></div>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_dia_matrix</span> <span class="o">*=</span> <span class="n">scaling_factor</span></div>
+
+<div class="viewcode-block" id="Operator.to_matrix_operator"><a class="viewcode-back" href="../../../autodoc/qiskit.aqua.operator.html#qiskit.aqua.Operator.to_matrix_operator">[docs]</a>    <span class="k">def</span> <span class="nf">to_matrix_operator</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="kn">from</span> <span class="nn">qiskit.aqua.operators</span> <span class="k">import</span> <span class="n">MatrixOperator</span>
+        <span class="n">ret</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="n">ret</span><span class="o">.</span><span class="n">to_matrix</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">MatrixOperator</span><span class="p">(</span><span class="n">matrix</span><span class="o">=</span><span class="n">ret</span><span class="o">.</span><span class="n">_matrix</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Operator.to_weighted_pauli_operator"><a class="viewcode-back" href="../../../autodoc/qiskit.aqua.operator.html#qiskit.aqua.Operator.to_weighted_pauli_operator">[docs]</a>    <span class="k">def</span> <span class="nf">to_weighted_pauli_operator</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="kn">from</span> <span class="nn">qiskit.aqua.operators</span> <span class="k">import</span> <span class="n">WeightedPauliOperator</span>
+        <span class="n">ret</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="n">ret</span><span class="o">.</span><span class="n">to_paulis</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">WeightedPauliOperator</span><span class="p">(</span><span class="n">paulis</span><span class="o">=</span><span class="n">ret</span><span class="o">.</span><span class="n">_paulis</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Operator.to_tpb_grouped_weighted_pauli_operator"><a class="viewcode-back" href="../../../autodoc/qiskit.aqua.operator.html#qiskit.aqua.Operator.to_tpb_grouped_weighted_pauli_operator">[docs]</a>    <span class="k">def</span> <span class="nf">to_tpb_grouped_weighted_pauli_operator</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="kn">from</span> <span class="nn">qiskit.aqua.operators</span> <span class="k">import</span> <span class="n">TPBGroupedWeightedPauliOperator</span>
+
+        <span class="n">ret</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">to_weighted_pauli_operator</span><span class="p">()</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">coloring</span><span class="p">:</span>
+            <span class="n">ret</span> <span class="o">=</span> <span class="n">TPBGroupedWeightedPauliOperator</span><span class="o">.</span><span class="n">sorted_grouping</span><span class="p">(</span><span class="n">ret</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">ret</span> <span class="o">=</span> <span class="n">TPBGroupedWeightedPauliOperator</span><span class="o">.</span><span class="n">unsorted_grouping</span><span class="p">(</span><span class="n">ret</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">ret</span></div></div>
 </pre></div>
 
         </div>

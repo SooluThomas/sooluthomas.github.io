@@ -51,7 +51,7 @@
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="qiskit.chemistry.version module" href="qiskit.chemistry.version.html" />
+    <link rel="next" title="qiskit.circuit package" href="qiskit.circuit.html" />
     <link rel="prev" title="qiskit.chemistry.qiskit_chemistry_problem module" href="qiskit.chemistry.qiskit_chemistry_problem.html" /> 
   </head>
 <body>
@@ -756,6 +756,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.circuit.html">qiskit.circuit package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#subpackages">Subpackages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#submodules">Submodules</a></li>
 </ul>
 </li>
@@ -776,8 +777,9 @@
 <li class="toctree-l4"><a class="reference internal" href="qiskit.extensions.html#submodules">Submodules</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.mapper.html">qiskit.mapper package</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="qiskit.mapper.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qiskit.ignis.html">qiskit.ignis package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.ignis.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.ignis.html#submodules">Submodules</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.providers.html">qiskit.providers package</a><ul>
@@ -836,10 +838,8 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="qiskit.html#submodules">Submodules</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="qiskit._util.html">qiskit._util module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.exceptions.html">qiskit.exceptions module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.execute.html">qiskit.execute module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.qiskiterror.html">qiskit.qiskiterror module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.user_config.html">qiskit.user_config module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.util.html">qiskit.util module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.version.html">qiskit.version module</a></li>
@@ -1540,6 +1540,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.circuit.html">qiskit.circuit package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#subpackages">Subpackages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#submodules">Submodules</a></li>
 </ul>
 </li>
@@ -1560,8 +1561,9 @@
 <li class="toctree-l4"><a class="reference internal" href="qiskit.extensions.html#submodules">Submodules</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.mapper.html">qiskit.mapper package</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="qiskit.mapper.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qiskit.ignis.html">qiskit.ignis package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.ignis.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.ignis.html#submodules">Submodules</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.providers.html">qiskit.providers package</a><ul>
@@ -1620,10 +1622,8 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="qiskit.html#submodules">Submodules</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="qiskit._util.html">qiskit._util module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.exceptions.html">qiskit.exceptions module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.execute.html">qiskit.execute module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.qiskiterror.html">qiskit.qiskiterror module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.user_config.html">qiskit.user_config module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.util.html">qiskit.util module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.version.html">qiskit.version module</a></li>
@@ -1659,6 +1659,11 @@
 <code class="descname">DEBYE</code><em class="property"> = 0.393430307</em><a class="headerlink" href="#qiskit.chemistry.qmolecule.QMolecule.DEBYE" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
+<dl class="attribute">
+<dt id="qiskit.chemistry.qmolecule.QMolecule.QMOLECULE_VERSION">
+<code class="descname">QMOLECULE_VERSION</code><em class="property"> = 2</em><a class="headerlink" href="#qiskit.chemistry.qmolecule.QMolecule.QMOLECULE_VERSION" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 <dl class="method">
 <dt id="qiskit.chemistry.qmolecule.QMolecule.Z">
 <code class="descname">Z</code><span class="sig-paren">(</span><em>natom</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/chemistry/qmolecule.html#QMolecule.Z"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.chemistry.qmolecule.QMolecule.Z" title="Permalink to this definition">¶</a></dt>
@@ -1690,30 +1695,6 @@
 <code class="descname">log</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/chemistry/qmolecule.html#QMolecule.log"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.chemistry.qmolecule.QMolecule.log" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="staticmethod">
-<dt id="qiskit.chemistry.qmolecule.QMolecule.mo_to_spin">
-<em class="property">static </em><code class="descname">mo_to_spin</code><span class="sig-paren">(</span><em>mohij</em>, <em>mohijkl</em>, <em>threshold=1e-12</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/chemistry/qmolecule.html#QMolecule.mo_to_spin"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.chemistry.qmolecule.QMolecule.mo_to_spin" title="Permalink to this definition">¶</a></dt>
-<dd><p>Convert one and two-body MO integrals to spin orbital basis</p>
-<p>Takes one and two body integrals in molecular orbital basis and returns
-integrals in spin orbitals</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>mohij</strong> – One body orbitals in molecular basis</li>
-<li><strong>mohijkl</strong> – Two body orbitals in molecular basis</li>
-<li><strong>threshold</strong> – Threshold value for assignments</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">One and two body integrals in spin orbitals</p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
 <dl class="attribute">
 <dt id="qiskit.chemistry.qmolecule.QMolecule.one_body_integrals">
 <code class="descname">one_body_integrals</code><a class="headerlink" href="#qiskit.chemistry.qmolecule.QMolecule.one_body_integrals" title="Permalink to this definition">¶</a></dt>
@@ -1721,16 +1702,18 @@ integrals in spin orbitals</p>
 
 <dl class="staticmethod">
 <dt id="qiskit.chemistry.qmolecule.QMolecule.onee_to_spin">
-<em class="property">static </em><code class="descname">onee_to_spin</code><span class="sig-paren">(</span><em>mohij</em>, <em>threshold=1e-12</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/chemistry/qmolecule.html#QMolecule.onee_to_spin"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.chemistry.qmolecule.QMolecule.onee_to_spin" title="Permalink to this definition">¶</a></dt>
+<em class="property">static </em><code class="descname">onee_to_spin</code><span class="sig-paren">(</span><em>mohij</em>, <em>mohij_B=None</em>, <em>threshold=1e-12</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/chemistry/qmolecule.html#QMolecule.onee_to_spin"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.chemistry.qmolecule.QMolecule.onee_to_spin" title="Permalink to this definition">¶</a></dt>
 <dd><p>Convert one-body MO integrals to spin orbital basis</p>
 <p>Takes one body integrals in molecular orbital basis and returns
-integrals in spin orbitals</p>
+integrals in spin orbitals ready for use as coefficients to
+one body terms 2nd quantized Hamiltonian.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>mohij</strong> – One body orbitals in molecular basis</li>
+<li><strong>mohij</strong> – One body orbitals in molecular basis (Alpha)</li>
+<li><strong>mohij_b</strong> – One body orbitals in molecular basis (Beta)</li>
 <li><strong>threshold</strong> – Threshold value for assignments</li>
 </ul>
 </td>
@@ -1787,16 +1770,19 @@ integrals in spin orbitals</p>
 
 <dl class="staticmethod">
 <dt id="qiskit.chemistry.qmolecule.QMolecule.twoe_to_spin">
-<em class="property">static </em><code class="descname">twoe_to_spin</code><span class="sig-paren">(</span><em>mohijkl</em>, <em>threshold=1e-12</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/chemistry/qmolecule.html#QMolecule.twoe_to_spin"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.chemistry.qmolecule.QMolecule.twoe_to_spin" title="Permalink to this definition">¶</a></dt>
+<em class="property">static </em><code class="descname">twoe_to_spin</code><span class="sig-paren">(</span><em>mohijkl</em>, <em>mohijkl_BB=None</em>, <em>mohijkl_BA=None</em>, <em>threshold=1e-12</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/chemistry/qmolecule.html#QMolecule.twoe_to_spin"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.chemistry.qmolecule.QMolecule.twoe_to_spin" title="Permalink to this definition">¶</a></dt>
 <dd><p>Convert two-body MO integrals to spin orbital basis</p>
 <p>Takes two body integrals in molecular orbital basis and returns
-integrals in spin orbitals</p>
+integrals in spin orbitals ready for use as coefficients to
+two body terms in 2nd quantized Hamiltonian.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>mohijkl</strong> – Two body orbitals in molecular basis</li>
+<li><strong>mohijkl</strong> – Two body orbitals in molecular basis (AlphaAlpha)</li>
+<li><strong>mohijkl_BB</strong> – Two body orbitals in molecular basis (BetaBeta)</li>
+<li><strong>mohijkl_BA</strong> – Two body orbitals in molecular basis (BetaAlpha)</li>
 <li><strong>threshold</strong> – Threshold value for assignments</li>
 </ul>
 </td>
@@ -1830,6 +1816,11 @@ integrals in spin orbitals</p>
 </table>
 </dd></dl>
 
+<dl class="staticmethod">
+<dt id="qiskit.chemistry.qmolecule.QMolecule.twoeints2mo_general">
+<em class="property">static </em><code class="descname">twoeints2mo_general</code><span class="sig-paren">(</span><em>ints</em>, <em>moc1</em>, <em>moc2</em>, <em>moc3</em>, <em>moc4</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/chemistry/qmolecule.html#QMolecule.twoeints2mo_general"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.chemistry.qmolecule.QMolecule.twoeints2mo_general" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 <dl class="attribute">
 <dt id="qiskit.chemistry.qmolecule.QMolecule.x_dipole_integrals">
 <code class="descname">x_dipole_integrals</code><a class="headerlink" href="#qiskit.chemistry.qmolecule.QMolecule.x_dipole_integrals" title="Permalink to this definition">¶</a></dt>
@@ -1860,10 +1851,10 @@ integrals in spin orbitals</p>
             <div>qiskit.chemistry.qiskit_chemistry_problem module</div>
          </div>
      </a>
-     <a id="button-next" href="qiskit.chemistry.version.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
+     <a id="button-next" href="qiskit.circuit.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
         <div class="pagenation-text">
             <span class="pagenation-direction">Next</span>
-            <div>qiskit.chemistry.version module</div>
+            <div>qiskit.circuit package</div>
         </div>
      </a>
         

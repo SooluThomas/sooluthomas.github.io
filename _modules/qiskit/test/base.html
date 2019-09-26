@@ -219,12 +219,7 @@
 
 <div class="viewcode-block" id="QiskitTestCase.tearDown"><a class="viewcode-back" href="../../../autodoc/qiskit.test.base.html#qiskit.test.base.QiskitTestCase.tearDown">[docs]</a>    <span class="k">def</span> <span class="nf">tearDown</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="c1"># Reset the default providers, as in practice they acts as a singleton</span>
-        <span class="c1"># due to importing the wrapper from qiskit.</span>
-        <span class="k">try</span><span class="p">:</span>
-            <span class="kn">from</span> <span class="nn">qiskit.providers.ibmq</span> <span class="k">import</span> <span class="n">IBMQ</span>
-            <span class="n">IBMQ</span><span class="o">.</span><span class="n">_accounts</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
-        <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
-            <span class="k">pass</span>
+        <span class="c1"># due to importing the instances from the top-level qiskit namespace.</span>
         <span class="kn">from</span> <span class="nn">qiskit.providers.basicaer</span> <span class="k">import</span> <span class="n">BasicAer</span>
 
         <span class="n">BasicAer</span><span class="o">.</span><span class="n">_backends</span> <span class="o">=</span> <span class="n">BasicAer</span><span class="o">.</span><span class="n">_verify_backends</span><span class="p">()</span></div>
@@ -270,39 +265,77 @@
 <span class="sd">            default_value (number): default value for missing keys.</span>
 
 <span class="sd">        Raises:</span>
-<span class="sd">            TypeError: raises TestCase failureException if the test fails.</span>
+<span class="sd">            TypeError: if the arguments are not valid (both `delta` and</span>
+<span class="sd">                `places` are specified).</span>
+<span class="sd">            AssertionError: if the dictionaries are not almost equal.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">def</span> <span class="nf">valid_comparison</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
-            <span class="sd">&quot;&quot;&quot;compare value to delta, within places accuracy&quot;&quot;&quot;</span>
-            <span class="k">if</span> <span class="n">places</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-                <span class="k">return</span> <span class="nb">round</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">places</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="k">return</span> <span class="n">value</span> <span class="o">&lt;</span> <span class="n">delta</span>
 
-        <span class="c1"># Check arguments.</span>
-        <span class="k">if</span> <span class="n">dict1</span> <span class="o">==</span> <span class="n">dict2</span><span class="p">:</span>
-            <span class="k">return</span>
-        <span class="k">if</span> <span class="n">places</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="k">if</span> <span class="n">delta</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-                <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;specify delta or places not both&quot;</span><span class="p">)</span>
-            <span class="n">msg_suffix</span> <span class="o">=</span> <span class="s1">&#39; within </span><span class="si">%s</span><span class="s1"> places&#39;</span> <span class="o">%</span> <span class="n">places</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">delta</span> <span class="o">=</span> <span class="n">delta</span> <span class="ow">or</span> <span class="mf">1e-8</span>
-            <span class="n">msg_suffix</span> <span class="o">=</span> <span class="s1">&#39; within </span><span class="si">%s</span><span class="s1"> delta&#39;</span> <span class="o">%</span> <span class="n">delta</span>
-
-        <span class="c1"># Compare all keys in both dicts, populating error_msg.</span>
-        <span class="n">error_msg</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
-        <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="nb">set</span><span class="p">(</span><span class="n">dict1</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span> <span class="o">|</span> <span class="nb">set</span><span class="p">(</span><span class="n">dict2</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
-            <span class="n">val1</span> <span class="o">=</span> <span class="n">dict1</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">default_value</span><span class="p">)</span>
-            <span class="n">val2</span> <span class="o">=</span> <span class="n">dict2</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">default_value</span><span class="p">)</span>
-            <span class="k">if</span> <span class="ow">not</span> <span class="n">valid_comparison</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">val1</span> <span class="o">-</span> <span class="n">val2</span><span class="p">)):</span>
-                <span class="n">error_msg</span> <span class="o">+=</span> <span class="s1">&#39;(</span><span class="si">%s</span><span class="s1">: </span><span class="si">%s</span><span class="s1"> != </span><span class="si">%s</span><span class="s1">), &#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">safe_repr</span><span class="p">(</span><span class="n">key</span><span class="p">),</span>
-                                                   <span class="n">safe_repr</span><span class="p">(</span><span class="n">val1</span><span class="p">),</span>
-                                                   <span class="n">safe_repr</span><span class="p">(</span><span class="n">val2</span><span class="p">))</span>
+        <span class="n">error_msg</span> <span class="o">=</span> <span class="n">dicts_almost_equal</span><span class="p">(</span><span class="n">dict1</span><span class="p">,</span> <span class="n">dict2</span><span class="p">,</span> <span class="n">delta</span><span class="p">,</span> <span class="n">places</span><span class="p">,</span> <span class="n">default_value</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="n">error_msg</span><span class="p">:</span>
-            <span class="n">msg</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_formatMessage</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="n">error_msg</span><span class="p">[:</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="n">msg_suffix</span><span class="p">)</span>
+            <span class="n">msg</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_formatMessage</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="n">error_msg</span><span class="p">)</span>
             <span class="k">raise</span> <span class="bp">self</span><span class="o">.</span><span class="n">failureException</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="dicts_almost_equal"><a class="viewcode-back" href="../../../autodoc/qiskit.test.base.html#qiskit.test.base.dicts_almost_equal">[docs]</a><span class="k">def</span> <span class="nf">dicts_almost_equal</span><span class="p">(</span><span class="n">dict1</span><span class="p">,</span> <span class="n">dict2</span><span class="p">,</span> <span class="n">delta</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">places</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">default_value</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Test if two dictionaries with numeric values are almost equal.</span>
+
+<span class="sd">    Fail if the two dictionaries are unequal as determined by</span>
+<span class="sd">    comparing that the difference between values with the same key are</span>
+<span class="sd">    not greater than delta (default 1e-8), or that difference rounded</span>
+<span class="sd">    to the given number of decimal places is not zero. If a key in one</span>
+<span class="sd">    dictionary is not in the other the default_value keyword argument</span>
+<span class="sd">    will be used for the missing value (default 0). If the two objects</span>
+<span class="sd">    compare equal then they will automatically compare almost equal.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        dict1 (dict): a dictionary.</span>
+<span class="sd">        dict2 (dict): a dictionary.</span>
+<span class="sd">        delta (number): threshold for comparison (defaults to 1e-8).</span>
+<span class="sd">        places (int): number of decimal places for comparison.</span>
+<span class="sd">        default_value (number): default value for missing keys.</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        TypeError: if the arguments are not valid (both `delta` and</span>
+<span class="sd">            `places` are specified).</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        String: Empty string if dictionaries are almost equal. A description</span>
+<span class="sd">            of their difference if they are deemed not almost equal.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">valid_comparison</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;compare value to delta, within places accuracy&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">places</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="nb">round</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">places</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">value</span> <span class="o">&lt;</span> <span class="n">delta</span>
+
+    <span class="c1"># Check arguments.</span>
+    <span class="k">if</span> <span class="n">dict1</span> <span class="o">==</span> <span class="n">dict2</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s1">&#39;&#39;</span>
+    <span class="k">if</span> <span class="n">places</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">delta</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;specify delta or places not both&quot;</span><span class="p">)</span>
+        <span class="n">msg_suffix</span> <span class="o">=</span> <span class="s1">&#39; within </span><span class="si">%s</span><span class="s1"> places&#39;</span> <span class="o">%</span> <span class="n">places</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">delta</span> <span class="o">=</span> <span class="n">delta</span> <span class="ow">or</span> <span class="mf">1e-8</span>
+        <span class="n">msg_suffix</span> <span class="o">=</span> <span class="s1">&#39; within </span><span class="si">%s</span><span class="s1"> delta&#39;</span> <span class="o">%</span> <span class="n">delta</span>
+
+    <span class="c1"># Compare all keys in both dicts, populating error_msg.</span>
+    <span class="n">error_msg</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+    <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="nb">set</span><span class="p">(</span><span class="n">dict1</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span> <span class="o">|</span> <span class="nb">set</span><span class="p">(</span><span class="n">dict2</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
+        <span class="n">val1</span> <span class="o">=</span> <span class="n">dict1</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">default_value</span><span class="p">)</span>
+        <span class="n">val2</span> <span class="o">=</span> <span class="n">dict2</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">default_value</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">valid_comparison</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">val1</span> <span class="o">-</span> <span class="n">val2</span><span class="p">)):</span>
+            <span class="n">error_msg</span> <span class="o">+=</span> <span class="s1">&#39;(</span><span class="si">%s</span><span class="s1">: </span><span class="si">%s</span><span class="s1"> != </span><span class="si">%s</span><span class="s1">), &#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">safe_repr</span><span class="p">(</span><span class="n">key</span><span class="p">),</span>
+                                               <span class="n">safe_repr</span><span class="p">(</span><span class="n">val1</span><span class="p">),</span>
+                                               <span class="n">safe_repr</span><span class="p">(</span><span class="n">val2</span><span class="p">))</span>
+
+    <span class="k">if</span> <span class="n">error_msg</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">error_msg</span><span class="p">[:</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="n">msg_suffix</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s1">&#39;&#39;</span></div>
 </pre></div>
 
         </div>

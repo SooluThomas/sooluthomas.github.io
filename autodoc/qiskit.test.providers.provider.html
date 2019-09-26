@@ -756,6 +756,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.circuit.html">qiskit.circuit package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#subpackages">Subpackages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#submodules">Submodules</a></li>
 </ul>
 </li>
@@ -776,8 +777,9 @@
 <li class="toctree-l4"><a class="reference internal" href="qiskit.extensions.html#submodules">Submodules</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.mapper.html">qiskit.mapper package</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="qiskit.mapper.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qiskit.ignis.html">qiskit.ignis package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.ignis.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.ignis.html#submodules">Submodules</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.providers.html">qiskit.providers package</a><ul>
@@ -836,10 +838,8 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="qiskit.html#submodules">Submodules</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="qiskit._util.html">qiskit._util module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.exceptions.html">qiskit.exceptions module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.execute.html">qiskit.execute module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.qiskiterror.html">qiskit.qiskiterror module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.user_config.html">qiskit.user_config module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.util.html">qiskit.util module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.version.html">qiskit.version module</a></li>
@@ -1540,6 +1540,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.circuit.html">qiskit.circuit package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#subpackages">Subpackages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#submodules">Submodules</a></li>
 </ul>
 </li>
@@ -1560,8 +1561,9 @@
 <li class="toctree-l4"><a class="reference internal" href="qiskit.extensions.html#submodules">Submodules</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.mapper.html">qiskit.mapper package</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="qiskit.mapper.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qiskit.ignis.html">qiskit.ignis package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.ignis.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.ignis.html#submodules">Submodules</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.providers.html">qiskit.providers package</a><ul>
@@ -1620,10 +1622,8 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="qiskit.html#submodules">Submodules</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="qiskit._util.html">qiskit._util module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.exceptions.html">qiskit.exceptions module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.execute.html">qiskit.execute module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.qiskiterror.html">qiskit.qiskiterror module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.user_config.html">qiskit.user_config module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.util.html">qiskit.util module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.version.html">qiskit.version module</a></li>
@@ -1642,8 +1642,63 @@
     <div class="document">
         <div class="page-content">
         
-  <div class="section" id="qiskit-test-providers-provider-module">
-<h1>qiskit.test.providers.provider module<a class="headerlink" href="#qiskit-test-providers-provider-module" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="module-qiskit.test.providers.provider">
+<span id="qiskit-test-providers-provider-module"></span><h1>qiskit.test.providers.provider module<a class="headerlink" href="#module-qiskit.test.providers.provider" title="Permalink to this headline">¶</a></h1>
+<p>Base TestCase for testing Providers.</p>
+<dl class="class">
+<dt id="qiskit.test.providers.provider.ProviderTestCase">
+<em class="property">class </em><code class="descname">ProviderTestCase</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/test/providers/provider.html#ProviderTestCase"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.test.providers.provider.ProviderTestCase" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="qiskit.test.base.html#qiskit.test.base.QiskitTestCase" title="qiskit.test.base.QiskitTestCase"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.test.base.QiskitTestCase</span></code></a></p>
+<p>Test case for Providers.</p>
+<p>Implementers of providers are encouraged to subclass and customize this
+TestCase, as it contains a “canonical” series of tests in order to ensure
+the provider functionality matches the specifications.</p>
+<dl class="docutils">
+<dt>Members:</dt>
+<dd><dl class="first docutils">
+<dt>provider_cls (BaseProvider): provider to be used in this test case. Its</dt>
+<dd>instantiation can be further customized by overriding the
+<code class="docutils literal notranslate"><span class="pre">_get_provider</span></code> function.</dd>
+</dl>
+<p class="last">backend_name (str): name of a backend provided by the provider.</p>
+</dd>
+</dl>
+<dl class="attribute">
+<dt id="qiskit.test.providers.provider.ProviderTestCase.backend_name">
+<code class="descname">backend_name</code><em class="property"> = ''</em><a class="headerlink" href="#qiskit.test.providers.provider.ProviderTestCase.backend_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="qiskit.test.providers.provider.ProviderTestCase.provider_cls">
+<code class="descname">provider_cls</code><em class="property"> = None</em><a class="headerlink" href="#qiskit.test.providers.provider.ProviderTestCase.provider_cls" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="qiskit.test.providers.provider.ProviderTestCase.setUp">
+<code class="descname">setUp</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/test/providers/provider.html#ProviderTestCase.setUp"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.test.providers.provider.ProviderTestCase.setUp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Hook method for setting up the test fixture before exercising it.</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="qiskit.test.providers.provider.ProviderTestCase.setUpClass">
+<em class="property">classmethod </em><code class="descname">setUpClass</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/test/providers/provider.html#ProviderTestCase.setUpClass"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.test.providers.provider.ProviderTestCase.setUpClass" title="Permalink to this definition">¶</a></dt>
+<dd><p>Hook method for setting up class fixture before running tests in the class.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="qiskit.test.providers.provider.ProviderTestCase.test_backends">
+<code class="descname">test_backends</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/test/providers/provider.html#ProviderTestCase.test_backends"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.test.providers.provider.ProviderTestCase.test_backends" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test the provider has backends.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="qiskit.test.providers.provider.ProviderTestCase.test_get_backend">
+<code class="descname">test_get_backend</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/test/providers/provider.html#ProviderTestCase.test_get_backend"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.test.providers.provider.ProviderTestCase.test_get_backend" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test getting a backend from the provider.</p>
+</dd></dl>
+
+</dd></dl>
+
 </div>
 
 

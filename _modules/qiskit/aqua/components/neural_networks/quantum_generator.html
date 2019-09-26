@@ -255,7 +255,7 @@
                 <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">num_qubits</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
                     <span class="n">entangler_map</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
 
-            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">num_qubits</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">1</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">num_qubits</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
                 <span class="n">num_qubits</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="n">num_qubits</span><span class="p">))</span>
                 <span class="n">low</span> <span class="o">=</span> <span class="n">bounds</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
                 <span class="n">high</span> <span class="o">=</span> <span class="n">bounds</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
@@ -297,8 +297,8 @@
             <span class="k">else</span><span class="p">:</span>
                 <span class="k">raise</span> <span class="n">AquaError</span><span class="p">(</span><span class="s1">&#39;Set univariate variational distribution to represent univariate data&#39;</span><span class="p">)</span>
         <span class="c1"># Set optimizer for updating the generator network</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_optimizer</span> <span class="o">=</span> <span class="n">ADAM</span><span class="p">(</span><span class="n">maxiter</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">,</span> <span class="n">lr</span><span class="o">=</span><span class="mf">1e-5</span><span class="p">,</span> <span class="n">beta_1</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span> <span class="n">beta_2</span><span class="o">=</span><span class="mf">0.99</span><span class="p">,</span> <span class="n">noise_factor</span><span class="o">=</span><span class="mf">1e-8</span><span class="p">,</span>
-                               <span class="n">eps</span><span class="o">=</span><span class="mf">1e-10</span><span class="p">,</span> <span class="n">amsgrad</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">snapshot_dir</span><span class="o">=</span><span class="n">snapshot_dir</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_optimizer</span> <span class="o">=</span> <span class="n">ADAM</span><span class="p">(</span><span class="n">maxiter</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">,</span> <span class="n">lr</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">,</span> <span class="n">beta_1</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">beta_2</span><span class="o">=</span><span class="mf">0.99</span><span class="p">,</span> <span class="n">noise_factor</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">,</span>
+                               <span class="n">eps</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">,</span> <span class="n">amsgrad</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">snapshot_dir</span><span class="o">=</span><span class="n">snapshot_dir</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">ndim</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_bounds</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
             <span class="n">bounds</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_bounds</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_bounds</span><span class="p">)))</span>
@@ -385,14 +385,13 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_discriminator</span> <span class="o">=</span> <span class="n">discriminator</span>
         <span class="k">return</span></div>
 
-<div class="viewcode-block" id="QuantumGenerator.construct_circuit"><a class="viewcode-back" href="../../../../../autodoc/qiskit.aqua.components.neural_networks.quantum_generator.html#qiskit.aqua.components.neural_networks.QuantumGenerator.construct_circuit">[docs]</a>    <span class="k">def</span> <span class="nf">construct_circuit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">quantum_instance</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="QuantumGenerator.construct_circuit"><a class="viewcode-back" href="../../../../../autodoc/qiskit.aqua.components.neural_networks.quantum_generator.html#qiskit.aqua.components.neural_networks.QuantumGenerator.construct_circuit">[docs]</a>    <span class="k">def</span> <span class="nf">construct_circuit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Construct generator circuit.</span>
 <span class="sd">        Args:</span>
-<span class="sd">            quantum_instance: QuantumInstance, used for running the generator circuit</span>
 <span class="sd">            params: array or None, parameters which should be used to run the generator, if None use self._params</span>
 
-<span class="sd">        Returns: QuantumCircuit, constructed quantum circuit</span>
+<span class="sd">        Returns: Quantum Gate, construct the quantum circuit and return as gate</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
 
@@ -405,30 +404,35 @@
             <span class="n">generator_circuit_copy</span><span class="o">.</span><span class="n">params</span> <span class="o">=</span> <span class="n">params</span>
             <span class="n">generator_circuit_copy</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="n">qc</span><span class="o">=</span><span class="n">qc</span><span class="p">,</span> <span class="n">q</span><span class="o">=</span><span class="n">q</span><span class="p">)</span>
 
-        <span class="n">c</span> <span class="o">=</span> <span class="n">ClassicalRegister</span><span class="p">(</span><span class="n">q</span><span class="o">.</span><span class="n">size</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;c&#39;</span><span class="p">)</span>
-        <span class="n">qc</span><span class="o">.</span><span class="n">add_register</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">quantum_instance</span><span class="o">.</span><span class="n">is_statevector</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">qc</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;qc&#39;</span><span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">qc</span><span class="o">.</span><span class="n">measure</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
-            <span class="k">return</span> <span class="n">qc</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;qc&#39;</span><span class="p">)</span></div>
+        <span class="c1"># return qc.copy(name=&#39;qc&#39;)</span>
+        <span class="k">return</span> <span class="n">qc</span><span class="o">.</span><span class="n">to_instruction</span><span class="p">()</span></div>
 
-<div class="viewcode-block" id="QuantumGenerator.get_output"><a class="viewcode-back" href="../../../../../autodoc/qiskit.aqua.components.neural_networks.quantum_generator.html#qiskit.aqua.components.neural_networks.QuantumGenerator.get_output">[docs]</a>    <span class="k">def</span> <span class="nf">get_output</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">quantum_instance</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">shots</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="QuantumGenerator.get_output"><a class="viewcode-back" href="../../../../../autodoc/qiskit.aqua.components.neural_networks.quantum_generator.html#qiskit.aqua.components.neural_networks.QuantumGenerator.get_output">[docs]</a>    <span class="k">def</span> <span class="nf">get_output</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">quantum_instance</span><span class="p">,</span> <span class="n">qc_state_in</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">shots</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Get data samples from the generator.</span>
 <span class="sd">        Args:</span>
 <span class="sd">            quantum_instance:  QuantumInstance, used to run the generator circuit.</span>
+<span class="sd">            qc_state_in: depreciated</span>
 <span class="sd">            params: array or None, parameters which should be used to run the generator, if None use self._params</span>
 <span class="sd">            shots: int, if not None use a number of shots that is different from the number set in quantum_instance</span>
 
 <span class="sd">        Returns: array: generated samples, array: sample occurence in percentage</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">qc</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">construct_circuit</span><span class="p">(</span><span class="n">quantum_instance</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
+        <span class="n">instance_shots</span> <span class="o">=</span> <span class="n">quantum_instance</span><span class="o">.</span><span class="n">run_config</span><span class="o">.</span><span class="n">shots</span>
+        <span class="n">q</span> <span class="o">=</span> <span class="n">QuantumRegister</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_num_qubits</span><span class="p">),</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;q&#39;</span><span class="p">)</span>
+        <span class="n">qc</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="n">q</span><span class="p">)</span>
+        <span class="n">qc</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">construct_circuit</span><span class="p">(</span><span class="n">params</span><span class="p">),</span> <span class="n">q</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">quantum_instance</span><span class="o">.</span><span class="n">is_statevector</span><span class="p">:</span>
+            <span class="k">pass</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">c</span> <span class="o">=</span> <span class="n">ClassicalRegister</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_num_qubits</span><span class="p">),</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;c&#39;</span><span class="p">)</span>
+            <span class="n">qc</span><span class="o">.</span><span class="n">add_register</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+            <span class="n">qc</span><span class="o">.</span><span class="n">measure</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
+
         <span class="k">if</span> <span class="n">shots</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">quantum_instance</span><span class="o">.</span><span class="n">set_config</span><span class="p">(</span><span class="n">shots</span><span class="o">=</span><span class="n">shots</span><span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">quantum_instance</span><span class="o">.</span><span class="n">set_config</span><span class="p">(</span><span class="n">shots</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_shots</span><span class="p">)</span>
+
         <span class="n">result</span> <span class="o">=</span> <span class="n">quantum_instance</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">qc</span><span class="p">)</span>
 
         <span class="n">generated_samples</span> <span class="o">=</span> <span class="p">[]</span>
@@ -462,6 +466,9 @@
             <span class="n">generated_samples</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">temp</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">generator_circuit</span><span class="o">.</span><span class="n">_probabilities</span> <span class="o">=</span> <span class="n">generated_samples_weights</span>
+        <span class="k">if</span> <span class="n">shots</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="c1"># Restore the initial quantum_instance configuration</span>
+            <span class="n">quantum_instance</span><span class="o">.</span><span class="n">set_config</span><span class="p">(</span><span class="n">shots</span><span class="o">=</span><span class="n">instance_shots</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">generated_samples</span><span class="p">,</span> <span class="n">generated_samples_weights</span></div>
 
 <div class="viewcode-block" id="QuantumGenerator.loss"><a class="viewcode-back" href="../../../../../autodoc/qiskit.aqua.components.neural_networks.quantum_generator.html#qiskit.aqua.components.neural_networks.QuantumGenerator.loss">[docs]</a>    <span class="k">def</span> <span class="nf">loss</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">weights</span><span class="p">):</span>
@@ -474,7 +481,11 @@
 <span class="sd">        Returns:  float, loss function</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">weights</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">x</span><span class="p">))</span></div>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">loss</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">(),</span> <span class="n">weights</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+            <span class="n">loss</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">weights</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">loss</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span></div>
 
     <span class="k">def</span> <span class="nf">_get_objective_function</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">quantum_instance</span><span class="p">,</span> <span class="n">discriminator</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -496,7 +507,7 @@
 
 <span class="sd">            &quot;&quot;&quot;</span>
             <span class="n">generated_data</span><span class="p">,</span> <span class="n">generated_prob</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_output</span><span class="p">(</span><span class="n">quantum_instance</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span> <span class="n">shots</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_shots</span><span class="p">)</span>
-            <span class="n">prediction_generated</span> <span class="o">=</span> <span class="n">discriminator</span><span class="o">.</span><span class="n">get_label</span><span class="p">(</span><span class="n">generated_data</span><span class="p">)</span><span class="o">.</span><span class="n">detach</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+            <span class="n">prediction_generated</span> <span class="o">=</span> <span class="n">discriminator</span><span class="o">.</span><span class="n">get_label</span><span class="p">(</span><span class="n">generated_data</span><span class="p">,</span> <span class="n">detach</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">loss</span><span class="p">(</span><span class="n">prediction_generated</span><span class="p">,</span> <span class="n">generated_prob</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">objective_function</span>
 
@@ -518,7 +529,8 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">generator_circuit</span><span class="o">.</span><span class="n">params</span><span class="p">,</span> <span class="n">loss</span><span class="p">,</span> <span class="n">nfev</span> <span class="o">=</span> \
             <span class="bp">self</span><span class="o">.</span><span class="n">_optimizer</span><span class="o">.</span><span class="n">optimize</span><span class="p">(</span><span class="n">num_vars</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">generator_circuit</span><span class="o">.</span><span class="n">params</span><span class="p">),</span> <span class="n">objective_function</span><span class="o">=</span><span class="n">objective</span><span class="p">,</span>
                                      <span class="n">initial_point</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">generator_circuit</span><span class="o">.</span><span class="n">params</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_ret</span><span class="p">[</span><span class="s1">&#39;loss&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">loss</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ret</span><span class="p">[</span><span class="s1">&#39;loss&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">loss</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_ret</span><span class="p">[</span><span class="s1">&#39;params&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">generator_circuit</span><span class="o">.</span><span class="n">params</span>
 
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ret</span></div></div>

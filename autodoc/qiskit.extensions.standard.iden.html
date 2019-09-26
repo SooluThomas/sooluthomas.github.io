@@ -756,6 +756,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.circuit.html">qiskit.circuit package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#subpackages">Subpackages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#submodules">Submodules</a></li>
 </ul>
 </li>
@@ -776,8 +777,9 @@
 <li class="toctree-l4"><a class="reference internal" href="qiskit.extensions.html#submodules">Submodules</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.mapper.html">qiskit.mapper package</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="qiskit.mapper.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qiskit.ignis.html">qiskit.ignis package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.ignis.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.ignis.html#submodules">Submodules</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.providers.html">qiskit.providers package</a><ul>
@@ -836,10 +838,8 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="qiskit.html#submodules">Submodules</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="qiskit._util.html">qiskit._util module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.exceptions.html">qiskit.exceptions module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.execute.html">qiskit.execute module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.qiskiterror.html">qiskit.qiskiterror module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.user_config.html">qiskit.user_config module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.util.html">qiskit.util module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.version.html">qiskit.version module</a></li>
@@ -1540,6 +1540,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.circuit.html">qiskit.circuit package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#subpackages">Subpackages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#submodules">Submodules</a></li>
 </ul>
 </li>
@@ -1560,8 +1561,9 @@
 <li class="toctree-l4"><a class="reference internal" href="qiskit.extensions.html#submodules">Submodules</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.mapper.html">qiskit.mapper package</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="qiskit.mapper.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qiskit.ignis.html">qiskit.ignis package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.ignis.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.ignis.html#submodules">Submodules</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.providers.html">qiskit.providers package</a><ul>
@@ -1620,10 +1622,8 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="qiskit.html#submodules">Submodules</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="qiskit._util.html">qiskit._util module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.exceptions.html">qiskit.exceptions module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.execute.html">qiskit.execute module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.qiskiterror.html">qiskit.qiskiterror module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.user_config.html">qiskit.user_config module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.util.html">qiskit.util module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.version.html">qiskit.version module</a></li>
@@ -1650,6 +1650,8 @@
 <em class="property">class </em><code class="descname">IdGate</code><span class="sig-paren">(</span><em>label=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/extensions/standard/iden.html#IdGate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.extensions.standard.iden.IdGate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="qiskit.circuit.gate.html#qiskit.circuit.gate.Gate" title="qiskit.circuit.gate.Gate"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.circuit.gate.Gate</span></code></a></p>
 <p>Identity gate.</p>
+<p>Identity gate corresponds to a single-qubit gate wait cycle,
+and should not be optimized or unrolled (it is an opaque gate).</p>
 <dl class="method">
 <dt id="qiskit.extensions.standard.iden.IdGate.inverse">
 <code class="descname">inverse</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/extensions/standard/iden.html#IdGate.inverse"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.extensions.standard.iden.IdGate.inverse" title="Permalink to this definition">¶</a></dt>
@@ -1668,6 +1670,8 @@
 <dt id="qiskit.extensions.standard.iden.iden">
 <code class="descname">iden</code><span class="sig-paren">(</span><em>self</em>, <em>q</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/extensions/standard/iden.html#iden"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.extensions.standard.iden.iden" title="Permalink to this definition">¶</a></dt>
 <dd><p>Apply Identity to q.</p>
+<p>Identity gate corresponds to a single-qubit gate wait cycle,
+and should not be optimized or unrolled (it is an opaque gate).</p>
 </dd></dl>
 
 </div>

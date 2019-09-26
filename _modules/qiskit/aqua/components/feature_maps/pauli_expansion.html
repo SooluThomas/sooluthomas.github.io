@@ -187,18 +187,16 @@
 <span class="sd">feature map. Several types of commonly used approaches.</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
-<span class="kn">from</span> <span class="nn">collections</span> <span class="k">import</span> <span class="n">OrderedDict</span>
-<span class="kn">import</span> <span class="nn">copy</span>
 <span class="kn">import</span> <span class="nn">itertools</span>
 <span class="kn">import</span> <span class="nn">logging</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">qiskit</span> <span class="k">import</span> <span class="n">QuantumCircuit</span><span class="p">,</span> <span class="n">QuantumRegister</span>
 <span class="kn">from</span> <span class="nn">qiskit.quantum_info</span> <span class="k">import</span> <span class="n">Pauli</span>
 <span class="kn">from</span> <span class="nn">qiskit.qasm</span> <span class="k">import</span> <span class="n">pi</span>
-<span class="kn">from</span> <span class="nn">sympy.core.numbers</span> <span class="k">import</span> <span class="n">NaN</span><span class="p">,</span> <span class="n">Float</span>
 
-<span class="kn">from</span> <span class="nn">qiskit.aqua</span> <span class="k">import</span> <span class="n">Operator</span>
+<span class="kn">from</span> <span class="nn">qiskit.aqua.operators</span> <span class="k">import</span> <span class="n">evolution_instruction</span>
 <span class="kn">from</span> <span class="nn">qiskit.aqua.components.feature_maps</span> <span class="k">import</span> <span class="n">FeatureMap</span><span class="p">,</span> <span class="n">self_product</span>
 
 <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
@@ -230,9 +228,7 @@
                 <span class="s1">&#39;entanglement&#39;</span><span class="p">:</span> <span class="p">{</span>
                     <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;string&#39;</span><span class="p">,</span>
                     <span class="s1">&#39;default&#39;</span><span class="p">:</span> <span class="s1">&#39;full&#39;</span><span class="p">,</span>
-                    <span class="s1">&#39;oneOf&#39;</span><span class="p">:</span> <span class="p">[</span>
-                        <span class="p">{</span><span class="s1">&#39;enum&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;full&#39;</span><span class="p">,</span> <span class="s1">&#39;linear&#39;</span><span class="p">]}</span>
-                    <span class="p">]</span>
+                    <span class="s1">&#39;enum&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;full&#39;</span><span class="p">,</span> <span class="s1">&#39;linear&#39;</span><span class="p">]</span>
                 <span class="p">},</span>
                 <span class="s1">&#39;paulis&#39;</span><span class="p">:</span> <span class="p">{</span>
                     <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;array&#39;</span><span class="p">],</span>
@@ -274,10 +270,6 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_pauli_strings</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_build_subset_paulis_string</span><span class="p">(</span><span class="n">paulis</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_data_map_func</span> <span class="o">=</span> <span class="n">data_map_func</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">_magic_num</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_param_pos</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_circuit_template</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_build_circuit_template</span><span class="p">()</span>
-
     <span class="k">def</span> <span class="nf">_build_subset_paulis_string</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">paulis</span><span class="p">):</span>
         <span class="c1"># fill out the paulis to the number of qubits</span>
         <span class="n">temp_paulis</span> <span class="o">=</span> <span class="p">[]</span>
@@ -308,50 +300,28 @@
         <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Pauli terms include: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">final_paulis</span><span class="p">))</span>
         <span class="k">return</span> <span class="n">final_paulis</span>
 
-    <span class="k">def</span> <span class="nf">_build_circuit_template</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">_magic_num</span><span class="p">]</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">_num_qubits</span><span class="p">)</span>
-        <span class="n">qr</span> <span class="o">=</span> <span class="n">QuantumRegister</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_num_qubits</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;q&#39;</span><span class="p">)</span>
-        <span class="n">qc</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">construct_circuit</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">qr</span><span class="p">)</span>
-
-        <span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">qc</span><span class="o">.</span><span class="n">data</span><span class="p">)):</span>
-            <span class="n">gate_param</span> <span class="o">=</span> <span class="n">qc</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">index</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">params</span>
-            <span class="n">param_sub_pos</span> <span class="o">=</span> <span class="p">[]</span>
-            <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">gate_param</span><span class="p">)):</span>
-                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">gate_param</span><span class="p">[</span><span class="n">x</span><span class="p">],</span> <span class="n">NaN</span><span class="p">):</span>
-                    <span class="n">param_sub_pos</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">param_sub_pos</span> <span class="o">!=</span> <span class="p">[]:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">_param_pos</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="n">param_sub_pos</span>
-        <span class="k">return</span> <span class="n">qc</span>
-
     <span class="k">def</span> <span class="nf">_extract_data_for_rotation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pauli</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
         <span class="n">where_non_i</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">pauli</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span> <span class="o">!=</span> <span class="s1">&#39;I&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
         <span class="k">return</span> <span class="n">x</span><span class="p">[</span><span class="n">where_non_i</span><span class="p">]</span>
 
-    <span class="k">def</span> <span class="nf">_construct_circuit_with_template</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
-        <span class="n">coeffs</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_data_map_func</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_extract_data_for_rotation</span><span class="p">(</span><span class="n">pauli</span><span class="p">,</span> <span class="n">x</span><span class="p">))</span>
-                  <span class="k">for</span> <span class="n">pauli</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pauli_strings</span><span class="p">]</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">_depth</span>
-        <span class="n">qc</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_circuit_template</span><span class="p">)</span>
-        <span class="n">data_idx</span> <span class="o">=</span> <span class="mi">0</span>
-        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_param_pos</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-            <span class="n">new_param</span> <span class="o">=</span> <span class="n">coeffs</span><span class="p">[</span><span class="n">data_idx</span><span class="p">]</span>
-            <span class="k">for</span> <span class="n">pos</span> <span class="ow">in</span> <span class="n">value</span><span class="p">:</span>
-                <span class="n">qc</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="n">pos</span><span class="p">]</span> <span class="o">=</span> <span class="n">Float</span><span class="p">(</span><span class="mf">2.</span> <span class="o">*</span> <span class="n">new_param</span><span class="p">)</span>  <span class="c1"># rotation angle is 2x</span>
-            <span class="n">data_idx</span> <span class="o">+=</span> <span class="mi">1</span>
-        <span class="k">return</span> <span class="n">qc</span>
-
-<div class="viewcode-block" id="PauliExpansion.construct_circuit"><a class="viewcode-back" href="../../../../../autodoc/qiskit.aqua.components.feature_maps.pauli_expansion.html#qiskit.aqua.components.feature_maps.PauliExpansion.construct_circuit">[docs]</a>    <span class="k">def</span> <span class="nf">construct_circuit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">qr</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">inverse</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<div class="viewcode-block" id="PauliExpansion.construct_circuit"><a class="viewcode-back" href="../../../../../autodoc/qiskit.aqua.components.feature_maps.pauli_expansion.html#qiskit.aqua.components.feature_maps.PauliExpansion.construct_circuit">[docs]</a>    <span class="k">def</span> <span class="nf">construct_circuit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">qr</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">inverse</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Construct the second order expansion based on given data.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            x (numpy.ndarray): 1-D to-be-transformed data.</span>
-<span class="sd">            qr (QauntumRegister): the QuantumRegister object for the circuit, if None,</span>
+<span class="sd">            qr (QauntumRegister, optional): the QuantumRegister object for the circuit, if None,</span>
 <span class="sd">                                  generate new registers with name q.</span>
-<span class="sd">            inverse (bool): whether or not inverse the circuit</span>
+<span class="sd">            inverse (bool, optional): whether or not inverse the circuit</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            QuantumCircuit: a quantum circuit transform data x.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="n">inverse</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;inverse option is deprecated and it will be removed after 0.6, &quot;</span>
+                          <span class="s2">&quot;Since terra supports to inverse the circuit by calling qc.inverses()&quot;</span><span class="p">,</span> <span class="ne">DeprecationWarning</span><span class="p">)</span>
+
         <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
             <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;x must be numpy array.&quot;</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">ndim</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
@@ -360,18 +330,20 @@
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;number of qubits and data dimension must be the same.&quot;</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="n">qr</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">qc</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_construct_circuit_with_template</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">qc</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="n">qr</span><span class="p">)</span>
-            <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_depth</span><span class="p">):</span>
-                <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_num_qubits</span><span class="p">):</span>
-                    <span class="n">qc</span><span class="o">.</span><span class="n">u2</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">pi</span><span class="p">,</span> <span class="n">qr</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
-                <span class="k">for</span> <span class="n">pauli</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pauli_strings</span><span class="p">:</span>
-                    <span class="n">coeff</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data_map_func</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_extract_data_for_rotation</span><span class="p">(</span><span class="n">pauli</span><span class="p">,</span> <span class="n">x</span><span class="p">))</span>
-                    <span class="n">p</span> <span class="o">=</span> <span class="n">Pauli</span><span class="o">.</span><span class="n">from_label</span><span class="p">(</span><span class="n">pauli</span><span class="p">)</span>
-                    <span class="n">qc</span> <span class="o">+=</span> <span class="n">Operator</span><span class="o">.</span><span class="n">construct_evolution_circuit</span><span class="p">([[</span><span class="n">coeff</span><span class="p">,</span> <span class="n">p</span><span class="p">]],</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">qr</span><span class="p">)</span>
+            <span class="n">qr</span> <span class="o">=</span> <span class="n">QuantumRegister</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_num_qubits</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;q&#39;</span><span class="p">)</span>
 
-        <span class="k">if</span> <span class="n">inverse</span><span class="p">:</span>
+        <span class="n">qc</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="n">qr</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_depth</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_num_qubits</span><span class="p">):</span>
+                <span class="n">qc</span><span class="o">.</span><span class="n">u2</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">pi</span><span class="p">,</span> <span class="n">qr</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+            <span class="k">for</span> <span class="n">pauli</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pauli_strings</span><span class="p">:</span>
+                <span class="n">coeff</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data_map_func</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_extract_data_for_rotation</span><span class="p">(</span><span class="n">pauli</span><span class="p">,</span> <span class="n">x</span><span class="p">))</span>
+                <span class="n">p</span> <span class="o">=</span> <span class="n">Pauli</span><span class="o">.</span><span class="n">from_label</span><span class="p">(</span><span class="n">pauli</span><span class="p">)</span>
+
+                <span class="n">inst</span> <span class="o">=</span> <span class="n">evolution_instruction</span><span class="p">([[</span><span class="n">coeff</span><span class="p">,</span> <span class="n">p</span><span class="p">]],</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+                <span class="n">qc</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">inst</span><span class="p">,</span> <span class="n">qr</span><span class="p">)</span>
+                <span class="n">qc</span> <span class="o">=</span> <span class="n">qc</span><span class="o">.</span><span class="n">decompose</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">inverse</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">inverse</span><span class="p">:</span>
             <span class="n">qc</span> <span class="o">=</span> <span class="n">qc</span><span class="o">.</span><span class="n">inverse</span><span class="p">()</span>
 
         <span class="k">return</span> <span class="n">qc</span></div></div>

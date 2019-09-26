@@ -190,19 +190,25 @@
 <span class="kn">import</span> <span class="nn">logging</span>
 <span class="kn">from</span> <span class="nn">math</span> <span class="k">import</span> <span class="n">pi</span><span class="p">,</span> <span class="n">ceil</span>
 
-<span class="kn">from</span> <span class="nn">qiskit</span> <span class="k">import</span> <span class="n">QuantumCircuit</span><span class="p">,</span> <span class="n">QuantumRegister</span>
+<span class="kn">from</span> <span class="nn">qiskit.circuit</span> <span class="k">import</span> <span class="n">QuantumCircuit</span><span class="p">,</span> <span class="n">QuantumRegister</span><span class="p">,</span> <span class="n">Qubit</span>
 
 <span class="kn">from</span> <span class="nn">qiskit.aqua</span> <span class="k">import</span> <span class="n">AquaError</span>
-<span class="kn">from</span> <span class="nn">qiskit.aqua.utils.circuit_utils</span> <span class="k">import</span> <span class="n">is_qubit</span>
+<span class="kn">from</span> <span class="nn">.relative_phase_toffoli</span> <span class="k">import</span> <span class="n">rccx</span>
 
 <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
 
 
-<span class="k">def</span> <span class="nf">_ccx_v_chain</span><span class="p">(</span><span class="n">qc</span><span class="p">,</span> <span class="n">control_qubits</span><span class="p">,</span> <span class="n">target_qubit</span><span class="p">,</span> <span class="n">ancillary_qubits</span><span class="p">,</span> <span class="n">dirty_ancilla</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">_mct_v_chain</span><span class="p">(</span><span class="n">qc</span><span class="p">,</span> <span class="n">control_qubits</span><span class="p">,</span> <span class="n">target_qubit</span><span class="p">,</span> <span class="n">ancillary_qubits</span><span class="p">,</span> <span class="n">dirty_ancilla</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Create new MCT circuit by chaining ccx gates into a V shape.</span>
+<span class="sd">    Create new MCT circuit by chaining Toffoli gates into a V shape.</span>
 
 <span class="sd">    The dirty_ancilla mode is from https://arxiv.org/abs/quant-ph/9503016 Lemma 7.2</span>
+
+<span class="sd">    All intermediate Toffoli gates are implemented up to a relative phase,</span>
+<span class="sd">    see https://arxiv.org/abs/1508.03273</span>
+
+<span class="sd">    An additional saving of 4 CNOTs is achieved</span>
+<span class="sd">    by using the Toffoli implementation from Section IV.B of https://arxiv.org/abs/1508.03273</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">ancillary_qubits</span><span class="p">)</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">control_qubits</span><span class="p">)</span> <span class="o">-</span> <span class="mi">2</span><span class="p">:</span>
@@ -210,40 +216,62 @@
 
     <span class="k">if</span> <span class="n">dirty_ancilla</span><span class="p">:</span>
         <span class="n">anci_idx</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">control_qubits</span><span class="p">)</span> <span class="o">-</span> <span class="mi">3</span>
-        <span class="n">qc</span><span class="o">.</span><span class="n">ccx</span><span class="p">(</span><span class="n">control_qubits</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">control_qubits</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">],</span> <span class="n">ancillary_qubits</span><span class="p">[</span><span class="n">anci_idx</span><span class="p">],</span> <span class="n">target_qubit</span><span class="p">)</span>
+
+        <span class="n">qc</span><span class="o">.</span><span class="n">u2</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">pi</span><span class="p">,</span> <span class="n">target_qubit</span><span class="p">)</span>
+        <span class="n">qc</span><span class="o">.</span><span class="n">cx</span><span class="p">(</span><span class="n">target_qubit</span><span class="p">,</span> <span class="n">ancillary_qubits</span><span class="p">[</span><span class="n">anci_idx</span><span class="p">])</span>
+        <span class="n">qc</span><span class="o">.</span><span class="n">u1</span><span class="p">(</span><span class="o">-</span><span class="n">pi</span><span class="o">/</span><span class="mi">4</span><span class="p">,</span> <span class="n">ancillary_qubits</span><span class="p">[</span><span class="n">anci_idx</span><span class="p">])</span>
+        <span class="n">qc</span><span class="o">.</span><span class="n">cx</span><span class="p">(</span><span class="n">control_qubits</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">control_qubits</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">],</span> <span class="n">ancillary_qubits</span><span class="p">[</span><span class="n">anci_idx</span><span class="p">])</span>
+        <span class="n">qc</span><span class="o">.</span><span class="n">u1</span><span class="p">(</span><span class="n">pi</span><span class="o">/</span><span class="mi">4</span><span class="p">,</span> <span class="n">ancillary_qubits</span><span class="p">[</span><span class="n">anci_idx</span><span class="p">])</span>
+        <span class="n">qc</span><span class="o">.</span><span class="n">cx</span><span class="p">(</span><span class="n">target_qubit</span><span class="p">,</span> <span class="n">ancillary_qubits</span><span class="p">[</span><span class="n">anci_idx</span><span class="p">])</span>
+        <span class="n">qc</span><span class="o">.</span><span class="n">u1</span><span class="p">(</span><span class="o">-</span><span class="n">pi</span><span class="o">/</span><span class="mi">4</span><span class="p">,</span> <span class="n">ancillary_qubits</span><span class="p">[</span><span class="n">anci_idx</span><span class="p">])</span>
+        <span class="n">qc</span><span class="o">.</span><span class="n">cx</span><span class="p">(</span><span class="n">control_qubits</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">control_qubits</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">],</span> <span class="n">ancillary_qubits</span><span class="p">[</span><span class="n">anci_idx</span><span class="p">])</span>
+        <span class="n">qc</span><span class="o">.</span><span class="n">u1</span><span class="p">(</span><span class="n">pi</span><span class="o">/</span><span class="mi">4</span><span class="p">,</span> <span class="n">ancillary_qubits</span><span class="p">[</span><span class="n">anci_idx</span><span class="p">])</span>
+
         <span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="nb">reversed</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">control_qubits</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)):</span>
-            <span class="n">qc</span><span class="o">.</span><span class="n">ccx</span><span class="p">(</span><span class="n">control_qubits</span><span class="p">[</span><span class="n">idx</span><span class="p">],</span> <span class="n">ancillary_qubits</span><span class="p">[</span><span class="n">anci_idx</span> <span class="o">-</span> <span class="mi">1</span><span class="p">],</span> <span class="n">ancillary_qubits</span><span class="p">[</span><span class="n">anci_idx</span><span class="p">])</span>
+            <span class="n">qc</span><span class="o">.</span><span class="n">rccx</span><span class="p">(</span><span class="n">control_qubits</span><span class="p">[</span><span class="n">idx</span><span class="p">],</span> <span class="n">ancillary_qubits</span><span class="p">[</span><span class="n">anci_idx</span> <span class="o">-</span> <span class="mi">1</span><span class="p">],</span> <span class="n">ancillary_qubits</span><span class="p">[</span><span class="n">anci_idx</span><span class="p">])</span>
             <span class="n">anci_idx</span> <span class="o">-=</span> <span class="mi">1</span>
 
     <span class="n">anci_idx</span> <span class="o">=</span> <span class="mi">0</span>
-    <span class="n">qc</span><span class="o">.</span><span class="n">ccx</span><span class="p">(</span><span class="n">control_qubits</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">control_qubits</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">ancillary_qubits</span><span class="p">[</span><span class="n">anci_idx</span><span class="p">])</span>
+    <span class="n">qc</span><span class="o">.</span><span class="n">rccx</span><span class="p">(</span><span class="n">control_qubits</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">control_qubits</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">ancillary_qubits</span><span class="p">[</span><span class="n">anci_idx</span><span class="p">])</span>
     <span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">control_qubits</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
-        <span class="n">qc</span><span class="o">.</span><span class="n">ccx</span><span class="p">(</span><span class="n">control_qubits</span><span class="p">[</span><span class="n">idx</span><span class="p">],</span> <span class="n">ancillary_qubits</span><span class="p">[</span><span class="n">anci_idx</span><span class="p">],</span> <span class="n">ancillary_qubits</span><span class="p">[</span><span class="n">anci_idx</span> <span class="o">+</span> <span class="mi">1</span><span class="p">])</span>
+        <span class="n">qc</span><span class="o">.</span><span class="n">rccx</span><span class="p">(</span><span class="n">control_qubits</span><span class="p">[</span><span class="n">idx</span><span class="p">],</span> <span class="n">ancillary_qubits</span><span class="p">[</span><span class="n">anci_idx</span><span class="p">],</span> <span class="n">ancillary_qubits</span><span class="p">[</span><span class="n">anci_idx</span> <span class="o">+</span> <span class="mi">1</span><span class="p">])</span>
         <span class="n">anci_idx</span> <span class="o">+=</span> <span class="mi">1</span>
-    <span class="n">qc</span><span class="o">.</span><span class="n">ccx</span><span class="p">(</span><span class="n">control_qubits</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">control_qubits</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">],</span> <span class="n">ancillary_qubits</span><span class="p">[</span><span class="n">anci_idx</span><span class="p">],</span> <span class="n">target_qubit</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">dirty_ancilla</span><span class="p">:</span>
+        <span class="n">qc</span><span class="o">.</span><span class="n">u1</span><span class="p">(</span><span class="o">-</span><span class="n">pi</span><span class="o">/</span><span class="mi">4</span><span class="p">,</span> <span class="n">ancillary_qubits</span><span class="p">[</span><span class="n">anci_idx</span><span class="p">])</span>
+        <span class="n">qc</span><span class="o">.</span><span class="n">cx</span><span class="p">(</span><span class="n">control_qubits</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">control_qubits</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">],</span> <span class="n">ancillary_qubits</span><span class="p">[</span><span class="n">anci_idx</span><span class="p">])</span>
+        <span class="n">qc</span><span class="o">.</span><span class="n">u1</span><span class="p">(</span><span class="n">pi</span><span class="o">/</span><span class="mi">4</span><span class="p">,</span> <span class="n">ancillary_qubits</span><span class="p">[</span><span class="n">anci_idx</span><span class="p">])</span>
+        <span class="n">qc</span><span class="o">.</span><span class="n">cx</span><span class="p">(</span><span class="n">target_qubit</span><span class="p">,</span> <span class="n">ancillary_qubits</span><span class="p">[</span><span class="n">anci_idx</span><span class="p">])</span>
+        <span class="n">qc</span><span class="o">.</span><span class="n">u1</span><span class="p">(</span><span class="o">-</span><span class="n">pi</span><span class="o">/</span><span class="mi">4</span><span class="p">,</span> <span class="n">ancillary_qubits</span><span class="p">[</span><span class="n">anci_idx</span><span class="p">])</span>
+        <span class="n">qc</span><span class="o">.</span><span class="n">cx</span><span class="p">(</span><span class="n">control_qubits</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">control_qubits</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">],</span> <span class="n">ancillary_qubits</span><span class="p">[</span><span class="n">anci_idx</span><span class="p">])</span>
+        <span class="n">qc</span><span class="o">.</span><span class="n">u1</span><span class="p">(</span><span class="n">pi</span><span class="o">/</span><span class="mi">4</span><span class="p">,</span> <span class="n">ancillary_qubits</span><span class="p">[</span><span class="n">anci_idx</span><span class="p">])</span>
+        <span class="n">qc</span><span class="o">.</span><span class="n">cx</span><span class="p">(</span><span class="n">target_qubit</span><span class="p">,</span> <span class="n">ancillary_qubits</span><span class="p">[</span><span class="n">anci_idx</span><span class="p">])</span>
+        <span class="n">qc</span><span class="o">.</span><span class="n">u2</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">pi</span><span class="p">,</span> <span class="n">target_qubit</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">qc</span><span class="o">.</span><span class="n">ccx</span><span class="p">(</span><span class="n">control_qubits</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">control_qubits</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">],</span> <span class="n">ancillary_qubits</span><span class="p">[</span><span class="n">anci_idx</span><span class="p">],</span> <span class="n">target_qubit</span><span class="p">)</span>
+
     <span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="nb">reversed</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">control_qubits</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)):</span>
-        <span class="n">qc</span><span class="o">.</span><span class="n">ccx</span><span class="p">(</span><span class="n">control_qubits</span><span class="p">[</span><span class="n">idx</span><span class="p">],</span> <span class="n">ancillary_qubits</span><span class="p">[</span><span class="n">anci_idx</span> <span class="o">-</span> <span class="mi">1</span><span class="p">],</span> <span class="n">ancillary_qubits</span><span class="p">[</span><span class="n">anci_idx</span><span class="p">])</span>
+        <span class="n">qc</span><span class="o">.</span><span class="n">rccx</span><span class="p">(</span><span class="n">control_qubits</span><span class="p">[</span><span class="n">idx</span><span class="p">],</span> <span class="n">ancillary_qubits</span><span class="p">[</span><span class="n">anci_idx</span> <span class="o">-</span> <span class="mi">1</span><span class="p">],</span> <span class="n">ancillary_qubits</span><span class="p">[</span><span class="n">anci_idx</span><span class="p">])</span>
         <span class="n">anci_idx</span> <span class="o">-=</span> <span class="mi">1</span>
-    <span class="n">qc</span><span class="o">.</span><span class="n">ccx</span><span class="p">(</span><span class="n">control_qubits</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">control_qubits</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">ancillary_qubits</span><span class="p">[</span><span class="n">anci_idx</span><span class="p">])</span>
+    <span class="n">qc</span><span class="o">.</span><span class="n">rccx</span><span class="p">(</span><span class="n">control_qubits</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">control_qubits</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">ancillary_qubits</span><span class="p">[</span><span class="n">anci_idx</span><span class="p">])</span>
 
     <span class="k">if</span> <span class="n">dirty_ancilla</span><span class="p">:</span>
         <span class="n">anci_idx</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">control_qubits</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
-            <span class="n">qc</span><span class="o">.</span><span class="n">ccx</span><span class="p">(</span><span class="n">control_qubits</span><span class="p">[</span><span class="n">idx</span><span class="p">],</span> <span class="n">ancillary_qubits</span><span class="p">[</span><span class="n">anci_idx</span><span class="p">],</span> <span class="n">ancillary_qubits</span><span class="p">[</span><span class="n">anci_idx</span> <span class="o">+</span> <span class="mi">1</span><span class="p">])</span>
+            <span class="n">qc</span><span class="o">.</span><span class="n">rccx</span><span class="p">(</span><span class="n">control_qubits</span><span class="p">[</span><span class="n">idx</span><span class="p">],</span> <span class="n">ancillary_qubits</span><span class="p">[</span><span class="n">anci_idx</span><span class="p">],</span> <span class="n">ancillary_qubits</span><span class="p">[</span><span class="n">anci_idx</span> <span class="o">+</span> <span class="mi">1</span><span class="p">])</span>
             <span class="n">anci_idx</span> <span class="o">+=</span> <span class="mi">1</span>
 
 
 <span class="k">def</span> <span class="nf">_cccx</span><span class="p">(</span><span class="n">qc</span><span class="p">,</span> <span class="n">qrs</span><span class="p">,</span> <span class="n">angle</span><span class="o">=</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">4</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        a 3-qubit controlled-NOT.</span>
-<span class="sd">        An implementation based on Page 17 of Barenco et al.</span>
-<span class="sd">        Parameters:</span>
-<span class="sd">            qrs:</span>
-<span class="sd">                list of quantum registers. The last qubit is the target, the rest are controls</span>
+<span class="sd">    A 3-qubit controlled-NOT.</span>
 
-<span class="sd">            angle:</span>
-<span class="sd">                default pi/4 when x is not gate</span>
-<span class="sd">                set to pi/8 for square root of not</span>
+<span class="sd">    Implementation based on Page 17 of Barenco et al.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        qrs: list of quantum registers. The last qubit is the target, the rest are controls</span>
+
+<span class="sd">        angle: default pi/4 when x is the NOT gate, set to pi/8 for square root of NOT</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">qrs</span><span class="p">)</span> <span class="o">==</span> <span class="mi">4</span><span class="p">,</span> <span class="s2">&quot;There must be exactly 4 qubits of quantum registers for cccx&quot;</span>
 
@@ -303,11 +331,12 @@
 
 <span class="k">def</span> <span class="nf">_ccccx</span><span class="p">(</span><span class="n">qc</span><span class="p">,</span> <span class="n">qrs</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">       a 4-qubit controlled-NOT.</span>
-<span class="sd">        An implementation based on Page 21 (Lemma 7.5) of Barenco et al.</span>
-<span class="sd">        Parameters:</span>
-<span class="sd">            qrs:</span>
-<span class="sd">                list of quantum registers. The last qubit is the target, the rest are controls</span>
+<span class="sd">    a 4-qubit controlled-NOT.</span>
+
+<span class="sd">    An implementation based on Page 21 (Lemma 7.5) of Barenco et al.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        qrs: list of quantum registers. The last qubit is the target, the rest are controls</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">qrs</span><span class="p">)</span> <span class="o">==</span> <span class="mi">5</span><span class="p">,</span> <span class="s2">&quot;There must be exactly 5 qubits for ccccx&quot;</span>
 
@@ -331,18 +360,15 @@
 
 <span class="k">def</span> <span class="nf">_multicx</span><span class="p">(</span><span class="n">qc</span><span class="p">,</span> <span class="n">qrs</span><span class="p">,</span> <span class="n">qancilla</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        construct a circuit for multi-qubit controlled not</span>
-<span class="sd">        Parameters:</span>
-<span class="sd">            qc:</span>
-<span class="sd">                quantum circuit</span>
-<span class="sd">            qrs:</span>
-<span class="sd">                list of quantum registers of at least length 1</span>
-<span class="sd">            qancilla:</span>
-<span class="sd">                a quantum register. can be None if len(qrs) &lt;= 5</span>
+<span class="sd">    Construct a circuit for multi-qubit controlled not</span>
 
-<span class="sd">        Returns:</span>
-<span class="sd">            qc:</span>
-<span class="sd">                a circuit appended with multi-qubit cnot</span>
+<span class="sd">    Args:</span>
+<span class="sd">        qc: quantum circuit</span>
+<span class="sd">        qrs: list of quantum registers of at least length 1</span>
+<span class="sd">        qancilla: a quantum register. can be None if len(qrs) &lt;= 5</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        qc: a circuit appended with multi-qubit cnot</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">qrs</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
         <span class="k">pass</span>
@@ -373,17 +399,14 @@
 
 <span class="k">def</span> <span class="nf">_multicx_noancilla</span><span class="p">(</span><span class="n">qc</span><span class="p">,</span> <span class="n">qrs</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        construct a circuit for multi-qubit controlled not without ancillary</span>
-<span class="sd">        qubits</span>
-<span class="sd">        Parameters:</span>
-<span class="sd">            qc:</span>
-<span class="sd">                quantum circuit</span>
-<span class="sd">            qrs:</span>
-<span class="sd">                list of quantum registers of at least length 1</span>
+<span class="sd">    Construct a circuit for multi-qubit controlled not without ancillary qubits</span>
 
-<span class="sd">        Returns:</span>
-<span class="sd">            qc:</span>
-<span class="sd">                a circuit appended with multi-qubit cnot</span>
+<span class="sd">    Args:</span>
+<span class="sd">        qc: quantum circuit</span>
+<span class="sd">        qrs: list of quantum registers of at least length 1</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        qc: a circuit appended with multi-qubit cnot</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">qrs</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
         <span class="k">pass</span>
@@ -403,11 +426,13 @@
 <div class="viewcode-block" id="mct"><a class="viewcode-back" href="../../../../../autodoc/qiskit.aqua.circuits.gates.multi_control_toffoli_gate.html#qiskit.aqua.circuits.gates.mct">[docs]</a><span class="k">def</span> <span class="nf">mct</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">q_controls</span><span class="p">,</span> <span class="n">q_target</span><span class="p">,</span> <span class="n">q_ancilla</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;basic&#39;</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Apply Multiple-Control Toffoli operation</span>
+
 <span class="sd">    Args:</span>
-<span class="sd">        q_controls: The list of control qubits</span>
-<span class="sd">        q_target: The target qubit</span>
-<span class="sd">        q_ancilla: The list of ancillary qubits</span>
-<span class="sd">        mode (string): The implementation mode to use</span>
+<span class="sd">        self (QuantumCircuit): The QuantumCircuit object to apply the mct gate on.</span>
+<span class="sd">        q_controls (QuantumRegister | list of Qubit): The list of control qubits</span>
+<span class="sd">        q_target (Qubit): The target qubit</span>
+<span class="sd">        q_ancilla (QuantumRegister | list of Qubit): The list of ancillary qubits</span>
+<span class="sd">        mode (str): The implementation mode to use</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">q_controls</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>  <span class="c1"># cx</span>
@@ -424,7 +449,7 @@
             <span class="k">raise</span> <span class="n">AquaError</span><span class="p">(</span><span class="s1">&#39;MCT needs a list of qubits or a quantum register for controls.&#39;</span><span class="p">)</span>
 
         <span class="c1"># check target</span>
-        <span class="k">if</span> <span class="n">is_qubit</span><span class="p">(</span><span class="n">q_target</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">q_target</span><span class="p">,</span> <span class="n">Qubit</span><span class="p">):</span>
             <span class="n">target_qubit</span> <span class="o">=</span> <span class="n">q_target</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">raise</span> <span class="n">AquaError</span><span class="p">(</span><span class="s1">&#39;MCT needs a single qubit as target.&#39;</span><span class="p">)</span>
@@ -445,9 +470,9 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_check_dups</span><span class="p">(</span><span class="n">all_qubits</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="n">mode</span> <span class="o">==</span> <span class="s1">&#39;basic&#39;</span><span class="p">:</span>
-            <span class="n">_ccx_v_chain</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">control_qubits</span><span class="p">,</span> <span class="n">target_qubit</span><span class="p">,</span> <span class="n">ancillary_qubits</span><span class="p">,</span> <span class="n">dirty_ancilla</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+            <span class="n">_mct_v_chain</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">control_qubits</span><span class="p">,</span> <span class="n">target_qubit</span><span class="p">,</span> <span class="n">ancillary_qubits</span><span class="p">,</span> <span class="n">dirty_ancilla</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
         <span class="k">elif</span> <span class="n">mode</span> <span class="o">==</span> <span class="s1">&#39;basic-dirty-ancilla&#39;</span><span class="p">:</span>
-            <span class="n">_ccx_v_chain</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">control_qubits</span><span class="p">,</span> <span class="n">target_qubit</span><span class="p">,</span> <span class="n">ancillary_qubits</span><span class="p">,</span> <span class="n">dirty_ancilla</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="n">_mct_v_chain</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">control_qubits</span><span class="p">,</span> <span class="n">target_qubit</span><span class="p">,</span> <span class="n">ancillary_qubits</span><span class="p">,</span> <span class="n">dirty_ancilla</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
         <span class="k">elif</span> <span class="n">mode</span> <span class="o">==</span> <span class="s1">&#39;advanced&#39;</span><span class="p">:</span>
             <span class="n">_multicx</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="p">[</span><span class="o">*</span><span class="n">control_qubits</span><span class="p">,</span> <span class="n">target_qubit</span><span class="p">],</span> <span class="n">ancillary_qubits</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">if</span> <span class="n">ancillary_qubits</span> <span class="k">else</span> <span class="kc">None</span><span class="p">)</span>
         <span class="k">elif</span> <span class="n">mode</span> <span class="o">==</span> <span class="s1">&#39;noancilla&#39;</span><span class="p">:</span>
@@ -456,13 +481,7 @@
             <span class="k">raise</span> <span class="n">AquaError</span><span class="p">(</span><span class="s1">&#39;Unrecognized mode for building MCT circuit: </span><span class="si">{}</span><span class="s1">.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">mode</span><span class="p">))</span></div>
 
 
-<div class="viewcode-block" id="cnx"><a class="viewcode-back" href="../../../../../autodoc/qiskit.aqua.circuits.gates.multi_control_toffoli_gate.html#qiskit.aqua.circuits.gates.cnx">[docs]</a><span class="k">def</span> <span class="nf">cnx</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-    <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;The gate name &#39;cnx&#39; will be deprecated. Please use &#39;mct&#39; (Multiple-Control Toffoli) instead.&quot;</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">mct</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
-
-
 <span class="n">QuantumCircuit</span><span class="o">.</span><span class="n">mct</span> <span class="o">=</span> <span class="n">mct</span>
-<span class="n">QuantumCircuit</span><span class="o">.</span><span class="n">cnx</span> <span class="o">=</span> <span class="n">cnx</span>
 </pre></div>
 
         </div>

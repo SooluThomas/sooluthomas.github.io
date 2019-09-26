@@ -208,9 +208,7 @@
                 <span class="s1">&#39;entanglement&#39;</span><span class="p">:</span> <span class="p">{</span>
                     <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;string&#39;</span><span class="p">,</span>
                     <span class="s1">&#39;default&#39;</span><span class="p">:</span> <span class="s1">&#39;full&#39;</span><span class="p">,</span>
-                    <span class="s1">&#39;oneOf&#39;</span><span class="p">:</span> <span class="p">[</span>
-                        <span class="p">{</span><span class="s1">&#39;enum&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;full&#39;</span><span class="p">,</span> <span class="s1">&#39;linear&#39;</span><span class="p">]}</span>
-                    <span class="p">]</span>
+                    <span class="s1">&#39;enum&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;full&#39;</span><span class="p">,</span> <span class="s1">&#39;linear&#39;</span><span class="p">,</span> <span class="s1">&#39;sca&#39;</span><span class="p">]</span>
                 <span class="p">},</span>
                 <span class="s1">&#39;entangler_map&#39;</span><span class="p">:</span> <span class="p">{</span>
                     <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;array&#39;</span><span class="p">,</span> <span class="s1">&#39;null&#39;</span><span class="p">],</span>
@@ -219,11 +217,13 @@
                 <span class="s1">&#39;entanglement_gate&#39;</span><span class="p">:</span> <span class="p">{</span>
                     <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;string&#39;</span><span class="p">,</span>
                     <span class="s1">&#39;default&#39;</span><span class="p">:</span> <span class="s1">&#39;cz&#39;</span><span class="p">,</span>
-                    <span class="s1">&#39;oneOf&#39;</span><span class="p">:</span> <span class="p">[</span>
-                        <span class="p">{</span><span class="s1">&#39;enum&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;cz&#39;</span><span class="p">,</span> <span class="s1">&#39;cx&#39;</span><span class="p">]}</span>
-                    <span class="p">]</span>
+                    <span class="s1">&#39;enum&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;cz&#39;</span><span class="p">,</span> <span class="s1">&#39;cx&#39;</span><span class="p">,</span> <span class="s1">&#39;crx&#39;</span><span class="p">]</span>
                 <span class="p">},</span>
                 <span class="s1">&#39;skip_unentangled_qubits&#39;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;boolean&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;default&#39;</span><span class="p">:</span> <span class="kc">False</span>
+                <span class="p">},</span>
+                <span class="s1">&#39;skip_final_ry&#39;</span><span class="p">:</span> <span class="p">{</span>
                     <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;boolean&#39;</span><span class="p">,</span>
                     <span class="s1">&#39;default&#39;</span><span class="p">:</span> <span class="kc">False</span>
                 <span class="p">}</span>
@@ -242,7 +242,8 @@
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num_qubits</span><span class="p">,</span> <span class="n">depth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">entangler_map</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                  <span class="n">entanglement</span><span class="o">=</span><span class="s1">&#39;full&#39;</span><span class="p">,</span> <span class="n">initial_state</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-                 <span class="n">entanglement_gate</span><span class="o">=</span><span class="s1">&#39;cz&#39;</span><span class="p">,</span> <span class="n">skip_unentangled_qubits</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+                 <span class="n">entanglement_gate</span><span class="o">=</span><span class="s1">&#39;cz&#39;</span><span class="p">,</span> <span class="n">skip_unentangled_qubits</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                 <span class="n">skip_final_ry</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Constructor.</span>
 
 <span class="sd">        Args:</span>
@@ -252,19 +253,23 @@
 <span class="sd">                                        [source, target], or None for full entanglement.</span>
 <span class="sd">                                        Note that the order is the list is the order of</span>
 <span class="sd">                                        applying the two-qubit gate.</span>
-<span class="sd">            entanglement (str): &#39;full&#39; or &#39;linear&#39;</span>
+<span class="sd">            entanglement (str): &#39;full&#39;, &#39;linear&#39; or &#39;sca&#39;</span>
 <span class="sd">            initial_state (InitialState): an initial state object</span>
 <span class="sd">            entanglement_gate (str): cz or cx</span>
 <span class="sd">            skip_unentangled_qubits (bool): skip the qubits not in the entangler_map</span>
+<span class="sd">            skip_final_ry (bool): skip the final layer of Y rotations</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">validate</span><span class="p">(</span><span class="nb">locals</span><span class="p">())</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_num_qubits</span> <span class="o">=</span> <span class="n">num_qubits</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_depth</span> <span class="o">=</span> <span class="n">depth</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_entanglement</span> <span class="o">=</span> <span class="n">entanglement</span>
+
         <span class="k">if</span> <span class="n">entangler_map</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_entangler_map</span> <span class="o">=</span> <span class="n">VariationalForm</span><span class="o">.</span><span class="n">get_entangler_map</span><span class="p">(</span><span class="n">entanglement</span><span class="p">,</span> <span class="n">num_qubits</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_entangler_map</span> <span class="o">=</span> <span class="n">VariationalForm</span><span class="o">.</span><span class="n">validate_entangler_map</span><span class="p">(</span><span class="n">entangler_map</span><span class="p">,</span> <span class="n">num_qubits</span><span class="p">)</span>
+
         <span class="c1"># determine the entangled qubits</span>
         <span class="n">all_qubits</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">for</span> <span class="n">src</span><span class="p">,</span> <span class="n">targ</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_entangler_map</span><span class="p">:</span>
@@ -273,12 +278,20 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_initial_state</span> <span class="o">=</span> <span class="n">initial_state</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_entanglement_gate</span> <span class="o">=</span> <span class="n">entanglement_gate</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_skip_unentangled_qubits</span> <span class="o">=</span> <span class="n">skip_unentangled_qubits</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_skip_final_ry</span> <span class="o">=</span> <span class="n">skip_final_ry</span>
 
         <span class="c1"># for the first layer</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_num_parameters</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_entangled_qubits</span><span class="p">)</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_skip_unentangled_qubits</span> \
             <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">_num_qubits</span>
-        <span class="c1"># for repeated block</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_num_parameters</span> <span class="o">+=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_entangled_qubits</span><span class="p">)</span> <span class="o">*</span> <span class="n">depth</span>
+
+        <span class="c1"># for repeated block (minus one ry layer if we skip the last)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_num_parameters</span> <span class="o">+=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_entangled_qubits</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">depth</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="k">if</span> <span class="n">skip_final_ry</span> \
+            <span class="k">else</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_entangled_qubits</span><span class="p">)</span> <span class="o">*</span> <span class="n">depth</span>
+
+        <span class="c1"># CRx gates have an additional parameter per entanglement</span>
+        <span class="k">if</span> <span class="n">entanglement_gate</span> <span class="o">==</span> <span class="s1">&#39;crx&#39;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_num_parameters</span> <span class="o">+=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_entangler_map</span><span class="p">)</span> <span class="o">*</span> <span class="n">depth</span>
+
         <span class="bp">self</span><span class="o">.</span><span class="n">_bounds</span> <span class="o">=</span> <span class="p">[(</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)]</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">_num_parameters</span>
 
 <div class="viewcode-block" id="RY.construct_circuit"><a class="viewcode-back" href="../../../../../autodoc/qiskit.aqua.components.variational_forms.ry.html#qiskit.aqua.components.variational_forms.RY.construct_circuit">[docs]</a>    <span class="k">def</span> <span class="nf">construct_circuit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parameters</span><span class="p">,</span> <span class="n">q</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
@@ -313,17 +326,33 @@
 
         <span class="k">for</span> <span class="n">block</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_depth</span><span class="p">):</span>
             <span class="n">circuit</span><span class="o">.</span><span class="n">barrier</span><span class="p">(</span><span class="n">q</span><span class="p">)</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_entanglement</span> <span class="o">==</span> <span class="s1">&#39;sca&#39;</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_entangler_map</span> <span class="o">=</span> <span class="n">VariationalForm</span><span class="o">.</span><span class="n">get_entangler_map</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_entanglement</span><span class="p">,</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_num_qubits</span><span class="p">,</span>
+                    <span class="n">offset</span><span class="o">=</span><span class="n">block</span><span class="p">)</span>
+
             <span class="k">for</span> <span class="n">src</span><span class="p">,</span> <span class="n">targ</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_entangler_map</span><span class="p">:</span>
                 <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_entanglement_gate</span> <span class="o">==</span> <span class="s1">&#39;cz&#39;</span><span class="p">:</span>
                     <span class="n">circuit</span><span class="o">.</span><span class="n">u2</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="n">q</span><span class="p">[</span><span class="n">targ</span><span class="p">])</span>  <span class="c1"># h</span>
                     <span class="n">circuit</span><span class="o">.</span><span class="n">cx</span><span class="p">(</span><span class="n">q</span><span class="p">[</span><span class="n">src</span><span class="p">],</span> <span class="n">q</span><span class="p">[</span><span class="n">targ</span><span class="p">])</span>
                     <span class="n">circuit</span><span class="o">.</span><span class="n">u2</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="n">q</span><span class="p">[</span><span class="n">targ</span><span class="p">])</span>  <span class="c1"># h</span>
+
+                <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">_entanglement_gate</span> <span class="o">==</span> <span class="s1">&#39;crx&#39;</span><span class="p">:</span>
+                    <span class="n">circuit</span><span class="o">.</span><span class="n">cu3</span><span class="p">(</span><span class="n">parameters</span><span class="p">[</span><span class="n">param_idx</span><span class="p">],</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span>
+                                <span class="n">q</span><span class="p">[</span><span class="n">src</span><span class="p">],</span> <span class="n">q</span><span class="p">[</span><span class="n">targ</span><span class="p">])</span>  <span class="c1"># crx</span>
+                    <span class="n">param_idx</span> <span class="o">+=</span> <span class="mi">1</span>
+
                 <span class="k">else</span><span class="p">:</span>
                     <span class="n">circuit</span><span class="o">.</span><span class="n">cx</span><span class="p">(</span><span class="n">q</span><span class="p">[</span><span class="n">src</span><span class="p">],</span> <span class="n">q</span><span class="p">[</span><span class="n">targ</span><span class="p">])</span>
-            <span class="n">circuit</span><span class="o">.</span><span class="n">barrier</span><span class="p">(</span><span class="n">q</span><span class="p">)</span>
-            <span class="k">for</span> <span class="n">qubit</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_entangled_qubits</span><span class="p">:</span>
-                <span class="n">circuit</span><span class="o">.</span><span class="n">u3</span><span class="p">(</span><span class="n">parameters</span><span class="p">[</span><span class="n">param_idx</span><span class="p">],</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">q</span><span class="p">[</span><span class="n">qubit</span><span class="p">])</span>  <span class="c1"># ry</span>
-                <span class="n">param_idx</span> <span class="o">+=</span> <span class="mi">1</span>
+
+            <span class="c1"># Skip the final RY layer if it is specified and we reached the</span>
+            <span class="c1"># last block</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_skip_final_ry</span> <span class="ow">or</span> <span class="n">block</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_depth</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">circuit</span><span class="o">.</span><span class="n">barrier</span><span class="p">(</span><span class="n">q</span><span class="p">)</span>
+                <span class="k">for</span> <span class="n">qubit</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_entangled_qubits</span><span class="p">:</span>
+                    <span class="n">circuit</span><span class="o">.</span><span class="n">u3</span><span class="p">(</span><span class="n">parameters</span><span class="p">[</span><span class="n">param_idx</span><span class="p">],</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">q</span><span class="p">[</span><span class="n">qubit</span><span class="p">])</span>  <span class="c1"># ry</span>
+                    <span class="n">param_idx</span> <span class="o">+=</span> <span class="mi">1</span>
         <span class="n">circuit</span><span class="o">.</span><span class="n">barrier</span><span class="p">(</span><span class="n">q</span><span class="p">)</span>
 
         <span class="k">return</span> <span class="n">circuit</span></div></div>

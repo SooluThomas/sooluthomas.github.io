@@ -51,7 +51,7 @@
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="qiskit.aqua.algorithms.single_sample.amplitude_estimation.q_factory module" href="qiskit.aqua.algorithms.single_sample.amplitude_estimation.q_factory.html" />
+    <link rel="next" title="qiskit.aqua.algorithms.single_sample.amplitude_estimation.ae_base module" href="qiskit.aqua.algorithms.single_sample.amplitude_estimation.ae_base.html" />
     <link rel="prev" title="qiskit.aqua.algorithms.single_sample.amplitude_estimation package" href="qiskit.aqua.algorithms.single_sample.amplitude_estimation.html" /> 
   </head>
 <body>
@@ -756,6 +756,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.circuit.html">qiskit.circuit package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#subpackages">Subpackages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#submodules">Submodules</a></li>
 </ul>
 </li>
@@ -776,8 +777,9 @@
 <li class="toctree-l4"><a class="reference internal" href="qiskit.extensions.html#submodules">Submodules</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.mapper.html">qiskit.mapper package</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="qiskit.mapper.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qiskit.ignis.html">qiskit.ignis package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.ignis.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.ignis.html#submodules">Submodules</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.providers.html">qiskit.providers package</a><ul>
@@ -836,10 +838,8 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="qiskit.html#submodules">Submodules</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="qiskit._util.html">qiskit._util module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.exceptions.html">qiskit.exceptions module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.execute.html">qiskit.execute module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.qiskiterror.html">qiskit.qiskiterror module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.user_config.html">qiskit.user_config module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.util.html">qiskit.util module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.version.html">qiskit.version module</a></li>
@@ -1540,6 +1540,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.circuit.html">qiskit.circuit package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#subpackages">Subpackages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#submodules">Submodules</a></li>
 </ul>
 </li>
@@ -1560,8 +1561,9 @@
 <li class="toctree-l4"><a class="reference internal" href="qiskit.extensions.html#submodules">Submodules</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.mapper.html">qiskit.mapper package</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="qiskit.mapper.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qiskit.ignis.html">qiskit.ignis package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.ignis.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.ignis.html#submodules">Submodules</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.providers.html">qiskit.providers package</a><ul>
@@ -1620,10 +1622,8 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="qiskit.html#submodules">Submodules</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="qiskit._util.html">qiskit._util module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.exceptions.html">qiskit.exceptions module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.execute.html">qiskit.execute module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.qiskiterror.html">qiskit.qiskiterror module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.user_config.html">qiskit.user_config module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.util.html">qiskit.util module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.version.html">qiskit.version module</a></li>
@@ -1647,12 +1647,17 @@
 <p>The Amplitude Estimation Algorithm.</p>
 <dl class="class">
 <dt id="qiskit.aqua.algorithms.single_sample.amplitude_estimation.ae.AmplitudeEstimation">
-<em class="property">class </em><code class="descname">AmplitudeEstimation</code><span class="sig-paren">(</span><em>num_eval_qubits</em>, <em>a_factory</em>, <em>i_objective=None</em>, <em>q_factory=None</em>, <em>iqft=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/algorithms/single_sample/amplitude_estimation/ae.html#AmplitudeEstimation"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.aqua.algorithms.single_sample.amplitude_estimation.ae.AmplitudeEstimation" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="qiskit.aqua.algorithms.quantum_algorithm.html#qiskit.aqua.algorithms.quantum_algorithm.QuantumAlgorithm" title="qiskit.aqua.algorithms.quantum_algorithm.QuantumAlgorithm"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.aqua.algorithms.quantum_algorithm.QuantumAlgorithm</span></code></a></p>
+<em class="property">class </em><code class="descname">AmplitudeEstimation</code><span class="sig-paren">(</span><em>num_eval_qubits</em>, <em>a_factory=None</em>, <em>i_objective=None</em>, <em>q_factory=None</em>, <em>iqft=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/algorithms/single_sample/amplitude_estimation/ae.html#AmplitudeEstimation"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.aqua.algorithms.single_sample.amplitude_estimation.ae.AmplitudeEstimation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="qiskit.aqua.algorithms.single_sample.amplitude_estimation.ae_base.html#qiskit.aqua.algorithms.single_sample.amplitude_estimation.ae_base.AmplitudeEstimationBase" title="qiskit.aqua.algorithms.single_sample.amplitude_estimation.ae_base.AmplitudeEstimationBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.aqua.algorithms.single_sample.amplitude_estimation.ae_base.AmplitudeEstimationBase</span></code></a></p>
 <p>The Amplitude Estimation algorithm.</p>
 <dl class="attribute">
 <dt id="qiskit.aqua.algorithms.single_sample.amplitude_estimation.ae.AmplitudeEstimation.CONFIGURATION">
 <code class="descname">CONFIGURATION</code><em class="property"> = {'depends': [{'pluggable_type': 'uncertainty_problem', 'default': {'name': 'EuropeanCallDelta'}}, {'pluggable_type': 'iqft', 'default': {'name': 'STANDARD'}}], 'description': 'Amplitude Estimation Algorithm', 'input_schema': {'$schema': 'http://json-schema.org/schema#', 'additionalProperties': False, 'id': 'AmplitudeEstimation_schema', 'properties': {'num_eval_qubits': {'default': 5, 'minimum': 1, 'type': 'integer'}}, 'type': 'object'}, 'name': 'AmplitudeEstimation', 'problems': ['uncertainty']}</em><a class="headerlink" href="#qiskit.aqua.algorithms.single_sample.amplitude_estimation.ae.AmplitudeEstimation.CONFIGURATION" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="qiskit.aqua.algorithms.single_sample.amplitude_estimation.ae.AmplitudeEstimation.confidence_interval">
+<code class="descname">confidence_interval</code><span class="sig-paren">(</span><em>alpha</em>, <em>kind='likelihood_ratio'</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/algorithms/single_sample/amplitude_estimation/ae.html#AmplitudeEstimation.confidence_interval"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.aqua.algorithms.single_sample.amplitude_estimation.ae.AmplitudeEstimation.confidence_interval" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -1694,10 +1699,10 @@
             <div>qiskit.aqua.algorithms.single_sample.amplitude_estimation package</div>
          </div>
      </a>
-     <a id="button-next" href="qiskit.aqua.algorithms.single_sample.amplitude_estimation.q_factory.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
+     <a id="button-next" href="qiskit.aqua.algorithms.single_sample.amplitude_estimation.ae_base.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
         <div class="pagenation-text">
             <span class="pagenation-direction">Next</span>
-            <div>qiskit.aqua.algorithms.single_sample.amplitude_estimation.q_factory module</div>
+            <div>qiskit.aqua.algorithms.single_sample.amplitude_estimation.ae_base module</div>
         </div>
      </a>
         

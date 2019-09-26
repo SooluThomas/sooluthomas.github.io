@@ -385,8 +385,8 @@
 <span class="sd">        meas_circuit_fn(op, qubit, clbit)</span>
 <span class="sd">            Args:</span>
 <span class="sd">                op (str): the operator label</span>
-<span class="sd">                qubit (tuple(QuantumRegister, int)): measured qubit</span>
-<span class="sd">                clbit (tuple(ClassicalRegister, int)): measurement clbit</span>
+<span class="sd">                qubit (Qubit): measured qubit</span>
+<span class="sd">                clbit (Clbit): measurement clbit</span>
 <span class="sd">            Returns:</span>
 <span class="sd">                A QuantumCircuit object for the measurement.</span>
 
@@ -403,7 +403,7 @@
 <span class="sd">        prep_circuit_fn(op, qubit)</span>
 <span class="sd">            Args:</span>
 <span class="sd">                op (str): the operator label</span>
-<span class="sd">                qubit (tuple(QuantumRegister, int)): measured qubit</span>
+<span class="sd">                qubit (Qubit): measured qubit</span>
 <span class="sd">            Returns:</span>
 <span class="sd">                A QuantumCircuit object for the preparation gates.</span>
 
@@ -434,14 +434,14 @@
         <span class="k">raise</span> <span class="n">QiskitError</span><span class="p">(</span>
             <span class="s2">&quot;prepared_qubits and measured_qubits are different length.&quot;</span><span class="p">)</span>
     <span class="n">num_qubits</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">meas_qubits</span><span class="p">)</span>
-    <span class="n">meas_qubit_registers</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">q</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">q</span> <span class="ow">in</span> <span class="n">meas_qubits</span><span class="p">)</span>
+    <span class="n">meas_qubit_registers</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">q</span><span class="o">.</span><span class="n">register</span> <span class="k">for</span> <span class="n">q</span> <span class="ow">in</span> <span class="n">meas_qubits</span><span class="p">)</span>
     <span class="c1"># Check qubits being measured are defined in circuit</span>
     <span class="k">for</span> <span class="n">reg</span> <span class="ow">in</span> <span class="n">meas_qubit_registers</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">reg</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">circuit</span><span class="o">.</span><span class="n">qregs</span><span class="p">:</span>
             <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s1">&#39;WARNING: circuit does not contain &#39;</span>
                            <span class="s1">&#39;measured QuantumRegister: </span><span class="si">%s</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">reg</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
 
-    <span class="n">prep_qubit_registers</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">q</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">q</span> <span class="ow">in</span> <span class="n">prep_qubits</span><span class="p">)</span>
+    <span class="n">prep_qubit_registers</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">q</span><span class="o">.</span><span class="n">register</span> <span class="k">for</span> <span class="n">q</span> <span class="ow">in</span> <span class="n">prep_qubits</span><span class="p">)</span>
     <span class="c1"># Check qubits being measured are defined in circuit</span>
     <span class="k">for</span> <span class="n">reg</span> <span class="ow">in</span> <span class="n">prep_qubit_registers</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">reg</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">circuit</span><span class="o">.</span><span class="n">qregs</span><span class="p">:</span>
@@ -616,7 +616,7 @@
     <span class="k">for</span> <span class="n">tuple_element</span> <span class="ow">in</span> <span class="n">registers</span><span class="p">:</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">tuple_element</span><span class="p">,</span> <span class="n">QuantumRegister</span><span class="p">):</span>
             <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">tuple_element</span><span class="o">.</span><span class="n">size</span><span class="p">):</span>
-                <span class="n">qubits</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">tuple_element</span><span class="p">,</span> <span class="n">j</span><span class="p">))</span>
+                <span class="n">qubits</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tuple_element</span><span class="p">[</span><span class="n">j</span><span class="p">])</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">qubits</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tuple_element</span><span class="p">)</span>
     <span class="c1"># Check registers are unique</span>

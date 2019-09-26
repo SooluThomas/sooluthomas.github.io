@@ -235,8 +235,8 @@
 <span class="n">CPU_COUNT</span> <span class="o">=</span> <span class="n">local_hardware_info</span><span class="p">()[</span><span class="s1">&#39;cpus&#39;</span><span class="p">]</span>
 
 
-<div class="viewcode-block" id="parallel_map"><a class="viewcode-back" href="../../../autodoc/qiskit.tools.parallel.html#qiskit.tools.parallel.parallel_map">[docs]</a><span class="k">def</span> <span class="nf">parallel_map</span><span class="p">(</span><span class="n">task</span><span class="p">,</span> <span class="n">values</span><span class="p">,</span> <span class="n">task_args</span><span class="o">=</span><span class="nb">tuple</span><span class="p">(),</span> <span class="n">task_kwargs</span><span class="o">=</span><span class="p">{},</span>  <span class="c1"># pylint: disable=W0102</span>
-                 <span class="n">num_processes</span><span class="o">=</span><span class="n">CPU_COUNT</span><span class="p">):</span>
+<div class="viewcode-block" id="parallel_map"><a class="viewcode-back" href="../../../autodoc/qiskit.tools.parallel.html#qiskit.tools.parallel.parallel_map">[docs]</a><span class="k">def</span> <span class="nf">parallel_map</span><span class="p">(</span>  <span class="c1"># pylint: disable=dangerous-default-value</span>
+        <span class="n">task</span><span class="p">,</span> <span class="n">values</span><span class="p">,</span> <span class="n">task_args</span><span class="o">=</span><span class="nb">tuple</span><span class="p">(),</span> <span class="n">task_kwargs</span><span class="o">=</span><span class="p">{},</span> <span class="n">num_processes</span><span class="o">=</span><span class="n">CPU_COUNT</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Parallel execution of a mapping of `values` to the function `task`. This</span>
 <span class="sd">    is functionally equivalent to::</span>
@@ -294,11 +294,16 @@
             <span class="n">pool</span><span class="o">.</span><span class="n">terminate</span><span class="p">()</span>
             <span class="n">pool</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
 
-        <span class="k">except</span> <span class="ne">KeyboardInterrupt</span><span class="p">:</span>
-            <span class="n">pool</span><span class="o">.</span><span class="n">terminate</span><span class="p">()</span>
-            <span class="n">pool</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
-            <span class="n">Publisher</span><span class="p">()</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span><span class="s2">&quot;terra.parallel.finish&quot;</span><span class="p">)</span>
-            <span class="k">raise</span> <span class="n">QiskitError</span><span class="p">(</span><span class="s1">&#39;Keyboard interrupt in parallel_map.&#39;</span><span class="p">)</span>
+        <span class="k">except</span> <span class="p">(</span><span class="ne">KeyboardInterrupt</span><span class="p">,</span> <span class="ne">Exception</span><span class="p">)</span> <span class="k">as</span> <span class="n">error</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">error</span><span class="p">,</span> <span class="ne">KeyboardInterrupt</span><span class="p">):</span>
+                <span class="n">pool</span><span class="o">.</span><span class="n">terminate</span><span class="p">()</span>
+                <span class="n">pool</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
+                <span class="n">Publisher</span><span class="p">()</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span><span class="s2">&quot;terra.parallel.finish&quot;</span><span class="p">)</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;QISKIT_IN_PARALLEL&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;False&#39;</span>
+                <span class="k">raise</span> <span class="n">QiskitError</span><span class="p">(</span><span class="s1">&#39;Keyboard interrupt in parallel_map.&#39;</span><span class="p">)</span>
+            <span class="c1"># Otherwise just reset parallel flag and error</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;QISKIT_IN_PARALLEL&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;False&#39;</span>
+            <span class="k">raise</span> <span class="n">error</span>
 
         <span class="n">Publisher</span><span class="p">()</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span><span class="s2">&quot;terra.parallel.finish&quot;</span><span class="p">)</span>
         <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;QISKIT_IN_PARALLEL&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;FALSE&#39;</span>

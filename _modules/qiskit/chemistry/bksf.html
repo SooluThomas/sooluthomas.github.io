@@ -189,13 +189,12 @@
 <span class="kn">import</span> <span class="nn">networkx</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">qiskit.quantum_info</span> <span class="k">import</span> <span class="n">Pauli</span>
-<span class="kn">from</span> <span class="nn">qiskit.aqua</span> <span class="k">import</span> <span class="n">Operator</span>
+<span class="kn">from</span> <span class="nn">qiskit.aqua.operators</span> <span class="k">import</span> <span class="n">WeightedPauliOperator</span>
 
 
 <span class="k">def</span> <span class="nf">_one_body</span><span class="p">(</span><span class="n">edge_list</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">h1_pq</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Map the term a^\dagger_p a_q + a^\dagger_q a_p to qubit operator.</span>
-
+<span class="sd">    Map the term a^\\dagger_p a_q + a^\\dagger_q a_p to qubit operator.</span>
 <span class="sd">    Args:</span>
 <span class="sd">        edge_list (numpy.ndarray): 2xE matrix, each indicates (from, to) pair</span>
 <span class="sd">        p (int): index of the one body term</span>
@@ -203,10 +202,9 @@
 <span class="sd">        h1_pq (complex): coeffient of the one body term at (p, q)</span>
 
 <span class="sd">    Return:</span>
-<span class="sd">        Operator: mapped qubit operator</span>
+<span class="sd">        WeightedPauliOperator: mapped qubit operator</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1"># Handle off-diagonal terms.</span>
-    <span class="n">final_coeff</span> <span class="o">=</span> <span class="mf">1.0</span>
     <span class="k">if</span> <span class="n">p</span> <span class="o">!=</span> <span class="n">q</span><span class="p">:</span>
         <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">([</span><span class="n">p</span><span class="p">,</span> <span class="n">q</span><span class="p">])</span>
         <span class="n">b_a</span> <span class="o">=</span> <span class="n">edge_operator_bi</span><span class="p">(</span><span class="n">edge_list</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
@@ -222,18 +220,18 @@
         <span class="n">w</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">edge_list</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
         <span class="n">id_pauli</span> <span class="o">=</span> <span class="n">Pauli</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span>
 
-        <span class="n">id_op</span> <span class="o">=</span> <span class="n">Operator</span><span class="p">(</span><span class="n">paulis</span><span class="o">=</span><span class="p">[[</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">id_pauli</span><span class="p">]])</span>
+        <span class="n">id_op</span> <span class="o">=</span> <span class="n">WeightedPauliOperator</span><span class="p">(</span><span class="n">paulis</span><span class="o">=</span><span class="p">[[</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">id_pauli</span><span class="p">]])</span>
         <span class="n">qubit_op</span> <span class="o">=</span> <span class="n">id_op</span> <span class="o">-</span> <span class="n">b_p</span>
         <span class="n">final_coeff</span> <span class="o">=</span> <span class="mf">0.5</span>
 
-    <span class="n">qubit_op</span><span class="o">.</span><span class="n">scaling_coeff</span><span class="p">(</span><span class="n">final_coeff</span> <span class="o">*</span> <span class="n">h1_pq</span><span class="p">)</span>
-    <span class="n">qubit_op</span><span class="o">.</span><span class="n">zeros_coeff_elimination</span><span class="p">()</span>
+    <span class="n">qubit_op</span> <span class="o">=</span> <span class="p">(</span><span class="n">final_coeff</span> <span class="o">*</span> <span class="n">h1_pq</span><span class="p">)</span> <span class="o">*</span> <span class="n">qubit_op</span>
+    <span class="n">qubit_op</span><span class="o">.</span><span class="n">simplify</span><span class="p">()</span>
     <span class="k">return</span> <span class="n">qubit_op</span>
 
 
 <span class="k">def</span> <span class="nf">_two_body</span><span class="p">(</span><span class="n">edge_list</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">h2_pqrs</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Map the term a^\dagger_p a^\dagger_q a_r a_s + h.c. to qubit operator.</span>
+<span class="sd">    Map the term a^\\dagger_p a^\\dagger_q a_r a_s + h.c. to qubit operator.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        edge_list (numpy.ndarray): 2xE matrix, each indicates (from, to) pair</span>
@@ -244,11 +242,11 @@
 <span class="sd">        h2_pqrs (complex): coeffient of the two body term at (p, q, r, s)</span>
 
 <span class="sd">    Returns:</span>
-<span class="sd">        Operator: mapped qubit operator</span>
+<span class="sd">        WeightedPauliOperator: mapped qubit operator</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1"># Handle case of four unique indices.</span>
     <span class="n">v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">edge_list</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
-    <span class="n">id_op</span> <span class="o">=</span> <span class="n">Operator</span><span class="p">(</span><span class="n">paulis</span><span class="o">=</span><span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="n">Pauli</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">v</span><span class="p">)]])</span>
+    <span class="n">id_op</span> <span class="o">=</span> <span class="n">WeightedPauliOperator</span><span class="p">(</span><span class="n">paulis</span><span class="o">=</span><span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="n">Pauli</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">v</span><span class="p">)]])</span>
     <span class="n">final_coeff</span> <span class="o">=</span> <span class="mf">1.0</span>
 
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="nb">set</span><span class="p">([</span><span class="n">p</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">s</span><span class="p">]))</span> <span class="o">==</span> <span class="mi">4</span><span class="p">:</span>
@@ -309,8 +307,8 @@
     <span class="k">else</span><span class="p">:</span>
         <span class="k">pass</span>
 
-    <span class="n">qubit_op</span><span class="o">.</span><span class="n">scaling_coeff</span><span class="p">(</span><span class="n">final_coeff</span> <span class="o">*</span> <span class="n">h2_pqrs</span><span class="p">)</span>
-    <span class="n">qubit_op</span><span class="o">.</span><span class="n">zeros_coeff_elimination</span><span class="p">()</span>
+    <span class="n">qubit_op</span> <span class="o">=</span> <span class="p">(</span><span class="n">final_coeff</span> <span class="o">*</span> <span class="n">h2_pqrs</span><span class="p">)</span> <span class="o">*</span> <span class="n">qubit_op</span>
+    <span class="n">qubit_op</span><span class="o">.</span><span class="n">simplify</span><span class="p">()</span>
     <span class="k">return</span> <span class="n">qubit_op</span>
 
 
@@ -385,7 +383,7 @@
 <span class="sd">        j (int): specifying the edge operator A</span>
 
 <span class="sd">    Returns:</span>
-<span class="sd">        Operator: qubit operator</span>
+<span class="sd">        WeightedPauliOperator: qubit operator</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">edge_list</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
     <span class="n">w</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">edge_list</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
@@ -413,7 +411,7 @@
         <span class="k">if</span> <span class="n">edge_list</span><span class="p">[</span><span class="n">ii</span><span class="p">][</span><span class="n">jj</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">i</span><span class="p">:</span>
             <span class="n">v</span><span class="p">[</span><span class="n">jj</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
 
-    <span class="n">qubit_op</span> <span class="o">=</span> <span class="n">Operator</span><span class="p">(</span><span class="n">paulis</span><span class="o">=</span><span class="p">[[</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">Pauli</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">w</span><span class="p">)]])</span>
+    <span class="n">qubit_op</span> <span class="o">=</span> <span class="n">WeightedPauliOperator</span><span class="p">(</span><span class="n">paulis</span><span class="o">=</span><span class="p">[[</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">Pauli</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">w</span><span class="p">)]])</span>
     <span class="k">return</span> <span class="n">qubit_op</span></div>
 
 
@@ -421,21 +419,19 @@
 
     <span class="n">edge_list</span> <span class="o">=</span> <span class="n">bravyi_kitaev_fast_edge_list</span><span class="p">(</span><span class="n">fer_op</span><span class="p">)</span>
     <span class="n">num_qubits</span> <span class="o">=</span> <span class="n">edge_list</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-    <span class="c1"># vac_operator = Operator(paulis=[[1.0, Pauli.from_label(&#39;I&#39; * num_qubits)]])</span>
 
     <span class="n">g</span> <span class="o">=</span> <span class="n">networkx</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span>
     <span class="n">g</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">(</span><span class="nb">tuple</span><span class="p">(</span><span class="n">edge_list</span><span class="o">.</span><span class="n">transpose</span><span class="p">()))</span>
     <span class="n">stabs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">networkx</span><span class="o">.</span><span class="n">cycle_basis</span><span class="p">(</span><span class="n">g</span><span class="p">))</span>
-    <span class="n">stabilizers</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">stabilizer_ops</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">stab</span> <span class="ow">in</span> <span class="n">stabs</span><span class="p">:</span>
-        <span class="n">a</span> <span class="o">=</span> <span class="n">Operator</span><span class="p">(</span><span class="n">paulis</span><span class="o">=</span><span class="p">[[</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">Pauli</span><span class="o">.</span><span class="n">from_label</span><span class="p">(</span><span class="s1">&#39;I&#39;</span> <span class="o">*</span> <span class="n">num_qubits</span><span class="p">)]])</span>
+        <span class="n">a</span> <span class="o">=</span> <span class="n">WeightedPauliOperator</span><span class="p">(</span><span class="n">paulis</span><span class="o">=</span><span class="p">[[</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">Pauli</span><span class="o">.</span><span class="n">from_label</span><span class="p">(</span><span class="s1">&#39;I&#39;</span> <span class="o">*</span> <span class="n">num_qubits</span><span class="p">)]])</span>
         <span class="n">stab</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">stab</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">stab</span><span class="p">)):</span>
-            <span class="n">a</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="n">edge_operator_aij</span><span class="p">(</span><span class="n">edge_list</span><span class="p">,</span> <span class="n">stab</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">stab</span><span class="p">[(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">stab</span><span class="p">)])</span>
-            <span class="n">a</span><span class="o">.</span><span class="n">scaling_coeff</span><span class="p">(</span><span class="mi">1</span><span class="n">j</span><span class="p">)</span>
-        <span class="n">stabilizers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+            <span class="n">a</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="n">edge_operator_aij</span><span class="p">(</span><span class="n">edge_list</span><span class="p">,</span> <span class="n">stab</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">stab</span><span class="p">[(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">stab</span><span class="p">)])</span> <span class="o">*</span> <span class="mi">1</span><span class="n">j</span>
+        <span class="n">stabilizer_ops</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
 
-    <span class="k">return</span> <span class="n">stabilizers</span></div>
+    <span class="k">return</span> <span class="n">stabilizer_ops</span></div>
 
 
 <div class="viewcode-block" id="edge_operator_bi"><a class="viewcode-back" href="../../../autodoc/qiskit.chemistry.bksf.html#qiskit.chemistry.bksf.edge_operator_bi">[docs]</a><span class="k">def</span> <span class="nf">edge_operator_bi</span><span class="p">(</span><span class="n">edge_list</span><span class="p">,</span> <span class="n">i</span><span class="p">):</span>
@@ -449,14 +445,14 @@
 <span class="sd">        i (int): index for specifying the edge operator B.</span>
 
 <span class="sd">    Returns:</span>
-<span class="sd">        Operator: qubit operator</span>
+<span class="sd">        WeightedPauliOperator: qubit operator</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">qubit_position_matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">edge_list</span> <span class="o">==</span> <span class="n">i</span><span class="p">))</span>
     <span class="n">qubit_position</span> <span class="o">=</span> <span class="n">qubit_position_matrix</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
     <span class="n">v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">edge_list</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
     <span class="n">w</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">edge_list</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
     <span class="n">v</span><span class="p">[</span><span class="n">qubit_position</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
-    <span class="n">qubit_op</span> <span class="o">=</span> <span class="n">Operator</span><span class="p">(</span><span class="n">paulis</span><span class="o">=</span><span class="p">[[</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">Pauli</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">w</span><span class="p">)]])</span>
+    <span class="n">qubit_op</span> <span class="o">=</span> <span class="n">WeightedPauliOperator</span><span class="p">(</span><span class="n">paulis</span><span class="o">=</span><span class="p">[[</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">Pauli</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">w</span><span class="p">)]])</span>
     <span class="k">return</span> <span class="n">qubit_op</span></div>
 
 
@@ -467,8 +463,8 @@
 <span class="sd">    The electronic Hamiltonian is represented in terms of creation and</span>
 <span class="sd">    annihilation operators. These creation and annihilation operators could be</span>
 <span class="sd">    used to define Majorana modes as follows:</span>
-<span class="sd">        c_{2i} = a_i + a^{\dagger}_i,</span>
-<span class="sd">        c_{2i+1} = (a_i - a^{\dagger}_{i})/(1j)</span>
+<span class="sd">        c_{2i} = a_i + a^{\\dagger}_i,</span>
+<span class="sd">        c_{2i+1} = (a_i - a^{\\dagger}_{i})/(1j)</span>
 <span class="sd">    These Majorana modes can be used to define edge operators B_i and A_{ij}:</span>
 <span class="sd">        B_i=c_{2i}c_{2i+1},</span>
 <span class="sd">        A_{ij}=c_{2i}c_{2j}</span>
@@ -479,7 +475,7 @@
 <span class="sd">    expression for each of those five types. For example, the excitation</span>
 <span class="sd">    operator term in Hamiltonian when represented in terms of edge operators</span>
 <span class="sd">    becomes:</span>
-<span class="sd">        a_i^{\dagger}a_j+a_j^{\dagger}a_i = (-1j/2)*(A_ij*B_i+B_j*A_ij)</span>
+<span class="sd">        a_i^{\\dagger}a_j+a_j^{\\dagger}a_i = (-1j/2)*(A_ij*B_i+B_j*A_ij)</span>
 <span class="sd">    For the sake of brevity the reader is encouraged to look up the</span>
 <span class="sd">    expressions of other terms from the code below. The variables for edge</span>
 <span class="sd">    operators are chosen according to the nomenclature defined above</span>
@@ -490,14 +486,14 @@
 <span class="sd">        fer_op (FermionicOperator): the fermionic operator in the second quanitzed form</span>
 
 <span class="sd">    Returns:</span>
-<span class="sd">        Operator: mapped qubit operator</span>
+<span class="sd">        WeightedPauliOperator: mapped qubit operator</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">fer_op</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">fer_op</span><span class="p">)</span>
     <span class="c1"># bksf mapping works with the &#39;physicist&#39; notation.</span>
     <span class="n">fer_op</span><span class="o">.</span><span class="n">h2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">einsum</span><span class="p">(</span><span class="s1">&#39;ijkm-&gt;ikmj&#39;</span><span class="p">,</span> <span class="n">fer_op</span><span class="o">.</span><span class="n">h2</span><span class="p">)</span>
     <span class="n">modes</span> <span class="o">=</span> <span class="n">fer_op</span><span class="o">.</span><span class="n">modes</span>
     <span class="c1"># Initialize qubit operator as constant.</span>
-    <span class="n">qubit_op</span> <span class="o">=</span> <span class="n">Operator</span><span class="p">(</span><span class="n">paulis</span><span class="o">=</span><span class="p">[])</span>
+    <span class="n">qubit_op</span> <span class="o">=</span> <span class="n">WeightedPauliOperator</span><span class="p">(</span><span class="n">paulis</span><span class="o">=</span><span class="p">[])</span>
     <span class="n">edge_list</span> <span class="o">=</span> <span class="n">bravyi_kitaev_fast_edge_list</span><span class="p">(</span><span class="n">fer_op</span><span class="p">)</span>
     <span class="c1"># Loop through all indices.</span>
     <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">modes</span><span class="p">):</span>
@@ -531,7 +527,7 @@
 
                     <span class="n">qubit_op</span> <span class="o">+=</span> <span class="n">_two_body</span><span class="p">(</span><span class="n">edge_list</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">h2_pqrs</span><span class="p">)</span>
 
-    <span class="n">qubit_op</span><span class="o">.</span><span class="n">zeros_coeff_elimination</span><span class="p">()</span>
+    <span class="n">qubit_op</span><span class="o">.</span><span class="n">simplify</span><span class="p">()</span>
     <span class="k">return</span> <span class="n">qubit_op</span></div>
 
 
@@ -542,24 +538,24 @@
 <span class="sd">        fer_op (FermionicOperator): the fermionic operator in the second quanitzed form</span>
 
 <span class="sd">    Returns:</span>
-<span class="sd">        Operator: the qubit operator</span>
+<span class="sd">        WeightedPauliOperator: the qubit operator</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">edge_list</span> <span class="o">=</span> <span class="n">bravyi_kitaev_fast_edge_list</span><span class="p">(</span><span class="n">fer_op</span><span class="p">)</span>
     <span class="n">num_qubits</span> <span class="o">=</span> <span class="n">edge_list</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-    <span class="n">vac_operator</span> <span class="o">=</span> <span class="n">Operator</span><span class="p">(</span><span class="n">paulis</span><span class="o">=</span><span class="p">[[</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">Pauli</span><span class="o">.</span><span class="n">from_label</span><span class="p">(</span><span class="s1">&#39;I&#39;</span> <span class="o">*</span> <span class="n">num_qubits</span><span class="p">)]])</span>
+    <span class="n">vac_operator</span> <span class="o">=</span> <span class="n">WeightedPauliOperator</span><span class="p">(</span><span class="n">paulis</span><span class="o">=</span><span class="p">[[</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">Pauli</span><span class="o">.</span><span class="n">from_label</span><span class="p">(</span><span class="s1">&#39;I&#39;</span> <span class="o">*</span> <span class="n">num_qubits</span><span class="p">)]])</span>
 
     <span class="n">g</span> <span class="o">=</span> <span class="n">networkx</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span>
     <span class="n">g</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">(</span><span class="nb">tuple</span><span class="p">(</span><span class="n">edge_list</span><span class="o">.</span><span class="n">transpose</span><span class="p">()))</span>
     <span class="n">stabs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">networkx</span><span class="o">.</span><span class="n">cycle_basis</span><span class="p">(</span><span class="n">g</span><span class="p">))</span>
     <span class="k">for</span> <span class="n">stab</span> <span class="ow">in</span> <span class="n">stabs</span><span class="p">:</span>
-        <span class="n">a</span> <span class="o">=</span> <span class="n">Operator</span><span class="p">(</span><span class="n">paulis</span><span class="o">=</span><span class="p">[[</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">Pauli</span><span class="o">.</span><span class="n">from_label</span><span class="p">(</span><span class="s1">&#39;I&#39;</span> <span class="o">*</span> <span class="n">num_qubits</span><span class="p">)]])</span>
+        <span class="n">a</span> <span class="o">=</span> <span class="n">WeightedPauliOperator</span><span class="p">(</span><span class="n">paulis</span><span class="o">=</span><span class="p">[[</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">Pauli</span><span class="o">.</span><span class="n">from_label</span><span class="p">(</span><span class="s1">&#39;I&#39;</span> <span class="o">*</span> <span class="n">num_qubits</span><span class="p">)]])</span>
         <span class="n">stab</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">stab</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">stab</span><span class="p">)):</span>
-            <span class="n">a</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="n">edge_operator_aij</span><span class="p">(</span><span class="n">edge_list</span><span class="p">,</span> <span class="n">stab</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">stab</span><span class="p">[(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">stab</span><span class="p">)])</span>
-            <span class="n">a</span><span class="o">.</span><span class="n">scaling_coeff</span><span class="p">(</span><span class="mi">1</span><span class="n">j</span><span class="p">)</span>
-        <span class="n">a</span> <span class="o">+=</span> <span class="n">Operator</span><span class="p">(</span><span class="n">paulis</span><span class="o">=</span><span class="p">[[</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">Pauli</span><span class="o">.</span><span class="n">from_label</span><span class="p">(</span><span class="s1">&#39;I&#39;</span> <span class="o">*</span> <span class="n">num_qubits</span><span class="p">)]])</span>
-        <span class="n">vac_operator</span> <span class="o">=</span> <span class="n">vac_operator</span> <span class="o">*</span> <span class="n">a</span>
-        <span class="n">vac_operator</span><span class="o">.</span><span class="n">scaling_coeff</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+            <span class="n">a</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="n">edge_operator_aij</span><span class="p">(</span><span class="n">edge_list</span><span class="p">,</span> <span class="n">stab</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">stab</span><span class="p">[(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">stab</span><span class="p">)])</span> <span class="o">*</span> <span class="mi">1</span><span class="n">j</span>
+            <span class="c1"># a.scaling_coeff(1j)</span>
+        <span class="n">a</span> <span class="o">+=</span> <span class="n">WeightedPauliOperator</span><span class="p">(</span><span class="n">paulis</span><span class="o">=</span><span class="p">[[</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">Pauli</span><span class="o">.</span><span class="n">from_label</span><span class="p">(</span><span class="s1">&#39;I&#39;</span> <span class="o">*</span> <span class="n">num_qubits</span><span class="p">)]])</span>
+        <span class="n">vac_operator</span> <span class="o">=</span> <span class="n">vac_operator</span> <span class="o">*</span> <span class="n">a</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+        <span class="c1"># vac_operator.scaling_coeff()</span>
 
     <span class="k">return</span> <span class="n">vac_operator</span></div>
 
@@ -572,23 +568,22 @@
 <span class="sd">        mode_number (int): index, it corresponds to the mode for which number operator is required.</span>
 
 <span class="sd">    Returns:</span>
-<span class="sd">        Operator: the qubit operator</span>
+<span class="sd">        WeightedPauliOperator: the qubit operator</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">modes</span> <span class="o">=</span> <span class="n">fer_op</span><span class="o">.</span><span class="n">h1</span><span class="o">.</span><span class="n">modes</span>
     <span class="n">edge_list</span> <span class="o">=</span> <span class="n">bravyi_kitaev_fast_edge_list</span><span class="p">(</span><span class="n">fer_op</span><span class="p">)</span>
     <span class="n">num_qubits</span> <span class="o">=</span> <span class="n">edge_list</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-    <span class="n">num_operator</span> <span class="o">=</span> <span class="n">Operator</span><span class="p">(</span><span class="n">paulis</span><span class="o">=</span><span class="p">[[</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">Pauli</span><span class="o">.</span><span class="n">from_label</span><span class="p">(</span><span class="s1">&#39;I&#39;</span> <span class="o">*</span> <span class="n">num_qubits</span><span class="p">)]])</span>
+    <span class="n">num_operator</span> <span class="o">=</span> <span class="n">WeightedPauliOperator</span><span class="p">(</span><span class="n">paulis</span><span class="o">=</span><span class="p">[[</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">Pauli</span><span class="o">.</span><span class="n">from_label</span><span class="p">(</span><span class="s1">&#39;I&#39;</span> <span class="o">*</span> <span class="n">num_qubits</span><span class="p">)]])</span>
 
     <span class="k">if</span> <span class="n">mode_number</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">modes</span><span class="p">):</span>
             <span class="n">num_operator</span> <span class="o">-=</span> <span class="n">edge_operator_bi</span><span class="p">(</span><span class="n">edge_list</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
-        <span class="n">num_operator</span> <span class="o">+=</span> <span class="n">Operator</span><span class="p">(</span><span class="n">paulis</span><span class="o">=</span><span class="p">[[</span><span class="mf">1.0</span> <span class="o">*</span> <span class="n">modes</span><span class="p">,</span> <span class="n">Pauli</span><span class="o">.</span><span class="n">from_label</span><span class="p">(</span><span class="s1">&#39;I&#39;</span> <span class="o">*</span> <span class="n">num_qubits</span><span class="p">)]])</span>
+        <span class="n">num_operator</span> <span class="o">+=</span> <span class="n">WeightedPauliOperator</span><span class="p">(</span><span class="n">paulis</span><span class="o">=</span><span class="p">[[</span><span class="mf">1.0</span> <span class="o">*</span> <span class="n">modes</span><span class="p">,</span> <span class="n">Pauli</span><span class="o">.</span><span class="n">from_label</span><span class="p">(</span><span class="s1">&#39;I&#39;</span> <span class="o">*</span> <span class="n">num_qubits</span><span class="p">)]])</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="n">num_operator</span> <span class="o">+=</span> <span class="p">(</span><span class="n">Operator</span><span class="p">(</span><span class="n">paulis</span><span class="o">=</span><span class="p">[[</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">Pauli</span><span class="o">.</span><span class="n">from_label</span><span class="p">(</span><span class="s1">&#39;I&#39;</span> <span class="o">*</span> <span class="n">num_qubits</span><span class="p">)]]</span>
-                                  <span class="p">)</span> <span class="o">-</span> <span class="n">edge_operator_bi</span><span class="p">(</span><span class="n">edge_list</span><span class="p">,</span> <span class="n">mode_number</span><span class="p">))</span>
+        <span class="n">num_operator</span> <span class="o">+=</span> <span class="p">(</span><span class="n">WeightedPauliOperator</span><span class="p">(</span><span class="n">paulis</span><span class="o">=</span><span class="p">[[</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">Pauli</span><span class="o">.</span><span class="n">from_label</span><span class="p">(</span><span class="s1">&#39;I&#39;</span> <span class="o">*</span> <span class="n">num_qubits</span><span class="p">)]])</span>
+                         <span class="o">-</span> <span class="n">edge_operator_bi</span><span class="p">(</span><span class="n">edge_list</span><span class="p">,</span> <span class="n">mode_number</span><span class="p">))</span>
 
-    <span class="n">num_operator</span><span class="o">.</span><span class="n">scaling_coeff</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
-
+    <span class="n">num_operator</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">num_operator</span>
     <span class="k">return</span> <span class="n">num_operator</span></div>
 
 
@@ -601,13 +596,13 @@
 <span class="sd">        j (int): index of fermions</span>
 
 <span class="sd">    Returns:</span>
-<span class="sd">        Operator: the qubit operator</span>
+<span class="sd">        WeightedPauliOperator: the qubit operator</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">edge_list</span> <span class="o">=</span> <span class="n">bravyi_kitaev_fast_edge_list</span><span class="p">(</span><span class="n">fer_op</span><span class="p">)</span>
     <span class="n">gen_fer_operator</span> <span class="o">=</span> <span class="n">edge_operator_aij</span><span class="p">(</span><span class="n">edge_list</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span> <span class="o">*</span> <span class="n">edge_operator_bi</span><span class="p">(</span><span class="n">edge_list</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span> \
         <span class="o">-</span> <span class="n">edge_operator_bi</span><span class="p">(</span><span class="n">edge_list</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span> <span class="o">*</span> <span class="n">edge_operator_aij</span><span class="p">(</span><span class="n">edge_list</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span>
 
-    <span class="n">gen_fer_operator</span><span class="o">.</span><span class="n">scaling_coeff</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="n">j</span> <span class="o">*</span> <span class="mf">0.5</span><span class="p">)</span>
+    <span class="n">gen_fer_operator</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.5</span><span class="n">j</span> <span class="o">*</span> <span class="n">gen_fer_operator</span>
     <span class="k">return</span> <span class="n">gen_fer_operator</span></div>
 </pre></div>
 

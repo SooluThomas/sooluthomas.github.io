@@ -201,6 +201,7 @@
                                              <span class="n">has_ibmq</span><span class="p">,</span>
                                              <span class="n">get_backend_from_provider</span><span class="p">,</span>
                                              <span class="n">get_backends_from_provider</span><span class="p">,</span>
+                                             <span class="n">get_provider_from_backend</span><span class="p">,</span>
                                              <span class="n">is_local_backend</span><span class="p">,</span>
                                              <span class="n">is_aer_provider</span><span class="p">,</span>
                                              <span class="n">is_aer_statevector_backend</span><span class="p">)</span>
@@ -218,6 +219,7 @@
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">schema_input</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Create JSONSchema object.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_backend</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_schema</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_original_schema</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">aqua_jsonschema</span> <span class="o">=</span> <span class="kc">None</span>
@@ -232,6 +234,15 @@
         <span class="n">validator</span> <span class="o">=</span> <span class="n">jsonschema</span><span class="o">.</span><span class="n">Draft4Validator</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_schema</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_schema</span> <span class="o">=</span> <span class="n">JSONSchema</span><span class="o">.</span><span class="n">_resolve_schema_references</span><span class="p">(</span><span class="n">validator</span><span class="o">.</span><span class="n">schema</span><span class="p">,</span> <span class="n">validator</span><span class="o">.</span><span class="n">resolver</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">commit_changes</span><span class="p">()</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">backend</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Getter of backend.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_backend</span>
+
+    <span class="nd">@backend</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">backend</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">new_value</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_backend</span> <span class="o">=</span> <span class="n">new_value</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">schema</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -260,9 +271,7 @@
             <span class="k">for</span> <span class="n">problem</span> <span class="ow">in</span> <span class="n">problems</span><span class="p">:</span>
                 <span class="n">problems_dict</span><span class="p">[</span><span class="n">problem</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
 
-        <span class="n">problems_enum</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;enum&#39;</span><span class="p">:</span> <span class="nb">list</span><span class="p">(</span><span class="n">problems_dict</span><span class="o">.</span><span class="n">keys</span><span class="p">())}</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_schema</span><span class="p">[</span><span class="s1">&#39;properties&#39;</span><span class="p">][</span><span class="n">JSONSchema</span><span class="o">.</span><span class="n">PROBLEM</span><span class="p">][</span><span class="s1">&#39;properties&#39;</span><span class="p">][</span><span class="n">JSONSchema</span><span class="o">.</span><span class="n">NAME</span><span class="p">][</span><span class="s1">&#39;oneOf&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span>
-            <span class="n">problems_enum</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_schema</span><span class="p">[</span><span class="s1">&#39;properties&#39;</span><span class="p">][</span><span class="n">JSONSchema</span><span class="o">.</span><span class="n">PROBLEM</span><span class="p">][</span><span class="s1">&#39;properties&#39;</span><span class="p">][</span><span class="n">JSONSchema</span><span class="o">.</span><span class="n">NAME</span><span class="p">][</span><span class="s1">&#39;enum&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">problems_dict</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
 
 <div class="viewcode-block" id="JSONSchema.copy_section_from_aqua_schema"><a class="viewcode-back" href="../../../../autodoc/qiskit.aqua.parser.json_schema.html#qiskit.aqua.parser.JSONSchema.copy_section_from_aqua_schema">[docs]</a>    <span class="k">def</span> <span class="nf">copy_section_from_aqua_schema</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">section_name</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -285,23 +294,27 @@
 <span class="sd">            section_name (string): schema section</span>
 
 <span class="sd">        Returns:</span>
-<span class="sd">            Returns schema tyoe array</span>
+<span class="sd">            Returns schema type list</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">section_name</span> <span class="o">=</span> <span class="n">JSONSchema</span><span class="o">.</span><span class="n">format_section_name</span><span class="p">(</span><span class="n">section_name</span><span class="p">)</span>
         <span class="k">if</span> <span class="s1">&#39;properties&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_schema</span><span class="p">:</span>
-            <span class="k">return</span> <span class="p">[]</span>
+            <span class="k">raise</span> <span class="n">AquaError</span><span class="p">(</span><span class="s2">&quot;Schema missing &#39;properties&#39; section.&quot;</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="n">section_name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_schema</span><span class="p">[</span><span class="s1">&#39;properties&#39;</span><span class="p">]:</span>
             <span class="k">return</span> <span class="p">[]</span>
 
         <span class="k">if</span> <span class="s1">&#39;type&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_schema</span><span class="p">[</span><span class="s1">&#39;properties&#39;</span><span class="p">][</span><span class="n">section_name</span><span class="p">]:</span>
-            <span class="k">return</span> <span class="p">[]</span>
+            <span class="k">raise</span> <span class="n">AquaError</span><span class="p">(</span><span class="s2">&quot;Schema property section &#39;</span><span class="si">{}</span><span class="s2">&#39; missing type.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">section_name</span><span class="p">))</span>
 
-        <span class="n">types</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_schema</span><span class="p">[</span><span class="s1">&#39;properties&#39;</span><span class="p">][</span><span class="n">section_name</span><span class="p">][</span><span class="s1">&#39;type&#39;</span><span class="p">]</span>
-        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">types</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
-            <span class="k">return</span> <span class="n">types</span>
+        <span class="n">schema_type</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_schema</span><span class="p">[</span><span class="s1">&#39;properties&#39;</span><span class="p">][</span><span class="n">section_name</span><span class="p">][</span><span class="s1">&#39;type&#39;</span><span class="p">]</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">schema_type</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">schema_type</span>
 
-        <span class="k">return</span> <span class="p">[</span><span class="n">types</span><span class="p">]</span></div>
+        <span class="n">schema_type</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">schema_type</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">schema_type</span> <span class="o">==</span> <span class="s1">&#39;&#39;</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">AquaError</span><span class="p">(</span><span class="s2">&quot;Schema property section &#39;</span><span class="si">{}</span><span class="s2">&#39; empty type.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">section_name</span><span class="p">))</span>
+
+        <span class="k">return</span> <span class="p">[</span><span class="n">schema_type</span><span class="p">]</span></div>
 
 <div class="viewcode-block" id="JSONSchema.get_property_types"><a class="viewcode-back" href="../../../../autodoc/qiskit.aqua.parser.json_schema.html#qiskit.aqua.parser.JSONSchema.get_property_types">[docs]</a>    <span class="k">def</span> <span class="nf">get_property_types</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">section_name</span><span class="p">,</span> <span class="n">property_name</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -316,26 +329,30 @@
         <span class="n">section_name</span> <span class="o">=</span> <span class="n">JSONSchema</span><span class="o">.</span><span class="n">format_section_name</span><span class="p">(</span><span class="n">section_name</span><span class="p">)</span>
         <span class="n">property_name</span> <span class="o">=</span> <span class="n">JSONSchema</span><span class="o">.</span><span class="n">format_property_name</span><span class="p">(</span><span class="n">property_name</span><span class="p">)</span>
         <span class="k">if</span> <span class="s1">&#39;properties&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_schema</span><span class="p">:</span>
-            <span class="k">return</span> <span class="p">[]</span>
+            <span class="k">raise</span> <span class="n">AquaError</span><span class="p">(</span><span class="s2">&quot;Schema missing &#39;properties&#39; section.&quot;</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="n">section_name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_schema</span><span class="p">[</span><span class="s1">&#39;properties&#39;</span><span class="p">]:</span>
-            <span class="k">return</span> <span class="p">[]</span>
+            <span class="k">raise</span> <span class="n">AquaError</span><span class="p">(</span><span class="s2">&quot;Schema properties missing section &#39;</span><span class="si">{}</span><span class="s2">&#39;.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">section_name</span><span class="p">))</span>
 
         <span class="k">if</span> <span class="s1">&#39;properties&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_schema</span><span class="p">[</span><span class="s1">&#39;properties&#39;</span><span class="p">][</span><span class="n">section_name</span><span class="p">]:</span>
-            <span class="k">return</span> <span class="p">[]</span>
+            <span class="k">raise</span> <span class="n">AquaError</span><span class="p">(</span><span class="s2">&quot;Schema properties missing section &#39;</span><span class="si">{}</span><span class="s2">&#39; properties.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">section_name</span><span class="p">))</span>
 
         <span class="k">if</span> <span class="n">property_name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_schema</span><span class="p">[</span><span class="s1">&#39;properties&#39;</span><span class="p">][</span><span class="n">section_name</span><span class="p">][</span><span class="s1">&#39;properties&#39;</span><span class="p">]:</span>
-            <span class="k">return</span> <span class="p">[]</span>
+            <span class="k">raise</span> <span class="n">AquaError</span><span class="p">(</span><span class="s2">&quot;Schema properties section &#39;</span><span class="si">{}</span><span class="s2">&#39; missing &#39;</span><span class="si">{}</span><span class="s2">&#39; property.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">section_name</span><span class="p">,</span> <span class="n">property_name</span><span class="p">))</span>
 
-        <span class="n">prop</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_schema</span><span class="p">[</span><span class="s1">&#39;properties&#39;</span><span class="p">][</span><span class="n">section_name</span><span class="p">][</span><span class="s1">&#39;properties&#39;</span><span class="p">][</span><span class="n">property_name</span><span class="p">]</span>
-        <span class="k">if</span> <span class="s1">&#39;type&#39;</span> <span class="ow">in</span> <span class="n">prop</span><span class="p">:</span>
-            <span class="n">types</span> <span class="o">=</span> <span class="n">prop</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span>
-            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">types</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
-                <span class="k">return</span> <span class="n">types</span>
+        <span class="n">schema_property</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_schema</span><span class="p">[</span><span class="s1">&#39;properties&#39;</span><span class="p">][</span><span class="n">section_name</span><span class="p">][</span><span class="s1">&#39;properties&#39;</span><span class="p">][</span><span class="n">property_name</span><span class="p">]</span>
+        <span class="k">if</span> <span class="s1">&#39;type&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">schema_property</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">AquaError</span><span class="p">(</span><span class="s2">&quot;Schema properties section &#39;</span><span class="si">{}</span><span class="s2">&#39; missing &#39;</span><span class="si">{}</span><span class="s2">&#39; property type.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">section_name</span><span class="p">,</span> <span class="n">property_name</span><span class="p">))</span>
 
-            <span class="k">return</span> <span class="p">[</span><span class="n">types</span><span class="p">]</span>
+        <span class="n">schema_type</span> <span class="o">=</span> <span class="n">schema_property</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">schema_type</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">schema_type</span>
 
-        <span class="k">return</span> <span class="p">[]</span></div>
+        <span class="n">schema_type</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">schema_type</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">schema_type</span> <span class="o">==</span> <span class="s1">&#39;&#39;</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">AquaError</span><span class="p">(</span><span class="s2">&quot;Schema properties section &#39;</span><span class="si">{}</span><span class="s2">&#39; empty &#39;</span><span class="si">{}</span><span class="s2">&#39; property type.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">section_name</span><span class="p">,</span> <span class="n">property_name</span><span class="p">))</span>
+
+        <span class="k">return</span> <span class="p">[</span><span class="n">schema_type</span><span class="p">]</span></div>
 
 <div class="viewcode-block" id="JSONSchema.get_default_sections"><a class="viewcode-back" href="../../../../autodoc/qiskit.aqua.parser.json_schema.html#qiskit.aqua.parser.JSONSchema.get_default_sections">[docs]</a>    <span class="k">def</span> <span class="nf">get_default_sections</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -370,22 +387,20 @@
         <span class="k">if</span> <span class="n">section_name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_schema</span><span class="p">[</span><span class="s1">&#39;properties&#39;</span><span class="p">]:</span>
             <span class="k">return</span> <span class="kc">None</span>
 
-        <span class="n">types</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_schema</span><span class="p">[</span><span class="s1">&#39;properties&#39;</span><span class="p">][</span><span class="n">section_name</span><span class="p">][</span><span class="s1">&#39;type&#39;</span><span class="p">]]</span> <span class="k">if</span> <span class="s1">&#39;type&#39;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_schema</span><span class="p">[</span><span class="s1">&#39;properties&#39;</span><span class="p">][</span><span class="n">section_name</span><span class="p">]</span> <span class="k">else</span> <span class="p">[]</span>
-
+        <span class="n">schema_types</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_section_types</span><span class="p">(</span><span class="n">section_name</span><span class="p">)</span>
         <span class="k">if</span> <span class="s1">&#39;default&#39;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_schema</span><span class="p">[</span><span class="s1">&#39;properties&#39;</span><span class="p">][</span><span class="n">section_name</span><span class="p">]:</span>
-            <span class="k">return</span> <span class="n">JSONSchema</span><span class="o">.</span><span class="n">get_value</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_schema</span><span class="p">[</span><span class="s1">&#39;properties&#39;</span><span class="p">][</span><span class="n">section_name</span><span class="p">][</span><span class="s1">&#39;default&#39;</span><span class="p">],</span> <span class="n">types</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">JSONSchema</span><span class="o">.</span><span class="n">get_value</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_schema</span><span class="p">[</span><span class="s1">&#39;properties&#39;</span><span class="p">][</span><span class="n">section_name</span><span class="p">][</span><span class="s1">&#39;default&#39;</span><span class="p">],</span> <span class="n">schema_types</span><span class="p">)</span>
 
-        <span class="k">if</span> <span class="s1">&#39;object&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">types</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">JSONSchema</span><span class="o">.</span><span class="n">get_value</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">types</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s1">&#39;object&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">schema_types</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">JSONSchema</span><span class="o">.</span><span class="n">get_value</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">schema_types</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="s1">&#39;properties&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_schema</span><span class="p">[</span><span class="s1">&#39;properties&#39;</span><span class="p">][</span><span class="n">section_name</span><span class="p">]:</span>
             <span class="k">return</span> <span class="kc">None</span>
 
         <span class="n">properties</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">()</span>
         <span class="k">for</span> <span class="n">property_name</span><span class="p">,</span> <span class="n">values</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_schema</span><span class="p">[</span><span class="s1">&#39;properties&#39;</span><span class="p">][</span><span class="n">section_name</span><span class="p">][</span><span class="s1">&#39;properties&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-            <span class="n">types</span> <span class="o">=</span> <span class="p">[</span><span class="n">values</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]]</span> <span class="k">if</span> <span class="s1">&#39;type&#39;</span> <span class="ow">in</span> <span class="n">values</span> <span class="k">else</span> <span class="p">[]</span>
             <span class="n">default_value</span> <span class="o">=</span> <span class="n">values</span><span class="p">[</span><span class="s1">&#39;default&#39;</span><span class="p">]</span> <span class="k">if</span> <span class="s1">&#39;default&#39;</span> <span class="ow">in</span> <span class="n">values</span> <span class="k">else</span> <span class="kc">None</span>
-            <span class="n">properties</span><span class="p">[</span><span class="n">property_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">JSONSchema</span><span class="o">.</span><span class="n">get_value</span><span class="p">(</span><span class="n">default_value</span><span class="p">,</span> <span class="n">types</span><span class="p">)</span>
+            <span class="n">properties</span><span class="p">[</span><span class="n">property_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">JSONSchema</span><span class="o">.</span><span class="n">get_value</span><span class="p">(</span><span class="n">default_value</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_property_types</span><span class="p">(</span><span class="n">section_name</span><span class="p">,</span> <span class="n">property_name</span><span class="p">))</span>
 
         <span class="k">return</span> <span class="n">properties</span></div>
 
@@ -405,10 +420,8 @@
         <span class="k">if</span> <span class="n">section_name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_schema</span><span class="p">[</span><span class="s1">&#39;properties&#39;</span><span class="p">]:</span>
             <span class="k">return</span> <span class="kc">True</span>
 
-        <span class="k">if</span> <span class="s1">&#39;additionalProperties&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_schema</span><span class="p">[</span><span class="s1">&#39;properties&#39;</span><span class="p">][</span><span class="n">section_name</span><span class="p">]:</span>
-            <span class="k">return</span> <span class="kc">True</span>
-
-        <span class="k">return</span> <span class="n">JSONSchema</span><span class="o">.</span><span class="n">get_value</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_schema</span><span class="p">[</span><span class="s1">&#39;properties&#39;</span><span class="p">][</span><span class="n">section_name</span><span class="p">][</span><span class="s1">&#39;additionalProperties&#39;</span><span class="p">])</span></div>
+        <span class="n">additionalProperties</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_schema</span><span class="p">[</span><span class="s1">&#39;properties&#39;</span><span class="p">][</span><span class="n">section_name</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;additionalProperties&#39;</span><span class="p">,</span> <span class="s1">&#39;true&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">additionalProperties</span> <span class="o">==</span> <span class="s1">&#39;true&#39;</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="JSONSchema.get_property_default_values"><a class="viewcode-back" href="../../../../autodoc/qiskit.aqua.parser.json_schema.html#qiskit.aqua.parser.JSONSchema.get_property_default_values">[docs]</a>    <span class="k">def</span> <span class="nf">get_property_default_values</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">section_name</span><span class="p">,</span> <span class="n">property_name</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -442,6 +455,9 @@
 
             <span class="k">if</span> <span class="s1">&#39;boolean&#39;</span> <span class="ow">in</span> <span class="n">types</span><span class="p">:</span>
                 <span class="k">return</span> <span class="p">[</span><span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">]</span>
+
+        <span class="k">if</span> <span class="s1">&#39;enum&#39;</span> <span class="ow">in</span> <span class="n">prop</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">prop</span><span class="p">[</span><span class="s1">&#39;enum&#39;</span><span class="p">]</span>
 
         <span class="k">if</span> <span class="s1">&#39;oneOf&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">prop</span><span class="p">:</span>
             <span class="k">return</span> <span class="kc">None</span>
@@ -477,9 +493,9 @@
         <span class="k">if</span> <span class="n">property_name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_schema</span><span class="p">[</span><span class="s1">&#39;properties&#39;</span><span class="p">][</span><span class="n">section_name</span><span class="p">][</span><span class="s1">&#39;properties&#39;</span><span class="p">]:</span>
             <span class="k">return</span> <span class="kc">None</span>
 
-        <span class="n">prop</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_schema</span><span class="p">[</span><span class="s1">&#39;properties&#39;</span><span class="p">][</span><span class="n">section_name</span><span class="p">][</span><span class="s1">&#39;properties&#39;</span><span class="p">][</span><span class="n">property_name</span><span class="p">]</span>
-        <span class="k">if</span> <span class="s1">&#39;default&#39;</span> <span class="ow">in</span> <span class="n">prop</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">JSONSchema</span><span class="o">.</span><span class="n">get_value</span><span class="p">(</span><span class="n">prop</span><span class="p">[</span><span class="s1">&#39;default&#39;</span><span class="p">])</span>
+        <span class="n">schema_property</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_schema</span><span class="p">[</span><span class="s1">&#39;properties&#39;</span><span class="p">][</span><span class="n">section_name</span><span class="p">][</span><span class="s1">&#39;properties&#39;</span><span class="p">][</span><span class="n">property_name</span><span class="p">]</span>
+        <span class="k">if</span> <span class="s1">&#39;default&#39;</span> <span class="ow">in</span> <span class="n">schema_property</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">JSONSchema</span><span class="o">.</span><span class="n">get_value</span><span class="p">(</span><span class="n">schema_property</span><span class="p">[</span><span class="s1">&#39;default&#39;</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_property_types</span><span class="p">(</span><span class="n">section_name</span><span class="p">,</span> <span class="n">property_name</span><span class="p">))</span>
 
         <span class="k">return</span> <span class="kc">None</span></div>
 
@@ -491,23 +507,38 @@
             <span class="k">return</span>
 
         <span class="c1"># Updates defaults provider/backend</span>
-        <span class="n">default_provider_name</span> <span class="o">=</span> <span class="kc">None</span>
-        <span class="n">default_backend_name</span> <span class="o">=</span> <span class="kc">None</span>
-        <span class="n">orig_backend_properties</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_original_schema</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;properties&#39;</span><span class="p">,</span> <span class="p">{})</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">JSONSchema</span><span class="o">.</span><span class="n">BACKEND</span><span class="p">,</span> <span class="p">{})</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;properties&#39;</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">orig_backend_properties</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">default_provider_name</span> <span class="o">=</span> <span class="n">orig_backend_properties</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">JSONSchema</span><span class="o">.</span><span class="n">PROVIDER</span><span class="p">,</span> <span class="p">{})</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;default&#39;</span><span class="p">)</span>
-            <span class="n">default_backend_name</span> <span class="o">=</span> <span class="n">orig_backend_properties</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">JSONSchema</span><span class="o">.</span><span class="n">NAME</span><span class="p">,</span> <span class="p">{})</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;default&#39;</span><span class="p">)</span>
+        <span class="n">provider_name</span> <span class="o">=</span> <span class="n">default_provider_name</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">backend_name</span> <span class="o">=</span> <span class="n">default_backend_name</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">backend</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">backend</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">backend</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">backend</span>
+            <span class="n">provider_name</span> <span class="o">=</span> <span class="n">default_provider_name</span> <span class="o">=</span> <span class="n">get_provider_from_backend</span><span class="p">(</span><span class="n">backend</span><span class="p">)</span>
+            <span class="n">backend_name</span> <span class="o">=</span> <span class="n">default_backend_name</span> <span class="o">=</span> <span class="n">backend</span><span class="o">.</span><span class="n">name</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">orig_backend_properties</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_original_schema</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;properties&#39;</span><span class="p">,</span> <span class="p">{})</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">JSONSchema</span><span class="o">.</span><span class="n">BACKEND</span><span class="p">,</span> <span class="p">{})</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;properties&#39;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">orig_backend_properties</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">default_provider_name</span> <span class="o">=</span> <span class="n">orig_backend_properties</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">JSONSchema</span><span class="o">.</span><span class="n">PROVIDER</span><span class="p">,</span> <span class="p">{})</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;default&#39;</span><span class="p">)</span>
+                <span class="n">default_backend_name</span> <span class="o">=</span> <span class="n">orig_backend_properties</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">JSONSchema</span><span class="o">.</span><span class="n">NAME</span><span class="p">,</span> <span class="p">{})</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;default&#39;</span><span class="p">)</span>
 
-        <span class="n">providers</span> <span class="o">=</span> <span class="n">get_local_providers</span><span class="p">()</span>
-        <span class="k">if</span> <span class="n">default_provider_name</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">default_provider_name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">providers</span><span class="p">:</span>
-            <span class="c1"># use first provider available</span>
-            <span class="n">providers_items</span> <span class="o">=</span> <span class="n">providers</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
-            <span class="n">provider_tuple</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="nb">iter</span><span class="p">(</span><span class="n">providers_items</span><span class="p">))</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">providers_items</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="p">[])</span>
-            <span class="n">default_provider_name</span> <span class="o">=</span> <span class="n">provider_tuple</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">providers</span> <span class="o">=</span> <span class="n">get_local_providers</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">default_provider_name</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">default_provider_name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">providers</span><span class="p">:</span>
+                <span class="c1"># use first provider available</span>
+                <span class="n">providers_items</span> <span class="o">=</span> <span class="n">providers</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+                <span class="n">provider_tuple</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="nb">iter</span><span class="p">(</span><span class="n">providers_items</span><span class="p">))</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">providers_items</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="p">[])</span>
+                <span class="n">default_provider_name</span> <span class="o">=</span> <span class="n">provider_tuple</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 
-        <span class="k">if</span> <span class="n">default_backend_name</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">default_backend_name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">providers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">default_provider_name</span><span class="p">,</span> <span class="p">[]):</span>
-            <span class="c1"># use first backend available in provider</span>
-            <span class="n">default_backend_name</span> <span class="o">=</span> <span class="n">providers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">default_provider_name</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">providers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">default_provider_name</span><span class="p">,</span> <span class="p">[]))</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="s1">&#39;&#39;</span>
+            <span class="k">if</span> <span class="n">default_backend_name</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">default_backend_name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">providers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">default_provider_name</span><span class="p">,</span> <span class="p">[]):</span>
+                <span class="c1"># use first backend available in provider</span>
+                <span class="n">default_backend_name</span> <span class="o">=</span> <span class="n">providers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">default_provider_name</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">providers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">default_provider_name</span><span class="p">,</span> <span class="p">[]))</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="s1">&#39;&#39;</span>
+
+            <span class="n">provider_name</span> <span class="o">=</span> <span class="n">input_parser</span><span class="o">.</span><span class="n">get_section_property</span><span class="p">(</span><span class="n">JSONSchema</span><span class="o">.</span><span class="n">BACKEND</span><span class="p">,</span> <span class="n">JSONSchema</span><span class="o">.</span><span class="n">PROVIDER</span><span class="p">,</span> <span class="n">default_provider_name</span><span class="p">)</span>
+            <span class="n">backend_names</span> <span class="o">=</span> <span class="n">get_backends_from_provider</span><span class="p">(</span><span class="n">provider_name</span><span class="p">)</span>
+            <span class="n">backend_name</span> <span class="o">=</span> <span class="n">input_parser</span><span class="o">.</span><span class="n">get_section_property</span><span class="p">(</span><span class="n">JSONSchema</span><span class="o">.</span><span class="n">BACKEND</span><span class="p">,</span> <span class="n">JSONSchema</span><span class="o">.</span><span class="n">NAME</span><span class="p">,</span> <span class="n">default_backend_name</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">backend_name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">backend_names</span><span class="p">:</span>
+                <span class="c1"># use first backend available in provider</span>
+                <span class="n">backend_name</span> <span class="o">=</span> <span class="n">backend_names</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">backend_names</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="s1">&#39;&#39;</span>
+
+            <span class="n">backend</span> <span class="o">=</span> <span class="n">get_backend_from_provider</span><span class="p">(</span><span class="n">provider_name</span><span class="p">,</span> <span class="n">backend_name</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_schema</span><span class="p">[</span><span class="s1">&#39;properties&#39;</span><span class="p">][</span><span class="n">JSONSchema</span><span class="o">.</span><span class="n">BACKEND</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
             <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;object&#39;</span><span class="p">,</span>
@@ -524,14 +555,7 @@
             <span class="s1">&#39;required&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">JSONSchema</span><span class="o">.</span><span class="n">PROVIDER</span><span class="p">,</span> <span class="n">JSONSchema</span><span class="o">.</span><span class="n">NAME</span><span class="p">],</span>
             <span class="s1">&#39;additionalProperties&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
         <span class="p">}</span>
-        <span class="n">provider_name</span> <span class="o">=</span> <span class="n">input_parser</span><span class="o">.</span><span class="n">get_section_property</span><span class="p">(</span><span class="n">JSONSchema</span><span class="o">.</span><span class="n">BACKEND</span><span class="p">,</span> <span class="n">JSONSchema</span><span class="o">.</span><span class="n">PROVIDER</span><span class="p">,</span> <span class="n">default_provider_name</span><span class="p">)</span>
-        <span class="n">backend_names</span> <span class="o">=</span> <span class="n">get_backends_from_provider</span><span class="p">(</span><span class="n">provider_name</span><span class="p">)</span>
-        <span class="n">backend_name</span> <span class="o">=</span> <span class="n">input_parser</span><span class="o">.</span><span class="n">get_section_property</span><span class="p">(</span><span class="n">JSONSchema</span><span class="o">.</span><span class="n">BACKEND</span><span class="p">,</span> <span class="n">JSONSchema</span><span class="o">.</span><span class="n">NAME</span><span class="p">,</span> <span class="n">default_backend_name</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">backend_name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">backend_names</span><span class="p">:</span>
-            <span class="c1"># use first backend available in provider</span>
-            <span class="n">backend_name</span> <span class="o">=</span> <span class="n">backend_names</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">backend_names</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="s1">&#39;&#39;</span>
 
-        <span class="n">backend</span> <span class="o">=</span> <span class="n">get_backend_from_provider</span><span class="p">(</span><span class="n">provider_name</span><span class="p">,</span> <span class="n">backend_name</span><span class="p">)</span>
         <span class="n">config</span> <span class="o">=</span> <span class="n">backend</span><span class="o">.</span><span class="n">configuration</span><span class="p">()</span>
 
         <span class="c1"># Include shots in schema only if not a statevector backend.</span>
@@ -569,8 +593,8 @@
                         <span class="n">noise_model_devices</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;qiskit.IBMQ:&#39;</span> <span class="o">+</span> <span class="n">backend_name</span><span class="p">)</span>
                     <span class="k">if</span> <span class="n">check_coupling_map</span> <span class="ow">and</span> <span class="n">ibmq_backend</span><span class="o">.</span><span class="n">configuration</span><span class="p">()</span><span class="o">.</span><span class="n">coupling_map</span><span class="p">:</span>
                         <span class="n">coupling_map_devices</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;qiskit.IBMQ:&#39;</span> <span class="o">+</span> <span class="n">backend_name</span><span class="p">)</span>
-        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-            <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Failed to load IBMQ backends. Error </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)))</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">ex</span><span class="p">:</span>  <span class="c1"># pylint: disable=broad-except</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Failed to load IBMQ backends. Error </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">ex</span><span class="p">)))</span>
 
         <span class="c1"># Includes &#39;coupling map&#39; and &#39;coupling_map_from_device&#39; in schema only if a simulator backend.</span>
         <span class="c1"># Actual devices have a coupling map based on the physical configuration of the device.</span>
@@ -590,11 +614,7 @@
                 <span class="bp">self</span><span class="o">.</span><span class="n">_schema</span><span class="p">[</span><span class="s1">&#39;properties&#39;</span><span class="p">][</span><span class="n">JSONSchema</span><span class="o">.</span><span class="n">BACKEND</span><span class="p">][</span><span class="s1">&#39;properties&#39;</span><span class="p">][</span><span class="s1">&#39;coupling_map_from_device&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
                     <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;string&#39;</span><span class="p">,</span> <span class="s1">&#39;null&#39;</span><span class="p">],</span>
                     <span class="s1">&#39;default&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
-                    <span class="s1">&#39;oneOf&#39;</span><span class="p">:</span> <span class="p">[</span>
-                        <span class="p">{</span>
-                            <span class="s1">&#39;enum&#39;</span><span class="p">:</span> <span class="n">coupling_map_devices</span>
-                        <span class="p">}</span>
-                    <span class="p">],</span>
+                    <span class="s1">&#39;enum&#39;</span><span class="p">:</span> <span class="n">coupling_map_devices</span><span class="p">,</span>
                 <span class="p">}</span>
 
         <span class="c1"># noise model that can be setup for Aer simulator so as to model noise of an actual device.</span>
@@ -603,11 +623,7 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">_schema</span><span class="p">[</span><span class="s1">&#39;properties&#39;</span><span class="p">][</span><span class="n">JSONSchema</span><span class="o">.</span><span class="n">BACKEND</span><span class="p">][</span><span class="s1">&#39;properties&#39;</span><span class="p">][</span><span class="s1">&#39;noise_model&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
                 <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;string&#39;</span><span class="p">,</span> <span class="s1">&#39;null&#39;</span><span class="p">],</span>
                 <span class="s1">&#39;default&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
-                <span class="s1">&#39;oneOf&#39;</span><span class="p">:</span> <span class="p">[</span>
-                    <span class="p">{</span>
-                        <span class="s1">&#39;enum&#39;</span><span class="p">:</span> <span class="n">noise_model_devices</span>
-                    <span class="p">}</span>
-                <span class="p">],</span>
+                <span class="s1">&#39;enum&#39;</span><span class="p">:</span> <span class="n">noise_model_devices</span><span class="p">,</span>
             <span class="p">}</span>
 
         <span class="c1"># If a noise model is supplied then the basis gates is set as per the noise model</span>
@@ -721,7 +737,7 @@
         <span class="k">try</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">pluggable_type</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">pluggable_name</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
                 <span class="n">config</span> <span class="o">=</span> <span class="n">get_pluggable_configuration</span><span class="p">(</span><span class="n">pluggable_type</span><span class="p">,</span> <span class="n">pluggable_name</span><span class="p">)</span>
-        <span class="k">except</span><span class="p">:</span>
+        <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
             <span class="k">pass</span>
 
         <span class="n">input_schema</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;input_schema&#39;</span><span class="p">,</span> <span class="p">{})</span>
@@ -756,18 +772,18 @@
 <span class="sd">            Returns converted value if valid</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">section_name</span> <span class="o">=</span> <span class="n">JSONSchema</span><span class="o">.</span><span class="n">format_section_name</span><span class="p">(</span><span class="n">section_name</span><span class="p">)</span>
-        <span class="n">types</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_section_types</span><span class="p">(</span><span class="n">section_name</span><span class="p">)</span>
-        <span class="n">value</span> <span class="o">=</span> <span class="n">JSONSchema</span><span class="o">.</span><span class="n">get_value</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">types</span><span class="p">)</span>
-        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">types</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">schema_types</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_section_types</span><span class="p">(</span><span class="n">section_name</span><span class="p">)</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="n">JSONSchema</span><span class="o">.</span><span class="n">get_value</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">schema_types</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">schema_types</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
             <span class="n">validator</span> <span class="o">=</span> <span class="n">jsonschema</span><span class="o">.</span><span class="n">Draft4Validator</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_schema</span><span class="p">)</span>
             <span class="n">valid</span> <span class="o">=</span> <span class="kc">False</span>
-            <span class="k">for</span> <span class="nb">type</span> <span class="ow">in</span> <span class="n">types</span><span class="p">:</span>
-                <span class="n">valid</span> <span class="o">=</span> <span class="n">validator</span><span class="o">.</span><span class="n">is_type</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">type</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">schema_type</span> <span class="ow">in</span> <span class="n">schema_types</span><span class="p">:</span>
+                <span class="n">valid</span> <span class="o">=</span> <span class="n">validator</span><span class="o">.</span><span class="n">is_type</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">schema_type</span><span class="p">)</span>
                 <span class="k">if</span> <span class="n">valid</span><span class="p">:</span>
                     <span class="k">break</span>
 
             <span class="k">if</span> <span class="ow">not</span> <span class="n">valid</span><span class="p">:</span>
-                <span class="k">raise</span> <span class="n">AquaError</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2">: Value &#39;</span><span class="si">{}</span><span class="s2">&#39; is not of types: &#39;</span><span class="si">{}</span><span class="s2">&#39;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">section_name</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">types</span><span class="p">))</span>
+                <span class="k">raise</span> <span class="n">AquaError</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2">: Value &#39;</span><span class="si">{}</span><span class="s2">&#39; is not of types: &#39;</span><span class="si">{}</span><span class="s2">&#39;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">section_name</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">schema_types</span><span class="p">))</span>
 
         <span class="k">return</span> <span class="n">value</span></div>
 
@@ -785,19 +801,18 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">section_name</span> <span class="o">=</span> <span class="n">JSONSchema</span><span class="o">.</span><span class="n">format_section_name</span><span class="p">(</span><span class="n">section_name</span><span class="p">)</span>
         <span class="n">property_name</span> <span class="o">=</span> <span class="n">JSONSchema</span><span class="o">.</span><span class="n">format_property_name</span><span class="p">(</span><span class="n">property_name</span><span class="p">)</span>
-        <span class="n">types</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_property_types</span><span class="p">(</span><span class="n">section_name</span><span class="p">,</span> <span class="n">property_name</span><span class="p">)</span>
-        <span class="n">value</span> <span class="o">=</span> <span class="n">JSONSchema</span><span class="o">.</span><span class="n">get_value</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">types</span><span class="p">)</span>
-        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">types</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">schema_types</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_property_types</span><span class="p">(</span><span class="n">section_name</span><span class="p">,</span> <span class="n">property_name</span><span class="p">)</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="n">JSONSchema</span><span class="o">.</span><span class="n">get_value</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">schema_types</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">schema_types</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
             <span class="n">validator</span> <span class="o">=</span> <span class="n">jsonschema</span><span class="o">.</span><span class="n">Draft4Validator</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_schema</span><span class="p">)</span>
             <span class="n">valid</span> <span class="o">=</span> <span class="kc">False</span>
-            <span class="k">for</span> <span class="nb">type</span> <span class="ow">in</span> <span class="n">types</span><span class="p">:</span>
-                <span class="n">valid</span> <span class="o">=</span> <span class="n">validator</span><span class="o">.</span><span class="n">is_type</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">type</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">schema_type</span> <span class="ow">in</span> <span class="n">schema_types</span><span class="p">:</span>
+                <span class="n">valid</span> <span class="o">=</span> <span class="n">validator</span><span class="o">.</span><span class="n">is_type</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">schema_type</span><span class="p">)</span>
                 <span class="k">if</span> <span class="n">valid</span><span class="p">:</span>
                     <span class="k">break</span>
 
             <span class="k">if</span> <span class="ow">not</span> <span class="n">valid</span><span class="p">:</span>
-                <span class="k">raise</span> <span class="n">AquaError</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2">.</span><span class="si">{}</span><span class="s2"> Value &#39;</span><span class="si">{}</span><span class="s2">&#39; is not of types: &#39;</span><span class="si">{}</span><span class="s2">&#39;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
-                    <span class="n">section_name</span><span class="p">,</span> <span class="n">property_name</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">types</span><span class="p">))</span>
+                <span class="k">raise</span> <span class="n">AquaError</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2">.</span><span class="si">{}</span><span class="s2"> Value &#39;</span><span class="si">{}</span><span class="s2">&#39; is not of types: &#39;</span><span class="si">{}</span><span class="s2">&#39;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">section_name</span><span class="p">,</span> <span class="n">property_name</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">schema_types</span><span class="p">))</span>
 
         <span class="k">return</span> <span class="n">value</span></div>
 
@@ -844,54 +859,8 @@
 
         <span class="k">return</span> <span class="p">[]</span></div>
 
-<div class="viewcode-block" id="JSONSchema.get_value"><a class="viewcode-back" href="../../../../autodoc/qiskit.aqua.parser.json_schema.html#qiskit.aqua.parser.JSONSchema.get_value">[docs]</a>    <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">get_value</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">types</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Returns a converted value based on schema types</span>
-<span class="sd">        Args:</span>
-<span class="sd">            value (obj): value</span>
-<span class="sd">            type (array): schema types</span>
-
-<span class="sd">        Returns:</span>
-<span class="sd">            Returns converted value</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">types</span> <span class="o">=</span> <span class="n">types</span> <span class="k">if</span> <span class="n">types</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="p">[]</span>
-        <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">value</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span> <span class="o">==</span> <span class="mi">0</span><span class="p">):</span>
-            <span class="c1"># return propet values based on type</span>
-            <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-                <span class="k">if</span> <span class="s1">&#39;null&#39;</span> <span class="ow">in</span> <span class="n">types</span><span class="p">:</span>
-                    <span class="k">return</span> <span class="kc">None</span>
-                <span class="k">if</span> <span class="s1">&#39;string&#39;</span> <span class="ow">in</span> <span class="n">types</span><span class="p">:</span>
-                    <span class="k">return</span> <span class="s1">&#39;&#39;</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="k">if</span> <span class="s1">&#39;string&#39;</span> <span class="ow">in</span> <span class="n">types</span><span class="p">:</span>
-                    <span class="k">return</span> <span class="n">value</span>
-                <span class="k">if</span> <span class="s1">&#39;null&#39;</span> <span class="ow">in</span> <span class="n">types</span><span class="p">:</span>
-                    <span class="k">return</span> <span class="kc">None</span>
-
-            <span class="k">if</span> <span class="s1">&#39;integer&#39;</span> <span class="ow">in</span> <span class="n">types</span> <span class="ow">or</span> <span class="s1">&#39;number&#39;</span> <span class="ow">in</span> <span class="n">types</span><span class="p">:</span>
-                <span class="k">return</span> <span class="mi">0</span>
-            <span class="k">if</span> <span class="s1">&#39;object&#39;</span> <span class="ow">in</span> <span class="n">types</span><span class="p">:</span>
-                <span class="k">return</span> <span class="p">{}</span>
-            <span class="k">if</span> <span class="s1">&#39;array&#39;</span> <span class="ow">in</span> <span class="n">types</span><span class="p">:</span>
-                <span class="k">return</span> <span class="p">[]</span>
-            <span class="k">if</span> <span class="s1">&#39;boolean&#39;</span> <span class="ow">in</span> <span class="n">types</span><span class="p">:</span>
-                <span class="k">return</span> <span class="kc">False</span>
-
-            <span class="k">return</span> <span class="n">value</span>
-
-        <span class="k">if</span> <span class="s1">&#39;number&#39;</span> <span class="ow">in</span> <span class="n">types</span> <span class="ow">or</span> <span class="s1">&#39;integer&#39;</span> <span class="ow">in</span> <span class="n">types</span><span class="p">:</span>
-            <span class="k">try</span><span class="p">:</span>
-                <span class="k">if</span> <span class="s1">&#39;integer&#39;</span> <span class="ow">in</span> <span class="n">types</span><span class="p">:</span>
-                    <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
-                <span class="k">else</span><span class="p">:</span>
-                    <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
-            <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
-                <span class="k">return</span> <span class="mi">0</span>
-
-        <span class="k">if</span> <span class="s1">&#39;string&#39;</span> <span class="ow">in</span> <span class="n">types</span><span class="p">:</span>
-            <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
-
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">_evaluate_value</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">str_value</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">value</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\r</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">str_value</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;true&#39;</span><span class="p">:</span>
@@ -904,8 +873,88 @@
                 <span class="n">v</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">v</span><span class="p">))</span>
 
             <span class="k">return</span> <span class="n">v</span>
-        <span class="k">except</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">value</span></div>
+        <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">value</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">_get_value_for_type</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">schema_type</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">value</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span> <span class="o">==</span> <span class="mi">0</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">schema_type</span> <span class="o">==</span> <span class="s1">&#39;null&#39;</span><span class="p">:</span>
+                <span class="k">return</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">True</span>
+            <span class="k">if</span> <span class="n">schema_type</span> <span class="o">==</span> <span class="s1">&#39;string&#39;</span><span class="p">:</span>
+                <span class="k">return</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="kc">True</span>
+            <span class="k">if</span> <span class="n">schema_type</span> <span class="o">==</span> <span class="s1">&#39;array&#39;</span><span class="p">:</span>
+                <span class="k">return</span> <span class="p">[],</span> <span class="kc">True</span>
+            <span class="k">if</span> <span class="n">schema_type</span> <span class="o">==</span> <span class="s1">&#39;object&#39;</span><span class="p">:</span>
+                <span class="k">return</span> <span class="p">{},</span> <span class="kc">True</span>
+            <span class="k">if</span> <span class="n">schema_type</span> <span class="o">==</span> <span class="s1">&#39;boolean&#39;</span><span class="p">:</span>
+                <span class="k">return</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">True</span>
+            <span class="k">if</span> <span class="n">schema_type</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;integer&#39;</span><span class="p">,</span> <span class="s1">&#39;number&#39;</span><span class="p">]:</span>
+                <span class="k">return</span> <span class="mi">0</span><span class="p">,</span> <span class="kc">True</span>
+
+            <span class="k">return</span> <span class="n">value</span><span class="p">,</span> <span class="kc">False</span>
+        <span class="k">elif</span> <span class="n">schema_type</span> <span class="o">==</span> <span class="s1">&#39;null&#39;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">False</span>
+
+        <span class="k">if</span> <span class="n">schema_type</span> <span class="o">==</span> <span class="s1">&#39;string&#39;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">value</span><span class="p">),</span> <span class="kc">True</span>
+
+        <span class="k">if</span> <span class="n">schema_type</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;array&#39;</span><span class="p">,</span> <span class="s1">&#39;object&#39;</span><span class="p">,</span> <span class="s1">&#39;boolean&#39;</span><span class="p">]:</span>
+            <span class="n">value</span> <span class="o">=</span> <span class="n">JSONSchema</span><span class="o">.</span><span class="n">_evaluate_value</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">schema_type</span> <span class="o">==</span> <span class="s1">&#39;array&#39;</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+                <span class="k">return</span> <span class="n">value</span><span class="p">,</span> <span class="kc">True</span>
+            <span class="k">if</span> <span class="n">schema_type</span> <span class="o">==</span> <span class="s1">&#39;object&#39;</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+                <span class="k">return</span> <span class="n">value</span><span class="p">,</span> <span class="kc">True</span>
+            <span class="k">if</span> <span class="n">schema_type</span> <span class="o">==</span> <span class="s1">&#39;boolean&#39;</span><span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">bool</span><span class="p">):</span>
+                <span class="k">return</span> <span class="n">value</span><span class="p">,</span> <span class="kc">True</span>
+
+            <span class="k">return</span> <span class="n">value</span><span class="p">,</span> <span class="kc">False</span>
+
+        <span class="k">if</span> <span class="n">schema_type</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;integer&#39;</span><span class="p">,</span> <span class="s1">&#39;number&#39;</span><span class="p">]:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">schema_type</span> <span class="o">==</span> <span class="s1">&#39;integer&#39;</span><span class="p">:</span>
+                    <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">value</span><span class="p">),</span> <span class="kc">True</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="n">value</span><span class="p">),</span> <span class="kc">True</span>
+            <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+                <span class="n">value</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="k">return</span> <span class="n">value</span><span class="p">,</span> <span class="kc">False</span>
+
+<div class="viewcode-block" id="JSONSchema.get_value"><a class="viewcode-back" href="../../../../autodoc/qiskit.aqua.parser.json_schema.html#qiskit.aqua.parser.JSONSchema.get_value">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">get_value</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">types</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Returns a converted value based on schema types</span>
+<span class="sd">        Args:</span>
+<span class="sd">            value (obj): value</span>
+<span class="sd">            type (array): schema types</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            Returns a valid value in the type list, or the first converted value, valid or not</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">types</span> <span class="o">=</span> <span class="n">types</span> <span class="k">if</span> <span class="n">types</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="p">[]</span>
+        <span class="n">values_for_type</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">schema_type</span> <span class="ow">in</span> <span class="n">types</span><span class="p">:</span>
+            <span class="n">values_for_type</span><span class="p">[</span><span class="n">schema_type</span><span class="p">]</span> <span class="o">=</span> <span class="n">JSONSchema</span><span class="o">.</span><span class="n">_get_value_for_type</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">schema_type</span><span class="p">)</span>
+
+        <span class="c1"># first check for a valid schema type null</span>
+        <span class="n">value_for_type</span> <span class="o">=</span> <span class="n">values_for_type</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;null&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">value_for_type</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">value_for_type</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span>
+            <span class="k">return</span> <span class="n">value_for_type</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+        <span class="n">new_value</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">new_value_set</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">for</span> <span class="n">value_for_type</span> <span class="ow">in</span> <span class="n">values_for_type</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">value_for_type</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span>
+                <span class="k">return</span> <span class="n">value_for_type</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="k">elif</span> <span class="ow">not</span> <span class="n">new_value_set</span><span class="p">:</span>
+                <span class="n">new_value</span> <span class="o">=</span> <span class="n">value_for_type</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                <span class="n">new_value_set</span> <span class="o">=</span> <span class="kc">True</span>
+
+        <span class="k">if</span> <span class="n">new_value_set</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">new_value</span>
+
+        <span class="k">return</span> <span class="n">JSONSchema</span><span class="o">.</span><span class="n">_evaluate_value</span><span class="p">(</span><span class="n">value</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="JSONSchema.format_section_name"><a class="viewcode-back" href="../../../../autodoc/qiskit.aqua.parser.json_schema.html#qiskit.aqua.parser.JSONSchema.format_section_name">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">format_section_name</span><span class="p">(</span><span class="n">section_name</span><span class="p">):</span>

@@ -52,7 +52,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="qiskit.pulse.pulse_lib.discrete module" href="qiskit.pulse.pulse_lib.discrete.html" />
-    <link rel="prev" title="qiskit.pulse.pulse_lib package" href="qiskit.pulse.pulse_lib.html" /> 
+    <link rel="prev" title="qiskit.pulse.pulse_lib.samplers.strategies module" href="qiskit.pulse.pulse_lib.samplers.strategies.html" /> 
   </head>
 <body>
   <header>
@@ -756,6 +756,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.circuit.html">qiskit.circuit package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#subpackages">Subpackages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#submodules">Submodules</a></li>
 </ul>
 </li>
@@ -776,8 +777,9 @@
 <li class="toctree-l4"><a class="reference internal" href="qiskit.extensions.html#submodules">Submodules</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.mapper.html">qiskit.mapper package</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="qiskit.mapper.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qiskit.ignis.html">qiskit.ignis package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.ignis.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.ignis.html#submodules">Submodules</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.providers.html">qiskit.providers package</a><ul>
@@ -836,10 +838,8 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="qiskit.html#submodules">Submodules</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="qiskit._util.html">qiskit._util module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.exceptions.html">qiskit.exceptions module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.execute.html">qiskit.execute module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.qiskiterror.html">qiskit.qiskiterror module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.user_config.html">qiskit.user_config module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.util.html">qiskit.util module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.version.html">qiskit.version module</a></li>
@@ -1540,6 +1540,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.circuit.html">qiskit.circuit package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#subpackages">Subpackages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#submodules">Submodules</a></li>
 </ul>
 </li>
@@ -1560,8 +1561,9 @@
 <li class="toctree-l4"><a class="reference internal" href="qiskit.extensions.html#submodules">Submodules</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.mapper.html">qiskit.mapper package</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="qiskit.mapper.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qiskit.ignis.html">qiskit.ignis package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.ignis.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.ignis.html#submodules">Submodules</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.providers.html">qiskit.providers package</a><ul>
@@ -1620,10 +1622,8 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="qiskit.html#submodules">Submodules</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="qiskit._util.html">qiskit._util module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.exceptions.html">qiskit.exceptions module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.execute.html">qiskit.execute module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.qiskiterror.html">qiskit.qiskiterror module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.user_config.html">qiskit.user_config module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.util.html">qiskit.util module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.version.html">qiskit.version module</a></li>
@@ -1685,7 +1685,7 @@
 
 <dl class="function">
 <dt id="qiskit.pulse.pulse_lib.continuous.drag">
-<code class="descname">drag</code><span class="sig-paren">(</span><em>times: numpy.ndarray</em>, <em>amp: complex</em>, <em>center: float</em>, <em>sigma: float</em>, <em>beta: float</em>, <em>zeroed_width: Union[None</em>, <em>float] = None</em>, <em>rescale_amp: bool = False</em><span class="sig-paren">)</span> &#x2192; numpy.ndarray<a class="reference internal" href="../_modules/qiskit/pulse/pulse_lib/continuous.html#drag"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.pulse.pulse_lib.continuous.drag" title="Permalink to this definition">¶</a></dt>
+<code class="descname">drag</code><span class="sig-paren">(</span><em>times: numpy.ndarray</em>, <em>amp: complex</em>, <em>center: float</em>, <em>sigma: float</em>, <em>beta: float</em>, <em>zeroed_width: Optional[float] = None</em>, <em>rescale_amp: bool = False</em><span class="sig-paren">)</span> &#x2192; numpy.ndarray<a class="reference internal" href="../_modules/qiskit/pulse/pulse_lib/continuous.html#drag"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.pulse.pulse_lib.continuous.drag" title="Permalink to this definition">¶</a></dt>
 <dd><p>Continuous Y-only correction DRAG pulse for standard nonlinear oscillator (SNO) [1].</p>
 <dl class="docutils">
 <dt>[1] Gambetta, J. M., Motzoi, F., Merkel, S. T. &amp; Wilhelm, F. K.</dt>
@@ -1703,7 +1703,7 @@ in a weakly nonlinear oscillator. Phys. Rev. A 83, 012308 (2011).</dd>
 <li><strong>sigma</strong> – Width (standard deviation) of pulse.</li>
 <li><strong>beta</strong> – Y correction amplitude. For the SNO this is $beta=-frac{lambda_1^2}{4Delta_2}$.
 Where $lambds_1$ is the relative coupling strength between the first excited and second
-excited states and $Delta_2$ is the detuning between the resepective excited states.</li>
+excited states and $Delta_2$ is the detuning between the respective excited states.</li>
 <li><strong>zeroed_width</strong> – Subtract baseline to gaussian pulses to make sure
 $Omega_g(center pm zeroed_width/2)=0$ is satisfied. This is used to avoid
 large discontinuities at the start of a gaussian pulse.</li>
@@ -1718,7 +1718,7 @@ be rescaled so that $Omega_g(center)-Omega_g(centerpm zeroed_width/2)=amp$.</li>
 
 <dl class="function">
 <dt id="qiskit.pulse.pulse_lib.continuous.gaussian">
-<code class="descname">gaussian</code><span class="sig-paren">(</span><em>times: numpy.ndarray</em>, <em>amp: complex</em>, <em>center: float</em>, <em>sigma: float</em>, <em>zeroed_width: Union[None</em>, <em>float] = None</em>, <em>rescale_amp: bool = False</em>, <em>ret_x: bool = False</em><span class="sig-paren">)</span> &#x2192; Union[numpy.ndarray, Tuple[numpy.ndarray, numpy.ndarray]]<a class="reference internal" href="../_modules/qiskit/pulse/pulse_lib/continuous.html#gaussian"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.pulse.pulse_lib.continuous.gaussian" title="Permalink to this definition">¶</a></dt>
+<code class="descname">gaussian</code><span class="sig-paren">(</span><em>times: numpy.ndarray</em>, <em>amp: complex</em>, <em>center: float</em>, <em>sigma: float</em>, <em>zeroed_width: Optional[float] = None</em>, <em>rescale_amp: bool = False</em>, <em>ret_x: bool = False</em><span class="sig-paren">)</span> &#x2192; Union[numpy.ndarray, Tuple[numpy.ndarray, numpy.ndarray]]<a class="reference internal" href="../_modules/qiskit/pulse/pulse_lib/continuous.html#gaussian"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.pulse.pulse_lib.continuous.gaussian" title="Permalink to this definition">¶</a></dt>
 <dd><p>Continuous unnormalized gaussian pulse.</p>
 <p>Integrated area under curve is $Omega_g(amp, sigma) = amp times np.sqrt(2pi sigma^2)$</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -1770,7 +1770,7 @@ $x=(times-center)/sigma.</li>
 
 <dl class="function">
 <dt id="qiskit.pulse.pulse_lib.continuous.gaussian_square">
-<code class="descname">gaussian_square</code><span class="sig-paren">(</span><em>times: numpy.ndarray</em>, <em>amp: complex</em>, <em>center: float</em>, <em>width: float</em>, <em>sigma: float</em>, <em>zeroed_width: Union[None</em>, <em>float] = None</em><span class="sig-paren">)</span> &#x2192; numpy.ndarray<a class="reference internal" href="../_modules/qiskit/pulse/pulse_lib/continuous.html#gaussian_square"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.pulse.pulse_lib.continuous.gaussian_square" title="Permalink to this definition">¶</a></dt>
+<code class="descname">gaussian_square</code><span class="sig-paren">(</span><em>times: numpy.ndarray</em>, <em>amp: complex</em>, <em>center: float</em>, <em>width: float</em>, <em>sigma: float</em>, <em>zeroed_width: Optional[float] = None</em><span class="sig-paren">)</span> &#x2192; numpy.ndarray<a class="reference internal" href="../_modules/qiskit/pulse/pulse_lib/continuous.html#gaussian_square"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.pulse.pulse_lib.continuous.gaussian_square" title="Permalink to this definition">¶</a></dt>
 <dd><p>Continuous gaussian square pulse.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1809,6 +1809,55 @@ to enforce $OmegaSquare(center pm zeroed_width/2)=0$.</li>
 </tr>
 </tbody>
 </table>
+</dd></dl>
+
+<dl class="function">
+<dt id="qiskit.pulse.pulse_lib.continuous.sech">
+<code class="descname">sech</code><span class="sig-paren">(</span><em>times: numpy.ndarray</em>, <em>amp: complex</em>, <em>center: float</em>, <em>sigma: float</em>, <em>ret_x: bool = False</em><span class="sig-paren">)</span> &#x2192; Union[numpy.ndarray, Tuple[numpy.ndarray, numpy.ndarray]]<a class="reference internal" href="../_modules/qiskit/pulse/pulse_lib/continuous.html#sech"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.pulse.pulse_lib.continuous.sech" title="Permalink to this definition">¶</a></dt>
+<dd><p>Continuous unnormalized sech pulse.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>times</strong> – Times to output pulse for.</li>
+<li><strong>amp</strong> – Pulse amplitude at <cite>center</cite>.</li>
+<li><strong>center</strong> – Center (mean) of pulse.</li>
+<li><strong>sigma</strong> – Width (standard deviation) of pulse.</li>
+<li><strong>ret_x</strong> – Return centered and standard deviation normalized pulse location.
+$x=(times-center)/sigma.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="qiskit.pulse.pulse_lib.continuous.sech_deriv">
+<code class="descname">sech_deriv</code><span class="sig-paren">(</span><em>times: numpy.ndarray</em>, <em>amp: complex</em>, <em>center: float</em>, <em>sigma: float</em>, <em>ret_sech: bool = False</em><span class="sig-paren">)</span> &#x2192; numpy.ndarray<a class="reference internal" href="../_modules/qiskit/pulse/pulse_lib/continuous.html#sech_deriv"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.pulse.pulse_lib.continuous.sech_deriv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Continuous unnormalized sech derivative pulse.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>times</strong> – Times to output pulse for.</li>
+<li><strong>amp</strong> – Pulse amplitude at <cite>center</cite>.</li>
+<li><strong>center</strong> – Center (mean) of pulse.</li>
+<li><strong>sigma</strong> – Width (standard deviation) of pulse.</li>
+<li><strong>ret_sech</strong> – Return sech with which derivative was taken with.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="qiskit.pulse.pulse_lib.continuous.sech_fn">
+<code class="descname">sech_fn</code><span class="sig-paren">(</span><em>x</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/pulse/pulse_lib/continuous.html#sech_fn"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.pulse.pulse_lib.continuous.sech_fn" title="Permalink to this definition">¶</a></dt>
+<dd><p>Hyperbolic secant function</p>
 </dd></dl>
 
 <dl class="function">
@@ -1892,10 +1941,10 @@ to enforce $OmegaSquare(center pm zeroed_width/2)=0$.</li>
 
       <div class="clearer"></div>
     </div><div class="pagenation">
-     <a id="button-prev" href="qiskit.pulse.pulse_lib.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
+     <a id="button-prev" href="qiskit.pulse.pulse_lib.samplers.strategies.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
          <div class="pagenation-text">
             <span class="pagenation-direction">Previous</span>
-            <div>qiskit.pulse.pulse_lib package</div>
+            <div>qiskit.pulse.pulse_lib.samplers.strategies module</div>
          </div>
      </a>
      <a id="button-next" href="qiskit.pulse.pulse_lib.discrete.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">

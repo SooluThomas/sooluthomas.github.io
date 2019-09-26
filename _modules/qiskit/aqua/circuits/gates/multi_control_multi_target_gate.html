@@ -188,7 +188,10 @@
 
 <span class="kn">import</span> <span class="nn">logging</span>
 
-<span class="kn">from</span> <span class="nn">qiskit</span> <span class="k">import</span> <span class="n">QuantumCircuit</span><span class="p">,</span> <span class="n">QuantumRegister</span>
+<span class="kn">from</span> <span class="nn">qiskit.circuit</span> <span class="k">import</span> <span class="n">Gate</span>
+<span class="kn">from</span> <span class="nn">qiskit.circuit</span> <span class="k">import</span> <span class="n">QuantumCircuit</span>
+<span class="kn">from</span> <span class="nn">qiskit.circuit</span> <span class="k">import</span> <span class="n">QuantumRegister</span>
+<span class="kn">from</span> <span class="nn">qiskit.circuit</span> <span class="k">import</span> <span class="n">Qubit</span>
 
 <span class="kn">from</span> <span class="nn">qiskit.aqua</span> <span class="k">import</span> <span class="n">AquaError</span>
 
@@ -246,13 +249,15 @@
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Apply a Multi-Control, Multi-Target using a generic gate.</span>
 <span class="sd">    It can also be used to implement a generic Multi-Control gate, as the target could also be of length 1.</span>
-<span class="sd">    Args:</span>
 
-<span class="sd">        q_controls: The list of control qubits</span>
-<span class="sd">        q_ancillae: The list of ancillary qubits</span>
-<span class="sd">        single_control_gate_fun: The single control gate function (e.g QuantumCircuit.cz or QuantumCircuit.ch)</span>
-<span class="sd">        q_targets: A list of qubits or a QuantumRegister to which the gate function should be applied.</span>
-<span class="sd">        mode (string): The implementation mode to use (at the moment, only the basic mode is supported)</span>
+<span class="sd">    Args:</span>
+<span class="sd">        self (QuantumCircuit): The QuantumCircuit object to apply the mcmt gate on.</span>
+<span class="sd">        q_controls (QuantumRegister | list of Qubit): The list of control qubits</span>
+<span class="sd">        q_ancillae (QuantumRegister | list of Qubit): The list of ancillary qubits</span>
+<span class="sd">        single_control_gate_fun (Gate): The single control gate function (e.g QuantumCircuit.cz or QuantumCircuit.ch)</span>
+<span class="sd">        q_targets (QuantumRegister | list of Qubit): A list of qubits or a QuantumRegister</span>
+<span class="sd">            to which the gate function should be applied.</span>
+<span class="sd">        mode (str): The implementation mode to use (at the moment, only the basic mode is supported)</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1"># check controls</span>
@@ -261,8 +266,7 @@
     <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">q_controls</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
         <span class="n">control_qubits</span> <span class="o">=</span> <span class="n">q_controls</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="n">AquaError</span><span class="p">(</span>
-            <span class="s1">&#39;MCT needs a list of qubits or a quantum register for controls.&#39;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="n">AquaError</span><span class="p">(</span><span class="s1">&#39;MCT needs a list of qubits or a quantum register for controls.&#39;</span><span class="p">)</span>
 
     <span class="c1"># check target</span>
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">q_targets</span><span class="p">,</span> <span class="n">QuantumRegister</span><span class="p">):</span>
@@ -270,8 +274,7 @@
     <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">q_targets</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
         <span class="n">target_qubits</span> <span class="o">=</span> <span class="n">q_targets</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="n">AquaError</span><span class="p">(</span>
-            <span class="s1">&#39;MCT needs a list of qubits or a quantum register for targets.&#39;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="n">AquaError</span><span class="p">(</span><span class="s1">&#39;MCT needs a list of qubits or a quantum register for targets.&#39;</span><span class="p">)</span>
 
     <span class="c1"># check ancilla</span>
     <span class="k">if</span> <span class="n">q_ancillae</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
@@ -281,9 +284,7 @@
     <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">q_ancillae</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
         <span class="n">ancillary_qubits</span> <span class="o">=</span> <span class="n">q_ancillae</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="n">AquaError</span><span class="p">(</span>
-            <span class="s1">&#39;MCT needs None or a list of qubits or a quantum register for ancilla.&#39;</span>
-        <span class="p">)</span>
+        <span class="k">raise</span> <span class="n">AquaError</span><span class="p">(</span><span class="s1">&#39;MCT needs None or a list of qubits or a quantum register for ancilla.&#39;</span><span class="p">)</span>
 
     <span class="n">all_qubits</span> <span class="o">=</span> <span class="n">control_qubits</span> <span class="o">+</span> <span class="n">target_qubits</span> <span class="o">+</span> <span class="n">ancillary_qubits</span>
 

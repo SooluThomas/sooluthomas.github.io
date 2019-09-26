@@ -756,6 +756,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.circuit.html">qiskit.circuit package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#subpackages">Subpackages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#submodules">Submodules</a></li>
 </ul>
 </li>
@@ -776,8 +777,9 @@
 <li class="toctree-l4"><a class="reference internal" href="qiskit.extensions.html#submodules">Submodules</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.mapper.html">qiskit.mapper package</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="qiskit.mapper.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qiskit.ignis.html">qiskit.ignis package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.ignis.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.ignis.html#submodules">Submodules</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.providers.html">qiskit.providers package</a><ul>
@@ -836,10 +838,8 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="qiskit.html#submodules">Submodules</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="qiskit._util.html">qiskit._util module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.exceptions.html">qiskit.exceptions module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.execute.html">qiskit.execute module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.qiskiterror.html">qiskit.qiskiterror module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.user_config.html">qiskit.user_config module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.util.html">qiskit.util module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.version.html">qiskit.version module</a></li>
@@ -1540,6 +1540,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.circuit.html">qiskit.circuit package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#subpackages">Subpackages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#submodules">Submodules</a></li>
 </ul>
 </li>
@@ -1560,8 +1561,9 @@
 <li class="toctree-l4"><a class="reference internal" href="qiskit.extensions.html#submodules">Submodules</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.mapper.html">qiskit.mapper package</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="qiskit.mapper.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qiskit.ignis.html">qiskit.ignis package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.ignis.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.ignis.html#submodules">Submodules</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.providers.html">qiskit.providers package</a><ul>
@@ -1620,10 +1622,8 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="qiskit.html#submodules">Submodules</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="qiskit._util.html">qiskit._util module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.exceptions.html">qiskit.exceptions module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.execute.html">qiskit.execute module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.qiskiterror.html">qiskit.qiskiterror module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.user_config.html">qiskit.user_config module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.util.html">qiskit.util module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.version.html">qiskit.version module</a></li>
@@ -1667,33 +1667,24 @@
 and returns proper qobj instruction to each backend.</p>
 <p>Third party providers can be add their own custom pulse instructions by
 providing custom converter methods.</p>
-<p>To create a custom converter for custom instruction
-<a href="#id1"><span class="problematic" id="id2">``</span></a>`
-class CustomConverter(InstructionToQobjConverter):</p>
-<blockquote>
-<div><p>&#64;bind_instruction(CustomInstruction)
-def convert_custom_command(self, shift, instruction):</p>
-<blockquote>
-<div><dl class="docutils">
-<dt>command_dict = {</dt>
-<dd>‘name’: ‘custom_command’,
-‘t0’: shift+instruction.start_time,
-‘param1’: instruction.param1,
-‘param2’: instruction.param2</dd>
-</dl>
-<p>}
-if self._run_config(‘option1’, True):</p>
-<blockquote>
-<div><dl class="docutils">
-<dt>command_dict.update({</dt>
-<dd>‘param3’: instruction.param3</dd>
-</dl>
-<p>})</p>
-</div></blockquote>
-<p>return self.qobj_model(<a href="#id3"><span class="problematic" id="id4">**</span></a>command_dict)</p>
-</div></blockquote>
-</div></blockquote>
-<p><a href="#id5"><span class="problematic" id="id6">``</span></a><a href="#id7"><span class="problematic" id="id8">`</span></a></p>
+<p>To create a custom converter for custom instruction:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">CustomConverter</span><span class="p">(</span><span class="n">InstructionToQobjConverter</span><span class="p">):</span>
+
+    <span class="nd">@bind_instruction</span><span class="p">(</span><span class="n">CustomInstruction</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">convert_custom_command</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">shift</span><span class="p">,</span> <span class="n">instruction</span><span class="p">):</span>
+        <span class="n">command_dict</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;custom_command&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;t0&#39;</span><span class="p">:</span> <span class="n">shift</span><span class="o">+</span><span class="n">instruction</span><span class="o">.</span><span class="n">start_time</span><span class="p">,</span>
+            <span class="s1">&#39;param1&#39;</span><span class="p">:</span> <span class="n">instruction</span><span class="o">.</span><span class="n">param1</span><span class="p">,</span>
+            <span class="s1">&#39;param2&#39;</span><span class="p">:</span> <span class="n">instruction</span><span class="o">.</span><span class="n">param2</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_run_config</span><span class="p">(</span><span class="s1">&#39;option1&#39;</span><span class="p">,</span> <span class="kc">True</span><span class="p">):</span>
+            <span class="n">command_dict</span><span class="o">.</span><span class="n">update</span><span class="p">({</span>
+                <span class="s1">&#39;param3&#39;</span><span class="p">:</span> <span class="n">instruction</span><span class="o">.</span><span class="n">param3</span>
+            <span class="p">})</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">qobj_model</span><span class="p">(</span><span class="o">**</span><span class="n">command_dict</span><span class="p">)</span>
+</pre></div>
+</div>
 <dl class="attribute">
 <dt id="qiskit.qobj.converters.pulse_instruction.InstructionToQobjConverter.bind_instruction">
 <code class="descname">bind_instruction</code><em class="property"> = &lt;qiskit.qobj.converters.pulse_instruction.ConversionMethodBinder object&gt;</em><a class="headerlink" href="#qiskit.qobj.converters.pulse_instruction.InstructionToQobjConverter.bind_instruction" title="Permalink to this definition">¶</a></dt>

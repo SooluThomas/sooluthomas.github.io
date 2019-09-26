@@ -756,6 +756,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.circuit.html">qiskit.circuit package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#subpackages">Subpackages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#submodules">Submodules</a></li>
 </ul>
 </li>
@@ -776,8 +777,9 @@
 <li class="toctree-l4"><a class="reference internal" href="qiskit.extensions.html#submodules">Submodules</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.mapper.html">qiskit.mapper package</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="qiskit.mapper.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qiskit.ignis.html">qiskit.ignis package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.ignis.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.ignis.html#submodules">Submodules</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.providers.html">qiskit.providers package</a><ul>
@@ -836,10 +838,8 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="qiskit.html#submodules">Submodules</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="qiskit._util.html">qiskit._util module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.exceptions.html">qiskit.exceptions module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.execute.html">qiskit.execute module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.qiskiterror.html">qiskit.qiskiterror module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.user_config.html">qiskit.user_config module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.util.html">qiskit.util module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.version.html">qiskit.version module</a></li>
@@ -1540,6 +1540,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.circuit.html">qiskit.circuit package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#subpackages">Subpackages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#submodules">Submodules</a></li>
 </ul>
 </li>
@@ -1560,8 +1561,9 @@
 <li class="toctree-l4"><a class="reference internal" href="qiskit.extensions.html#submodules">Submodules</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.mapper.html">qiskit.mapper package</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="qiskit.mapper.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qiskit.ignis.html">qiskit.ignis package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.ignis.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.ignis.html#submodules">Submodules</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.providers.html">qiskit.providers package</a><ul>
@@ -1620,10 +1622,8 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="qiskit.html#submodules">Submodules</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="qiskit._util.html">qiskit._util module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.exceptions.html">qiskit.exceptions module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.execute.html">qiskit.execute module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.qiskiterror.html">qiskit.qiskiterror module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.user_config.html">qiskit.user_config module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.util.html">qiskit.util module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.version.html">qiskit.version module</a></li>
@@ -1807,7 +1807,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>circuit</strong> (<a class="reference internal" href="qiskit.circuit.quantumcircuit.html#qiskit.circuit.quantumcircuit.QuantumCircuit" title="qiskit.circuit.quantumcircuit.QuantumCircuit"><em>QuantumCircuit</em></a>) – The optional circuit to extend from.</li>
-<li><strong>register</strong> (<a class="reference internal" href="qiskit.circuit.quantumregister.html#qiskit.circuit.quantumregister.QuantumRegister" title="qiskit.circuit.quantumregister.QuantumRegister"><em>QuantumRegister</em></a>) – The optional register to construct the circuit with.</li>
+<li><strong>register</strong> (<em>QuantumRegister | list of Qubit</em>) – The optional qubits to construct the circuit with.</li>
 </ul>
 </td>
 </tr>
@@ -1834,7 +1834,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>circuit</strong> (<a class="reference internal" href="qiskit.circuit.quantumcircuit.html#qiskit.circuit.quantumcircuit.QuantumCircuit" title="qiskit.circuit.quantumcircuit.QuantumCircuit"><em>QuantumCircuit</em></a>) – The optional circuit to extend from.</li>
-<li><strong>qubits</strong> (<em>QuantumRegister | list of qubits</em>) – The optional qubits to construct the circuit with.</li>
+<li><strong>qubits</strong> (<em>QuantumRegister | list of Qubit</em>) – The optional qubits to construct the circuit with.</li>
 <li><strong>approximation_degree</strong> (<em>int</em>) – degree of approximation for the desired circuit</li>
 <li><strong>inverse</strong> (<em>bool</em>) – Boolean flag to indicate Inverse Quantum Fourier Transform</li>
 <li><strong>do_swaps</strong> (<em>bool</em>) – Boolean flag to specify if swaps should be included to align the qubit order of
@@ -1904,16 +1904,16 @@ If the most significant carry bit (= results bit) is 1, the “”&gt;=” condi
 </dd></dl>
 
 <dl class="class">
-<dt id="qiskit.aqua.circuits.LinearYRotation">
-<em class="property">class </em><code class="descname">LinearYRotation</code><span class="sig-paren">(</span><em>slope</em>, <em>offset</em>, <em>num_state_qubits</em>, <em>i_state=None</em>, <em>i_target=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/circuits/linear_y_rotation.html#LinearYRotation"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.aqua.circuits.LinearYRotation" title="Permalink to this definition">¶</a></dt>
+<dt id="qiskit.aqua.circuits.LinearRotation">
+<em class="property">class </em><code class="descname">LinearRotation</code><span class="sig-paren">(</span><em>slope</em>, <em>offset</em>, <em>num_state_qubits</em>, <em>basis='Y'</em>, <em>i_state=None</em>, <em>i_target=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/circuits/linear_rotation.html#LinearRotation"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.aqua.circuits.LinearRotation" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="qiskit.aqua.utils.circuit_factory.html#qiskit.aqua.utils.circuit_factory.CircuitFactory" title="qiskit.aqua.utils.circuit_factory.CircuitFactory"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.aqua.utils.circuit_factory.CircuitFactory</span></code></a></p>
-<p>Linearly-controlled Y rotation.
+<p>Linearly-controlled X, Y or Z rotation.
 For a register of state qubits <a href="#id9"><span class="problematic" id="id10">|</span></a>x&gt; and a target qubit <a href="#id11"><span class="problematic" id="id12">|</span></a>0&gt; this operator acts as:</p>
 <blockquote>
 <div><a href="#id13"><span class="problematic" id="id14">|</span></a>x&gt;|0&gt; –&gt; <a href="#id15"><span class="problematic" id="id16">|</span></a>x&gt;( cos(slope * x + offset)|0&gt; + sin(slope * x + offset)|1&gt; )</div></blockquote>
 <dl class="method">
-<dt id="qiskit.aqua.circuits.LinearYRotation.build">
-<code class="descname">build</code><span class="sig-paren">(</span><em>qc</em>, <em>q</em>, <em>q_ancillas=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/circuits/linear_y_rotation.html#LinearYRotation.build"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.aqua.circuits.LinearYRotation.build" title="Permalink to this definition">¶</a></dt>
+<dt id="qiskit.aqua.circuits.LinearRotation.build">
+<code class="descname">build</code><span class="sig-paren">(</span><em>qc</em>, <em>q</em>, <em>q_ancillas=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/circuits/linear_rotation.html#LinearRotation.build"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.aqua.circuits.LinearRotation.build" title="Permalink to this definition">¶</a></dt>
 <dd><p>Adds corresponding sub-circuit to given circuit</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1934,14 +1934,12 @@ For a register of state qubits <a href="#id9"><span class="problematic" id="id10
 </dd></dl>
 
 <dl class="class">
-<dt id="qiskit.aqua.circuits.PiecewiseLinearYRotation">
-<em class="property">class </em><code class="descname">PiecewiseLinearYRotation</code><span class="sig-paren">(</span><em>breakpoints</em>, <em>slopes</em>, <em>offsets</em>, <em>num_state_qubits</em>, <em>i_state=None</em>, <em>i_target=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/circuits/piecewise_linear_y_rotation.html#PiecewiseLinearYRotation"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.aqua.circuits.PiecewiseLinearYRotation" title="Permalink to this definition">¶</a></dt>
+<dt id="qiskit.aqua.circuits.PiecewiseLinearRotation">
+<em class="property">class </em><code class="descname">PiecewiseLinearRotation</code><span class="sig-paren">(</span><em>breakpoints</em>, <em>slopes</em>, <em>offsets</em>, <em>num_state_qubits</em>, <em>basis='Y'</em>, <em>i_state=None</em>, <em>i_target=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/circuits/piecewise_linear_rotation.html#PiecewiseLinearRotation"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.aqua.circuits.PiecewiseLinearRotation" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="qiskit.aqua.utils.circuit_factory.html#qiskit.aqua.utils.circuit_factory.CircuitFactory" title="qiskit.aqua.utils.circuit_factory.CircuitFactory"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.aqua.utils.circuit_factory.CircuitFactory</span></code></a></p>
-<p>Piecewise-linearly-controlled Y rotation.
-For a piecewise linear (not necessarily continuous) function f(x), a state qubit register <a href="#id17"><span class="problematic" id="id18">|</span></a>x&gt; and a target qubit <a href="#id19"><span class="problematic" id="id20">|</span></a>0&gt;, this operator acts as</p>
-<blockquote>
-<div><a href="#id21"><span class="problematic" id="id22">|</span></a>x&gt;|0&gt; –&gt; <a href="#id23"><span class="problematic" id="id24">|</span></a>x&gt; ( cos( f(x) )|0&gt; + sin( f(x) )|1&gt; )</div></blockquote>
-<p>The function f(x) is defined through breakpoints, slopes and offsets as follows.
+<p>Piecewise-linearly-controlled rotation.
+For a piecewise linear (not necessarily continuous) function f(x).
+The function f(x) is defined through breakpoints, slopes and offsets as follows.
 Suppose the breakpoints { x_0, …, x_J } are a subset of [0,  2^n-1], where n is the number of state qubits.
 Further on, denote the corresponding slopes and offsets by a_j, b_j respectively.
 Then f(x) is defined as:</p>
@@ -1950,8 +1948,8 @@ Then f(x) is defined as:</p>
 x_j &lt;= x &lt; x_{j+1} –&gt; f(x) = a_j * (x - x_j) + b_j</div></blockquote>
 <p>where we implicitly assume x_{J+1} = 2^n.</p>
 <dl class="method">
-<dt id="qiskit.aqua.circuits.PiecewiseLinearYRotation.build">
-<code class="descname">build</code><span class="sig-paren">(</span><em>qc</em>, <em>q</em>, <em>q_ancillas=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/circuits/piecewise_linear_y_rotation.html#PiecewiseLinearYRotation.build"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.aqua.circuits.PiecewiseLinearYRotation.build" title="Permalink to this definition">¶</a></dt>
+<dt id="qiskit.aqua.circuits.PiecewiseLinearRotation.build">
+<code class="descname">build</code><span class="sig-paren">(</span><em>qc</em>, <em>q</em>, <em>q_ancillas=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/circuits/piecewise_linear_rotation.html#PiecewiseLinearRotation.build"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.aqua.circuits.PiecewiseLinearRotation.build" title="Permalink to this definition">¶</a></dt>
 <dd><p>Adds corresponding sub-circuit to given circuit</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1970,8 +1968,8 @@ x_j &lt;= x &lt; x_{j+1} –&gt; f(x) = a_j * (x - x_j) + b_j</div></blockquote>
 </dd></dl>
 
 <dl class="method">
-<dt id="qiskit.aqua.circuits.PiecewiseLinearYRotation.evaluate">
-<code class="descname">evaluate</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/circuits/piecewise_linear_y_rotation.html#PiecewiseLinearYRotation.evaluate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.aqua.circuits.PiecewiseLinearYRotation.evaluate" title="Permalink to this definition">¶</a></dt>
+<dt id="qiskit.aqua.circuits.PiecewiseLinearRotation.evaluate">
+<code class="descname">evaluate</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/circuits/piecewise_linear_rotation.html#PiecewiseLinearRotation.evaluate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.aqua.circuits.PiecewiseLinearRotation.evaluate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Classically evaluate the piecewise linear rotation
 :param x: value to be evaluated at
 :type x: float</p>
@@ -1979,8 +1977,57 @@ x_j &lt;= x &lt; x_{j+1} –&gt; f(x) = a_j * (x - x_j) + b_j</div></blockquote>
 </dd></dl>
 
 <dl class="method">
-<dt id="qiskit.aqua.circuits.PiecewiseLinearYRotation.required_ancillas">
-<code class="descname">required_ancillas</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/circuits/piecewise_linear_y_rotation.html#PiecewiseLinearYRotation.required_ancillas"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.aqua.circuits.PiecewiseLinearYRotation.required_ancillas" title="Permalink to this definition">¶</a></dt>
+<dt id="qiskit.aqua.circuits.PiecewiseLinearRotation.required_ancillas">
+<code class="descname">required_ancillas</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/circuits/piecewise_linear_rotation.html#PiecewiseLinearRotation.required_ancillas"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.aqua.circuits.PiecewiseLinearRotation.required_ancillas" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="qiskit.aqua.circuits.PolynomialRotation">
+<em class="property">class </em><code class="descname">PolynomialRotation</code><span class="sig-paren">(</span><em>px</em>, <em>num_state_qubits</em>, <em>basis='Y'</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/circuits/polynomial_rotation.html#PolynomialRotation"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.aqua.circuits.PolynomialRotation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="qiskit.aqua.utils.circuit_factory.html#qiskit.aqua.utils.circuit_factory.CircuitFactory" title="qiskit.aqua.utils.circuit_factory.CircuitFactory"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.aqua.utils.circuit_factory.CircuitFactory</span></code></a></p>
+<p>Polynomial rotation.
+For a polynomial p(x), a basis state <a href="#id17"><span class="problematic" id="id18">|</span></a>i&gt; and a target qubit <a href="#id19"><span class="problematic" id="id20">|</span></a>0&gt; this operator acts as:</p>
+<blockquote>
+<div><a href="#id21"><span class="problematic" id="id22">|</span></a>i&gt;|0&gt; –&gt; <a href="#id23"><span class="problematic" id="id24">|</span></a>i&gt;( cos(p(i))|0&gt; + sin(p(i))|1&gt; )</div></blockquote>
+<p>Let n be the number of qubits representing the state, d the degree of p(x) and q_i the qubits,
+where q_0 is the least significant qubit. Then for</p>
+<blockquote>
+<div>x = sum_{i=0}^{n-1} 2^{i}*q_i,</div></blockquote>
+<dl class="docutils">
+<dt>we can write</dt>
+<dd>p(x) = sum_{j=0}^{j=d} px[j]*(q_0 + 2*q_1 + … + 2^{n-1}*q_n-1)^{j}.</dd>
+</dl>
+<p>The expression above is used to obtain the list of controls and rotation angles for the circuit.</p>
+<dl class="method">
+<dt id="qiskit.aqua.circuits.PolynomialRotation.build">
+<code class="descname">build</code><span class="sig-paren">(</span><em>qc</em>, <em>q</em>, <em>q_target</em>, <em>q_ancillas=None</em>, <em>reverse=0</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/circuits/polynomial_rotation.html#PolynomialRotation.build"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.aqua.circuits.PolynomialRotation.build" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>qc</strong> – quantum circuit</li>
+<li><strong>q</strong> – list of qubits (has to be same length as self.num_state_qubits)</li>
+<li><strong>q_target</strong> – qubit to be rotated. The algorithm is successful when this qubit is in the <a href="#id25"><span class="problematic" id="id26">|</span></a>1&gt; state</li>
+<li><strong>q_ancillas</strong> – list of ancilla qubits (or None if none needed)</li>
+<li><strong>reverse</strong> – if 1, apply with reversed list of qubits (i.e. q_n as q_0, q_n-1 as q_1, etc).</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="qiskit.aqua.circuits.PolynomialRotation.required_ancillas">
+<code class="descname">required_ancillas</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/circuits/polynomial_rotation.html#PolynomialRotation.required_ancillas"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.aqua.circuits.PolynomialRotation.required_ancillas" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="qiskit.aqua.circuits.PolynomialRotation.required_ancillas_controlled">
+<code class="descname">required_ancillas_controlled</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/circuits/polynomial_rotation.html#PolynomialRotation.required_ancillas_controlled"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.aqua.circuits.PolynomialRotation.required_ancillas_controlled" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -2054,12 +2101,12 @@ x_j &lt;= x &lt; x_{j+1} –&gt; f(x) = a_j * (x - x_j) + b_j</div></blockquote>
 <li class="toctree-l1"><a class="reference internal" href="qiskit.aqua.circuits.gates.html">qiskit.aqua.circuits.gates package</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="qiskit.aqua.circuits.gates.html#submodules">Submodules</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.aqua.circuits.gates.boolean_logical_gates.html">qiskit.aqua.circuits.gates.boolean_logical_gates module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.aqua.circuits.gates.controlled_hadamard_gate.html">qiskit.aqua.circuits.gates.controlled_hadamard_gate module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.aqua.circuits.gates.controlled_ry_gates.html">qiskit.aqua.circuits.gates.controlled_ry_gates module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qiskit.aqua.circuits.gates.controlled_ry_gate.html">qiskit.aqua.circuits.gates.controlled_ry_gate module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.aqua.circuits.gates.multi_control_multi_target_gate.html">qiskit.aqua.circuits.gates.multi_control_multi_target_gate module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qiskit.aqua.circuits.gates.multi_control_rotation_gates.html">qiskit.aqua.circuits.gates.multi_control_rotation_gates module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.aqua.circuits.gates.multi_control_toffoli_gate.html">qiskit.aqua.circuits.gates.multi_control_toffoli_gate module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.aqua.circuits.gates.multi_control_u1_gate.html">qiskit.aqua.circuits.gates.multi_control_u1_gate module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.aqua.circuits.gates.multi_control_u3_gate.html">qiskit.aqua.circuits.gates.multi_control_u3_gate module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qiskit.aqua.circuits.gates.relative_phase_toffoli.html">qiskit.aqua.circuits.gates.relative_phase_toffoli module</a></li>
 </ul>
 </li>
 </ul>
@@ -2074,9 +2121,10 @@ x_j &lt;= x &lt; x_{j+1} –&gt; f(x) = a_j * (x - x_j) + b_j</div></blockquote>
 <li class="toctree-l1"><a class="reference internal" href="qiskit.aqua.circuits.boolean_logical_circuits.html">qiskit.aqua.circuits.boolean_logical_circuits module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="qiskit.aqua.circuits.fixed_value_comparator.html">qiskit.aqua.circuits.fixed_value_comparator module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="qiskit.aqua.circuits.fourier_transform_circuits.html">qiskit.aqua.circuits.fourier_transform_circuits module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="qiskit.aqua.circuits.linear_y_rotation.html">qiskit.aqua.circuits.linear_y_rotation module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="qiskit.aqua.circuits.linear_rotation.html">qiskit.aqua.circuits.linear_rotation module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="qiskit.aqua.circuits.phase_estimation_circuit.html">qiskit.aqua.circuits.phase_estimation_circuit module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="qiskit.aqua.circuits.piecewise_linear_y_rotation.html">qiskit.aqua.circuits.piecewise_linear_y_rotation module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="qiskit.aqua.circuits.piecewise_linear_rotation.html">qiskit.aqua.circuits.piecewise_linear_rotation module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="qiskit.aqua.circuits.polynomial_rotation.html">qiskit.aqua.circuits.polynomial_rotation module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="qiskit.aqua.circuits.statevector_circuit.html">qiskit.aqua.circuits.statevector_circuit module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="qiskit.aqua.circuits.weighted_sum_operator.html">qiskit.aqua.circuits.weighted_sum_operator module</a></li>
 </ul>

@@ -171,26 +171,28 @@
   <h1>Source code for qiskit.qobj.converters.pulse_instruction</h1><div class="highlight"><pre>
 <span></span><span class="c1"># -*- coding: utf-8 -*-</span>
 
-<span class="c1"># Copyright 2019, IBM.</span>
+<span class="c1"># This code is part of Qiskit.</span>
 <span class="c1">#</span>
-<span class="c1"># This source code is licensed under the Apache License, Version 2.0 found in</span>
-<span class="c1"># the LICENSE.txt file in the root directory of this source tree.</span>
+<span class="c1"># (C) Copyright IBM 2017, 2019.</span>
+<span class="c1">#</span>
+<span class="c1"># This code is licensed under the Apache License, Version 2.0. You may</span>
+<span class="c1"># obtain a copy of this license in the LICENSE.txt file in the root directory</span>
+<span class="c1"># of this source tree or at http://www.apache.org/licenses/LICENSE-2.0.</span>
+<span class="c1">#</span>
+<span class="c1"># Any modifications or derivative works of this code must retain this</span>
+<span class="c1"># copyright notice, and modified files need to carry a notice indicating</span>
+<span class="c1"># that they have been altered from the originals.</span>
 
 <span class="sd">&quot;&quot;&quot;Helper class used to convert a pulse instruction into PulseQobjInstruction.&quot;&quot;&quot;</span>
+
 <span class="kn">import</span> <span class="nn">re</span>
-<span class="kn">import</span> <span class="nn">math</span>
 <span class="kn">import</span> <span class="nn">warnings</span>
 
-<span class="kn">from</span> <span class="nn">sympy.parsing.sympy_parser</span> <span class="k">import</span> <span class="p">(</span><span class="n">parse_expr</span><span class="p">,</span> <span class="n">standard_transformations</span><span class="p">,</span>
-                                        <span class="n">implicit_multiplication_application</span><span class="p">,</span>
-                                        <span class="n">function_exponentiation</span><span class="p">)</span>
-<span class="kn">from</span> <span class="nn">sympy</span> <span class="k">import</span> <span class="n">Symbol</span>
-
-<span class="kn">from</span> <span class="nn">qiskit.pulse</span> <span class="k">import</span> <span class="n">commands</span><span class="p">,</span> <span class="n">channels</span><span class="p">,</span> <span class="n">Schedule</span>
-<span class="kn">from</span> <span class="nn">qiskit.pulse.schedule</span> <span class="k">import</span> <span class="n">ParameterizedSchedule</span>
+<span class="kn">from</span> <span class="nn">qiskit.pulse</span> <span class="k">import</span> <span class="n">commands</span><span class="p">,</span> <span class="n">channels</span>
 <span class="kn">from</span> <span class="nn">qiskit.pulse.exceptions</span> <span class="k">import</span> <span class="n">PulseError</span>
+<span class="kn">from</span> <span class="nn">qiskit.pulse.parser</span> <span class="k">import</span> <span class="n">parse_string_expr</span>
+<span class="kn">from</span> <span class="nn">qiskit.pulse.schedule</span> <span class="k">import</span> <span class="n">ParameterizedSchedule</span><span class="p">,</span> <span class="n">Schedule</span>
 <span class="kn">from</span> <span class="nn">qiskit.qobj</span> <span class="k">import</span> <span class="n">QobjMeasurementOption</span>
-<span class="kn">from</span> <span class="nn">qiskit</span> <span class="k">import</span> <span class="n">QiskitError</span>
 
 
 <div class="viewcode-block" id="ConversionMethodBinder"><a class="viewcode-back" href="../../../../autodoc/qiskit.qobj.converters.pulse_instruction.html#qiskit.qobj.converters.pulse_instruction.ConversionMethodBinder">[docs]</a><span class="k">class</span> <span class="nc">ConversionMethodBinder</span><span class="p">:</span>
@@ -236,24 +238,23 @@
 <span class="sd">    providing custom converter methods.</span>
 
 
-<span class="sd">    To create a custom converter for custom instruction</span>
-<span class="sd">    ```</span>
-<span class="sd">    class CustomConverter(InstructionToQobjConverter):</span>
+<span class="sd">    To create a custom converter for custom instruction::</span>
 
-<span class="sd">        @bind_instruction(CustomInstruction)</span>
-<span class="sd">        def convert_custom_command(self, shift, instruction):</span>
-<span class="sd">            command_dict = {</span>
-<span class="sd">                &#39;name&#39;: &#39;custom_command&#39;,</span>
-<span class="sd">                &#39;t0&#39;: shift+instruction.start_time,</span>
-<span class="sd">                &#39;param1&#39;: instruction.param1,</span>
-<span class="sd">                &#39;param2&#39;: instruction.param2</span>
-<span class="sd">            }</span>
-<span class="sd">            if self._run_config(&#39;option1&#39;, True):</span>
-<span class="sd">                command_dict.update({</span>
-<span class="sd">                    &#39;param3&#39;: instruction.param3</span>
-<span class="sd">                })</span>
-<span class="sd">            return self.qobj_model(**command_dict)</span>
-<span class="sd">    ```</span>
+<span class="sd">        class CustomConverter(InstructionToQobjConverter):</span>
+
+<span class="sd">            @bind_instruction(CustomInstruction)</span>
+<span class="sd">            def convert_custom_command(self, shift, instruction):</span>
+<span class="sd">                command_dict = {</span>
+<span class="sd">                    &#39;name&#39;: &#39;custom_command&#39;,</span>
+<span class="sd">                    &#39;t0&#39;: shift+instruction.start_time,</span>
+<span class="sd">                    &#39;param1&#39;: instruction.param1,</span>
+<span class="sd">                    &#39;param2&#39;: instruction.param2</span>
+<span class="sd">                }</span>
+<span class="sd">                if self._run_config(&#39;option1&#39;, True):</span>
+<span class="sd">                    command_dict.update({</span>
+<span class="sd">                        &#39;param3&#39;: instruction.param3</span>
+<span class="sd">                    })</span>
+<span class="sd">                return self.qobj_model(**command_dict)</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1"># class level tracking of conversion methods</span>
     <span class="n">bind_instruction</span> <span class="o">=</span> <span class="n">ConversionMethodBinder</span><span class="p">()</span>
@@ -385,106 +386,10 @@
         <span class="n">command_dict</span> <span class="o">=</span> <span class="p">{</span>
             <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;snapshot&#39;</span><span class="p">,</span>
             <span class="s1">&#39;t0&#39;</span><span class="p">:</span> <span class="n">shift</span><span class="o">+</span><span class="n">instruction</span><span class="o">.</span><span class="n">start_time</span><span class="p">,</span>
-            <span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="n">instruction</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+            <span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="n">instruction</span><span class="o">.</span><span class="n">label</span><span class="p">,</span>
             <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="n">instruction</span><span class="o">.</span><span class="n">type</span>
         <span class="p">}</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_qobj_model</span><span class="p">(</span><span class="o">**</span><span class="n">command_dict</span><span class="p">)</span></div></div>
-
-
-<span class="c1"># pylint: disable=invalid-name</span>
-
-<span class="c1"># get math operations valid in python. Presumably these are valid in sympy</span>
-<span class="n">_math_ops</span> <span class="o">=</span> <span class="p">[</span><span class="n">math_op</span> <span class="k">for</span> <span class="n">math_op</span> <span class="ow">in</span> <span class="n">math</span><span class="o">.</span><span class="vm">__dict__</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">math_op</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;__&#39;</span><span class="p">)]</span>
-<span class="c1"># only allow valid math ops</span>
-<span class="n">_math_ops_regex</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;(&quot;</span> <span class="o">+</span> <span class="s2">&quot;)|(&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">_math_ops</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;)&quot;</span>
-<span class="c1"># match consecutive alphanumeric, and single consecutive math ops +-/.()</span>
-<span class="c1"># and multiple * for exponentiation</span>
-<span class="n">_allowedchars</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;(([+\/\-]?|\*{0,2})?[\(\)\s]*&#39;</span>  <span class="c1"># allow to start with math/bracket</span>
-                           <span class="sa">r</span><span class="s1">&#39;([a-zA-Z][a-zA-Z\d]*|&#39;</span>  <span class="c1"># match word</span>
-                           <span class="sa">r</span><span class="s1">&#39;[\d]+(\.\d*)?)[\(\)\s]*)*&#39;</span><span class="p">)</span>  <span class="c1"># match decimal and bracket</span>
-<span class="c1"># match any sequence of chars and numbers</span>
-<span class="n">_expr_regex</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;([a-zA-Z]+\d*)&#39;</span>
-<span class="c1"># and valid params</span>
-<span class="n">_param_regex</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;(P\d+)&#39;</span>
-<span class="c1"># only valid sequences are P# for parameters and valid math operations above</span>
-<span class="n">_valid_sub_expr</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">_param_regex</span><span class="o">+</span><span class="s1">&#39;|&#39;</span><span class="o">+</span><span class="n">_math_ops_regex</span><span class="p">)</span>
-<span class="c1"># pylint: enable=invalid-name</span>
-
-
-<span class="k">def</span> <span class="nf">_is_math_expr_safe</span><span class="p">(</span><span class="n">expr</span><span class="p">):</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Verify mathematical expression is sanitized.</span>
-
-<span class="sd">    Only allow strings of form &#39;P\d+&#39; and operations from `math`.</span>
-<span class="sd">    Allowed chars are [a-zA-Z]. Allowed math operators are &#39;+*/().&#39;</span>
-<span class="sd">    where only &#39;*&#39; are allowed to be consecutive.</span>
-
-<span class="sd">    Args:</span>
-<span class="sd">        expr (str): Expression to sanitize</span>
-
-<span class="sd">    Returns:</span>
-<span class="sd">        bool: Whether the string is safe to parse math from</span>
-
-<span class="sd">    Raise:</span>
-<span class="sd">        QiskitError: If math expression is not sanitized</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-
-    <span class="n">only_allowed_chars</span> <span class="o">=</span> <span class="n">_allowedchars</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">expr</span><span class="p">)</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">only_allowed_chars</span><span class="p">:</span>
-        <span class="k">return</span> <span class="kc">False</span>
-    <span class="k">elif</span> <span class="ow">not</span> <span class="n">only_allowed_chars</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">==</span> <span class="n">expr</span><span class="p">:</span>
-        <span class="k">return</span> <span class="kc">False</span>
-
-    <span class="n">sub_expressions</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">_expr_regex</span><span class="p">,</span> <span class="n">expr</span><span class="p">)</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="nb">all</span><span class="p">([</span><span class="n">_valid_sub_expr</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">sub_exp</span><span class="p">)</span> <span class="k">for</span> <span class="n">sub_exp</span> <span class="ow">in</span> <span class="n">sub_expressions</span><span class="p">]):</span>
-        <span class="k">return</span> <span class="kc">False</span>
-
-    <span class="k">return</span> <span class="kc">True</span>
-
-
-<span class="k">def</span> <span class="nf">_parse_string_expr</span><span class="p">(</span><span class="n">expr</span><span class="p">):</span>  <span class="c1"># pylint: disable=missing-return-type-doc</span>
-    <span class="sd">&quot;&quot;&quot;Parse a mathematical string expression and extract free parameters.</span>
-
-<span class="sd">    Args:</span>
-<span class="sd">        expr (str): String expression to parse</span>
-
-<span class="sd">    Returns:</span>
-<span class="sd">        (Callable, Tuple[str]): Returns a callable function and tuple of string symbols</span>
-
-<span class="sd">    Raises:</span>
-<span class="sd">        QiskitError: If expression is not safe</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="c1"># remove these strings from expression and hope sympy knows these math expressions</span>
-    <span class="c1"># these are effectively reserved keywords</span>
-    <span class="n">subs</span> <span class="o">=</span> <span class="p">[(</span><span class="s1">&#39;numpy.&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;np.&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;math.&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)]</span>
-    <span class="k">for</span> <span class="n">match</span><span class="p">,</span> <span class="n">sub</span> <span class="ow">in</span> <span class="n">subs</span><span class="p">:</span>
-        <span class="n">expr</span> <span class="o">=</span> <span class="n">expr</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">match</span><span class="p">,</span> <span class="n">sub</span><span class="p">)</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">_is_math_expr_safe</span><span class="p">(</span><span class="n">expr</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="n">QiskitError</span><span class="p">(</span><span class="s1">&#39;Expression: &quot;</span><span class="si">%s</span><span class="s1">&quot; is not safe to evaluate.&#39;</span> <span class="o">%</span> <span class="n">expr</span><span class="p">)</span>
-    <span class="n">params</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">_param_regex</span><span class="p">,</span> <span class="n">expr</span><span class="p">))</span>
-    <span class="n">local_dict</span> <span class="o">=</span> <span class="p">{</span><span class="n">param</span><span class="p">:</span> <span class="n">Symbol</span><span class="p">(</span><span class="n">param</span><span class="p">)</span> <span class="k">for</span> <span class="n">param</span> <span class="ow">in</span> <span class="n">params</span><span class="p">}</span>
-    <span class="n">symbols</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">local_dict</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
-    <span class="n">transformations</span> <span class="o">=</span> <span class="p">(</span><span class="n">standard_transformations</span> <span class="o">+</span> <span class="p">(</span><span class="n">implicit_multiplication_application</span><span class="p">,)</span> <span class="o">+</span>
-                       <span class="p">(</span><span class="n">function_exponentiation</span><span class="p">,))</span>
-
-    <span class="n">parsed_expr</span> <span class="o">=</span> <span class="n">parse_expr</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="n">local_dict</span><span class="o">=</span><span class="n">local_dict</span><span class="p">,</span> <span class="n">transformations</span><span class="o">=</span><span class="n">transformations</span><span class="p">)</span>
-
-    <span class="k">def</span> <span class="nf">parsed_fun</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="n">subs</span> <span class="o">=</span> <span class="p">{}</span>
-        <span class="n">matched_params</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="k">if</span> <span class="n">args</span><span class="p">:</span>
-            <span class="n">subs</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="n">symbols</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span> <span class="n">arg</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">arg</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">args</span><span class="p">)})</span>
-            <span class="n">matched_params</span> <span class="o">+=</span> <span class="nb">list</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">)))</span>
-        <span class="k">elif</span> <span class="n">kwargs</span><span class="p">:</span>
-            <span class="n">subs</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="n">local_dict</span><span class="p">[</span><span class="n">key</span><span class="p">]:</span> <span class="n">value</span> <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
-                         <span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">local_dict</span><span class="p">})</span>
-            <span class="n">matched_params</span> <span class="o">+=</span> <span class="nb">list</span><span class="p">(</span><span class="n">key</span> <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">kwargs</span> <span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">params</span><span class="p">)</span>
-
-        <span class="k">if</span> <span class="ow">not</span> <span class="nb">set</span><span class="p">(</span><span class="n">matched_params</span><span class="p">)</span><span class="o">.</span><span class="n">issuperset</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">params</span><span class="p">)):</span>
-            <span class="k">raise</span> <span class="n">PulseError</span><span class="p">(</span><span class="s1">&#39;Supplied params (</span><span class="si">{args}</span><span class="s1">, </span><span class="si">{kwargs}</span><span class="s1">) do not match &#39;</span>
-                             <span class="s1">&#39;</span><span class="si">{params}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">args</span><span class="o">=</span><span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span><span class="o">=</span><span class="n">kwargs</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">))</span>
-
-        <span class="k">return</span> <span class="nb">complex</span><span class="p">(</span><span class="n">parsed_expr</span><span class="o">.</span><span class="n">evalf</span><span class="p">(</span><span class="n">subs</span><span class="o">=</span><span class="n">subs</span><span class="p">))</span>
-    <span class="k">return</span> <span class="n">parsed_fun</span><span class="p">,</span> <span class="n">params</span>
 
 
 <div class="viewcode-block" id="QobjToInstructionConverter"><a class="viewcode-back" href="../../../../autodoc/qiskit.qobj.converters.pulse_instruction.html#qiskit.qobj.converters.pulse_instruction.QobjToInstructionConverter">[docs]</a><span class="k">class</span> <span class="nc">QobjToInstructionConverter</span><span class="p">:</span>
@@ -607,13 +512,14 @@
 
         <span class="c1"># This is parameterized</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">phase</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
-            <span class="n">phase_expr</span><span class="p">,</span> <span class="n">params</span> <span class="o">=</span> <span class="n">_parse_string_expr</span><span class="p">(</span><span class="n">phase</span><span class="p">)</span>
+            <span class="n">phase_expr</span> <span class="o">=</span> <span class="n">parse_string_expr</span><span class="p">(</span><span class="n">phase</span><span class="p">,</span> <span class="n">partial_binding</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
             <span class="k">def</span> <span class="nf">gen_fc_sched</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-                <span class="n">phase</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">phase_expr</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">))</span>
-                <span class="k">return</span> <span class="n">commands</span><span class="o">.</span><span class="n">FrameChange</span><span class="p">(</span><span class="n">phase</span><span class="p">)(</span><span class="n">channel</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">t0</span>
+                <span class="c1"># this should be real value</span>
+                <span class="n">_phase</span> <span class="o">=</span> <span class="n">phase_expr</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+                <span class="k">return</span> <span class="n">commands</span><span class="o">.</span><span class="n">FrameChange</span><span class="p">(</span><span class="n">_phase</span><span class="p">)(</span><span class="n">channel</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">t0</span>
 
-            <span class="k">return</span> <span class="n">ParameterizedSchedule</span><span class="p">(</span><span class="n">gen_fc_sched</span><span class="p">,</span> <span class="n">parameters</span><span class="o">=</span><span class="n">params</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">ParameterizedSchedule</span><span class="p">(</span><span class="n">gen_fc_sched</span><span class="p">,</span> <span class="n">parameters</span><span class="o">=</span><span class="n">phase_expr</span><span class="o">.</span><span class="n">params</span><span class="p">)</span>
 
         <span class="k">return</span> <span class="n">commands</span><span class="o">.</span><span class="n">FrameChange</span><span class="p">(</span><span class="n">phase</span><span class="p">)(</span><span class="n">channel</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">t0</span></div>
 
@@ -632,13 +538,13 @@
 
         <span class="c1"># This is parameterized</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
-            <span class="n">val_expr</span><span class="p">,</span> <span class="n">params</span> <span class="o">=</span> <span class="n">_parse_string_expr</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+            <span class="n">val_expr</span> <span class="o">=</span> <span class="n">parse_string_expr</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="n">partial_binding</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
-            <span class="k">def</span> <span class="nf">gen_fc_sched</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+            <span class="k">def</span> <span class="nf">gen_pv_sched</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
                 <span class="n">val</span> <span class="o">=</span> <span class="nb">complex</span><span class="p">(</span><span class="n">val_expr</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">))</span>
                 <span class="k">return</span> <span class="n">commands</span><span class="o">.</span><span class="n">PersistentValue</span><span class="p">(</span><span class="n">val</span><span class="p">)(</span><span class="n">channel</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">t0</span>
 
-            <span class="k">return</span> <span class="n">ParameterizedSchedule</span><span class="p">(</span><span class="n">gen_fc_sched</span><span class="p">,</span> <span class="n">parameters</span><span class="o">=</span><span class="n">params</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">ParameterizedSchedule</span><span class="p">(</span><span class="n">gen_pv_sched</span><span class="p">,</span> <span class="n">parameters</span><span class="o">=</span><span class="n">val_expr</span><span class="o">.</span><span class="n">params</span><span class="p">)</span>
 
         <span class="k">return</span> <span class="n">commands</span><span class="o">.</span><span class="n">PersistentValue</span><span class="p">(</span><span class="n">val</span><span class="p">)(</span><span class="n">channel</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">t0</span></div>
 

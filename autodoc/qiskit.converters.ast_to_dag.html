@@ -756,6 +756,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.circuit.html">qiskit.circuit package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#subpackages">Subpackages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#submodules">Submodules</a></li>
 </ul>
 </li>
@@ -776,8 +777,9 @@
 <li class="toctree-l4"><a class="reference internal" href="qiskit.extensions.html#submodules">Submodules</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.mapper.html">qiskit.mapper package</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="qiskit.mapper.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qiskit.ignis.html">qiskit.ignis package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.ignis.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.ignis.html#submodules">Submodules</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.providers.html">qiskit.providers package</a><ul>
@@ -836,10 +838,8 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="qiskit.html#submodules">Submodules</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="qiskit._util.html">qiskit._util module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.exceptions.html">qiskit.exceptions module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.execute.html">qiskit.execute module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.qiskiterror.html">qiskit.qiskiterror module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.user_config.html">qiskit.user_config module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.util.html">qiskit.util module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.version.html">qiskit.version module</a></li>
@@ -1540,6 +1540,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.circuit.html">qiskit.circuit package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#subpackages">Subpackages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#submodules">Submodules</a></li>
 </ul>
 </li>
@@ -1560,8 +1561,9 @@
 <li class="toctree-l4"><a class="reference internal" href="qiskit.extensions.html#submodules">Submodules</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.mapper.html">qiskit.mapper package</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="qiskit.mapper.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qiskit.ignis.html">qiskit.ignis package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.ignis.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.ignis.html#submodules">Submodules</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.providers.html">qiskit.providers package</a><ul>
@@ -1620,10 +1622,8 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="qiskit.html#submodules">Submodules</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="qiskit._util.html">qiskit._util module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.exceptions.html">qiskit.exceptions module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.execute.html">qiskit.execute module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.qiskiterror.html">qiskit.qiskiterror module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.user_config.html">qiskit.user_config module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.util.html">qiskit.util module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.version.html">qiskit.version module</a></li>
@@ -1651,6 +1651,11 @@
 <em class="property">class </em><code class="descname">AstInterpreter</code><span class="sig-paren">(</span><em>dag</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/converters/ast_to_dag.html#AstInterpreter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.converters.ast_to_dag.AstInterpreter" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Interprets an OpenQASM by expanding subroutines and unrolling loops.</p>
+<dl class="attribute">
+<dt id="qiskit.converters.ast_to_dag.AstInterpreter.standard_extension">
+<code class="descname">standard_extension</code><em class="property"> = {'ccx': &lt;class 'qiskit.extensions.standard.ccx.ToffoliGate'&gt;, 'ch': &lt;class 'qiskit.extensions.standard.ch.CHGate'&gt;, 'crz': &lt;class 'qiskit.extensions.standard.crz.CrzGate'&gt;, 'cswap': &lt;class 'qiskit.extensions.standard.cswap.FredkinGate'&gt;, 'cu1': &lt;class 'qiskit.extensions.standard.cu1.Cu1Gate'&gt;, 'cu3': &lt;class 'qiskit.extensions.standard.cu3.Cu3Gate'&gt;, 'cx': &lt;class 'qiskit.extensions.standard.cx.CnotGate'&gt;, 'cy': &lt;class 'qiskit.extensions.standard.cy.CyGate'&gt;, 'cz': &lt;class 'qiskit.extensions.standard.cz.CzGate'&gt;, 'h': &lt;class 'qiskit.extensions.standard.h.HGate'&gt;, 'id': &lt;class 'qiskit.extensions.standard.iden.IdGate'&gt;, 'rx': &lt;class 'qiskit.extensions.standard.rx.RXGate'&gt;, 'ry': &lt;class 'qiskit.extensions.standard.ry.RYGate'&gt;, 'rz': &lt;class 'qiskit.extensions.standard.rz.RZGate'&gt;, 'rzz': &lt;class 'qiskit.extensions.standard.rzz.RZZGate'&gt;, 's': &lt;class 'qiskit.extensions.standard.s.SGate'&gt;, 'sdg': &lt;class 'qiskit.extensions.standard.s.SdgGate'&gt;, 'swap': &lt;class 'qiskit.extensions.standard.swap.SwapGate'&gt;, 't': &lt;class 'qiskit.extensions.standard.t.TGate'&gt;, 'tdg': &lt;class 'qiskit.extensions.standard.t.TdgGate'&gt;, 'u0': &lt;class 'qiskit.extensions.standard.u0.U0Gate'&gt;, 'u1': &lt;class 'qiskit.extensions.standard.u1.U1Gate'&gt;, 'u2': &lt;class 'qiskit.extensions.standard.u2.U2Gate'&gt;, 'u3': &lt;class 'qiskit.extensions.standard.u3.U3Gate'&gt;, 'x': &lt;class 'qiskit.extensions.standard.x.XGate'&gt;, 'y': &lt;class 'qiskit.extensions.standard.y.YGate'&gt;, 'z': &lt;class 'qiskit.extensions.standard.z.ZGate'&gt;}</em><a class="headerlink" href="#qiskit.converters.ast_to_dag.AstInterpreter.standard_extension" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 </dd></dl>
 
 <dl class="function">

@@ -756,6 +756,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.circuit.html">qiskit.circuit package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#subpackages">Subpackages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#submodules">Submodules</a></li>
 </ul>
 </li>
@@ -776,8 +777,9 @@
 <li class="toctree-l4"><a class="reference internal" href="qiskit.extensions.html#submodules">Submodules</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.mapper.html">qiskit.mapper package</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="qiskit.mapper.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qiskit.ignis.html">qiskit.ignis package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.ignis.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.ignis.html#submodules">Submodules</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.providers.html">qiskit.providers package</a><ul>
@@ -836,10 +838,8 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="qiskit.html#submodules">Submodules</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="qiskit._util.html">qiskit._util module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.exceptions.html">qiskit.exceptions module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.execute.html">qiskit.execute module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.qiskiterror.html">qiskit.qiskiterror module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.user_config.html">qiskit.user_config module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.util.html">qiskit.util module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.version.html">qiskit.version module</a></li>
@@ -1540,6 +1540,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.circuit.html">qiskit.circuit package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#subpackages">Subpackages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#submodules">Submodules</a></li>
 </ul>
 </li>
@@ -1560,8 +1561,9 @@
 <li class="toctree-l4"><a class="reference internal" href="qiskit.extensions.html#submodules">Submodules</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.mapper.html">qiskit.mapper package</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="qiskit.mapper.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qiskit.ignis.html">qiskit.ignis package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.ignis.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.ignis.html#submodules">Submodules</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.providers.html">qiskit.providers package</a><ul>
@@ -1620,10 +1622,8 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="qiskit.html#submodules">Submodules</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="qiskit._util.html">qiskit._util module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.exceptions.html">qiskit.exceptions module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.execute.html">qiskit.execute module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.qiskiterror.html">qiskit.qiskiterror module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.user_config.html">qiskit.user_config module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.util.html">qiskit.util module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.version.html">qiskit.version module</a></li>
@@ -1684,28 +1684,30 @@ use an exception if a component of the module is available.</p>
 
 <dl class="class">
 <dt id="qiskit.aqua.algorithms.VQE">
-<em class="property">class </em><code class="descname">VQE</code><span class="sig-paren">(</span><em>operator</em>, <em>var_form</em>, <em>optimizer</em>, <em>operator_mode='matrix'</em>, <em>initial_point=None</em>, <em>max_evals_grouped=1</em>, <em>aux_operators=None</em>, <em>callback=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/algorithms/adaptive/vqe/vqe.html#VQE"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.aqua.algorithms.VQE" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descname">VQE</code><span class="sig-paren">(</span><em>operator</em>, <em>var_form</em>, <em>optimizer</em>, <em>operator_mode=None</em>, <em>initial_point=None</em>, <em>max_evals_grouped=1</em>, <em>aux_operators=None</em>, <em>callback=None</em>, <em>auto_conversion=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/algorithms/adaptive/vqe/vqe.html#VQE"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.aqua.algorithms.VQE" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="qiskit.aqua.algorithms.adaptive.vq_algorithm.html#qiskit.aqua.algorithms.adaptive.vq_algorithm.VQAlgorithm" title="qiskit.aqua.algorithms.adaptive.vq_algorithm.VQAlgorithm"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.aqua.algorithms.adaptive.vq_algorithm.VQAlgorithm</span></code></a></p>
 <p>The Variational Quantum Eigensolver algorithm.</p>
 <p>See <a class="reference external" href="https://arxiv.org/abs/1304.3061">https://arxiv.org/abs/1304.3061</a></p>
 <dl class="attribute">
 <dt id="qiskit.aqua.algorithms.VQE.CONFIGURATION">
-<code class="descname">CONFIGURATION</code><em class="property"> = {'depends': [{'pluggable_type': 'optimizer', 'default': {'name': 'L_BFGS_B'}}, {'pluggable_type': 'variational_form', 'default': {'name': 'RYRZ'}}], 'description': 'VQE Algorithm', 'input_schema': {'$schema': 'http://json-schema.org/schema#', 'additionalProperties': False, 'id': 'vqe_schema', 'properties': {'initial_point': {'default': None, 'items': {'type': 'number'}, 'type': ['array', 'null']}, 'max_evals_grouped': {'default': 1, 'type': 'integer'}, 'operator_mode': {'default': 'matrix', 'oneOf': [{'enum': ['matrix', 'paulis', 'grouped_paulis']}], 'type': 'string'}}, 'type': 'object'}, 'name': 'VQE', 'problems': ['energy', 'ising']}</em><a class="headerlink" href="#qiskit.aqua.algorithms.VQE.CONFIGURATION" title="Permalink to this definition">¶</a></dt>
+<code class="descname">CONFIGURATION</code><em class="property"> = {'depends': [{'pluggable_type': 'optimizer', 'default': {'name': 'L_BFGS_B'}}, {'pluggable_type': 'variational_form', 'default': {'name': 'RYRZ'}}], 'description': 'VQE Algorithm', 'input_schema': {'$schema': 'http://json-schema.org/schema#', 'additionalProperties': False, 'id': 'vqe_schema', 'properties': {'initial_point': {'default': None, 'items': {'type': 'number'}, 'type': ['array', 'null']}, 'max_evals_grouped': {'default': 1, 'type': 'integer'}, 'operator_mode': {'default': None, 'enum': ['matrix', 'paulis', 'grouped_paulis', None], 'type': ['string', 'null']}}, 'type': 'object'}, 'name': 'VQE', 'problems': ['energy', 'ising']}</em><a class="headerlink" href="#qiskit.aqua.algorithms.VQE.CONFIGURATION" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="qiskit.aqua.algorithms.VQE.construct_circuit">
-<code class="descname">construct_circuit</code><span class="sig-paren">(</span><em>parameter</em>, <em>backend=None</em>, <em>use_simulator_operator_mode=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/algorithms/adaptive/vqe/vqe.html#VQE.construct_circuit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.aqua.algorithms.VQE.construct_circuit" title="Permalink to this definition">¶</a></dt>
+<code class="descname">construct_circuit</code><span class="sig-paren">(</span><em>parameter</em>, <em>backend=None</em>, <em>use_simulator_operator_mode=False</em>, <em>statevector_mode=None</em>, <em>circuit_name_prefix=''</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/algorithms/adaptive/vqe/vqe.html#VQE.construct_circuit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.aqua.algorithms.VQE.construct_circuit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generate the circuits.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>parameters</strong> (<em>numpy.ndarray</em>) – parameters for variational form.</li>
-<li><strong>backend</strong> (<em>qiskit.BaseBackend</em>) – backend object.</li>
-<li><strong>use_simulator_operator_mode</strong> (<em>bool</em>) – is backend from AerProvider, if True and mode is paulis,
+<li><strong>parameter</strong> (<em>numpy.ndarray</em>) – parameters for variational form.</li>
+<li><strong>backend</strong> (<em>qiskit.BaseBackend</em><em>, </em><em>optional</em>) – backend object.</li>
+<li><strong>use_simulator_operator_mode</strong> (<em>bool</em><em>, </em><em>optional</em>) – is backend from AerProvider, if True and mode is paulis,
 single circuit is generated.</li>
+<li><strong>statevector_mode</strong> (<em>bool</em><em>, </em><em>optional</em>) – indicate which type of simulator are going to use.</li>
+<li><strong>circuit_name_prefix</strong> (<em>str</em><em>, </em><em>optional</em>) – a prefix of circuit name</li>
 </ul>
 </td>
 </tr>
@@ -1789,13 +1791,13 @@ single circuit is generated.</li>
 
 <dl class="class">
 <dt id="qiskit.aqua.algorithms.QAOA">
-<em class="property">class </em><code class="descname">QAOA</code><span class="sig-paren">(</span><em>operator</em>, <em>optimizer</em>, <em>p=1</em>, <em>initial_state=None</em>, <em>mixer=None</em>, <em>operator_mode='matrix'</em>, <em>initial_point=None</em>, <em>max_evals_grouped=1</em>, <em>aux_operators=None</em>, <em>callback=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/algorithms/adaptive/qaoa/qaoa.html#QAOA"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.aqua.algorithms.QAOA" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descname">QAOA</code><span class="sig-paren">(</span><em>operator</em>, <em>optimizer</em>, <em>p=1</em>, <em>initial_state=None</em>, <em>mixer=None</em>, <em>operator_mode=None</em>, <em>initial_point=None</em>, <em>max_evals_grouped=1</em>, <em>aux_operators=None</em>, <em>callback=None</em>, <em>auto_conversion=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/algorithms/adaptive/qaoa/qaoa.html#QAOA"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.aqua.algorithms.QAOA" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="qiskit.aqua.algorithms.adaptive.vqe.vqe.html#qiskit.aqua.algorithms.adaptive.vqe.vqe.VQE" title="qiskit.aqua.algorithms.adaptive.vqe.vqe.VQE"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.aqua.algorithms.adaptive.vqe.vqe.VQE</span></code></a></p>
 <p>The Quantum Approximate Optimization Algorithm.</p>
 <p>See <a class="reference external" href="https://arxiv.org/abs/1411.4028">https://arxiv.org/abs/1411.4028</a></p>
 <dl class="attribute">
 <dt id="qiskit.aqua.algorithms.QAOA.CONFIGURATION">
-<code class="descname">CONFIGURATION</code><em class="property"> = {'depends': [{'pluggable_type': 'optimizer', 'default': {'name': 'COBYLA'}}, {'pluggable_type': 'initial_state', 'default': {'name': 'ZERO'}}], 'description': 'Quantum Approximate Optimization Algorithm', 'input_schema': {'$schema': 'http://json-schema.org/schema#', 'additionalProperties': False, 'id': 'qaoa_schema', 'properties': {'initial_point': {'default': None, 'items': {'type': 'number'}, 'type': ['array', 'null']}, 'max_evals_grouped': {'default': 1, 'type': 'integer'}, 'operator_mode': {'default': 'matrix', 'oneOf': [{'enum': ['matrix', 'paulis', 'grouped_paulis']}], 'type': 'string'}, 'p': {'default': 1, 'minimum': 1, 'type': 'integer'}}, 'type': 'object'}, 'name': 'QAOA.Variational', 'problems': ['ising']}</em><a class="headerlink" href="#qiskit.aqua.algorithms.QAOA.CONFIGURATION" title="Permalink to this definition">¶</a></dt>
+<code class="descname">CONFIGURATION</code><em class="property"> = {'depends': [{'pluggable_type': 'optimizer', 'default': {'name': 'COBYLA'}}, {'pluggable_type': 'initial_state', 'default': {'name': 'ZERO'}}], 'description': 'Quantum Approximate Optimization Algorithm', 'input_schema': {'$schema': 'http://json-schema.org/schema#', 'additionalProperties': False, 'id': 'qaoa_schema', 'properties': {'initial_point': {'default': None, 'items': {'type': 'number'}, 'type': ['array', 'null']}, 'max_evals_grouped': {'default': 1, 'type': 'integer'}, 'operator_mode': {'default': None, 'enum': ['matrix', 'paulis', 'grouped_paulis', None], 'type': ['string', 'null']}, 'p': {'default': 1, 'minimum': 1, 'type': 'integer'}}, 'type': 'object'}, 'name': 'QAOA.Variational', 'problems': ['ising']}</em><a class="headerlink" href="#qiskit.aqua.algorithms.QAOA.CONFIGURATION" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="classmethod">
@@ -2010,7 +2012,7 @@ list: for each data point, generates the predicted label (that with the highest 
 <p>Quantum Generative Adversarial Network.</p>
 <dl class="attribute">
 <dt id="qiskit.aqua.algorithms.QGAN.CONFIGURATION">
-<code class="descname">CONFIGURATION</code><em class="property"> = {'depends': [{'pluggable_type': 'generative_network', 'default': {'name': 'QuantumGenerator'}}, {'pluggable_type': 'discriminative_network', 'default': {'name': 'ClassicalDiscriminator'}}], 'description': 'Quantum Generative Adversarial Network', 'input_schema': {'$schema': 'http://json-schema.org/schema#', 'additionalProperties': False, 'id': 'Qgan_schema', 'properties': {'batch_size': {'default': 500, 'type': 'integer'}, 'num_epochs': {'default': 3000, 'type': 'integer'}, 'num_qubits': {'default': None, 'type': ['array', 'null']}, 'seed': {'default': 7, 'type': ['integer']}, 'snapshot_dir': {'default': None, 'type': ['string', 'null']}, 'tol_rel_ent': {'default': None, 'type': ['number', 'null']}}, 'type': 'object'}, 'name': 'QGAN', 'problems': ['distribution_learning_loading']}</em><a class="headerlink" href="#qiskit.aqua.algorithms.QGAN.CONFIGURATION" title="Permalink to this definition">¶</a></dt>
+<code class="descname">CONFIGURATION</code><em class="property"> = {'depends': [{'pluggable_type': 'generative_network', 'default': {'name': 'QuantumGenerator'}}, {'pluggable_type': 'discriminative_network', 'default': {'name': 'NumpyDiscriminator'}}], 'description': 'Quantum Generative Adversarial Network', 'input_schema': {'$schema': 'http://json-schema.org/schema#', 'additionalProperties': False, 'id': 'Qgan_schema', 'properties': {'batch_size': {'default': 500, 'minimum': 1, 'type': 'integer'}, 'num_epochs': {'default': 3000, 'type': 'integer'}, 'num_qubits': {'default': None, 'type': ['array', 'null']}, 'seed': {'default': 7, 'type': ['integer']}, 'snapshot_dir': {'default': None, 'type': ['string', 'null']}, 'tol_rel_ent': {'default': None, 'type': ['number', 'null']}}, 'type': 'object'}, 'name': 'QGAN', 'problems': ['distribution_learning_loading']}</em><a class="headerlink" href="#qiskit.aqua.algorithms.QGAN.CONFIGURATION" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -2068,8 +2070,16 @@ list: for each data point, generates the predicted label (that with the highest 
 
 <dl class="method">
 <dt id="qiskit.aqua.algorithms.QGAN.set_discriminator">
-<code class="descname">set_discriminator</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/algorithms/adaptive/qgan/qgan.html#QGAN.set_discriminator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.aqua.algorithms.QGAN.set_discriminator" title="Permalink to this definition">¶</a></dt>
+<code class="descname">set_discriminator</code><span class="sig-paren">(</span><em>discriminator=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/algorithms/adaptive/qgan/qgan.html#QGAN.set_discriminator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.aqua.algorithms.QGAN.set_discriminator" title="Permalink to this definition">¶</a></dt>
 <dd><p>Initialize discriminator.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>discriminator</strong> – </td>
+</tr>
+</tbody>
+</table>
 <p>Returns:</p>
 </dd></dl>
 
@@ -2269,12 +2279,12 @@ based on how many classes the data have.</p>
 
 <dl class="class">
 <dt id="qiskit.aqua.algorithms.EOH">
-<em class="property">class </em><code class="descname">EOH</code><span class="sig-paren">(</span><em>operator</em>, <em>initial_state</em>, <em>evo_operator</em>, <em>operator_mode='paulis'</em>, <em>evo_time=1</em>, <em>num_time_slices=1</em>, <em>expansion_mode='trotter'</em>, <em>expansion_order=1</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/algorithms/many_sample/eoh/eoh.html#EOH"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.aqua.algorithms.EOH" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descname">EOH</code><span class="sig-paren">(</span><em>operator</em>, <em>initial_state</em>, <em>evo_operator</em>, <em>operator_mode=None</em>, <em>evo_time=1</em>, <em>num_time_slices=1</em>, <em>expansion_mode='trotter'</em>, <em>expansion_order=1</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/algorithms/many_sample/eoh/eoh.html#EOH"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.aqua.algorithms.EOH" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="qiskit.aqua.algorithms.quantum_algorithm.html#qiskit.aqua.algorithms.quantum_algorithm.QuantumAlgorithm" title="qiskit.aqua.algorithms.quantum_algorithm.QuantumAlgorithm"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.aqua.algorithms.quantum_algorithm.QuantumAlgorithm</span></code></a></p>
 <p>The Quantum EOH (Evolution of Hamiltonian) algorithm.</p>
 <dl class="attribute">
 <dt id="qiskit.aqua.algorithms.EOH.CONFIGURATION">
-<code class="descname">CONFIGURATION</code><em class="property"> = {'depends': [{'pluggable_type': 'initial_state', 'default': {'name': 'ZERO'}}], 'description': 'Evolution of Hamiltonian for Quantum Systems', 'input_schema': {'$schema': 'http://json-schema.org/schema#', 'additionalProperties': False, 'id': 'EOH_schema', 'properties': {'evo_time': {'default': 1, 'minimum': 0, 'type': 'number'}, 'expansion_mode': {'default': 'trotter', 'oneOf': [{'enum': ['trotter', 'suzuki']}], 'type': 'string'}, 'expansion_order': {'default': 1, 'minimum': 1, 'type': 'integer'}, 'num_time_slices': {'default': 1, 'minimum': 0, 'type': 'integer'}, 'operator_mode': {'default': 'paulis', 'oneOf': [{'enum': ['paulis', 'grouped_paulis', 'matrix']}], 'type': 'string'}}, 'type': 'object'}, 'name': 'EOH', 'problems': ['eoh']}</em><a class="headerlink" href="#qiskit.aqua.algorithms.EOH.CONFIGURATION" title="Permalink to this definition">¶</a></dt>
+<code class="descname">CONFIGURATION</code><em class="property"> = {'depends': [{'pluggable_type': 'initial_state', 'default': {'name': 'ZERO'}}], 'description': 'Evolution of Hamiltonian for Quantum Systems', 'input_schema': {'$schema': 'http://json-schema.org/schema#', 'additionalProperties': False, 'id': 'EOH_schema', 'properties': {'evo_time': {'default': 1, 'minimum': 0, 'type': 'number'}, 'expansion_mode': {'default': 'trotter', 'enum': ['trotter', 'suzuki'], 'type': 'string'}, 'expansion_order': {'default': 1, 'minimum': 1, 'type': 'integer'}, 'num_time_slices': {'default': 1, 'minimum': 0, 'type': 'integer'}, 'operator_mode': {'default': None, 'enum': ['paulis', 'grouped_paulis', 'matrix', None], 'type': ['string', 'null']}}, 'type': 'object'}, 'name': 'EOH', 'problems': ['eoh']}</em><a class="headerlink" href="#qiskit.aqua.algorithms.EOH.CONFIGURATION" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -2330,7 +2340,7 @@ based on how many classes the data have.</p>
 
 <dl class="class">
 <dt id="qiskit.aqua.algorithms.QSVM">
-<em class="property">class </em><code class="descname">QSVM</code><span class="sig-paren">(</span><em>feature_map</em>, <em>training_dataset</em>, <em>test_dataset=None</em>, <em>datapoints=None</em>, <em>multiclass_extension=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/algorithms/many_sample/qsvm/qsvm.html#QSVM"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.aqua.algorithms.QSVM" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descname">QSVM</code><span class="sig-paren">(</span><em>feature_map</em>, <em>training_dataset=None</em>, <em>test_dataset=None</em>, <em>datapoints=None</em>, <em>multiclass_extension=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/algorithms/many_sample/qsvm/qsvm.html#QSVM"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.aqua.algorithms.QSVM" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="qiskit.aqua.algorithms.quantum_algorithm.html#qiskit.aqua.algorithms.quantum_algorithm.QuantumAlgorithm" title="qiskit.aqua.algorithms.quantum_algorithm.QuantumAlgorithm"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.aqua.algorithms.quantum_algorithm.QuantumAlgorithm</span></code></a></p>
 <p>Quantum SVM method.</p>
 <p>Internally, it will run the binary classification or multiclass classification
@@ -2369,6 +2379,11 @@ based on how many classes the data have.</p>
 <dt id="qiskit.aqua.algorithms.QSVM.construct_kernel_matrix">
 <code class="descname">construct_kernel_matrix</code><span class="sig-paren">(</span><em>x1_vec</em>, <em>x2_vec=None</em>, <em>quantum_instance=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/algorithms/many_sample/qsvm/qsvm.html#QSVM.construct_kernel_matrix"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.aqua.algorithms.QSVM.construct_kernel_matrix" title="Permalink to this definition">¶</a></dt>
 <dd><p>Construct kernel matrix, if x2_vec is None, self-innerproduct is conducted.</p>
+<p class="rubric">Notes</p>
+<p>When using <cite>statevector_simulator</cite>, we only build the circuits for Psi(x1)|0&gt; rather than
+Psi(x2)^dagger Psi(x1)|0&gt;, and then we perform the inner product classically.
+That is, for <cite>statevector_simulator</cite>, the total number of circuits will be O(N) rather than
+O(N^2) for <cite>qasm_simulator</cite>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -2378,7 +2393,43 @@ based on how many classes the data have.</p>
 D is the feature dimension</li>
 <li><strong>x2_vec</strong> (<em>numpy.ndarray</em>) – data points, 2-D array, N2xD, where N2 is the number of data,
 D is the feature dimension</li>
-<li><strong>quantum_instance</strong> (<a class="reference internal" href="qiskit.aqua.html#qiskit.aqua.QuantumInstance" title="qiskit.aqua.QuantumInstance"><em>QuantumInstance</em></a>) – quantum backend with all setting</li>
+<li><strong>quantum_instance</strong> (<a class="reference internal" href="qiskit.aqua.html#qiskit.aqua.QuantumInstance" title="qiskit.aqua.QuantumInstance"><em>QuantumInstance</em></a>) – quantum backend with all settings</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">2-D matrix, N1xN2</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">numpy.ndarray</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><code class="xref py py-exc docutils literal notranslate"><span class="pre">AquaError</span></code> – Quantum instance is not present.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="qiskit.aqua.algorithms.QSVM.get_kernel_matrix">
+<em class="property">static </em><code class="descname">get_kernel_matrix</code><span class="sig-paren">(</span><em>quantum_instance</em>, <em>feature_map</em>, <em>x1_vec</em>, <em>x2_vec=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/algorithms/many_sample/qsvm/qsvm.html#QSVM.get_kernel_matrix"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.aqua.algorithms.QSVM.get_kernel_matrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Construct kernel matrix, if x2_vec is None, self-innerproduct is conducted.</p>
+<p class="rubric">Notes</p>
+<p>When using <cite>statevector_simulator</cite>, we only build the circuits for Psi(x1)|0&gt; rather than
+Psi(x2)^dagger Psi(x1)|0&gt;, and then we perform the inner product classically.
+That is, for <cite>statevector_simulator</cite>, the total number of circuits will be O(N) rather than
+O(N^2) for <cite>qasm_simulator</cite>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>quantum_instance</strong> (<a class="reference internal" href="qiskit.aqua.html#qiskit.aqua.QuantumInstance" title="qiskit.aqua.QuantumInstance"><em>QuantumInstance</em></a>) – quantum backend with all settings</li>
+<li><strong>feature_map</strong> (<a class="reference internal" href="qiskit.aqua.components.feature_maps.html#qiskit.aqua.components.feature_maps.FeatureMap" title="qiskit.aqua.components.feature_maps.FeatureMap"><em>FeatureMap</em></a>) – a feature map that maps data to feature space</li>
+<li><strong>x1_vec</strong> (<em>numpy.ndarray</em>) – data points, 2-D array, N1xD, where N1 is the number of data,
+D is the feature dimension</li>
+<li><strong>x2_vec</strong> (<em>numpy.ndarray</em>) – data points, 2-D array, N2xD, where N2 is the number of data,
+D is the feature dimension</li>
 </ul>
 </td>
 </tr>
@@ -2430,7 +2481,10 @@ D is the feature dimension.</li>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">predicted labels, Nx1 array</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">numpy.ndarray</p>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">numpy.ndarray</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><code class="xref py py-exc docutils literal notranslate"><span class="pre">AquaError</span></code> – Quantum instance is not present.</p>
 </td>
 </tr>
 </tbody>
@@ -2457,6 +2511,48 @@ D is the feature dimension.</li>
 </dd></dl>
 
 <dl class="method">
+<dt id="qiskit.aqua.algorithms.QSVM.setup_datapoint">
+<code class="descname">setup_datapoint</code><span class="sig-paren">(</span><em>datapoints</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/algorithms/many_sample/qsvm/qsvm.html#QSVM.setup_datapoint"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.aqua.algorithms.QSVM.setup_datapoint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Setup data points, if the data were there, they would be overwritten.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>datapoints</strong> (<em>numpy.ndarray</em>) – prediction dataset.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="qiskit.aqua.algorithms.QSVM.setup_test_data">
+<code class="descname">setup_test_data</code><span class="sig-paren">(</span><em>test_dataset</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/algorithms/many_sample/qsvm/qsvm.html#QSVM.setup_test_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.aqua.algorithms.QSVM.setup_test_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Setup test data, if the data were there, they would be overwritten.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>test_dataset</strong> (<em>dict</em>) – test dataset.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="qiskit.aqua.algorithms.QSVM.setup_training_data">
+<code class="descname">setup_training_data</code><span class="sig-paren">(</span><em>training_dataset</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/algorithms/many_sample/qsvm/qsvm.html#QSVM.setup_training_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.aqua.algorithms.QSVM.setup_training_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Setup training data, if the data were there, they would be overwritten.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>training_dataset</strong> (<em>dict</em>) – training dataset.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
 <dt id="qiskit.aqua.algorithms.QSVM.test">
 <code class="descname">test</code><span class="sig-paren">(</span><em>data</em>, <em>labels</em>, <em>quantum_instance=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/algorithms/many_sample/qsvm/qsvm.html#QSVM.test"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.aqua.algorithms.QSVM.test" title="Permalink to this definition">¶</a></dt>
 <dd><p>Test the svm.</p>
@@ -2475,7 +2571,10 @@ D is the feature dimension.</li>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">accuracy</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">float</p>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">float</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><code class="xref py py-exc docutils literal notranslate"><span class="pre">AquaError</span></code> – Quantum instance is not present.</p>
 </td>
 </tr>
 </tbody>
@@ -2490,12 +2589,15 @@ D is the feature dimension.</li>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>data</strong> (<em>numpy.ndarray</em>) – NxD array, where N is the number of data,
 D is the feature dimension.</li>
 <li><strong>labels</strong> (<em>numpy.ndarray</em>) – Nx1 array, where N is the number of data</li>
 <li><strong>quantum_instance</strong> (<a class="reference internal" href="qiskit.aqua.html#qiskit.aqua.QuantumInstance" title="qiskit.aqua.QuantumInstance"><em>QuantumInstance</em></a>) – quantum backend with all setting</li>
 </ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><code class="xref py py-exc docutils literal notranslate"><span class="pre">AquaError</span></code> – Quantum instance is not present.</p>
 </td>
 </tr>
 </tbody>
@@ -2515,7 +2617,7 @@ a multi-round schedule will be followed with incremental trial <cite>num_iterati
 The implementation follows Section 4 of Boyer et al. &lt;<a class="reference external" href="https://arxiv.org/abs/quant-ph/9605034">https://arxiv.org/abs/quant-ph/9605034</a>&gt;</p>
 <dl class="attribute">
 <dt id="qiskit.aqua.algorithms.Grover.CONFIGURATION">
-<code class="descname">CONFIGURATION</code><em class="property"> = {'depends': [{'pluggable_type': 'initial_state', 'default': {'name': 'CUSTOM', 'state': 'uniform'}}, {'pluggable_type': 'oracle', 'default': {'name': 'LogicalExpressionOracle'}}], 'description': &quot;Grover's Search Algorithm&quot;, 'input_schema': {'$schema': 'http://json-schema.org/schema#', 'additionalProperties': False, 'id': 'grover_schema', 'properties': {'incremental': {'default': False, 'type': 'boolean'}, 'mct_mode': {'default': 'basic', 'oneOf': [{'enum': ['basic', 'basic-dirty-ancilla', 'advanced', 'noancilla']}], 'type': 'string'}, 'num_iterations': {'default': 1, 'minimum': 1, 'type': 'integer'}}, 'type': 'object'}, 'name': 'Grover', 'problems': ['search']}</em><a class="headerlink" href="#qiskit.aqua.algorithms.Grover.CONFIGURATION" title="Permalink to this definition">¶</a></dt>
+<code class="descname">CONFIGURATION</code><em class="property"> = {'depends': [{'pluggable_type': 'initial_state', 'default': {'name': 'CUSTOM', 'state': 'uniform'}}, {'pluggable_type': 'oracle', 'default': {'name': 'LogicalExpressionOracle'}}], 'description': &quot;Grover's Search Algorithm&quot;, 'input_schema': {'$schema': 'http://json-schema.org/schema#', 'additionalProperties': False, 'id': 'grover_schema', 'properties': {'incremental': {'default': False, 'type': 'boolean'}, 'mct_mode': {'default': 'basic', 'enum': ['basic', 'basic-dirty-ancilla', 'advanced', 'noancilla'], 'type': 'string'}, 'num_iterations': {'default': 1, 'minimum': 1, 'type': 'integer'}}, 'type': 'object'}, 'name': 'Grover', 'problems': ['search']}</em><a class="headerlink" href="#qiskit.aqua.algorithms.Grover.CONFIGURATION" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -2572,7 +2674,7 @@ The implementation follows Section 4 of Boyer et al. &lt;<a class="reference ext
 <p>See <a class="reference external" href="https://arxiv.org/abs/quant-ph/0610214">https://arxiv.org/abs/quant-ph/0610214</a></p>
 <dl class="attribute">
 <dt id="qiskit.aqua.algorithms.IQPE.CONFIGURATION">
-<code class="descname">CONFIGURATION</code><em class="property"> = {'depends': [{'pluggable_type': 'initial_state', 'default': {'name': 'ZERO'}}], 'description': 'Iterative Quantum Phase Estimation for Quantum Systems', 'input_schema': {'$schema': 'http://json-schema.org/schema#', 'additionalProperties': False, 'id': 'IQPE_schema', 'properties': {'expansion_mode': {'default': 'suzuki', 'oneOf': [{'enum': ['suzuki', 'trotter']}], 'type': 'string'}, 'expansion_order': {'default': 2, 'minimum': 1, 'type': 'integer'}, 'num_iterations': {'default': 1, 'minimum': 1, 'type': 'integer'}, 'num_time_slices': {'default': 1, 'minimum': 1, 'type': 'integer'}}, 'type': 'object'}, 'name': 'IQPE', 'problems': ['energy']}</em><a class="headerlink" href="#qiskit.aqua.algorithms.IQPE.CONFIGURATION" title="Permalink to this definition">¶</a></dt>
+<code class="descname">CONFIGURATION</code><em class="property"> = {'depends': [{'pluggable_type': 'initial_state', 'default': {'name': 'ZERO'}}], 'description': 'Iterative Quantum Phase Estimation for Quantum Systems', 'input_schema': {'$schema': 'http://json-schema.org/schema#', 'additionalProperties': False, 'id': 'IQPE_schema', 'properties': {'expansion_mode': {'default': 'suzuki', 'enum': ['suzuki', 'trotter'], 'type': 'string'}, 'expansion_order': {'default': 2, 'minimum': 1, 'type': 'integer'}, 'num_iterations': {'default': 1, 'minimum': 1, 'type': 'integer'}, 'num_time_slices': {'default': 1, 'minimum': 1, 'type': 'integer'}}, 'type': 'object'}, 'name': 'IQPE', 'problems': ['energy']}</em><a class="headerlink" href="#qiskit.aqua.algorithms.IQPE.CONFIGURATION" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -2648,7 +2750,7 @@ The implementation follows Section 4 of Boyer et al. &lt;<a class="reference ext
 <p>The Quantum Phase Estimation algorithm.</p>
 <dl class="attribute">
 <dt id="qiskit.aqua.algorithms.QPE.CONFIGURATION">
-<code class="descname">CONFIGURATION</code><em class="property"> = {'depends': [{'pluggable_type': 'initial_state', 'default': {'name': 'ZERO'}}, {'pluggable_type': 'iqft', 'default': {'name': 'STANDARD'}}], 'description': 'Quantum Phase Estimation for Quantum Systems', 'input_schema': {'$schema': 'http://json-schema.org/schema#', 'additionalProperties': False, 'id': 'qpe_schema', 'properties': {'expansion_mode': {'default': 'trotter', 'oneOf': [{'enum': ['suzuki', 'trotter']}], 'type': 'string'}, 'expansion_order': {'default': 1, 'minimum': 1, 'type': 'integer'}, 'num_ancillae': {'default': 1, 'minimum': 1, 'type': 'integer'}, 'num_time_slices': {'default': 1, 'minimum': 1, 'type': 'integer'}}, 'type': 'object'}, 'name': 'QPE', 'problems': ['energy']}</em><a class="headerlink" href="#qiskit.aqua.algorithms.QPE.CONFIGURATION" title="Permalink to this definition">¶</a></dt>
+<code class="descname">CONFIGURATION</code><em class="property"> = {'depends': [{'pluggable_type': 'initial_state', 'default': {'name': 'ZERO'}}, {'pluggable_type': 'iqft', 'default': {'name': 'STANDARD'}}], 'description': 'Quantum Phase Estimation for Quantum Systems', 'input_schema': {'$schema': 'http://json-schema.org/schema#', 'additionalProperties': False, 'id': 'qpe_schema', 'properties': {'expansion_mode': {'default': 'trotter', 'enum': ['suzuki', 'trotter'], 'type': 'string'}, 'expansion_order': {'default': 1, 'minimum': 1, 'type': 'integer'}, 'num_ancillae': {'default': 1, 'minimum': 1, 'type': 'integer'}, 'num_time_slices': {'default': 1, 'minimum': 1, 'type': 'integer'}}, 'type': 'object'}, 'name': 'QPE', 'problems': ['energy']}</em><a class="headerlink" href="#qiskit.aqua.algorithms.QPE.CONFIGURATION" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -2711,12 +2813,17 @@ The implementation follows Section 4 of Boyer et al. &lt;<a class="reference ext
 
 <dl class="class">
 <dt id="qiskit.aqua.algorithms.AmplitudeEstimation">
-<em class="property">class </em><code class="descname">AmplitudeEstimation</code><span class="sig-paren">(</span><em>num_eval_qubits</em>, <em>a_factory</em>, <em>i_objective=None</em>, <em>q_factory=None</em>, <em>iqft=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/algorithms/single_sample/amplitude_estimation/ae.html#AmplitudeEstimation"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.aqua.algorithms.AmplitudeEstimation" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="qiskit.aqua.algorithms.quantum_algorithm.html#qiskit.aqua.algorithms.quantum_algorithm.QuantumAlgorithm" title="qiskit.aqua.algorithms.quantum_algorithm.QuantumAlgorithm"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.aqua.algorithms.quantum_algorithm.QuantumAlgorithm</span></code></a></p>
+<em class="property">class </em><code class="descname">AmplitudeEstimation</code><span class="sig-paren">(</span><em>num_eval_qubits</em>, <em>a_factory=None</em>, <em>i_objective=None</em>, <em>q_factory=None</em>, <em>iqft=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/algorithms/single_sample/amplitude_estimation/ae.html#AmplitudeEstimation"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.aqua.algorithms.AmplitudeEstimation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="qiskit.aqua.algorithms.single_sample.amplitude_estimation.ae_base.html#qiskit.aqua.algorithms.single_sample.amplitude_estimation.ae_base.AmplitudeEstimationBase" title="qiskit.aqua.algorithms.single_sample.amplitude_estimation.ae_base.AmplitudeEstimationBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.aqua.algorithms.single_sample.amplitude_estimation.ae_base.AmplitudeEstimationBase</span></code></a></p>
 <p>The Amplitude Estimation algorithm.</p>
 <dl class="attribute">
 <dt id="qiskit.aqua.algorithms.AmplitudeEstimation.CONFIGURATION">
 <code class="descname">CONFIGURATION</code><em class="property"> = {'depends': [{'pluggable_type': 'uncertainty_problem', 'default': {'name': 'EuropeanCallDelta'}}, {'pluggable_type': 'iqft', 'default': {'name': 'STANDARD'}}], 'description': 'Amplitude Estimation Algorithm', 'input_schema': {'$schema': 'http://json-schema.org/schema#', 'additionalProperties': False, 'id': 'AmplitudeEstimation_schema', 'properties': {'num_eval_qubits': {'default': 5, 'minimum': 1, 'type': 'integer'}}, 'type': 'object'}, 'name': 'AmplitudeEstimation', 'problems': ['uncertainty']}</em><a class="headerlink" href="#qiskit.aqua.algorithms.AmplitudeEstimation.CONFIGURATION" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="qiskit.aqua.algorithms.AmplitudeEstimation.confidence_interval">
+<code class="descname">confidence_interval</code><span class="sig-paren">(</span><em>alpha</em>, <em>kind='likelihood_ratio'</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/algorithms/single_sample/amplitude_estimation/ae.html#AmplitudeEstimation.confidence_interval"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.aqua.algorithms.AmplitudeEstimation.confidence_interval" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -2738,6 +2845,49 @@ The implementation follows Section 4 of Boyer et al. &lt;<a class="reference ext
 <dl class="classmethod">
 <dt id="qiskit.aqua.algorithms.AmplitudeEstimation.init_params">
 <em class="property">classmethod </em><code class="descname">init_params</code><span class="sig-paren">(</span><em>params</em>, <em>algo_input</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/algorithms/single_sample/amplitude_estimation/ae.html#AmplitudeEstimation.init_params"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.aqua.algorithms.AmplitudeEstimation.init_params" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize via parameters dictionary and algorithm input instance
+:param params: parameters dictionary
+:param algo_input: Input instance</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="qiskit.aqua.algorithms.MaximumLikelihoodAmplitudeEstimation">
+<em class="property">class </em><code class="descname">MaximumLikelihoodAmplitudeEstimation</code><span class="sig-paren">(</span><em>log_max_evals</em>, <em>a_factory=None</em>, <em>i_objective=None</em>, <em>q_factory=None</em>, <em>likelihood_evals=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/algorithms/single_sample/amplitude_estimation/mlae.html#MaximumLikelihoodAmplitudeEstimation"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.aqua.algorithms.MaximumLikelihoodAmplitudeEstimation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="qiskit.aqua.algorithms.single_sample.amplitude_estimation.ae_base.html#qiskit.aqua.algorithms.single_sample.amplitude_estimation.ae_base.AmplitudeEstimationBase" title="qiskit.aqua.algorithms.single_sample.amplitude_estimation.ae_base.AmplitudeEstimationBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.aqua.algorithms.single_sample.amplitude_estimation.ae_base.AmplitudeEstimationBase</span></code></a></p>
+<p>The Amplitude Estimation without QPE algorithm.</p>
+<dl class="attribute">
+<dt id="qiskit.aqua.algorithms.MaximumLikelihoodAmplitudeEstimation.CONFIGURATION">
+<code class="descname">CONFIGURATION</code><em class="property"> = {'depends': [{'pluggable_type': 'uncertainty_problem', 'default': {'name': 'EuropeanCallDelta'}}], 'description': 'Maximum Likelihood Amplitude Estimation', 'input_schema': {'$schema': 'http://json-schema.org/schema#', 'additionalProperties': False, 'id': 'MaximumLikelihoodAmplitudeEstimation_schema', 'properties': {'log_max_evals': {'default': 5, 'minimum': 1, 'type': 'integer'}}, 'type': 'object'}, 'name': 'MaximumLikelihoodAmplitudeEstimation', 'problems': ['uncertainty']}</em><a class="headerlink" href="#qiskit.aqua.algorithms.MaximumLikelihoodAmplitudeEstimation.CONFIGURATION" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="qiskit.aqua.algorithms.MaximumLikelihoodAmplitudeEstimation.confidence_interval">
+<code class="descname">confidence_interval</code><span class="sig-paren">(</span><em>alpha</em>, <em>kind='fisher'</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/algorithms/single_sample/amplitude_estimation/mlae.html#MaximumLikelihoodAmplitudeEstimation.confidence_interval"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.aqua.algorithms.MaximumLikelihoodAmplitudeEstimation.confidence_interval" title="Permalink to this definition">¶</a></dt>
+<dd><p>Proxy calling the correct method to compute the confidence interval,
+according to the value of <cite>kind</cite></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="qiskit.aqua.algorithms.MaximumLikelihoodAmplitudeEstimation.construct_circuits">
+<code class="descname">construct_circuits</code><span class="sig-paren">(</span><em>measurement=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/algorithms/single_sample/amplitude_estimation/mlae.html#MaximumLikelihoodAmplitudeEstimation.construct_circuits"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.aqua.algorithms.MaximumLikelihoodAmplitudeEstimation.construct_circuits" title="Permalink to this definition">¶</a></dt>
+<dd><p>Construct the Amplitude Estimation w/o QPE quantum circuits.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>measurement</strong> (<em>bool</em>) – Boolean flag to indicate if measurement should be included in the circuits.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">a list with the QuantumCircuit objects for the algorithm</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="qiskit.aqua.algorithms.MaximumLikelihoodAmplitudeEstimation.init_params">
+<em class="property">classmethod </em><code class="descname">init_params</code><span class="sig-paren">(</span><em>params</em>, <em>algo_input</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/algorithms/single_sample/amplitude_estimation/mlae.html#MaximumLikelihoodAmplitudeEstimation.init_params"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.aqua.algorithms.MaximumLikelihoodAmplitudeEstimation.init_params" title="Permalink to this definition">¶</a></dt>
 <dd><p>Initialize via parameters dictionary and algorithm input instance
 :param params: parameters dictionary
 :param algo_input: Input instance</p>
@@ -3118,6 +3268,9 @@ vector (np.array): the expanded vector</p>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.aqua.algorithms.single_sample.amplitude_estimation.html">qiskit.aqua.algorithms.single_sample.amplitude_estimation package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.aqua.algorithms.single_sample.amplitude_estimation.html#submodules">Submodules</a><ul>
 <li class="toctree-l5"><a class="reference internal" href="qiskit.aqua.algorithms.single_sample.amplitude_estimation.ae.html">qiskit.aqua.algorithms.single_sample.amplitude_estimation.ae module</a></li>
+<li class="toctree-l5"><a class="reference internal" href="qiskit.aqua.algorithms.single_sample.amplitude_estimation.ae_base.html">qiskit.aqua.algorithms.single_sample.amplitude_estimation.ae_base module</a></li>
+<li class="toctree-l5"><a class="reference internal" href="qiskit.aqua.algorithms.single_sample.amplitude_estimation.ae_utils.html">qiskit.aqua.algorithms.single_sample.amplitude_estimation.ae_utils module</a></li>
+<li class="toctree-l5"><a class="reference internal" href="qiskit.aqua.algorithms.single_sample.amplitude_estimation.mlae.html">qiskit.aqua.algorithms.single_sample.amplitude_estimation.mlae module</a></li>
 <li class="toctree-l5"><a class="reference internal" href="qiskit.aqua.algorithms.single_sample.amplitude_estimation.q_factory.html">qiskit.aqua.algorithms.single_sample.amplitude_estimation.q_factory module</a></li>
 <li class="toctree-l5"><a class="reference internal" href="qiskit.aqua.algorithms.single_sample.amplitude_estimation.s_0_reflection.html">qiskit.aqua.algorithms.single_sample.amplitude_estimation.s_0_reflection module</a></li>
 <li class="toctree-l5"><a class="reference internal" href="qiskit.aqua.algorithms.single_sample.amplitude_estimation.s_psi_0_reflection.html">qiskit.aqua.algorithms.single_sample.amplitude_estimation.s_psi_0_reflection module</a></li>

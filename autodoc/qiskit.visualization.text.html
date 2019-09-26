@@ -756,6 +756,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.circuit.html">qiskit.circuit package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#subpackages">Subpackages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#submodules">Submodules</a></li>
 </ul>
 </li>
@@ -776,8 +777,9 @@
 <li class="toctree-l4"><a class="reference internal" href="qiskit.extensions.html#submodules">Submodules</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.mapper.html">qiskit.mapper package</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="qiskit.mapper.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qiskit.ignis.html">qiskit.ignis package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.ignis.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.ignis.html#submodules">Submodules</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.providers.html">qiskit.providers package</a><ul>
@@ -836,10 +838,8 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="qiskit.html#submodules">Submodules</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="qiskit._util.html">qiskit._util module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.exceptions.html">qiskit.exceptions module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.execute.html">qiskit.execute module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.qiskiterror.html">qiskit.qiskiterror module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.user_config.html">qiskit.user_config module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.util.html">qiskit.util module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.version.html">qiskit.version module</a></li>
@@ -1540,6 +1540,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.circuit.html">qiskit.circuit package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#subpackages">Subpackages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#submodules">Submodules</a></li>
 </ul>
 </li>
@@ -1560,8 +1561,9 @@
 <li class="toctree-l4"><a class="reference internal" href="qiskit.extensions.html#submodules">Submodules</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.mapper.html">qiskit.mapper package</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="qiskit.mapper.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qiskit.ignis.html">qiskit.ignis package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.ignis.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.ignis.html#submodules">Submodules</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.providers.html">qiskit.providers package</a><ul>
@@ -1620,10 +1622,8 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="qiskit.html#submodules">Submodules</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="qiskit._util.html">qiskit._util module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.exceptions.html">qiskit.exceptions module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.execute.html">qiskit.execute module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.qiskiterror.html">qiskit.qiskiterror module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.user_config.html">qiskit.user_config module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.util.html">qiskit.util module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.version.html">qiskit.version module</a></li>
@@ -1649,25 +1649,29 @@
 <dt id="qiskit.visualization.text.Barrier">
 <em class="property">class </em><code class="descname">Barrier</code><span class="sig-paren">(</span><em>label=''</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/visualization/text.html#Barrier"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.visualization.text.Barrier" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#qiskit.visualization.text.DirectOnQuWire" title="qiskit.visualization.text.DirectOnQuWire"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.visualization.text.DirectOnQuWire</span></code></a></p>
-<p>Draws a barrier.
-top:  ░     ░
+<p>Draws a barrier.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>top:  ░     ░
 mid: ─░─ ───░───
-bot:  ░     ░</p>
+bot:  ░     ░
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="class">
 <dt id="qiskit.visualization.text.BoxOnClWire">
 <em class="property">class </em><code class="descname">BoxOnClWire</code><span class="sig-paren">(</span><em>label=''</em>, <em>top_connect='─'</em>, <em>bot_connect='─'</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/visualization/text.html#BoxOnClWire"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.visualization.text.BoxOnClWire" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#qiskit.visualization.text.DrawElement" title="qiskit.visualization.text.DrawElement"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.visualization.text.DrawElement</span></code></a></p>
-<p>Draws a box on the classical wire
-top: ┌───┐   ┌───┐
+<p>Draws a box on the classical wire.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>top: ┌───┐   ┌───┐
 mid: ╡ A ╞ ══╡ A ╞══
-bot: └───┘   └───┘</p>
+bot: └───┘   └───┘
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="class">
 <dt id="qiskit.visualization.text.BoxOnClWireBot">
-<em class="property">class </em><code class="descname">BoxOnClWireBot</code><span class="sig-paren">(</span><em>label</em>, <em>input_length</em>, <em>bot_connect='─'</em>, <em>wire_label=''</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/visualization/text.html#BoxOnClWireBot"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.visualization.text.BoxOnClWireBot" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descname">BoxOnClWireBot</code><span class="sig-paren">(</span><em>label</em>, <em>input_length</em>, <em>bot_connect='─'</em>, <em>wire_label=''</em>, <em>**_</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/visualization/text.html#BoxOnClWireBot"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.visualization.text.BoxOnClWireBot" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#qiskit.visualization.text.MultiBox" title="qiskit.visualization.text.MultiBox"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.visualization.text.MultiBox</span></code></a>, <a class="reference internal" href="#qiskit.visualization.text.BoxOnClWire" title="qiskit.visualization.text.BoxOnClWire"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.visualization.text.BoxOnClWire</span></code></a></p>
 <p>Draws the bottom part of a conditional box that affects more than one classical wire</p>
 </dd></dl>
@@ -1675,7 +1679,7 @@ bot: └───┘   └───┘</p>
 <dl class="class">
 <dt id="qiskit.visualization.text.BoxOnClWireMid">
 <em class="property">class </em><code class="descname">BoxOnClWireMid</code><span class="sig-paren">(</span><em>label</em>, <em>input_length</em>, <em>order</em>, <em>wire_label=''</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/visualization/text.html#BoxOnClWireMid"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.visualization.text.BoxOnClWireMid" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#qiskit.visualization.text.MultiBox" title="qiskit.visualization.text.MultiBox"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.visualization.text.MultiBox</span></code></a>, <a class="reference internal" href="#qiskit.visualization.text.BoxOnClWire" title="qiskit.visualization.text.BoxOnClWire"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.visualization.text.BoxOnClWire</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="#qiskit.visualization.text.BoxOnWireMid" title="qiskit.visualization.text.BoxOnWireMid"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.visualization.text.BoxOnWireMid</span></code></a>, <a class="reference internal" href="#qiskit.visualization.text.BoxOnClWire" title="qiskit.visualization.text.BoxOnClWire"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.visualization.text.BoxOnClWire</span></code></a></p>
 <p>Draws the middle part of a conditional box that affects more than one classical wire</p>
 </dd></dl>
 
@@ -1688,17 +1692,19 @@ bot: └───┘   └───┘</p>
 
 <dl class="class">
 <dt id="qiskit.visualization.text.BoxOnQuWire">
-<em class="property">class </em><code class="descname">BoxOnQuWire</code><span class="sig-paren">(</span><em>label=''</em>, <em>top_connect='─'</em>, <em>bot_connect='─'</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/visualization/text.html#BoxOnQuWire"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.visualization.text.BoxOnQuWire" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descname">BoxOnQuWire</code><span class="sig-paren">(</span><em>label=''</em>, <em>top_connect='─'</em>, <em>conditional=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/visualization/text.html#BoxOnQuWire"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.visualization.text.BoxOnQuWire" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#qiskit.visualization.text.DrawElement" title="qiskit.visualization.text.DrawElement"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.visualization.text.DrawElement</span></code></a></p>
-<p>Draws a box on the quantum wire
-top: ┌───┐   ┌───┐
+<p>Draws a box on the quantum wire.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>top: ┌───┐   ┌───┐
 mid: ┤ A ├ ──┤ A ├──
-bot: └───┘   └───┘</p>
+bot: └───┘   └───┘
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="class">
 <dt id="qiskit.visualization.text.BoxOnQuWireBot">
-<em class="property">class </em><code class="descname">BoxOnQuWireBot</code><span class="sig-paren">(</span><em>label</em>, <em>input_length</em>, <em>bot_connect='─'</em>, <em>wire_label=''</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/visualization/text.html#BoxOnQuWireBot"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.visualization.text.BoxOnQuWireBot" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descname">BoxOnQuWireBot</code><span class="sig-paren">(</span><em>label</em>, <em>input_length</em>, <em>bot_connect='─'</em>, <em>wire_label=''</em>, <em>conditional=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/visualization/text.html#BoxOnQuWireBot"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.visualization.text.BoxOnQuWireBot" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#qiskit.visualization.text.MultiBox" title="qiskit.visualization.text.MultiBox"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.visualization.text.MultiBox</span></code></a>, <a class="reference internal" href="#qiskit.visualization.text.BoxOnQuWire" title="qiskit.visualization.text.BoxOnQuWire"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.visualization.text.BoxOnQuWire</span></code></a></p>
 <p>Draws the bottom part of a box that affects more than one quantum wire</p>
 </dd></dl>
@@ -1706,7 +1712,7 @@ bot: └───┘   └───┘</p>
 <dl class="class">
 <dt id="qiskit.visualization.text.BoxOnQuWireMid">
 <em class="property">class </em><code class="descname">BoxOnQuWireMid</code><span class="sig-paren">(</span><em>label</em>, <em>input_length</em>, <em>order</em>, <em>wire_label=''</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/visualization/text.html#BoxOnQuWireMid"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.visualization.text.BoxOnQuWireMid" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#qiskit.visualization.text.MultiBox" title="qiskit.visualization.text.MultiBox"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.visualization.text.MultiBox</span></code></a>, <a class="reference internal" href="#qiskit.visualization.text.BoxOnQuWire" title="qiskit.visualization.text.BoxOnQuWire"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.visualization.text.BoxOnQuWire</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="#qiskit.visualization.text.BoxOnWireMid" title="qiskit.visualization.text.BoxOnWireMid"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.visualization.text.BoxOnWireMid</span></code></a>, <a class="reference internal" href="#qiskit.visualization.text.BoxOnQuWire" title="qiskit.visualization.text.BoxOnQuWire"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.visualization.text.BoxOnQuWire</span></code></a></p>
 <p>Draws the middle part of a box that affects more than one quantum wire</p>
 </dd></dl>
 
@@ -1715,6 +1721,13 @@ bot: └───┘   └───┘</p>
 <em class="property">class </em><code class="descname">BoxOnQuWireTop</code><span class="sig-paren">(</span><em>label=''</em>, <em>top_connect=None</em>, <em>wire_label=''</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/visualization/text.html#BoxOnQuWireTop"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.visualization.text.BoxOnQuWireTop" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#qiskit.visualization.text.MultiBox" title="qiskit.visualization.text.MultiBox"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.visualization.text.MultiBox</span></code></a>, <a class="reference internal" href="#qiskit.visualization.text.BoxOnQuWire" title="qiskit.visualization.text.BoxOnQuWire"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.visualization.text.BoxOnQuWire</span></code></a></p>
 <p>Draws the top part of a box that affects more than one quantum wire</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="qiskit.visualization.text.BoxOnWireMid">
+<em class="property">class </em><code class="descname">BoxOnWireMid</code><span class="sig-paren">(</span><em>label</em>, <em>input_length</em>, <em>order</em>, <em>wire_label=''</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/visualization/text.html#BoxOnWireMid"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.visualization.text.BoxOnWireMid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#qiskit.visualization.text.MultiBox" title="qiskit.visualization.text.MultiBox"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.visualization.text.MultiBox</span></code></a></p>
+<p>A generic middle box</p>
 </dd></dl>
 
 <dl class="class">
@@ -1746,12 +1759,14 @@ bot: └───┘   └───┘</p>
 
 <dl class="class">
 <dt id="qiskit.visualization.text.Bullet">
-<em class="property">class </em><code class="descname">Bullet</code><span class="sig-paren">(</span><em>top_connect=''</em>, <em>bot_connect=''</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/visualization/text.html#Bullet"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.visualization.text.Bullet" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descname">Bullet</code><span class="sig-paren">(</span><em>top_connect=''</em>, <em>bot_connect=''</em>, <em>conditional=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/visualization/text.html#Bullet"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.visualization.text.Bullet" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#qiskit.visualization.text.DirectOnQuWire" title="qiskit.visualization.text.DirectOnQuWire"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.visualization.text.DirectOnQuWire</span></code></a></p>
-<p>Draws a bullet (usually with a connector). E.g. the top part of a CX gate.
-top:
+<p>Draws a bullet (usually with a connector). E.g. the top part of a CX gate.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>top:
 mid: ─■─  ───■───
-bot:  │      │</p>
+bot:  │      │
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="class">
@@ -1839,12 +1854,14 @@ bot:  │      │</p>
 
 <dl class="class">
 <dt id="qiskit.visualization.text.Ex">
-<em class="property">class </em><code class="descname">Ex</code><span class="sig-paren">(</span><em>bot_connect=' '</em>, <em>top_connect=' '</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/visualization/text.html#Ex"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.visualization.text.Ex" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descname">Ex</code><span class="sig-paren">(</span><em>bot_connect=' '</em>, <em>top_connect=' '</em>, <em>conditional=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/visualization/text.html#Ex"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.visualization.text.Ex" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#qiskit.visualization.text.DirectOnQuWire" title="qiskit.visualization.text.DirectOnQuWire"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.visualization.text.DirectOnQuWire</span></code></a></p>
-<p>Draws an X (usually with a connector). E.g. the top part of a swap gate
-top:
+<p>Draws an X (usually with a connector). E.g. the top part of a swap gate.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>top:
 mid: ─X─ ───X───
-bot:  │     │</p>
+bot:  │     │
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="class">
@@ -1917,12 +1934,14 @@ bot:  │     │</p>
 
 <dl class="method">
 <dt id="qiskit.visualization.text.Layer.set_qu_multibox">
-<code class="descname">set_qu_multibox</code><span class="sig-paren">(</span><em>bits</em>, <em>label</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/visualization/text.html#Layer.set_qu_multibox"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.visualization.text.Layer.set_qu_multibox" title="Permalink to this definition">¶</a></dt>
+<code class="descname">set_qu_multibox</code><span class="sig-paren">(</span><em>bits</em>, <em>label</em>, <em>conditional=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/visualization/text.html#Layer.set_qu_multibox"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.visualization.text.Layer.set_qu_multibox" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sets the multi qubit box.
 :param bits: A list of affected bits.
 :type bits: list[int]
 :param label: The label for the multi qubit box.
-:type label: string</p>
+:type label: string
+:param conditional: If the box has a conditional
+:type conditional: bool</p>
 </dd></dl>
 
 <dl class="method">
@@ -1941,20 +1960,24 @@ bot:  │     │</p>
 <dt id="qiskit.visualization.text.MeasureFrom">
 <em class="property">class </em><code class="descname">MeasureFrom</code><a class="reference internal" href="../_modules/qiskit/visualization/text.html#MeasureFrom"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.visualization.text.MeasureFrom" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#qiskit.visualization.text.BoxOnQuWire" title="qiskit.visualization.text.BoxOnQuWire"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.visualization.text.BoxOnQuWire</span></code></a></p>
-<p>The element on the quantum wire in which the measure is performed
-top: ┌─┐    ┌─┐
+<p>The element on the quantum wire in which the measure is performed.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>top: ┌─┐    ┌─┐
 mid: ┤M├ ───┤M├───
-bot: └╥┘    └╥┘</p>
+bot: └╥┘    └╥┘
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="class">
 <dt id="qiskit.visualization.text.MeasureTo">
 <em class="property">class </em><code class="descname">MeasureTo</code><a class="reference internal" href="../_modules/qiskit/visualization/text.html#MeasureTo"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.visualization.text.MeasureTo" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#qiskit.visualization.text.DrawElement" title="qiskit.visualization.text.DrawElement"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.visualization.text.DrawElement</span></code></a></p>
-<p>The element on the classic wire to which the measure is performed
-top:  ║     ║
+<p>The element on the classic wire to which the measure is performed.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>top:  ║     ║
 mid: ═╩═ ═══╩═══
-bot:</p>
+bot:
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="class">
@@ -1982,14 +2005,14 @@ bot:</p>
 
 <dl class="class">
 <dt id="qiskit.visualization.text.Reset">
-<em class="property">class </em><code class="descname">Reset</code><a class="reference internal" href="../_modules/qiskit/visualization/text.html#Reset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.visualization.text.Reset" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descname">Reset</code><span class="sig-paren">(</span><em>conditional=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/visualization/text.html#Reset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.visualization.text.Reset" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#qiskit.visualization.text.DirectOnQuWire" title="qiskit.visualization.text.DirectOnQuWire"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.visualization.text.DirectOnQuWire</span></code></a></p>
 <p>Draws a reset gate</p>
 </dd></dl>
 
 <dl class="class">
 <dt id="qiskit.visualization.text.TextDrawing">
-<em class="property">class </em><code class="descname">TextDrawing</code><span class="sig-paren">(</span><em>qregs</em>, <em>cregs</em>, <em>instructions</em>, <em>plotbarriers=True</em>, <em>line_length=None</em>, <em>vertically_compressed=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/visualization/text.html#TextDrawing"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.visualization.text.TextDrawing" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descname">TextDrawing</code><span class="sig-paren">(</span><em>qregs</em>, <em>cregs</em>, <em>instructions</em>, <em>plotbarriers=True</em>, <em>line_length=None</em>, <em>vertical_compression='high'</em>, <em>layout=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/visualization/text.html#TextDrawing"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.visualization.text.TextDrawing" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>The text drawing</p>
 <dl class="method">
@@ -2008,15 +2031,12 @@ bot:</p>
 </table>
 </dd></dl>
 
-<dl class="staticmethod">
+<dl class="method">
 <dt id="qiskit.visualization.text.TextDrawing.draw_wires">
-<em class="property">static </em><code class="descname">draw_wires</code><span class="sig-paren">(</span><em>wires</em>, <em>vertically_compressed=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/visualization/text.html#TextDrawing.draw_wires"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.visualization.text.TextDrawing.draw_wires" title="Permalink to this definition">¶</a></dt>
+<code class="descname">draw_wires</code><span class="sig-paren">(</span><em>wires</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/visualization/text.html#TextDrawing.draw_wires"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.visualization.text.TextDrawing.draw_wires" title="Permalink to this definition">¶</a></dt>
 <dd><p>Given a list of wires, creates a list of lines with the text drawing.
 :param wires: A list of wires with instructions.
-:type wires: list
-:param vertically_compressed: Default is <cite>True</cite>. It merges the lines</p>
-<blockquote>
-<div>so the drawing will take less vertical room.</div></blockquote>
+:type wires: list</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -2054,20 +2074,20 @@ bot:</p>
 <dl class="method">
 <dt id="qiskit.visualization.text.TextDrawing.lines">
 <code class="descname">lines</code><span class="sig-paren">(</span><em>line_length=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/visualization/text.html#TextDrawing.lines"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.visualization.text.TextDrawing.lines" title="Permalink to this definition">¶</a></dt>
-<dd><p>Generates a list with lines. These lines form the text drawing.
-:param line_length: Optional. Breaks the circuit drawing to this length. This</p>
-<blockquote>
-<div>useful when the drawing does not fit in the console. If
-None (default), it will try to guess the console width using
-shutil.get_terminal_size(). If you don’t want pagination
-at all, set line_length=-1.</div></blockquote>
+<dd><p>Generates a list with lines. These lines form the text drawing.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A list of lines with the text drawing.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>line_length</strong> (<em>int</em>) – Optional. Breaks the circuit drawing to this length. This
+useful when the drawing does not fit in the console. If
+None (default), it will try to guess the console width using
+shutil.get_terminal_size(). If you don’t want pagination
+at all, set line_length=-1.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">list</td>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A list of lines with the text drawing.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">list</td>
 </tr>
 </tbody>
 </table>
@@ -2111,31 +2131,42 @@ are no params of if the params are numpy.ndarrays.</p>
 </dd></dl>
 
 <dl class="method">
+<dt id="qiskit.visualization.text.TextDrawing.should_compress">
+<code class="descname">should_compress</code><span class="sig-paren">(</span><em>top_line</em>, <em>bot_line</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/visualization/text.html#TextDrawing.should_compress"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.visualization.text.TextDrawing.should_compress" title="Permalink to this definition">¶</a></dt>
+<dd><p>Decides if the top_line and bot_line should be merged,
+based on <cite>self.vertical_compression</cite>.</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="qiskit.visualization.text.TextDrawing.single_string">
 <code class="descname">single_string</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/visualization/text.html#TextDrawing.single_string"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.visualization.text.TextDrawing.single_string" title="Permalink to this definition">¶</a></dt>
-<dd><blockquote>
-<div><p>Creates a long string with the ascii art
-Returns:</p>
-<blockquote>
-<div>str: The lines joined by ‘</div></blockquote>
-</div></blockquote>
-<p>‘</p>
+<dd><p>Creates a long string with the ascii art.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The lines joined by a newline (<code class="docutils literal notranslate"><span class="pre">\n</span></code>)</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">str</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="qiskit.visualization.text.TextDrawing.wire_names">
 <code class="descname">wire_names</code><span class="sig-paren">(</span><em>with_initial_value=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/visualization/text.html#TextDrawing.wire_names"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.visualization.text.TextDrawing.wire_names" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns a list of names for each wire.
-:param with_initial_value: Optional (Default: True). If true, adds the initial value to</p>
-<blockquote>
-<div>the name.</div></blockquote>
+<dd><p>Returns a list of names for each wire.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The list of wire names.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>with_initial_value</strong> (<em>bool</em>) – Optional (Default: True). If true, adds
+the initial value to the name.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="qiskit.validation.fields.containers.html#qiskit.validation.fields.containers.List" title="qiskit.validation.fields.containers.List">List</a></td>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The list of wire names.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="qiskit.validation.fields.containers.html#qiskit.validation.fields.containers.List" title="qiskit.validation.fields.containers.List">List</a></td>
 </tr>
 </tbody>
 </table>

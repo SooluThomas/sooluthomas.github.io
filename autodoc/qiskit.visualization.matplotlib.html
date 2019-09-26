@@ -51,7 +51,7 @@
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="qiskit.visualization.pulse_visualization module" href="qiskit.visualization.pulse_visualization.html" />
+    <link rel="next" title="qiskit.visualization.pass_manager_visualization module" href="qiskit.visualization.pass_manager_visualization.html" />
     <link rel="prev" title="qiskit.visualization.latex module" href="qiskit.visualization.latex.html" /> 
   </head>
 <body>
@@ -756,6 +756,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.circuit.html">qiskit.circuit package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#subpackages">Subpackages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#submodules">Submodules</a></li>
 </ul>
 </li>
@@ -776,8 +777,9 @@
 <li class="toctree-l4"><a class="reference internal" href="qiskit.extensions.html#submodules">Submodules</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.mapper.html">qiskit.mapper package</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="qiskit.mapper.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qiskit.ignis.html">qiskit.ignis package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.ignis.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.ignis.html#submodules">Submodules</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.providers.html">qiskit.providers package</a><ul>
@@ -836,10 +838,8 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="qiskit.html#submodules">Submodules</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="qiskit._util.html">qiskit._util module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.exceptions.html">qiskit.exceptions module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.execute.html">qiskit.execute module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.qiskiterror.html">qiskit.qiskiterror module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.user_config.html">qiskit.user_config module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.util.html">qiskit.util module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.version.html">qiskit.version module</a></li>
@@ -1540,6 +1540,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.circuit.html">qiskit.circuit package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#subpackages">Subpackages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#submodules">Submodules</a></li>
 </ul>
 </li>
@@ -1560,8 +1561,9 @@
 <li class="toctree-l4"><a class="reference internal" href="qiskit.extensions.html#submodules">Submodules</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.mapper.html">qiskit.mapper package</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="qiskit.mapper.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qiskit.ignis.html">qiskit.ignis package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.ignis.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.ignis.html#submodules">Submodules</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.providers.html">qiskit.providers package</a><ul>
@@ -1620,10 +1622,8 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="qiskit.html#submodules">Submodules</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="qiskit._util.html">qiskit._util module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.exceptions.html">qiskit.exceptions module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.execute.html">qiskit.execute module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.qiskiterror.html">qiskit.qiskiterror module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.user_config.html">qiskit.user_config module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.util.html">qiskit.util module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.version.html">qiskit.version module</a></li>
@@ -1661,7 +1661,7 @@
 
 <dl class="method">
 <dt id="qiskit.visualization.matplotlib.Anchor.plot_coord">
-<code class="descname">plot_coord</code><span class="sig-paren">(</span><em>index</em>, <em>gate_width</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/visualization/matplotlib.html#Anchor.plot_coord"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.visualization.matplotlib.Anchor.plot_coord" title="Permalink to this definition">¶</a></dt>
+<code class="descname">plot_coord</code><span class="sig-paren">(</span><em>index</em>, <em>gate_width</em>, <em>x_offset</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/visualization/matplotlib.html#Anchor.plot_coord"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.visualization.matplotlib.Anchor.plot_coord" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -1672,97 +1672,8 @@
 </dd></dl>
 
 <dl class="class">
-<dt id="qiskit.visualization.matplotlib.EventsOutputChannels">
-<em class="property">class </em><code class="descname">EventsOutputChannels</code><span class="sig-paren">(</span><em>t0</em>, <em>tf</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/visualization/matplotlib.html#EventsOutputChannels"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.visualization.matplotlib.EventsOutputChannels" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Pulse dataset for channel.</p>
-<dl class="method">
-<dt id="qiskit.visualization.matplotlib.EventsOutputChannels.add_instruction">
-<code class="descname">add_instruction</code><span class="sig-paren">(</span><em>start_time</em>, <em>pulse</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/visualization/matplotlib.html#EventsOutputChannels.add_instruction"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.visualization.matplotlib.EventsOutputChannels.add_instruction" title="Permalink to this definition">¶</a></dt>
-<dd><p>Add new pulse instruction to channel.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>start_time</strong> (<em>int</em>) – Starting time of instruction</li>
-<li><strong>pulse</strong> (<a class="reference internal" href="qiskit.circuit.instruction.html#qiskit.circuit.instruction.Instruction" title="qiskit.circuit.instruction.Instruction"><em>Instruction</em></a>) – Instruction object to be added</li>
-</ul>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="qiskit.visualization.matplotlib.EventsOutputChannels.conditionals">
-<code class="descname">conditionals</code><a class="headerlink" href="#qiskit.visualization.matplotlib.EventsOutputChannels.conditionals" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get conditionals.</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="qiskit.visualization.matplotlib.EventsOutputChannels.framechanges">
-<code class="descname">framechanges</code><a class="headerlink" href="#qiskit.visualization.matplotlib.EventsOutputChannels.framechanges" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get frame changes.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="qiskit.visualization.matplotlib.EventsOutputChannels.is_empty">
-<code class="descname">is_empty</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/visualization/matplotlib.html#EventsOutputChannels.is_empty"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.visualization.matplotlib.EventsOutputChannels.is_empty" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return if pulse is empty.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">if the channel has nothing to plot</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="qiskit.visualization.matplotlib.EventsOutputChannels.labels">
-<code class="descname">labels</code><a class="headerlink" href="#qiskit.visualization.matplotlib.EventsOutputChannels.labels" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get labels.</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="qiskit.visualization.matplotlib.EventsOutputChannels.snapshots">
-<code class="descname">snapshots</code><a class="headerlink" href="#qiskit.visualization.matplotlib.EventsOutputChannels.snapshots" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get snapshots.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="qiskit.visualization.matplotlib.EventsOutputChannels.to_table">
-<code class="descname">to_table</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/visualization/matplotlib.html#EventsOutputChannels.to_table"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.visualization.matplotlib.EventsOutputChannels.to_table" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get table contains.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>name</strong> (<em>str</em>) – name of channel</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">dictionary of events in the channel</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="qiskit.visualization.matplotlib.EventsOutputChannels.waveform">
-<code class="descname">waveform</code><a class="headerlink" href="#qiskit.visualization.matplotlib.EventsOutputChannels.waveform" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get waveform.</p>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="class">
 <dt id="qiskit.visualization.matplotlib.MatplotlibDrawer">
-<em class="property">class </em><code class="descname">MatplotlibDrawer</code><span class="sig-paren">(</span><em>qregs</em>, <em>cregs</em>, <em>ops</em>, <em>scale=1.0</em>, <em>style=None</em>, <em>plot_barriers=True</em>, <em>reverse_bits=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/visualization/matplotlib.html#MatplotlibDrawer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.visualization.matplotlib.MatplotlibDrawer" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descname">MatplotlibDrawer</code><span class="sig-paren">(</span><em>qregs</em>, <em>cregs</em>, <em>ops</em>, <em>scale=1.0</em>, <em>style=None</em>, <em>plot_barriers=True</em>, <em>reverse_bits=False</em>, <em>layout=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/visualization/matplotlib.html#MatplotlibDrawer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.visualization.matplotlib.MatplotlibDrawer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <dl class="attribute">
 <dt id="qiskit.visualization.matplotlib.MatplotlibDrawer.ast">
@@ -1780,115 +1691,14 @@
 <dd></dd></dl>
 
 <dl class="staticmethod">
-<dt id="qiskit.visualization.matplotlib.MatplotlibDrawer.format_pi">
-<em class="property">static </em><code class="descname">format_pi</code><span class="sig-paren">(</span><em>val</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/visualization/matplotlib.html#MatplotlibDrawer.format_pi"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.visualization.matplotlib.MatplotlibDrawer.format_pi" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="staticmethod">
 <dt id="qiskit.visualization.matplotlib.MatplotlibDrawer.fraction">
 <em class="property">static </em><code class="descname">fraction</code><span class="sig-paren">(</span><em>val</em>, <em>base=3.141592653589793</em>, <em>n=100</em>, <em>tol=1e-05</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/visualization/matplotlib.html#MatplotlibDrawer.fraction"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.visualization.matplotlib.MatplotlibDrawer.fraction" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="staticmethod">
 <dt id="qiskit.visualization.matplotlib.MatplotlibDrawer.param_parse">
-<em class="property">static </em><code class="descname">param_parse</code><span class="sig-paren">(</span><em>v</em>, <em>pimode=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/visualization/matplotlib.html#MatplotlibDrawer.param_parse"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.visualization.matplotlib.MatplotlibDrawer.param_parse" title="Permalink to this definition">¶</a></dt>
+<em class="property">static </em><code class="descname">param_parse</code><span class="sig-paren">(</span><em>v</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/visualization/matplotlib.html#MatplotlibDrawer.param_parse"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.visualization.matplotlib.MatplotlibDrawer.param_parse" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
-</dd></dl>
-
-<dl class="class">
-<dt id="qiskit.visualization.matplotlib.Register">
-<em class="property">class </em><code class="descname">Register</code><span class="sig-paren">(</span><em>reg</em>, <em>index</em><span class="sig-paren">)</span><a class="headerlink" href="#qiskit.visualization.matplotlib.Register" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code></p>
-<dl class="attribute">
-<dt id="qiskit.visualization.matplotlib.Register.index">
-<code class="descname">index</code><a class="headerlink" href="#qiskit.visualization.matplotlib.Register.index" title="Permalink to this definition">¶</a></dt>
-<dd><p>Alias for field number 1</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="qiskit.visualization.matplotlib.Register.reg">
-<code class="descname">reg</code><a class="headerlink" href="#qiskit.visualization.matplotlib.Register.reg" title="Permalink to this definition">¶</a></dt>
-<dd><p>Alias for field number 0</p>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="class">
-<dt id="qiskit.visualization.matplotlib.SamplePulseDrawer">
-<em class="property">class </em><code class="descname">SamplePulseDrawer</code><span class="sig-paren">(</span><em>style</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/visualization/matplotlib.html#SamplePulseDrawer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.visualization.matplotlib.SamplePulseDrawer" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>A class to create figure for sample pulse.</p>
-<dl class="method">
-<dt id="qiskit.visualization.matplotlib.SamplePulseDrawer.draw">
-<code class="descname">draw</code><span class="sig-paren">(</span><em>pulse</em>, <em>dt</em>, <em>interp_method</em>, <em>scaling=1</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/visualization/matplotlib.html#SamplePulseDrawer.draw"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.visualization.matplotlib.SamplePulseDrawer.draw" title="Permalink to this definition">¶</a></dt>
-<dd><p>Draw figure.
-:param pulse: SamplePulse to draw
-:type pulse: SamplePulse
-:param dt: time interval
-:type dt: float
-:param interp_method: interpolation function</p>
-<blockquote>
-<div>See <cite>qiskit.visualization.interpolation</cite> for more information</div></blockquote>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>scaling</strong> (<em>float</em>) – Relative visual scaling of waveform amplitudes</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A matplotlib figure object of the pulse envelope</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">matplotlib.figure</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="class">
-<dt id="qiskit.visualization.matplotlib.ScheduleDrawer">
-<em class="property">class </em><code class="descname">ScheduleDrawer</code><span class="sig-paren">(</span><em>style</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/visualization/matplotlib.html#ScheduleDrawer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.visualization.matplotlib.ScheduleDrawer" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>A class to create figure for schedule and channel.</p>
-<dl class="method">
-<dt id="qiskit.visualization.matplotlib.ScheduleDrawer.draw">
-<code class="descname">draw</code><span class="sig-paren">(</span><em>schedule</em>, <em>dt</em>, <em>interp_method</em>, <em>plot_range</em>, <em>scaling=1</em>, <em>channels_to_plot=None</em>, <em>plot_all=True</em>, <em>table=True</em>, <em>label=False</em>, <em>framechange=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/visualization/matplotlib.html#ScheduleDrawer.draw"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.visualization.matplotlib.ScheduleDrawer.draw" title="Permalink to this definition">¶</a></dt>
-<dd><p>Draw figure.
-:param schedule: Schedule to draw
-:type schedule: ScheduleComponent
-:param dt: time interval
-:type dt: float
-:param interp_method: interpolation function</p>
-<blockquote>
-<div>See <cite>qiskit.visualization.interpolation</cite> for more information</div></blockquote>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>plot_range</strong> (<em>tuple</em><em>[</em><em>float</em><em>]</em>) – plot range</li>
-<li><strong>scaling</strong> (<em>float</em>) – Relative visual scaling of waveform amplitudes</li>
-<li><strong>channels_to_plot</strong> (<em>list</em><em>[</em><em>OutputChannel</em><em>]</em>) – channels to draw</li>
-<li><strong>plot_all</strong> (<em>bool</em>) – if plot all channels even it is empty</li>
-<li><strong>table</strong> (<em>bool</em>) – Draw event table</li>
-<li><strong>label</strong> (<em>bool</em>) – Label individual instructions</li>
-<li><strong>framechange</strong> (<em>bool</em>) – Add framechange indicators</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A matplotlib figure object for the pulse schedule</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">matplotlib.figure</p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><code class="xref py py-exc docutils literal notranslate"><span class="pre">VisualizationError</span></code> – when schedule cannot be drawn</p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
 
 </dd></dl>
 
@@ -1905,10 +1715,10 @@
             <div>qiskit.visualization.latex module</div>
          </div>
      </a>
-     <a id="button-next" href="qiskit.visualization.pulse_visualization.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
+     <a id="button-next" href="qiskit.visualization.pass_manager_visualization.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
         <div class="pagenation-text">
             <span class="pagenation-direction">Next</span>
-            <div>qiskit.visualization.pulse_visualization module</div>
+            <div>qiskit.visualization.pass_manager_visualization module</div>
         </div>
      </a>
         

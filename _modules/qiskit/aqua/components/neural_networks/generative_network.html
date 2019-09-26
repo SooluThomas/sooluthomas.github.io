@@ -232,8 +232,13 @@
         <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span></div>
 
 <div class="viewcode-block" id="GenerativeNetwork.get_output"><a class="viewcode-back" href="../../../../../autodoc/qiskit.aqua.components.neural_networks.generative_network.html#qiskit.aqua.components.neural_networks.GenerativeNetwork.get_output">[docs]</a>    <span class="nd">@abstractmethod</span>
-    <span class="k">def</span> <span class="nf">get_output</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">get_output</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">quantum_instance</span><span class="p">,</span> <span class="n">qc_state_in</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">shots</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; Apply quantum/classical neural network to given input and get the respective output</span>
+<span class="sd">         Args:</span>
+<span class="sd">            quantum_instance:  QuantumInstance, used to run the generator circuit.</span>
+<span class="sd">            qc_state_in: QuantumCircuit corresponding to the input state</span>
+<span class="sd">            params: array or None, parameters which should be used to run the generator, if None use self._params</span>
+<span class="sd">            shots: int, if not None use a number of shots that is different from the number set in quantum_instance</span>
 
 <span class="sd">        Returns: Neural network output</span>
 

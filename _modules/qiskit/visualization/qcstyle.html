@@ -183,23 +183,134 @@
 <span class="c1"># copyright notice, and modified files need to carry a notice indicating</span>
 <span class="c1"># that they have been altered from the originals.</span>
 
-<span class="c1"># pylint: disable=invalid-name,anomalous-backslash-in-string,missing-docstring</span>
+<span class="c1"># pylint: disable=invalid-name,missing-docstring</span>
 
 
-<div class="viewcode-block" id="QCStyle"><a class="viewcode-back" href="../../../autodoc/qiskit.visualization.qcstyle.html#qiskit.visualization.qcstyle.QCStyle">[docs]</a><span class="k">class</span> <span class="nc">QCStyle</span><span class="p">:</span>
+<div class="viewcode-block" id="DefaultStyle"><a class="viewcode-back" href="../../../autodoc/qiskit.visualization.qcstyle.html#qiskit.visualization.qcstyle.DefaultStyle">[docs]</a><span class="k">class</span> <span class="nc">DefaultStyle</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;IBM Design Style colors</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># Set colors</span>
+        <span class="n">basis_color</span> <span class="o">=</span> <span class="s1">&#39;#FA74A6&#39;</span>
+        <span class="n">clifford_color</span> <span class="o">=</span> <span class="s1">&#39;#6FA4FF&#39;</span>
+        <span class="n">non_gate_color</span> <span class="o">=</span> <span class="s1">&#39;#000000&#39;</span>
+        <span class="n">other_color</span> <span class="o">=</span> <span class="s1">&#39;#BB8BFF&#39;</span>
+        <span class="n">pauli_color</span> <span class="o">=</span> <span class="s1">&#39;#05BAB6&#39;</span>
+        <span class="n">iden_color</span> <span class="o">=</span> <span class="s1">&#39;#05BAB6&#39;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;iqx&#39;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">tc</span> <span class="o">=</span> <span class="s1">&#39;#000000&#39;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">sc</span> <span class="o">=</span> <span class="s1">&#39;#000000&#39;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">lc</span> <span class="o">=</span> <span class="s1">&#39;#000000&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">not_gate_lc</span> <span class="o">=</span> <span class="s1">&#39;#ffffff&#39;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">cc</span> <span class="o">=</span> <span class="s1">&#39;#778899&#39;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">gc</span> <span class="o">=</span> <span class="s1">&#39;#ffffff&#39;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">gt</span> <span class="o">=</span> <span class="s1">&#39;#000000&#39;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">bc</span> <span class="o">=</span> <span class="s1">&#39;#bdbdbd&#39;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">bg</span> <span class="o">=</span> <span class="s1">&#39;#ffffff&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">edge_color</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">math_fs</span> <span class="o">=</span> <span class="mi">15</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">fs</span> <span class="o">=</span> <span class="mi">13</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">sfs</span> <span class="o">=</span> <span class="mi">8</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">colored_add_width</span> <span class="o">=</span> <span class="mf">0.2</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">disptex</span> <span class="o">=</span> <span class="p">{</span>
-            <span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="s1">&#39;id&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="s1">&#39;Id&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;u0&#39;</span><span class="p">:</span> <span class="s1">&#39;U_0&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;u1&#39;</span><span class="p">:</span> <span class="s1">&#39;U_1&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;u2&#39;</span><span class="p">:</span> <span class="s1">&#39;U_2&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;u3&#39;</span><span class="p">:</span> <span class="s1">&#39;U_3&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="s1">&#39;X&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="s1">&#39;Y&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;z&#39;</span><span class="p">:</span> <span class="s1">&#39;Z&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;h&#39;</span><span class="p">:</span> <span class="s1">&#39;H&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;s&#39;</span><span class="p">:</span> <span class="s1">&#39;S&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;sdg&#39;</span><span class="p">:</span> <span class="s1">&#39;S^</span><span class="se">\\</span><span class="s1">dagger&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;t&#39;</span><span class="p">:</span> <span class="s1">&#39;T&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;tdg&#39;</span><span class="p">:</span> <span class="s1">&#39;T^</span><span class="se">\\</span><span class="s1">dagger&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;rx&#39;</span><span class="p">:</span> <span class="s1">&#39;R_x&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;ry&#39;</span><span class="p">:</span> <span class="s1">&#39;R_y&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;rz&#39;</span><span class="p">:</span> <span class="s1">&#39;R_z&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;reset&#39;</span><span class="p">:</span> <span class="s1">&#39;</span><span class="se">\\</span><span class="s1">left|0</span><span class="se">\\</span><span class="s1">right</span><span class="se">\\</span><span class="s1">rangle&#39;</span>
+        <span class="p">}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dispcol</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;u0&#39;</span><span class="p">:</span> <span class="n">basis_color</span><span class="p">,</span>
+            <span class="s1">&#39;u1&#39;</span><span class="p">:</span> <span class="n">basis_color</span><span class="p">,</span>
+            <span class="s1">&#39;u2&#39;</span><span class="p">:</span> <span class="n">basis_color</span><span class="p">,</span>
+            <span class="s1">&#39;u3&#39;</span><span class="p">:</span> <span class="n">basis_color</span><span class="p">,</span>
+            <span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="n">iden_color</span><span class="p">,</span>
+            <span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="n">pauli_color</span><span class="p">,</span>
+            <span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="n">pauli_color</span><span class="p">,</span>
+            <span class="s1">&#39;z&#39;</span><span class="p">:</span> <span class="n">pauli_color</span><span class="p">,</span>
+            <span class="s1">&#39;h&#39;</span><span class="p">:</span> <span class="n">clifford_color</span><span class="p">,</span>
+            <span class="s1">&#39;cx&#39;</span><span class="p">:</span> <span class="n">clifford_color</span><span class="p">,</span>
+            <span class="s1">&#39;s&#39;</span><span class="p">:</span> <span class="n">clifford_color</span><span class="p">,</span>
+            <span class="s1">&#39;sdg&#39;</span><span class="p">:</span> <span class="n">clifford_color</span><span class="p">,</span>
+            <span class="s1">&#39;t&#39;</span><span class="p">:</span> <span class="n">other_color</span><span class="p">,</span>
+            <span class="s1">&#39;tdg&#39;</span><span class="p">:</span> <span class="n">other_color</span><span class="p">,</span>
+            <span class="s1">&#39;rx&#39;</span><span class="p">:</span> <span class="n">other_color</span><span class="p">,</span>
+            <span class="s1">&#39;ry&#39;</span><span class="p">:</span> <span class="n">other_color</span><span class="p">,</span>
+            <span class="s1">&#39;rz&#39;</span><span class="p">:</span> <span class="n">other_color</span><span class="p">,</span>
+            <span class="s1">&#39;reset&#39;</span><span class="p">:</span> <span class="n">non_gate_color</span><span class="p">,</span>
+            <span class="s1">&#39;target&#39;</span><span class="p">:</span> <span class="s1">&#39;#ffffff&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;swap&#39;</span><span class="p">:</span> <span class="n">other_color</span><span class="p">,</span>
+            <span class="s1">&#39;multi&#39;</span><span class="p">:</span> <span class="n">other_color</span><span class="p">,</span>
+            <span class="s1">&#39;meas&#39;</span><span class="p">:</span> <span class="n">non_gate_color</span>
+        <span class="p">}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">latexmode</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fold</span> <span class="o">=</span> <span class="mi">25</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">bundle</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">barrier</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">figwidth</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dpi</span> <span class="o">=</span> <span class="mi">150</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">margin</span> <span class="o">=</span> <span class="p">[</span><span class="mf">2.0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cline</span> <span class="o">=</span> <span class="s1">&#39;doublet&#39;</span>
+
+<div class="viewcode-block" id="DefaultStyle.set_style"><a class="viewcode-back" href="../../../autodoc/qiskit.visualization.qcstyle.html#qiskit.visualization.qcstyle.DefaultStyle.set_style">[docs]</a>    <span class="k">def</span> <span class="nf">set_style</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dic</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tc</span> <span class="o">=</span> <span class="n">dic</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;textcolor&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">tc</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sc</span> <span class="o">=</span> <span class="n">dic</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;subtextcolor&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">sc</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lc</span> <span class="o">=</span> <span class="n">dic</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;linecolor&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">lc</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cc</span> <span class="o">=</span> <span class="n">dic</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;creglinecolor&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">cc</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">gt</span> <span class="o">=</span> <span class="n">dic</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;gatetextcolor&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">tc</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">gc</span> <span class="o">=</span> <span class="n">dic</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;gatefacecolor&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">gc</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">bc</span> <span class="o">=</span> <span class="n">dic</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;barrierfacecolor&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">bc</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">bg</span> <span class="o">=</span> <span class="n">dic</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;backgroundcolor&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">bg</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fs</span> <span class="o">=</span> <span class="n">dic</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;fontsize&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">fs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sfs</span> <span class="o">=</span> <span class="n">dic</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;subfontsize&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">sfs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">disptex</span> <span class="o">=</span> <span class="n">dic</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;displaytext&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">disptex</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dispcol</span> <span class="o">=</span> <span class="n">dic</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;displaycolor&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">dispcol</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">latexmode</span> <span class="o">=</span> <span class="n">dic</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;latexdrawerstyle&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">latexmode</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fold</span> <span class="o">=</span> <span class="n">dic</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;fold&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">fold</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">fold</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">fold</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">bundle</span> <span class="o">=</span> <span class="n">dic</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;cregbundle&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">bundle</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">barrier</span> <span class="o">=</span> <span class="n">dic</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;plotbarrier&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">barrier</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">dic</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;showindex&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">figwidth</span> <span class="o">=</span> <span class="n">dic</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;figwidth&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">figwidth</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dpi</span> <span class="o">=</span> <span class="n">dic</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;dpi&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">dpi</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">margin</span> <span class="o">=</span> <span class="n">dic</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;margin&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">margin</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cline</span> <span class="o">=</span> <span class="n">dic</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;creglinestyle&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">cline</span><span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="BWStyle"><a class="viewcode-back" href="../../../autodoc/qiskit.visualization.qcstyle.html#qiskit.visualization.qcstyle.BWStyle">[docs]</a><span class="k">class</span> <span class="nc">BWStyle</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;bw&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tc</span> <span class="o">=</span> <span class="s1">&#39;#000000&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sc</span> <span class="o">=</span> <span class="s1">&#39;#000000&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lc</span> <span class="o">=</span> <span class="s1">&#39;#000000&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">not_gate_lc</span> <span class="o">=</span> <span class="s1">&#39;#000000&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cc</span> <span class="o">=</span> <span class="s1">&#39;#778899&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">gc</span> <span class="o">=</span> <span class="s1">&#39;#ffffff&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">gt</span> <span class="o">=</span> <span class="s1">&#39;#000000&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">bc</span> <span class="o">=</span> <span class="s1">&#39;#bdbdbd&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">bg</span> <span class="o">=</span> <span class="s1">&#39;#ffffff&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">edge_color</span> <span class="o">=</span> <span class="s1">&#39;#000000&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fs</span> <span class="o">=</span> <span class="mi">13</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">math_fs</span> <span class="o">=</span> <span class="mi">15</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">colored_add_width</span> <span class="o">=</span> <span class="mf">0.2</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sfs</span> <span class="o">=</span> <span class="mi">8</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">disptex</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="s1">&#39;Id&#39;</span><span class="p">,</span>
             <span class="s1">&#39;u0&#39;</span><span class="p">:</span> <span class="s1">&#39;U_0&#39;</span><span class="p">,</span>
             <span class="s1">&#39;u1&#39;</span><span class="p">:</span> <span class="s1">&#39;U_1&#39;</span><span class="p">,</span>
             <span class="s1">&#39;u2&#39;</span><span class="p">:</span> <span class="s1">&#39;U_2&#39;</span><span class="p">,</span>
@@ -227,6 +338,7 @@
             <span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="s1">&#39;#ffffff&#39;</span><span class="p">,</span>
             <span class="s1">&#39;z&#39;</span><span class="p">:</span> <span class="s1">&#39;#ffffff&#39;</span><span class="p">,</span>
             <span class="s1">&#39;h&#39;</span><span class="p">:</span> <span class="s1">&#39;#ffffff&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;cx&#39;</span><span class="p">:</span> <span class="s1">&#39;#000000&#39;</span><span class="p">,</span>
             <span class="s1">&#39;s&#39;</span><span class="p">:</span> <span class="s1">&#39;#ffffff&#39;</span><span class="p">,</span>
             <span class="s1">&#39;sdg&#39;</span><span class="p">:</span> <span class="s1">&#39;#ffffff&#39;</span><span class="p">,</span>
             <span class="s1">&#39;t&#39;</span><span class="p">:</span> <span class="s1">&#39;#ffffff&#39;</span><span class="p">,</span>
@@ -236,12 +348,13 @@
             <span class="s1">&#39;rz&#39;</span><span class="p">:</span> <span class="s1">&#39;#ffffff&#39;</span><span class="p">,</span>
             <span class="s1">&#39;reset&#39;</span><span class="p">:</span> <span class="s1">&#39;#ffffff&#39;</span><span class="p">,</span>
             <span class="s1">&#39;target&#39;</span><span class="p">:</span> <span class="s1">&#39;#ffffff&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;meas&#39;</span><span class="p">:</span> <span class="s1">&#39;#ffffff&#39;</span>
+            <span class="s1">&#39;meas&#39;</span><span class="p">:</span> <span class="s1">&#39;#ffffff&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;swap&#39;</span><span class="p">:</span> <span class="s1">&#39;#000000&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;multi&#39;</span><span class="p">:</span> <span class="s1">&#39;#000000&#39;</span>
         <span class="p">}</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">latexmode</span> <span class="o">=</span> <span class="kc">True</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">pimode</span> <span class="o">=</span> <span class="kc">False</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">fold</span> <span class="o">=</span> <span class="mi">20</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">bundle</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">latexmode</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fold</span> <span class="o">=</span> <span class="mi">25</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">bundle</span> <span class="o">=</span> <span class="kc">True</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">barrier</span> <span class="o">=</span> <span class="kc">True</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="kc">False</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">figwidth</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
@@ -249,7 +362,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">margin</span> <span class="o">=</span> <span class="p">[</span><span class="mf">2.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">cline</span> <span class="o">=</span> <span class="s1">&#39;doublet&#39;</span>
 
-<div class="viewcode-block" id="QCStyle.set_style"><a class="viewcode-back" href="../../../autodoc/qiskit.visualization.qcstyle.html#qiskit.visualization.qcstyle.QCStyle.set_style">[docs]</a>    <span class="k">def</span> <span class="nf">set_style</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dic</span><span class="p">):</span>
+<div class="viewcode-block" id="BWStyle.set_style"><a class="viewcode-back" href="../../../autodoc/qiskit.visualization.qcstyle.html#qiskit.visualization.qcstyle.BWStyle.set_style">[docs]</a>    <span class="k">def</span> <span class="nf">set_style</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dic</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">tc</span> <span class="o">=</span> <span class="n">dic</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;textcolor&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">tc</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">sc</span> <span class="o">=</span> <span class="n">dic</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;subtextcolor&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">sc</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">lc</span> <span class="o">=</span> <span class="n">dic</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;linecolor&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">lc</span><span class="p">)</span>
@@ -265,7 +378,6 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">dispcol</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">gc</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">dispcol</span> <span class="o">=</span> <span class="n">dic</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;displaycolor&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">dispcol</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">latexmode</span> <span class="o">=</span> <span class="n">dic</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;latexdrawerstyle&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">latexmode</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">pimode</span> <span class="o">=</span> <span class="n">dic</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;usepiformat&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">pimode</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">fold</span> <span class="o">=</span> <span class="n">dic</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;fold&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">fold</span><span class="p">)</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">fold</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">fold</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
@@ -276,79 +388,6 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">dpi</span> <span class="o">=</span> <span class="n">dic</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;dpi&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">dpi</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">margin</span> <span class="o">=</span> <span class="n">dic</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;margin&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">margin</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">cline</span> <span class="o">=</span> <span class="n">dic</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;creglinestyle&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">cline</span><span class="p">)</span></div></div>
-
-
-<div class="viewcode-block" id="OPStyleSched"><a class="viewcode-back" href="../../../autodoc/qiskit.visualization.qcstyle.html#qiskit.visualization.qcstyle.OPStyleSched">[docs]</a><span class="k">class</span> <span class="nc">OPStyleSched</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">12</span><span class="p">),</span> <span class="n">fig_unit_h_table</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span>
-                 <span class="n">use_table</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">table_columns</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">table_font_size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">axis_font_size</span><span class="o">=</span><span class="mi">18</span><span class="p">,</span>
-                 <span class="n">label_font_size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">icon_font_size</span><span class="o">=</span><span class="mi">18</span><span class="p">,</span> <span class="n">label_ch_linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span>
-                 <span class="n">label_ch_color</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">label_ch_alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">d_ch_color</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">u_ch_color</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-                 <span class="n">m_ch_color</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">s_ch_color</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">s_ch_linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">table_color</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-                 <span class="n">bg_color</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">num_points</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">150</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Set style sheet for OpenPulse schedule drawer.</span>
-
-<span class="sd">        Args:</span>
-<span class="sd">            figsize (tuple): Size of figure.</span>
-<span class="sd">            fig_unit_h_table (float): height of table row</span>
-<span class="sd">            use_table (bool): use table</span>
-<span class="sd">            table_columns (int): number of table columns</span>
-<span class="sd">            table_font_size (float): font size of table</span>
-<span class="sd">            axis_font_size (float): font size of axis label</span>
-<span class="sd">            label_font_size (float): font size of labels</span>
-<span class="sd">            icon_font_size (float): font size of labels</span>
-<span class="sd">            label_ch_linestyle (str): Linestyle for labelling output channels</span>
-<span class="sd">            label_ch_color (str): Color for channel pulse label line</span>
-<span class="sd">            label_ch_alpha (float): Alpha for channel labels</span>
-<span class="sd">            d_ch_color (list[str]): colors for real and imaginary part of waveform at d channels</span>
-<span class="sd">            u_ch_color (list[str]): colors for real and imaginary part of waveform at u channels</span>
-<span class="sd">            m_ch_color (list[str]): colors for real and imaginary part of waveform at m channels</span>
-<span class="sd">            s_ch_color (str): color for snapshot channel line</span>
-<span class="sd">            s_ch_linestyle (str): Linestyle for snapshot line</span>
-<span class="sd">            table_color(list[str]): colors for table columns</span>
-<span class="sd">            bg_color(str): color for figure background</span>
-<span class="sd">            num_points (int): number of points for interpolation</span>
-<span class="sd">            dpi (int): dpi to save image</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">figsize</span> <span class="o">=</span> <span class="n">figsize</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">fig_unit_h_table</span> <span class="o">=</span> <span class="n">fig_unit_h_table</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">use_table</span> <span class="o">=</span> <span class="n">use_table</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">table_columns</span> <span class="o">=</span> <span class="n">table_columns</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">table_font_size</span> <span class="o">=</span> <span class="n">table_font_size</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">axis_font_size</span> <span class="o">=</span> <span class="n">axis_font_size</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">label_font_size</span> <span class="o">=</span> <span class="n">label_font_size</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">icon_font_size</span> <span class="o">=</span> <span class="n">icon_font_size</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">d_ch_color</span> <span class="o">=</span> <span class="n">d_ch_color</span> <span class="ow">or</span> <span class="p">[</span><span class="s1">&#39;#648fff&#39;</span><span class="p">,</span> <span class="s1">&#39;#002999&#39;</span><span class="p">]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">label_ch_linestyle</span> <span class="o">=</span> <span class="n">label_ch_linestyle</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">label_ch_color</span> <span class="o">=</span> <span class="n">label_ch_color</span> <span class="ow">or</span> <span class="s1">&#39;#222222&#39;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">label_ch_alpha</span> <span class="o">=</span> <span class="n">label_ch_alpha</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">u_ch_color</span> <span class="o">=</span> <span class="n">u_ch_color</span> <span class="ow">or</span> <span class="p">[</span><span class="s1">&#39;#ffb000&#39;</span><span class="p">,</span> <span class="s1">&#39;#994A00&#39;</span><span class="p">]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">m_ch_color</span> <span class="o">=</span> <span class="n">m_ch_color</span> <span class="ow">or</span> <span class="p">[</span><span class="s1">&#39;#dc267f&#39;</span><span class="p">,</span> <span class="s1">&#39;#760019&#39;</span><span class="p">]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">a_ch_color</span> <span class="o">=</span> <span class="n">m_ch_color</span> <span class="ow">or</span> <span class="p">[</span><span class="s1">&#39;#333333&#39;</span><span class="p">,</span> <span class="s1">&#39;#666666&#39;</span><span class="p">]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">s_ch_color</span> <span class="o">=</span> <span class="n">s_ch_color</span> <span class="ow">or</span> <span class="s1">&#39;#7da781&#39;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">s_ch_linestyle</span> <span class="o">=</span> <span class="n">s_ch_linestyle</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">table_color</span> <span class="o">=</span> <span class="n">table_color</span> <span class="ow">or</span> <span class="p">[</span><span class="s1">&#39;#e0e0e0&#39;</span><span class="p">,</span> <span class="s1">&#39;#f6f6f6&#39;</span><span class="p">,</span> <span class="s1">&#39;#f6f6f6&#39;</span><span class="p">]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">bg_color</span> <span class="o">=</span> <span class="n">bg_color</span> <span class="ow">or</span> <span class="s1">&#39;#f2f3f4&#39;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">num_points</span> <span class="o">=</span> <span class="n">num_points</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">dpi</span> <span class="o">=</span> <span class="n">dpi</span></div>
-
-
-<div class="viewcode-block" id="OPStylePulse"><a class="viewcode-back" href="../../../autodoc/qiskit.visualization.qcstyle.html#qiskit.visualization.qcstyle.OPStylePulse">[docs]</a><span class="k">class</span> <span class="nc">OPStylePulse</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">wave_color</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-                 <span class="n">bg_color</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">num_points</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Set style sheet for OpenPulse sample pulse drawer.</span>
-
-<span class="sd">        Args:</span>
-<span class="sd">            figsize (tuple): Size of figure.</span>
-<span class="sd">            wave_color (list[str]): colors for real and imaginary part of waveform.</span>
-<span class="sd">            bg_color(str): color for figure background.</span>
-<span class="sd">            num_points (int): number of points for interpolation.</span>
-<span class="sd">            dpi (int): dpi to save image.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">figsize</span> <span class="o">=</span> <span class="n">figsize</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">wave_color</span> <span class="o">=</span> <span class="n">wave_color</span> <span class="ow">or</span> <span class="p">[</span><span class="s1">&#39;#ff0000&#39;</span><span class="p">,</span> <span class="s1">&#39;#0000ff&#39;</span><span class="p">]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">bg_color</span> <span class="o">=</span> <span class="n">bg_color</span> <span class="ow">or</span> <span class="s1">&#39;#f2f3f4&#39;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">num_points</span> <span class="o">=</span> <span class="n">num_points</span> <span class="ow">or</span> <span class="mi">1000</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">dpi</span> <span class="o">=</span> <span class="n">dpi</span> <span class="ow">or</span> <span class="mi">150</span></div>
 </pre></div>
 
         </div>

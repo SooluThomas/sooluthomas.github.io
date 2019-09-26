@@ -52,7 +52,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="qiskit.circuit.quantumregister module" href="qiskit.circuit.quantumregister.html" />
-    <link rel="prev" title="qiskit.circuit.parametertable module" href="qiskit.circuit.parametertable.html" /> 
+    <link rel="prev" title="qiskit.circuit.parametervector module" href="qiskit.circuit.parametervector.html" /> 
   </head>
 <body>
   <header>
@@ -756,6 +756,7 @@
 </ul>
 </li>
 <li class="toctree-l3 current"><a class="reference internal" href="qiskit.circuit.html">qiskit.circuit package</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#subpackages">Subpackages</a></li>
 <li class="toctree-l4 current"><a class="reference internal" href="qiskit.circuit.html#submodules">Submodules</a></li>
 </ul>
 </li>
@@ -776,8 +777,9 @@
 <li class="toctree-l4"><a class="reference internal" href="qiskit.extensions.html#submodules">Submodules</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.mapper.html">qiskit.mapper package</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="qiskit.mapper.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qiskit.ignis.html">qiskit.ignis package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.ignis.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.ignis.html#submodules">Submodules</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.providers.html">qiskit.providers package</a><ul>
@@ -836,10 +838,8 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="qiskit.html#submodules">Submodules</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="qiskit._util.html">qiskit._util module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.exceptions.html">qiskit.exceptions module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.execute.html">qiskit.execute module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.qiskiterror.html">qiskit.qiskiterror module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.user_config.html">qiskit.user_config module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.util.html">qiskit.util module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.version.html">qiskit.version module</a></li>
@@ -1540,6 +1540,7 @@
 </ul>
 </li>
 <li class="toctree-l3 current"><a class="reference internal" href="qiskit.circuit.html">qiskit.circuit package</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#subpackages">Subpackages</a></li>
 <li class="toctree-l4 current"><a class="reference internal" href="qiskit.circuit.html#submodules">Submodules</a></li>
 </ul>
 </li>
@@ -1560,8 +1561,9 @@
 <li class="toctree-l4"><a class="reference internal" href="qiskit.extensions.html#submodules">Submodules</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.mapper.html">qiskit.mapper package</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="qiskit.mapper.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qiskit.ignis.html">qiskit.ignis package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.ignis.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.ignis.html#submodules">Submodules</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.providers.html">qiskit.providers package</a><ul>
@@ -1620,10 +1622,8 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="qiskit.html#submodules">Submodules</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="qiskit._util.html">qiskit._util module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.exceptions.html">qiskit.exceptions module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.execute.html">qiskit.execute module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.qiskiterror.html">qiskit.qiskiterror module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.user_config.html">qiskit.user_config module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.util.html">qiskit.util module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.version.html">qiskit.version module</a></li>
@@ -1661,8 +1661,8 @@
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>self</strong> (<a class="reference internal" href="#qiskit.circuit.quantumcircuit.QuantumCircuit" title="qiskit.circuit.quantumcircuit.QuantumCircuit"><em>QuantumCircuit</em></a>) – The QuantumCircuit object to build the conjunction on.</li>
 <li><strong>variable_register</strong> (<a class="reference internal" href="qiskit.circuit.quantumregister.html#qiskit.circuit.quantumregister.QuantumRegister" title="qiskit.circuit.quantumregister.QuantumRegister"><em>QuantumRegister</em></a>) – The QuantumRegister holding the variable qubits.</li>
-<li><strong>flags</strong> (<em>list</em>) – A list of +1/-1/0 to mark negations or omissions of qubits.</li>
-<li><strong>target_qubit</strong> (<em>tuple</em><em>(</em><a class="reference internal" href="qiskit.circuit.quantumregister.html#qiskit.circuit.quantumregister.QuantumRegister" title="qiskit.circuit.quantumregister.QuantumRegister"><em>QuantumRegister</em></a><em>, </em><em>int</em><em>)</em>) – The target qubit to hold the conjunction result.</li>
+<li><strong>flags</strong> (<em>list of int</em>) – A list of +1/-1/0 to mark negations or omissions of qubits.</li>
+<li><strong>target_qubit</strong> (<a class="reference internal" href="qiskit.circuit.quantumregister.html#qiskit.circuit.quantumregister.Qubit" title="qiskit.circuit.quantumregister.Qubit"><em>Qubit</em></a>) – The target qubit to hold the conjunction result.</li>
 <li><strong>ancillary_register</strong> (<a class="reference internal" href="qiskit.circuit.quantumregister.html#qiskit.circuit.quantumregister.QuantumRegister" title="qiskit.circuit.quantumregister.QuantumRegister"><em>QuantumRegister</em></a>) – The ancillary QuantumRegister for building the mct.</li>
 <li><strong>mct_mode</strong> (<em>str</em>) – The mct building mode.</li>
 </ul>
@@ -1683,8 +1683,8 @@
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>self</strong> (<a class="reference internal" href="#qiskit.circuit.quantumcircuit.QuantumCircuit" title="qiskit.circuit.quantumcircuit.QuantumCircuit"><em>QuantumCircuit</em></a>) – The QuantumCircuit object to build the disjunction on.</li>
 <li><strong>qr_variables</strong> (<a class="reference internal" href="qiskit.circuit.quantumregister.html#qiskit.circuit.quantumregister.QuantumRegister" title="qiskit.circuit.quantumregister.QuantumRegister"><em>QuantumRegister</em></a>) – The QuantumRegister holding the variable qubits.</li>
-<li><strong>flags</strong> (<em>list</em>) – A list of +1/-1/0 to mark negations or omissions of qubits.</li>
-<li><strong>qb_target</strong> (<em>tuple</em><em>(</em><a class="reference internal" href="qiskit.circuit.quantumregister.html#qiskit.circuit.quantumregister.QuantumRegister" title="qiskit.circuit.quantumregister.QuantumRegister"><em>QuantumRegister</em></a><em>, </em><em>int</em><em>)</em>) – The target qubit to hold the disjunction result.</li>
+<li><strong>flags</strong> (<em>list of int</em>) – A list of +1/-1/0 to mark negations or omissions of qubits.</li>
+<li><strong>qb_target</strong> (<a class="reference internal" href="qiskit.circuit.quantumregister.html#qiskit.circuit.quantumregister.Qubit" title="qiskit.circuit.quantumregister.Qubit"><em>Qubit</em></a>) – The target qubit to hold the disjunction result.</li>
 <li><strong>qr_ancillae</strong> (<a class="reference internal" href="qiskit.circuit.quantumregister.html#qiskit.circuit.quantumregister.QuantumRegister" title="qiskit.circuit.quantumregister.QuantumRegister"><em>QuantumRegister</em></a>) – The ancillary QuantumRegister for building the mct.</li>
 <li><strong>mct_mode</strong> (<em>str</em>) – The mct building mode.</li>
 </ul>
@@ -1703,27 +1703,23 @@
 <dl class="method">
 <dt id="qiskit.circuit.quantumcircuit.QuantumCircuit.append">
 <code class="descname">append</code><span class="sig-paren">(</span><em>instruction</em>, <em>qargs=None</em>, <em>cargs=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/circuit/quantumcircuit.html#QuantumCircuit.append"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.circuit.quantumcircuit.QuantumCircuit.append" title="Permalink to this definition">¶</a></dt>
-<dd><p>Append an instruction to the end of the circuit, modifying
-the circuit in place.</p>
+<dd><p>Append one or more instructions to the end of the circuit, modifying
+the circuit in place. Expands qargs and cargs.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>instruction</strong> (<a class="reference internal" href="qiskit.circuit.instruction.html#qiskit.circuit.instruction.Instruction" title="qiskit.circuit.instruction.Instruction"><em>Instruction</em></a><em> or </em><a class="reference internal" href="qiskit.aqua.html#qiskit.aqua.Operator" title="qiskit.aqua.Operator"><em>Operator</em></a>) – Instruction instance to append</li>
-<li><strong>qargs</strong> (<em>list</em><em>(</em><em>tuple</em><em>)</em>) – qubits to attach instruction to</li>
-<li><strong>cargs</strong> (<em>list</em><em>(</em><em>tuple</em><em>)</em>) – clbits to attach instruction to</li>
+<li><strong>instruction</strong> (<a class="reference internal" href="qiskit.circuit.instruction.html#qiskit.circuit.instruction.Instruction" title="qiskit.circuit.instruction.Instruction"><em>Instruction</em></a><em> or </em><em>Operation</em>) – Instruction instance to append</li>
+<li><strong>qargs</strong> (<em>list</em><em>(</em><em>argument</em><em>)</em>) – qubits to attach instruction to</li>
+<li><strong>cargs</strong> (<em>list</em><em>(</em><em>argument</em><em>)</em>) – clbits to attach instruction to</li>
 </ul>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">a handle to the instruction that was just added</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first"><a class="reference internal" href="qiskit.circuit.instruction.html#qiskit.circuit.instruction.Instruction" title="qiskit.circuit.instruction.Instruction">Instruction</a></p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><code class="xref py py-exc docutils literal notranslate"><span class="pre">QiskitError</span></code> – if the gate is of a different shape than the wires
-it is being attached to.</p>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="qiskit.circuit.instruction.html#qiskit.circuit.instruction.Instruction" title="qiskit.circuit.instruction.Instruction">Instruction</a></p>
 </td>
 </tr>
 </tbody>
@@ -1759,6 +1755,31 @@ For QuantumRegister, applies barrier to all the qubits in that register.</p>
 </table>
 </dd></dl>
 
+<dl class="staticmethod">
+<dt id="qiskit.circuit.quantumcircuit.QuantumCircuit.cast">
+<em class="property">static </em><code class="descname">cast</code><span class="sig-paren">(</span><em>value</em>, <em>_type</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/circuit/quantumcircuit.html#QuantumCircuit.cast"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.circuit.quantumcircuit.QuantumCircuit.cast" title="Permalink to this definition">¶</a></dt>
+<dd><p>Best effort to cast value to type. Otherwise, returns the value.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="qiskit.circuit.quantumcircuit.QuantumCircuit.cbit_argument_conversion">
+<code class="descname">cbit_argument_conversion</code><span class="sig-paren">(</span><em>clbit_representation</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/circuit/quantumcircuit.html#QuantumCircuit.cbit_argument_conversion"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.circuit.quantumcircuit.QuantumCircuit.cbit_argument_conversion" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts several classical bit representations (such as indexes, range, etc)
+into a list of classical bits.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>clbit_representation</strong> (<em>Object</em>) – representation to expand</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Where each tuple is a classical bit.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="qiskit.validation.fields.containers.html#qiskit.validation.fields.containers.List" title="qiskit.validation.fields.containers.List">List</a>(tuple)</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
 <dl class="method">
 <dt id="qiskit.circuit.quantumcircuit.QuantumCircuit.ccx">
 <code class="descname">ccx</code><span class="sig-paren">(</span><em>ctl1</em>, <em>ctl2</em>, <em>tgt</em><span class="sig-paren">)</span><a class="headerlink" href="#qiskit.circuit.quantumcircuit.QuantumCircuit.ccx" title="Permalink to this definition">¶</a></dt>
@@ -1767,23 +1788,8 @@ For QuantumRegister, applies barrier to all the qubits in that register.</p>
 
 <dl class="method">
 <dt id="qiskit.circuit.quantumcircuit.QuantumCircuit.ch">
-<code class="descname">ch</code><span class="sig-paren">(</span><em>q_control</em>, <em>q_target</em><span class="sig-paren">)</span><a class="headerlink" href="#qiskit.circuit.quantumcircuit.QuantumCircuit.ch" title="Permalink to this definition">¶</a></dt>
-<dd><p>Apply Controlled-Hadamard (ch) Gate.</p>
-<p>Note that this implementation of the ch uses a single cx gate,
-which is more efficient than what’s currently provided in Terra.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>self</strong> (<a class="reference internal" href="#qiskit.circuit.quantumcircuit.QuantumCircuit" title="qiskit.circuit.quantumcircuit.QuantumCircuit"><em>QuantumCircuit</em></a>) – The circuit to apply the ch gate on.</li>
-<li><strong>q_control</strong> (<em>(</em><a class="reference internal" href="qiskit.circuit.quantumregister.html#qiskit.circuit.quantumregister.QuantumRegister" title="qiskit.circuit.quantumregister.QuantumRegister"><em>QuantumRegister</em></a><em>, </em><em>int</em><em>)</em>) – The control qubit.</li>
-<li><strong>q_target</strong> (<em>(</em><a class="reference internal" href="qiskit.circuit.quantumregister.html#qiskit.circuit.quantumregister.QuantumRegister" title="qiskit.circuit.quantumregister.QuantumRegister"><em>QuantumRegister</em></a><em>, </em><em>int</em><em>)</em>) – The target qubit.</li>
-</ul>
-</td>
-</tr>
-</tbody>
-</table>
+<code class="descname">ch</code><span class="sig-paren">(</span><em>ctl</em>, <em>tgt</em><span class="sig-paren">)</span><a class="headerlink" href="#qiskit.circuit.quantumcircuit.QuantumCircuit.ch" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply CH from ctl to tgt.</p>
 </dd></dl>
 
 <dl class="attribute">
@@ -1804,11 +1810,6 @@ useful for auto naming.</p>
 <em class="property">classmethod </em><code class="descname">cls_prefix</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/circuit/quantumcircuit.html#QuantumCircuit.cls_prefix"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.circuit.quantumcircuit.QuantumCircuit.cls_prefix" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the prefix to use for auto naming.</p>
 </dd></dl>
-
-<dl class="method">
-<dt id="qiskit.circuit.quantumcircuit.QuantumCircuit.cnx">
-<code class="descname">cnx</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#qiskit.circuit.quantumcircuit.QuantumCircuit.cnx" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
 
 <dl class="method">
 <dt id="qiskit.circuit.quantumcircuit.QuantumCircuit.combine">
@@ -1850,9 +1851,9 @@ circuits.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">a breakdown of how many operations of each kind.</td>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">a breakdown of how many operations of each kind, sorted by amount.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">OrderedDict</td>
 </tr>
 </tbody>
 </table>
@@ -1867,10 +1868,10 @@ circuits.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>self</strong> (<a class="reference internal" href="#qiskit.circuit.quantumcircuit.QuantumCircuit" title="qiskit.circuit.quantumcircuit.QuantumCircuit"><em>QuantumCircuit</em></a>) – The circuit to apply the ch gate on.</li>
+<li><strong>self</strong> (<a class="reference internal" href="#qiskit.circuit.quantumcircuit.QuantumCircuit" title="qiskit.circuit.quantumcircuit.QuantumCircuit"><em>QuantumCircuit</em></a>) – The circuit to apply the cry gate on.</li>
 <li><strong>theta</strong> (<em>float</em>) – The rotation angle.</li>
-<li><strong>q_control</strong> (<em>(</em><a class="reference internal" href="qiskit.circuit.quantumregister.html#qiskit.circuit.quantumregister.QuantumRegister" title="qiskit.circuit.quantumregister.QuantumRegister"><em>QuantumRegister</em></a><em>, </em><em>int</em><em>)</em>) – The control qubit.</li>
-<li><strong>q_target</strong> (<em>(</em><a class="reference internal" href="qiskit.circuit.quantumregister.html#qiskit.circuit.quantumregister.QuantumRegister" title="qiskit.circuit.quantumregister.QuantumRegister"><em>QuantumRegister</em></a><em>, </em><em>int</em><em>)</em>) – The target qubit.</li>
+<li><strong>q_control</strong> (<a class="reference internal" href="qiskit.circuit.quantumregister.html#qiskit.circuit.quantumregister.Qubit" title="qiskit.circuit.quantumregister.Qubit"><em>Qubit</em></a>) – The control qubit.</li>
+<li><strong>q_target</strong> (<a class="reference internal" href="qiskit.circuit.quantumregister.html#qiskit.circuit.quantumregister.Qubit" title="qiskit.circuit.quantumregister.Qubit"><em>Qubit</em></a>) – The target qubit.</li>
 </ul>
 </td>
 </tr>
@@ -1965,8 +1966,40 @@ same.</p>
 </dd></dl>
 
 <dl class="method">
+<dt id="qiskit.circuit.quantumcircuit.QuantumCircuit.diag_gate">
+<code class="descname">diag_gate</code><span class="sig-paren">(</span><em>diag</em>, <em>qubit</em><span class="sig-paren">)</span><a class="headerlink" href="#qiskit.circuit.quantumcircuit.QuantumCircuit.diag_gate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Attach a diagonal gate to a circuit. The decomposition is based on Theorem 7 given in
+“Synthesis of Quantum Logic Circuits” by Shende et al.
+(<a class="reference external" href="https://arxiv.org/pdf/quant-ph/0406176.pdf">https://arxiv.org/pdf/quant-ph/0406176.pdf</a>).</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>Args:</dt>
+<dd><dl class="first last docutils">
+<dt>diag (list): list of the 2^k diagonal entries (for a diagonal gate on k qubits).</dt>
+<dd>Must contain at least two entries</dd>
+<dt>qubit (QuantumRegister|list): list of k qubits the diagonal is</dt>
+<dd>acting on (the order of the qubits specifies the computational basis in which the
+diagonal gate is provided: the first element in diag acts on the state where all
+the qubits in q are in the state 0, the second entry acts on the state where all
+the qubits q[1],…,q[k-1] are in the state zero and q[0] is in the state 1,
+and so on</dd>
+</dl>
+</dd>
+<dt>Returns:</dt>
+<dd>QuantumCircuit: the diagonal gate is attached to the circuit.</dd>
+<dt>Raises:</dt>
+<dd><dl class="first last docutils">
+<dt>QiskitError: if the list of the diagonal entries or the qubit list is in bad format;</dt>
+<dd>if the number of diagonal entries is not 2^k, where k denotes the number of qubits</dd>
+</dl>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
 <dt id="qiskit.circuit.quantumcircuit.QuantumCircuit.draw">
-<code class="descname">draw</code><span class="sig-paren">(</span><em>scale=0.7</em>, <em>filename=None</em>, <em>style=None</em>, <em>output=None</em>, <em>interactive=False</em>, <em>line_length=None</em>, <em>plot_barriers=True</em>, <em>reverse_bits=False</em>, <em>justify=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/circuit/quantumcircuit.html#QuantumCircuit.draw"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.circuit.quantumcircuit.QuantumCircuit.draw" title="Permalink to this definition">¶</a></dt>
+<code class="descname">draw</code><span class="sig-paren">(</span><em>scale=0.7</em>, <em>filename=None</em>, <em>style=None</em>, <em>output=None</em>, <em>interactive=False</em>, <em>line_length=None</em>, <em>plot_barriers=True</em>, <em>reverse_bits=False</em>, <em>justify=None</em>, <em>vertical_compression='medium'</em>, <em>idle_wires=True</em>, <em>with_layout=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/circuit/quantumcircuit.html#QuantumCircuit.draw"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.circuit.quantumcircuit.QuantumCircuit.draw" title="Permalink to this definition">¶</a></dt>
 <dd><p>Draw the quantum circuit</p>
 <p>Using the output parameter you can specify the format. The choices are:
 0. text: ASCII art string
@@ -2004,6 +2037,12 @@ else is supplied it defaults to left justified. It refers to where
 gates should be placed in the output circuit if there is an option.
 <cite>none</cite> results in each gate being placed in its own column. Currently
 only supported by text drawer.</li>
+<li><strong>vertical_compression</strong> (<em>string</em>) – <cite>high</cite>, <cite>medium</cite> or <cite>low</cite>. It merges the
+lines generated by <cite>text</cite> so the drawing will take less vertical room.
+Default is <cite>medium</cite>. It is ignored if output is not <cite>text</cite>.</li>
+<li><strong>idle_wires</strong> (<em>bool</em>) – Include idle wires. Default is True.</li>
+<li><strong>with_layout</strong> (<em>bool</em>) – Include layout information, with labels on the physical
+layout. Default is True.</li>
 </ul>
 </td>
 </tr>
@@ -2114,6 +2153,8 @@ circuits.</p>
 <dt id="qiskit.circuit.quantumcircuit.QuantumCircuit.iden">
 <code class="descname">iden</code><span class="sig-paren">(</span><em>q</em><span class="sig-paren">)</span><a class="headerlink" href="#qiskit.circuit.quantumcircuit.QuantumCircuit.iden" title="Permalink to this definition">¶</a></dt>
 <dd><p>Apply Identity to q.</p>
+<p>Identity gate corresponds to a single-qubit gate wait cycle,
+and should not be optimized or unrolled (it is an opaque gate).</p>
 </dd></dl>
 
 <dl class="method">
@@ -2147,32 +2188,126 @@ circuits.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="qiskit.circuit.quantumcircuit.QuantumCircuit.mcmt">
-<code class="descname">mcmt</code><span class="sig-paren">(</span><em>q_controls</em>, <em>q_ancillae</em>, <em>single_control_gate_fun</em>, <em>q_targets</em>, <em>mode='basic'</em><span class="sig-paren">)</span><a class="headerlink" href="#qiskit.circuit.quantumcircuit.QuantumCircuit.mcmt" title="Permalink to this definition">¶</a></dt>
-<dd><p>Apply a Multi-Control, Multi-Target using a generic gate.
-It can also be used to implement a generic Multi-Control gate, as the target could also be of length 1.
-:param q_controls: The list of control qubits
-:param q_ancillae: The list of ancillary qubits
-:param single_control_gate_fun: The single control gate function (e.g QuantumCircuit.cz or QuantumCircuit.ch)
-:param q_targets: A list of qubits or a QuantumRegister to which the gate function should be applied.
-:param mode: The implementation mode to use (at the moment, only the basic mode is supported)
-:type mode: string</p>
+<dt id="qiskit.circuit.quantumcircuit.QuantumCircuit.iso">
+<code class="descname">iso</code><span class="sig-paren">(</span><em>isometry</em>, <em>q_input</em>, <em>q_ancillas_for_output</em>, <em>q_ancillas_zero=None</em>, <em>q_ancillas_dirty=None</em><span class="sig-paren">)</span><a class="headerlink" href="#qiskit.circuit.quantumcircuit.QuantumCircuit.iso" title="Permalink to this definition">¶</a></dt>
+<dd><p>Attach an arbitrary isometry from m to n qubits to a circuit. In particular,
+this allows to attach arbitrary unitaries on n qubits (m=n) or to prepare any state
+on n qubits (m=0).
+The decomposition used here was introduced by Iten et al. in <a class="reference external" href="https://arxiv.org/abs/1501.06911">https://arxiv.org/abs/1501.06911</a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>isometry</strong> (<em>ndarray</em>) – an isometry from m to n qubits, i.e., a (complex) ndarray of
+dimension 2^n×2^m with orthonormal columns (given in the computational basis
+specified by the order of the ancillas and the input qubits, where the ancillas
+are considered to be more significant than the input qubits.).</li>
+<li><strong>q_input</strong> (<em>QuantumRegister|list</em><em>[</em><a class="reference internal" href="qiskit.circuit.quantumregister.html#qiskit.circuit.quantumregister.Qubit" title="qiskit.circuit.quantumregister.Qubit"><em>Qubit</em></a><em>]</em>) – list of m qubits where the input
+to the isometry is fed in (empty list for state preparation).</li>
+<li><strong>q_ancillas_for_output</strong> (<em>QuantumRegister|list</em><em>[</em><a class="reference internal" href="qiskit.circuit.quantumregister.html#qiskit.circuit.quantumregister.Qubit" title="qiskit.circuit.quantumregister.Qubit"><em>Qubit</em></a><em>]</em>) – list of n-m ancilla
+qubits that are used for the output of the isometry and which are assumed to start
+in the zero state. The qubits are listed with increasing significance.</li>
+<li><strong>q_ancillas_zero</strong> (<em>QuantumRegister|list</em><em>[</em><a class="reference internal" href="qiskit.circuit.quantumregister.html#qiskit.circuit.quantumregister.Qubit" title="qiskit.circuit.quantumregister.Qubit"><em>Qubit</em></a><em>]</em>) – list of ancilla qubits
+which are assumed to start in the zero state. Default is q_ancillas_zero = None.</li>
+<li><strong>q_ancillas_dirty</strong> (<em>QuantumRegister|list</em><em>[</em><a class="reference internal" href="qiskit.circuit.quantumregister.html#qiskit.circuit.quantumregister.Qubit" title="qiskit.circuit.quantumregister.Qubit"><em>Qubit</em></a><em>]</em>) – list of ancilla qubits
+which can start in an arbitrary state. Default is q_ancillas_dirty = None.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">the isometry is attached to the quantum circuit.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first"><a class="reference internal" href="#qiskit.circuit.quantumcircuit.QuantumCircuit" title="qiskit.circuit.quantumcircuit.QuantumCircuit">QuantumCircuit</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><code class="xref py py-exc docutils literal notranslate"><span class="pre">QiskitError</span></code> – if the array is not an isometry of the correct size corresponding to
+the provided number of qubits.</p>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
-<dt id="qiskit.circuit.quantumcircuit.QuantumCircuit.mcry">
-<code class="descname">mcry</code><span class="sig-paren">(</span><em>theta</em>, <em>q_controls</em>, <em>q_target</em>, <em>q_ancillae</em><span class="sig-paren">)</span><a class="headerlink" href="#qiskit.circuit.quantumcircuit.QuantumCircuit.mcry" title="Permalink to this definition">¶</a></dt>
-<dd><p>Apply Multiple-Control RY (mcry) Gate.</p>
+<dt id="qiskit.circuit.quantumcircuit.QuantumCircuit.mcmt">
+<code class="descname">mcmt</code><span class="sig-paren">(</span><em>q_controls</em>, <em>q_ancillae</em>, <em>single_control_gate_fun</em>, <em>q_targets</em>, <em>mode='basic'</em><span class="sig-paren">)</span><a class="headerlink" href="#qiskit.circuit.quantumcircuit.QuantumCircuit.mcmt" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply a Multi-Control, Multi-Target using a generic gate.
+It can also be used to implement a generic Multi-Control gate, as the target could also be of length 1.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>self</strong> (<a class="reference internal" href="#qiskit.circuit.quantumcircuit.QuantumCircuit" title="qiskit.circuit.quantumcircuit.QuantumCircuit"><em>QuantumCircuit</em></a>) – The circuit to apply the ch gate on.</li>
-<li><strong>theta</strong> (<em>float</em>) – The rotation angle.</li>
-<li><strong>q_controls</strong> (<em>QuantumRegister |</em><em> (</em><a class="reference internal" href="qiskit.circuit.quantumregister.html#qiskit.circuit.quantumregister.QuantumRegister" title="qiskit.circuit.quantumregister.QuantumRegister"><em>QuantumRegister</em></a><em>, </em><em>int</em><em>)</em>) – The control qubits.</li>
-<li><strong>q_target</strong> (<em>(</em><a class="reference internal" href="qiskit.circuit.quantumregister.html#qiskit.circuit.quantumregister.QuantumRegister" title="qiskit.circuit.quantumregister.QuantumRegister"><em>QuantumRegister</em></a><em>, </em><em>int</em><em>)</em>) – The target qubit.</li>
-<li><strong>q_ancillae</strong> (<em>QuantumRegister |</em><em> (</em><a class="reference internal" href="qiskit.circuit.quantumregister.html#qiskit.circuit.quantumregister.QuantumRegister" title="qiskit.circuit.quantumregister.QuantumRegister"><em>QuantumRegister</em></a><em>, </em><em>int</em><em>)</em>) – The ancillary qubits.</li>
+<li><strong>self</strong> (<a class="reference internal" href="#qiskit.circuit.quantumcircuit.QuantumCircuit" title="qiskit.circuit.quantumcircuit.QuantumCircuit"><em>QuantumCircuit</em></a>) – The QuantumCircuit object to apply the mcmt gate on.</li>
+<li><strong>q_controls</strong> (<em>QuantumRegister | list of Qubit</em>) – The list of control qubits</li>
+<li><strong>q_ancillae</strong> (<em>QuantumRegister | list of Qubit</em>) – The list of ancillary qubits</li>
+<li><strong>single_control_gate_fun</strong> (<a class="reference internal" href="qiskit.circuit.gate.html#qiskit.circuit.gate.Gate" title="qiskit.circuit.gate.Gate"><em>Gate</em></a>) – The single control gate function (e.g QuantumCircuit.cz or QuantumCircuit.ch)</li>
+<li><strong>q_targets</strong> (<em>QuantumRegister | list of Qubit</em>) – A list of qubits or a QuantumRegister
+to which the gate function should be applied.</li>
+<li><strong>mode</strong> (<em>str</em>) – The implementation mode to use (at the moment, only the basic mode is supported)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="qiskit.circuit.quantumcircuit.QuantumCircuit.mcrx">
+<code class="descname">mcrx</code><span class="sig-paren">(</span><em>theta</em>, <em>q_controls</em>, <em>q_target</em>, <em>use_basis_gates=False</em><span class="sig-paren">)</span><a class="headerlink" href="#qiskit.circuit.quantumcircuit.QuantumCircuit.mcrx" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply Multiple-Controlled X rotation gate</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>self</strong> (<a class="reference internal" href="#qiskit.circuit.quantumcircuit.QuantumCircuit" title="qiskit.circuit.quantumcircuit.QuantumCircuit"><em>QuantumCircuit</em></a>) – The QuantumCircuit object to apply the mcrx gate on.</li>
+<li><strong>theta</strong> (<em>float</em>) – angle theta</li>
+<li><strong>control_qubits</strong> (<em>list of Qubit</em>) – The list of control qubits</li>
+<li><strong>target_qubit</strong> (<a class="reference internal" href="qiskit.circuit.quantumregister.html#qiskit.circuit.quantumregister.Qubit" title="qiskit.circuit.quantumregister.Qubit"><em>Qubit</em></a>) – The target qubit</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="qiskit.circuit.quantumcircuit.QuantumCircuit.mcry">
+<code class="descname">mcry</code><span class="sig-paren">(</span><em>theta</em>, <em>q_controls</em>, <em>q_target</em>, <em>q_ancillae</em>, <em>mode='basic'</em>, <em>use_basis_gates=False</em><span class="sig-paren">)</span><a class="headerlink" href="#qiskit.circuit.quantumcircuit.QuantumCircuit.mcry" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply Multiple-Controlled Y rotation gate</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>self</strong> (<a class="reference internal" href="#qiskit.circuit.quantumcircuit.QuantumCircuit" title="qiskit.circuit.quantumcircuit.QuantumCircuit"><em>QuantumCircuit</em></a>) – The QuantumCircuit object to apply the mcry gate on.</li>
+<li><strong>theta</strong> (<em>float</em>) – angle theta</li>
+<li><strong>control_qubits</strong> (<em>list of Qubit</em>) – The list of control qubits</li>
+<li><strong>target_qubit</strong> (<a class="reference internal" href="qiskit.circuit.quantumregister.html#qiskit.circuit.quantumregister.Qubit" title="qiskit.circuit.quantumregister.Qubit"><em>Qubit</em></a>) – The target qubit</li>
+<li><strong>q_ancillae</strong> (<em>QuantumRegister | tuple</em><em>(</em><a class="reference internal" href="qiskit.circuit.quantumregister.html#qiskit.circuit.quantumregister.QuantumRegister" title="qiskit.circuit.quantumregister.QuantumRegister"><em>QuantumRegister</em></a><em>, </em><em>int</em><em>)</em>) – The list of ancillary qubits.</li>
+<li><strong>mode</strong> (<em>string</em>) – The implementation mode to use</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="qiskit.circuit.quantumcircuit.QuantumCircuit.mcrz">
+<code class="descname">mcrz</code><span class="sig-paren">(</span><em>lam</em>, <em>q_controls</em>, <em>q_target</em>, <em>use_basis_gates=False</em><span class="sig-paren">)</span><a class="headerlink" href="#qiskit.circuit.quantumcircuit.QuantumCircuit.mcrz" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply Multiple-Controlled Z rotation gate</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>self</strong> (<a class="reference internal" href="#qiskit.circuit.quantumcircuit.QuantumCircuit" title="qiskit.circuit.quantumcircuit.QuantumCircuit"><em>QuantumCircuit</em></a>) – The QuantumCircuit object to apply the mcrz gate on.</li>
+<li><strong>phi</strong> (<em>float</em>) – angle phi</li>
+<li><strong>control_qubits</strong> (<em>list of Qubit</em>) – The list of control qubits</li>
+<li><strong>target_qubit</strong> (<a class="reference internal" href="qiskit.circuit.quantumregister.html#qiskit.circuit.quantumregister.Qubit" title="qiskit.circuit.quantumregister.Qubit"><em>Qubit</em></a>) – The target qubit</li>
 </ul>
 </td>
 </tr>
@@ -2183,32 +2318,42 @@ It can also be used to implement a generic Multi-Control gate, as the target cou
 <dl class="method">
 <dt id="qiskit.circuit.quantumcircuit.QuantumCircuit.mct">
 <code class="descname">mct</code><span class="sig-paren">(</span><em>q_controls</em>, <em>q_target</em>, <em>q_ancilla</em>, <em>mode='basic'</em><span class="sig-paren">)</span><a class="headerlink" href="#qiskit.circuit.quantumcircuit.QuantumCircuit.mct" title="Permalink to this definition">¶</a></dt>
-<dd><p>Apply Multiple-Control Toffoli operation
-:param q_controls: The list of control qubits
-:param q_target: The target qubit
-:param q_ancilla: The list of ancillary qubits
-:param mode: The implementation mode to use
-:type mode: string</p>
+<dd><p>Apply Multiple-Control Toffoli operation</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>self</strong> (<a class="reference internal" href="#qiskit.circuit.quantumcircuit.QuantumCircuit" title="qiskit.circuit.quantumcircuit.QuantumCircuit"><em>QuantumCircuit</em></a>) – The QuantumCircuit object to apply the mct gate on.</li>
+<li><strong>q_controls</strong> (<em>QuantumRegister | list of Qubit</em>) – The list of control qubits</li>
+<li><strong>q_target</strong> (<a class="reference internal" href="qiskit.circuit.quantumregister.html#qiskit.circuit.quantumregister.Qubit" title="qiskit.circuit.quantumregister.Qubit"><em>Qubit</em></a>) – The target qubit</li>
+<li><strong>q_ancilla</strong> (<em>QuantumRegister | list of Qubit</em>) – The list of ancillary qubits</li>
+<li><strong>mode</strong> (<em>str</em>) – The implementation mode to use</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="qiskit.circuit.quantumcircuit.QuantumCircuit.mcu1">
-<code class="descname">mcu1</code><span class="sig-paren">(</span><em>theta</em>, <em>control_qubits</em>, <em>target_qubit</em><span class="sig-paren">)</span><a class="headerlink" href="#qiskit.circuit.quantumcircuit.QuantumCircuit.mcu1" title="Permalink to this definition">¶</a></dt>
-<dd><p>Apply Multiple-Controlled U1 gate
-:param theta: angle theta
-:param control_qubits: The list of control qubits
-:param target_qubit: The target qubit</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="qiskit.circuit.quantumcircuit.QuantumCircuit.mcu3">
-<code class="descname">mcu3</code><span class="sig-paren">(</span><em>theta</em>, <em>phi</em>, <em>lam</em>, <em>control_qubits</em>, <em>target_qubit</em><span class="sig-paren">)</span><a class="headerlink" href="#qiskit.circuit.quantumcircuit.QuantumCircuit.mcu3" title="Permalink to this definition">¶</a></dt>
-<dd><p>Apply Multiple-Controlled U3 gate
-:param theta: angle theta
-:param phi: angle phi
-:param lam: angle lambda
-:param control_qubits: The list of control qubits
-:param target_qubit: The target qubit</p>
+<code class="descname">mcu1</code><span class="sig-paren">(</span><em>lam</em>, <em>control_qubits</em>, <em>target_qubit</em><span class="sig-paren">)</span><a class="headerlink" href="#qiskit.circuit.quantumcircuit.QuantumCircuit.mcu1" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply Multiple-Controlled U1 gate</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>self</strong> (<a class="reference internal" href="#qiskit.circuit.quantumcircuit.QuantumCircuit" title="qiskit.circuit.quantumcircuit.QuantumCircuit"><em>QuantumCircuit</em></a>) – The QuantumCircuit object to apply the mcu1 gate on.</li>
+<li><strong>lam</strong> (<em>float</em>) – angle lambda</li>
+<li><strong>control_qubits</strong> (<em>list of Qubit</em>) – The list of control qubits</li>
+<li><strong>target_qubit</strong> (<a class="reference internal" href="qiskit.circuit.quantumregister.html#qiskit.circuit.quantumregister.Qubit" title="qiskit.circuit.quantumregister.Qubit"><em>Qubit</em></a>) – The target qubit</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
@@ -2255,6 +2400,12 @@ It does not invert any gate.</p>
 </tr>
 </tbody>
 </table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="qiskit.circuit.quantumcircuit.QuantumCircuit.n_qubits">
+<code class="descname">n_qubits</code><a class="headerlink" href="#qiskit.circuit.quantumcircuit.QuantumCircuit.n_qubits" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return number of qubits.</p>
 </dd></dl>
 
 <dl class="method">
@@ -2310,10 +2461,72 @@ removed in a future release of qiskit. You should call
 <dd><p>Return OpenQASM string.</p>
 </dd></dl>
 
+<dl class="method">
+<dt id="qiskit.circuit.quantumcircuit.QuantumCircuit.qbit_argument_conversion">
+<code class="descname">qbit_argument_conversion</code><span class="sig-paren">(</span><em>qubit_representation</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/circuit/quantumcircuit.html#QuantumCircuit.qbit_argument_conversion"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.circuit.quantumcircuit.QuantumCircuit.qbit_argument_conversion" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts several qubit representations (such as indexes, range, etc)
+into a list of qubits.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>qubit_representation</strong> (<em>Object</em>) – representation to expand</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Where each tuple is a qubit.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="qiskit.validation.fields.containers.html#qiskit.validation.fields.containers.List" title="qiskit.validation.fields.containers.List">List</a>(tuple)</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
 <dl class="attribute">
 <dt id="qiskit.circuit.quantumcircuit.QuantumCircuit.qubits">
 <code class="descname">qubits</code><a class="headerlink" href="#qiskit.circuit.quantumcircuit.QuantumCircuit.qubits" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a list of quantum bits in the order that the registers had been added.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="qiskit.circuit.quantumcircuit.QuantumCircuit.rcccx">
+<code class="descname">rcccx</code><span class="sig-paren">(</span><em>q_control_1</em>, <em>q_control_2</em>, <em>q_control_3</em>, <em>q_target</em><span class="sig-paren">)</span><a class="headerlink" href="#qiskit.circuit.quantumcircuit.QuantumCircuit.rcccx" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply 3-Control Relative-Phase Toffoli gate from q_control_1, q_control_2, and q_control_3 to q_target.</p>
+<p>The implementation is based on <a class="reference external" href="https://arxiv.org/pdf/1508.03273.pdf">https://arxiv.org/pdf/1508.03273.pdf</a> Figure 4</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>self</strong> (<a class="reference internal" href="#qiskit.circuit.quantumcircuit.QuantumCircuit" title="qiskit.circuit.quantumcircuit.QuantumCircuit"><em>QuantumCircuit</em></a>) – The QuantumCircuit object to apply the rcccx gate on.</li>
+<li><strong>q_control_1</strong> (<a class="reference internal" href="qiskit.circuit.quantumregister.html#qiskit.circuit.quantumregister.Qubit" title="qiskit.circuit.quantumregister.Qubit"><em>Qubit</em></a>) – The 1st control qubit.</li>
+<li><strong>q_control_2</strong> (<a class="reference internal" href="qiskit.circuit.quantumregister.html#qiskit.circuit.quantumregister.Qubit" title="qiskit.circuit.quantumregister.Qubit"><em>Qubit</em></a>) – The 2nd control qubit.</li>
+<li><strong>q_control_3</strong> (<a class="reference internal" href="qiskit.circuit.quantumregister.html#qiskit.circuit.quantumregister.Qubit" title="qiskit.circuit.quantumregister.Qubit"><em>Qubit</em></a>) – The 3rd control qubit.</li>
+<li><strong>q_target</strong> (<a class="reference internal" href="qiskit.circuit.quantumregister.html#qiskit.circuit.quantumregister.Qubit" title="qiskit.circuit.quantumregister.Qubit"><em>Qubit</em></a>) – The target qubit.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="qiskit.circuit.quantumcircuit.QuantumCircuit.rccx">
+<code class="descname">rccx</code><span class="sig-paren">(</span><em>q_control_1</em>, <em>q_control_2</em>, <em>q_target</em><span class="sig-paren">)</span><a class="headerlink" href="#qiskit.circuit.quantumcircuit.QuantumCircuit.rccx" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply 2-Control Relative-Phase Toffoli gate from q_control_1 and q_control_2 to q_target.</p>
+<p>The implementation is based on <a class="reference external" href="https://arxiv.org/pdf/1508.03273.pdf">https://arxiv.org/pdf/1508.03273.pdf</a> Figure 3</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>self</strong> (<a class="reference internal" href="#qiskit.circuit.quantumcircuit.QuantumCircuit" title="qiskit.circuit.quantumcircuit.QuantumCircuit"><em>QuantumCircuit</em></a>) – The QuantumCircuit object to apply the rccx gate on.</li>
+<li><strong>q_control_1</strong> (<a class="reference internal" href="qiskit.circuit.quantumregister.html#qiskit.circuit.quantumregister.Qubit" title="qiskit.circuit.quantumregister.Qubit"><em>Qubit</em></a>) – The 1st control qubit.</li>
+<li><strong>q_control_2</strong> (<a class="reference internal" href="qiskit.circuit.quantumregister.html#qiskit.circuit.quantumregister.Qubit" title="qiskit.circuit.quantumregister.Qubit"><em>Qubit</em></a>) – The 2nd control qubit.</li>
+<li><strong>q_target</strong> (<a class="reference internal" href="qiskit.circuit.quantumregister.html#qiskit.circuit.quantumregister.Qubit" title="qiskit.circuit.quantumregister.Qubit"><em>Qubit</em></a>) – The target qubit.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
@@ -2372,6 +2585,36 @@ removed in a future release of qiskit. You should call
 </tr>
 </tbody>
 </table>
+</dd></dl>
+
+<dl class="method">
+<dt id="qiskit.circuit.quantumcircuit.QuantumCircuit.squ">
+<code class="descname">squ</code><span class="sig-paren">(</span><em>u</em>, <em>qubit</em>, <em>mode='ZYZ'</em>, <em>up_to_diagonal=False</em><span class="sig-paren">)</span><a class="headerlink" href="#qiskit.circuit.quantumcircuit.QuantumCircuit.squ" title="Permalink to this definition">¶</a></dt>
+<dd><p>Decompose an arbitrary 2*2 unitary into three rotation gates: U=R_zR_yR_z.
+Note that the decomposition is up to a global phase shift.
+(This is a well known decomposition, which can be found for example in Nielsen and Chuang’s book
+“Quantum computation and quantum information”.)</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>Args:</dt>
+<dd><p class="first">u (ndarray): 2*2 unitary (given as a (complex) ndarray)
+qubit (QuantumRegister|Qubit): the qubit, on which the gate is acting on
+mode (string): determines the used decomposition by providing the rotation axes.</p>
+<blockquote>
+<div>The allowed modes are: “ZYZ” (default)</div></blockquote>
+<dl class="last docutils">
+<dt>up_to_diagonal (bool):  if set to True, the single-qubit unitary is decomposed up to</dt>
+<dd>a diagonal matrix, i.e. a unitary u’ is implemented such that there exists a 2*2
+diagonal gate d with u = d.dot(u’)</dd>
+</dl>
+</dd>
+<dt>Returns:</dt>
+<dd>QuantumCircuit: the single-qubit unitary (up to a diagonal gate if
+up_to_diagonal = True) is attached to the circuit.</dd>
+<dt>Raises:</dt>
+<dd>QiskitError: if the format is wrong; if the array u is not unitary</dd>
+</dl>
+</div></blockquote>
 </dd></dl>
 
 <dl class="method">
@@ -2448,6 +2691,146 @@ parameterize the instruction.</td>
 </dd></dl>
 
 <dl class="method">
+<dt id="qiskit.circuit.quantumcircuit.QuantumCircuit.ucg">
+<code class="descname">ucg</code><span class="sig-paren">(</span><em>gate_list</em>, <em>q_controls</em>, <em>q_target</em>, <em>up_to_diagonal=False</em><span class="sig-paren">)</span><a class="headerlink" href="#qiskit.circuit.quantumcircuit.QuantumCircuit.ucg" title="Permalink to this definition">¶</a></dt>
+<dd><p>Attach a uniformly controlled gates (also called multiplexed gates) to a circuit.
+The decomposition was introduced by Bergholm et al. in
+<a class="reference external" href="https://arxiv.org/pdf/quant-ph/0410066.pdf">https://arxiv.org/pdf/quant-ph/0410066.pdf</a>.</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>Args:</dt>
+<dd><dl class="first last docutils">
+<dt>gate_list (list[ndarray]): list of two qubit unitaries [U_0,…,U_{2^k-1}],</dt>
+<dd>where each single-qubit unitary U_i is a given as a 2*2 array</dd>
+<dt>q_controls (QuantumRegister|list[(QuantumRegister,int)]): list of k control qubits.</dt>
+<dd>The qubits are ordered according to their significance in the computational basis.
+For example if q_controls=[q[1],q[2]] (with q = QuantumRegister(2)),
+the unitary U_0 is performed&nbsp;if q[1] and q[2] are in the state zero, U_1 is
+performed if q[2] is in the state zero and q[1] is in the state one, and so on</dd>
+<dt>q_target (QuantumRegister|(QuantumRegister,int)):  target qubit, where we act on with</dt>
+<dd>the single-qubit gates.</dd>
+<dt>up_to_diagonal (bool): If set to True, the uniformly controlled gate is decomposed up</dt>
+<dd>to a diagonal gate, i.e. a unitary u’ is implemented such that there exists a
+diagonal gate d with u = d.dot(u’), where the unitary u describes the uniformly
+controlled gate</dd>
+</dl>
+</dd>
+<dt>Returns:</dt>
+<dd>QuantumCircuit: the uniformly controlled gate is attached to the circuit.</dd>
+<dt>Raises:</dt>
+<dd><dl class="first last docutils">
+<dt>QiskitError: if the list number of control qubits does not correspond to the provided</dt>
+<dd>number of single-qubit unitaries; if an input is of the wrong type</dd>
+</dl>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="qiskit.circuit.quantumcircuit.QuantumCircuit.ucx">
+<code class="descname">ucx</code><span class="sig-paren">(</span><em>angle_list</em>, <em>q_controls</em>, <em>q_target</em><span class="sig-paren">)</span><a class="headerlink" href="#qiskit.circuit.quantumcircuit.QuantumCircuit.ucx" title="Permalink to this definition">¶</a></dt>
+<dd><p>Attach a uniformly controlled (also called multiplexed) Rx rotation gate to a circuit.
+The decomposition is base on <a class="reference external" href="https://arxiv.org/pdf/quant-ph/0406176.pdf">https://arxiv.org/pdf/quant-ph/0406176.pdf</a> by Shende et al.</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>Args:</dt>
+<dd><p class="first">angle_list (list): list of (real) rotation angles [a_0,…,a_{2^k-1}]
+q_controls (QuantumRegister|list): list of k control qubits</p>
+<blockquote>
+<div><p>(or empty list if no controls). The control qubits are ordered according to their
+significance in increasing order: For example if q_controls=[q[1],q[2]]
+(with q = QuantumRegister(2)), the rotation Rx(a_0)is performed if q[1] and q[2]
+are in the state zero, the rotation  Rx(a_1) is performed if q[1] is in the state</p>
+<blockquote>
+<div>one and q[2] is in the state zero, and so on</div></blockquote>
+</div></blockquote>
+<dl class="last docutils">
+<dt>q_target (QuantumRegister|Qubit): target qubit, where we act on with</dt>
+<dd>the single-qubit rotation gates</dd>
+</dl>
+</dd>
+<dt>Returns:</dt>
+<dd>QuantumCircuit: the uniformly controlled rotation gate is attached to the circuit.</dd>
+<dt>Raises:</dt>
+<dd><dl class="first last docutils">
+<dt>QiskitError: if the list number of control qubits does not correspond to the provided</dt>
+<dd>number of single-qubit unitaries; if an input is of the wrong type</dd>
+</dl>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="qiskit.circuit.quantumcircuit.QuantumCircuit.ucy">
+<code class="descname">ucy</code><span class="sig-paren">(</span><em>angle_list</em>, <em>q_controls</em>, <em>q_target</em><span class="sig-paren">)</span><a class="headerlink" href="#qiskit.circuit.quantumcircuit.QuantumCircuit.ucy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Attach a uniformly controlled (also called multiplexed) Ry rotation gate to a circuit.
+The decomposition is base on <a class="reference external" href="https://arxiv.org/pdf/quant-ph/0406176.pdf">https://arxiv.org/pdf/quant-ph/0406176.pdf</a> by Shende et al.</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>Args:</dt>
+<dd><p class="first">angle_list (list[numbers): list of (real) rotation angles [a_0,…,a_{2^k-1}]
+q_controls (QuantumRegister|list[Qubit]): list of k control qubits</p>
+<blockquote>
+<div><p>(or empty list if no controls). The control qubits are ordered according to their
+significance in increasing order: For example if q_controls=[q[1],q[2]]
+(with q = QuantumRegister(2)), the rotation Ry(a_0)is performed if q[1] and q[2]
+are in the state zero, the rotation  Ry(a_1) is performed if q[1] is in the state</p>
+<blockquote>
+<div>one and q[2] is in the state zero, and so on</div></blockquote>
+</div></blockquote>
+<dl class="last docutils">
+<dt>q_target (QuantumRegister|Qubit): target qubit, where we act on with</dt>
+<dd>the single-qubit rotation gates</dd>
+</dl>
+</dd>
+<dt>Returns:</dt>
+<dd>QuantumCircuit: the uniformly controlled rotation gate is attached to the circuit.</dd>
+<dt>Raises:</dt>
+<dd><dl class="first last docutils">
+<dt>QiskitError: if the list number of control qubits does not correspond to the provided</dt>
+<dd>number of single-qubit unitaries; if an input is of the wrong type</dd>
+</dl>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="qiskit.circuit.quantumcircuit.QuantumCircuit.ucz">
+<code class="descname">ucz</code><span class="sig-paren">(</span><em>angle_list</em>, <em>q_controls</em>, <em>q_target</em><span class="sig-paren">)</span><a class="headerlink" href="#qiskit.circuit.quantumcircuit.QuantumCircuit.ucz" title="Permalink to this definition">¶</a></dt>
+<dd><p>Attach a uniformly controlled (also called multiplexed gates) Rz rotation gate to a circuit.
+The decomposition is base on <a class="reference external" href="https://arxiv.org/pdf/quant-ph/0406176.pdf">https://arxiv.org/pdf/quant-ph/0406176.pdf</a> by Shende et al.</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>Args:</dt>
+<dd><p class="first">angle_list (list[numbers): list of (real) rotation angles [a_0,…,a_{2^k-1}]
+q_controls (QuantumRegister|list[Qubit]): list of k control qubits</p>
+<blockquote>
+<div>(or empty list if no controls). The control qubits are ordered according to their
+significance in increasing order: For example if q_controls=[q[1],q[2]]
+(with q = QuantumRegister(2)), the rotation Rz(a_0)is performed if q[1] and q[2]
+are in the state zero, the rotation  Rz(a_1) is performed if q[1] is in
+the state one and q[2] is in the state zero, and so on</div></blockquote>
+<dl class="last docutils">
+<dt>q_target (QuantumRegister|Qubit): target qubit, where we act on with</dt>
+<dd>the single-qubit rotation gates</dd>
+</dl>
+</dd>
+<dt>Returns:</dt>
+<dd>QuantumCircuit: the uniformly controlled rotation gate is attached to the circuit.</dd>
+<dt>Raises:</dt>
+<dd><dl class="first last docutils">
+<dt>QiskitError: if the list number of control qubits does not correspond to the provided</dt>
+<dd>number of single-qubit unitaries; if an input is of the wrong type</dd>
+</dl>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
 <dt id="qiskit.circuit.quantumcircuit.QuantumCircuit.unitary">
 <code class="descname">unitary</code><span class="sig-paren">(</span><em>obj</em>, <em>qubits</em>, <em>label=None</em><span class="sig-paren">)</span><a class="headerlink" href="#qiskit.circuit.quantumcircuit.QuantumCircuit.unitary" title="Permalink to this definition">¶</a></dt>
 <dd><p>Apply u2 to q.</p>
@@ -2496,10 +2879,10 @@ parameterize the instruction.</td>
 
       <div class="clearer"></div>
     </div><div class="pagenation">
-     <a id="button-prev" href="qiskit.circuit.parametertable.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
+     <a id="button-prev" href="qiskit.circuit.parametervector.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
          <div class="pagenation-text">
             <span class="pagenation-direction">Previous</span>
-            <div>qiskit.circuit.parametertable module</div>
+            <div>qiskit.circuit.parametervector module</div>
          </div>
      </a>
      <a id="button-next" href="qiskit.circuit.quantumregister.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">

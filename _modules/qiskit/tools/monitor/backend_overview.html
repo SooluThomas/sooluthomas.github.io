@@ -206,7 +206,10 @@
 <span class="sd">    Raises:</span>
 <span class="sd">        QiskitError: No backends available.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">backends</span> <span class="o">=</span> <span class="n">IBMQ</span><span class="o">.</span><span class="n">backends</span><span class="p">()</span>
+    <span class="n">backends</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">provider</span> <span class="ow">in</span> <span class="n">IBMQ</span><span class="o">.</span><span class="n">providers</span><span class="p">():</span>
+        <span class="k">for</span> <span class="n">backend</span> <span class="ow">in</span> <span class="n">provider</span><span class="o">.</span><span class="n">backends</span><span class="p">():</span>
+            <span class="n">backends</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">backend</span><span class="p">)</span>
     <span class="n">unique_hardware_backends</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="n">unique_names</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">back</span> <span class="ow">in</span> <span class="n">backends</span><span class="p">:</span>

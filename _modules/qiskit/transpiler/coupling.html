@@ -183,8 +183,6 @@
 <span class="c1"># copyright notice, and modified files need to carry a notice indicating</span>
 <span class="c1"># that they have been altered from the originals.</span>
 
-<span class="c1"># pylint: disable=no-member</span>
-
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">Directed graph object for representing coupling between physical qubits.</span>
 
@@ -223,6 +221,8 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_dist_matrix</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="c1"># a sorted list of physical qubits (integers) in this coupling map</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_qubit_list</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1"># a sorted list of physical qubits (integers) in this coupling map</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_is_symmetric</span> <span class="o">=</span> <span class="kc">None</span>
 
         <span class="k">if</span> <span class="n">couplinglist</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">for</span> <span class="n">source</span><span class="p">,</span> <span class="n">target</span> <span class="ow">in</span> <span class="n">couplinglist</span><span class="p">:</span>
@@ -270,7 +270,8 @@
         <span class="k">if</span> <span class="n">dst</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">physical_qubits</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">add_physical_qubit</span><span class="p">(</span><span class="n">dst</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">graph</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">src</span><span class="p">,</span> <span class="n">dst</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_dist_matrix</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># invalidate</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_dist_matrix</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># invalidate</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_is_symmetric</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># invalidate</span></div>
 
 <div class="viewcode-block" id="CouplingMap.subgraph"><a class="viewcode-back" href="../../../autodoc/qiskit.transpiler.coupling.html#qiskit.transpiler.coupling.CouplingMap.subgraph">[docs]</a>    <span class="k">def</span> <span class="nf">subgraph</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nodelist</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return a CouplingMap object for a subgraph of self.</span>
@@ -357,6 +358,27 @@
             <span class="k">raise</span> <span class="n">CouplingError</span><span class="p">(</span>
                 <span class="s2">&quot;Nodes </span><span class="si">%s</span><span class="s2"> and </span><span class="si">%s</span><span class="s2"> are not connected&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">physical_qubit1</span><span class="p">),</span> <span class="nb">str</span><span class="p">(</span><span class="n">physical_qubit2</span><span class="p">)))</span></div>
 
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">is_symmetric</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Test if the graph is symmetric.</span>
+
+<span class="sd">        Return True if symmetric, False otherwise</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_is_symmetric</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_is_symmetric</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_check_symmetry</span><span class="p">()</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_is_symmetric</span>
+
+    <span class="k">def</span> <span class="nf">_check_symmetry</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Calculates symmetry</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            Bool: True if symmetric, False otherwise</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">mat</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">adjacency_matrix</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">graph</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">mat</span> <span class="o">-</span> <span class="n">mat</span><span class="o">.</span><span class="n">T</span><span class="p">)</span><span class="o">.</span><span class="n">nnz</span> <span class="o">==</span> <span class="mi">0</span>
+
 <div class="viewcode-block" id="CouplingMap.reduce"><a class="viewcode-back" href="../../../autodoc/qiskit.transpiler.coupling.html#qiskit.transpiler.coupling.CouplingMap.reduce">[docs]</a>    <span class="k">def</span> <span class="nf">reduce</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mapping</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Returns a reduced coupling map that</span>
 <span class="sd">        corresponds to the subgraph of qubits</span>
@@ -373,7 +395,7 @@
 <span class="sd">            CouplingError: Reduced coupling map must be connected.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">reduced_qubits</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">mapping</span><span class="p">)</span>
-        <span class="n">inv_map</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">mapping</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">inv_map</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">mapping</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">mapping</span><span class="p">):</span>
             <span class="n">inv_map</span><span class="p">[</span><span class="n">val</span><span class="p">]</span> <span class="o">=</span> <span class="n">idx</span>
 

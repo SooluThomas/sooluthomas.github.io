@@ -51,7 +51,7 @@
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="qiskit.aqua.circuits.gates.multi_control_u3_gate module" href="qiskit.aqua.circuits.gates.multi_control_u3_gate.html" />
+    <link rel="next" title="qiskit.aqua.circuits.gates.relative_phase_toffoli module" href="qiskit.aqua.circuits.gates.relative_phase_toffoli.html" />
     <link rel="prev" title="qiskit.aqua.circuits.gates.multi_control_toffoli_gate module" href="qiskit.aqua.circuits.gates.multi_control_toffoli_gate.html" /> 
   </head>
 <body>
@@ -756,6 +756,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.circuit.html">qiskit.circuit package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#subpackages">Subpackages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#submodules">Submodules</a></li>
 </ul>
 </li>
@@ -776,8 +777,9 @@
 <li class="toctree-l4"><a class="reference internal" href="qiskit.extensions.html#submodules">Submodules</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.mapper.html">qiskit.mapper package</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="qiskit.mapper.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qiskit.ignis.html">qiskit.ignis package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.ignis.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.ignis.html#submodules">Submodules</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.providers.html">qiskit.providers package</a><ul>
@@ -836,10 +838,8 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="qiskit.html#submodules">Submodules</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="qiskit._util.html">qiskit._util module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.exceptions.html">qiskit.exceptions module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.execute.html">qiskit.execute module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.qiskiterror.html">qiskit.qiskiterror module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.user_config.html">qiskit.user_config module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.util.html">qiskit.util module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.version.html">qiskit.version module</a></li>
@@ -1540,6 +1540,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.circuit.html">qiskit.circuit package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#subpackages">Subpackages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#submodules">Submodules</a></li>
 </ul>
 </li>
@@ -1560,8 +1561,9 @@
 <li class="toctree-l4"><a class="reference internal" href="qiskit.extensions.html#submodules">Submodules</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.mapper.html">qiskit.mapper package</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="qiskit.mapper.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qiskit.ignis.html">qiskit.ignis package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.ignis.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.ignis.html#submodules">Submodules</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.providers.html">qiskit.providers package</a><ul>
@@ -1620,10 +1622,8 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="qiskit.html#submodules">Submodules</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="qiskit._util.html">qiskit._util module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.exceptions.html">qiskit.exceptions module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.execute.html">qiskit.execute module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.qiskiterror.html">qiskit.qiskiterror module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.user_config.html">qiskit.user_config module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.util.html">qiskit.util module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.version.html">qiskit.version module</a></li>
@@ -1647,11 +1647,22 @@
 <p>Multiple-Control U1 gate. Not using ancillary qubits.</p>
 <dl class="function">
 <dt id="qiskit.aqua.circuits.gates.multi_control_u1_gate.mcu1">
-<code class="descname">mcu1</code><span class="sig-paren">(</span><em>self</em>, <em>theta</em>, <em>control_qubits</em>, <em>target_qubit</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/circuits/gates/multi_control_u1_gate.html#mcu1"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.aqua.circuits.gates.multi_control_u1_gate.mcu1" title="Permalink to this definition">¶</a></dt>
-<dd><p>Apply Multiple-Controlled U1 gate
-:param theta: angle theta
-:param control_qubits: The list of control qubits
-:param target_qubit: The target qubit</p>
+<code class="descname">mcu1</code><span class="sig-paren">(</span><em>self</em>, <em>lam</em>, <em>control_qubits</em>, <em>target_qubit</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/circuits/gates/multi_control_u1_gate.html#mcu1"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.aqua.circuits.gates.multi_control_u1_gate.mcu1" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply Multiple-Controlled U1 gate</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>self</strong> (<a class="reference internal" href="qiskit.circuit.quantumcircuit.html#qiskit.circuit.quantumcircuit.QuantumCircuit" title="qiskit.circuit.quantumcircuit.QuantumCircuit"><em>QuantumCircuit</em></a>) – The QuantumCircuit object to apply the mcu1 gate on.</li>
+<li><strong>lam</strong> (<em>float</em>) – angle lambda</li>
+<li><strong>control_qubits</strong> (<em>list of Qubit</em>) – The list of control qubits</li>
+<li><strong>target_qubit</strong> (<a class="reference internal" href="qiskit.circuit.quantumregister.html#qiskit.circuit.quantumregister.Qubit" title="qiskit.circuit.quantumregister.Qubit"><em>Qubit</em></a>) – The target qubit</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 </div>
@@ -1667,10 +1678,10 @@
             <div>qiskit.aqua.circuits.gates.multi_control_toffoli_gate module</div>
          </div>
      </a>
-     <a id="button-next" href="qiskit.aqua.circuits.gates.multi_control_u3_gate.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
+     <a id="button-next" href="qiskit.aqua.circuits.gates.relative_phase_toffoli.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
         <div class="pagenation-text">
             <span class="pagenation-direction">Next</span>
-            <div>qiskit.aqua.circuits.gates.multi_control_u3_gate module</div>
+            <div>qiskit.aqua.circuits.gates.relative_phase_toffoli module</div>
         </div>
      </a>
         

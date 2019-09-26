@@ -188,16 +188,14 @@
 <span class="sd">One-pulse single-qubit gate.</span>
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="kn">import</span> <span class="nn">numpy</span>
-<span class="kn">from</span> <span class="nn">qiskit.circuit</span> <span class="k">import</span> <span class="n">CompositeGate</span>
 <span class="kn">from</span> <span class="nn">qiskit.circuit</span> <span class="k">import</span> <span class="n">Gate</span>
 <span class="kn">from</span> <span class="nn">qiskit.circuit</span> <span class="k">import</span> <span class="n">QuantumCircuit</span>
 <span class="kn">from</span> <span class="nn">qiskit.circuit</span> <span class="k">import</span> <span class="n">QuantumRegister</span>
-<span class="kn">from</span> <span class="nn">qiskit.circuit.decorators</span> <span class="k">import</span> <span class="n">_op_expand</span><span class="p">,</span> <span class="n">_to_bits</span>
 <span class="kn">from</span> <span class="nn">qiskit.qasm</span> <span class="k">import</span> <span class="n">pi</span>
 <span class="kn">from</span> <span class="nn">qiskit.extensions.standard.u3</span> <span class="k">import</span> <span class="n">U3Gate</span>
 
 
-<div class="viewcode-block" id="U2Gate"><a class="viewcode-back" href="../../../../autodoc/qiskit.extensions.standard.u2.html#qiskit.circuit.compositegate.U2Gate">[docs]</a><span class="k">class</span> <span class="nc">U2Gate</span><span class="p">(</span><span class="n">Gate</span><span class="p">):</span>
+<div class="viewcode-block" id="U2Gate"><a class="viewcode-back" href="../../../../autodoc/qiskit.extensions.standard.u2.html#qiskit.circuit.quantumcircuit.U2Gate">[docs]</a><span class="k">class</span> <span class="nc">U2Gate</span><span class="p">(</span><span class="n">Gate</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;One-pulse single-qubit gate.&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">phi</span><span class="p">,</span> <span class="n">lam</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
@@ -212,14 +210,14 @@
             <span class="n">definition</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">inst</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">definition</span> <span class="o">=</span> <span class="n">definition</span>
 
-<div class="viewcode-block" id="U2Gate.inverse"><a class="viewcode-back" href="../../../../autodoc/qiskit.extensions.standard.u2.html#qiskit.circuit.compositegate.U2Gate.inverse">[docs]</a>    <span class="k">def</span> <span class="nf">inverse</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="U2Gate.inverse"><a class="viewcode-back" href="../../../../autodoc/qiskit.extensions.standard.u2.html#qiskit.circuit.quantumcircuit.U2Gate.inverse">[docs]</a>    <span class="k">def</span> <span class="nf">inverse</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Invert this gate.</span>
 
 <span class="sd">        u2(phi,lamb)^dagger = u2(-lamb-pi,-phi+pi)</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">U2Gate</span><span class="p">(</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">pi</span><span class="p">,</span> <span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">pi</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="U2Gate.to_matrix"><a class="viewcode-back" href="../../../../autodoc/qiskit.extensions.standard.u2.html#qiskit.circuit.compositegate.U2Gate.to_matrix">[docs]</a>    <span class="k">def</span> <span class="nf">to_matrix</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="U2Gate.to_matrix"><a class="viewcode-back" href="../../../../autodoc/qiskit.extensions.standard.u2.html#qiskit.circuit.quantumcircuit.U2Gate.to_matrix">[docs]</a>    <span class="k">def</span> <span class="nf">to_matrix</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return a Numpy.array for the U3 gate.&quot;&quot;&quot;</span>
         <span class="n">isqrt2</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">numpy</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
         <span class="n">phi</span><span class="p">,</span> <span class="n">lam</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span>
@@ -232,15 +230,12 @@
                            <span class="n">dtype</span><span class="o">=</span><span class="nb">complex</span><span class="p">)</span></div></div>
 
 
-<div class="viewcode-block" id="u2"><a class="viewcode-back" href="../../../../autodoc/qiskit.extensions.standard.u2.html#qiskit.circuit.compositegate.u2">[docs]</a><span class="nd">@_to_bits</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-<span class="nd">@_op_expand</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">u2</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">phi</span><span class="p">,</span> <span class="n">lam</span><span class="p">,</span> <span class="n">q</span><span class="p">):</span>
+<div class="viewcode-block" id="u2"><a class="viewcode-back" href="../../../../autodoc/qiskit.extensions.standard.u2.html#qiskit.circuit.quantumcircuit.u2">[docs]</a><span class="k">def</span> <span class="nf">u2</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">phi</span><span class="p">,</span> <span class="n">lam</span><span class="p">,</span> <span class="n">q</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Apply u2 to q.&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">U2Gate</span><span class="p">(</span><span class="n">phi</span><span class="p">,</span> <span class="n">lam</span><span class="p">),</span> <span class="p">[</span><span class="n">q</span><span class="p">],</span> <span class="p">[])</span></div>
 
 
 <span class="n">QuantumCircuit</span><span class="o">.</span><span class="n">u2</span> <span class="o">=</span> <span class="n">u2</span>
-<span class="n">CompositeGate</span><span class="o">.</span><span class="n">u2</span> <span class="o">=</span> <span class="n">u2</span>
 </pre></div>
 
         </div>

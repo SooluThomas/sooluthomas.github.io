@@ -171,17 +171,24 @@
   <h1>Source code for qiskit.pulse.pulse_lib.continuous</h1><div class="highlight"><pre>
 <span></span><span class="c1"># -*- coding: utf-8 -*-</span>
 
-<span class="c1"># Copyright 2019, IBM.</span>
+<span class="c1"># This code is part of Qiskit.</span>
 <span class="c1">#</span>
-<span class="c1"># This source code is licensed under the Apache License, Version 2.0 found in</span>
-<span class="c1"># the LICENSE.txt file in the root directory of this source tree.</span>
+<span class="c1"># (C) Copyright IBM 2017, 2019.</span>
+<span class="c1">#</span>
+<span class="c1"># This code is licensed under the Apache License, Version 2.0. You may</span>
+<span class="c1"># obtain a copy of this license in the LICENSE.txt file in the root directory</span>
+<span class="c1"># of this source tree or at http://www.apache.org/licenses/LICENSE-2.0.</span>
+<span class="c1">#</span>
+<span class="c1"># Any modifications or derivative works of this code must retain this</span>
+<span class="c1"># copyright notice, and modified files need to carry a notice indicating</span>
+<span class="c1"># that they have been altered from the originals.</span>
 
 <span class="c1"># pylint: disable=missing-return-doc, invalid-unary-operand-type</span>
 
 <span class="sd">&quot;&quot;&quot;Module for builtin continuous pulse functions.&quot;&quot;&quot;</span>
 
 <span class="kn">import</span> <span class="nn">functools</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="k">import</span> <span class="n">Union</span><span class="p">,</span> <span class="n">Tuple</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="k">import</span> <span class="n">Union</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Optional</span>
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
@@ -268,11 +275,11 @@
 
 
 <span class="k">def</span> <span class="nf">_fix_gaussian_width</span><span class="p">(</span><span class="n">gaussian_samples</span><span class="p">,</span> <span class="n">amp</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">center</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">sigma</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
-                        <span class="n">zeroed_width</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">rescale_amp</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+                        <span class="n">zeroed_width</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">rescale_amp</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
                         <span class="n">ret_scale_factor</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
     <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Enforce that the supplied gaussian pulse is zeroed at a specific width.</span>
 
-<span class="sd">    This is acheived by subtracting $\Omega_g(center \pm zeroed_width/2)$ from all samples.</span>
+<span class="sd">    This is achieved by subtracting $\Omega_g(center \pm zeroed_width/2)$ from all samples.</span>
 
 <span class="sd">    amp: Pulse amplitude at `2\times center+1`.</span>
 <span class="sd">    center: Center (mean) of pulse.</span>
@@ -301,7 +308,7 @@
 
 
 <div class="viewcode-block" id="gaussian"><a class="viewcode-back" href="../../../../autodoc/qiskit.pulse.pulse_lib.continuous.html#qiskit.pulse.pulse_lib.continuous.gaussian">[docs]</a><span class="k">def</span> <span class="nf">gaussian</span><span class="p">(</span><span class="n">times</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">amp</span><span class="p">:</span> <span class="nb">complex</span><span class="p">,</span> <span class="n">center</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">sigma</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
-             <span class="n">zeroed_width</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">rescale_amp</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+             <span class="n">zeroed_width</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">rescale_amp</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
              <span class="n">ret_x</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]]:</span>
     <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Continuous unnormalized gaussian pulse.</span>
 
@@ -354,8 +361,52 @@
     <span class="k">return</span> <span class="n">gauss_deriv</span></div>
 
 
+<div class="viewcode-block" id="sech_fn"><a class="viewcode-back" href="../../../../autodoc/qiskit.pulse.pulse_lib.continuous.html#qiskit.pulse.pulse_lib.continuous.sech_fn">[docs]</a><span class="k">def</span> <span class="nf">sech_fn</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Hyperbolic secant function&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">cosh</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="sech"><a class="viewcode-back" href="../../../../autodoc/qiskit.pulse.pulse_lib.continuous.html#qiskit.pulse.pulse_lib.continuous.sech">[docs]</a><span class="k">def</span> <span class="nf">sech</span><span class="p">(</span><span class="n">times</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">amp</span><span class="p">:</span> <span class="nb">complex</span><span class="p">,</span> <span class="n">center</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">sigma</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+         <span class="n">ret_x</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]]:</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Continuous unnormalized sech pulse.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        times: Times to output pulse for.</span>
+<span class="sd">        amp: Pulse amplitude at `center`.</span>
+<span class="sd">        center: Center (mean) of pulse.</span>
+<span class="sd">        sigma: Width (standard deviation) of pulse.</span>
+<span class="sd">        ret_x: Return centered and standard deviation normalized pulse location.</span>
+<span class="sd">               $x=(times-center)/sigma.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">times</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">times</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">complex_</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="p">(</span><span class="n">times</span><span class="o">-</span><span class="n">center</span><span class="p">)</span><span class="o">/</span><span class="n">sigma</span>
+    <span class="n">sech_out</span> <span class="o">=</span> <span class="n">amp</span><span class="o">*</span><span class="n">sech_fn</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">complex_</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">ret_x</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">sech_out</span><span class="p">,</span> <span class="n">x</span>
+    <span class="k">return</span> <span class="n">sech_out</span></div>
+
+
+<div class="viewcode-block" id="sech_deriv"><a class="viewcode-back" href="../../../../autodoc/qiskit.pulse.pulse_lib.continuous.html#qiskit.pulse.pulse_lib.continuous.sech_deriv">[docs]</a><span class="k">def</span> <span class="nf">sech_deriv</span><span class="p">(</span><span class="n">times</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">amp</span><span class="p">:</span> <span class="nb">complex</span><span class="p">,</span> <span class="n">center</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">sigma</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+               <span class="n">ret_sech</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Continuous unnormalized sech derivative pulse.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        times: Times to output pulse for.</span>
+<span class="sd">        amp: Pulse amplitude at `center`.</span>
+<span class="sd">        center: Center (mean) of pulse.</span>
+<span class="sd">        sigma: Width (standard deviation) of pulse.</span>
+<span class="sd">        ret_sech: Return sech with which derivative was taken with.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">sech_out</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="n">sech</span><span class="p">(</span><span class="n">times</span><span class="p">,</span> <span class="n">amp</span><span class="o">=</span><span class="n">amp</span><span class="p">,</span> <span class="n">center</span><span class="o">=</span><span class="n">center</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="n">sigma</span><span class="p">,</span> <span class="n">ret_x</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">sech_out_deriv</span> <span class="o">=</span> <span class="o">-</span> <span class="n">sech_out</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">tanh</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">/</span> <span class="n">sigma</span>
+    <span class="k">if</span> <span class="n">ret_sech</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">sech_out_deriv</span><span class="p">,</span> <span class="n">sech_out</span>
+    <span class="k">return</span> <span class="n">sech_out_deriv</span></div>
+
+
 <div class="viewcode-block" id="gaussian_square"><a class="viewcode-back" href="../../../../autodoc/qiskit.pulse.pulse_lib.continuous.html#qiskit.pulse.pulse_lib.continuous.gaussian_square">[docs]</a><span class="k">def</span> <span class="nf">gaussian_square</span><span class="p">(</span><span class="n">times</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">amp</span><span class="p">:</span> <span class="nb">complex</span><span class="p">,</span> <span class="n">center</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">width</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
-                    <span class="n">sigma</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">zeroed_width</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+                    <span class="n">sigma</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">zeroed_width</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
     <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Continuous gaussian square pulse.</span>
 
 <span class="sd">    Args:</span>
@@ -385,7 +436,7 @@
 
 
 <div class="viewcode-block" id="drag"><a class="viewcode-back" href="../../../../autodoc/qiskit.pulse.pulse_lib.continuous.html#qiskit.pulse.pulse_lib.continuous.drag">[docs]</a><span class="k">def</span> <span class="nf">drag</span><span class="p">(</span><span class="n">times</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">amp</span><span class="p">:</span> <span class="nb">complex</span><span class="p">,</span> <span class="n">center</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">sigma</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">beta</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
-         <span class="n">zeroed_width</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">rescale_amp</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+         <span class="n">zeroed_width</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">rescale_amp</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
     <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Continuous Y-only correction DRAG pulse for standard nonlinear oscillator (SNO) [1].</span>
 
 <span class="sd">    [1] Gambetta, J. M., Motzoi, F., Merkel, S. T. &amp; Wilhelm, F. K.</span>
@@ -400,7 +451,7 @@
 <span class="sd">        sigma: Width (standard deviation) of pulse.</span>
 <span class="sd">        beta: Y correction amplitude. For the SNO this is $\beta=-\frac{\lambda_1^2}{4\Delta_2}$.</span>
 <span class="sd">            Where $\lambds_1$ is the relative coupling strength between the first excited and second</span>
-<span class="sd">            excited states and $\Delta_2$ is the detuning between the resepective excited states.</span>
+<span class="sd">            excited states and $\Delta_2$ is the detuning between the respective excited states.</span>
 <span class="sd">        zeroed_width: Subtract baseline to gaussian pulses to make sure</span>
 <span class="sd">                 $\Omega_g(center \pm zeroed_width/2)=0$ is satisfied. This is used to avoid</span>
 <span class="sd">                 large discontinuities at the start of a gaussian pulse.</span>

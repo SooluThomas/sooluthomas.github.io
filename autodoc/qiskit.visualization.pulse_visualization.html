@@ -52,7 +52,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="qiskit.visualization.qcstyle module" href="qiskit.visualization.qcstyle.html" />
-    <link rel="prev" title="qiskit.visualization.matplotlib module" href="qiskit.visualization.matplotlib.html" /> 
+    <link rel="prev" title="qiskit.visualization.pass_manager_visualization module" href="qiskit.visualization.pass_manager_visualization.html" /> 
   </head>
 <body>
   <header>
@@ -756,6 +756,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.circuit.html">qiskit.circuit package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#subpackages">Subpackages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#submodules">Submodules</a></li>
 </ul>
 </li>
@@ -776,8 +777,9 @@
 <li class="toctree-l4"><a class="reference internal" href="qiskit.extensions.html#submodules">Submodules</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.mapper.html">qiskit.mapper package</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="qiskit.mapper.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qiskit.ignis.html">qiskit.ignis package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.ignis.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.ignis.html#submodules">Submodules</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.providers.html">qiskit.providers package</a><ul>
@@ -836,10 +838,8 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="qiskit.html#submodules">Submodules</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="qiskit._util.html">qiskit._util module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.exceptions.html">qiskit.exceptions module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.execute.html">qiskit.execute module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.qiskiterror.html">qiskit.qiskiterror module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.user_config.html">qiskit.user_config module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.util.html">qiskit.util module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.version.html">qiskit.version module</a></li>
@@ -1540,6 +1540,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.circuit.html">qiskit.circuit package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#subpackages">Subpackages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#submodules">Submodules</a></li>
 </ul>
 </li>
@@ -1560,8 +1561,9 @@
 <li class="toctree-l4"><a class="reference internal" href="qiskit.extensions.html#submodules">Submodules</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.mapper.html">qiskit.mapper package</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="qiskit.mapper.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qiskit.ignis.html">qiskit.ignis package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.ignis.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.ignis.html#submodules">Submodules</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.providers.html">qiskit.providers package</a><ul>
@@ -1620,10 +1622,8 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="qiskit.html#submodules">Submodules</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="qiskit._util.html">qiskit._util module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.exceptions.html">qiskit.exceptions module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.execute.html">qiskit.execute module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.qiskiterror.html">qiskit.qiskiterror module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.user_config.html">qiskit.user_config module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.util.html">qiskit.util module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.version.html">qiskit.version module</a></li>
@@ -1656,7 +1656,8 @@
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>data</strong> (<a class="reference internal" href="qiskit.pulse.interfaces.html#qiskit.pulse.interfaces.ScheduleComponent" title="qiskit.pulse.interfaces.ScheduleComponent"><em>ScheduleComponent</em></a><em> or </em><a class="reference internal" href="qiskit.pulse.commands.sample_pulse.html#qiskit.pulse.commands.sample_pulse.SamplePulse" title="qiskit.pulse.commands.sample_pulse.SamplePulse"><em>SamplePulse</em></a>) – Data to plot</li>
 <li><strong>dt</strong> (<em>float</em>) – Time interval of samples</li>
-<li><strong>style</strong> (<a class="reference internal" href="qiskit.visualization.qcstyle.html#qiskit.visualization.qcstyle.OPStylePulse" title="qiskit.visualization.qcstyle.OPStylePulse"><em>OPStylePulse</em></a><em> or </em><a class="reference internal" href="qiskit.visualization.qcstyle.html#qiskit.visualization.qcstyle.OPStyleSched" title="qiskit.visualization.qcstyle.OPStyleSched"><em>OPStyleSched</em></a>) – A style sheet to configure plot appearance</li>
+<li><strong>style</strong> (<a class="reference internal" href="qiskit.visualization.pulse.qcstyle.html#qiskit.visualization.pulse.qcstyle.PulseStyle" title="qiskit.visualization.pulse.qcstyle.PulseStyle"><em>PulseStyle</em></a><em> or </em><a class="reference internal" href="qiskit.visualization.pulse.qcstyle.html#qiskit.visualization.pulse.qcstyle.SchedStyle" title="qiskit.visualization.pulse.qcstyle.SchedStyle"><em>SchedStyle</em></a>) – A style sheet to configure
+plot appearance</li>
 <li><strong>filename</strong> (<em>str</em>) – Name required to save pulse image</li>
 <li><strong>interp_method</strong> (<em>Callable</em>) – interpolation function
 See <cite>qiskit.visualization.interpolation</cite> for more information</li>
@@ -1692,10 +1693,10 @@ See <cite>qiskit.visualization.interpolation</cite> for more information</li>
 
       <div class="clearer"></div>
     </div><div class="pagenation">
-     <a id="button-prev" href="qiskit.visualization.matplotlib.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
+     <a id="button-prev" href="qiskit.visualization.pass_manager_visualization.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
          <div class="pagenation-text">
             <span class="pagenation-direction">Previous</span>
-            <div>qiskit.visualization.matplotlib module</div>
+            <div>qiskit.visualization.pass_manager_visualization module</div>
          </div>
      </a>
      <a id="button-next" href="qiskit.visualization.qcstyle.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">

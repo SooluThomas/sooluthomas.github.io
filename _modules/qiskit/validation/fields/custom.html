@@ -171,10 +171,17 @@
   <h1>Source code for qiskit.validation.fields.custom</h1><div class="highlight"><pre>
 <span></span><span class="c1"># -*- coding: utf-8 -*-</span>
 
-<span class="c1"># Copyright 2019, IBM.</span>
+<span class="c1"># This code is part of Qiskit.</span>
 <span class="c1">#</span>
-<span class="c1"># This source code is licensed under the Apache License, Version 2.0 found in</span>
-<span class="c1"># the LICENSE.txt file in the root directory of this source tree.</span>
+<span class="c1"># (C) Copyright IBM 2017, 2019.</span>
+<span class="c1">#</span>
+<span class="c1"># This code is licensed under the Apache License, Version 2.0. You may</span>
+<span class="c1"># obtain a copy of this license in the LICENSE.txt file in the root directory</span>
+<span class="c1"># of this source tree or at http://www.apache.org/licenses/LICENSE-2.0.</span>
+<span class="c1">#</span>
+<span class="c1"># Any modifications or derivative works of this code must retain this</span>
+<span class="c1"># copyright notice, and modified files need to carry a notice indicating</span>
+<span class="c1"># that they have been altered from the originals.</span>
 
 <span class="sd">&quot;&quot;&quot;Fields custom to Terra to be used with Qiskit validated classes.&quot;&quot;&quot;</span>
 
@@ -185,6 +192,7 @@
 <span class="kn">from</span> <span class="nn">marshmallow.exceptions</span> <span class="k">import</span> <span class="n">ValidationError</span>
 <span class="kn">from</span> <span class="nn">marshmallow.compat</span> <span class="k">import</span> <span class="n">Mapping</span>
 
+<span class="kn">from</span> <span class="nn">qiskit.circuit.parameterexpression</span> <span class="k">import</span> <span class="n">ParameterExpression</span>
 <span class="kn">from</span> <span class="nn">qiskit.validation</span> <span class="k">import</span> <span class="n">ModelTypeValidator</span>
 
 
@@ -233,8 +241,8 @@
 <span class="sd">    type (for example, numpy.float and regular float). If possible, it is</span>
 <span class="sd">    recommended that more specific and defined fields are used instead.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-
     <span class="n">valid_types</span> <span class="o">=</span> <span class="p">(</span><span class="nb">complex</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span>
+                   <span class="n">ParameterExpression</span><span class="p">,</span>
                    <span class="n">numpy</span><span class="o">.</span><span class="n">integer</span><span class="p">,</span> <span class="n">numpy</span><span class="o">.</span><span class="n">float</span><span class="p">,</span> <span class="n">sympy</span><span class="o">.</span><span class="n">Basic</span><span class="p">,</span> <span class="n">sympy</span><span class="o">.</span><span class="n">Symbol</span><span class="p">,</span>
                    <span class="nb">list</span><span class="p">,</span> <span class="n">numpy</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span>
 
@@ -256,10 +264,15 @@
             <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="p">(</span><span class="nb">float</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="nb">str</span><span class="p">)):</span>
             <span class="k">return</span> <span class="n">value</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">ParameterExpression</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">value</span><span class="o">.</span><span class="n">parameters</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">fail</span><span class="p">(</span><span class="s1">&#39;invalid&#39;</span><span class="p">,</span> <span class="nb">input</span><span class="o">=</span><span class="n">value</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">sympy</span><span class="o">.</span><span class="n">Symbol</span><span class="p">):</span>
             <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">sympy</span><span class="o">.</span><span class="n">Basic</span><span class="p">):</span>
-            <span class="k">if</span> <span class="n">value</span><span class="o">.</span><span class="n">is_imaginary</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">sympy</span><span class="o">.</span><span class="n">im</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
                 <span class="k">return</span> <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="n">sympy</span><span class="o">.</span><span class="n">re</span><span class="p">(</span><span class="n">value</span><span class="p">)),</span> <span class="nb">float</span><span class="p">(</span><span class="n">sympy</span><span class="o">.</span><span class="n">im</span><span class="p">(</span><span class="n">value</span><span class="p">))]</span>
             <span class="k">if</span> <span class="n">value</span><span class="o">.</span><span class="n">is_Integer</span><span class="p">:</span>
                 <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">value</span><span class="o">.</span><span class="n">evalf</span><span class="p">())</span>
@@ -267,8 +280,8 @@
                 <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="n">value</span><span class="o">.</span><span class="n">evalf</span><span class="p">())</span>
 
         <span class="c1"># Fallback for attempting serialization.</span>
-        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="s1">&#39;as_dict&#39;</span><span class="p">):</span>
-            <span class="k">return</span> <span class="n">value</span><span class="o">.</span><span class="n">as_dict</span><span class="p">()</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="s1">&#39;to_dict&#39;</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">value</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span>
 
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">fail</span><span class="p">(</span><span class="s1">&#39;format&#39;</span><span class="p">,</span> <span class="nb">input</span><span class="o">=</span><span class="n">value</span><span class="p">)</span>
 
@@ -285,7 +298,7 @@
         <span class="sd">&quot;&quot;&quot;Customize check_type for handling containers.&quot;&quot;&quot;</span>
         <span class="c1"># Check the type in the standard way first, in order to fail quickly</span>
         <span class="c1"># in case of invalid values.</span>
-        <span class="n">root_value</span> <span class="o">=</span> <span class="nb">super</span><span class="p">(</span><span class="n">InstructionParameter</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">check_type</span><span class="p">(</span>
+        <span class="n">root_value</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">check_type</span><span class="p">(</span>
             <span class="n">value</span><span class="p">,</span> <span class="n">attr</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="n">is_collection</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
@@ -311,7 +324,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="c1"># pylint: disable=missing-param-doc</span>
 
-        <span class="nb">super</span><span class="p">(</span><span class="n">DictParameters</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">valid_value_types</span> <span class="o">=</span> <span class="n">valid_value_types</span>
 
     <span class="k">def</span> <span class="nf">_expected_types</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -345,7 +358,6 @@
         <span class="k">return</span> <span class="n">value</span></div>
 
     <span class="k">def</span> <span class="nf">_validate_values</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
-        <span class="c1"># pylint: disable=too-many-return-statements</span>
         <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">return</span> <span class="kc">None</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">valid_value_types</span><span class="p">):</span>
@@ -358,7 +370,6 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">fail</span><span class="p">(</span><span class="s1">&#39;invalid&#39;</span><span class="p">,</span> <span class="nb">input</span><span class="o">=</span><span class="n">value</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">_serialize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">attr</span><span class="p">,</span> <span class="n">obj</span><span class="p">):</span>
-        <span class="c1"># pylint: disable=too-many-return-statements</span>
         <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">return</span> <span class="kc">None</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">Mapping</span><span class="p">):</span>
@@ -367,7 +378,6 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">fail</span><span class="p">(</span><span class="s1">&#39;invalid_mapping&#39;</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">_deserialize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">attr</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
-        <span class="c1"># pylint: disable=too-many-return-statements</span>
         <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">return</span> <span class="kc">None</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">Mapping</span><span class="p">):</span>

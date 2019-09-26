@@ -756,6 +756,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.circuit.html">qiskit.circuit package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#subpackages">Subpackages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#submodules">Submodules</a></li>
 </ul>
 </li>
@@ -776,8 +777,9 @@
 <li class="toctree-l4"><a class="reference internal" href="qiskit.extensions.html#submodules">Submodules</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.mapper.html">qiskit.mapper package</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="qiskit.mapper.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qiskit.ignis.html">qiskit.ignis package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.ignis.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.ignis.html#submodules">Submodules</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.providers.html">qiskit.providers package</a><ul>
@@ -836,10 +838,8 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="qiskit.html#submodules">Submodules</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="qiskit._util.html">qiskit._util module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.exceptions.html">qiskit.exceptions module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.execute.html">qiskit.execute module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.qiskiterror.html">qiskit.qiskiterror module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.user_config.html">qiskit.user_config module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.util.html">qiskit.util module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.version.html">qiskit.version module</a></li>
@@ -1540,6 +1540,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.circuit.html">qiskit.circuit package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#subpackages">Subpackages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#submodules">Submodules</a></li>
 </ul>
 </li>
@@ -1560,8 +1561,9 @@
 <li class="toctree-l4"><a class="reference internal" href="qiskit.extensions.html#submodules">Submodules</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.mapper.html">qiskit.mapper package</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="qiskit.mapper.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qiskit.ignis.html">qiskit.ignis package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.ignis.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.ignis.html#submodules">Submodules</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.providers.html">qiskit.providers package</a><ul>
@@ -1620,10 +1622,8 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="qiskit.html#submodules">Submodules</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="qiskit._util.html">qiskit._util module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.exceptions.html">qiskit.exceptions module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.execute.html">qiskit.execute module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.qiskiterror.html">qiskit.qiskiterror module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.user_config.html">qiskit.user_config module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.util.html">qiskit.util module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.version.html">qiskit.version module</a></li>
@@ -1644,11 +1644,11 @@
         
   <div class="section" id="module-qiskit.transpiler.passes.mapping.cx_direction">
 <span id="qiskit-transpiler-passes-mapping-cx-direction-module"></span><h1>qiskit.transpiler.passes.mapping.cx_direction module<a class="headerlink" href="#module-qiskit.transpiler.passes.mapping.cx_direction" title="Permalink to this headline">¶</a></h1>
-<p>The CX direction rearrenges the direction of the cx nodes to make the circuit
+<p>The CX direction rearranges the direction of the cx nodes to make the circuit
 compatible with the coupling_map.</p>
 <dl class="class">
 <dt id="qiskit.transpiler.passes.mapping.cx_direction.CXDirection">
-<em class="property">class </em><code class="descname">CXDirection</code><span class="sig-paren">(</span><em>coupling_map</em>, <em>initial_layout=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/transpiler/passes/mapping/cx_direction.html#CXDirection"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.transpiler.passes.mapping.cx_direction.CXDirection" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descname">CXDirection</code><span class="sig-paren">(</span><em>coupling_map</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/transpiler/passes/mapping/cx_direction.html#CXDirection"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.transpiler.passes.mapping.cx_direction.CXDirection" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="qiskit.transpiler.basepasses.html#qiskit.transpiler.basepasses.TransformationPass" title="qiskit.transpiler.basepasses.TransformationPass"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.transpiler.basepasses.TransformationPass</span></code></a></p>
 <p>Rearranges the direction of the cx nodes to make the circuit
 compatible with the directed coupling map.</p>

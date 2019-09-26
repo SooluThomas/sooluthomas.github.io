@@ -756,6 +756,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.circuit.html">qiskit.circuit package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#subpackages">Subpackages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#submodules">Submodules</a></li>
 </ul>
 </li>
@@ -776,8 +777,9 @@
 <li class="toctree-l4"><a class="reference internal" href="qiskit.extensions.html#submodules">Submodules</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.mapper.html">qiskit.mapper package</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="qiskit.mapper.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qiskit.ignis.html">qiskit.ignis package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.ignis.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.ignis.html#submodules">Submodules</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.providers.html">qiskit.providers package</a><ul>
@@ -836,10 +838,8 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="qiskit.html#submodules">Submodules</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="qiskit._util.html">qiskit._util module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.exceptions.html">qiskit.exceptions module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.execute.html">qiskit.execute module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.qiskiterror.html">qiskit.qiskiterror module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.user_config.html">qiskit.user_config module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.util.html">qiskit.util module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.version.html">qiskit.version module</a></li>
@@ -1540,6 +1540,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.circuit.html">qiskit.circuit package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#subpackages">Subpackages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#submodules">Submodules</a></li>
 </ul>
 </li>
@@ -1560,8 +1561,9 @@
 <li class="toctree-l4"><a class="reference internal" href="qiskit.extensions.html#submodules">Submodules</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.mapper.html">qiskit.mapper package</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="qiskit.mapper.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qiskit.ignis.html">qiskit.ignis package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.ignis.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.ignis.html#submodules">Submodules</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.providers.html">qiskit.providers package</a><ul>
@@ -1620,10 +1622,8 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="qiskit.html#submodules">Submodules</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="qiskit._util.html">qiskit._util module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.exceptions.html">qiskit.exceptions module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.execute.html">qiskit.execute module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.qiskiterror.html">qiskit.qiskiterror module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.user_config.html">qiskit.user_config module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.util.html">qiskit.util module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.version.html">qiskit.version module</a></li>
@@ -1650,6 +1650,37 @@
 <em class="property">class </em><code class="descname">Barrier</code><span class="sig-paren">(</span><em>num_qubits</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/extensions/standard/barrier.html#Barrier"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.extensions.standard.barrier.Barrier" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="qiskit.circuit.instruction.html#qiskit.circuit.instruction.Instruction" title="qiskit.circuit.instruction.Instruction"><code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit.circuit.instruction.Instruction</span></code></a></p>
 <p>Barrier instruction.</p>
+<dl class="method">
+<dt id="qiskit.extensions.standard.barrier.Barrier.broadcast_arguments">
+<code class="descname">broadcast_arguments</code><span class="sig-paren">(</span><em>qargs</em>, <em>cargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/extensions/standard/barrier.html#Barrier.broadcast_arguments"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.extensions.standard.barrier.Barrier.broadcast_arguments" title="Permalink to this definition">¶</a></dt>
+<dd><p>Validation of the arguments.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>qargs</strong> (<a class="reference internal" href="qiskit.validation.fields.containers.html#qiskit.validation.fields.containers.List" title="qiskit.validation.fields.containers.List"><em>List</em></a>) – List of quantum bit arguments.</li>
+<li><strong>cargs</strong> (<a class="reference internal" href="qiskit.validation.fields.containers.html#qiskit.validation.fields.containers.List" title="qiskit.validation.fields.containers.List"><em>List</em></a>) – List of classical bit arguments.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Yields:</th><td class="field-body"><p class="first"><em>Tuple(List, List)</em> – A tuple with single arguments.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><code class="xref py py-exc docutils literal notranslate"><span class="pre">QiskitError</span></code> – If the input is not valid. For example, the number of
+arguments does not match the gate expectation.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="qiskit.extensions.standard.barrier.Barrier.c_if">
+<code class="descname">c_if</code><span class="sig-paren">(</span><em>classical</em>, <em>val</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/extensions/standard/barrier.html#Barrier.c_if"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.extensions.standard.barrier.Barrier.c_if" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add classical control on register classical and value val.</p>
+</dd></dl>
+
 <dl class="method">
 <dt id="qiskit.extensions.standard.barrier.Barrier.inverse">
 <code class="descname">inverse</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/extensions/standard/barrier.html#Barrier.inverse"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.extensions.standard.barrier.Barrier.inverse" title="Permalink to this definition">¶</a></dt>

@@ -190,7 +190,7 @@
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
 <span class="kn">from</span> <span class="nn">qiskit.quantum_info</span> <span class="k">import</span> <span class="n">Pauli</span>
-<span class="kn">from</span> <span class="nn">qiskit.aqua</span> <span class="k">import</span> <span class="n">Operator</span>
+<span class="kn">from</span> <span class="nn">qiskit.aqua.operators</span> <span class="k">import</span> <span class="n">WeightedPauliOperator</span>
 
 <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
 
@@ -215,23 +215,20 @@
 
 
 <div class="viewcode-block" id="get_exact_cover_qubitops"><a class="viewcode-back" href="../../../../../autodoc/qiskit.aqua.translators.ising.exact_cover.html#qiskit.aqua.translators.ising.exact_cover.get_exact_cover_qubitops">[docs]</a><span class="k">def</span> <span class="nf">get_exact_cover_qubitops</span><span class="p">(</span><span class="n">list_of_subsets</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Construct the Hamiltonian for the exact solver problem</span>
+    <span class="sd">&quot;&quot;&quot;Construct the Hamiltonian for the exact solver problem.</span>
 
+<span class="sd">    Notes:</span>
+<span class="sd">        Assumption: the union of the subsets contains all the elements to cover.</span>
+<span class="sd">        The Hamiltonian is:</span>
+<span class="sd">           sum_{each element e}{(1-sum_{every subset_i that contains e}{Xi})^2},</span>
+<span class="sd">           where Xi (Xi=1 or 0) means whether should include the subset i.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        list_of_subsets: list of lists (i.e., subsets)</span>
 
 <span class="sd">    Returns:</span>
-<span class="sd">        operator.Operator, float: operator for the Hamiltonian and a</span>
-<span class="sd">        constant shift for the obj function.</span>
-
-<span class="sd">    Assumption:</span>
-<span class="sd">        the union of the subsets contains all the elements to cover</span>
-
-<span class="sd">    The Hamiltonian is:</span>
-<span class="sd">       sum_{each element e}{(1-sum_{every subset_i that contains e}{Xi})^2},</span>
-<span class="sd">       where Xi (Xi=1 or 0) means whether should include the subset i.</span>
-
+<span class="sd">        WeightedPauliOperator: operator for the Hamiltonian</span>
+<span class="sd">        float: a constant shift for the obj function.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">list_of_subsets</span><span class="p">)</span>
 
@@ -267,7 +264,7 @@
             <span class="n">vp</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
             <span class="n">pauli_list</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="o">-</span><span class="n">Y</span><span class="p">,</span> <span class="n">Pauli</span><span class="p">(</span><span class="n">vp</span><span class="p">,</span> <span class="n">wp</span><span class="p">)])</span>
 
-    <span class="k">return</span> <span class="n">Operator</span><span class="p">(</span><span class="n">paulis</span><span class="o">=</span><span class="n">pauli_list</span><span class="p">),</span> <span class="n">shift</span></div>
+    <span class="k">return</span> <span class="n">WeightedPauliOperator</span><span class="p">(</span><span class="n">paulis</span><span class="o">=</span><span class="n">pauli_list</span><span class="p">),</span> <span class="n">shift</span></div>
 
 
 <div class="viewcode-block" id="read_numbers_from_file"><a class="viewcode-back" href="../../../../../autodoc/qiskit.aqua.translators.ising.exact_cover.html#qiskit.aqua.translators.ising.exact_cover.read_numbers_from_file">[docs]</a><span class="k">def</span> <span class="nf">read_numbers_from_file</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>

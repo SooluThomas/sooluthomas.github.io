@@ -243,7 +243,7 @@
 <span class="sd">        validator_class (jsonschema.IValidator): jsonschema IValidator instance.</span>
 <span class="sd">            Default behavior is to determine this from the schema `$schema`</span>
 <span class="sd">            field.</span>
-<span class="sd">        **validator_kwargs (dict): Additional keyword arguments for validator.</span>
+<span class="sd">        **validator_kwargs: Additional keyword arguments for validator.</span>
 
 <span class="sd">    Return:</span>
 <span class="sd">        jsonschema.IValidator: Validator for JSON schema.</span>
@@ -259,19 +259,16 @@
                                         <span class="s2">&quot;be provided.&quot;</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="n">name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">_VALIDATORS</span><span class="p">:</span>
-
         <span class="c1"># Resolve JSON spec from schema if needed</span>
         <span class="k">if</span> <span class="n">validator_class</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">validator_class</span> <span class="o">=</span> <span class="n">jsonschema</span><span class="o">.</span><span class="n">validators</span><span class="o">.</span><span class="n">validator_for</span><span class="p">(</span><span class="n">schema</span><span class="p">)</span>
 
         <span class="c1"># Generate and store validator in _VALIDATORS</span>
         <span class="n">_VALIDATORS</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">validator_class</span><span class="p">(</span><span class="n">schema</span><span class="p">,</span> <span class="o">**</span><span class="n">validator_kwargs</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">check_schema</span><span class="p">:</span>
+            <span class="n">_VALIDATORS</span><span class="p">[</span><span class="n">name</span><span class="p">]</span><span class="o">.</span><span class="n">check_schema</span><span class="p">(</span><span class="n">schema</span><span class="p">)</span>
 
     <span class="n">validator</span> <span class="o">=</span> <span class="n">_VALIDATORS</span><span class="p">[</span><span class="n">name</span><span class="p">]</span>
-
-    <span class="k">if</span> <span class="n">check_schema</span><span class="p">:</span>
-        <span class="n">validator</span><span class="o">.</span><span class="n">check_schema</span><span class="p">(</span><span class="n">schema</span><span class="p">)</span>
-
     <span class="k">return</span> <span class="n">validator</span>
 
 

@@ -183,7 +183,7 @@
 <span class="c1"># copyright notice, and modified files need to carry a notice indicating</span>
 <span class="c1"># that they have been altered from the originals.</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">qiskit.aqua.circuits.piecewise_linear_y_rotation</span> <span class="k">import</span> <span class="n">PiecewiseLinearYRotation</span> <span class="k">as</span> <span class="n">PwlRy</span>
+<span class="kn">from</span> <span class="nn">qiskit.aqua.circuits.piecewise_linear_rotation</span> <span class="k">import</span> <span class="n">PiecewiseLinearRotation</span> <span class="k">as</span> <span class="n">PwlRot</span>
 <span class="kn">from</span> <span class="nn">qiskit.aqua.utils</span> <span class="k">import</span> <span class="n">CircuitFactory</span>
 
 
@@ -227,9 +227,9 @@
         <span class="c1"># drop breakpoints and corresponding values below min_state_value or above max_state_value</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">reversed</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">breakpoints</span><span class="p">))):</span>
             <span class="k">if</span> <span class="n">breakpoints</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">min_state_value</span> <span class="o">-</span> <span class="mf">1e-6</span><span class="p">)</span> <span class="ow">or</span> <span class="n">breakpoints</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">max_state_value</span> <span class="o">+</span> <span class="mf">1e-6</span><span class="p">):</span>
-                <span class="k">del</span><span class="p">(</span><span class="n">breakpoints</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
-                <span class="k">del</span><span class="p">(</span><span class="n">slopes</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
-                <span class="k">del</span><span class="p">(</span><span class="n">offsets</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+                <span class="n">breakpoints</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">breakpoints</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+                <span class="n">slopes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">slopes</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+                <span class="n">offsets</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">offsets</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
 
         <span class="c1"># make sure the minimal value is included in the breakpoints</span>
         <span class="n">min_value_included</span> <span class="o">=</span> <span class="kc">False</span>
@@ -273,6 +273,10 @@
             <span class="n">mapped_breakpoint</span> <span class="o">=</span> <span class="p">(</span><span class="n">breakpoints</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">lb</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">ub</span> <span class="o">-</span> <span class="n">lb</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">2</span><span class="o">**</span><span class="n">num_state_qubits</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">mapped_breakpoint</span> <span class="o">&lt;=</span> <span class="mi">2</span><span class="o">**</span><span class="n">num_state_qubits</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_mapped_breakpoints</span> <span class="o">+=</span> <span class="p">[</span><span class="n">mapped_breakpoint</span><span class="p">]</span>
+
+                <span class="c1"># factor (ub - lb) / (2^n - 1) is for the scaling of x to [l,u]</span>
+                <span class="c1"># note that the +l for mapping to [l,u] is already included in</span>
+                <span class="c1"># the offsets given as parameters</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_mapped_slopes</span> <span class="o">+=</span> <span class="p">[</span><span class="n">slopes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="n">ub</span> <span class="o">-</span> <span class="n">lb</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span><span class="o">**</span><span class="n">num_state_qubits</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)]</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_mapped_offsets</span> <span class="o">+=</span> <span class="p">[</span><span class="n">offsets</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_mapped_breakpoints</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_mapped_breakpoints</span><span class="p">)</span>
@@ -292,7 +296,7 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">_offset_angles</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">_offset_angles</span>
 
             <span class="c1"># create piecewise linear Y rotation</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_pwl_ry</span> <span class="o">=</span> <span class="n">PwlRy</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_pwl_ry</span> <span class="o">=</span> <span class="n">PwlRot</span><span class="p">(</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_mapped_breakpoints</span><span class="p">,</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_slope_angles</span><span class="p">,</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_offset_angles</span><span class="p">,</span>
@@ -330,7 +334,6 @@
 
         <span class="c1"># apply piecewise linear rotation</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_pwl_ry</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="n">qc</span><span class="p">,</span> <span class="n">q_state</span> <span class="o">+</span> <span class="p">[</span><span class="n">q_objective</span><span class="p">],</span> <span class="n">q_ancillas</span><span class="p">)</span></div></div>
-
 </pre></div>
 
         </div>

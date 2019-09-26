@@ -184,10 +184,10 @@
 <span class="c1"># that they have been altered from the originals.</span>
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">qiskit</span> <span class="k">import</span> <span class="n">QuantumCircuit</span><span class="p">,</span> <span class="n">compiler</span>
+<span class="kn">from</span> <span class="nn">qiskit</span> <span class="k">import</span> <span class="n">compiler</span>
+<span class="kn">from</span> <span class="nn">qiskit.circuit</span> <span class="k">import</span> <span class="n">QuantumCircuit</span>
 <span class="kn">from</span> <span class="nn">qiskit.transpiler.passes</span> <span class="k">import</span> <span class="n">Unroller</span>
 <span class="kn">from</span> <span class="nn">qiskit.transpiler</span> <span class="k">import</span> <span class="n">PassManager</span>
-<span class="kn">from</span> <span class="nn">qiskit</span> <span class="k">import</span> <span class="n">BasicAer</span>
 
 
 <div class="viewcode-block" id="apply_cu1"><a class="viewcode-back" href="../../../../autodoc/qiskit.aqua.utils.controlled_circuit.html#qiskit.aqua.utils.controlled_circuit.apply_cu1">[docs]</a><span class="k">def</span> <span class="nf">apply_cu1</span><span class="p">(</span><span class="n">circuit</span><span class="p">,</span> <span class="n">lam</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">use_basis_gates</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
@@ -203,18 +203,14 @@
 
 <div class="viewcode-block" id="apply_cu3"><a class="viewcode-back" href="../../../../autodoc/qiskit.aqua.utils.controlled_circuit.html#qiskit.aqua.utils.controlled_circuit.apply_cu3">[docs]</a><span class="k">def</span> <span class="nf">apply_cu3</span><span class="p">(</span><span class="n">circuit</span><span class="p">,</span> <span class="n">theta</span><span class="p">,</span> <span class="n">phi</span><span class="p">,</span> <span class="n">lam</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">use_basis_gates</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">use_basis_gates</span><span class="p">:</span>
+        <span class="n">circuit</span><span class="o">.</span><span class="n">u1</span><span class="p">((</span><span class="n">lam</span> <span class="o">+</span> <span class="n">phi</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
         <span class="n">circuit</span><span class="o">.</span><span class="n">u1</span><span class="p">((</span><span class="n">lam</span> <span class="o">-</span> <span class="n">phi</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
         <span class="n">circuit</span><span class="o">.</span><span class="n">cx</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
         <span class="n">circuit</span><span class="o">.</span><span class="n">u3</span><span class="p">(</span><span class="o">-</span><span class="n">theta</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="p">(</span><span class="n">phi</span> <span class="o">+</span> <span class="n">lam</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
         <span class="n">circuit</span><span class="o">.</span><span class="n">cx</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
         <span class="n">circuit</span><span class="o">.</span><span class="n">u3</span><span class="p">(</span><span class="n">theta</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="n">phi</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="n">circuit</span><span class="o">.</span><span class="n">cu3</span><span class="p">(</span><span class="n">theta</span><span class="p">,</span> <span class="n">phi</span><span class="p">,</span> <span class="n">lam</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
-
-    <span class="c1"># the u3 gate below is added to account for qiskit terra&#39;s cu3</span>
-    <span class="c1"># TODO: here or only in if=True clause?</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">np</span><span class="o">.</span><span class="n">isclose</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">phi</span> <span class="o">+</span> <span class="n">lam</span><span class="p">),</span> <span class="mf">0.0</span><span class="p">):</span>
-        <span class="n">circuit</span><span class="o">.</span><span class="n">u3</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="p">(</span><span class="n">phi</span> <span class="o">+</span> <span class="n">lam</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span></div>
+        <span class="n">circuit</span><span class="o">.</span><span class="n">cu3</span><span class="p">(</span><span class="n">theta</span><span class="p">,</span> <span class="n">phi</span><span class="p">,</span> <span class="n">lam</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="apply_ccx"><a class="viewcode-back" href="../../../../autodoc/qiskit.aqua.utils.controlled_circuit.html#qiskit.aqua.utils.controlled_circuit.apply_ccx">[docs]</a><span class="k">def</span> <span class="nf">apply_ccx</span><span class="p">(</span><span class="n">circuit</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">use_basis_gates</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
@@ -244,13 +240,14 @@
 
 <span class="sd">    Args:</span>
 <span class="sd">        circuit (QuantumCircuit) : the base circuit</span>
-<span class="sd">        ctl_qubit (indexed QuantumRegister) : the control qubit to use</span>
+<span class="sd">        ctl_qubit (Qubit) : the control qubit to use</span>
 <span class="sd">        tgt_circuit (QuantumCircuit) : the target controlled circuit to be modified in-place</span>
 <span class="sd">        use_basis_gates (bool) : boolean flag to indicate whether or not only basis gates should be used</span>
 
 <span class="sd">    Return:</span>
 <span class="sd">        a QuantumCircuit object with the base circuit being controlled by ctl_qubit</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+    <span class="kn">from</span> <span class="nn">qiskit</span> <span class="k">import</span> <span class="n">BasicAer</span>
     <span class="k">if</span> <span class="n">tgt_circuit</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">qc</span> <span class="o">=</span> <span class="n">tgt_circuit</span>
     <span class="k">else</span><span class="p">:</span>
@@ -280,8 +277,8 @@
     <span class="p">)</span><span class="o">.</span><span class="n">data</span>
 
     <span class="c1"># process all basis gates to add control</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">qc</span><span class="o">.</span><span class="n">has_register</span><span class="p">(</span><span class="n">ctl_qubit</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
-        <span class="n">qc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">ctl_qubit</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">qc</span><span class="o">.</span><span class="n">has_register</span><span class="p">(</span><span class="n">ctl_qubit</span><span class="o">.</span><span class="n">register</span><span class="p">):</span>
+        <span class="n">qc</span><span class="o">.</span><span class="n">add_register</span><span class="p">(</span><span class="n">ctl_qubit</span><span class="o">.</span><span class="n">register</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">op</span> <span class="ow">in</span> <span class="n">ops</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">op</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;id&#39;</span><span class="p">:</span>
             <span class="n">apply_cu3</span><span class="p">(</span><span class="n">qc</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">ctl_qubit</span><span class="p">,</span> <span class="n">op</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">use_basis_gates</span><span class="o">=</span><span class="n">use_basis_gates</span><span class="p">)</span>

@@ -756,6 +756,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.circuit.html">qiskit.circuit package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#subpackages">Subpackages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#submodules">Submodules</a></li>
 </ul>
 </li>
@@ -776,8 +777,9 @@
 <li class="toctree-l4"><a class="reference internal" href="qiskit.extensions.html#submodules">Submodules</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.mapper.html">qiskit.mapper package</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="qiskit.mapper.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qiskit.ignis.html">qiskit.ignis package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.ignis.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.ignis.html#submodules">Submodules</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.providers.html">qiskit.providers package</a><ul>
@@ -836,10 +838,8 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="qiskit.html#submodules">Submodules</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="qiskit._util.html">qiskit._util module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.exceptions.html">qiskit.exceptions module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.execute.html">qiskit.execute module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.qiskiterror.html">qiskit.qiskiterror module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.user_config.html">qiskit.user_config module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.util.html">qiskit.util module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.version.html">qiskit.version module</a></li>
@@ -1540,6 +1540,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.circuit.html">qiskit.circuit package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#subpackages">Subpackages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#submodules">Submodules</a></li>
 </ul>
 </li>
@@ -1560,8 +1561,9 @@
 <li class="toctree-l4"><a class="reference internal" href="qiskit.extensions.html#submodules">Submodules</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.mapper.html">qiskit.mapper package</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="qiskit.mapper.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qiskit.ignis.html">qiskit.ignis package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.ignis.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.ignis.html#submodules">Submodules</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.providers.html">qiskit.providers package</a><ul>
@@ -1620,10 +1622,8 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="qiskit.html#submodules">Submodules</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="qiskit._util.html">qiskit._util module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.exceptions.html">qiskit.exceptions module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.execute.html">qiskit.execute module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.qiskiterror.html">qiskit.qiskiterror module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.user_config.html">qiskit.user_config module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.util.html">qiskit.util module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.version.html">qiskit.version module</a></li>
@@ -1654,12 +1654,12 @@ feature map. Several types of commonly used approaches.</p>
 Refer to <a class="reference external" href="https://arxiv.org/pdf/1804.11326.pdf">https://arxiv.org/pdf/1804.11326.pdf</a> for details.</p>
 <dl class="attribute">
 <dt id="qiskit.aqua.components.feature_maps.pauli_expansion.PauliExpansion.CONFIGURATION">
-<code class="descname">CONFIGURATION</code><em class="property"> = {'description': 'Pauli expansion for feature map (any order)', 'input_schema': {'$schema': 'http://json-schema.org/schema#', 'additionalProperties': False, 'id': 'Pauli_Expansion_schema', 'properties': {'depth': {'default': 2, 'minimum': 1, 'type': 'integer'}, 'entanglement': {'default': 'full', 'oneOf': [{'enum': ['full', 'linear']}], 'type': 'string'}, 'entangler_map': {'default': None, 'type': ['array', 'null']}, 'paulis': {'default': ['Z', 'ZZ'], 'items': {'type': 'string'}, 'type': ['array']}}, 'type': 'object'}, 'name': 'PauliExpansion'}</em><a class="headerlink" href="#qiskit.aqua.components.feature_maps.pauli_expansion.PauliExpansion.CONFIGURATION" title="Permalink to this definition">¶</a></dt>
+<code class="descname">CONFIGURATION</code><em class="property"> = {'description': 'Pauli expansion for feature map (any order)', 'input_schema': {'$schema': 'http://json-schema.org/schema#', 'additionalProperties': False, 'id': 'Pauli_Expansion_schema', 'properties': {'depth': {'default': 2, 'minimum': 1, 'type': 'integer'}, 'entanglement': {'default': 'full', 'enum': ['full', 'linear'], 'type': 'string'}, 'entangler_map': {'default': None, 'type': ['array', 'null']}, 'paulis': {'default': ['Z', 'ZZ'], 'items': {'type': 'string'}, 'type': ['array']}}, 'type': 'object'}, 'name': 'PauliExpansion'}</em><a class="headerlink" href="#qiskit.aqua.components.feature_maps.pauli_expansion.PauliExpansion.CONFIGURATION" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="qiskit.aqua.components.feature_maps.pauli_expansion.PauliExpansion.construct_circuit">
-<code class="descname">construct_circuit</code><span class="sig-paren">(</span><em>x</em>, <em>qr=None</em>, <em>inverse=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/components/feature_maps/pauli_expansion.html#PauliExpansion.construct_circuit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.aqua.components.feature_maps.pauli_expansion.PauliExpansion.construct_circuit" title="Permalink to this definition">¶</a></dt>
+<code class="descname">construct_circuit</code><span class="sig-paren">(</span><em>x</em>, <em>qr=None</em>, <em>inverse=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/components/feature_maps/pauli_expansion.html#PauliExpansion.construct_circuit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.aqua.components.feature_maps.pauli_expansion.PauliExpansion.construct_circuit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Construct the second order expansion based on given data.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1667,9 +1667,9 @@ Refer to <a class="reference external" href="https://arxiv.org/pdf/1804.11326.pd
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>x</strong> (<em>numpy.ndarray</em>) – 1-D to-be-transformed data.</li>
-<li><strong>qr</strong> (<em>QauntumRegister</em>) – the QuantumRegister object for the circuit, if None,
+<li><strong>qr</strong> (<em>QauntumRegister</em><em>, </em><em>optional</em>) – the QuantumRegister object for the circuit, if None,
 generate new registers with name q.</li>
-<li><strong>inverse</strong> (<em>bool</em>) – whether or not inverse the circuit</li>
+<li><strong>inverse</strong> (<em>bool</em><em>, </em><em>optional</em>) – whether or not inverse the circuit</li>
 </ul>
 </td>
 </tr>

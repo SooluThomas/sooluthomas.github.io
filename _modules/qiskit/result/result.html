@@ -227,7 +227,7 @@
         <span class="sd">&quot;&quot;&quot;Get the raw data for an experiment.</span>
 
 <span class="sd">        Note this data will be a single classical and quantum register and in a</span>
-<span class="sd">        format required by the results schema. We recomened that most users use</span>
+<span class="sd">        format required by the results schema. We recommend that most users use</span>
 <span class="sd">        the get_xxx method, and the data will be post-processed for the data type.</span>
 
 <span class="sd">        Args:</span>
@@ -289,13 +289,15 @@
 <span class="sd">            List[str] or np.ndarray: Either the list of each outcome, formatted according to</span>
 <span class="sd">                registers in circuit or a complex numpy np.darray with shape:</span>
 
-<span class="sd">                | `meas_level` | `meas_return` | shape                                             |</span>
-<span class="sd">                |--------------|---------------|---------------------------------------------------|</span>
-<span class="sd">                | 0            | `single`      | np.ndarray[shots, memory_slots, memory_slot_size] |</span>
-<span class="sd">                | 0            | `avg`         | np.ndarray[memory_slots, memory_slot_size]        |</span>
-<span class="sd">                | 1            | `single`      | np.ndarray[shots, memory_slots]                   |</span>
-<span class="sd">                | 1            | `avg`         | np.ndarray[memory_slots]                          |</span>
-<span class="sd">                | 2            | `memory=True` | list                                              |</span>
+<span class="sd">                ============  =============  =====</span>
+<span class="sd">                `meas_level`  `meas_return`  shape</span>
+<span class="sd">                ============  =============  =====</span>
+<span class="sd">                0             `single`       np.ndarray[shots, memory_slots, memory_slot_size]</span>
+<span class="sd">                0             `avg`          np.ndarray[memory_slots, memory_slot_size]</span>
+<span class="sd">                1             `single`       np.ndarray[shots, memory_slots]</span>
+<span class="sd">                1             `avg`          np.ndarray[memory_slots]</span>
+<span class="sd">                2             `memory=True`  list</span>
+<span class="sd">                ============  =============  =====</span>
 
 <span class="sd">        Raises:</span>
 <span class="sd">            QiskitError: if there is no memory data for the circuit.</span>

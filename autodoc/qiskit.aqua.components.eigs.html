@@ -756,6 +756,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.circuit.html">qiskit.circuit package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#subpackages">Subpackages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#submodules">Submodules</a></li>
 </ul>
 </li>
@@ -776,8 +777,9 @@
 <li class="toctree-l4"><a class="reference internal" href="qiskit.extensions.html#submodules">Submodules</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.mapper.html">qiskit.mapper package</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="qiskit.mapper.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qiskit.ignis.html">qiskit.ignis package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.ignis.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.ignis.html#submodules">Submodules</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.providers.html">qiskit.providers package</a><ul>
@@ -836,10 +838,8 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="qiskit.html#submodules">Submodules</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="qiskit._util.html">qiskit._util module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.exceptions.html">qiskit.exceptions module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.execute.html">qiskit.execute module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.qiskiterror.html">qiskit.qiskiterror module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.user_config.html">qiskit.user_config module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.util.html">qiskit.util module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.version.html">qiskit.version module</a></li>
@@ -1540,6 +1540,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.circuit.html">qiskit.circuit package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#subpackages">Subpackages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#submodules">Submodules</a></li>
 </ul>
 </li>
@@ -1560,8 +1561,9 @@
 <li class="toctree-l4"><a class="reference internal" href="qiskit.extensions.html#submodules">Submodules</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.mapper.html">qiskit.mapper package</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="qiskit.mapper.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qiskit.ignis.html">qiskit.ignis package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.ignis.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.ignis.html#submodules">Submodules</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.providers.html">qiskit.providers package</a><ul>
@@ -1620,10 +1622,8 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="qiskit.html#submodules">Submodules</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="qiskit._util.html">qiskit._util module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.exceptions.html">qiskit.exceptions module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.execute.html">qiskit.execute module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.qiskiterror.html">qiskit.qiskiterror module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.user_config.html">qiskit.user_config module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.util.html">qiskit.util module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.version.html">qiskit.version module</a></li>
@@ -1654,7 +1654,7 @@ handling of negative eigenvalues, e.g. for HHL. It uses many parameters
 known from plain QPE. It depends on QFT and IQFT.</p>
 <dl class="attribute">
 <dt id="qiskit.aqua.components.eigs.EigsQPE.CONFIGURATION">
-<code class="descname">CONFIGURATION</code><em class="property"> = {'depends': [{'pluggable_type': 'iqft', 'default': {'name': 'STANDARD'}}, {'pluggable_type': 'qft', 'default': {'name': 'STANDARD'}}], 'description': 'Quantum Phase Estimation for eigenvalues', 'input_schema': {'$schema': 'http://json-schema.org/schema#', 'additionalProperties': False, 'id': 'eigsqpe_schema', 'properties': {'evo_time': {'default': None, 'type': ['number', 'null']}, 'expansion_mode': {'default': 'trotter', 'oneOf': [{'enum': ['suzuki', 'trotter']}], 'type': 'string'}, 'expansion_order': {'default': 1, 'minimum': 1, 'type': 'integer'}, 'negative_evals': {'default': False, 'type': 'boolean'}, 'num_ancillae': {'default': 1, 'minimum': 1, 'type': 'integer'}, 'num_time_slices': {'default': 1, 'minimum': 0, 'type': 'integer'}}, 'type': 'object'}, 'name': 'EigsQPE'}</em><a class="headerlink" href="#qiskit.aqua.components.eigs.EigsQPE.CONFIGURATION" title="Permalink to this definition">¶</a></dt>
+<code class="descname">CONFIGURATION</code><em class="property"> = {'depends': [{'pluggable_type': 'iqft', 'default': {'name': 'STANDARD'}}, {'pluggable_type': 'qft', 'default': {'name': 'STANDARD'}}], 'description': 'Quantum Phase Estimation for eigenvalues', 'input_schema': {'$schema': 'http://json-schema.org/schema#', 'additionalProperties': False, 'id': 'eigsqpe_schema', 'properties': {'evo_time': {'default': None, 'type': ['number', 'null']}, 'expansion_mode': {'default': 'trotter', 'enum': ['suzuki', 'trotter'], 'type': 'string'}, 'expansion_order': {'default': 1, 'minimum': 1, 'type': 'integer'}, 'negative_evals': {'default': False, 'type': 'boolean'}, 'num_ancillae': {'default': 1, 'minimum': 1, 'type': 'integer'}, 'num_time_slices': {'default': 1, 'minimum': 0, 'type': 'integer'}}, 'type': 'object'}, 'name': 'EigsQPE'}</em><a class="headerlink" href="#qiskit.aqua.components.eigs.EigsQPE.CONFIGURATION" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -1666,7 +1666,7 @@ known from plain QPE. It depends on QFT and IQFT.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>mode</strong> (<em>str</em>) – consctruction mode, ‘matrix’ not supported</li>
+<li><strong>mode</strong> (<em>str</em>) – construction mode, ‘matrix’ not supported</li>
 <li><strong>register</strong> (<a class="reference internal" href="qiskit.circuit.quantumregister.html#qiskit.circuit.quantumregister.QuantumRegister" title="qiskit.circuit.quantumregister.QuantumRegister"><em>QuantumRegister</em></a>) – the register to use for the quantum state</li>
 </ul>
 </td>
@@ -1754,7 +1754,7 @@ where eigenvalues will be stored.</li>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>mode</strong> (<em>str</em>) – consctruction mode, ‘matrix’ not supported</li>
+<li><strong>mode</strong> (<em>str</em>) – construction mode, ‘matrix’ not supported</li>
 <li><strong>circuit</strong> (<a class="reference internal" href="qiskit.circuit.quantumcircuit.html#qiskit.circuit.quantumcircuit.QuantumCircuit" title="qiskit.circuit.quantumcircuit.QuantumCircuit"><em>QuantumCircuit</em></a>) – the quantum circuit to invert</li>
 </ul>
 </td>

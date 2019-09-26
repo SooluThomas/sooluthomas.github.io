@@ -212,7 +212,7 @@
 <span class="sd">    Returns:</span>
 <span class="sd">        A QuantumCircuit object.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">circ</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="n">qubit</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">circ</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="n">qubit</span><span class="o">.</span><span class="n">register</span><span class="p">)</span>
     <span class="n">theta</span> <span class="o">=</span> <span class="o">-</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">arctan</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
     <span class="k">if</span> <span class="n">op</span> <span class="o">==</span> <span class="s1">&#39;S1&#39;</span><span class="p">:</span>
         <span class="n">circ</span><span class="o">.</span><span class="n">u3</span><span class="p">(</span><span class="n">theta</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">qubit</span><span class="p">)</span>

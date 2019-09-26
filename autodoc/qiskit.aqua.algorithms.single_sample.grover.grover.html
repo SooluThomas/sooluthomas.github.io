@@ -756,6 +756,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.circuit.html">qiskit.circuit package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#subpackages">Subpackages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#submodules">Submodules</a></li>
 </ul>
 </li>
@@ -776,8 +777,9 @@
 <li class="toctree-l4"><a class="reference internal" href="qiskit.extensions.html#submodules">Submodules</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.mapper.html">qiskit.mapper package</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="qiskit.mapper.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qiskit.ignis.html">qiskit.ignis package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.ignis.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.ignis.html#submodules">Submodules</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.providers.html">qiskit.providers package</a><ul>
@@ -836,10 +838,8 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="qiskit.html#submodules">Submodules</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="qiskit._util.html">qiskit._util module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.exceptions.html">qiskit.exceptions module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.execute.html">qiskit.execute module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.qiskiterror.html">qiskit.qiskiterror module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.user_config.html">qiskit.user_config module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.util.html">qiskit.util module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.version.html">qiskit.version module</a></li>
@@ -1540,6 +1540,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.circuit.html">qiskit.circuit package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#subpackages">Subpackages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#submodules">Submodules</a></li>
 </ul>
 </li>
@@ -1560,8 +1561,9 @@
 <li class="toctree-l4"><a class="reference internal" href="qiskit.extensions.html#submodules">Submodules</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.mapper.html">qiskit.mapper package</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="qiskit.mapper.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qiskit.ignis.html">qiskit.ignis package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.ignis.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.ignis.html#submodules">Submodules</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.providers.html">qiskit.providers package</a><ul>
@@ -1620,10 +1622,8 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="qiskit.html#submodules">Submodules</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="qiskit._util.html">qiskit._util module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.exceptions.html">qiskit.exceptions module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.execute.html">qiskit.execute module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.qiskiterror.html">qiskit.qiskiterror module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.user_config.html">qiskit.user_config module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.util.html">qiskit.util module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.version.html">qiskit.version module</a></li>
@@ -1656,7 +1656,7 @@ a multi-round schedule will be followed with incremental trial <cite>num_iterati
 The implementation follows Section 4 of Boyer et al. &lt;<a class="reference external" href="https://arxiv.org/abs/quant-ph/9605034">https://arxiv.org/abs/quant-ph/9605034</a>&gt;</p>
 <dl class="attribute">
 <dt id="qiskit.aqua.algorithms.single_sample.grover.grover.Grover.CONFIGURATION">
-<code class="descname">CONFIGURATION</code><em class="property"> = {'depends': [{'pluggable_type': 'initial_state', 'default': {'name': 'CUSTOM', 'state': 'uniform'}}, {'pluggable_type': 'oracle', 'default': {'name': 'LogicalExpressionOracle'}}], 'description': &quot;Grover's Search Algorithm&quot;, 'input_schema': {'$schema': 'http://json-schema.org/schema#', 'additionalProperties': False, 'id': 'grover_schema', 'properties': {'incremental': {'default': False, 'type': 'boolean'}, 'mct_mode': {'default': 'basic', 'oneOf': [{'enum': ['basic', 'basic-dirty-ancilla', 'advanced', 'noancilla']}], 'type': 'string'}, 'num_iterations': {'default': 1, 'minimum': 1, 'type': 'integer'}}, 'type': 'object'}, 'name': 'Grover', 'problems': ['search']}</em><a class="headerlink" href="#qiskit.aqua.algorithms.single_sample.grover.grover.Grover.CONFIGURATION" title="Permalink to this definition">¶</a></dt>
+<code class="descname">CONFIGURATION</code><em class="property"> = {'depends': [{'pluggable_type': 'initial_state', 'default': {'name': 'CUSTOM', 'state': 'uniform'}}, {'pluggable_type': 'oracle', 'default': {'name': 'LogicalExpressionOracle'}}], 'description': &quot;Grover's Search Algorithm&quot;, 'input_schema': {'$schema': 'http://json-schema.org/schema#', 'additionalProperties': False, 'id': 'grover_schema', 'properties': {'incremental': {'default': False, 'type': 'boolean'}, 'mct_mode': {'default': 'basic', 'enum': ['basic', 'basic-dirty-ancilla', 'advanced', 'noancilla'], 'type': 'string'}, 'num_iterations': {'default': 1, 'minimum': 1, 'type': 'integer'}}, 'type': 'object'}, 'name': 'Grover', 'problems': ['search']}</em><a class="headerlink" href="#qiskit.aqua.algorithms.single_sample.grover.grover.Grover.CONFIGURATION" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">

@@ -51,7 +51,7 @@
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="qiskit.tools.compiler module" href="qiskit.tools.compiler.html" />
+    <link rel="next" title="qiskit.tools.parallel module" href="qiskit.tools.parallel.html" />
     <link rel="prev" title="qiskit.tools.qi package" href="qiskit.tools.qi.html" /> 
   </head>
 <body>
@@ -756,6 +756,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.circuit.html">qiskit.circuit package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#subpackages">Subpackages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#submodules">Submodules</a></li>
 </ul>
 </li>
@@ -776,8 +777,9 @@
 <li class="toctree-l4"><a class="reference internal" href="qiskit.extensions.html#submodules">Submodules</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.mapper.html">qiskit.mapper package</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="qiskit.mapper.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qiskit.ignis.html">qiskit.ignis package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.ignis.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.ignis.html#submodules">Submodules</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.providers.html">qiskit.providers package</a><ul>
@@ -836,10 +838,8 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="qiskit.html#submodules">Submodules</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="qiskit._util.html">qiskit._util module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.exceptions.html">qiskit.exceptions module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.execute.html">qiskit.execute module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.qiskiterror.html">qiskit.qiskiterror module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.user_config.html">qiskit.user_config module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.util.html">qiskit.util module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.version.html">qiskit.version module</a></li>
@@ -1540,6 +1540,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.circuit.html">qiskit.circuit package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#subpackages">Subpackages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#submodules">Submodules</a></li>
 </ul>
 </li>
@@ -1560,8 +1561,9 @@
 <li class="toctree-l4"><a class="reference internal" href="qiskit.extensions.html#submodules">Submodules</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.mapper.html">qiskit.mapper package</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="qiskit.mapper.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qiskit.ignis.html">qiskit.ignis package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.ignis.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.ignis.html#submodules">Submodules</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.providers.html">qiskit.providers package</a><ul>
@@ -1620,10 +1622,8 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="qiskit.html#submodules">Submodules</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="qiskit._util.html">qiskit._util module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.exceptions.html">qiskit.exceptions module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.execute.html">qiskit.execute module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.qiskiterror.html">qiskit.qiskiterror module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.user_config.html">qiskit.user_config module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.util.html">qiskit.util module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.version.html">qiskit.version module</a></li>
@@ -1696,7 +1696,7 @@ order=1 (default) is standard lexicographic ordering.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>array</strong> (<em>array_like</em>) – array to truncte small values.</li>
+<li><strong>array</strong> (<em>array_like</em>) – array to truncate small values.</li>
 <li><strong>epsilon</strong> (<em>float</em>) – threshold.</li>
 </ul>
 </td>
@@ -1910,39 +1910,9 @@ If False system-0 is the left most system in tensor product.</li>
 </dd></dl>
 
 <dl class="function">
-<dt id="qiskit.tools.qi.qi.purity">
-<code class="descname">purity</code><span class="sig-paren">(</span><em>state</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/tools/qi/qi.html#purity"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.tools.qi.qi.purity" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calculate the purity of a quantum state.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>state</strong> (<em>np.array</em>) – a quantum state</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">purity.</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">float</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="function">
 <dt id="qiskit.tools.qi.qi.qft">
 <code class="descname">qft</code><span class="sig-paren">(</span><em>circ</em>, <em>q</em>, <em>n</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/tools/qi/qi.html#qft"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.tools.qi.qi.qft" title="Permalink to this definition">¶</a></dt>
 <dd><p>n-qubit QFT on q in circ.</p>
-</dd></dl>
-
-<dl class="function">
-<dt id="qiskit.tools.qi.qi.random_density_matrix">
-<code class="descname">random_density_matrix</code><span class="sig-paren">(</span><em>length</em>, <em>rank=None</em>, <em>method='Hilbert-Schmidt'</em>, <em>seed=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/tools/qi/qi.html#random_density_matrix"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.tools.qi.qi.random_density_matrix" title="Permalink to this definition">¶</a></dt>
-<dd><p>Deprecated in 0.8+</p>
-</dd></dl>
-
-<dl class="function">
-<dt id="qiskit.tools.qi.qi.random_unitary_matrix">
-<code class="descname">random_unitary_matrix</code><span class="sig-paren">(</span><em>dim</em>, <em>seed=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/tools/qi/qi.html#random_unitary_matrix"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.tools.qi.qi.random_unitary_matrix" title="Permalink to this definition">¶</a></dt>
-<dd><p>Deprecated in 0.8+</p>
 </dd></dl>
 
 <dl class="function">
@@ -1957,7 +1927,7 @@ $H(pv) = - sum_j pv[j] log_b (pv[j])$ where $0 log_b 0 = 0$.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>pvec</strong> (<em>array_like</em>) – a probability vector.</li>
-<li><strong>base</strong> (<em>int</em>) – the base of the logarith</li>
+<li><strong>base</strong> (<em>int</em>) – the base of the logarithm</li>
 </ul>
 </td>
 </tr>
@@ -1984,7 +1954,7 @@ $H(pv) = - sum_j pv[j] log_b (pv[j])$ where $0 log_b 0 = 0$.</p>
 <li><strong>method</strong> (<em>str</em>) – <p>the method of vectorization. Allowed values are
 - ‘col’ (default) flattens to column-major vector.
 - ‘row’ flattens to row-major vector.
-- ‘pauli’flattens in the n-qubit Pauli basis.
+- ‘pauli’ flattens in the n-qubit Pauli basis.
 - ‘pauli-weights’: flattens in the n-qubit Pauli basis ordered by</p>
 <blockquote>
 <div>weight.</div></blockquote>
@@ -2018,10 +1988,10 @@ $H(pv) = - sum_j pv[j] log_b (pv[j])$ where $0 log_b 0 = 0$.</p>
             <div>qiskit.tools.qi package</div>
          </div>
      </a>
-     <a id="button-next" href="qiskit.tools.compiler.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
+     <a id="button-next" href="qiskit.tools.parallel.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
         <div class="pagenation-text">
             <span class="pagenation-direction">Next</span>
-            <div>qiskit.tools.compiler module</div>
+            <div>qiskit.tools.parallel module</div>
         </div>
      </a>
         

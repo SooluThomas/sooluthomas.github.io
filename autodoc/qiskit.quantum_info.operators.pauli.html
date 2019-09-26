@@ -756,6 +756,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.circuit.html">qiskit.circuit package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#subpackages">Subpackages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#submodules">Submodules</a></li>
 </ul>
 </li>
@@ -776,8 +777,9 @@
 <li class="toctree-l4"><a class="reference internal" href="qiskit.extensions.html#submodules">Submodules</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.mapper.html">qiskit.mapper package</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="qiskit.mapper.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qiskit.ignis.html">qiskit.ignis package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.ignis.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.ignis.html#submodules">Submodules</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.providers.html">qiskit.providers package</a><ul>
@@ -836,10 +838,8 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="qiskit.html#submodules">Submodules</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="qiskit._util.html">qiskit._util module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.exceptions.html">qiskit.exceptions module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.execute.html">qiskit.execute module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.qiskiterror.html">qiskit.qiskiterror module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.user_config.html">qiskit.user_config module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.util.html">qiskit.util module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.version.html">qiskit.version module</a></li>
@@ -1540,6 +1540,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.circuit.html">qiskit.circuit package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#subpackages">Subpackages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#submodules">Submodules</a></li>
 </ul>
 </li>
@@ -1560,8 +1561,9 @@
 <li class="toctree-l4"><a class="reference internal" href="qiskit.extensions.html#submodules">Submodules</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.mapper.html">qiskit.mapper package</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="qiskit.mapper.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qiskit.ignis.html">qiskit.ignis package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.ignis.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.ignis.html#submodules">Submodules</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.providers.html">qiskit.providers package</a><ul>
@@ -1620,10 +1622,8 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="qiskit.html#submodules">Submodules</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="qiskit._util.html">qiskit._util module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.exceptions.html">qiskit.exceptions module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.execute.html">qiskit.execute module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.qiskiterror.html">qiskit.qiskiterror module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.user_config.html">qiskit.user_config module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.util.html">qiskit.util module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.version.html">qiskit.version module</a></li>
@@ -1751,7 +1751,7 @@ E.g., a pauli is $P_{n-1} otimes … otimes P_0$</p>
 </table>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">the indices refers to the localion of original paulis,
+<p class="last">the indices refers to the location of original paulis,
 e.g. if indices = [0, 2], pauli_labels = [‘Z’, ‘I’] and original pauli = ‘ZYXI’
 the pauli will be updated to ZY’I’XI’Z’
 ‘Z’ and ‘I’ are inserted before the qubit at 0 and 2.</p>
@@ -1773,7 +1773,7 @@ the pauli will be updated to ZY’I’XI’Z’
 <dl class="method">
 <dt id="qiskit.quantum_info.operators.pauli.Pauli.kron">
 <code class="descname">kron</code><span class="sig-paren">(</span><em>other</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/quantum_info/operators/pauli.html#Pauli.kron"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.quantum_info.operators.pauli.Pauli.kron" title="Permalink to this definition">¶</a></dt>
-<dd><p>Kron product of two paulis.</p>
+<dd><p>Kronecker product of two paulis.</p>
 <p>Order is $P_2 (other) otimes P_1 (self)$</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1805,7 +1805,7 @@ the pauli will be updated to ZY’I’XI’Z’
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>num_qubits</strong> (<em>int</em>) – the length of pauli</li>
-<li><strong>index</strong> (<em>int</em>) – the qubit index to insert the single qubii</li>
+<li><strong>index</strong> (<em>int</em>) – the qubit index to insert the single qubit</li>
 <li><strong>pauli_label</strong> (<em>str</em>) – pauli</li>
 </ul>
 </td>
@@ -1926,7 +1926,7 @@ complex: the sign of the multiplication, 1, -1, 1j or -1j</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">a sparse matrix with CSR format that
-represnets the pauli.</td>
+represents the pauli.</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">scipy.sparse.csr_matrix</td>
 </tr>

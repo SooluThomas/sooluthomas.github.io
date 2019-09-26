@@ -199,7 +199,7 @@
 <span class="kn">import</span> <span class="nn">numpy.random</span> <span class="k">as</span> <span class="nn">rand</span>
 <span class="kn">from</span> <span class="nn">qiskit.quantum_info</span> <span class="k">import</span> <span class="n">Pauli</span>
 
-<span class="kn">from</span> <span class="nn">qiskit.aqua</span> <span class="k">import</span> <span class="n">Operator</span>
+<span class="kn">from</span> <span class="nn">qiskit.aqua.operators</span> <span class="k">import</span> <span class="n">WeightedPauliOperator</span>
 
 <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
 
@@ -264,7 +264,7 @@
 
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
-    <span class="n">coord</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">coord</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span> <span class="k">as</span> <span class="n">infile</span><span class="p">:</span>
         <span class="n">coord_section</span> <span class="o">=</span> <span class="kc">False</span>
         <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">infile</span><span class="p">:</span>
@@ -302,7 +302,7 @@
 <span class="sd">        penalty (float) : Penalty coefficient for the constraints</span>
 
 <span class="sd">    Returns:</span>
-<span class="sd">        operator.Operator, float: operator for the Hamiltonian and a</span>
+<span class="sd">        WeightedPauliOperator, float: operator for the Hamiltonian and a</span>
 <span class="sd">        constant shift for the obj function.</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -375,7 +375,7 @@
                 <span class="n">zp</span><span class="p">[</span><span class="n">i</span> <span class="o">*</span> <span class="n">num_nodes</span> <span class="o">+</span> <span class="n">q</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
                 <span class="n">pauli_list</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">penalty</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="n">Pauli</span><span class="p">(</span><span class="n">zp</span><span class="p">,</span> <span class="n">zero</span><span class="p">)])</span>
     <span class="n">shift</span> <span class="o">+=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">penalty</span> <span class="o">*</span> <span class="n">num_nodes</span>
-    <span class="k">return</span> <span class="n">Operator</span><span class="p">(</span><span class="n">paulis</span><span class="o">=</span><span class="n">pauli_list</span><span class="p">),</span> <span class="n">shift</span></div>
+    <span class="k">return</span> <span class="n">WeightedPauliOperator</span><span class="p">(</span><span class="n">paulis</span><span class="o">=</span><span class="n">pauli_list</span><span class="p">),</span> <span class="n">shift</span></div>
 
 
 <div class="viewcode-block" id="tsp_value"><a class="viewcode-back" href="../../../../../autodoc/qiskit.aqua.translators.ising.tsp.html#qiskit.aqua.translators.ising.tsp.tsp_value">[docs]</a><span class="k">def</span> <span class="nf">tsp_value</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">w</span><span class="p">):</span>

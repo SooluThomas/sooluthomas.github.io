@@ -210,27 +210,21 @@
                 <span class="s2">&quot;stockmarket&quot;</span><span class="p">:</span> <span class="p">{</span>
                     <span class="s2">&quot;type&quot;</span><span class="p">:</span>
                     <span class="s2">&quot;string&quot;</span><span class="p">,</span>
-                    <span class="s2">&quot;default&quot;</span><span class="p">:</span>
-                    <span class="n">StockMarket</span><span class="o">.</span><span class="n">LONDON</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
-                    <span class="s2">&quot;oneOf&quot;</span><span class="p">:</span> <span class="p">[{</span>
-                        <span class="s2">&quot;enum&quot;</span><span class="p">:</span> <span class="p">[</span>
-                            <span class="n">StockMarket</span><span class="o">.</span><span class="n">LONDON</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
-                            <span class="n">StockMarket</span><span class="o">.</span><span class="n">EURONEXT</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
-                            <span class="n">StockMarket</span><span class="o">.</span><span class="n">SINGAPORE</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
-                        <span class="p">]</span>
-                    <span class="p">}]</span>
+                    <span class="s2">&quot;default&quot;</span><span class="p">:</span> <span class="n">StockMarket</span><span class="o">.</span><span class="n">LONDON</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
+                    <span class="s2">&quot;enum&quot;</span><span class="p">:</span> <span class="p">[</span>
+                        <span class="n">StockMarket</span><span class="o">.</span><span class="n">LONDON</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
+                        <span class="n">StockMarket</span><span class="o">.</span><span class="n">EURONEXT</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
+                        <span class="n">StockMarket</span><span class="o">.</span><span class="n">SINGAPORE</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
+                    <span class="p">]</span>
                 <span class="p">},</span>
                 <span class="s2">&quot;datatype&quot;</span><span class="p">:</span> <span class="p">{</span>
                     <span class="s2">&quot;type&quot;</span><span class="p">:</span>
                     <span class="s2">&quot;string&quot;</span><span class="p">,</span>
-                    <span class="s2">&quot;default&quot;</span><span class="p">:</span>
-                    <span class="n">DataType</span><span class="o">.</span><span class="n">DAILYADJUSTED</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
-                    <span class="s2">&quot;oneOf&quot;</span><span class="p">:</span> <span class="p">[{</span>
-                        <span class="s2">&quot;enum&quot;</span><span class="p">:</span> <span class="p">[</span>
-                            <span class="n">DataType</span><span class="o">.</span><span class="n">DAILYADJUSTED</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
-                            <span class="n">DataType</span><span class="o">.</span><span class="n">DAILY</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
-                        <span class="p">]</span>
-                    <span class="p">}]</span>
+                    <span class="s2">&quot;default&quot;</span><span class="p">:</span> <span class="n">DataType</span><span class="o">.</span><span class="n">DAILYADJUSTED</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
+                    <span class="s2">&quot;enum&quot;</span><span class="p">:</span> <span class="p">[</span>
+                        <span class="n">DataType</span><span class="o">.</span><span class="n">DAILYADJUSTED</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
+                        <span class="n">DataType</span><span class="o">.</span><span class="n">DAILY</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
+                    <span class="p">]</span>
                 <span class="p">},</span>
             <span class="p">},</span>
         <span class="p">}</span>
@@ -283,9 +277,9 @@
             <span class="n">spec</span> <span class="o">=</span> <span class="n">importlib</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">find_spec</span><span class="p">(</span><span class="s1">&#39;quandl&#39;</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">spec</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
                 <span class="k">return</span>
-        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-            <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;quandl check error </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)))</span>
-            <span class="k">raise</span> <span class="n">QiskitFinanceError</span><span class="p">(</span><span class="n">err_msg</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">e</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">ex</span><span class="p">:</span>  <span class="c1"># pylint: disable=broad-except</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;quandl check error </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">ex</span><span class="p">)))</span>
+            <span class="k">raise</span> <span class="n">QiskitFinanceError</span><span class="p">(</span><span class="n">err_msg</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">ex</span>
 
         <span class="k">raise</span> <span class="n">QiskitFinanceError</span><span class="p">(</span><span class="n">err_msg</span><span class="p">)</span></div>
 
@@ -304,9 +298,9 @@
             <span class="k">raise</span> <span class="n">QiskitFinanceError</span><span class="p">(</span>
                 <span class="s1">&#39;Invalid or missing section </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">section</span><span class="p">))</span>
 
-        <span class="n">params</span> <span class="o">=</span> <span class="n">section</span>
+        <span class="c1"># params = section</span>
         <span class="n">kwargs</span> <span class="o">=</span> <span class="p">{}</span>
-        <span class="c1">#for k, v in params.items():</span>
+        <span class="c1"># for k, v in params.items():</span>
         <span class="c1">#    if k == ExchangeDataProvider. ...: v = UnitsType(v)</span>
         <span class="c1">#    kwargs[k] = v</span>
         <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;init_from_input: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">kwargs</span><span class="p">))</span>
@@ -324,9 +318,10 @@
                 <span class="n">d</span> <span class="o">=</span> <span class="n">quandl</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_stockmarket</span> <span class="o">+</span> <span class="s2">&quot;/&quot;</span> <span class="o">+</span> <span class="n">s</span><span class="p">,</span>
                                <span class="n">start_date</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_start</span><span class="p">,</span>
                                <span class="n">end_date</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_end</span><span class="p">)</span>
-            <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>  <span class="c1"># The exception will be AuthenticationError, if the token is wrong</span>
+            <span class="c1"># The exception will be AuthenticationError, if the token is wrong</span>
+            <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">ex</span><span class="p">:</span>  <span class="c1"># pylint: disable=broad-except</span>
                 <span class="k">raise</span> <span class="n">QiskitFinanceError</span><span class="p">(</span>
-                    <span class="s2">&quot;Cannot retrieve Exchange Data data.&quot;</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">e</span>
+                    <span class="s2">&quot;Cannot retrieve Exchange Data data.&quot;</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">ex</span>
             <span class="k">try</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="s2">&quot;Adj. Close&quot;</span><span class="p">])</span>
             <span class="k">except</span> <span class="ne">KeyError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>

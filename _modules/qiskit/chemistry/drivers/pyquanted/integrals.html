@@ -183,7 +183,6 @@
 <span class="c1"># copyright notice, and modified files need to carry a notice indicating</span>
 <span class="c1"># that they have been altered from the originals.</span>
 
-<span class="kn">from</span> <span class="nn">.transform</span> <span class="k">import</span> <span class="n">transformintegrals</span><span class="p">,</span> <span class="n">ijkl2intindex</span>
 <span class="kn">from</span> <span class="nn">qiskit.chemistry</span> <span class="k">import</span> <span class="n">QiskitChemistryError</span>
 <span class="kn">from</span> <span class="nn">qiskit.chemistry</span> <span class="k">import</span> <span class="n">QMolecule</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -206,7 +205,9 @@
                       <span class="n">charge</span><span class="p">,</span>
                       <span class="n">multiplicity</span><span class="p">,</span>
                       <span class="n">basis</span><span class="p">,</span>
-                      <span class="n">calc_type</span><span class="o">=</span><span class="s1">&#39;rhf&#39;</span><span class="p">):</span>
+                      <span class="n">hf_method</span><span class="o">=</span><span class="s1">&#39;rhf&#39;</span><span class="p">,</span>
+                      <span class="n">tol</span><span class="o">=</span><span class="mf">1e-8</span><span class="p">,</span>
+                      <span class="n">maxiters</span><span class="o">=</span><span class="mi">100</span><span class="p">):</span>
     <span class="c1"># Get config from input parameters</span>
     <span class="c1"># Molecule is in this format xyz as below or in Z-matrix e.g &quot;H; O 1 1.08; H 2 1.08 1 107.5&quot;:</span>
     <span class="c1"># atoms=H .0 .0 .0; H .0 .0 0.2</span>
@@ -217,30 +218,92 @@
 
     <span class="n">units</span> <span class="o">=</span> <span class="n">_check_units</span><span class="p">(</span><span class="n">units</span><span class="p">)</span>
     <span class="n">mol</span> <span class="o">=</span> <span class="n">_parse_molecule</span><span class="p">(</span><span class="n">atoms</span><span class="p">,</span> <span class="n">units</span><span class="p">,</span> <span class="n">charge</span><span class="p">,</span> <span class="n">multiplicity</span><span class="p">)</span>
-    <span class="n">calc_type</span> <span class="o">=</span> <span class="n">calc_type</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+    <span class="n">hf_method</span> <span class="o">=</span> <span class="n">hf_method</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
 
     <span class="k">try</span><span class="p">:</span>
-        <span class="n">ehf</span><span class="p">,</span> <span class="n">enuke</span><span class="p">,</span> <span class="n">norbs</span><span class="p">,</span> <span class="n">mohij</span><span class="p">,</span> <span class="n">mohijkl</span><span class="p">,</span> <span class="n">orbs</span><span class="p">,</span> <span class="n">orbs_energy</span> <span class="o">=</span> <span class="n">_calculate_integrals</span><span class="p">(</span><span class="n">mol</span><span class="p">,</span> <span class="n">basis</span><span class="p">,</span> <span class="n">calc_type</span><span class="p">)</span>
+        <span class="n">q_mol</span> <span class="o">=</span> <span class="n">_calculate_integrals</span><span class="p">(</span><span class="n">mol</span><span class="p">,</span> <span class="n">basis</span><span class="p">,</span> <span class="n">hf_method</span><span class="p">,</span> <span class="n">tol</span><span class="p">,</span> <span class="n">maxiters</span><span class="p">)</span>
     <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
         <span class="k">raise</span> <span class="n">QiskitChemistryError</span><span class="p">(</span><span class="s1">&#39;Failed electronic structure computation&#39;</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">exc</span>
 
+    <span class="k">return</span> <span class="n">q_mol</span></div>
+
+
+<span class="k">def</span> <span class="nf">_calculate_integrals</span><span class="p">(</span><span class="n">molecule</span><span class="p">,</span> <span class="n">basis</span><span class="o">=</span><span class="s1">&#39;sto3g&#39;</span><span class="p">,</span> <span class="n">hf_method</span><span class="o">=</span><span class="s1">&#39;rhf&#39;</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mf">1e-8</span><span class="p">,</span> <span class="n">maxiters</span><span class="o">=</span><span class="mi">100</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Function to calculate the one and two electron terms. Perform a Hartree-Fock calculation in</span>
+<span class="sd">        the given basis.</span>
+<span class="sd">    Args:</span>
+<span class="sd">        molecule : A pyquante2 molecular object.</span>
+<span class="sd">        basis : The basis set for the electronic structure computation</span>
+<span class="sd">        hf_method: rhf, uhf, rohf</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        QMolecule: QMolecule populated with driver integrals etc</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">bfs</span> <span class="o">=</span> <span class="n">basisset</span><span class="p">(</span><span class="n">molecule</span><span class="p">,</span> <span class="n">basis</span><span class="p">)</span>
+    <span class="n">integrals</span> <span class="o">=</span> <span class="n">onee_integrals</span><span class="p">(</span><span class="n">bfs</span><span class="p">,</span> <span class="n">molecule</span><span class="p">)</span>
+    <span class="n">hij</span> <span class="o">=</span> <span class="n">integrals</span><span class="o">.</span><span class="n">T</span> <span class="o">+</span> <span class="n">integrals</span><span class="o">.</span><span class="n">V</span>
+    <span class="n">hijkl</span> <span class="o">=</span> <span class="n">twoe_integrals</span><span class="p">(</span><span class="n">bfs</span><span class="p">)</span>
+
+    <span class="c1"># convert overlap integrals to molecular basis</span>
+    <span class="c1"># calculate the Hartree-Fock solution of the molecule</span>
+
+    <span class="k">if</span> <span class="n">hf_method</span> <span class="o">==</span> <span class="s1">&#39;rhf&#39;</span><span class="p">:</span>
+        <span class="n">solver</span> <span class="o">=</span> <span class="n">rhf</span><span class="p">(</span><span class="n">molecule</span><span class="p">,</span> <span class="n">bfs</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">hf_method</span> <span class="o">==</span> <span class="s1">&#39;rohf&#39;</span><span class="p">:</span>
+        <span class="n">solver</span> <span class="o">=</span> <span class="n">rohf</span><span class="p">(</span><span class="n">molecule</span><span class="p">,</span> <span class="n">bfs</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">hf_method</span> <span class="o">==</span> <span class="s1">&#39;uhf&#39;</span><span class="p">:</span>
+        <span class="n">solver</span> <span class="o">=</span> <span class="n">uhf</span><span class="p">(</span><span class="n">molecule</span><span class="p">,</span> <span class="n">bfs</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">QiskitChemistryError</span><span class="p">(</span><span class="s1">&#39;Invalid hf_method type: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">hf_method</span><span class="p">))</span>
+    <span class="n">ehf</span> <span class="o">=</span> <span class="n">solver</span><span class="o">.</span><span class="n">converge</span><span class="p">(</span><span class="n">tol</span><span class="o">=</span><span class="n">tol</span><span class="p">,</span> <span class="n">maxiters</span><span class="o">=</span><span class="n">maxiters</span><span class="p">)</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;PyQuante2 processing information:</span><span class="se">\n</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">solver</span><span class="p">))</span>
+    <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">solver</span><span class="p">,</span> <span class="s1">&#39;orbs&#39;</span><span class="p">):</span>
+        <span class="n">orbs</span> <span class="o">=</span> <span class="n">solver</span><span class="o">.</span><span class="n">orbs</span>
+        <span class="n">orbs_B</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">orbs</span> <span class="o">=</span> <span class="n">solver</span><span class="o">.</span><span class="n">orbsa</span>
+        <span class="n">orbs_B</span> <span class="o">=</span> <span class="n">solver</span><span class="o">.</span><span class="n">orbsb</span>
+    <span class="n">norbs</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">orbs</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">solver</span><span class="p">,</span> <span class="s1">&#39;orbe&#39;</span><span class="p">):</span>
+        <span class="n">orbs_energy</span> <span class="o">=</span> <span class="n">solver</span><span class="o">.</span><span class="n">orbe</span>
+        <span class="n">orbs_energy_B</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">orbs_energy</span> <span class="o">=</span> <span class="n">solver</span><span class="o">.</span><span class="n">orbea</span>
+        <span class="n">orbs_energy_B</span> <span class="o">=</span> <span class="n">solver</span><span class="o">.</span><span class="n">orbeb</span>
+    <span class="n">enuke</span> <span class="o">=</span> <span class="n">molecule</span><span class="o">.</span><span class="n">nuclear_repulsion</span><span class="p">()</span>
+    <span class="c1"># Get ints in molecular orbital basis</span>
+    <span class="n">mohij</span> <span class="o">=</span> <span class="n">simx</span><span class="p">(</span><span class="n">hij</span><span class="p">,</span> <span class="n">orbs</span><span class="p">)</span>
+    <span class="n">mohij_B</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="k">if</span> <span class="n">orbs_B</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">mohij_B</span> <span class="o">=</span> <span class="n">simx</span><span class="p">(</span><span class="n">hij</span><span class="p">,</span> <span class="n">orbs_B</span><span class="p">)</span>
+
+    <span class="n">eri</span> <span class="o">=</span> <span class="n">hijkl</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">identity</span><span class="p">(</span><span class="n">norbs</span><span class="p">))</span>
+    <span class="n">mohijkl</span> <span class="o">=</span> <span class="n">hijkl</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">orbs</span><span class="p">)</span>
+    <span class="n">mohijkl_BB</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">mohijkl_BA</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="k">if</span> <span class="n">orbs_B</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">mohijkl_BB</span> <span class="o">=</span> <span class="n">hijkl</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">orbs_B</span><span class="p">)</span>
+        <span class="n">mohijkl_BA</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">einsum</span><span class="p">(</span><span class="s1">&#39;aI,bJ,cK,dL,abcd-&gt;IJKL&#39;</span><span class="p">,</span> <span class="n">orbs_B</span><span class="p">,</span> <span class="n">orbs_B</span><span class="p">,</span> <span class="n">orbs</span><span class="p">,</span> <span class="n">orbs</span><span class="p">,</span> <span class="n">hijkl</span><span class="p">[</span><span class="o">...</span><span class="p">])</span>
+
     <span class="c1"># Create driver level molecule object and populate</span>
     <span class="n">_q_</span> <span class="o">=</span> <span class="n">QMolecule</span><span class="p">()</span>
+    <span class="n">_q_</span><span class="o">.</span><span class="n">origin_driver_version</span> <span class="o">=</span> <span class="s1">&#39;?&#39;</span>  <span class="c1"># No version info seems available to access</span>
     <span class="c1"># Energies and orbits</span>
-    <span class="n">_q_</span><span class="o">.</span><span class="n">hf_energy</span> <span class="o">=</span> <span class="n">ehf</span>
+    <span class="n">_q_</span><span class="o">.</span><span class="n">hf_energy</span> <span class="o">=</span> <span class="n">ehf</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
     <span class="n">_q_</span><span class="o">.</span><span class="n">nuclear_repulsion_energy</span> <span class="o">=</span> <span class="n">enuke</span>
     <span class="n">_q_</span><span class="o">.</span><span class="n">num_orbitals</span> <span class="o">=</span> <span class="n">norbs</span>
-    <span class="n">_q_</span><span class="o">.</span><span class="n">num_alpha</span> <span class="o">=</span> <span class="n">mol</span><span class="o">.</span><span class="n">nup</span><span class="p">()</span>
-    <span class="n">_q_</span><span class="o">.</span><span class="n">num_beta</span> <span class="o">=</span> <span class="n">mol</span><span class="o">.</span><span class="n">ndown</span><span class="p">()</span>
+    <span class="n">_q_</span><span class="o">.</span><span class="n">num_alpha</span> <span class="o">=</span> <span class="n">molecule</span><span class="o">.</span><span class="n">nup</span><span class="p">()</span>
+    <span class="n">_q_</span><span class="o">.</span><span class="n">num_beta</span> <span class="o">=</span> <span class="n">molecule</span><span class="o">.</span><span class="n">ndown</span><span class="p">()</span>
     <span class="n">_q_</span><span class="o">.</span><span class="n">mo_coeff</span> <span class="o">=</span> <span class="n">orbs</span>
+    <span class="n">_q_</span><span class="o">.</span><span class="n">mo_coeff_B</span> <span class="o">=</span> <span class="n">orbs_B</span>
     <span class="n">_q_</span><span class="o">.</span><span class="n">orbital_energies</span> <span class="o">=</span> <span class="n">orbs_energy</span>
+    <span class="n">_q_</span><span class="o">.</span><span class="n">orbital_energies_B</span> <span class="o">=</span> <span class="n">orbs_energy_B</span>
     <span class="c1"># Molecule geometry</span>
-    <span class="n">_q_</span><span class="o">.</span><span class="n">molecular_charge</span> <span class="o">=</span> <span class="n">mol</span><span class="o">.</span><span class="n">charge</span>
-    <span class="n">_q_</span><span class="o">.</span><span class="n">multiplicity</span> <span class="o">=</span> <span class="n">mol</span><span class="o">.</span><span class="n">multiplicity</span>
-    <span class="n">_q_</span><span class="o">.</span><span class="n">num_atoms</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">mol</span><span class="p">)</span>
+    <span class="n">_q_</span><span class="o">.</span><span class="n">molecular_charge</span> <span class="o">=</span> <span class="n">molecule</span><span class="o">.</span><span class="n">charge</span>
+    <span class="n">_q_</span><span class="o">.</span><span class="n">multiplicity</span> <span class="o">=</span> <span class="n">molecule</span><span class="o">.</span><span class="n">multiplicity</span>
+    <span class="n">_q_</span><span class="o">.</span><span class="n">num_atoms</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">molecule</span><span class="p">)</span>
     <span class="n">_q_</span><span class="o">.</span><span class="n">atom_symbol</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="n">_q_</span><span class="o">.</span><span class="n">atom_xyz</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">([</span><span class="nb">len</span><span class="p">(</span><span class="n">mol</span><span class="p">),</span> <span class="mi">3</span><span class="p">])</span>
-    <span class="n">atoms</span> <span class="o">=</span> <span class="n">mol</span><span class="o">.</span><span class="n">atoms</span>
+    <span class="n">_q_</span><span class="o">.</span><span class="n">atom_xyz</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">([</span><span class="nb">len</span><span class="p">(</span><span class="n">molecule</span><span class="p">),</span> <span class="mi">3</span><span class="p">])</span>
+    <span class="n">atoms</span> <span class="o">=</span> <span class="n">molecule</span><span class="o">.</span><span class="n">atoms</span>
     <span class="k">for</span> <span class="n">_n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">_q_</span><span class="o">.</span><span class="n">num_atoms</span><span class="p">):</span>
         <span class="n">atuple</span> <span class="o">=</span> <span class="n">atoms</span><span class="p">[</span><span class="n">_n</span><span class="p">]</span><span class="o">.</span><span class="n">atuple</span><span class="p">()</span>
         <span class="n">_q_</span><span class="o">.</span><span class="n">atom_symbol</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">QMolecule</span><span class="o">.</span><span class="n">symbols</span><span class="p">[</span><span class="n">atuple</span><span class="p">[</span><span class="mi">0</span><span class="p">]])</span>
@@ -248,67 +311,18 @@
         <span class="n">_q_</span><span class="o">.</span><span class="n">atom_xyz</span><span class="p">[</span><span class="n">_n</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">atuple</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
         <span class="n">_q_</span><span class="o">.</span><span class="n">atom_xyz</span><span class="p">[</span><span class="n">_n</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">atuple</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
     <span class="c1"># 1 and 2 electron integrals</span>
+    <span class="n">_q_</span><span class="o">.</span><span class="n">hcore</span> <span class="o">=</span> <span class="n">hij</span>
+    <span class="n">_q_</span><span class="o">.</span><span class="n">hcore_B</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">_q_</span><span class="o">.</span><span class="n">kinetic</span> <span class="o">=</span> <span class="n">integrals</span><span class="o">.</span><span class="n">T</span>
+    <span class="n">_q_</span><span class="o">.</span><span class="n">overlap</span> <span class="o">=</span> <span class="n">integrals</span><span class="o">.</span><span class="n">S</span>
+    <span class="n">_q_</span><span class="o">.</span><span class="n">eri</span> <span class="o">=</span> <span class="n">eri</span>
     <span class="n">_q_</span><span class="o">.</span><span class="n">mo_onee_ints</span> <span class="o">=</span> <span class="n">mohij</span>
+    <span class="n">_q_</span><span class="o">.</span><span class="n">mo_onee_ints_B</span> <span class="o">=</span> <span class="n">mohij_B</span>
     <span class="n">_q_</span><span class="o">.</span><span class="n">mo_eri_ints</span> <span class="o">=</span> <span class="n">mohijkl</span>
+    <span class="n">_q_</span><span class="o">.</span><span class="n">mo_eri_ints_BB</span> <span class="o">=</span> <span class="n">mohijkl_BB</span>
+    <span class="n">_q_</span><span class="o">.</span><span class="n">mo_eri_ints_BA</span> <span class="o">=</span> <span class="n">mohijkl_BA</span>
 
-    <span class="k">return</span> <span class="n">_q_</span></div>
-
-
-<span class="k">def</span> <span class="nf">_calculate_integrals</span><span class="p">(</span><span class="n">molecule</span><span class="p">,</span> <span class="n">basis</span><span class="o">=</span><span class="s1">&#39;sto3g&#39;</span><span class="p">,</span> <span class="n">calc_type</span><span class="o">=</span><span class="s1">&#39;rhf&#39;</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Function to calculate the one and two electron terms. Perform a Hartree-Fock calculation in</span>
-<span class="sd">        the given basis.</span>
-<span class="sd">    Args:</span>
-<span class="sd">        molecule : A pyquante2 molecular object.</span>
-<span class="sd">        basis : The basis set for the electronic structure computation</span>
-<span class="sd">        calc_type: rhf, uhf, rohf</span>
-<span class="sd">    Returns:</span>
-<span class="sd">        ehf : Hartree-Fock energy</span>
-<span class="sd">        enuke: Nuclear repulsion energy</span>
-<span class="sd">        norbs : Number of orbitals</span>
-<span class="sd">        mohij : One electron terms of the Hamiltonian.</span>
-<span class="sd">        mohijkl : Two electron terms of the Hamiltonian.</span>
-<span class="sd">        orbs: Molecular orbital coefficients</span>
-<span class="sd">        orbs_energy: Orbital energies</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">bfs</span> <span class="o">=</span> <span class="n">basisset</span><span class="p">(</span><span class="n">molecule</span><span class="p">,</span> <span class="n">basis</span><span class="p">)</span>
-    <span class="n">integrals</span> <span class="o">=</span> <span class="n">onee_integrals</span><span class="p">(</span><span class="n">bfs</span><span class="p">,</span> <span class="n">molecule</span><span class="p">)</span>
-    <span class="n">hij</span> <span class="o">=</span> <span class="n">integrals</span><span class="o">.</span><span class="n">T</span> <span class="o">+</span> <span class="n">integrals</span><span class="o">.</span><span class="n">V</span>
-    <span class="n">hijkl_compressed</span> <span class="o">=</span> <span class="n">twoe_integrals</span><span class="p">(</span><span class="n">bfs</span><span class="p">)</span>
-
-    <span class="c1"># convert overlap integrals to molecular basis</span>
-    <span class="c1"># calculate the Hartree-Fock solution of the molecule</span>
-
-    <span class="k">if</span> <span class="n">calc_type</span> <span class="o">==</span> <span class="s1">&#39;rhf&#39;</span><span class="p">:</span>
-        <span class="n">solver</span> <span class="o">=</span> <span class="n">rhf</span><span class="p">(</span><span class="n">molecule</span><span class="p">,</span> <span class="n">bfs</span><span class="p">)</span>
-    <span class="k">elif</span> <span class="n">calc_type</span> <span class="o">==</span> <span class="s1">&#39;rohf&#39;</span><span class="p">:</span>
-        <span class="n">solver</span> <span class="o">=</span> <span class="n">rohf</span><span class="p">(</span><span class="n">molecule</span><span class="p">,</span> <span class="n">bfs</span><span class="p">)</span>
-    <span class="k">elif</span> <span class="n">calc_type</span> <span class="o">==</span> <span class="s1">&#39;uhf&#39;</span><span class="p">:</span>
-        <span class="n">solver</span> <span class="o">=</span> <span class="n">uhf</span><span class="p">(</span><span class="n">molecule</span><span class="p">,</span> <span class="n">bfs</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="n">QiskitChemistryError</span><span class="p">(</span><span class="s1">&#39;Invalid calc_type: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">calc_type</span><span class="p">))</span>
-    <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;Solver name </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">solver</span><span class="o">.</span><span class="n">name</span><span class="p">))</span>
-    <span class="n">ehf</span> <span class="o">=</span> <span class="n">solver</span><span class="o">.</span><span class="n">converge</span><span class="p">()</span>
-    <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">solver</span><span class="p">,</span> <span class="s1">&#39;orbs&#39;</span><span class="p">):</span>
-        <span class="n">orbs</span> <span class="o">=</span> <span class="n">solver</span><span class="o">.</span><span class="n">orbs</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">orbs</span> <span class="o">=</span> <span class="n">solver</span><span class="o">.</span><span class="n">orbsa</span>
-    <span class="n">norbs</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">orbs</span><span class="p">)</span>
-    <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">solver</span><span class="p">,</span> <span class="s1">&#39;orbe&#39;</span><span class="p">):</span>
-        <span class="n">orbs_energy</span> <span class="o">=</span> <span class="n">solver</span><span class="o">.</span><span class="n">orbe</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">orbs_energy</span> <span class="o">=</span> <span class="n">solver</span><span class="o">.</span><span class="n">orbea</span>
-    <span class="n">enuke</span> <span class="o">=</span> <span class="n">molecule</span><span class="o">.</span><span class="n">nuclear_repulsion</span><span class="p">()</span>
-    <span class="c1"># Get ints in molecular orbital basis</span>
-    <span class="n">mohij</span> <span class="o">=</span> <span class="n">simx</span><span class="p">(</span><span class="n">hij</span><span class="p">,</span> <span class="n">orbs</span><span class="p">)</span>
-    <span class="n">mohijkl_compressed</span> <span class="o">=</span> <span class="n">transformintegrals</span><span class="p">(</span><span class="n">hijkl_compressed</span><span class="p">,</span> <span class="n">orbs</span><span class="p">)</span>
-    <span class="n">mohijkl</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">norbs</span><span class="p">,</span> <span class="n">norbs</span><span class="p">,</span> <span class="n">norbs</span><span class="p">,</span> <span class="n">norbs</span><span class="p">))</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">norbs</span><span class="p">):</span>
-        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">norbs</span><span class="p">):</span>
-            <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">norbs</span><span class="p">):</span>
-                <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">norbs</span><span class="p">):</span>
-                    <span class="n">mohijkl</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">l</span><span class="p">]</span> <span class="o">=</span> <span class="n">mohijkl_compressed</span><span class="p">[</span><span class="n">ijkl2intindex</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">l</span><span class="p">)]</span>
-
-    <span class="k">return</span> <span class="n">ehf</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">enuke</span><span class="p">,</span> <span class="n">norbs</span><span class="p">,</span> <span class="n">mohij</span><span class="p">,</span> <span class="n">mohijkl</span><span class="p">,</span> <span class="n">orbs</span><span class="p">,</span> <span class="n">orbs_energy</span>
+    <span class="k">return</span> <span class="n">_q_</span>
 
 
 <span class="k">def</span> <span class="nf">_parse_molecule</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="n">units</span><span class="p">,</span> <span class="n">charge</span><span class="p">,</span> <span class="n">multiplicity</span><span class="p">):</span>
@@ -370,7 +384,7 @@
     <span class="k">if</span> <span class="n">val</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="n">val</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span>
         <span class="k">raise</span> <span class="n">QiskitChemistryError</span><span class="p">(</span><span class="s1">&#39;Molecule atom format error: empty&#39;</span><span class="p">)</span>
 
-    <span class="n">parts</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;\s+&#39;</span><span class="p">,</span> <span class="n">val</span><span class="p">)</span>
+    <span class="n">parts</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\s+&#39;</span><span class="p">,</span> <span class="n">val</span><span class="p">)</span>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">parts</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">4</span><span class="p">:</span>
         <span class="k">raise</span> <span class="n">QiskitChemistryError</span><span class="p">(</span><span class="s1">&#39;Molecule atom format error: &#39;</span> <span class="o">+</span> <span class="n">val</span><span class="p">)</span>
 

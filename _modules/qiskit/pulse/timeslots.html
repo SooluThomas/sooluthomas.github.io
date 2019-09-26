@@ -188,13 +188,11 @@
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="kn">from</span> <span class="nn">collections</span> <span class="k">import</span> <span class="n">defaultdict</span>
 <span class="kn">import</span> <span class="nn">itertools</span>
-<span class="kn">import</span> <span class="nn">logging</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="k">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Tuple</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="k">import</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Union</span>
 
 <span class="kn">from</span> <span class="nn">.channels</span> <span class="k">import</span> <span class="n">Channel</span>
 <span class="kn">from</span> <span class="nn">.exceptions</span> <span class="k">import</span> <span class="n">PulseError</span>
 
-<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
 
 <span class="c1"># pylint: disable=missing-return-doc</span>
 
@@ -202,37 +200,39 @@
 <div class="viewcode-block" id="Interval"><a class="viewcode-back" href="../../../autodoc/qiskit.pulse.timeslots.html#qiskit.pulse.timeslots.Interval">[docs]</a><span class="k">class</span> <span class="nc">Interval</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;Time interval.&quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">begin</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">end</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create an interval = (begin, end))</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">stop</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Create an interval, (start, stop).</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            begin: begin time of this interval</span>
-<span class="sd">            end: end time of this interval</span>
+<span class="sd">            start: Starting value of interval</span>
+<span class="sd">            stop: Stopping value of interval</span>
 
 <span class="sd">        Raises:</span>
 <span class="sd">            PulseError: when invalid time or duration is specified</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="n">begin</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="n">PulseError</span><span class="p">(</span><span class="s2">&quot;Cannot create Interval with negative begin time&quot;</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">end</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="n">PulseError</span><span class="p">(</span><span class="s2">&quot;Cannot create Interval with negative end time&quot;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_begin</span> <span class="o">=</span> <span class="n">begin</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_end</span> <span class="o">=</span> <span class="n">end</span>
+        <span class="k">if</span> <span class="n">start</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">PulseError</span><span class="p">(</span><span class="s2">&quot;Cannot create Interval with negative starting value&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">stop</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">PulseError</span><span class="p">(</span><span class="s2">&quot;Cannot create Interval with negative stopping value&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">start</span> <span class="o">&gt;</span> <span class="n">stop</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">PulseError</span><span class="p">(</span><span class="s2">&quot;Cannot create Interval with value start after stop&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_start</span> <span class="o">=</span> <span class="n">start</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_stop</span> <span class="o">=</span> <span class="n">stop</span>
 
     <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">begin</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Begin time of this interval.&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_begin</span>
+    <span class="k">def</span> <span class="nf">start</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Start of interval.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_start</span>
 
     <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">end</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;End time of this interval.&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_end</span>
+    <span class="k">def</span> <span class="nf">stop</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Stop of interval.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_stop</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">duration</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Duration of this interval.&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_end</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_begin</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">stop</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">start</span>
 
 <div class="viewcode-block" id="Interval.has_overlap"><a class="viewcode-back" href="../../../autodoc/qiskit.pulse.timeslots.html#qiskit.pulse.timeslots.Interval.has_overlap">[docs]</a>    <span class="k">def</span> <span class="nf">has_overlap</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">interval</span><span class="p">:</span> <span class="s1">&#39;Interval&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;Check if self has overlap with `interval`.</span>
@@ -243,9 +243,7 @@
 <span class="sd">        Returns:</span>
 <span class="sd">            bool: True if self has overlap with `interval` otherwise False</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">begin</span> <span class="o">&lt;</span> <span class="n">interval</span><span class="o">.</span><span class="n">end</span> <span class="ow">and</span> <span class="n">interval</span><span class="o">.</span><span class="n">begin</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">end</span><span class="p">:</span>
-            <span class="k">return</span> <span class="kc">True</span>
-        <span class="k">return</span> <span class="kc">False</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">start</span> <span class="o">&lt;</span> <span class="n">interval</span><span class="o">.</span><span class="n">stop</span> <span class="ow">and</span> <span class="n">interval</span><span class="o">.</span><span class="n">start</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">stop</span></div>
 
 <div class="viewcode-block" id="Interval.shift"><a class="viewcode-back" href="../../../autodoc/qiskit.pulse.timeslots.html#qiskit.pulse.timeslots.Interval.shift">[docs]</a>    <span class="k">def</span> <span class="nf">shift</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;Interval&#39;</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;Return a new interval shifted by `time` from self</span>
@@ -256,10 +254,10 @@
 <span class="sd">        Returns:</span>
 <span class="sd">            Interval: interval shifted by `time`</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="n">Interval</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_begin</span> <span class="o">+</span> <span class="n">time</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_end</span> <span class="o">+</span> <span class="n">time</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="n">Interval</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">start</span> <span class="o">+</span> <span class="n">time</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">stop</span> <span class="o">+</span> <span class="n">time</span><span class="p">)</span></div>
 
     <span class="k">def</span> <span class="nf">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Two intervals are the same if they have the same begin and end.</span>
+        <span class="sd">&quot;&quot;&quot;Two intervals are the same if they have the same starting and stopping values.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            other (Interval): other Interval</span>
@@ -267,9 +265,11 @@
 <span class="sd">        Returns:</span>
 <span class="sd">            bool: are self and other equal.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_begin</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">_begin</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_end</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">_end</span><span class="p">:</span>
-            <span class="k">return</span> <span class="kc">True</span>
-        <span class="k">return</span> <span class="kc">False</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">start</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">start</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">stop</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">stop</span>
+
+    <span class="k">def</span> <span class="nf">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return a readable representation of Interval Object&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">(</span><span class="si">{}</span><span class="s2">, </span><span class="si">{}</span><span class="s2">)&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">start</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">stop</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="Timeslot"><a class="viewcode-back" href="../../../autodoc/qiskit.pulse.timeslots.html#qiskit.pulse.timeslots.Timeslot">[docs]</a><span class="k">class</span> <span class="nc">Timeslot</span><span class="p">:</span>
@@ -289,6 +289,21 @@
         <span class="sd">&quot;&quot;&quot;Channel of this time slot.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_channel</span>
 
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">start</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Start of timeslot.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">interval</span><span class="o">.</span><span class="n">start</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">stop</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Stop of timeslot.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">interval</span><span class="o">.</span><span class="n">stop</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">duration</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Duration of this timeslot.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">interval</span><span class="o">.</span><span class="n">duration</span>
+
 <div class="viewcode-block" id="Timeslot.shift"><a class="viewcode-back" href="../../../autodoc/qiskit.pulse.timeslots.html#qiskit.pulse.timeslots.Timeslot.shift">[docs]</a>    <span class="k">def</span> <span class="nf">shift</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;Timeslot&#39;</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;Return a new Timeslot shifted by `time`.</span>
 
@@ -297,21 +312,36 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">Timeslot</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">interval</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="n">time</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">channel</span><span class="p">)</span></div>
 
+<div class="viewcode-block" id="Timeslot.has_overlap"><a class="viewcode-back" href="../../../autodoc/qiskit.pulse.timeslots.html#qiskit.pulse.timeslots.Timeslot.has_overlap">[docs]</a>    <span class="k">def</span> <span class="nf">has_overlap</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="s1">&#39;Timeslot&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Check if self has overlap with `interval`.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            other: Other Timeslot to check for overlap with</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            bool: True if intervals overlap and are on the same channel</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">interval</span><span class="o">.</span><span class="n">has_overlap</span><span class="p">(</span><span class="n">other</span><span class="p">)</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">channel</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">channel</span></div>
+
     <span class="k">def</span> <span class="nf">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;Two time-slots are the same if they have the same interval and channel.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            other (Timeslot): other Timeslot</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">interval</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">interval</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">channel</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">channel</span><span class="p">:</span>
-            <span class="k">return</span> <span class="kc">True</span>
-        <span class="k">return</span> <span class="kc">False</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">interval</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">interval</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">channel</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">channel</span>
+
+    <span class="k">def</span> <span class="nf">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return a readable representation of Timeslot Object&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">(</span><span class="si">{}</span><span class="s2">, </span><span class="si">{}</span><span class="s2">)&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span>
+                                   <span class="bp">self</span><span class="o">.</span><span class="n">channel</span><span class="p">,</span>
+                                   <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">interval</span><span class="o">.</span><span class="n">start</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">interval</span><span class="o">.</span><span class="n">stop</span><span class="p">))</span></div>
 
 
 <div class="viewcode-block" id="TimeslotCollection"><a class="viewcode-back" href="../../../autodoc/qiskit.pulse.timeslots.html#qiskit.pulse.timeslots.TimeslotCollection">[docs]</a><span class="k">class</span> <span class="nc">TimeslotCollection</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;Collection of `Timeslot`s.&quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">timeslots</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Timeslot</span><span class="p">]):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">timeslots</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Timeslot</span><span class="p">,</span> <span class="s1">&#39;TimeslotCollection&#39;</span><span class="p">]):</span>
         <span class="sd">&quot;&quot;&quot;Create a new time-slot collection.</span>
 
 <span class="sd">        Args:</span>
@@ -321,23 +351,21 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_table</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
 
-        <span class="k">for</span> <span class="n">slot</span> <span class="ow">in</span> <span class="n">timeslots</span><span class="p">:</span>
-            <span class="k">for</span> <span class="n">interval</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_table</span><span class="p">[</span><span class="n">slot</span><span class="o">.</span><span class="n">channel</span><span class="p">]:</span>
-                <span class="k">if</span> <span class="n">slot</span><span class="o">.</span><span class="n">interval</span><span class="o">.</span><span class="n">has_overlap</span><span class="p">(</span><span class="n">interval</span><span class="p">):</span>
-                    <span class="k">raise</span> <span class="n">PulseError</span><span class="p">(</span><span class="s2">&quot;Cannot create TimeslotCollection from overlapped timeslots&quot;</span><span class="p">)</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_table</span><span class="p">[</span><span class="n">slot</span><span class="o">.</span><span class="n">channel</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">slot</span><span class="o">.</span><span class="n">interval</span><span class="p">)</span>
-
-        <span class="bp">self</span><span class="o">.</span><span class="n">_timeslots</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">timeslots</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">timeslot</span> <span class="ow">in</span> <span class="n">timeslots</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">timeslot</span><span class="p">,</span> <span class="n">TimeslotCollection</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_merge_timeslot_collection</span><span class="p">(</span><span class="n">timeslot</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_merge_timeslot</span><span class="p">(</span><span class="n">timeslot</span><span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">timeslots</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Timeslot</span><span class="p">]:</span>
-        <span class="sd">&quot;&quot;&quot;`Timeslot`s in collection.&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timeslots</span>
+        <span class="sd">&quot;&quot;&quot;Sorted tuple of `Timeslot`s in collection.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">itertools</span><span class="o">.</span><span class="n">chain</span><span class="o">.</span><span class="n">from_iterable</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_table</span><span class="o">.</span><span class="n">values</span><span class="p">()))</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">channels</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Timeslot</span><span class="p">]:</span>
         <span class="sd">&quot;&quot;&quot;Channels within the timeslot collection.&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="nb">tuple</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_table</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+        <span class="k">return</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">k</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_table</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">v</span><span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">start_time</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
@@ -354,31 +382,95 @@
         <span class="sd">&quot;&quot;&quot;Return maximum duration of timeslots over all channels.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">stop_time</span>
 
-<div class="viewcode-block" id="TimeslotCollection.ch_start_time"><a class="viewcode-back" href="../../../autodoc/qiskit.pulse.timeslots.html#qiskit.pulse.timeslots.TimeslotCollection.ch_start_time">[docs]</a>    <span class="k">def</span> <span class="nf">ch_start_time</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">channels</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Channel</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">_merge_timeslot_collection</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="s1">&#39;TimeslotCollection&#39;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Mutably merge timeslot collections into this TimeslotCollection.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            other: TimeSlotCollection to merge</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">channel</span><span class="p">,</span> <span class="n">other_ch_timeslots</span> <span class="ow">in</span> <span class="n">other</span><span class="o">.</span><span class="n">_table</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">channel</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_table</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_table</span><span class="p">[</span><span class="n">channel</span><span class="p">]</span> <span class="o">+=</span> <span class="n">other_ch_timeslots</span>  <span class="c1"># extend to copy items</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="c1"># if channel is in self there might be an overlap</span>
+                <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">other_ch_timeslot</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">other_ch_timeslots</span><span class="p">):</span>
+                    <span class="n">insert_idx</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_merge_timeslot</span><span class="p">(</span><span class="n">other_ch_timeslot</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="n">insert_idx</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_table</span><span class="p">[</span><span class="n">channel</span><span class="p">])</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
+                        <span class="c1"># Timeslot was inserted at end of list. The rest can be appended.</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">_table</span><span class="p">[</span><span class="n">channel</span><span class="p">]</span> <span class="o">+=</span> <span class="n">other_ch_timeslots</span><span class="p">[</span><span class="n">idx</span> <span class="o">+</span> <span class="mi">1</span><span class="p">:]</span>
+                        <span class="k">break</span>
+
+    <span class="k">def</span> <span class="nf">_merge_timeslot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">timeslot</span><span class="p">:</span> <span class="n">Timeslot</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Mutably merge timeslots into this TimeslotCollection.</span>
+
+<span class="sd">        Note timeslots are sorted internally on their respective channel</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            timeslot: Timeslot to merge</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            int: Return the index in which timeslot was inserted</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            PulseError: If timeslots overlap</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">interval</span> <span class="o">=</span> <span class="n">timeslot</span><span class="o">.</span><span class="n">interval</span>
+        <span class="n">ch_timeslots</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_table</span><span class="p">[</span><span class="n">timeslot</span><span class="o">.</span><span class="n">channel</span><span class="p">]</span>
+
+        <span class="n">insert_idx</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">ch_timeslots</span><span class="p">)</span>
+
+        <span class="c1"># merge timeslots by insertion sort.</span>
+        <span class="c1"># Worst case O(n_channels), O(1) for append</span>
+        <span class="c1"># could be improved by implementing an interval tree</span>
+        <span class="k">for</span> <span class="n">ch_timeslot</span> <span class="ow">in</span> <span class="nb">reversed</span><span class="p">(</span><span class="n">ch_timeslots</span><span class="p">):</span>
+            <span class="n">ch_interval</span> <span class="o">=</span> <span class="n">ch_timeslot</span><span class="o">.</span><span class="n">interval</span>
+
+            <span class="k">if</span> <span class="n">interval</span><span class="o">.</span><span class="n">start</span> <span class="o">&gt;=</span> <span class="n">ch_interval</span><span class="o">.</span><span class="n">stop</span><span class="p">:</span>
+                <span class="k">break</span>
+            <span class="k">elif</span> <span class="n">interval</span><span class="o">.</span><span class="n">has_overlap</span><span class="p">(</span><span class="n">ch_interval</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="n">PulseError</span><span class="p">(</span><span class="s2">&quot;Timeslot: </span><span class="si">{0}</span><span class="s2"> overlaps with existing&quot;</span>
+                                 <span class="s2">&quot;Timeslot: </span><span class="si">{1}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">timeslot</span><span class="p">,</span> <span class="n">ch_timeslot</span><span class="p">))</span>
+
+            <span class="n">insert_idx</span> <span class="o">-=</span> <span class="mi">1</span>
+
+        <span class="n">ch_timeslots</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">insert_idx</span><span class="p">,</span> <span class="n">timeslot</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">insert_idx</span>
+
+<div class="viewcode-block" id="TimeslotCollection.ch_timeslots"><a class="viewcode-back" href="../../../autodoc/qiskit.pulse.timeslots.html#qiskit.pulse.timeslots.TimeslotCollection.ch_timeslots">[docs]</a>    <span class="k">def</span> <span class="nf">ch_timeslots</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">channel</span><span class="p">:</span> <span class="n">Channel</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Timeslot</span><span class="p">]:</span>
+        <span class="sd">&quot;&quot;&quot;Sorted tuple of `Timeslot`s for channel in this TimeslotCollection.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">channel</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_table</span><span class="p">:</span>
+            <span class="k">return</span> <span class="nb">tuple</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_table</span><span class="p">[</span><span class="n">channel</span><span class="p">])</span>
+
+        <span class="k">return</span> <span class="nb">tuple</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="TimeslotCollection.ch_start_time"><a class="viewcode-back" href="../../../autodoc/qiskit.pulse.timeslots.html#qiskit.pulse.timeslots.TimeslotCollection.ch_start_time">[docs]</a>    <span class="k">def</span> <span class="nf">ch_start_time</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">channels</span><span class="p">:</span> <span class="n">Channel</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;Return earliest start time in this collection.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            *channels: Channels over which to obtain start_time.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">intervals</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">itertools</span><span class="o">.</span><span class="n">chain</span><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_table</span><span class="p">[</span><span class="n">chan</span><span class="p">]</span> <span class="k">for</span> <span class="n">chan</span> <span class="ow">in</span> <span class="n">channels</span>
+        <span class="n">timeslots</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">itertools</span><span class="o">.</span><span class="n">chain</span><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_table</span><span class="p">[</span><span class="n">chan</span><span class="p">]</span> <span class="k">for</span> <span class="n">chan</span> <span class="ow">in</span> <span class="n">channels</span>
                                            <span class="k">if</span> <span class="n">chan</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_table</span><span class="p">)))</span>
-        <span class="k">if</span> <span class="n">intervals</span><span class="p">:</span>
-            <span class="k">return</span> <span class="nb">min</span><span class="p">((</span><span class="n">interval</span><span class="o">.</span><span class="n">begin</span> <span class="k">for</span> <span class="n">interval</span> <span class="ow">in</span> <span class="n">intervals</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">timeslots</span><span class="p">:</span>
+            <span class="k">return</span> <span class="nb">min</span><span class="p">(</span><span class="n">timeslot</span><span class="o">.</span><span class="n">start</span> <span class="k">for</span> <span class="n">timeslot</span> <span class="ow">in</span> <span class="n">timeslots</span><span class="p">)</span>
+
         <span class="k">return</span> <span class="mi">0</span></div>
 
-<div class="viewcode-block" id="TimeslotCollection.ch_stop_time"><a class="viewcode-back" href="../../../autodoc/qiskit.pulse.timeslots.html#qiskit.pulse.timeslots.TimeslotCollection.ch_stop_time">[docs]</a>    <span class="k">def</span> <span class="nf">ch_stop_time</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">channels</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Channel</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<div class="viewcode-block" id="TimeslotCollection.ch_stop_time"><a class="viewcode-back" href="../../../autodoc/qiskit.pulse.timeslots.html#qiskit.pulse.timeslots.TimeslotCollection.ch_stop_time">[docs]</a>    <span class="k">def</span> <span class="nf">ch_stop_time</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">channels</span><span class="p">:</span> <span class="n">Channel</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;Return maximum time of timeslots over all channels.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            *channels: Channels over which to obtain stop time.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">intervals</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">itertools</span><span class="o">.</span><span class="n">chain</span><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_table</span><span class="p">[</span><span class="n">chan</span><span class="p">]</span> <span class="k">for</span> <span class="n">chan</span> <span class="ow">in</span> <span class="n">channels</span>
+        <span class="n">timeslots</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">itertools</span><span class="o">.</span><span class="n">chain</span><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_table</span><span class="p">[</span><span class="n">chan</span><span class="p">]</span> <span class="k">for</span> <span class="n">chan</span> <span class="ow">in</span> <span class="n">channels</span>
                                            <span class="k">if</span> <span class="n">chan</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_table</span><span class="p">)))</span>
-        <span class="k">if</span> <span class="n">intervals</span><span class="p">:</span>
-            <span class="k">return</span> <span class="nb">max</span><span class="p">((</span><span class="n">interval</span><span class="o">.</span><span class="n">end</span> <span class="k">for</span> <span class="n">interval</span> <span class="ow">in</span> <span class="n">intervals</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">timeslots</span><span class="p">:</span>
+            <span class="k">return</span> <span class="nb">max</span><span class="p">(</span><span class="n">timeslot</span><span class="o">.</span><span class="n">stop</span> <span class="k">for</span> <span class="n">timeslot</span> <span class="ow">in</span> <span class="n">timeslots</span><span class="p">)</span>
+
         <span class="k">return</span> <span class="mi">0</span></div>
 
-<div class="viewcode-block" id="TimeslotCollection.ch_duration"><a class="viewcode-back" href="../../../autodoc/qiskit.pulse.timeslots.html#qiskit.pulse.timeslots.TimeslotCollection.ch_duration">[docs]</a>    <span class="k">def</span> <span class="nf">ch_duration</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">channels</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Channel</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<div class="viewcode-block" id="TimeslotCollection.ch_duration"><a class="viewcode-back" href="../../../autodoc/qiskit.pulse.timeslots.html#qiskit.pulse.timeslots.TimeslotCollection.ch_duration">[docs]</a>    <span class="k">def</span> <span class="nf">ch_duration</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">channels</span><span class="p">:</span> <span class="n">Channel</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;Return maximum duration of timeslots over all channels.</span>
 
 <span class="sd">        Args:</span>
@@ -386,28 +478,38 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">ch_stop_time</span><span class="p">(</span><span class="o">*</span><span class="n">channels</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="TimeslotCollection.is_mergeable_with"><a class="viewcode-back" href="../../../autodoc/qiskit.pulse.timeslots.html#qiskit.pulse.timeslots.TimeslotCollection.is_mergeable_with">[docs]</a>    <span class="k">def</span> <span class="nf">is_mergeable_with</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">timeslots</span><span class="p">:</span> <span class="s1">&#39;TimeslotCollection&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<div class="viewcode-block" id="TimeslotCollection.is_mergeable_with"><a class="viewcode-back" href="../../../autodoc/qiskit.pulse.timeslots.html#qiskit.pulse.timeslots.TimeslotCollection.is_mergeable_with">[docs]</a>    <span class="k">def</span> <span class="nf">is_mergeable_with</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="s1">&#39;TimeslotCollection&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;Return if self is mergeable with `timeslots`.</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            timeslots: TimeslotCollection to be checked</span>
+<span class="sd">            other: TimeslotCollection to be checked for mergeability</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">for</span> <span class="n">slot</span> <span class="ow">in</span> <span class="n">timeslots</span><span class="o">.</span><span class="n">timeslots</span><span class="p">:</span>
-            <span class="k">if</span> <span class="n">slot</span><span class="o">.</span><span class="n">channel</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">channels</span><span class="p">:</span>
-                <span class="k">for</span> <span class="n">interval</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_table</span><span class="p">[</span><span class="n">slot</span><span class="o">.</span><span class="n">channel</span><span class="p">]:</span>
-                    <span class="k">if</span> <span class="n">slot</span><span class="o">.</span><span class="n">interval</span><span class="o">.</span><span class="n">has_overlap</span><span class="p">(</span><span class="n">interval</span><span class="p">):</span>
-                        <span class="k">return</span> <span class="kc">False</span>
+        <span class="n">common_channels</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">channels</span><span class="p">)</span> <span class="o">&amp;</span> <span class="nb">set</span><span class="p">(</span><span class="n">other</span><span class="o">.</span><span class="n">channels</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">channel</span> <span class="ow">in</span> <span class="n">common_channels</span><span class="p">:</span>
+            <span class="n">ch_timeslots</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ch_timeslots</span><span class="p">(</span><span class="n">channel</span><span class="p">)</span>
+            <span class="n">other_ch_timeslots</span> <span class="o">=</span> <span class="n">other</span><span class="o">.</span><span class="n">ch_timeslots</span><span class="p">(</span><span class="n">channel</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">ch_timeslots</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">stop</span> <span class="o">&lt;</span> <span class="n">other_ch_timeslots</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">start</span><span class="p">:</span>
+                <span class="k">continue</span>  <span class="c1"># We are appending along this channel</span>
+
+            <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># iterate through this</span>
+            <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># iterate through other</span>
+            <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">ch_timeslots</span><span class="p">)</span> <span class="ow">and</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">other_ch_timeslots</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">ch_timeslots</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">interval</span><span class="o">.</span><span class="n">has_overlap</span><span class="p">(</span><span class="n">other_ch_timeslots</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">interval</span><span class="p">):</span>
+                    <span class="k">return</span> <span class="kc">False</span>
+                <span class="k">if</span> <span class="n">ch_timeslots</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">stop</span> <span class="o">&lt;=</span> <span class="n">other_ch_timeslots</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">start</span><span class="p">:</span>
+                    <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">j</span> <span class="o">+=</span> <span class="mi">1</span>
         <span class="k">return</span> <span class="kc">True</span></div>
 
-<div class="viewcode-block" id="TimeslotCollection.merged"><a class="viewcode-back" href="../../../autodoc/qiskit.pulse.timeslots.html#qiskit.pulse.timeslots.TimeslotCollection.merged">[docs]</a>    <span class="k">def</span> <span class="nf">merged</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">timeslots</span><span class="p">:</span> <span class="s1">&#39;TimeslotCollection&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;TimeslotCollection&#39;</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Return a new TimeslotCollection merged with a specified `timeslots`</span>
+<div class="viewcode-block" id="TimeslotCollection.merge"><a class="viewcode-back" href="../../../autodoc/qiskit.pulse.timeslots.html#qiskit.pulse.timeslots.TimeslotCollection.merge">[docs]</a>    <span class="k">def</span> <span class="nf">merge</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">timeslots</span><span class="p">:</span> <span class="s1">&#39;TimeslotCollection&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;TimeslotCollection&#39;</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Return a new TimeslotCollection with `timeslots` merged into it.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            timeslots: TimeslotCollection to be merged</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">slots</span> <span class="o">=</span> <span class="p">[</span><span class="n">Timeslot</span><span class="p">(</span><span class="n">slot</span><span class="o">.</span><span class="n">interval</span><span class="p">,</span> <span class="n">slot</span><span class="o">.</span><span class="n">channel</span><span class="p">)</span> <span class="k">for</span> <span class="n">slot</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeslots</span><span class="p">]</span>
-        <span class="n">slots</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">Timeslot</span><span class="p">(</span><span class="n">slot</span><span class="o">.</span><span class="n">interval</span><span class="p">,</span> <span class="n">slot</span><span class="o">.</span><span class="n">channel</span><span class="p">)</span> <span class="k">for</span> <span class="n">slot</span> <span class="ow">in</span> <span class="n">timeslots</span><span class="o">.</span><span class="n">timeslots</span><span class="p">])</span>
-        <span class="k">return</span> <span class="n">TimeslotCollection</span><span class="p">(</span><span class="o">*</span><span class="n">slots</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="n">TimeslotCollection</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">timeslots</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="TimeslotCollection.shift"><a class="viewcode-back" href="../../../autodoc/qiskit.pulse.timeslots.html#qiskit.pulse.timeslots.TimeslotCollection.shift">[docs]</a>    <span class="k">def</span> <span class="nf">shift</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;TimeslotCollection&#39;</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;Return a new TimeslotCollection shifted by `time`.</span>
@@ -415,7 +517,7 @@
 <span class="sd">        Args:</span>
 <span class="sd">            time: time to be shifted by</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">slots</span> <span class="o">=</span> <span class="p">[</span><span class="n">Timeslot</span><span class="p">(</span><span class="n">slot</span><span class="o">.</span><span class="n">interval</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="n">time</span><span class="p">),</span> <span class="n">slot</span><span class="o">.</span><span class="n">channel</span><span class="p">)</span> <span class="k">for</span> <span class="n">slot</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeslots</span><span class="p">]</span>
+        <span class="n">slots</span> <span class="o">=</span> <span class="p">[</span><span class="n">slot</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="n">time</span><span class="p">)</span> <span class="k">for</span> <span class="n">slot</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeslots</span><span class="p">]</span>
         <span class="k">return</span> <span class="n">TimeslotCollection</span><span class="p">(</span><span class="o">*</span><span class="n">slots</span><span class="p">)</span></div>
 
     <span class="k">def</span> <span class="nf">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
@@ -424,9 +526,19 @@
 <span class="sd">        Args:</span>
 <span class="sd">            other (TimeslotCollection): other TimeslotCollection</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeslots</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">timeslots</span><span class="p">:</span>
-            <span class="k">return</span> <span class="kc">True</span>
-        <span class="k">return</span> <span class="kc">False</span></div>
+        <span class="k">if</span> <span class="nb">set</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">channels</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">set</span><span class="p">(</span><span class="n">other</span><span class="o">.</span><span class="n">channels</span><span class="p">):</span>
+            <span class="k">return</span> <span class="kc">False</span>
+        <span class="k">for</span> <span class="n">channel</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">channels</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">ch_timeslots</span><span class="p">(</span><span class="n">channel</span><span class="p">)</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ch_timeslots</span><span class="p">(</span><span class="n">channel</span><span class="p">):</span>
+                <span class="k">return</span> <span class="kc">False</span>
+        <span class="k">return</span> <span class="kc">True</span>
+
+    <span class="k">def</span> <span class="nf">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return a readable representation of TimeslotCollection Object&quot;&quot;&quot;</span>
+        <span class="n">rep</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_table</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">rep</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="p">[(</span><span class="n">timeslot</span><span class="o">.</span><span class="n">start</span><span class="p">,</span> <span class="n">timeslot</span><span class="o">.</span><span class="n">stop</span><span class="p">)</span> <span class="k">for</span> <span class="n">timeslot</span> <span class="ow">in</span> <span class="n">val</span><span class="p">]</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">rep</span><span class="p">)</span></div>
 </pre></div>
 
         </div>

@@ -183,24 +183,20 @@
 <span class="c1"># copyright notice, and modified files need to carry a notice indicating</span>
 <span class="c1"># that they have been altered from the originals.</span>
 
-<span class="c1"># pylint: disable=invalid-name</span>
-
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">Pauli X (bit-flip) gate.</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
 <span class="kn">import</span> <span class="nn">numpy</span>
 
-<span class="kn">from</span> <span class="nn">qiskit.circuit</span> <span class="k">import</span> <span class="n">CompositeGate</span>
 <span class="kn">from</span> <span class="nn">qiskit.circuit</span> <span class="k">import</span> <span class="n">Gate</span>
 <span class="kn">from</span> <span class="nn">qiskit.circuit</span> <span class="k">import</span> <span class="n">QuantumCircuit</span>
 <span class="kn">from</span> <span class="nn">qiskit.circuit</span> <span class="k">import</span> <span class="n">QuantumRegister</span>
-<span class="kn">from</span> <span class="nn">qiskit.circuit.decorators</span> <span class="k">import</span> <span class="n">_op_expand</span><span class="p">,</span> <span class="n">_to_bits</span>
 <span class="kn">from</span> <span class="nn">qiskit.qasm</span> <span class="k">import</span> <span class="n">pi</span>
 <span class="kn">from</span> <span class="nn">qiskit.extensions.standard.u3</span> <span class="k">import</span> <span class="n">U3Gate</span>
 
 
-<div class="viewcode-block" id="XGate"><a class="viewcode-back" href="../../../../autodoc/qiskit.extensions.standard.x.html#qiskit.circuit.compositegate.XGate">[docs]</a><span class="k">class</span> <span class="nc">XGate</span><span class="p">(</span><span class="n">Gate</span><span class="p">):</span>
+<div class="viewcode-block" id="XGate"><a class="viewcode-back" href="../../../../autodoc/qiskit.extensions.standard.x.html#qiskit.circuit.quantumcircuit.XGate">[docs]</a><span class="k">class</span> <span class="nc">XGate</span><span class="p">(</span><span class="n">Gate</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Pauli X (bit-flip) gate.&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
@@ -222,25 +218,22 @@
             <span class="n">definition</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">inst</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">definition</span> <span class="o">=</span> <span class="n">definition</span>
 
-<div class="viewcode-block" id="XGate.inverse"><a class="viewcode-back" href="../../../../autodoc/qiskit.extensions.standard.x.html#qiskit.circuit.compositegate.XGate.inverse">[docs]</a>    <span class="k">def</span> <span class="nf">inverse</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="XGate.inverse"><a class="viewcode-back" href="../../../../autodoc/qiskit.extensions.standard.x.html#qiskit.circuit.quantumcircuit.XGate.inverse">[docs]</a>    <span class="k">def</span> <span class="nf">inverse</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Invert this gate.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">XGate</span><span class="p">()</span>  <span class="c1"># self-inverse</span></div>
 
-<div class="viewcode-block" id="XGate.to_matrix"><a class="viewcode-back" href="../../../../autodoc/qiskit.extensions.standard.x.html#qiskit.circuit.compositegate.XGate.to_matrix">[docs]</a>    <span class="k">def</span> <span class="nf">to_matrix</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="XGate.to_matrix"><a class="viewcode-back" href="../../../../autodoc/qiskit.extensions.standard.x.html#qiskit.circuit.quantumcircuit.XGate.to_matrix">[docs]</a>    <span class="k">def</span> <span class="nf">to_matrix</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return a Numpy.array for the X gate.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
                             <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">complex</span><span class="p">)</span></div></div>
 
 
-<div class="viewcode-block" id="x"><a class="viewcode-back" href="../../../../autodoc/qiskit.extensions.standard.x.html#qiskit.circuit.compositegate.x">[docs]</a><span class="nd">@_to_bits</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-<span class="nd">@_op_expand</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">x</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">q</span><span class="p">):</span>
+<div class="viewcode-block" id="x"><a class="viewcode-back" href="../../../../autodoc/qiskit.extensions.standard.x.html#qiskit.circuit.quantumcircuit.x">[docs]</a><span class="k">def</span> <span class="nf">x</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">q</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Apply X to q.&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">XGate</span><span class="p">(),</span> <span class="p">[</span><span class="n">q</span><span class="p">],</span> <span class="p">[])</span></div>
 
 
 <span class="n">QuantumCircuit</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span>
-<span class="n">CompositeGate</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span>
 </pre></div>
 
         </div>

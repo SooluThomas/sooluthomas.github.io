@@ -184,7 +184,7 @@
 <span class="c1"># that they have been altered from the originals.</span>
 
 <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">The CX direction rearrenges the direction of the cx nodes to make the circuit</span>
+<span class="sd">The CX direction rearranges the direction of the cx nodes to make the circuit</span>
 <span class="sd">compatible with the coupling_map.</span>
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="kn">from</span> <span class="nn">math</span> <span class="k">import</span> <span class="n">pi</span>
@@ -193,7 +193,6 @@
 <span class="kn">from</span> <span class="nn">qiskit.transpiler.exceptions</span> <span class="k">import</span> <span class="n">TranspilerError</span>
 
 <span class="kn">from</span> <span class="nn">qiskit.dagcircuit</span> <span class="k">import</span> <span class="n">DAGCircuit</span>
-<span class="kn">from</span> <span class="nn">qiskit.transpiler</span> <span class="k">import</span> <span class="n">Layout</span>
 <span class="kn">from</span> <span class="nn">qiskit.extensions.standard</span> <span class="k">import</span> <span class="n">U2Gate</span>
 
 
@@ -209,16 +208,14 @@
 <span class="sd">        ----.----      --[H]--(+)--[H]--</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">coupling_map</span><span class="p">,</span> <span class="n">initial_layout</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">coupling_map</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Args:</span>
 <span class="sd">            coupling_map (CouplingMap): Directed graph represented a coupling map.</span>
-<span class="sd">            initial_layout (Layout): The initial layout of the DAG.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">coupling_map</span> <span class="o">=</span> <span class="n">coupling_map</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">layout</span> <span class="o">=</span> <span class="n">initial_layout</span>
 
 <div class="viewcode-block" id="CXDirection.run"><a class="viewcode-back" href="../../../../../autodoc/qiskit.transpiler.passes.mapping.cx_direction.html#qiskit.transpiler.passes.mapping.cx_direction.CXDirection.run">[docs]</a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dag</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -234,10 +231,6 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">new_dag</span> <span class="o">=</span> <span class="n">DAGCircuit</span><span class="p">()</span>
 
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">layout</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="c1"># LegacySwap renames the register in the DAG and does not match the property set</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">layout</span> <span class="o">=</span> <span class="n">Layout</span><span class="o">.</span><span class="n">generate_trivial_layout</span><span class="p">(</span><span class="o">*</span><span class="n">dag</span><span class="o">.</span><span class="n">qregs</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
-
         <span class="k">for</span> <span class="n">layer</span> <span class="ow">in</span> <span class="n">dag</span><span class="o">.</span><span class="n">serial_layers</span><span class="p">():</span>
             <span class="n">subdag</span> <span class="o">=</span> <span class="n">layer</span><span class="p">[</span><span class="s1">&#39;graph&#39;</span><span class="p">]</span>
 
@@ -245,8 +238,8 @@
                 <span class="n">control</span> <span class="o">=</span> <span class="n">cnot_node</span><span class="o">.</span><span class="n">qargs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
                 <span class="n">target</span> <span class="o">=</span> <span class="n">cnot_node</span><span class="o">.</span><span class="n">qargs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 
-                <span class="n">physical_q0</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">layout</span><span class="p">[</span><span class="n">control</span><span class="p">]</span>
-                <span class="n">physical_q1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">layout</span><span class="p">[</span><span class="n">target</span><span class="p">]</span>
+                <span class="n">physical_q0</span> <span class="o">=</span> <span class="n">control</span><span class="o">.</span><span class="n">index</span>
+                <span class="n">physical_q1</span> <span class="o">=</span> <span class="n">target</span><span class="o">.</span><span class="n">index</span>
                 <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">coupling_map</span><span class="o">.</span><span class="n">distance</span><span class="p">(</span><span class="n">physical_q0</span><span class="p">,</span> <span class="n">physical_q1</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
                     <span class="k">raise</span> <span class="n">TranspilerError</span><span class="p">(</span><span class="s1">&#39;The circuit requires a connection between physical &#39;</span>
                                           <span class="s1">&#39;qubits </span><span class="si">%s</span><span class="s1"> and </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">physical_q0</span><span class="p">,</span> <span class="n">physical_q1</span><span class="p">))</span>
@@ -255,10 +248,10 @@
                     <span class="c1"># A flip needs to be done</span>
 
                     <span class="c1"># Create the involved registers</span>
-                    <span class="k">if</span> <span class="n">control</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">subdag</span><span class="o">.</span><span class="n">qregs</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
-                        <span class="n">subdag</span><span class="o">.</span><span class="n">add_qreg</span><span class="p">(</span><span class="n">control</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-                    <span class="k">if</span> <span class="n">target</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">subdag</span><span class="o">.</span><span class="n">qregs</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
-                        <span class="n">subdag</span><span class="o">.</span><span class="n">add_qreg</span><span class="p">(</span><span class="n">target</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+                    <span class="k">if</span> <span class="n">control</span><span class="o">.</span><span class="n">register</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">subdag</span><span class="o">.</span><span class="n">qregs</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+                        <span class="n">subdag</span><span class="o">.</span><span class="n">add_qreg</span><span class="p">(</span><span class="n">control</span><span class="o">.</span><span class="n">register</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="n">target</span><span class="o">.</span><span class="n">register</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">subdag</span><span class="o">.</span><span class="n">qregs</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+                        <span class="n">subdag</span><span class="o">.</span><span class="n">add_qreg</span><span class="p">(</span><span class="n">target</span><span class="o">.</span><span class="n">register</span><span class="p">)</span>
 
                     <span class="c1"># Add H gates around</span>
                     <span class="n">subdag</span><span class="o">.</span><span class="n">apply_operation_back</span><span class="p">(</span><span class="n">U2Gate</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">pi</span><span class="p">),</span> <span class="p">[</span><span class="n">target</span><span class="p">],</span> <span class="p">[])</span>

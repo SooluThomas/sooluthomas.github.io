@@ -51,7 +51,7 @@
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="qiskit.aqua.components.neural_networks.classical_discriminator module" href="qiskit.aqua.components.neural_networks.classical_discriminator.html" />
+    <link rel="next" title="qiskit.aqua.components.neural_networks.discriminative_network module" href="qiskit.aqua.components.neural_networks.discriminative_network.html" />
     <link rel="prev" title="qiskit.aqua.components.multiclass_extensions.one_against_rest module" href="qiskit.aqua.components.multiclass_extensions.one_against_rest.html" /> 
   </head>
 <body>
@@ -756,6 +756,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.circuit.html">qiskit.circuit package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#subpackages">Subpackages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#submodules">Submodules</a></li>
 </ul>
 </li>
@@ -776,8 +777,9 @@
 <li class="toctree-l4"><a class="reference internal" href="qiskit.extensions.html#submodules">Submodules</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.mapper.html">qiskit.mapper package</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="qiskit.mapper.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qiskit.ignis.html">qiskit.ignis package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.ignis.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.ignis.html#submodules">Submodules</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.providers.html">qiskit.providers package</a><ul>
@@ -836,10 +838,8 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="qiskit.html#submodules">Submodules</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="qiskit._util.html">qiskit._util module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.exceptions.html">qiskit.exceptions module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.execute.html">qiskit.execute module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.qiskiterror.html">qiskit.qiskiterror module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.user_config.html">qiskit.user_config module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.util.html">qiskit.util module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.version.html">qiskit.version module</a></li>
@@ -1540,6 +1540,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.circuit.html">qiskit.circuit package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#subpackages">Subpackages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#submodules">Submodules</a></li>
 </ul>
 </li>
@@ -1560,8 +1561,9 @@
 <li class="toctree-l4"><a class="reference internal" href="qiskit.extensions.html#submodules">Submodules</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.mapper.html">qiskit.mapper package</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="qiskit.mapper.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qiskit.ignis.html">qiskit.ignis package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.ignis.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.ignis.html#submodules">Submodules</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.providers.html">qiskit.providers package</a><ul>
@@ -1620,10 +1622,8 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="qiskit.html#submodules">Submodules</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="qiskit._util.html">qiskit._util module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.exceptions.html">qiskit.exceptions module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.execute.html">qiskit.execute module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.qiskiterror.html">qiskit.qiskiterror module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.user_config.html">qiskit.user_config module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.util.html">qiskit.util module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.version.html">qiskit.version module</a></li>
@@ -1747,8 +1747,18 @@ available.</p>
 </table>
 <dl class="method">
 <dt id="qiskit.aqua.components.neural_networks.GenerativeNetwork.get_output">
-<code class="descname">get_output</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/components/neural_networks/generative_network.html#GenerativeNetwork.get_output"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.aqua.components.neural_networks.GenerativeNetwork.get_output" title="Permalink to this definition">¶</a></dt>
-<dd><p>Apply quantum/classical neural network to given input and get the respective output</p>
+<code class="descname">get_output</code><span class="sig-paren">(</span><em>quantum_instance</em>, <em>qc_state_in</em>, <em>params</em>, <em>shots</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/components/neural_networks/generative_network.html#GenerativeNetwork.get_output"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.aqua.components.neural_networks.GenerativeNetwork.get_output" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>Apply quantum/classical neural network to given input and get the respective output</dt>
+<dd><dl class="first last docutils">
+<dt>Args:</dt>
+<dd>quantum_instance:  QuantumInstance, used to run the generator circuit.
+qc_state_in: QuantumCircuit corresponding to the input state
+params: array or None, parameters which should be used to run the generator, if None use self._params
+shots: int, if not None use a number of shots that is different from the number set in quantum_instance</dd>
+</dl>
+</dd>
+</dl>
 <p>Returns: Neural network output</p>
 </dd></dl>
 
@@ -1799,18 +1809,18 @@ available.</p>
 
 <dl class="method">
 <dt id="qiskit.aqua.components.neural_networks.QuantumGenerator.construct_circuit">
-<code class="descname">construct_circuit</code><span class="sig-paren">(</span><em>quantum_instance</em>, <em>params=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/components/neural_networks/quantum_generator.html#QuantumGenerator.construct_circuit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.aqua.components.neural_networks.QuantumGenerator.construct_circuit" title="Permalink to this definition">¶</a></dt>
+<code class="descname">construct_circuit</code><span class="sig-paren">(</span><em>params=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/components/neural_networks/quantum_generator.html#QuantumGenerator.construct_circuit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.aqua.components.neural_networks.QuantumGenerator.construct_circuit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Construct generator circuit.
-:param quantum_instance: QuantumInstance, used for running the generator circuit
 :param params: array or None, parameters which should be used to run the generator, if None use self._params</p>
-<p>Returns: QuantumCircuit, constructed quantum circuit</p>
+<p>Returns: Quantum Gate, construct the quantum circuit and return as gate</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="qiskit.aqua.components.neural_networks.QuantumGenerator.get_output">
-<code class="descname">get_output</code><span class="sig-paren">(</span><em>quantum_instance</em>, <em>params=None</em>, <em>shots=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/components/neural_networks/quantum_generator.html#QuantumGenerator.get_output"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.aqua.components.neural_networks.QuantumGenerator.get_output" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_output</code><span class="sig-paren">(</span><em>quantum_instance</em>, <em>qc_state_in=None</em>, <em>params=None</em>, <em>shots=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/aqua/components/neural_networks/quantum_generator.html#QuantumGenerator.get_output"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.aqua.components.neural_networks.QuantumGenerator.get_output" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get data samples from the generator.
 :param quantum_instance: QuantumInstance, used to run the generator circuit.
+:param qc_state_in: depreciated
 :param params: array or None, parameters which should be used to run the generator, if None use self._params
 :param shots: int, if not None use a number of shots that is different from the number set in quantum_instance</p>
 <p>Returns: array: generated samples, array: sample occurence in percentage</p>
@@ -1878,9 +1888,10 @@ available.</p>
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="qiskit.aqua.components.neural_networks.classical_discriminator.html">qiskit.aqua.components.neural_networks.classical_discriminator module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="qiskit.aqua.components.neural_networks.discriminative_network.html">qiskit.aqua.components.neural_networks.discriminative_network module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="qiskit.aqua.components.neural_networks.generative_network.html">qiskit.aqua.components.neural_networks.generative_network module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="qiskit.aqua.components.neural_networks.numpy_discriminator.html">qiskit.aqua.components.neural_networks.numpy_discriminator module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="qiskit.aqua.components.neural_networks.pytorch_discriminator.html">qiskit.aqua.components.neural_networks.pytorch_discriminator module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="qiskit.aqua.components.neural_networks.quantum_generator.html">qiskit.aqua.components.neural_networks.quantum_generator module</a></li>
 </ul>
 </div>
@@ -1898,10 +1909,10 @@ available.</p>
             <div>qiskit.aqua.components.multiclass_extensions.one_against_rest module</div>
          </div>
      </a>
-     <a id="button-next" href="qiskit.aqua.components.neural_networks.classical_discriminator.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
+     <a id="button-next" href="qiskit.aqua.components.neural_networks.discriminative_network.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
         <div class="pagenation-text">
             <span class="pagenation-direction">Next</span>
-            <div>qiskit.aqua.components.neural_networks.classical_discriminator module</div>
+            <div>qiskit.aqua.components.neural_networks.discriminative_network module</div>
         </div>
      </a>
         

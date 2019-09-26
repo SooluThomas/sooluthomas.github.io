@@ -183,7 +183,7 @@
 <span class="c1"># copyright notice, and modified files need to carry a notice indicating</span>
 <span class="c1"># that they have been altered from the originals.</span>
 
-<span class="sd">&quot;&quot;&quot;This module implements the abstract base class for backend jobs</span>
+<span class="sd">&quot;&quot;&quot;This module implements the abstract base class for backend jobs.</span>
 
 <span class="sd">When creating a new backend module it is also necessary to implement this</span>
 <span class="sd">job interface.</span>
@@ -211,27 +211,27 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_job_id</span></div>
 
 <div class="viewcode-block" id="BaseJob.backend"><a class="viewcode-back" href="../../../autodoc/qiskit.providers.basejob.html#qiskit.providers.basejob.BaseJob.backend">[docs]</a>    <span class="k">def</span> <span class="nf">backend</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Return the backend for this job.&quot;&quot;&quot;</span>
+        <span class="sd">&quot;&quot;&quot;Return the backend where this job was executed.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_backend</span></div>
 
 <div class="viewcode-block" id="BaseJob.submit"><a class="viewcode-back" href="../../../autodoc/qiskit.providers.basejob.html#qiskit.providers.basejob.BaseJob.submit">[docs]</a>    <span class="nd">@abstractmethod</span>
     <span class="k">def</span> <span class="nf">submit</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Submit the job to the backend.&quot;&quot;&quot;</span>
+        <span class="sd">&quot;&quot;&quot;Submit the job to the backend for execution.&quot;&quot;&quot;</span>
         <span class="k">pass</span></div>
 
 <div class="viewcode-block" id="BaseJob.result"><a class="viewcode-back" href="../../../autodoc/qiskit.providers.basejob.html#qiskit.providers.basejob.BaseJob.result">[docs]</a>    <span class="nd">@abstractmethod</span>
     <span class="k">def</span> <span class="nf">result</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Return backend result&quot;&quot;&quot;</span>
+        <span class="sd">&quot;&quot;&quot;Return the results of the job.&quot;&quot;&quot;</span>
         <span class="k">pass</span></div>
 
 <div class="viewcode-block" id="BaseJob.cancel"><a class="viewcode-back" href="../../../autodoc/qiskit.providers.basejob.html#qiskit.providers.basejob.BaseJob.cancel">[docs]</a>    <span class="nd">@abstractmethod</span>
     <span class="k">def</span> <span class="nf">cancel</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Attempt to cancel job.&quot;&quot;&quot;</span>
+        <span class="sd">&quot;&quot;&quot;Attempt to cancel the job.&quot;&quot;&quot;</span>
         <span class="k">pass</span></div>
 
 <div class="viewcode-block" id="BaseJob.status"><a class="viewcode-back" href="../../../autodoc/qiskit.providers.basejob.html#qiskit.providers.basejob.BaseJob.status">[docs]</a>    <span class="nd">@abstractmethod</span>
     <span class="k">def</span> <span class="nf">status</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Return one of the values of ``JobStatus``&quot;&quot;&quot;</span>
+        <span class="sd">&quot;&quot;&quot;Return the status of the job, among the values of ``JobStatus``.&quot;&quot;&quot;</span>
         <span class="k">pass</span></div></div>
 </pre></div>
 

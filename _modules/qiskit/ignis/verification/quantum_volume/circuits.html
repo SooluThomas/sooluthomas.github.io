@@ -254,6 +254,11 @@
                     <span class="n">qc2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">U</span><span class="p">,</span> <span class="p">[</span><span class="n">qr2</span><span class="p">[</span><span class="n">pair</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span>
                                    <span class="n">qr2</span><span class="p">[</span><span class="n">pair</span><span class="p">[</span><span class="mi">1</span><span class="p">]]])</span>
 
+            <span class="c1"># append an id to all the qubits in the ideal circuits</span>
+            <span class="c1"># to prevent a truncation error in the statevector</span>
+            <span class="c1"># simulators</span>
+            <span class="n">qc2</span><span class="o">.</span><span class="n">u1</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">qr2</span><span class="p">)</span>
+
             <span class="n">circuits_nomeas</span><span class="p">[</span><span class="n">trial</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">qc2</span><span class="p">)</span>
 
             <span class="c1"># add measurement</span>

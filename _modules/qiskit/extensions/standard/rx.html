@@ -188,16 +188,14 @@
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">Rotation around the x-axis.</span>
 <span class="sd">&quot;&quot;&quot;</span>
-<span class="kn">from</span> <span class="nn">qiskit.circuit</span> <span class="k">import</span> <span class="n">CompositeGate</span>
 <span class="kn">from</span> <span class="nn">qiskit.circuit</span> <span class="k">import</span> <span class="n">Gate</span>
 <span class="kn">from</span> <span class="nn">qiskit.circuit</span> <span class="k">import</span> <span class="n">QuantumCircuit</span>
 <span class="kn">from</span> <span class="nn">qiskit.circuit</span> <span class="k">import</span> <span class="n">QuantumRegister</span>
-<span class="kn">from</span> <span class="nn">qiskit.circuit.decorators</span> <span class="k">import</span> <span class="n">_op_expand</span><span class="p">,</span> <span class="n">_to_bits</span>
 <span class="kn">from</span> <span class="nn">qiskit.qasm</span> <span class="k">import</span> <span class="n">pi</span>
 <span class="kn">from</span> <span class="nn">qiskit.extensions.standard.u3</span> <span class="k">import</span> <span class="n">U3Gate</span>
 
 
-<div class="viewcode-block" id="RXGate"><a class="viewcode-back" href="../../../../autodoc/qiskit.extensions.standard.rx.html#qiskit.circuit.compositegate.RXGate">[docs]</a><span class="k">class</span> <span class="nc">RXGate</span><span class="p">(</span><span class="n">Gate</span><span class="p">):</span>
+<div class="viewcode-block" id="RXGate"><a class="viewcode-back" href="../../../../autodoc/qiskit.extensions.standard.rx.html#qiskit.circuit.quantumcircuit.RXGate">[docs]</a><span class="k">class</span> <span class="nc">RXGate</span><span class="p">(</span><span class="n">Gate</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;rotation around the x-axis.&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">theta</span><span class="p">):</span>
@@ -217,7 +215,7 @@
             <span class="n">definition</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">inst</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">definition</span> <span class="o">=</span> <span class="n">definition</span>
 
-<div class="viewcode-block" id="RXGate.inverse"><a class="viewcode-back" href="../../../../autodoc/qiskit.extensions.standard.rx.html#qiskit.circuit.compositegate.RXGate.inverse">[docs]</a>    <span class="k">def</span> <span class="nf">inverse</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="RXGate.inverse"><a class="viewcode-back" href="../../../../autodoc/qiskit.extensions.standard.rx.html#qiskit.circuit.quantumcircuit.RXGate.inverse">[docs]</a>    <span class="k">def</span> <span class="nf">inverse</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Invert this gate.</span>
 
 <span class="sd">        rx(theta)^dagger = rx(-theta)</span>
@@ -225,15 +223,12 @@
         <span class="k">return</span> <span class="n">RXGate</span><span class="p">(</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span></div></div>
 
 
-<div class="viewcode-block" id="rx"><a class="viewcode-back" href="../../../../autodoc/qiskit.extensions.standard.rx.html#qiskit.circuit.compositegate.rx">[docs]</a><span class="nd">@_to_bits</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-<span class="nd">@_op_expand</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">rx</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">theta</span><span class="p">,</span> <span class="n">q</span><span class="p">):</span>
+<div class="viewcode-block" id="rx"><a class="viewcode-back" href="../../../../autodoc/qiskit.extensions.standard.rx.html#qiskit.circuit.quantumcircuit.rx">[docs]</a><span class="k">def</span> <span class="nf">rx</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">theta</span><span class="p">,</span> <span class="n">q</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Apply Rx to q.&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">RXGate</span><span class="p">(</span><span class="n">theta</span><span class="p">),</span> <span class="p">[</span><span class="n">q</span><span class="p">],</span> <span class="p">[])</span></div>
 
 
 <span class="n">QuantumCircuit</span><span class="o">.</span><span class="n">rx</span> <span class="o">=</span> <span class="n">rx</span>
-<span class="n">CompositeGate</span><span class="o">.</span><span class="n">rx</span> <span class="o">=</span> <span class="n">rx</span>
 </pre></div>
 
         </div>

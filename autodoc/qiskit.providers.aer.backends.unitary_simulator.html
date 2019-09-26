@@ -51,7 +51,7 @@
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="qiskit.providers.aer.noise package" href="qiskit.providers.aer.noise.html" />
+    <link rel="next" title="qiskit.providers.aer.extensions package" href="qiskit.providers.aer.extensions.html" />
     <link rel="prev" title="qiskit.providers.aer.backends.statevector_simulator module" href="qiskit.providers.aer.backends.statevector_simulator.html" /> 
   </head>
 <body>
@@ -756,6 +756,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.circuit.html">qiskit.circuit package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#subpackages">Subpackages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#submodules">Submodules</a></li>
 </ul>
 </li>
@@ -776,8 +777,9 @@
 <li class="toctree-l4"><a class="reference internal" href="qiskit.extensions.html#submodules">Submodules</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.mapper.html">qiskit.mapper package</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="qiskit.mapper.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qiskit.ignis.html">qiskit.ignis package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.ignis.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.ignis.html#submodules">Submodules</a></li>
 </ul>
 </li>
 <li class="toctree-l3 current"><a class="reference internal" href="qiskit.providers.html">qiskit.providers package</a><ul class="current">
@@ -836,10 +838,8 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="qiskit.html#submodules">Submodules</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="qiskit._util.html">qiskit._util module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.exceptions.html">qiskit.exceptions module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.execute.html">qiskit.execute module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.qiskiterror.html">qiskit.qiskiterror module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.user_config.html">qiskit.user_config module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.util.html">qiskit.util module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.version.html">qiskit.version module</a></li>
@@ -1540,6 +1540,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.circuit.html">qiskit.circuit package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#subpackages">Subpackages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#submodules">Submodules</a></li>
 </ul>
 </li>
@@ -1560,8 +1561,9 @@
 <li class="toctree-l4"><a class="reference internal" href="qiskit.extensions.html#submodules">Submodules</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.mapper.html">qiskit.mapper package</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="qiskit.mapper.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qiskit.ignis.html">qiskit.ignis package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.ignis.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.ignis.html#submodules">Submodules</a></li>
 </ul>
 </li>
 <li class="toctree-l3 current"><a class="reference internal" href="qiskit.providers.html">qiskit.providers package</a><ul class="current">
@@ -1620,10 +1622,8 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="qiskit.html#submodules">Submodules</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="qiskit._util.html">qiskit._util module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.exceptions.html">qiskit.exceptions module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.execute.html">qiskit.execute module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.qiskiterror.html">qiskit.qiskiterror module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.user_config.html">qiskit.user_config module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.util.html">qiskit.util module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.version.html">qiskit.version module</a></li>
@@ -1659,6 +1659,12 @@
 <li><dl class="first docutils">
 <dt>“initial_unitary” (matrix_like): Sets a custom initial unitary</dt>
 <dd>matrix for the simulation instead of identity (Default: None).</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>“validation_threshold” (double): Sets the threshold for checking</dt>
+<dd>if initial unitary and target unitary are unitary matrices.
+(Default: 1e-8).</dd>
 </dl>
 </li>
 <li><dl class="first docutils">
@@ -1702,7 +1708,7 @@ performance (Default: 14).</dd>
 </div></blockquote>
 <dl class="attribute">
 <dt id="qiskit.providers.aer.backends.unitary_simulator.UnitarySimulator.DEFAULT_CONFIGURATION">
-<code class="descname">DEFAULT_CONFIGURATION</code><em class="property"> = {'backend_name': 'unitary_simulator', 'backend_version': '0.2.3', 'basis_gates': ['u1', 'u2', 'u3', 'cx', 'cz', 'cu1', 'id', 'x', 'y', 'z', 'h', 's', 'sdg', 't', 'tdg', 'ccx', 'swap', 'multiplexer', 'snapshot', 'unitary'], 'conditional': False, 'coupling_map': None, 'description': 'A Python simulator for computing the unitarymatrix for experiments in qobj files', 'gates': [{'name': 'TODO', 'parameters': [], 'qasm_def': 'TODO'}], 'library_dir': '/home/travis/virtualenv/python3.7.1/lib/python3.7/site-packages/qiskit/providers/aer/backends', 'local': True, 'max_shots': 1, 'memory': False, 'n_qubits': 14, 'open_pulse': False, 'simulator': True, 'url': 'https://github.com/Qiskit/qiskit-aer'}</em><a class="headerlink" href="#qiskit.providers.aer.backends.unitary_simulator.UnitarySimulator.DEFAULT_CONFIGURATION" title="Permalink to this definition">¶</a></dt>
+<code class="descname">DEFAULT_CONFIGURATION</code><em class="property"> = {'backend_name': 'unitary_simulator', 'backend_version': '0.3.0', 'basis_gates': ['u1', 'u2', 'u3', 'cx', 'cz', 'cu1', 'id', 'x', 'y', 'z', 'h', 's', 'sdg', 't', 'tdg', 'ccx', 'swap', 'multiplexer', 'snapshot', 'unitary'], 'conditional': False, 'coupling_map': None, 'description': 'A Python simulator for computing the unitarymatrix for experiments in qobj files', 'gates': [{'name': 'TODO', 'parameters': [], 'qasm_def': 'TODO'}], 'local': True, 'max_shots': 1, 'memory': False, 'n_qubits': 14, 'open_pulse': False, 'simulator': True, 'url': 'https://github.com/Qiskit/qiskit-aer'}</em><a class="headerlink" href="#qiskit.providers.aer.backends.unitary_simulator.UnitarySimulator.DEFAULT_CONFIGURATION" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -1725,10 +1731,10 @@ performance (Default: 14).</dd>
             <div>qiskit.providers.aer.backends.statevector_simulator module</div>
          </div>
      </a>
-     <a id="button-next" href="qiskit.providers.aer.noise.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
+     <a id="button-next" href="qiskit.providers.aer.extensions.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
         <div class="pagenation-text">
             <span class="pagenation-direction">Next</span>
-            <div>qiskit.providers.aer.noise package</div>
+            <div>qiskit.providers.aer.extensions package</div>
         </div>
      </a>
         

@@ -201,7 +201,7 @@
 <span class="sd">    Args:</span>
 <span class="sd">        backends (list[BaseBackend]): list of backends.</span>
 <span class="sd">        filters (callable): filtering conditions as a callable.</span>
-<span class="sd">        **kwargs (dict): dict of criteria.</span>
+<span class="sd">        **kwargs: dict of criteria.</span>
 
 <span class="sd">    Returns:</span>
 <span class="sd">        list[BaseBackend]: a list of backend instances matching the</span>
@@ -269,7 +269,8 @@
         <span class="k">raise</span> <span class="ne">LookupError</span><span class="p">(</span><span class="s2">&quot;backend &#39;</span><span class="si">{}</span><span class="s2">&#39; not found.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span><span class="p">))</span>
 
     <span class="k">if</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">deprecated</span><span class="p">:</span>
-        <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;WARNING: &#39;</span><span class="si">%s</span><span class="s2">&#39; is deprecated. Use &#39;</span><span class="si">%s</span><span class="s2">&#39;.&quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">resolved_name</span><span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Backend &#39;</span><span class="si">%s</span><span class="s2">&#39; is deprecated. Use &#39;</span><span class="si">%s</span><span class="s2">&#39;.&quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span>
+                       <span class="n">resolved_name</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="n">resolved_name</span></div>
 </pre></div>

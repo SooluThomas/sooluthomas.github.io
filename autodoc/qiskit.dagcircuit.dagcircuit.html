@@ -756,6 +756,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.circuit.html">qiskit.circuit package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#subpackages">Subpackages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#submodules">Submodules</a></li>
 </ul>
 </li>
@@ -776,8 +777,9 @@
 <li class="toctree-l4"><a class="reference internal" href="qiskit.extensions.html#submodules">Submodules</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.mapper.html">qiskit.mapper package</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="qiskit.mapper.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qiskit.ignis.html">qiskit.ignis package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.ignis.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.ignis.html#submodules">Submodules</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.providers.html">qiskit.providers package</a><ul>
@@ -836,10 +838,8 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="qiskit.html#submodules">Submodules</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="qiskit._util.html">qiskit._util module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.exceptions.html">qiskit.exceptions module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.execute.html">qiskit.execute module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.qiskiterror.html">qiskit.qiskiterror module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.user_config.html">qiskit.user_config module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.util.html">qiskit.util module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.version.html">qiskit.version module</a></li>
@@ -1540,6 +1540,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.circuit.html">qiskit.circuit package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#subpackages">Subpackages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#submodules">Submodules</a></li>
 </ul>
 </li>
@@ -1560,8 +1561,9 @@
 <li class="toctree-l4"><a class="reference internal" href="qiskit.extensions.html#submodules">Submodules</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.mapper.html">qiskit.mapper package</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="qiskit.mapper.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qiskit.ignis.html">qiskit.ignis package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.ignis.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.ignis.html#submodules">Submodules</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.providers.html">qiskit.providers package</a><ul>
@@ -1620,10 +1622,8 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="qiskit.html#submodules">Submodules</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="qiskit._util.html">qiskit._util module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.exceptions.html">qiskit.exceptions module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.execute.html">qiskit.execute module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.qiskiterror.html">qiskit.qiskiterror module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.user_config.html">qiskit.user_config module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.util.html">qiskit.util module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.version.html">qiskit.version module</a></li>
@@ -1687,8 +1687,8 @@ bits.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>op</strong> (<a class="reference internal" href="qiskit.circuit.instruction.html#qiskit.circuit.instruction.Instruction" title="qiskit.circuit.instruction.Instruction"><em>Instruction</em></a>) – the operation associated with the DAG node</li>
-<li><strong>qargs</strong> (<em>list</em><em>[</em><em>tuple</em><em>]</em>) – qubits that op will be applied to</li>
-<li><strong>cargs</strong> (<em>list</em><em>[</em><em>tuple</em><em>]</em>) – cbits that op will be applied to</li>
+<li><strong>qargs</strong> (<em>list</em><em>[</em><a class="reference internal" href="qiskit.circuit.quantumregister.html#qiskit.circuit.quantumregister.Qubit" title="qiskit.circuit.quantumregister.Qubit"><em>Qubit</em></a><em>]</em>) – qubits that op will be applied to</li>
+<li><strong>cargs</strong> (<em>list</em><em>[</em><a class="reference internal" href="qiskit.circuit.classicalregister.html#qiskit.circuit.classicalregister.Clbit" title="qiskit.circuit.classicalregister.Clbit"><em>Clbit</em></a><em>]</em>) – cbits that op will be applied to</li>
 <li><strong>condition</strong> (<em>tuple</em><em> or </em><em>None</em>) – optional condition (ClassicalRegister, int)</li>
 </ul>
 </td>
@@ -1716,8 +1716,8 @@ bits.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>op</strong> (<a class="reference internal" href="qiskit.circuit.instruction.html#qiskit.circuit.instruction.Instruction" title="qiskit.circuit.instruction.Instruction"><em>Instruction</em></a>) – the operation associated with the DAG node</li>
-<li><strong>qargs</strong> (<em>list</em><em>[</em><em>tuple</em><em>]</em>) – qubits that op will be applied to</li>
-<li><strong>cargs</strong> (<em>list</em><em>[</em><em>tuple</em><em>]</em>) – cbits that op will be applied to</li>
+<li><strong>qargs</strong> (<em>list</em><em>[</em><a class="reference internal" href="qiskit.circuit.quantumregister.html#qiskit.circuit.quantumregister.Qubit" title="qiskit.circuit.quantumregister.Qubit"><em>Qubit</em></a><em>]</em>) – qubits that op will be applied to</li>
+<li><strong>cargs</strong> (<em>list</em><em>[</em><a class="reference internal" href="qiskit.circuit.classicalregister.html#qiskit.circuit.classicalregister.Clbit" title="qiskit.circuit.classicalregister.Clbit"><em>Clbit</em></a><em>]</em>) – cbits that op will be applied to</li>
 <li><strong>condition</strong> (<em>tuple</em><em> or </em><em>None</em>) – optional condition (ClassicalRegister, value)</li>
 </ul>
 </td>
@@ -1745,7 +1745,7 @@ and [DAGNode] is its successors in  BFS order.</p>
 <dl class="method">
 <dt id="qiskit.dagcircuit.dagcircuit.DAGCircuit.clbits">
 <code class="descname">clbits</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/dagcircuit/dagcircuit.html#DAGCircuit.clbits"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.dagcircuit.dagcircuit.DAGCircuit.clbits" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return a list of bits as (ClassicalRegister, index) pairs.</p>
+<dd><p>Return a list of classical bits (as a list of Clbit instances).</p>
 </dd></dl>
 
 <dl class="method">
@@ -1774,13 +1774,14 @@ to a subset of output qubits of this circuit.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>input_circuit</strong> (<a class="reference internal" href="#qiskit.dagcircuit.dagcircuit.DAGCircuit" title="qiskit.dagcircuit.dagcircuit.DAGCircuit"><em>DAGCircuit</em></a>) – circuit to append</li>
-<li><strong>edge_map</strong> (<em>dict</em>) – map {(Register, int): (Register, int)}
-from the output wires of input_circuit to input wires
-of self.</li>
+<li><strong>edge_map</strong> (<em>dict</em>) – map {Bit: Bit} from the output wires of
+input_circuit to input wires of self. The key and value
+can either be of type Qubit or Clbit depending on the
+type of the node.</li>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><code class="xref py py-exc docutils literal notranslate"><span class="pre">DAGCircuitError</span></code> – if missing, duplicate or incosistent wire</p>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><code class="xref py py-exc docutils literal notranslate"><span class="pre">DAGCircuitError</span></code> – if missing, duplicate or inconsistent wire</p>
 </td>
 </tr>
 </tbody>
@@ -1821,6 +1822,13 @@ of self.</li>
 </dd></dl>
 
 <dl class="method">
+<dt id="qiskit.dagcircuit.dagcircuit.DAGCircuit.count_ops_longest_path">
+<code class="descname">count_ops_longest_path</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/dagcircuit/dagcircuit.html#DAGCircuit.count_ops_longest_path"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.dagcircuit.dagcircuit.DAGCircuit.count_ops_longest_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Count the occurrences of operation names on the longest path.</p>
+<p>Returns a dictionary of counts keyed on the operation name.</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="qiskit.dagcircuit.dagcircuit.DAGCircuit.depth">
 <code class="descname">depth</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/dagcircuit/dagcircuit.html#DAGCircuit.depth"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.dagcircuit.dagcircuit.DAGCircuit.depth" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the circuit depth.
@@ -1840,6 +1848,39 @@ of self.</li>
 <dt id="qiskit.dagcircuit.dagcircuit.DAGCircuit.descendants">
 <code class="descname">descendants</code><span class="sig-paren">(</span><em>node</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/dagcircuit/dagcircuit.html#DAGCircuit.descendants"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.dagcircuit.dagcircuit.DAGCircuit.descendants" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns set of the descendants of a node as DAGNodes.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="qiskit.dagcircuit.dagcircuit.DAGCircuit.draw">
+<code class="descname">draw</code><span class="sig-paren">(</span><em>scale=0.7</em>, <em>filename=None</em>, <em>style='color'</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/dagcircuit/dagcircuit.html#DAGCircuit.draw"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.dagcircuit.dagcircuit.DAGCircuit.draw" title="Permalink to this definition">¶</a></dt>
+<dd><p>Draws the dag circuit.</p>
+<p>This function needs <cite>pydot &lt;https://github.com/erocarrera/pydot&gt;</cite>, which in turn needs
+Graphviz &lt;<a class="reference external" href="https://www.graphviz.org/">https://www.graphviz.org/</a>&gt;` to be installed.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>scale</strong> (<em>float</em>) – scaling factor</li>
+<li><strong>filename</strong> (<em>str</em>) – file path to save image to (format inferred from name)</li>
+<li><strong>style</strong> (<em>str</em>) – ‘plain’: B&amp;W graph
+‘color’ (default): color input/output/op nodes</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><dl class="docutils">
+<dt>if in Jupyter notebook and not saving to file,</dt>
+<dd><p class="first last">otherwise None.</p>
+</dd>
+</dl>
+</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">Ipython.display.Image</p>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
@@ -1870,54 +1911,26 @@ of self.</li>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">the list of node ids that represent gates.</td>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">the list of DAGNodes that represent gates.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">list</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">list[<a class="reference internal" href="qiskit.dagcircuit.dagnode.html#qiskit.dagcircuit.dagnode.DAGNode" title="qiskit.dagcircuit.dagnode.DAGNode">DAGNode</a>]</td>
 </tr>
 </tbody>
 </table>
 </dd></dl>
 
 <dl class="method">
-<dt id="qiskit.dagcircuit.dagcircuit.DAGCircuit.get_2q_nodes">
-<code class="descname">get_2q_nodes</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/dagcircuit/dagcircuit.html#DAGCircuit.get_2q_nodes"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.dagcircuit.dagcircuit.DAGCircuit.get_2q_nodes" title="Permalink to this definition">¶</a></dt>
-<dd><p>Deprecated. Use twoQ_gates().</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="qiskit.dagcircuit.dagcircuit.DAGCircuit.get_3q_or_more_nodes">
-<code class="descname">get_3q_or_more_nodes</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/dagcircuit/dagcircuit.html#DAGCircuit.get_3q_or_more_nodes"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.dagcircuit.dagcircuit.DAGCircuit.get_3q_or_more_nodes" title="Permalink to this definition">¶</a></dt>
-<dd><p>Deprecated. Use threeQ_or_more_gates().</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="qiskit.dagcircuit.dagcircuit.DAGCircuit.get_bits">
-<code class="descname">get_bits</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/dagcircuit/dagcircuit.html#DAGCircuit.get_bits"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.dagcircuit.dagcircuit.DAGCircuit.get_bits" title="Permalink to this definition">¶</a></dt>
-<dd><p>Deprecated. Use clbits().</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="qiskit.dagcircuit.dagcircuit.DAGCircuit.get_gate_nodes">
-<code class="descname">get_gate_nodes</code><span class="sig-paren">(</span><em>data=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/dagcircuit/dagcircuit.html#DAGCircuit.get_gate_nodes"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.dagcircuit.dagcircuit.DAGCircuit.get_gate_nodes" title="Permalink to this definition">¶</a></dt>
-<dd><p>Deprecated. Use gate_nodes().</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="qiskit.dagcircuit.dagcircuit.DAGCircuit.get_named_nodes">
-<code class="descname">get_named_nodes</code><span class="sig-paren">(</span><em>*names</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/dagcircuit/dagcircuit.html#DAGCircuit.get_named_nodes"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.dagcircuit.dagcircuit.DAGCircuit.get_named_nodes" title="Permalink to this definition">¶</a></dt>
-<dd><p>Deprecated. Use named_nodes().</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="qiskit.dagcircuit.dagcircuit.DAGCircuit.get_op_nodes">
-<code class="descname">get_op_nodes</code><span class="sig-paren">(</span><em>op=None</em>, <em>data=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/dagcircuit/dagcircuit.html#DAGCircuit.get_op_nodes"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.dagcircuit.dagcircuit.DAGCircuit.get_op_nodes" title="Permalink to this definition">¶</a></dt>
-<dd><p>Deprecated. Use op_nodes().</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="qiskit.dagcircuit.dagcircuit.DAGCircuit.get_qubits">
-<code class="descname">get_qubits</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/dagcircuit/dagcircuit.html#DAGCircuit.get_qubits"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.dagcircuit.dagcircuit.DAGCircuit.get_qubits" title="Permalink to this definition">¶</a></dt>
-<dd><p>Deprecated. Use qubits().</p>
+<dt id="qiskit.dagcircuit.dagcircuit.DAGCircuit.idle_wires">
+<code class="descname">idle_wires</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/dagcircuit/dagcircuit.html#DAGCircuit.idle_wires"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.dagcircuit.dagcircuit.DAGCircuit.idle_wires" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return idle wires.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Yields:</th><td class="field-body"><em>Bit</em> – Bit in idle wire.</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
@@ -1930,15 +1943,18 @@ circuit depth d. The layers are indexed from 0 to d-1 with the
 earliest layer at index 0. The layers are constructed using a
 greedy algorithm. Each returned layer is a dict containing
 {“graph”: circuit graph, “partition”: list of qubit lists}.</p>
+<p>New but semantically equivalent DAGNodes will be included in the returned layers,
+NOT the DAGNodes from the original DAG. The original vs new nodes can be compared using
+DAGNode.semantic_eq(node1, node2)</p>
 <p>TODO: Gates that use the same cbits will end up in different
 layers as this is currently implemented. This may not be
 the desired behavior.</p>
 </dd></dl>
 
-<dl class="attribute">
-<dt id="qiskit.dagcircuit.dagcircuit.DAGCircuit.multi_graph">
-<code class="descname">multi_graph</code><a class="headerlink" href="#qiskit.dagcircuit.dagcircuit.DAGCircuit.multi_graph" title="Permalink to this definition">¶</a></dt>
-<dd><p>Deprecated. Returns internal multi_graph.</p>
+<dl class="method">
+<dt id="qiskit.dagcircuit.dagcircuit.DAGCircuit.longest_path">
+<code class="descname">longest_path</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/dagcircuit/dagcircuit.html#DAGCircuit.longest_path"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.dagcircuit.dagcircuit.DAGCircuit.longest_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the longest path in the dag as a list of DAGNodes.</p>
 </dd></dl>
 
 <dl class="method">
@@ -1974,7 +1990,7 @@ the desired behavior.</p>
 <dl class="attribute">
 <dt id="qiskit.dagcircuit.dagcircuit.DAGCircuit.node_counter">
 <code class="descname">node_counter</code><a class="headerlink" href="#qiskit.dagcircuit.dagcircuit.DAGCircuit.node_counter" title="Permalink to this definition">¶</a></dt>
-<dd><p>Deprecated usage to return max node id, now returns size of DAG</p>
+<dd><p>Returns the number of nodes in the dag</p>
 </dd></dl>
 
 <dl class="method">
@@ -2000,7 +2016,7 @@ the desired behavior.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>wire</strong> (<em>tuple</em><em>(</em><a class="reference internal" href="qiskit.circuit.register.html#qiskit.circuit.register.Register" title="qiskit.circuit.register.Register"><em>Register</em></a><em>, </em><em>index</em><em>)</em>) – the wire to be looked at.</li>
+<li><strong>wire</strong> (<a class="reference internal" href="qiskit.circuit.bit.html#qiskit.circuit.bit.Bit" title="qiskit.circuit.bit.Bit"><em>Bit</em></a>) – the wire to be looked at.</li>
 <li><strong>only_ops</strong> (<em>bool</em>) – True if only the ops nodes are wanted
 otherwise all nodes are returned.</li>
 </ul>
@@ -2017,9 +2033,18 @@ otherwise all nodes are returned.</li>
 </dd></dl>
 
 <dl class="method">
-<dt id="qiskit.dagcircuit.dagcircuit.DAGCircuit.num_cbits">
-<code class="descname">num_cbits</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/dagcircuit/dagcircuit.html#DAGCircuit.num_cbits"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.dagcircuit.dagcircuit.DAGCircuit.num_cbits" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return the total number of bits used by the circuit.</p>
+<dt id="qiskit.dagcircuit.dagcircuit.DAGCircuit.num_clbits">
+<code class="descname">num_clbits</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/dagcircuit/dagcircuit.html#DAGCircuit.num_clbits"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.dagcircuit.dagcircuit.DAGCircuit.num_clbits" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the total number of classical bits used by the circuit.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="qiskit.dagcircuit.dagcircuit.DAGCircuit.num_qubits">
+<code class="descname">num_qubits</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/dagcircuit/dagcircuit.html#DAGCircuit.num_qubits"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.dagcircuit.dagcircuit.DAGCircuit.num_qubits" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the total number of qubits used by the circuit.
+num_qubits() replaces former use of width().
+DAGCircuit.width() now returns qubits + clbits for
+consistency with Circuit.width() [qiskit-terra #2564].</p>
 </dd></dl>
 
 <dl class="method">
@@ -2050,7 +2075,7 @@ all op nodes.</td>
 <dl class="method">
 <dt id="qiskit.dagcircuit.dagcircuit.DAGCircuit.predecessors">
 <code class="descname">predecessors</code><span class="sig-paren">(</span><em>node</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/dagcircuit/dagcircuit.html#DAGCircuit.predecessors"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.dagcircuit.dagcircuit.DAGCircuit.predecessors" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns list of the predecessors of a node as DAGNodes.</p>
+<dd><p>Returns iterator of the predecessors of a node as DAGNodes.</p>
 </dd></dl>
 
 <dl class="method">
@@ -2060,30 +2085,23 @@ all op nodes.</td>
 </dd></dl>
 
 <dl class="method">
-<dt id="qiskit.dagcircuit.dagcircuit.DAGCircuit.qasm">
-<code class="descname">qasm</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/dagcircuit/dagcircuit.html#DAGCircuit.qasm"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.dagcircuit.dagcircuit.DAGCircuit.qasm" title="Permalink to this definition">¶</a></dt>
-<dd><p>Deprecated. use qiskit.converters.dag_to_circuit() then call
-qasm() on the obtained QuantumCircuit instance.</p>
-</dd></dl>
-
-<dl class="method">
 <dt id="qiskit.dagcircuit.dagcircuit.DAGCircuit.quantum_predecessors">
 <code class="descname">quantum_predecessors</code><span class="sig-paren">(</span><em>node</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/dagcircuit/dagcircuit.html#DAGCircuit.quantum_predecessors"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.dagcircuit.dagcircuit.DAGCircuit.quantum_predecessors" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns list of the predecessors of a node that are
+<dd><p>Returns iterator of the predecessors of a node that are
 connected by a quantum edge as DAGNodes.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="qiskit.dagcircuit.dagcircuit.DAGCircuit.quantum_successors">
 <code class="descname">quantum_successors</code><span class="sig-paren">(</span><em>node</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/dagcircuit/dagcircuit.html#DAGCircuit.quantum_successors"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.dagcircuit.dagcircuit.DAGCircuit.quantum_successors" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns list of the successors of a node that are
+<dd><p>Returns iterator of the successors of a node that are
 connected by a quantum edge as DAGNodes.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="qiskit.dagcircuit.dagcircuit.DAGCircuit.qubits">
 <code class="descname">qubits</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/dagcircuit/dagcircuit.html#DAGCircuit.qubits"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.dagcircuit.dagcircuit.DAGCircuit.qubits" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return a list of qubits as (QuantumRegister, index) pairs.</p>
+<dd><p>Return a list of qubits (as a list of Qubit instances).</p>
 </dd></dl>
 
 <dl class="method">
@@ -2124,14 +2142,6 @@ connected by a quantum edge as DAGNodes.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="qiskit.dagcircuit.dagcircuit.DAGCircuit.rename_register">
-<code class="descname">rename_register</code><span class="sig-paren">(</span><em>regname</em>, <em>newname</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/dagcircuit/dagcircuit.html#DAGCircuit.rename_register"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.dagcircuit.dagcircuit.DAGCircuit.rename_register" title="Permalink to this definition">¶</a></dt>
-<dd><p>Rename a classical or quantum register throughout the circuit.</p>
-<p>regname = existing register name string
-newname = replacement register name string</p>
-</dd></dl>
-
-<dl class="method">
 <dt id="qiskit.dagcircuit.dagcircuit.DAGCircuit.serial_layers">
 <code class="descname">serial_layers</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/dagcircuit/dagcircuit.html#DAGCircuit.serial_layers"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.dagcircuit.dagcircuit.DAGCircuit.serial_layers" title="Permalink to this definition">¶</a></dt>
 <dd><p>Yield a layer for all gates of this circuit.</p>
@@ -2156,7 +2166,7 @@ same structure as in layers().</p>
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>node</strong> (<a class="reference internal" href="qiskit.dagcircuit.dagnode.html#qiskit.dagcircuit.dagnode.DAGNode" title="qiskit.dagcircuit.dagnode.DAGNode"><em>DAGNode</em></a>) – node to substitute</li>
 <li><strong>input_dag</strong> (<a class="reference internal" href="#qiskit.dagcircuit.dagcircuit.DAGCircuit" title="qiskit.dagcircuit.dagcircuit.DAGCircuit"><em>DAGCircuit</em></a>) – circuit that will substitute the node</li>
-<li><strong>wires</strong> (<em>list</em><em>[</em><em>(</em><a class="reference internal" href="qiskit.circuit.register.html#qiskit.circuit.register.Register" title="qiskit.circuit.register.Register"><em>Register</em></a><em>, </em><em>index</em><em>)</em><em>]</em>) – gives an order for (qu)bits
+<li><strong>wires</strong> (<em>list</em><em>[</em><a class="reference internal" href="qiskit.circuit.bit.html#qiskit.circuit.bit.Bit" title="qiskit.circuit.bit.Bit"><em>Bit</em></a><em>]</em>) – gives an order for (qu)bits
 in the input circuit. This order gets matched to the node wires
 by qargs first, then cargs, then conditions.</li>
 </ul>
@@ -2172,7 +2182,7 @@ by qargs first, then cargs, then conditions.</li>
 <dl class="method">
 <dt id="qiskit.dagcircuit.dagcircuit.DAGCircuit.successors">
 <code class="descname">successors</code><span class="sig-paren">(</span><em>node</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/dagcircuit/dagcircuit.html#DAGCircuit.successors"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.dagcircuit.dagcircuit.DAGCircuit.successors" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns list of the successors of a node as DAGNodes.</p>
+<dd><p>Returns iterator of the successors of a node as DAGNodes.</p>
 </dd></dl>
 
 <dl class="method">
@@ -2213,7 +2223,7 @@ by qargs first, then cargs, then conditions.</li>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">op node in topological order</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">generator(DAGnode)</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">generator(<a class="reference internal" href="qiskit.dagcircuit.dagnode.html#qiskit.dagcircuit.dagnode.DAGNode" title="qiskit.dagcircuit.dagnode.DAGNode">DAGNode</a>)</td>
 </tr>
 </tbody>
 </table>
@@ -2228,7 +2238,12 @@ by qargs first, then cargs, then conditions.</li>
 <dl class="method">
 <dt id="qiskit.dagcircuit.dagcircuit.DAGCircuit.width">
 <code class="descname">width</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/dagcircuit/dagcircuit.html#DAGCircuit.width"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.dagcircuit.dagcircuit.DAGCircuit.width" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return the total number of qubits used by the circuit.</p>
+<dd><p>Return the total number of qubits + clbits used by the circuit.
+This function formerly returned the number of qubits by the calculation
+return len(self.wires) - self.num_clbits()
+but was changed by issue #2564 to return number of qubits + clbits
+with the new function DAGCircuit.num_qubits replacing the former
+semantic of DAGCircuit.width().</p>
 </dd></dl>
 
 </dd></dl>

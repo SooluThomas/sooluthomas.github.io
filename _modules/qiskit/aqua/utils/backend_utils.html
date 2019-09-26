@@ -186,34 +186,48 @@
 <span class="kn">from</span> <span class="nn">collections</span> <span class="k">import</span> <span class="n">OrderedDict</span>
 <span class="kn">import</span> <span class="nn">importlib</span>
 <span class="kn">import</span> <span class="nn">logging</span>
-<span class="kn">from</span> <span class="nn">qiskit.providers</span> <span class="k">import</span> <span class="n">BaseBackend</span>
-<span class="kn">from</span> <span class="nn">qiskit.providers.basicaer</span> <span class="k">import</span> <span class="n">BasicAerProvider</span>
 <span class="kn">from</span> <span class="nn">qiskit.aqua</span> <span class="k">import</span> <span class="n">Preferences</span>
 
 <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
 
-<span class="k">try</span><span class="p">:</span>
-    <span class="kn">from</span> <span class="nn">qiskit.providers.ibmq</span> <span class="k">import</span> <span class="n">IBMQProvider</span>
-    <span class="n">HAS_IBMQ</span> <span class="o">=</span> <span class="kc">True</span>
-<span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-    <span class="n">HAS_IBMQ</span> <span class="o">=</span> <span class="kc">False</span>
-    <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;IBMQProvider not loaded: &#39;</span><span class="si">{}</span><span class="s2">&#39;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)))</span>
-
-<span class="k">try</span><span class="p">:</span>
-    <span class="kn">from</span> <span class="nn">qiskit.providers.aer</span> <span class="k">import</span> <span class="n">AerProvider</span>
-    <span class="n">HAS_AER</span> <span class="o">=</span> <span class="kc">True</span>
-<span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-    <span class="n">HAS_AER</span> <span class="o">=</span> <span class="kc">False</span>
-    <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;AerProvider not loaded: &#39;</span><span class="si">{}</span><span class="s2">&#39;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)))</span>
+<span class="n">HAS_IBMQ</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">CHECKED_IBMQ</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">HAS_AER</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">CHECKED_AER</span> <span class="o">=</span> <span class="kc">False</span>
 
 <span class="n">_UNSUPPORTED_BACKENDS</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;unitary_simulator&#39;</span><span class="p">,</span> <span class="s1">&#39;clifford_simulator&#39;</span><span class="p">]</span>
 
+<span class="c1"># pylint: disable=no-name-in-module, import-error, unused-import</span>
+
 
 <div class="viewcode-block" id="has_ibmq"><a class="viewcode-back" href="../../../../autodoc/qiskit.aqua.utils.backend_utils.html#qiskit.aqua.has_ibmq">[docs]</a><span class="k">def</span> <span class="nf">has_ibmq</span><span class="p">():</span>
+    <span class="k">global</span> <span class="n">CHECKED_IBMQ</span><span class="p">,</span> <span class="n">HAS_IBMQ</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">CHECKED_IBMQ</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="kn">from</span> <span class="nn">qiskit.providers.ibmq</span> <span class="k">import</span> <span class="n">IBMQFactory</span>
+            <span class="kn">from</span> <span class="nn">qiskit.providers.ibmq.accountprovider</span> <span class="k">import</span> <span class="n">AccountProvider</span>
+            <span class="n">HAS_IBMQ</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">ex</span><span class="p">:</span>
+            <span class="n">HAS_IBMQ</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;IBMQFactory/AccountProvider not loaded: &#39;</span><span class="si">{}</span><span class="s2">&#39;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">ex</span><span class="p">)))</span>
+
+        <span class="n">CHECKED_IBMQ</span> <span class="o">=</span> <span class="kc">True</span>
+
     <span class="k">return</span> <span class="n">HAS_IBMQ</span></div>
 
 
 <div class="viewcode-block" id="has_aer"><a class="viewcode-back" href="../../../../autodoc/qiskit.aqua.utils.backend_utils.html#qiskit.aqua.has_aer">[docs]</a><span class="k">def</span> <span class="nf">has_aer</span><span class="p">():</span>
+    <span class="k">global</span> <span class="n">CHECKED_AER</span><span class="p">,</span> <span class="n">HAS_AER</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">CHECKED_AER</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="kn">from</span> <span class="nn">qiskit.providers.aer</span> <span class="k">import</span> <span class="n">AerProvider</span>
+            <span class="n">HAS_AER</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">ex</span><span class="p">:</span>
+            <span class="n">HAS_AER</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;AerProvider not loaded: &#39;</span><span class="si">{}</span><span class="s2">&#39;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">ex</span><span class="p">)))</span>
+
+        <span class="n">CHECKED_AER</span> <span class="o">=</span> <span class="kc">True</span>
+
     <span class="k">return</span> <span class="n">HAS_AER</span></div>
 
 
@@ -226,9 +240,10 @@
 <span class="sd">        bool: True is AerProvider</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">has_aer</span><span class="p">():</span>
+        <span class="kn">from</span> <span class="nn">qiskit.providers.aer</span> <span class="k">import</span> <span class="n">AerProvider</span>
         <span class="k">return</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">backend</span><span class="o">.</span><span class="n">provider</span><span class="p">(),</span> <span class="n">AerProvider</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">return</span> <span class="kc">False</span></div>
+
+    <span class="k">return</span> <span class="kc">False</span></div>
 
 
 <div class="viewcode-block" id="is_basicaer_provider"><a class="viewcode-back" href="../../../../autodoc/qiskit.aqua.utils.backend_utils.html#qiskit.aqua.is_basicaer_provider">[docs]</a><span class="k">def</span> <span class="nf">is_basicaer_provider</span><span class="p">(</span><span class="n">backend</span><span class="p">):</span>
@@ -239,6 +254,8 @@
 <span class="sd">    Returns:</span>
 <span class="sd">        bool: True is BasicAer</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+    <span class="kn">from</span> <span class="nn">qiskit.providers.basicaer</span> <span class="k">import</span> <span class="n">BasicAerProvider</span>
+
     <span class="k">return</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">backend</span><span class="o">.</span><span class="n">provider</span><span class="p">(),</span> <span class="n">BasicAerProvider</span><span class="p">)</span></div>
 
 
@@ -251,9 +268,10 @@
 <span class="sd">        bool: True is IBMQ</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">has_ibmq</span><span class="p">():</span>
-        <span class="k">return</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">backend</span><span class="o">.</span><span class="n">provider</span><span class="p">(),</span> <span class="n">IBMQProvider</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">return</span> <span class="kc">False</span></div>
+        <span class="kn">from</span> <span class="nn">qiskit.providers.ibmq.accountprovider</span> <span class="k">import</span> <span class="n">AccountProvider</span>
+        <span class="k">return</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">backend</span><span class="o">.</span><span class="n">provider</span><span class="p">(),</span> <span class="n">AccountProvider</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="kc">False</span></div>
 
 
 <div class="viewcode-block" id="is_aer_statevector_backend"><a class="viewcode-back" href="../../../../autodoc/qiskit.aqua.utils.backend_utils.html#qiskit.aqua.is_aer_statevector_backend">[docs]</a><span class="k">def</span> <span class="nf">is_aer_statevector_backend</span><span class="p">(</span><span class="n">backend</span><span class="p">):</span>
@@ -304,12 +322,43 @@
     <span class="k">return</span> <span class="n">backend</span><span class="o">.</span><span class="n">configuration</span><span class="p">()</span><span class="o">.</span><span class="n">local</span></div>
 
 
+<div class="viewcode-block" id="is_aer_qasm"><a class="viewcode-back" href="../../../../autodoc/qiskit.aqua.utils.backend_utils.html#qiskit.aqua.is_aer_qasm">[docs]</a><span class="k">def</span> <span class="nf">is_aer_qasm</span><span class="p">(</span><span class="n">backend</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Return True if backend is Aer Qasm simulator</span>
+<span class="sd">    Args:</span>
+<span class="sd">        backend (BaseBackend): backend instance</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        bool: True is Aer Qasm simulator</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">ret</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="k">if</span> <span class="n">is_aer_provider</span><span class="p">(</span><span class="n">backend</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">is_statevector_backend</span><span class="p">(</span><span class="n">backend</span><span class="p">):</span>
+            <span class="n">ret</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="k">return</span> <span class="n">ret</span></div>
+
+
+<div class="viewcode-block" id="support_backend_options"><a class="viewcode-back" href="../../../../autodoc/qiskit.aqua.utils.backend_utils.html#qiskit.aqua.support_backend_options">[docs]</a><span class="k">def</span> <span class="nf">support_backend_options</span><span class="p">(</span><span class="n">backend</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Return True if backend supports backend_options</span>
+<span class="sd">    Args:</span>
+<span class="sd">        backend (BaseBackend): backend instance</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        bool: True is support backend_options</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">ret</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="k">if</span> <span class="n">is_basicaer_provider</span><span class="p">(</span><span class="n">backend</span><span class="p">)</span> <span class="ow">or</span> <span class="n">is_aer_provider</span><span class="p">(</span><span class="n">backend</span><span class="p">):</span>
+        <span class="n">ret</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="k">return</span> <span class="n">ret</span></div>
+
+
 <div class="viewcode-block" id="get_aer_backend"><a class="viewcode-back" href="../../../../autodoc/qiskit.aqua.utils.backend_utils.html#qiskit.aqua.get_aer_backend">[docs]</a><span class="k">def</span> <span class="nf">get_aer_backend</span><span class="p">(</span><span class="n">backend_name</span><span class="p">):</span>
     <span class="n">providers</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;qiskit.Aer&#39;</span><span class="p">,</span> <span class="s1">&#39;qiskit.BasicAer&#39;</span><span class="p">]</span>
     <span class="k">for</span> <span class="n">provider</span> <span class="ow">in</span> <span class="n">providers</span><span class="p">:</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">get_backend_from_provider</span><span class="p">(</span><span class="n">provider</span><span class="p">,</span> <span class="n">backend_name</span><span class="p">)</span>
-        <span class="k">except</span><span class="p">:</span>
+        <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
             <span class="k">pass</span>
 
     <span class="k">raise</span> <span class="ne">ImportError</span><span class="p">(</span><span class="s2">&quot;Backend &#39;</span><span class="si">{}</span><span class="s2">&#39; not found in providers </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">backend_name</span><span class="p">,</span> <span class="n">providers</span><span class="p">))</span></div>
@@ -327,29 +376,29 @@
 <span class="sd">        ImportError: Invalid provider name or failed to find provider</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">provider_object</span> <span class="o">=</span> <span class="n">_load_provider</span><span class="p">(</span><span class="n">provider_name</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">has_ibmq</span><span class="p">()</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">provider_object</span><span class="p">,</span> <span class="n">IBMQProvider</span><span class="p">):</span>
-        <span class="n">preferences</span> <span class="o">=</span> <span class="n">Preferences</span><span class="p">()</span>
-        <span class="n">url</span> <span class="o">=</span> <span class="n">preferences</span><span class="o">.</span><span class="n">get_url</span><span class="p">()</span>
-        <span class="n">token</span> <span class="o">=</span> <span class="n">preferences</span><span class="o">.</span><span class="n">get_token</span><span class="p">()</span>
-        <span class="n">kwargs</span> <span class="o">=</span> <span class="p">{}</span>
-        <span class="k">if</span> <span class="n">url</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">url</span> <span class="o">!=</span> <span class="s1">&#39;&#39;</span><span class="p">:</span>
-            <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;url&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">url</span>
-        <span class="k">if</span> <span class="n">token</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">token</span> <span class="o">!=</span> <span class="s1">&#39;&#39;</span><span class="p">:</span>
-            <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;token&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">token</span>
-        <span class="k">return</span> <span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">name</span><span class="p">()</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">provider_object</span><span class="o">.</span><span class="n">backends</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">name</span><span class="p">()</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">_UNSUPPORTED_BACKENDS</span><span class="p">]</span>
+    <span class="n">is_ibmq</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="k">if</span> <span class="n">has_ibmq</span><span class="p">():</span>
+        <span class="kn">from</span> <span class="nn">qiskit.providers.ibmq</span> <span class="k">import</span> <span class="n">IBMQFactory</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">provider_object</span><span class="p">,</span> <span class="n">IBMQFactory</span><span class="p">):</span>
+            <span class="n">is_ibmq</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="c1"># enable IBMQ account</span>
+            <span class="n">provider</span> <span class="o">=</span> <span class="n">_refresh_ibmq_account</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">provider</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">return</span> <span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">name</span><span class="p">()</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">provider</span><span class="o">.</span><span class="n">backends</span><span class="p">()</span> <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">name</span><span class="p">()</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">_UNSUPPORTED_BACKENDS</span><span class="p">]</span>
 
-    <span class="k">try</span><span class="p">:</span>
-        <span class="c1"># try as variable containing provider instance</span>
-        <span class="k">return</span> <span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">name</span><span class="p">()</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">provider_object</span><span class="o">.</span><span class="n">backends</span><span class="p">()</span> <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">name</span><span class="p">()</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">_UNSUPPORTED_BACKENDS</span><span class="p">]</span>
-    <span class="k">except</span><span class="p">:</span>
-        <span class="c1"># try as provider class then</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">is_ibmq</span><span class="p">:</span>
         <span class="k">try</span><span class="p">:</span>
-            <span class="n">provider_instance</span> <span class="o">=</span> <span class="n">provider_object</span><span class="p">()</span>
-            <span class="k">return</span> <span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">name</span><span class="p">()</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">provider_instance</span><span class="o">.</span><span class="n">backends</span><span class="p">()</span> <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">name</span><span class="p">()</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">_UNSUPPORTED_BACKENDS</span><span class="p">]</span>
-        <span class="k">except</span><span class="p">:</span>
-            <span class="k">pass</span>
+            <span class="c1"># try as variable containing provider instance</span>
+            <span class="k">return</span> <span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">name</span><span class="p">()</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">provider_object</span><span class="o">.</span><span class="n">backends</span><span class="p">()</span> <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">name</span><span class="p">()</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">_UNSUPPORTED_BACKENDS</span><span class="p">]</span>
+        <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+            <span class="c1"># try as provider class then</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">provider_instance</span> <span class="o">=</span> <span class="n">provider_object</span><span class="p">()</span>
+                <span class="k">return</span> <span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">name</span><span class="p">()</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">provider_instance</span><span class="o">.</span><span class="n">backends</span><span class="p">()</span> <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">name</span><span class="p">()</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">_UNSUPPORTED_BACKENDS</span><span class="p">]</span>
+            <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+                <span class="k">pass</span>
 
-    <span class="k">raise</span> <span class="ne">ImportError</span><span class="p">(</span><span class="s2">&quot;&#39;Backends not found for provider &#39;</span><span class="si">{}</span><span class="s2">&#39;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">provider_object</span><span class="p">))</span></div>
+    <span class="k">raise</span> <span class="ne">ImportError</span><span class="p">(</span><span class="s2">&quot;&#39;Backends not found for provider &#39;</span><span class="si">{}</span><span class="s2">&#39;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">provider_name</span><span class="p">))</span></div>
 
 
 <div class="viewcode-block" id="get_backend_from_provider"><a class="viewcode-back" href="../../../../autodoc/qiskit.aqua.utils.backend_utils.html#qiskit.aqua.get_backend_from_provider">[docs]</a><span class="k">def</span> <span class="nf">get_backend_from_provider</span><span class="p">(</span><span class="n">provider_name</span><span class="p">,</span> <span class="n">backend_name</span><span class="p">):</span>
@@ -364,34 +413,30 @@
 <span class="sd">    Raises:</span>
 <span class="sd">        ImportError: Invalid provider name or failed to find provider</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">backend</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="n">provider_object</span> <span class="o">=</span> <span class="n">_load_provider</span><span class="p">(</span><span class="n">provider_name</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">has_ibmq</span><span class="p">()</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">provider_object</span><span class="p">,</span> <span class="n">IBMQProvider</span><span class="p">):</span>
-        <span class="n">preferences</span> <span class="o">=</span> <span class="n">Preferences</span><span class="p">()</span>
-        <span class="n">url</span> <span class="o">=</span> <span class="n">preferences</span><span class="o">.</span><span class="n">get_url</span><span class="p">()</span>
-        <span class="n">token</span> <span class="o">=</span> <span class="n">preferences</span><span class="o">.</span><span class="n">get_token</span><span class="p">()</span>
-        <span class="n">kwargs</span> <span class="o">=</span> <span class="p">{}</span>
-        <span class="k">if</span> <span class="n">url</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">url</span> <span class="o">!=</span> <span class="s1">&#39;&#39;</span><span class="p">:</span>
-            <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;url&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">url</span>
-        <span class="k">if</span> <span class="n">token</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">token</span> <span class="o">!=</span> <span class="s1">&#39;&#39;</span><span class="p">:</span>
-            <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;token&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">token</span>
-        <span class="n">backend</span> <span class="o">=</span> <span class="n">provider_object</span><span class="o">.</span><span class="n">get_backend</span><span class="p">(</span><span class="n">backend_name</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
+    <span class="n">is_ibmq</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="k">if</span> <span class="n">has_ibmq</span><span class="p">():</span>
+        <span class="kn">from</span> <span class="nn">qiskit.providers.ibmq</span> <span class="k">import</span> <span class="n">IBMQFactory</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">provider_object</span><span class="p">,</span> <span class="n">IBMQFactory</span><span class="p">):</span>
+            <span class="n">is_ibmq</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="c1"># enable IBMQ account</span>
+            <span class="n">provider</span> <span class="o">=</span> <span class="n">_refresh_ibmq_account</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">provider</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">provider</span><span class="o">.</span><span class="n">get_backend</span><span class="p">(</span><span class="n">backend_name</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">is_ibmq</span><span class="p">:</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="c1"># try as variable containing provider instance</span>
-            <span class="n">backend</span> <span class="o">=</span> <span class="n">provider_object</span><span class="o">.</span><span class="n">get_backend</span><span class="p">(</span><span class="n">backend_name</span><span class="p">)</span>
-        <span class="k">except</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">provider_object</span><span class="o">.</span><span class="n">get_backend</span><span class="p">(</span><span class="n">backend_name</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
             <span class="c1"># try as provider class then</span>
             <span class="k">try</span><span class="p">:</span>
                 <span class="n">provider_instance</span> <span class="o">=</span> <span class="n">provider_object</span><span class="p">()</span>
-                <span class="n">backend</span> <span class="o">=</span> <span class="n">provider_instance</span><span class="o">.</span><span class="n">get_backend</span><span class="p">(</span><span class="n">backend_name</span><span class="p">)</span>
-            <span class="k">except</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">provider_instance</span><span class="o">.</span><span class="n">get_backend</span><span class="p">(</span><span class="n">backend_name</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
                 <span class="k">pass</span>
 
-    <span class="k">if</span> <span class="n">backend</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ImportError</span><span class="p">(</span><span class="s2">&quot;&#39;</span><span class="si">{}</span><span class="s2"> not found in provider &#39;</span><span class="si">{}</span><span class="s2">&#39;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">backend_name</span><span class="p">,</span> <span class="n">provider_object</span><span class="p">))</span>
-
-    <span class="k">return</span> <span class="n">backend</span></div>
+    <span class="k">raise</span> <span class="ne">ImportError</span><span class="p">(</span><span class="s2">&quot;&#39;</span><span class="si">{}</span><span class="s2"> not found in provider &#39;</span><span class="si">{}</span><span class="s2">&#39;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">backend_name</span><span class="p">,</span> <span class="n">provider_name</span><span class="p">))</span></div>
 
 
 <div class="viewcode-block" id="get_local_providers"><a class="viewcode-back" href="../../../../autodoc/qiskit.aqua.utils.backend_utils.html#qiskit.aqua.get_local_providers">[docs]</a><span class="k">def</span> <span class="nf">get_local_providers</span><span class="p">():</span>
@@ -399,8 +444,8 @@
     <span class="k">for</span> <span class="n">provider</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;qiskit.Aer&#39;</span><span class="p">,</span> <span class="s1">&#39;qiskit.BasicAer&#39;</span><span class="p">]:</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">providers</span><span class="p">[</span><span class="n">provider</span><span class="p">]</span> <span class="o">=</span> <span class="n">get_backends_from_provider</span><span class="p">(</span><span class="n">provider</span><span class="p">)</span>
-        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-            <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;&#39;</span><span class="si">{}</span><span class="s2">&#39; not loaded: &#39;</span><span class="si">{}</span><span class="s2">&#39;.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">provider</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)))</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">ex</span><span class="p">:</span>  <span class="c1"># pylint: disable=broad-except</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;&#39;</span><span class="si">{}</span><span class="s2">&#39; not loaded: &#39;</span><span class="si">{}</span><span class="s2">&#39;.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">provider</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">ex</span><span class="p">)))</span>
 
     <span class="k">return</span> <span class="n">providers</span></div>
 
@@ -424,10 +469,12 @@
 <span class="sd">    Raises:</span>
 <span class="sd">        ImportError: Failed to find provider</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+    <span class="kn">from</span> <span class="nn">qiskit.providers</span> <span class="k">import</span> <span class="n">BaseBackend</span>
+
     <span class="n">known_providers</span> <span class="o">=</span> <span class="p">{</span>
                        <span class="s1">&#39;BasicAerProvider&#39;</span><span class="p">:</span> <span class="s1">&#39;qiskit.BasicAer&#39;</span><span class="p">,</span>
                        <span class="s1">&#39;AerProvider&#39;</span><span class="p">:</span> <span class="s1">&#39;qiskit.Aer&#39;</span><span class="p">,</span>
-                       <span class="s1">&#39;IBMQProvider&#39;</span><span class="p">:</span> <span class="s1">&#39;qiskit.IBMQ&#39;</span><span class="p">,</span>
+                       <span class="s1">&#39;IBMQFactory&#39;</span><span class="p">:</span> <span class="s1">&#39;qiskit.IBMQ&#39;</span><span class="p">,</span>
                        <span class="p">}</span>
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">backend</span><span class="p">,</span> <span class="n">BaseBackend</span><span class="p">):</span>
         <span class="n">provider</span> <span class="o">=</span> <span class="n">backend</span><span class="o">.</span><span class="n">provider</span><span class="p">()</span>
@@ -442,7 +489,7 @@
         <span class="k">try</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">get_backend_from_provider</span><span class="p">(</span><span class="n">provider</span><span class="p">,</span> <span class="n">backend</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
                 <span class="k">return</span> <span class="n">provider</span>
-        <span class="k">except</span><span class="p">:</span>
+        <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
             <span class="k">pass</span>
 
     <span class="k">raise</span> <span class="ne">ImportError</span><span class="p">(</span><span class="s2">&quot;Backend &#39;</span><span class="si">{}</span><span class="s2">&#39; not found in providers </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">backend</span><span class="p">,</span> <span class="nb">list</span><span class="p">(</span><span class="n">known_providers</span><span class="o">.</span><span class="n">values</span><span class="p">())))</span></div>
@@ -464,67 +511,57 @@
     <span class="k">if</span> <span class="n">provider_object</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">ImportError</span><span class="p">(</span><span class="s2">&quot;Failed to import provider &#39;</span><span class="si">{}</span><span class="s2">&#39;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">provider_name</span><span class="p">))</span>
 
-    <span class="k">if</span> <span class="n">has_ibmq</span><span class="p">()</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">provider_object</span><span class="p">,</span> <span class="n">IBMQProvider</span><span class="p">):</span>
-        <span class="c1"># enable IBMQ account</span>
-        <span class="n">preferences</span> <span class="o">=</span> <span class="n">Preferences</span><span class="p">()</span>
-        <span class="n">enable_ibmq_account</span><span class="p">(</span><span class="n">preferences</span><span class="o">.</span><span class="n">get_url</span><span class="p">(),</span> <span class="n">preferences</span><span class="o">.</span><span class="n">get_token</span><span class="p">(),</span> <span class="n">preferences</span><span class="o">.</span><span class="n">get_proxies</span><span class="p">({}))</span>
-
     <span class="k">return</span> <span class="n">provider_object</span>
 
 
-<div class="viewcode-block" id="enable_ibmq_account"><a class="viewcode-back" href="../../../../autodoc/qiskit.aqua.utils.backend_utils.html#qiskit.aqua.enable_ibmq_account">[docs]</a><span class="k">def</span> <span class="nf">enable_ibmq_account</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">token</span><span class="p">,</span> <span class="n">proxies</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">_refresh_ibmq_account</span><span class="p">():</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Enable IBMQ account, if not alreay enabled.</span>
+<span class="sd">    Refresh IBMQ account by enabling or disabling it depending on preferences stored values</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">has_ibmq</span><span class="p">():</span>
-        <span class="k">return</span>
+    <span class="n">preferences</span> <span class="o">=</span> <span class="n">Preferences</span><span class="p">()</span><span class="o">.</span><span class="n">ibmq_credentials_preferences</span>
+    <span class="n">token</span> <span class="o">=</span> <span class="n">preferences</span><span class="o">.</span><span class="n">token</span> <span class="ow">or</span> <span class="s1">&#39;&#39;</span>
+    <span class="n">proxies</span> <span class="o">=</span> <span class="n">preferences</span><span class="o">.</span><span class="n">proxies</span> <span class="ow">or</span> <span class="p">{}</span>
+    <span class="n">hub</span> <span class="o">=</span> <span class="n">preferences</span><span class="o">.</span><span class="n">hub</span>
+    <span class="n">group</span> <span class="o">=</span> <span class="n">preferences</span><span class="o">.</span><span class="n">group</span>
+    <span class="n">project</span> <span class="o">=</span> <span class="n">preferences</span><span class="o">.</span><span class="n">project</span>
+    <span class="n">provider</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="k">try</span><span class="p">:</span>
-        <span class="n">url</span> <span class="o">=</span> <span class="n">url</span> <span class="ow">or</span> <span class="s1">&#39;&#39;</span>
-        <span class="n">token</span> <span class="o">=</span> <span class="n">token</span> <span class="ow">or</span> <span class="s1">&#39;&#39;</span>
-        <span class="n">proxies</span> <span class="o">=</span> <span class="n">proxies</span> <span class="ow">or</span> <span class="p">{}</span>
-        <span class="k">if</span> <span class="n">url</span> <span class="o">!=</span> <span class="s1">&#39;&#39;</span> <span class="ow">and</span> <span class="n">token</span> <span class="o">!=</span> <span class="s1">&#39;&#39;</span><span class="p">:</span>
-            <span class="kn">from</span> <span class="nn">qiskit</span> <span class="k">import</span> <span class="n">IBMQ</span>
-            <span class="kn">from</span> <span class="nn">qiskit.providers.ibmq.credentials</span> <span class="k">import</span> <span class="n">Credentials</span>
-            <span class="n">credentials</span> <span class="o">=</span> <span class="n">Credentials</span><span class="p">(</span><span class="n">token</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">proxies</span><span class="o">=</span><span class="n">proxies</span><span class="p">)</span>
-            <span class="n">unique_id</span> <span class="o">=</span> <span class="n">credentials</span><span class="o">.</span><span class="n">unique_id</span><span class="p">()</span>
-            <span class="k">if</span> <span class="n">unique_id</span> <span class="ow">in</span> <span class="n">IBMQ</span><span class="o">.</span><span class="n">_accounts</span><span class="p">:</span>
-                <span class="c1"># disable first any existent previous account with same unique_id and different properties</span>
-                <span class="n">enabled_credentials</span> <span class="o">=</span> <span class="n">IBMQ</span><span class="o">.</span><span class="n">_accounts</span><span class="p">[</span><span class="n">unique_id</span><span class="p">]</span><span class="o">.</span><span class="n">credentials</span>
-                <span class="k">if</span> <span class="n">enabled_credentials</span><span class="o">.</span><span class="n">url</span> <span class="o">!=</span> <span class="n">url</span> <span class="ow">or</span> <span class="n">enabled_credentials</span><span class="o">.</span><span class="n">token</span> <span class="o">!=</span> <span class="n">token</span> <span class="ow">or</span> <span class="n">enabled_credentials</span><span class="o">.</span><span class="n">proxies</span> <span class="o">!=</span> <span class="n">proxies</span><span class="p">:</span>
-                    <span class="k">del</span> <span class="n">IBMQ</span><span class="o">.</span><span class="n">_accounts</span><span class="p">[</span><span class="n">unique_id</span><span class="p">]</span>
+        <span class="c1"># pylint: disable=no-name-in-module, import-error</span>
+        <span class="kn">from</span> <span class="nn">qiskit</span> <span class="k">import</span> <span class="n">IBMQ</span>
+        <span class="n">providers</span> <span class="o">=</span> <span class="n">IBMQ</span><span class="o">.</span><span class="n">providers</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">token</span> <span class="o">!=</span> <span class="s1">&#39;&#39;</span><span class="p">:</span>
+            <span class="c1"># check if there was a previous account that needs to be disabled first</span>
+            <span class="n">disable_account</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="n">enable_account</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="k">for</span> <span class="n">provider</span> <span class="ow">in</span> <span class="n">providers</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">provider</span><span class="o">.</span><span class="n">credentials</span><span class="o">.</span><span class="n">token</span> <span class="o">==</span> <span class="n">token</span> <span class="ow">and</span> <span class="n">provider</span><span class="o">.</span><span class="n">credentials</span><span class="o">.</span><span class="n">proxies</span> <span class="o">==</span> <span class="n">proxies</span><span class="p">:</span>
+                    <span class="n">enable_account</span> <span class="o">=</span> <span class="kc">False</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">disable_account</span> <span class="o">=</span> <span class="kc">True</span>
 
-            <span class="k">if</span> <span class="n">unique_id</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">IBMQ</span><span class="o">.</span><span class="n">_accounts</span><span class="p">:</span>
-                <span class="n">IBMQ</span><span class="o">.</span><span class="n">enable_account</span><span class="p">(</span><span class="n">token</span><span class="p">,</span> <span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">proxies</span><span class="o">=</span><span class="n">proxies</span><span class="p">)</span>
-                <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Enabled IBMQ account. Url:&#39;</span><span class="si">{}</span><span class="s2">&#39; Token:&#39;</span><span class="si">{}</span><span class="s2">&#39; &quot;</span>
-                            <span class="s2">&quot;Proxies:&#39;</span><span class="si">{}</span><span class="s2">&#39;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">token</span><span class="p">,</span> <span class="n">proxies</span><span class="p">))</span>
-    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-        <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Failed to enable IBMQ account. Url:&#39;</span><span class="si">{}</span><span class="s2">&#39; Token:&#39;</span><span class="si">{}</span><span class="s2">&#39; &quot;</span>
-                       <span class="s2">&quot;Proxies:&#39;</span><span class="si">{}</span><span class="s2">&#39; :</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">token</span><span class="p">,</span> <span class="n">proxies</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)))</span></div>
+            <span class="k">if</span> <span class="n">disable_account</span><span class="p">:</span>
+                <span class="n">IBMQ</span><span class="o">.</span><span class="n">disable_account</span><span class="p">()</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Disabled IBMQ account.&#39;</span><span class="p">)</span>
 
+            <span class="k">if</span> <span class="n">enable_account</span><span class="p">:</span>
+                <span class="n">IBMQ</span><span class="o">.</span><span class="n">enable_account</span><span class="p">(</span><span class="n">token</span><span class="p">,</span> <span class="n">proxies</span><span class="o">=</span><span class="n">proxies</span><span class="p">)</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Enabled IBMQ account.&#39;</span><span class="p">)</span>
 
-<div class="viewcode-block" id="disable_ibmq_account"><a class="viewcode-back" href="../../../../autodoc/qiskit.aqua.utils.backend_utils.html#qiskit.aqua.disable_ibmq_account">[docs]</a><span class="k">def</span> <span class="nf">disable_ibmq_account</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">token</span><span class="p">,</span> <span class="n">proxies</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Disable IBMQ account.&quot;&quot;&quot;</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">has_ibmq</span><span class="p">():</span>
-        <span class="k">return</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="n">url</span> <span class="o">=</span> <span class="n">url</span> <span class="ow">or</span> <span class="s1">&#39;&#39;</span>
-        <span class="n">token</span> <span class="o">=</span> <span class="n">token</span> <span class="ow">or</span> <span class="s1">&#39;&#39;</span>
-        <span class="n">proxies</span> <span class="o">=</span> <span class="n">proxies</span> <span class="ow">or</span> <span class="p">{}</span>
-        <span class="k">if</span> <span class="n">url</span> <span class="o">!=</span> <span class="s1">&#39;&#39;</span> <span class="ow">and</span> <span class="n">token</span> <span class="o">!=</span> <span class="s1">&#39;&#39;</span><span class="p">:</span>
-            <span class="kn">from</span> <span class="nn">qiskit</span> <span class="k">import</span> <span class="n">IBMQ</span>
-            <span class="kn">from</span> <span class="nn">qiskit.providers.ibmq.credentials</span> <span class="k">import</span> <span class="n">Credentials</span>
-            <span class="n">credentials</span> <span class="o">=</span> <span class="n">Credentials</span><span class="p">(</span><span class="n">token</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">proxies</span><span class="o">=</span><span class="n">proxies</span><span class="p">)</span>
-            <span class="n">unique_id</span> <span class="o">=</span> <span class="n">credentials</span><span class="o">.</span><span class="n">unique_id</span><span class="p">()</span>
-            <span class="k">if</span> <span class="n">unique_id</span> <span class="ow">in</span> <span class="n">IBMQ</span><span class="o">.</span><span class="n">_accounts</span><span class="p">:</span>
-                <span class="k">del</span> <span class="n">IBMQ</span><span class="o">.</span><span class="n">_accounts</span><span class="p">[</span><span class="n">unique_id</span><span class="p">]</span>
-                <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Disabled IBMQ account. Url:&#39;</span><span class="si">{}</span><span class="s2">&#39; &quot;</span>
-                            <span class="s2">&quot;Token:&#39;</span><span class="si">{}</span><span class="s2">&#39; Proxies:&#39;</span><span class="si">{}</span><span class="s2">&#39;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">token</span><span class="p">,</span> <span class="n">proxies</span><span class="p">))</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;IBMQ account is not active. Not disabled. &quot;</span>
-                            <span class="s2">&quot;Url:&#39;</span><span class="si">{}</span><span class="s2">&#39; Token:&#39;</span><span class="si">{}</span><span class="s2">&#39; Proxies:&#39;</span><span class="si">{}</span><span class="s2">&#39;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">token</span><span class="p">,</span> <span class="n">proxies</span><span class="p">))</span>
-    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-        <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Failed to disable IBMQ account. Url:&#39;</span><span class="si">{}</span><span class="s2">&#39; &quot;</span>
-                       <span class="s2">&quot;Token:&#39;</span><span class="si">{}</span><span class="s2">&#39; Proxies:&#39;</span><span class="si">{}</span><span class="s2">&#39; :</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">token</span><span class="p">,</span> <span class="n">proxies</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)))</span></div>
+            <span class="n">providers</span> <span class="o">=</span> <span class="n">IBMQ</span><span class="o">.</span><span class="n">providers</span><span class="p">(</span><span class="n">hub</span><span class="o">=</span><span class="n">hub</span><span class="p">,</span> <span class="n">group</span><span class="o">=</span><span class="n">group</span><span class="p">,</span> <span class="n">project</span><span class="o">=</span><span class="n">project</span><span class="p">)</span>
+            <span class="n">provider</span> <span class="o">=</span> <span class="n">providers</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">if</span> <span class="n">providers</span> <span class="k">else</span> <span class="kc">None</span>
+            <span class="k">if</span> <span class="n">provider</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;No Provider found for IBMQ account. &quot;</span>
+                            <span class="s2">&quot;Hub/Group/Project: &#39;</span><span class="si">{}</span><span class="s2">/</span><span class="si">{}</span><span class="s2">/</span><span class="si">{}</span><span class="s2">&#39; Proxies:&#39;</span><span class="si">{}</span><span class="s2">&#39;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">hub</span><span class="p">,</span> <span class="n">group</span><span class="p">,</span> <span class="n">project</span><span class="p">,</span> <span class="n">proxies</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">providers</span><span class="p">:</span>
+                <span class="n">IBMQ</span><span class="o">.</span><span class="n">disable_account</span><span class="p">()</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Disabled IBMQ account.&#39;</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">ex</span><span class="p">:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;IBMQ account Account Failure. &quot;</span>
+                       <span class="s2">&quot;Hub/Group/Project: &#39;</span><span class="si">{}</span><span class="s2">/</span><span class="si">{}</span><span class="s2">/</span><span class="si">{}</span><span class="s2">&#39; &quot;</span>
+                       <span class="s2">&quot;Proxies:&#39;</span><span class="si">{}</span><span class="s2">&#39; :</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">hub</span><span class="p">,</span> <span class="n">group</span><span class="p">,</span> <span class="n">project</span><span class="p">,</span> <span class="n">proxies</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">ex</span><span class="p">)))</span>
+
+    <span class="k">return</span> <span class="n">provider</span>
 
 
 <span class="k">def</span> <span class="nf">_get_ibmq_provider</span><span class="p">():</span>
@@ -532,8 +569,8 @@
     <span class="n">providers</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">()</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="n">providers</span><span class="p">[</span><span class="s1">&#39;qiskit.IBMQ&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">get_backends_from_provider</span><span class="p">(</span><span class="s1">&#39;qiskit.IBMQ&#39;</span><span class="p">)</span>
-    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-        <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Failed to access IBMQ: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)))</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">ex</span><span class="p">:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Failed to access IBMQ: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">ex</span><span class="p">)))</span>
 
     <span class="k">return</span> <span class="n">providers</span>
 </pre></div>

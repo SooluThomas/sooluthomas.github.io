@@ -52,7 +52,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="qiskit.transpiler.coupling module" href="qiskit.transpiler.coupling.html" />
-    <link rel="prev" title="qiskit.transpiler.preset_passmanagers.level3 module" href="qiskit.transpiler.preset_passmanagers.level3.html" /> 
+    <link rel="prev" title="qiskit.transpiler.synthesis.graysynth module" href="qiskit.transpiler.synthesis.graysynth.html" /> 
   </head>
 <body>
   <header>
@@ -756,6 +756,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.circuit.html">qiskit.circuit package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#subpackages">Subpackages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#submodules">Submodules</a></li>
 </ul>
 </li>
@@ -776,8 +777,9 @@
 <li class="toctree-l4"><a class="reference internal" href="qiskit.extensions.html#submodules">Submodules</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.mapper.html">qiskit.mapper package</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="qiskit.mapper.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qiskit.ignis.html">qiskit.ignis package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.ignis.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.ignis.html#submodules">Submodules</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.providers.html">qiskit.providers package</a><ul>
@@ -836,10 +838,8 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="qiskit.html#submodules">Submodules</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="qiskit._util.html">qiskit._util module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.exceptions.html">qiskit.exceptions module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.execute.html">qiskit.execute module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.qiskiterror.html">qiskit.qiskiterror module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.user_config.html">qiskit.user_config module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.util.html">qiskit.util module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.version.html">qiskit.version module</a></li>
@@ -1540,6 +1540,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.circuit.html">qiskit.circuit package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#subpackages">Subpackages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#submodules">Submodules</a></li>
 </ul>
 </li>
@@ -1560,8 +1561,9 @@
 <li class="toctree-l4"><a class="reference internal" href="qiskit.extensions.html#submodules">Submodules</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.mapper.html">qiskit.mapper package</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="qiskit.mapper.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qiskit.ignis.html">qiskit.ignis package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.ignis.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.ignis.html#submodules">Submodules</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.providers.html">qiskit.providers package</a><ul>
@@ -1620,10 +1622,8 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="qiskit.html#submodules">Submodules</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="qiskit._util.html">qiskit._util module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.exceptions.html">qiskit.exceptions module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.execute.html">qiskit.execute module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.qiskiterror.html">qiskit.qiskiterror module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.user_config.html">qiskit.user_config module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.util.html">qiskit.util module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.version.html">qiskit.version module</a></li>
@@ -1644,7 +1644,7 @@
         
   <div class="section" id="module-qiskit.transpiler.basepasses">
 <span id="qiskit-transpiler-basepasses-module"></span><h1>qiskit.transpiler.basepasses module<a class="headerlink" href="#module-qiskit.transpiler.basepasses" title="Permalink to this headline">¶</a></h1>
-<p>This module implements the base pass.</p>
+<p>Base transpiler passes.</p>
 <dl class="class">
 <dt id="qiskit.transpiler.basepasses.AnalysisPass">
 <em class="property">class </em><code class="descname">AnalysisPass</code><a class="reference internal" href="../_modules/qiskit/transpiler/basepasses.html#AnalysisPass"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.transpiler.basepasses.AnalysisPass" title="Permalink to this definition">¶</a></dt>
@@ -1660,7 +1660,8 @@
 <dl class="attribute">
 <dt id="qiskit.transpiler.basepasses.BasePass.is_analysis_pass">
 <code class="descname">is_analysis_pass</code><a class="headerlink" href="#qiskit.transpiler.basepasses.BasePass.is_analysis_pass" title="Permalink to this definition">¶</a></dt>
-<dd><p>If the pass is an AnalysisPass, that means that the pass can analyze the DAG and write
+<dd><p>Check if the pass is an analysis pass.</p>
+<p>If the pass is an AnalysisPass, that means that the pass can analyze the DAG and write
 the results of that analysis in the property set. Modifications on the DAG are not allowed
 by this kind of pass.</p>
 </dd></dl>
@@ -1668,27 +1669,28 @@ by this kind of pass.</p>
 <dl class="attribute">
 <dt id="qiskit.transpiler.basepasses.BasePass.is_transformation_pass">
 <code class="descname">is_transformation_pass</code><a class="headerlink" href="#qiskit.transpiler.basepasses.BasePass.is_transformation_pass" title="Permalink to this definition">¶</a></dt>
-<dd><p>If the pass is a TransformationPass, that means that the pass can manipulate the DAG,
+<dd><p>Check if the pass is a transformation pass.</p>
+<p>If the pass is a TransformationPass, that means that the pass can manipulate the DAG,
 but cannot modify the property set (but it can be read).</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="qiskit.transpiler.basepasses.BasePass.name">
 <code class="descname">name</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/transpiler/basepasses.html#BasePass.name"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.transpiler.basepasses.BasePass.name" title="Permalink to this definition">¶</a></dt>
-<dd><p>The name of the pass.</p>
+<dd><p>Return the name of the pass.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="qiskit.transpiler.basepasses.BasePass.run">
 <code class="descname">run</code><span class="sig-paren">(</span><em>dag</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/transpiler/basepasses.html#BasePass.run"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.transpiler.basepasses.BasePass.run" title="Permalink to this definition">¶</a></dt>
-<dd><p>Run a pass on the DAGCircuit. This is implemented by the pass developer.
-:param dag: the dag on which the pass is run.
-:type dag: DAGCircuit</p>
+<dd><p>Run a pass on the DAGCircuit. This is implemented by the pass developer.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><code class="xref py py-exc docutils literal notranslate"><span class="pre">NotImplementedError</span></code> – when this is left unimplemented for a pass.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>dag</strong> (<a class="reference internal" href="qiskit.dagcircuit.dagcircuit.html#qiskit.dagcircuit.dagcircuit.DAGCircuit" title="qiskit.dagcircuit.dagcircuit.DAGCircuit"><em>DAGCircuit</em></a>) – the dag on which the pass is run.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><code class="xref py py-exc docutils literal notranslate"><span class="pre">NotImplementedError</span></code> – when this is left unimplemented for a pass.</td>
 </tr>
 </tbody>
 </table>
@@ -1700,8 +1702,9 @@ but cannot modify the property set (but it can be read).</p>
 <dt id="qiskit.transpiler.basepasses.MetaPass">
 <em class="property">class </em><code class="descname">MetaPass</code><a class="reference internal" href="../_modules/qiskit/transpiler/basepasses.html#MetaPass"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.transpiler.basepasses.MetaPass" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">type</span></code></p>
-<p>Enforces the creation of some fields in the pass
-while allowing passes to override __init__</p>
+<p>Metaclass for transpiler passes.</p>
+<p>Enforces the creation of some fields in the pass while allowing passes to
+override <code class="docutils literal notranslate"><span class="pre">__init__</span></code>.</p>
 </dd></dl>
 
 <dl class="class">
@@ -1718,10 +1721,10 @@ while allowing passes to override __init__</p>
 
       <div class="clearer"></div>
     </div><div class="pagenation">
-     <a id="button-prev" href="qiskit.transpiler.preset_passmanagers.level3.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
+     <a id="button-prev" href="qiskit.transpiler.synthesis.graysynth.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
          <div class="pagenation-text">
             <span class="pagenation-direction">Previous</span>
-            <div>qiskit.transpiler.preset_passmanagers.level3 module</div>
+            <div>qiskit.transpiler.synthesis.graysynth module</div>
          </div>
      </a>
      <a id="button-next" href="qiskit.transpiler.coupling.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">

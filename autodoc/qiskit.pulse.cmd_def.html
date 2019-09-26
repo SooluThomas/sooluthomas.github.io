@@ -52,7 +52,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="qiskit.pulse.configuration module" href="qiskit.pulse.configuration.html" />
-    <link rel="prev" title="qiskit.pulse.samplers.strategies module" href="qiskit.pulse.samplers.strategies.html" /> 
+    <link rel="prev" title="qiskit.pulse.pulse_lib.discrete module" href="qiskit.pulse.pulse_lib.discrete.html" /> 
   </head>
 <body>
   <header>
@@ -756,6 +756,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.circuit.html">qiskit.circuit package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#subpackages">Subpackages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#submodules">Submodules</a></li>
 </ul>
 </li>
@@ -776,8 +777,9 @@
 <li class="toctree-l4"><a class="reference internal" href="qiskit.extensions.html#submodules">Submodules</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.mapper.html">qiskit.mapper package</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="qiskit.mapper.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qiskit.ignis.html">qiskit.ignis package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.ignis.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.ignis.html#submodules">Submodules</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.providers.html">qiskit.providers package</a><ul>
@@ -836,10 +838,8 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="qiskit.html#submodules">Submodules</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="qiskit._util.html">qiskit._util module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.exceptions.html">qiskit.exceptions module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.execute.html">qiskit.execute module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.qiskiterror.html">qiskit.qiskiterror module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.user_config.html">qiskit.user_config module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.util.html">qiskit.util module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.version.html">qiskit.version module</a></li>
@@ -1540,6 +1540,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.circuit.html">qiskit.circuit package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#subpackages">Subpackages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="qiskit.circuit.html#submodules">Submodules</a></li>
 </ul>
 </li>
@@ -1560,8 +1561,9 @@
 <li class="toctree-l4"><a class="reference internal" href="qiskit.extensions.html#submodules">Submodules</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.mapper.html">qiskit.mapper package</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="qiskit.mapper.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qiskit.ignis.html">qiskit.ignis package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.ignis.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiskit.ignis.html#submodules">Submodules</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.providers.html">qiskit.providers package</a><ul>
@@ -1620,10 +1622,8 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="qiskit.html#submodules">Submodules</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="qiskit._util.html">qiskit._util module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.exceptions.html">qiskit.exceptions module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.execute.html">qiskit.execute module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="qiskit.qiskiterror.html">qiskit.qiskiterror module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.user_config.html">qiskit.user_config module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.util.html">qiskit.util module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="qiskit.version.html">qiskit.version module</a></li>
@@ -1647,7 +1647,7 @@
 <p>Command definition module. Relates circuit gates to pulse commands.</p>
 <dl class="class">
 <dt id="qiskit.pulse.cmd_def.CmdDef">
-<em class="property">class </em><code class="descname">CmdDef</code><span class="sig-paren">(</span><em>schedules: Dict[KT</em>, <em>VT] = None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/pulse/cmd_def.html#CmdDef"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.pulse.cmd_def.CmdDef" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descname">CmdDef</code><span class="sig-paren">(</span><em>schedules: Optional[Dict[KT</em>, <em>VT]] = None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qiskit/pulse/cmd_def.html#CmdDef"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.pulse.cmd_def.CmdDef" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Command definition class. Relates <a href="#id1"><span class="problematic" id="id2">`</span></a>Gate`s to <a href="#id3"><span class="problematic" id="id4">`</span></a>Schedule`s.</p>
 <dl class="method">
@@ -1683,19 +1683,21 @@
 
 <dl class="classmethod">
 <dt id="qiskit.pulse.cmd_def.CmdDef.from_defaults">
-<em class="property">classmethod </em><code class="descname">from_defaults</code><span class="sig-paren">(</span><em>flat_cmd_def: List[qiskit.qobj.models.pulse.PulseQobjInstruction], pulse_library: Dict[str, qiskit.pulse.commands.sample_pulse.SamplePulse]</em><span class="sig-paren">)</span> &#x2192; qiskit.pulse.cmd_def.CmdDef<a class="reference internal" href="../_modules/qiskit/pulse/cmd_def.html#CmdDef.from_defaults"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.pulse.cmd_def.CmdDef.from_defaults" title="Permalink to this definition">¶</a></dt>
+<em class="property">classmethod </em><code class="descname">from_defaults</code><span class="sig-paren">(</span><em>flat_cmd_def: List[qiskit.qobj.models.pulse.PulseQobjInstruction], pulse_library: Dict[str, qiskit.pulse.commands.sample_pulse.SamplePulse], buffer: int = 0</em><span class="sig-paren">)</span> &#x2192; qiskit.pulse.cmd_def.CmdDef<a class="reference internal" href="../_modules/qiskit/pulse/cmd_def.html#CmdDef.from_defaults"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.pulse.cmd_def.CmdDef.from_defaults" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create command definition from backend defaults output.
 :param flat_cmd_def: Command definition list returned by backend
-:param pulse_library: Dictionary of <a href="#id5"><span class="problematic" id="id6">`</span></a>SamplePulse`s</p>
+:param pulse_library: Dictionary of <a href="#id5"><span class="problematic" id="id6">`</span></a>SamplePulse`s
+:param buffer: Buffer between instructions on channel</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="qiskit.pulse.cmd_def.CmdDef.get">
-<code class="descname">get</code><span class="sig-paren">(</span><em>cmd_name: str, qubits: Union[int, Iterable[int]], **params</em><span class="sig-paren">)</span> &#x2192; qiskit.pulse.schedule.Schedule<a class="reference internal" href="../_modules/qiskit/pulse/cmd_def.html#CmdDef.get"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.pulse.cmd_def.CmdDef.get" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get</code><span class="sig-paren">(</span><em>cmd_name: str, qubits: Union[int, Iterable[int]], *params, **kwparams</em><span class="sig-paren">)</span> &#x2192; qiskit.pulse.schedule.Schedule<a class="reference internal" href="../_modules/qiskit/pulse/cmd_def.html#CmdDef.get"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.pulse.cmd_def.CmdDef.get" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get command from command definition.
 :param cmd_name: Name of the command
 :param qubits: Ordered list of qubits command applies to
-:param **params: Command parameters to be used to generate schedule</p>
+:param *params: Command parameters to be used to generate schedule
+:param **kwparams: Keyworded command parameters to be used to generate schedule</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -1742,7 +1744,7 @@
 
 <dl class="method">
 <dt id="qiskit.pulse.cmd_def.CmdDef.pop">
-<code class="descname">pop</code><span class="sig-paren">(</span><em>cmd_name: str, qubits: Union[int, Iterable[int]], **params</em><span class="sig-paren">)</span> &#x2192; qiskit.pulse.schedule.Schedule<a class="reference internal" href="../_modules/qiskit/pulse/cmd_def.html#CmdDef.pop"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.pulse.cmd_def.CmdDef.pop" title="Permalink to this definition">¶</a></dt>
+<code class="descname">pop</code><span class="sig-paren">(</span><em>cmd_name: str, qubits: Union[int, Iterable[int]], *params, **kwparams</em><span class="sig-paren">)</span> &#x2192; qiskit.pulse.schedule.Schedule<a class="reference internal" href="../_modules/qiskit/pulse/cmd_def.html#CmdDef.pop"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qiskit.pulse.cmd_def.CmdDef.pop" title="Permalink to this definition">¶</a></dt>
 <dd><p>Pop command from command definition.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1751,7 +1753,8 @@
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>cmd_name</strong> – Name of the command</li>
 <li><strong>qubits</strong> – Ordered list of qubits command applies to</li>
-<li><strong>**params</strong> – Command parameters to be used to generate schedule</li>
+<li><strong>*params</strong> – Command parameters to be used to generate schedule</li>
+<li><strong>**kwparams</strong> – Keyworded command parameters to be used to generate schedule</li>
 </ul>
 </td>
 </tr>
@@ -1771,10 +1774,10 @@
 
       <div class="clearer"></div>
     </div><div class="pagenation">
-     <a id="button-prev" href="qiskit.pulse.samplers.strategies.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
+     <a id="button-prev" href="qiskit.pulse.pulse_lib.discrete.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
          <div class="pagenation-text">
             <span class="pagenation-direction">Previous</span>
-            <div>qiskit.pulse.samplers.strategies module</div>
+            <div>qiskit.pulse.pulse_lib.discrete module</div>
          </div>
      </a>
      <a id="button-next" href="qiskit.pulse.configuration.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">

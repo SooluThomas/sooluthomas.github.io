@@ -215,20 +215,15 @@
     <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">dag</span><span class="o">.</span><span class="n">topological_op_nodes</span><span class="p">():</span>
         <span class="n">qubits</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">for</span> <span class="n">qubit</span> <span class="ow">in</span> <span class="n">node</span><span class="o">.</span><span class="n">qargs</span><span class="p">:</span>
-            <span class="n">qubits</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">qregs</span><span class="p">[</span><span class="n">qubit</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">name</span><span class="p">][</span><span class="n">qubit</span><span class="p">[</span><span class="mi">1</span><span class="p">]])</span>
+            <span class="n">qubits</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">qregs</span><span class="p">[</span><span class="n">qubit</span><span class="o">.</span><span class="n">register</span><span class="o">.</span><span class="n">name</span><span class="p">][</span><span class="n">qubit</span><span class="o">.</span><span class="n">index</span><span class="p">])</span>
 
         <span class="n">clbits</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">for</span> <span class="n">clbit</span> <span class="ow">in</span> <span class="n">node</span><span class="o">.</span><span class="n">cargs</span><span class="p">:</span>
-            <span class="n">clbits</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cregs</span><span class="p">[</span><span class="n">clbit</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">name</span><span class="p">][</span><span class="n">clbit</span><span class="p">[</span><span class="mi">1</span><span class="p">]])</span>
+            <span class="n">clbits</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cregs</span><span class="p">[</span><span class="n">clbit</span><span class="o">.</span><span class="n">register</span><span class="o">.</span><span class="n">name</span><span class="p">][</span><span class="n">clbit</span><span class="o">.</span><span class="n">index</span><span class="p">])</span>
 
         <span class="c1"># Get arguments for classical control (if any)</span>
-        <span class="k">if</span> <span class="n">node</span><span class="o">.</span><span class="n">condition</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">control</span> <span class="o">=</span> <span class="kc">None</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">control</span> <span class="o">=</span> <span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">condition</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">node</span><span class="o">.</span><span class="n">condition</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
-
         <span class="n">inst</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">op</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-        <span class="n">inst</span><span class="o">.</span><span class="n">control</span> <span class="o">=</span> <span class="n">control</span>
+        <span class="n">inst</span><span class="o">.</span><span class="n">control</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">condition</span>
         <span class="n">circuit</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">inst</span><span class="p">,</span> <span class="n">qubits</span><span class="p">,</span> <span class="n">clbits</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">circuit</span></div>
 </pre></div>

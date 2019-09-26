@@ -195,6 +195,7 @@
 <span class="kn">from</span> <span class="nn">qiskit.aqua</span> <span class="k">import</span> <span class="n">Pluggable</span><span class="p">,</span> <span class="n">get_pluggable_class</span><span class="p">,</span> <span class="n">PluggableType</span>
 <span class="kn">from</span> <span class="nn">qiskit.aqua.algorithms</span> <span class="k">import</span> <span class="n">QuantumAlgorithm</span>
 <span class="kn">from</span> <span class="nn">qiskit.aqua.components.neural_networks.quantum_generator</span> <span class="k">import</span> <span class="n">QuantumGenerator</span>
+<span class="kn">from</span> <span class="nn">qiskit.aqua.components.neural_networks.numpy_discriminator</span> <span class="k">import</span> <span class="n">NumpyDiscriminator</span>
 
 
 <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
@@ -219,7 +220,8 @@
                 <span class="p">},</span>
                 <span class="s1">&#39;batch_size&#39;</span><span class="p">:</span> <span class="p">{</span>
                     <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;integer&#39;</span><span class="p">,</span>
-                    <span class="s1">&#39;default&#39;</span><span class="p">:</span> <span class="mi">500</span>
+                    <span class="s1">&#39;default&#39;</span><span class="p">:</span> <span class="mi">500</span><span class="p">,</span>
+                    <span class="s1">&#39;minimum&#39;</span><span class="p">:</span> <span class="mi">1</span>
                 <span class="p">},</span>
                 <span class="s1">&#39;num_epochs&#39;</span><span class="p">:</span> <span class="p">{</span>
                     <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;integer&#39;</span><span class="p">,</span>
@@ -251,7 +253,7 @@
             <span class="p">{</span>
                 <span class="s1">&#39;pluggable_type&#39;</span><span class="p">:</span> <span class="s1">&#39;discriminative_network&#39;</span><span class="p">,</span>
                 <span class="s1">&#39;default&#39;</span><span class="p">:</span> <span class="p">{</span>
-                    <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;ClassicalDiscriminator&#39;</span>
+                    <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;NumpyDiscriminator&#39;</span>
                 <span class="p">}</span>
             <span class="p">},</span>
         <span class="p">],</span>
@@ -421,15 +423,21 @@
     <span class="k">def</span> <span class="nf">discriminator</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_discriminator</span>
 
-<div class="viewcode-block" id="QGAN.set_discriminator"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.aqua.algorithms.adaptive.qgan.qgan.html#qiskit.aqua.algorithms.QGAN.set_discriminator">[docs]</a>    <span class="k">def</span> <span class="nf">set_discriminator</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="QGAN.set_discriminator"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.aqua.algorithms.adaptive.qgan.qgan.html#qiskit.aqua.algorithms.QGAN.set_discriminator">[docs]</a>    <span class="k">def</span> <span class="nf">set_discriminator</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">discriminator</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Initialize discriminator.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            discriminator:</span>
 
 <span class="sd">        Returns:</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="kn">from</span> <span class="nn">qiskit.aqua.components.neural_networks.classical_discriminator</span> <span class="k">import</span> <span class="n">ClassicalDiscriminator</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_discriminator</span> <span class="o">=</span> <span class="n">ClassicalDiscriminator</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_num_qubits</span><span class="p">))</span>
+
+        <span class="k">if</span> <span class="n">discriminator</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_discriminator</span> <span class="o">=</span> <span class="n">NumpyDiscriminator</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_num_qubits</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_discriminator</span> <span class="o">=</span> <span class="n">discriminator</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_discriminator</span><span class="o">.</span><span class="n">set_seed</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_random_seed</span><span class="p">)</span>
         <span class="k">return</span></div>
 
@@ -508,7 +516,7 @@
         <span class="k">return</span>
 
 <div class="viewcode-block" id="QGAN.get_rel_entr"><a class="viewcode-back" href="../../../../../../autodoc/qiskit.aqua.algorithms.adaptive.qgan.qgan.html#qiskit.aqua.algorithms.QGAN.get_rel_entr">[docs]</a>    <span class="k">def</span> <span class="nf">get_rel_entr</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="n">samples_gen</span><span class="p">,</span> <span class="n">prob_gen</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_generator</span><span class="o">.</span><span class="n">get_output</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_quantum_instance</span><span class="p">,</span> <span class="n">shots</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+        <span class="n">samples_gen</span><span class="p">,</span> <span class="n">prob_gen</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_generator</span><span class="o">.</span><span class="n">get_output</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_quantum_instance</span><span class="p">)</span>
         <span class="n">temp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_grid_elements</span><span class="p">))</span>
         <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">sample</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">samples_gen</span><span class="p">):</span>
             <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">element</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_grid_elements</span><span class="p">):</span>
@@ -550,34 +558,32 @@
 
                 <span class="c1"># 1. Train Discriminator</span>
                 <span class="n">ret_d</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_discriminator</span><span class="o">.</span><span class="n">train</span><span class="p">([</span><span class="n">real_batch</span><span class="p">,</span> <span class="n">generated_batch</span><span class="p">],</span>
-                                                  <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">real_batch</span><span class="p">))</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">real_batch</span><span class="p">),</span> <span class="n">generated_prob</span><span class="p">],</span>
-                                                  <span class="n">penalty</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-                <span class="n">d_loss_min</span> <span class="o">=</span> <span class="n">ret_d</span><span class="p">[</span><span class="s1">&#39;loss&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">detach</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+                                                  <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">real_batch</span><span class="p">))</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">real_batch</span><span class="p">),</span> <span class="n">generated_prob</span><span class="p">])</span>
+                <span class="n">d_loss_min</span> <span class="o">=</span> <span class="n">ret_d</span><span class="p">[</span><span class="s1">&#39;loss&#39;</span><span class="p">]</span>
 
                 <span class="c1"># 2. Train Generator</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_generator</span><span class="o">.</span><span class="n">set_discriminator</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_discriminator</span><span class="p">)</span>
                 <span class="n">ret_g</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_generator</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_quantum_instance</span><span class="p">,</span> <span class="n">shots</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_batch_size</span><span class="p">)</span>
                 <span class="n">g_loss_min</span> <span class="o">=</span> <span class="n">ret_g</span><span class="p">[</span><span class="s1">&#39;loss&#39;</span><span class="p">]</span>
 
-            <span class="bp">self</span><span class="o">.</span><span class="n">_d_loss</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">d_loss_min</span><span class="p">)</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_g_loss</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">g_loss_min</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_d_loss</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">around</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">d_loss_min</span><span class="p">),</span> <span class="mi">4</span><span class="p">))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_g_loss</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">around</span><span class="p">(</span><span class="n">g_loss_min</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
 
             <span class="n">rel_entr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_rel_entr</span><span class="p">()</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_rel_entr</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">rel_entr</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_rel_entr</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">around</span><span class="p">(</span><span class="n">rel_entr</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_ret</span><span class="p">[</span><span class="s1">&#39;params_d&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ret_d</span><span class="p">[</span><span class="s1">&#39;params&#39;</span><span class="p">]</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_ret</span><span class="p">[</span><span class="s1">&#39;params_g&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ret_g</span><span class="p">[</span><span class="s1">&#39;params&#39;</span><span class="p">]</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_ret</span><span class="p">[</span><span class="s1">&#39;loss_d&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">around</span><span class="p">(</span><span class="n">d_loss_min</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_ret</span><span class="p">[</span><span class="s1">&#39;loss_d&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">around</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">d_loss_min</span><span class="p">),</span> <span class="mi">4</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_ret</span><span class="p">[</span><span class="s1">&#39;loss_g&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">around</span><span class="p">(</span><span class="n">g_loss_min</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_ret</span><span class="p">[</span><span class="s1">&#39;rel_entr&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">around</span><span class="p">(</span><span class="n">rel_entr</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
 
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_snapshot_dir</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">_store_params</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">around</span><span class="p">(</span><span class="n">d_loss_min</span><span class="o">.</span><span class="n">detach</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">(),</span> <span class="mi">4</span><span class="p">),</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_store_params</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">around</span><span class="p">(</span><span class="n">d_loss_min</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span>
                                    <span class="n">np</span><span class="o">.</span><span class="n">around</span><span class="p">(</span><span class="n">g_loss_min</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">around</span><span class="p">(</span><span class="n">rel_entr</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
-                    
             <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;Epoch </span><span class="si">{}</span><span class="s1">/</span><span class="si">{}</span><span class="s1">...&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">e</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_num_epochs</span><span class="p">))</span>
-            <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;Loss Discriminator: &#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">around</span><span class="p">(</span><span class="n">d_loss_min</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
-            <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;Loss Generator: &#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">around</span><span class="p">(</span><span class="n">g_loss_min</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
-            <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;Relative Entropy: &#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">around</span><span class="p">(</span><span class="n">rel_entr</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;Loss Discriminator: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">around</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">d_loss_min</span><span class="p">),</span> <span class="mi">4</span><span class="p">)))</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;Loss Generator: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">around</span><span class="p">(</span><span class="n">g_loss_min</span><span class="p">,</span> <span class="mi">4</span><span class="p">)))</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;Relative Entropy: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">around</span><span class="p">(</span><span class="n">rel_entr</span><span class="p">,</span> <span class="mi">4</span><span class="p">)))</span>
 
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tol_rel_ent</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
                 <span class="k">if</span> <span class="n">rel_entr</span> <span class="o">&lt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tol_rel_ent</span><span class="p">:</span>
@@ -593,9 +599,6 @@
             <span class="k">raise</span> <span class="n">AquaError</span><span class="p">(</span>
                 <span class="s1">&#39;Chosen backend not supported - Set backend either to statevector_simulator, qasm_simulator&#39;</span>
                 <span class="s1">&#39; or actual quantum hardware&#39;</span><span class="p">)</span>
-
-        <span class="c1"># The number of shots must be the batch size</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_quantum_instance</span><span class="o">.</span><span class="n">set_config</span><span class="p">(</span><span class="n">shots</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_batch_size</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">train</span><span class="p">()</span>
 
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ret</span></div>
